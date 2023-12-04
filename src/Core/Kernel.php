@@ -55,6 +55,18 @@ class Kernel extends HttpKernel
         return $instantiatedBundleNames;
     }
 
+    protected function getKernelParameters(): array
+    {
+         $parameters = parent::getKernelParameters();
+
+         return array_merge(
+             $parameters,
+             [
+                   'kernel.snap_admin_version' => $this->snapAdminVersion,
+             ]
+         );
+    }
+
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
     {
         $container->setParameter('.container.dumper.inline_class_loader', $this->environment !== 'test');
