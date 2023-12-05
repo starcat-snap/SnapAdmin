@@ -26,7 +26,7 @@ class Configuration implements ConfigurationInterface
             ->append($this->createApiSection())
             ->append($this->createStoreSection())
             ->append($this->createCartSection())
-            ->append($this->createSalesChannelContextSection())
+            ->append($this->createChannelContextSection())
             ->append($this->createAdminWorkerSection())
             ->append($this->createAutoUpdateSection())
             ->append($this->createSitemapSection())
@@ -256,7 +256,7 @@ class Configuration implements ConfigurationInterface
             ])
             ->end()
             ->floatNode('priority')->end()
-            ->scalarNode('salesChannelId')->end()
+            ->scalarNode('channelId')->end()
             ->end()
             ->end()
             ->end()
@@ -265,7 +265,7 @@ class Configuration implements ConfigurationInterface
             ->children()
             ->scalarNode('resource')->end()
             ->scalarNode('identifier')->end()
-            ->scalarNode('salesChannelId')->end()
+            ->scalarNode('channelId')->end()
             ->end()
             ->end()
             ->end()
@@ -540,9 +540,9 @@ class Configuration implements ConfigurationInterface
         return $rootNode;
     }
 
-    private function createSalesChannelContextSection(): ArrayNodeDefinition
+    private function createChannelContextSection(): ArrayNodeDefinition
     {
-        $treeBuilder = new TreeBuilder('sales_channel_context');
+        $treeBuilder = new TreeBuilder('channel_context');
 
         $rootNode = $treeBuilder->getRootNode();
         $rootNode

@@ -111,7 +111,7 @@ class DefinitionService
         }
 
         if ($type === self::STORE_API) {
-            return $this->salesChannelDefinitionRegistry->getDefinitions();
+            return $this->channelDefinitionRegistry->getDefinitions();
         }
 
         throw new ApiDefinitionGeneratorNotFoundException($type);

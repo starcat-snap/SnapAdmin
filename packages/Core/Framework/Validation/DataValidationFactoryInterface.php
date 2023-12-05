@@ -3,12 +3,12 @@
 namespace SnapAdmin\Core\Framework\Validation;
 
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\SalesChannel\SalesChannelContext;
+use SnapAdmin\Frontend\Channel\ChannelContext;
 
 #[Package('core')]
 interface DataValidationFactoryInterface
 {
-    public function create(SalesChannelContext $context): DataValidationDefinition;
+    public function create(ChannelContext $context): DataValidationDefinition;
 
-    public function update(SalesChannelContext $context): DataValidationDefinition;
+    public function update(ChannelContext $context): DataValidationDefinition;
 }

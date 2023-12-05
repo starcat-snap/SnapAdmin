@@ -136,7 +136,7 @@ framework:
       log_level: notice
     SnapAdmin\Core\Framework\Api\Exception\InvalidSyncOperationException:
       log_level: notice
-    SnapAdmin\Core\Framework\Routing\Exception\SalesChannelNotFoundException:
+    SnapAdmin\Core\Framework\Routing\Exception\ChannelNotFoundException:
       log_level: notice
     SnapAdmin\Core\System\CustomEntity\Exception\CustomEntityNotFoundException:
       log_level: notice

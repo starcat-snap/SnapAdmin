@@ -39,7 +39,7 @@ class StoreException extends HttpException
         return new self(
             Response::HTTP_FORBIDDEN,
             self::EXTENSION_THEME_STILL_IN_USE,
-            'The extension with id "{{ extensionId }}" can not be removed because its theme is still assigned to a sales channel.',
+            'The extension with id "{{ extensionId }}" can not be removed because its theme is still assigned to achannel.',
             ['extensionId' => $extensionId]
         );
     }

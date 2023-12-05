@@ -3,29 +3,29 @@
 namespace SnapAdmin\Core\Framework\Routing\Event;
 
 use SnapAdmin\Core\Framework\Context;
-use SnapAdmin\Core\Framework\Event\SnapAdminSalesChannelEvent;
+use SnapAdmin\Core\Framework\Event\SnapAdminChannelEvent;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\SalesChannel\SalesChannelContext;
+use SnapAdmin\Frontend\Channel\ChannelContext;
 use Symfony\Contracts\EventDispatcher\Event;
 
 #[Package('core')]
-class SalesChannelContextResolvedEvent extends Event implements SnapAdminSalesChannelEvent
+class ChannelContextResolvedEvent extends Event implements SnapAdminChannelEvent
 {
     public function __construct(
-        private readonly SalesChannelContext $salesChannelContext,
+        private readonly ChannelContext $channelContext,
         private readonly string              $usedToken
     )
     {
     }
 
-    public function getSalesChannelContext(): SalesChannelContext
+    public function getChannelContext(): ChannelContext
     {
-        return $this->salesChannelContext;
+        return $this->channelContext;
     }
 
     public function getContext(): Context
     {
-        return $this->salesChannelContext->getContext();
+        return $this->channelContext->getContext();
     }
 
     public function getUsedToken(): string

@@ -2,7 +2,7 @@
 
 namespace SnapAdmin\Core\Framework\Adapter\Twig\Extension;
 
-use SnapAdmin\Core\Content\Media\MediaCollection;
+use SnapAdmin\Frontend\Content\Media\MediaCollection;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityRepository;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;

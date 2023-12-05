@@ -2,26 +2,26 @@
 
 namespace SnapAdmin\Core\Framework\Test\TestCaseBase;
 
-use SnapAdmin\Core\System\SalesChannel\SalesChannelContext;
+use SnapAdmin\Frontend\Channel\ChannelContext;
 use SnapAdmin\Core\System\Tax\Aggregate\TaxRule\TaxRuleCollection;
 use SnapAdmin\Core\System\Tax\TaxEntity;
 
-trait TaxAddToSalesChannelTestBehaviour
+trait TaxAddToChannelTestBehaviour
 {
     /**
      * @param array<mixed> $taxData
      */
-    protected function addTaxDataToSalesChannel(SalesChannelContext $salesChannelContext, array $taxData): void
+    protected function addTaxDataToChannel(ChannelContext $channelContext, array $taxData): void
     {
         $tax = (new TaxEntity())->assign($taxData);
-        $this->addTaxEntityToSalesChannel($salesChannelContext, $tax);
+        $this->addTaxEntityToChannel($channelContext, $tax);
     }
 
-    protected function addTaxEntityToSalesChannel(SalesChannelContext $salesChannelContext, TaxEntity $taxEntity): void
+    protected function addTaxEntityToChannel(ChannelContext $channelContext, TaxEntity $taxEntity): void
     {
         if ($taxEntity->getRules() === null) {
             $taxEntity->setRules(new TaxRuleCollection());
         }
-        $salesChannelContext->getTaxRules()->add($taxEntity);
+        $channelContext->getTaxRules()->add($taxEntity);
     }
 }

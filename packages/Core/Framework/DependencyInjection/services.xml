@@ -29,7 +29,7 @@ object-src 'none';
 script-src 'strict-dynamic' 'nonce-%%nonce%%' 'unsafe-inline' 'unsafe-eval' https: http:;
 base-uri 'self';
             </parameter>
-            <parameter key="storefront"/>
+            <parameter key="frontend"/>
             <parameter key="installer"/>
         </parameter>
     </parameters>

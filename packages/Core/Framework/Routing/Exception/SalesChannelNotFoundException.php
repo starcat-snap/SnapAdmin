@@ -7,11 +7,11 @@ use SnapAdmin\Core\Framework\SnapAdminHttpException;
 use Symfony\Component\HttpFoundation\Response;
 
 #[Package('core')]
-class SalesChannelNotFoundException extends SnapAdminHttpException
+class ChannelNotFoundException extends SnapAdminHttpException
 {
     public function __construct()
     {
-        parent::__construct('No matching sales channel found.');
+        parent::__construct('No matchingchannel found.');
     }
 
     public function getErrorCode(): string

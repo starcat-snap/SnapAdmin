@@ -119,7 +119,7 @@ final class ExtendsTokenParser extends AbstractTokenParser
             return false;
         }
 
-        return !\array_intersect($this->templateScopeDetector->getScopes(), $scopes) && !str_starts_with($source, '@Storefront');
+        return !\array_intersect($this->templateScopeDetector->getScopes(), $scopes) && !str_starts_with($source, '@Frontend');
     }
 
     private function convertExpressionToArray(AbstractExpression $expression): mixed

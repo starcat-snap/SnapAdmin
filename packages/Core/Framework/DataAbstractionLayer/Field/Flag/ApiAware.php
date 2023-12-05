@@ -3,7 +3,7 @@
 namespace SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag;
 
 use SnapAdmin\Core\Framework\Api\Context\AdminApiSource;
-use SnapAdmin\Core\Framework\Api\Context\SalesChannelApiSource;
+use SnapAdmin\Core\Framework\Api\Context\ChannelApiSource;
 use SnapAdmin\Core\Framework\Api\Context\SystemSource;
 use SnapAdmin\Core\Framework\Log\Package;
 
@@ -12,7 +12,7 @@ class ApiAware extends Flag
 {
     private const BASE_URLS = [
         AdminApiSource::class => '/api/',
-        SalesChannelApiSource::class => '/store-api/',
+        ChannelApiSource::class => '/store-api/',
     ];
 
     /**

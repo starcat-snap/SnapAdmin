@@ -2,16 +2,16 @@
   "name": "SwagTheme",
   "author": "SnapAdmin AG",
   "views": [
-    "@Storefront",
+    "@Frontend",
     "@Plugins",
     "@SwagTheme"
   ],
   "style": [
-    "app/storefront/src/scss/overrides.scss",
-    "@Storefront",
-    "app/storefront/src/scss/base.scss"
+    "app/frontend/src/scss/overrides.scss",
+    "@Frontend",
+    "app/frontend/src/scss/base.scss"
   ],
   "script": [
-    "@Storefront"
+    "@Frontend"
   ]
 }

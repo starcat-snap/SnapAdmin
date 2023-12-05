@@ -27,7 +27,7 @@ class ExpectationSubscriber implements EventSubscriberInterface
         'snapadmin/core',
         'snap/administration',
         'snap/elasticsearch',
-        'snap/storefront',
+        'snap/frontend',
     ];
 
     /**

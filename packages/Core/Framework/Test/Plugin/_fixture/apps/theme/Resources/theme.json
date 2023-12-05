@@ -2,20 +2,20 @@
   "name": "SwagApp",
   "author": "SnapAdmin AG",
   "views": [
-    "@Storefront",
+    "@Frontend",
     "@Plugins",
     "@TestTheme"
   ],
   "style": [
-    "app/storefront/src/scss/overrides.scss",
-    "@Storefront",
-    "app/storefront/src/scss/base.scss"
+    "app/frontend/src/scss/overrides.scss",
+    "@Frontend",
+    "app/frontend/src/scss/base.scss"
   ],
   "script": [
-    "@Storefront",
-    "app/storefront/dist/storefront/js/swag-app.js"
+    "@Frontend",
+    "app/frontend/dist/frontend/js/swag-app.js"
   ],
   "asset": [
-    "app/storefront/src/assets"
+    "app/frontend/src/assets"
   ]
 }

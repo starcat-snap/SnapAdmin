@@ -5,7 +5,7 @@ namespace SnapAdmin\Core\Framework\Test\Routing;
 use PHPUnit\Framework\TestCase;
 use SnapAdmin\Core\Framework\Api\Context\AdminApiSource;
 use SnapAdmin\Core\Framework\Api\Context\ContextSource;
-use SnapAdmin\Core\Framework\Api\Context\SalesChannelApiSource;
+use SnapAdmin\Core\Framework\Api\Context\ChannelApiSource;
 use SnapAdmin\Core\Framework\Api\Context\SystemSource;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Routing\ApiRouteScope;
@@ -33,7 +33,7 @@ class ApiRouteScopeTest extends TestCase
     public static function provideForbiddenData()
     {
         return [
-            [new SalesChannelApiSource(Uuid::randomHex()), true],
+            [new ChannelApiSource(Uuid::randomHex()), true],
             [new SystemSource(), true],
         ];
     }

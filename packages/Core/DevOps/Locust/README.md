@@ -92,7 +92,7 @@ To allow registrations and tracing the order process, the CSRF protection has to
 Simply add the following section to one of your local configuration files in {root}/config/packages/*.yaml
 
 ```yaml
-storefront:
+frontend:
     csrf:
         enabled: false
 ```

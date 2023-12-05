@@ -8,8 +8,8 @@ class StoreApi:
     def __init__(self, client, context):
         self.context = context
         self.client = client
-        self.currency_id = random.choice(self.context.sales_channel['currencies'])
-        self.language_id = random.choice(self.context.sales_channel['languages'])
+        self.currency_id = random.choice(self.context.channel['currencies'])
+        self.language_id = random.choice(self.context.channel['languages'])
         self.token = str(uuid.uuid4()).replace('-', '')
         self.switch_context({
             'currencyId': self.currency_id,
@@ -85,19 +85,19 @@ class StoreApi:
         self.email = 'user-' + str(uuid.uuid4()).replace('-', '') + '@example.com'
 
         response = self.request('/store-api/account/register', name='register', parameters={
-            'storefrontUrl': self.context.sales_channel['domain'],
-            'salutationId': self.context.sales_channel['salutationId'],
+            'frontendUrl': self.context.channel['domain'],
+            'salutationId': self.context.channel['salutationId'],
             'firstName': 'Firstname',
             'lastName': 'Lastname',
             'email': self.email,
             'password': 'snap',
             'acceptedDataProtection': True,
             'billingAddress': {
-                'salutationId': self.context.sales_channel['salutationId'],
+                'salutationId': self.context.channel['salutationId'],
                 'street': 'Test street',
                 'zipcode': '11111',
                 'city': 'Test city',
-                'countryId': self.context.sales_channel['countryId']
+                'countryId': self.context.channel['countryId']
             }
         })
 
@@ -116,7 +116,7 @@ class StoreApi:
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'sw-context-token': self.token,
-            'sw-access-key': self.context.sales_channel['access_key']
+            'sw-access-key': self.context.channel['access_key']
         }
 
     def request(self, url, name, parameters = {}, method = 'POST'):

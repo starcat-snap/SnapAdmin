@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use SnapAdmin\Core\Framework\Event\EventData\MailRecipientStruct;
 use SnapAdmin\Core\Framework\Event\MailAware;
 use SnapAdmin\Core\Framework\Event\SnapAdminEvent;
-use SnapAdmin\Core\System\SalesChannel\SalesChannelContext;
+use SnapAdmin\Frontend\Channel\ChannelContext;
 
 trait MailTemplateTestBehaviour
 {
@@ -18,11 +18,11 @@ trait MailTemplateTestBehaviour
     public static function assertMailEvent(
         string              $expectedClass,
         SnapAdminEvent      $event,
-        SalesChannelContext $salesChannelContext
+        ChannelContext $channelContext
     ): void
     {
         TestCase::assertInstanceOf($expectedClass, $event);
-        TestCase::assertSame($salesChannelContext->getContext(), $event->getContext());
+        TestCase::assertSame($channelContext->getContext(), $event->getContext());
     }
 
     public static function assertMailRecipientStructEvent(MailRecipientStruct $expectedStruct, MailAware $event): void

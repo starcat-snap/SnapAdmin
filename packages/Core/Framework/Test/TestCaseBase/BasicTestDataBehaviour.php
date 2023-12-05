@@ -35,7 +35,7 @@ trait BasicTestDataBehaviour
 
     abstract protected static function getContainer(): ContainerInterface;
 
-    protected function getValidPaymentMethodId(?string $salesChannelId = null): string
+    protected function getValidPaymentMethodId(?string $channelId = null): string
     {
         /** @var EntityRepository $repository */
         $repository = $this->getContainer()->get('payment_method.repository');
@@ -44,8 +44,8 @@ trait BasicTestDataBehaviour
             ->setLimit(1)
             ->addFilter(new EqualsFilter('active', true));
 
-        if ($salesChannelId) {
-            $criteria->addFilter(new EqualsFilter('salesChannels.id', $salesChannelId));
+        if ($channelId) {
+            $criteria->addFilter(new EqualsFilter('channels.id', $channelId));
         }
 
         /** @var string $id */
@@ -54,7 +54,7 @@ trait BasicTestDataBehaviour
         return $id;
     }
 
-    protected function getInactivePaymentMethodId(?string $salesChannelId = null): string
+    protected function getInactivePaymentMethodId(?string $channelId = null): string
     {
         /** @var EntityRepository $repository */
         $repository = $this->getContainer()->get('payment_method.repository');
@@ -63,8 +63,8 @@ trait BasicTestDataBehaviour
             ->setLimit(1)
             ->addFilter(new EqualsFilter('active', false));
 
-        if ($salesChannelId) {
-            $criteria->addFilter(new EqualsFilter('salesChannels.id', $salesChannelId));
+        if ($channelId) {
+            $criteria->addFilter(new EqualsFilter('channels.id', $channelId));
         }
 
         /** @var string $id */
@@ -73,7 +73,7 @@ trait BasicTestDataBehaviour
         return $id;
     }
 
-    protected function getAvailablePaymentMethod(?string $salesChannelId = null): PaymentMethodEntity
+    protected function getAvailablePaymentMethod(?string $channelId = null): PaymentMethodEntity
     {
         /** @var EntityRepository $repository */
         $repository = $this->getContainer()->get('payment_method.repository');
@@ -83,8 +83,8 @@ trait BasicTestDataBehaviour
             ->addFilter(new EqualsFilter('active', true))
             ->addFilter(new EqualsFilter('availabilityRuleId', null));
 
-        if ($salesChannelId) {
-            $criteria->addFilter(new EqualsFilter('salesChannels.id', $salesChannelId));
+        if ($channelId) {
+            $criteria->addFilter(new EqualsFilter('channels.id', $channelId));
         }
 
         /** @var PaymentMethodEntity|null $paymentMethod */
@@ -97,7 +97,7 @@ trait BasicTestDataBehaviour
         return $paymentMethod;
     }
 
-    protected function getValidShippingMethodId(?string $salesChannelId = null): string
+    protected function getValidShippingMethodId(?string $channelId = null): string
     {
         /** @var EntityRepository $repository */
         $repository = $this->getContainer()->get('shipping_method.repository');
@@ -107,8 +107,8 @@ trait BasicTestDataBehaviour
             ->addFilter(new EqualsFilter('active', true))
             ->addSorting(new FieldSorting('name'));
 
-        if ($salesChannelId) {
-            $criteria->addFilter(new EqualsFilter('salesChannels.id', $salesChannelId));
+        if ($channelId) {
+            $criteria->addFilter(new EqualsFilter('channels.id', $channelId));
         }
 
         /** @var string $id */
@@ -117,7 +117,7 @@ trait BasicTestDataBehaviour
         return $id;
     }
 
-    protected function getAvailableShippingMethod(?string $salesChannelId = null): ShippingMethodEntity
+    protected function getAvailableShippingMethod(?string $channelId = null): ShippingMethodEntity
     {
         /** @var EntityRepository $repository */
         $repository = $this->getContainer()->get('shipping_method.repository');
@@ -128,8 +128,8 @@ trait BasicTestDataBehaviour
             ->addFilter(new EqualsFilter('active', true))
             ->addSorting(new FieldSorting('name'));
 
-        if ($salesChannelId) {
-            $criteria->addFilter(new EqualsFilter('salesChannels.id', $salesChannelId));
+        if ($channelId) {
+            $criteria->addFilter(new EqualsFilter('channels.id', $channelId));
         }
 
         $shippingMethods = $repository->search($criteria, Context::createDefaultContext())->getEntities();
@@ -183,9 +183,9 @@ trait BasicTestDataBehaviour
     }
 
     /**
-     * @param string|null $salesChannelId (null when no saleschannel filtering)
+     * @param string|null $channelId (null when no channel filtering)
      */
-    protected function getValidCountryId(?string $salesChannelId = TestDefaults::SALES_CHANNEL): string
+    protected function getValidCountryId(?string $channelId = TestDefaults::SALES_CHANNEL): string
     {
         /** @var EntityRepository $repository */
         $repository = $this->getContainer()->get('country.repository');
@@ -195,8 +195,8 @@ trait BasicTestDataBehaviour
             ->addFilter(new EqualsFilter('shippingAvailable', true))
             ->addSorting(new FieldSorting('iso'));
 
-        if ($salesChannelId !== null) {
-            $criteria->addFilter(new EqualsFilter('salesChannels.id', $salesChannelId));
+        if ($channelId !== null) {
+            $criteria->addFilter(new EqualsFilter('channels.id', $channelId));
         }
 
         $result = $repository->search($criteria, Context::createDefaultContext());

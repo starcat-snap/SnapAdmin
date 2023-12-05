@@ -3,7 +3,7 @@
 namespace SnapAdmin\Core\Framework\DependencyInjection\CompilerPass;
 
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Storefront\Theme\ThemeCompiler;
+use SnapAdmin\Frontend\Theme\ThemeCompiler;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;

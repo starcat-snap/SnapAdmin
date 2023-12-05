@@ -29,28 +29,28 @@ final class MemoizedSystemConfigStore implements EventSubscriberInterface, Reset
 
     public function onValueChanged(SystemConfigChangedEvent $event): void
     {
-        $this->removeConfig($event->getSalesChannelId());
+        $this->removeConfig($event->getChannelId());
     }
 
-    public function setConfig(?string $salesChannelId, array $config): void
+    public function setConfig(?string $channelId, array $config): void
     {
-        $this->configs[$this->getKey($salesChannelId)] = $config;
+        $this->configs[$this->getKey($channelId)] = $config;
     }
 
-    public function getConfig(?string $salesChannelId): ?array
+    public function getConfig(?string $channelId): ?array
     {
-        return $this->configs[$this->getKey($salesChannelId)] ?? null;
+        return $this->configs[$this->getKey($channelId)] ?? null;
     }
 
-    public function removeConfig(?string $salesChannelId): void
+    public function removeConfig(?string $channelId): void
     {
-        if ($salesChannelId === null) {
+        if ($channelId === null) {
             $this->reset();
 
             return;
         }
 
-        unset($this->configs[$this->getKey($salesChannelId)]);
+        unset($this->configs[$this->getKey($channelId)]);
     }
 
     public function reset(): void
@@ -58,8 +58,8 @@ final class MemoizedSystemConfigStore implements EventSubscriberInterface, Reset
         $this->configs = [];
     }
 
-    private function getKey(?string $salesChannelId): string
+    private function getKey(?string $channelId): string
     {
-        return $salesChannelId ?? '_global_';
+        return $channelId ?? '_global_';
     }
 }

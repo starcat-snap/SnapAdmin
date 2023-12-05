@@ -38,7 +38,7 @@ class DumpClassSchemaCommand extends Command
     public function __construct(array $bundles)
     {
         parent::__construct();
-        $this->schemaPath = $bundles['Framework']['path'] . '/Api/ApiDefinition/Generator/SalesChannel/Schema/';
+        $this->schemaPath = $bundles['Framework']['path'] . '/Api/ApiDefinition/Generator/Channel/Schema/';
     }
 
     protected function configure(): void

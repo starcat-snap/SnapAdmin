@@ -3,7 +3,7 @@
 namespace SnapAdmin\Core\Framework\Routing;
 
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Storefront\Event\StorefrontRenderEvent;
+use SnapAdmin\Frontend\Event\FrontendRenderEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
@@ -30,8 +30,8 @@ class RouteEventSubscriber implements EventSubscriberInterface
             KernelEvents::RESPONSE => ['response', -10],
         ];
 
-        if (class_exists(StorefrontRenderEvent::class)) {
-            $events[StorefrontRenderEvent::class] = ['render', -10];
+        if (class_exists(FrontendRenderEvent::class)) {
+            $events[FrontendRenderEvent::class] = ['render', -10];
         }
 
         return $events;
@@ -48,7 +48,7 @@ class RouteEventSubscriber implements EventSubscriberInterface
         $this->dispatcher->dispatch($event, $name);
     }
 
-    public function render(StorefrontRenderEvent $event): void
+    public function render(FrontendRenderEvent $event): void
     {
         $request = $event->getRequest();
         if (!$request->attributes->has('_route')) {

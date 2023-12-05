@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use SnapAdmin\Administration\Controller\AdministrationController;
 use SnapAdmin\Core\Framework\Test\TestCaseBase\AdminApiTestBehaviour;
 use SnapAdmin\Core\Framework\Test\TestCaseBase\IntegrationTestBehaviour;
-use SnapAdmin\Storefront\Controller\ProductController;
+use SnapAdmin\Frontend\Controller\ProductController;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -49,10 +49,10 @@ class CoreSubscriberTest extends TestCase
     /**
      * @group slow
      */
-    public function testStorefrontNoCsp(): void
+    public function testFrontendNoCsp(): void
     {
         if (!$this->getContainer()->has(ProductController::class)) {
-            static::markTestSkipped('Storefront CSP test need storefront bundle to be installed');
+            static::markTestSkipped('Frontend CSP test need frontend bundle to be installed');
         }
 
         $browser = $this->getBrowser();

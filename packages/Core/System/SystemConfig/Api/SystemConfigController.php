@@ -62,14 +62,14 @@ class SystemConfigController extends AbstractController
             throw RoutingException::missingRequestParameter('domain');
         }
 
-        $salesChannelId = $request->query->get('salesChannelId');
-        if (!\is_string($salesChannelId)) {
-            $salesChannelId = null;
+        $channelId = $request->query->get('channelId');
+        if (!\is_string($channelId)) {
+            $channelId = null;
         }
 
         $inherit = $request->query->getBoolean('inherit');
 
-        $values = $this->systemConfig->getDomain($domain, $salesChannelId, $inherit);
+        $values = $this->systemConfig->getDomain($domain, $channelId, $inherit);
         if (empty($values)) {
             $json = '{}';
         } else {
@@ -82,13 +82,13 @@ class SystemConfigController extends AbstractController
     #[Route(path: '/api/_action/system-config', name: 'api.action.core.save.system-config', defaults: ['_acl' => ['system_config:update', 'system_config:create', 'system_config:delete']], methods: ['POST'])]
     public function saveConfiguration(Request $request): JsonResponse
     {
-        $salesChannelId = $request->query->get('salesChannelId');
-        if (!\is_string($salesChannelId)) {
-            $salesChannelId = null;
+        $channelId = $request->query->get('channelId');
+        if (!\is_string($channelId)) {
+            $channelId = null;
         }
 
         $kvs = $request->request->all();
-        $this->systemConfig->setMultiple($kvs, $salesChannelId);
+        $this->systemConfig->setMultiple($kvs, $channelId);
 
         return new JsonResponse(null, Response::HTTP_NO_CONTENT);
     }
@@ -111,15 +111,15 @@ class SystemConfigController extends AbstractController
         $this->systemConfigValidator->validate($request->request->all(), $context);
 
         /**
-         * @var string $salesChannelId
+         * @var string $channelId
          * @var array<string, mixed> $kvs
          */
-        foreach ($request->request->all() as $salesChannelId => $kvs) {
-            if ($salesChannelId === 'null') {
-                $salesChannelId = null;
+        foreach ($request->request->all() as $channelId => $kvs) {
+            if ($channelId === 'null') {
+                $channelId = null;
             }
 
-            $this->systemConfig->setMultiple($kvs, $salesChannelId);
+            $this->systemConfig->setMultiple($kvs, $channelId);
         }
 
         return new JsonResponse(null, Response::HTTP_NO_CONTENT);

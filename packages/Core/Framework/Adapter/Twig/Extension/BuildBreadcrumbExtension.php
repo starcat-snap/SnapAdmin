@@ -2,14 +2,14 @@
 
 namespace SnapAdmin\Core\Framework\Adapter\Twig\Extension;
 
-use SnapAdmin\Core\Content\Category\CategoryCollection;
-use SnapAdmin\Core\Content\Category\CategoryEntity;
-use SnapAdmin\Core\Content\Category\Service\CategoryBreadcrumbBuilder;
+use SnapAdmin\Frontend\Content\Category\CategoryCollection;
+use SnapAdmin\Frontend\Content\Category\CategoryEntity;
+use SnapAdmin\Frontend\Content\Category\Service\CategoryBreadcrumbBuilder;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityRepository;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\SalesChannel\SalesChannelContext;
+use SnapAdmin\Frontend\Channel\ChannelContext;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
@@ -40,12 +40,12 @@ class BuildBreadcrumbExtension extends AbstractExtension
      */
     public function getFullBreadcrumb(array $twigContext, CategoryEntity $category, Context $context): array
     {
-        $salesChannel = null;
-        if (\array_key_exists('context', $twigContext) && $twigContext['context'] instanceof SalesChannelContext) {
-            $salesChannel = $twigContext['context']->getSalesChannel();
+        $channel = null;
+        if (\array_key_exists('context', $twigContext) && $twigContext['context'] instanceof ChannelContext) {
+            $channel = $twigContext['context']->getChannel();
         }
 
-        $seoBreadcrumb = $this->categoryBreadcrumbBuilder->build($category, $salesChannel);
+        $seoBreadcrumb = $this->categoryBreadcrumbBuilder->build($category, $channel);
 
         if ($seoBreadcrumb === null) {
             return [];

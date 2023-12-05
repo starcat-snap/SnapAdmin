@@ -28,7 +28,7 @@ class SystemConfigLoader extends AbstractSystemConfigLoader
         throw new DecorationPatternException(self::class);
     }
 
-    public function load(?string $salesChannelId): array
+    public function load(?string $channelId): array
     {
         $query = $this->connection->createQueryBuilder();
 
@@ -70,7 +70,7 @@ class SystemConfigLoader extends AbstractSystemConfigLoader
         $key = \array_shift($keys);
 
         if (empty($keys)) {
-            // Configs can be overwritten with sales_channel_id
+            // Configs can be overwritten with channel_id
             $inheritedValuePresent = \array_key_exists($key, $configValues);
             $valueConsideredEmpty = !\is_bool($value) && empty($value);
 

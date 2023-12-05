@@ -12,7 +12,7 @@
   ],
   "conflict": {
     "snapadmin/core": "*",
-    "snap/storefront": "*"
+    "snap/frontend": "*"
   },
   "extra": {
     "snap-plugin-class": "SwagTestValidateConflictsWildcardIncompatibility\\SwagTestValidateConflictsWildcardIncompatibility",

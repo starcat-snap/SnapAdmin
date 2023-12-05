@@ -10,7 +10,7 @@ use SnapAdmin\Core\Framework\Plugin\Aggregate\PluginTranslation\PluginTranslatio
 use SnapAdmin\Core\System\Locale\Aggregate\LocaleTranslation\LocaleTranslationCollection;
 use SnapAdmin\Core\System\Locale\LocaleEntity;
 
-#[Package('buyers-experience')]
+
 class LanguageEntity extends Entity
 {
     use EntityCustomFieldsTrait;

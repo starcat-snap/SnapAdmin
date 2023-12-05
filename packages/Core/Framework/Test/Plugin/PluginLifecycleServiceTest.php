@@ -469,7 +469,7 @@ class PluginLifecycleServiceTest extends TestCase
      */
     public function testThemeRemovalOnUninstall(bool $keepUserData): void
     {
-        static::markTestSkipped('This test needs the storefront bundle installed.');
+        static::markTestSkipped('This test needs the frontend bundle installed.');
         $this->addTestPluginToKernel(
             __DIR__ . '/_fixture/plugins/SwagTestTheme',
             'SwagTestTheme'

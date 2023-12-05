@@ -29,7 +29,7 @@ class ExtensionThemeStillInUseException extends StoreException
         parent::__construct(
             Response::HTTP_FORBIDDEN,
             StoreException::EXTENSION_THEME_STILL_IN_USE,
-            'The extension with id "{{id}}" can not be removed because its theme is still assigned to a sales channel.',
+            'The extension with id "{{id}}" can not be removed because its theme is still assigned to achannel.',
             $parameters,
             $e
         );

@@ -381,7 +381,7 @@ EOF
                     'type' => 'apiKey',
                     'in' => 'header',
                     'name' => PlatformRequest::HEADER_ACCESS_KEY,
-                    'description' => 'Identifies the sales channel you want to access the API through',
+                    'description' => 'Identifies thechannel you want to access the API through',
                 ]),
                 'User Context Token' => new SecurityScheme([
                     'securityScheme' => 'ContextToken',

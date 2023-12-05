@@ -30,8 +30,8 @@ class TwigLoaderConfigCompilerPass implements CompilerPassInterface
                 $fileSystemLoader->addMethodCall('addPath', [$viewDirectory, $name]);
             }
 
-            if (file_exists($viewDirectory . '/../app/storefront/dist')) {
-                $fileSystemLoader->addMethodCall('addPath', [$viewDirectory . '/../app/storefront/dist', $name]);
+            if (file_exists($viewDirectory . '/../app/frontend/dist')) {
+                $fileSystemLoader->addMethodCall('addPath', [$viewDirectory . '/../app/frontend/dist', $name]);
             }
 
             if (file_exists($resourcesDirectory)) {
@@ -72,8 +72,8 @@ class TwigLoaderConfigCompilerPass implements CompilerPassInterface
                 $fileSystemLoader->addMethodCall('addPath', [$viewDirectory, $app['name']]);
             }
 
-            if (file_exists($viewDirectory . '/../app/storefront/dist')) {
-                $fileSystemLoader->addMethodCall('addPath', [$viewDirectory . '/../app/storefront/dist', $app['name']]);
+            if (file_exists($viewDirectory . '/../app/frontend/dist')) {
+                $fileSystemLoader->addMethodCall('addPath', [$viewDirectory . '/../app/frontend/dist', $app['name']]);
             }
 
             if (file_exists($resourcesDirectory)) {

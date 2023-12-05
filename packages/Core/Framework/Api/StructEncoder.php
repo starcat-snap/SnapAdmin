@@ -2,7 +2,7 @@
 
 namespace SnapAdmin\Core\Framework\Api;
 
-use SnapAdmin\Core\Framework\Api\Context\SalesChannelApiSource;
+use SnapAdmin\Core\Framework\Api\Context\ChannelApiSource;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\ApiAware;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\AggregationResult\AggregationResultCollection;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\EntitySearchResult;
@@ -249,7 +249,7 @@ class StructEncoder
             return $this->protections[$key] = true;
         }
 
-        if (!$flag->isSourceAllowed(SalesChannelApiSource::class)) {
+        if (!$flag->isSourceAllowed(ChannelApiSource::class)) {
             return $this->protections[$key] = true;
         }
 

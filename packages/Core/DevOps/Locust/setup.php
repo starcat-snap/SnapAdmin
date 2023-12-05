@@ -20,34 +20,34 @@ if (file_exists(__DIR__ . '/env.json')) {
 /** @var Connection $connection */
 $limit = $env['category_page_limit'] !== null ? ' LIMIT ' . (int)$env['category_page_limit'] : '';
 
-$salesChannel = $connection->fetchAssociative(
+$channel = $connection->fetchAssociative(
     '
 SELECT
-        LOWER(HEX(sales_channel.country_id)) as countryId,
-        sales_channel.access_key,
-        LOWER(HEX(sales_channel.id)) as id,
-        sales_channel_domain.url
-FROM sales_channel
-    INNER JOIN sales_channel_domain ON(sales_channel_domain.sales_channel_id = sales_channel.id)
-    INNER JOIN sales_channel_translation ON (sales_channel_translation.sales_channel_id = sales_channel.id AND sales_channel_translation.language_id = 0x2fbb5fe2e29a4d70aa5854ce7ce3e20b)
-WHERE JSON_UNQUOTE(JSON_EXTRACT(sales_channel_translation.custom_fields, "$.is_for_benchmark")) = "true"'
+        LOWER(HEX(channel.country_id)) as countryId,
+        channel.access_key,
+        LOWER(HEX(channel.id)) as id,
+        channel_domain.url
+FROM channel
+    INNER JOIN channel_domain ON(channel_domain.channel_id = channel.id)
+    INNER JOIN channel_translation ON (channel_translation.channel_id = channel.id AND channel_translation.language_id = 0x2fbb5fe2e29a4d70aa5854ce7ce3e20b)
+WHERE JSON_UNQUOTE(JSON_EXTRACT(channel_translation.custom_fields, "$.is_for_benchmark")) = "true"'
 );
 
-if (empty($salesChannel)) {
-    /** @var array $salesChannel */
-    $salesChannel = $connection->fetchAssociative(
+if (empty($channel)) {
+    /** @var array $channel */
+    $channel = $connection->fetchAssociative(
         '
         SELECT
-            LOWER(HEX(sales_channel.country_id)) as countryId,
-            sales_channel.access_key,
-            LOWER(HEX(sales_channel.id)) as id,
-            sales_channel_domain.url
+            LOWER(HEX(channel.country_id)) as countryId,
+            channel.access_key,
+            LOWER(HEX(channel.id)) as id,
+            channel_domain.url
 
-        FROM sales_channel
-            INNER JOIN sales_channel_domain ON(sales_channel_domain.sales_channel_id = sales_channel.id)
+        FROM channel
+            INNER JOIN channel_domain ON(channel_domain.channel_id = channel.id)
 
-        WHERE sales_channel.type_id = :type
-        GROUP BY sales_channel.id, sales_channel_domain.url
+        WHERE channel.type_id = :type
+        GROUP BY channel.id, channel_domain.url
         ORDER BY LENGTH(url) ASC
         LIMIT 1
         ',
@@ -83,7 +83,7 @@ SELECT
   CONCAT(\'/\', seo_path_info)
 FROM seo_url
     INNER JOIN product ON(product.id = seo_url.foreign_key AND product.version_id = :versionId)
-    INNER JOIN product_visibility ON(product_visibility.product_id = product.id AND product_visibility.product_version_id = :versionId AND product_visibility.sales_channel_id = :salesChannelId)
+    INNER JOIN product_visibility ON(product_visibility.product_id = product.id AND product_visibility.product_version_id = :versionId AND product_visibility.channel_id = :channelId)
 WHERE
   route_name = \'frontend.detail.page\' AND
   is_deleted = 0 AND
@@ -91,7 +91,7 @@ WHERE
 GROUP BY product.id
 ' . $limit, [
     'versionId' => Uuid::fromHexToBytes(Defaults::LIVE_VERSION),
-    'salesChannelId' => Uuid::fromHexToBytes($salesChannel['id']),
+    'channelId' => Uuid::fromHexToBytes($channel['id']),
 ]);
 
 $keywords = array_map(static function (string $term) {
@@ -123,26 +123,26 @@ $advertisements = $connection->fetchAllAssociative(
 );
 
 $connection->executeStatement(
-    'UPDATE sales_channel SET footer_category_version_id = :version, footer_category_id = (SELECT id FROM category WHERE child_count > 0 AND parent_id IS NOT NULL ORDER BY child_count DESC LIMIT 1) WHERE footer_category_id IS NULL',
+    'UPDATE channel SET footer_category_version_id = :version, footer_category_id = (SELECT id FROM category WHERE child_count > 0 AND parent_id IS NOT NULL ORDER BY child_count DESC LIMIT 1) WHERE footer_category_id IS NULL',
     ['version' => Uuid::fromHexToBytes(Defaults::LIVE_VERSION)]
 );
 
 $connection->executeStatement(
-    'UPDATE sales_channel SET service_category_version_id = :version, service_category_id = (SELECT id FROM category WHERE child_count > 0 AND parent_id IS NOT NULL ORDER BY child_count DESC LIMIT 1) WHERE service_category_id IS NULL',
+    'UPDATE channel SET service_category_version_id = :version, service_category_id = (SELECT id FROM category WHERE child_count > 0 AND parent_id IS NOT NULL ORDER BY child_count DESC LIMIT 1) WHERE service_category_id IS NULL',
     ['version' => Uuid::fromHexToBytes(Defaults::LIVE_VERSION)]
 );
 
-if (empty($salesChannel)) {
-    throw new RuntimeException('No storefront sales channel found');
+if (empty($channel)) {
+    throw new RuntimeException('No frontendchannel found');
 }
 
-$salesChannel['salutationId'] = $connection->fetchOne('SELECT LOWER(HEX(id)) FROM salutation LIMIT 1');
+$channel['salutationId'] = $connection->fetchOne('SELECT LOWER(HEX(id)) FROM salutation LIMIT 1');
 
-$salesChannel['domain'] = $connection->fetchOne('SELECT url FROM sales_channel_domain WHERE sales_channel_id = :id', ['id' => Uuid::fromHexToBytes($salesChannel['id'])]);
+$channel['domain'] = $connection->fetchOne('SELECT url FROM channel_domain WHERE channel_id = :id', ['id' => Uuid::fromHexToBytes($channel['id'])]);
 
-$salesChannel['currencies'] = $connection->fetchFirstColumn('SELECT LOWER(HEX(currency_id)) FROM sales_channel_currency WHERE sales_channel_id = :id', ['id' => Uuid::fromHexToBytes($salesChannel['id'])]);
+$channel['currencies'] = $connection->fetchFirstColumn('SELECT LOWER(HEX(currency_id)) FROM channel_currency WHERE channel_id = :id', ['id' => Uuid::fromHexToBytes($channel['id'])]);
 
-$salesChannel['languages'] = $connection->fetchFirstColumn('SELECT LOWER(HEX(language_id)) FROM sales_channel_language WHERE sales_channel_id = :id', ['id' => Uuid::fromHexToBytes($salesChannel['id'])]);
+$channel['languages'] = $connection->fetchFirstColumn('SELECT LOWER(HEX(language_id)) FROM channel_language WHERE channel_id = :id', ['id' => Uuid::fromHexToBytes($channel['id'])]);
 
 if (empty($details)) {
     throw new RuntimeException('No product urls found');
@@ -160,8 +160,8 @@ $fs->dumpFile(__DIR__ . '/fixtures/listing_urls.json', json_encode($listings, \J
 echo 'Collected: ' . count($details) . ' product urls' . \PHP_EOL;
 $fs->dumpFile(__DIR__ . '/fixtures/product_urls.json', json_encode($details, \JSON_THROW_ON_ERROR));
 
-echo 'Collected: ' . count($salesChannel) . ' sales channels' . \PHP_EOL;
-$fs->dumpFile(__DIR__ . '/fixtures/sales_channel.json', json_encode($salesChannel, \JSON_THROW_ON_ERROR));
+echo 'Collected: ' . count($channel) . 'channels' . \PHP_EOL;
+$fs->dumpFile(__DIR__ . '/fixtures/channel.json', json_encode($channel, \JSON_THROW_ON_ERROR));
 
 echo 'Collected: ' . count($keywords) . ' keywords' . \PHP_EOL;
 $fs->dumpFile(__DIR__ . '/fixtures/keywords.json', json_encode($keywords, \JSON_THROW_ON_ERROR));
@@ -180,7 +180,7 @@ $fs->dumpFile(__DIR__ . '/fixtures/imports.json', json_encode([
     'categories' => $categories,
     'media' => $media,
     'properties' => $properties,
-    'salesChannelId' => $salesChannel['id'],
+    'channelId' => $channel['id'],
     'taxId' => $taxId,
 ], \JSON_THROW_ON_ERROR));
 

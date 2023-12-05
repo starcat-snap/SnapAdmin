@@ -44,7 +44,7 @@ class ConfigGet extends Command
     {
         $this
             ->addArgument('key', InputArgument::REQUIRED)
-            ->addOption('salesChannelId', 's', InputOption::VALUE_OPTIONAL)
+            ->addOption('channelId', 's', InputOption::VALUE_OPTIONAL)
             ->addOption('format', 'f', InputOption::VALUE_REQUIRED, 'Supported formats: ' . implode(', ', self::ALLOWED_FORMATS), self::FORMAT_LEGACY);
     }
 
@@ -58,7 +58,7 @@ class ConfigGet extends Command
         $configKey = $input->getArgument('key');
         $value = $this->systemConfigService->get(
             $configKey,
-            $input->getOption('salesChannelId')
+            $input->getOption('channelId')
         );
 
         if ($format === self::FORMAT_LEGACY) {

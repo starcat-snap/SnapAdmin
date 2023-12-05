@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": [],
   "paths": {
-    "\/_action\/number-range\/reserve\/{type}\/{saleschannel}": {
+    "\/_action\/number-range\/reserve\/{type}\/{channel}": {
       "get": {
         "tags": [
           "Document Management"
@@ -21,9 +21,9 @@
             }
           },
           {
-            "name": "saleschannel",
+            "name": "channel",
             "in": "path",
-            "description": "Sales channel for the number range. Number ranges can be defined per sales channel, so you can pass a sales channel ID here.",
+            "description": "Sales channel for the number range. Number ranges can be defined perchannel, so you can pass achannel ID here.",
             "required": true,
             "schema": {
               "type": "string"

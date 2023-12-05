@@ -7,7 +7,7 @@ use SnapAdmin\Core\Checkout\Cart\Price\Struct\CartPrice;
 use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\Framework\Api\Context\AdminApiSource;
 use SnapAdmin\Core\Framework\Api\Context\ContextSource;
-use SnapAdmin\Core\Framework\Api\Context\SalesChannelApiSource;
+use SnapAdmin\Core\Framework\Api\Context\ChannelApiSource;
 use SnapAdmin\Core\Framework\Api\Context\SystemSource;
 use SnapAdmin\Core\Framework\Api\Exception\MissingPrivilegeException;
 use SnapAdmin\Core\Framework\Api\Util\AccessKeyHelper;
@@ -160,10 +160,10 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
             return $this->getAdminApiSource(null, $integrationId);
         }
 
-        if ($keyOrigin === 'sales-channel') {
-            $salesChannelId = $this->getSalesChannelIdByAccessKey($clientId);
+        if ($keyOrigin === 'channel') {
+            $channelId = $this->getChannelIdByAccessKey($clientId);
 
-            return new SalesChannelApiSource($salesChannelId);
+            return new ChannelApiSource($channelId);
         }
 
         return new SystemSource();
@@ -223,11 +223,11 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
         return Uuid::fromBytesToHex($id);
     }
 
-    private function getSalesChannelIdByAccessKey(string $clientId): string
+    private function getChannelIdByAccessKey(string $clientId): string
     {
         $id = $this->connection->createQueryBuilder()
             ->select(['id'])
-            ->from('sales_channel')
+            ->from('channel')
             ->where('access_key = :accessKey')
             ->setParameter('accessKey', $clientId)
             ->executeQuery()

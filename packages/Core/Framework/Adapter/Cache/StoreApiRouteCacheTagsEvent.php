@@ -4,8 +4,8 @@ namespace SnapAdmin\Core\Framework\Adapter\Cache;
 
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\SalesChannel\SalesChannelContext;
-use SnapAdmin\Core\System\SalesChannel\StoreApiResponse;
+use SnapAdmin\Frontend\Channel\ChannelContext;
+use SnapAdmin\Frontend\Channel\StoreApiResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\EventDispatcher\Event;
 
@@ -16,7 +16,7 @@ class StoreApiRouteCacheTagsEvent extends Event
         protected array                   $tags,
         protected Request                 $request,
         private readonly StoreApiResponse $response,
-        protected SalesChannelContext     $context,
+        protected ChannelContext     $context,
         protected ?Criteria               $criteria
     )
     {
@@ -32,7 +32,7 @@ class StoreApiRouteCacheTagsEvent extends Event
         return $this->request;
     }
 
-    public function getContext(): SalesChannelContext
+    public function getContext(): ChannelContext
     {
         return $this->context;
     }
@@ -52,9 +52,9 @@ class StoreApiRouteCacheTagsEvent extends Event
         $this->tags = array_merge($this->tags, $tags);
     }
 
-    public function getSalesChannelId(): string
+    public function getChannelId(): string
     {
-        return $this->context->getSalesChannelId();
+        return $this->context->getChannelId();
     }
 
     public function getResponse(): StoreApiResponse

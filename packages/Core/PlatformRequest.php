@@ -53,8 +53,8 @@ final class PlatformRequest
      * Context attributes
      */
     public const ATTRIBUTE_CONTEXT_OBJECT = 'sw-context';
-    public const ATTRIBUTE_SALES_CHANNEL_CONTEXT_OBJECT = 'sw-sales-channel-context';
-    public const ATTRIBUTE_SALES_CHANNEL_ID = 'sw-sales-channel-id';
+    public const ATTRIBUTE_SALES_CHANNEL_CONTEXT_OBJECT = 'sw-channel-context';
+    public const ATTRIBUTE_SALES_CHANNEL_ID = 'sw-channel-id';
 
     public const ATTRIBUTE_ACL = '_acl';
     public const ATTRIBUTE_CAPTCHA = '_captcha';

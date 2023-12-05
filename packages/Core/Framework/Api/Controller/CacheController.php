@@ -65,7 +65,7 @@ class CacheController extends AbstractController
             Feature::deprecatedClassMessage(self::class, 'v6.6.0.0')
         );
         if ($this->cacheWarmer === null) {
-            throw new \RuntimeException('Storefront is not installed');
+            throw new \RuntimeException('Frontend is not installed');
         }
 
         $this->cacheWarmer->warmUp(Random::getAlphanumericString(32));

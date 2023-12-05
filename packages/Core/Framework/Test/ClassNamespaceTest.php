@@ -73,7 +73,7 @@ class ClassNamespaceTest extends TestCase
         $parts = explode('/', (string)$file);
         $parts = \array_slice($parts, \count($basePathParts) - 1);
 
-        if ($parts && \in_array($parts[0], ['recovery', 'core', 'storefront', 'administration', 'elasticsearch'], true)) {
+        if ($parts && \in_array($parts[0], ['recovery', 'core', 'frontend', 'administration', 'elasticsearch'], true)) {
             $parts[0] = ucfirst($parts[0]);
         }
 

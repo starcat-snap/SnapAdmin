@@ -7,7 +7,7 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\TranslationEntity;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\Locale\LocaleEntity;
 
-#[Package('buyers-experience')]
+
 class LocaleTranslationEntity extends TranslationEntity
 {
     use EntityCustomFieldsTrait;

@@ -4,7 +4,7 @@ namespace SnapAdmin\Core\System\Locale;
 
 use SnapAdmin\Core\Framework\Log\Package;
 
-#[Package('buyers-experience')]
+
 class LocaleEvents
 {
     final public const LOCALE_WRITTEN_EVENT = 'locale.written';

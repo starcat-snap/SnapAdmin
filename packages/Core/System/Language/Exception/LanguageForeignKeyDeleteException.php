@@ -6,7 +6,7 @@ use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\SnapAdminHttpException;
 use Symfony\Component\HttpFoundation\Response;
 
-#[Package('buyers-experience')]
+
 class LanguageForeignKeyDeleteException extends SnapAdminHttpException
 {
     public function __construct(?\Throwable $e = null)

@@ -63,7 +63,7 @@ class SystemConfigService implements ResetInterface
     /**
      * @return array<mixed>|bool|float|int|string|null
      */
-    public function get(string $key, ?string $salesChannelId = null)
+    public function get(string $key, ?string $channelId = null)
     {
         if ($this->fineGrainedCache) {
             foreach (array_keys($this->keys) as $trace) {
@@ -75,7 +75,7 @@ class SystemConfigService implements ResetInterface
             }
         }
 
-        $config = $this->loader->load($salesChannelId);
+        $config = $this->loader->load($channelId);
 
         $parts = explode('.', $key);
 
@@ -98,9 +98,9 @@ class SystemConfigService implements ResetInterface
         return $pointer;
     }
 
-    public function getString(string $key, ?string $salesChannelId = null): string
+    public function getString(string $key, ?string $channelId = null): string
     {
-        $value = $this->get($key, $salesChannelId);
+        $value = $this->get($key, $channelId);
         if (!\is_array($value)) {
             return (string)$value;
         }
@@ -108,9 +108,9 @@ class SystemConfigService implements ResetInterface
         throw new InvalidSettingValueException($key, 'string', \gettype($value));
     }
 
-    public function getInt(string $key, ?string $salesChannelId = null): int
+    public function getInt(string $key, ?string $channelId = null): int
     {
-        $value = $this->get($key, $salesChannelId);
+        $value = $this->get($key, $channelId);
         if (!\is_array($value)) {
             return (int)$value;
         }
@@ -118,9 +118,9 @@ class SystemConfigService implements ResetInterface
         throw new InvalidSettingValueException($key, 'int', \gettype($value));
     }
 
-    public function getFloat(string $key, ?string $salesChannelId = null): float
+    public function getFloat(string $key, ?string $channelId = null): float
     {
-        $value = $this->get($key, $salesChannelId);
+        $value = $this->get($key, $channelId);
         if (!\is_array($value)) {
             return (float)$value;
         }
@@ -128,31 +128,31 @@ class SystemConfigService implements ResetInterface
         throw new InvalidSettingValueException($key, 'float', \gettype($value));
     }
 
-    public function getBool(string $key, ?string $salesChannelId = null): bool
+    public function getBool(string $key, ?string $channelId = null): bool
     {
-        return (bool)$this->get($key, $salesChannelId);
+        return (bool)$this->get($key, $channelId);
     }
 
     /**
      * @return array<mixed>
-     * @internal should not be used in storefront or store api. The cache layer caches all accessed config keys and use them as cache tag.
+     * @internal should not be used in frontend or store api. The cache layer caches all accessed config keys and use them as cache tag.
      *
      * gets all available shop configs and returns them as an array
      *
      */
-    public function all(?string $salesChannelId = null): array
+    public function all(?string $channelId = null): array
     {
-        return $this->loader->load($salesChannelId);
+        return $this->loader->load($channelId);
     }
 
     /**
      * @return array<mixed>
      * @throws InvalidDomainException
      *
-     * @internal should not be used in storefront or store api. The cache layer caches all accessed config keys and use them as cache tag.
+     * @internal should not be used in frontend or store api. The cache layer caches all accessed config keys and use them as cache tag.
      *
      */
-    public function getDomain(string $domain, ?string $salesChannelId = null, bool $inherit = false): array
+    public function getDomain(string $domain, ?string $channelId = null, bool $inherit = false): array
     {
         $domain = trim($domain);
         if ($domain === '') {
@@ -166,7 +166,7 @@ class SystemConfigService implements ResetInterface
         $domain = rtrim($domain, '.') . '.';
         $escapedDomain = str_replace('%', '\\%', $domain);
 
-        $salesChannelId = $salesChannelId ? Uuid::fromHexToBytes($salesChannelId) : null;
+        $channelId = $channelId ? Uuid::fromHexToBytes($channelId) : null;
 
         $queryBuilder->andWhere('configuration_key LIKE :prefix')
             ->setParameter('prefix', $escapedDomain . '%');
@@ -200,7 +200,7 @@ class SystemConfigService implements ResetInterface
             $merged[$key] = $value;
         }
 
-        $event = new SystemConfigDomainLoadedEvent($domain, $merged, $inherit, $salesChannelId);
+        $event = new SystemConfigDomainLoadedEvent($domain, $merged, $inherit, $channelId);
         $this->eventDispatcher->dispatch($event);
 
         return $event->getConfig();
@@ -209,22 +209,22 @@ class SystemConfigService implements ResetInterface
     /**
      * @param array<mixed>|bool|float|int|string|null $value
      */
-    public function set(string $key, $value, ?string $salesChannelId = null): void
+    public function set(string $key, $value, ?string $channelId = null): void
     {
-        $this->setMultiple([$key => $value], $salesChannelId);
+        $this->setMultiple([$key => $value], $channelId);
     }
 
     /**
      * @param array<string, array<mixed>|bool|float|int|string|null> $values
      */
-    public function setMultiple(array $values, ?string $salesChannelId = null): void
+    public function setMultiple(array $values, ?string $channelId = null): void
     {
 
         $existingIds = $this->connection
             ->fetchAllKeyValue(
                 'SELECT configuration_key, id FROM system_config WHERE '  . 'configuration_key IN (:configurationKeys)',
                 [
-                    'salesChannelId' => $salesChannelId ? Uuid::fromHexToBytes($salesChannelId) : null,
+                    'channelId' => $channelId ? Uuid::fromHexToBytes($channelId) : null,
                     'configurationKeys' => array_keys($values),
                 ],
                 [
@@ -238,9 +238,9 @@ class SystemConfigService implements ResetInterface
 
         foreach ($values as $key => $value) {
             $key = trim($key);
-            $this->validate($key, $salesChannelId);
+            $this->validate($key, $channelId);
 
-            $event = new BeforeSystemConfigChangedEvent($key, $value, $salesChannelId);
+            $event = new BeforeSystemConfigChangedEvent($key, $value, $channelId);
             $this->eventDispatcher->dispatch($event);
 
             // Use modified value provided by potential event subscribers.
@@ -250,7 +250,7 @@ class SystemConfigService implements ResetInterface
             if ($value === null) {
                 $toBeDeleted[] = $key;
 
-                $events[] = new SystemConfigChangedEvent($key, $value, $salesChannelId);
+                $events[] = new SystemConfigChangedEvent($key, $value, $channelId);
 
                 continue;
             }
@@ -267,7 +267,7 @@ class SystemConfigService implements ResetInterface
                     ]
                 );
 
-                $events[] = new SystemConfigChangedEvent($key, $value, $salesChannelId);
+                $events[] = new SystemConfigChangedEvent($key, $value, $channelId);
 
                 continue;
             }
@@ -282,7 +282,7 @@ class SystemConfigService implements ResetInterface
                 ],
             );
 
-            $events[] = new SystemConfigChangedEvent($key, $value, $salesChannelId);
+            $events[] = new SystemConfigChangedEvent($key, $value, $channelId);
         }
 
         // Delete all null values
@@ -304,9 +304,9 @@ class SystemConfigService implements ResetInterface
         }
     }
 
-    public function delete(string $key, ?string $salesChannel = null): void
+    public function delete(string $key, ?string $channel = null): void
     {
-        $this->setMultiple([$key => null], $salesChannel);
+        $this->setMultiple([$key => null], $channel);
     }
 
     /**
@@ -418,14 +418,14 @@ class SystemConfigService implements ResetInterface
      * @throws InvalidKeyException
      * @throws InvalidUuidException
      */
-    private function validate(string $key, ?string $salesChannelId): void
+    private function validate(string $key, ?string $channelId): void
     {
         $key = trim($key);
         if ($key === '') {
             throw new InvalidKeyException('key may not be empty');
         }
-        if ($salesChannelId && !Uuid::isValid($salesChannelId)) {
-            throw new InvalidUuidException($salesChannelId);
+        if ($channelId && !Uuid::isValid($channelId)) {
+            throw new InvalidUuidException($channelId);
         }
     }
 

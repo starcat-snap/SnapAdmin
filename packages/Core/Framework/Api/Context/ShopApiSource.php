@@ -5,7 +5,7 @@ namespace SnapAdmin\Core\Framework\Api\Context;
 use SnapAdmin\Core\Framework\Log\Package;
 
 #[Package('core')]
-class ShopApiSource extends SalesChannelApiSource
+class ShopApiSource extends ChannelApiSource
 {
     public string $type = 'shop-api';
 }

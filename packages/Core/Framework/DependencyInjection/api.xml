@@ -179,7 +179,7 @@
         <service id="SnapAdmin\Core\Framework\Api\Controller\CacheController" public="true">
             <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\CacheClearer"/>
             <argument type="service" id="cache.object"/>
-            <argument type="service" id="SnapAdmin\Storefront\Framework\Cache\CacheWarmer\CacheWarmer"
+            <argument type="service" id="SnapAdmin\Frontend\Framework\Cache\CacheWarmer\CacheWarmer"
                       on-invalid="null"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Indexing\EntityIndexerRegistry"/>
             <tag name="container.service_subscriber"/>

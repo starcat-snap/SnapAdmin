@@ -9,9 +9,9 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCollection;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Struct\Collection;
-use SnapAdmin\Core\System\SalesChannel\Entity\PartialSalesChannelEntityLoadedEvent;
-use SnapAdmin\Core\System\SalesChannel\Entity\SalesChannelEntityLoadedEvent;
-use SnapAdmin\Core\System\SalesChannel\SalesChannelContext;
+use SnapAdmin\Frontend\Channel\Entity\PartialChannelEntityLoadedEvent;
+use SnapAdmin\Frontend\Channel\Entity\ChannelEntityLoadedEvent;
+use SnapAdmin\Frontend\Channel\ChannelContext;
 
 /**
  * @internal
@@ -52,13 +52,13 @@ class EntityLoadedEventFactory
      *
      * @return EntityLoadedContainerEvent[]
      */
-    public function createForSalesChannel(array $entities, SalesChannelContext $context): array
+    public function createForChannel(array $entities, ChannelContext $context): array
     {
         $mapping = $this->recursion($entities, []);
 
         $generator = fn(EntityDefinition $definition, array $entities) => new EntityLoadedEvent($definition, $entities, $context->getContext());
 
-        $salesGenerator = fn(EntityDefinition $definition, array $entities) => new SalesChannelEntityLoadedEvent($definition, $entities, $context);
+        $salesGenerator = fn(EntityDefinition $definition, array $entities) => new ChannelEntityLoadedEvent($definition, $entities, $context);
 
         return [
             $this->buildEvents($mapping, $generator, $context->getContext()),
@@ -71,13 +71,13 @@ class EntityLoadedEventFactory
      *
      * @return EntityLoadedContainerEvent[]
      */
-    public function createPartialForSalesChannel(array $entities, SalesChannelContext $context): array
+    public function createPartialForChannel(array $entities, ChannelContext $context): array
     {
         $mapping = $this->recursion($entities, []);
 
         $generator = fn(EntityDefinition $definition, array $entities) => new PartialEntityLoadedEvent($definition, $entities, $context->getContext());
 
-        $salesGenerator = fn(EntityDefinition $definition, array $entities) => new PartialSalesChannelEntityLoadedEvent($definition, $entities, $context);
+        $salesGenerator = fn(EntityDefinition $definition, array $entities) => new PartialChannelEntityLoadedEvent($definition, $entities, $context);
 
         return [
             $this->buildEvents($mapping, $generator, $context->getContext()),

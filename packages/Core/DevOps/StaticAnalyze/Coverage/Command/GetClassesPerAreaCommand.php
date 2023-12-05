@@ -31,7 +31,7 @@ class GetClassesPerAreaCommand extends Command
 
     public const OPTION_NAMESPACE_PATTERN = 'ns-pattern';
 
-    public const NAMESPACE_PATTERN_DEFAULT = '#^SnapAdmin\\\\(Core|Administration|Storefront|Elasticsearch)\\\\#';
+    public const NAMESPACE_PATTERN_DEFAULT = '#^SnapAdmin\\\\(Core|Administration|Frontend|Elasticsearch)\\\\#';
 
     private ClassLoader $classLoader;
 

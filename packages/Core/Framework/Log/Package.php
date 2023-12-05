@@ -5,7 +5,7 @@ namespace SnapAdmin\Core\Framework\Log;
 /**
  * @internal
  *
- * @phpstan-type PackageString 'stranger-codes'|'buyers-experience'|'services-settings'|'business-ops'|'inventory'|'content'|'system-settings'|'sales-channel'|'customer-order'|'checkout'|'merchant-services'|'storefront'|'core'|'administration'|'data-services'
+ * @phpstan-type PackageString 'stranger-codes'|'buyers-experience'|'services-settings'|'business-ops'|'inventory'|'content'|'system-settings'|'channel'|'customer-order'|'checkout'|'merchant-services'|'frontend'|'core'|'administration'|'data-services'
  */
 #[\Attribute(\Attribute::TARGET_CLASS)]
 #[Package('core')]

@@ -4,7 +4,7 @@ namespace SnapAdmin\Core\Framework\Adapter\Cache;
 
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\SalesChannel\SalesChannelContext;
+use SnapAdmin\Frontend\Channel\ChannelContext;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\EventDispatcher\Event;
 
@@ -19,7 +19,7 @@ class StoreApiRouteCacheKeyEvent extends Event
     public function __construct(
         protected array               $parts,
         protected Request             $request,
-        protected SalesChannelContext $context,
+        protected ChannelContext $context,
         protected ?Criteria           $criteria
     )
     {
@@ -38,7 +38,7 @@ class StoreApiRouteCacheKeyEvent extends Event
         return $this->request;
     }
 
-    public function getContext(): SalesChannelContext
+    public function getContext(): ChannelContext
     {
         return $this->context;
     }
@@ -61,9 +61,9 @@ class StoreApiRouteCacheKeyEvent extends Event
         $this->parts[] = $part;
     }
 
-    public function getSalesChannelId(): string
+    public function getChannelId(): string
     {
-        return $this->context->getSalesChannelId();
+        return $this->context->getChannelId();
     }
 
     public function disableCaching(): void

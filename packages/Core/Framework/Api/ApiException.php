@@ -3,7 +3,7 @@
 namespace SnapAdmin\Core\Framework\Api;
 
 use SnapAdmin\Core\Framework\Api\Exception\ExpectationFailedException;
-use SnapAdmin\Core\Framework\Api\Exception\InvalidSalesChannelIdException;
+use SnapAdmin\Core\Framework\Api\Exception\InvalidChannelIdException;
 use SnapAdmin\Core\Framework\Api\Exception\InvalidSyncOperationException;
 use SnapAdmin\Core\Framework\Api\Exception\InvalidVersionNameException;
 use SnapAdmin\Core\Framework\Api\Exception\LiveVersionDeleteException;
@@ -14,7 +14,7 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Exception\DefinitionNotFoundEx
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Exception\MissingReverseAssociation;
 use SnapAdmin\Core\Framework\HttpException;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\Framework\Routing\Exception\SalesChannelNotFoundException;
+use SnapAdmin\Core\Framework\Routing\Exception\ChannelNotFoundException;
 use SnapAdmin\Core\Framework\SnapAdminHttpException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -158,9 +158,9 @@ class ApiException extends HttpException
         return new InvalidSyncOperationException($message);
     }
 
-    public static function invalidSalesChannelId(string $salesChannelId): SnapAdminHttpException
+    public static function invalidChannelId(string $channelId): SnapAdminHttpException
     {
-        return new InvalidSalesChannelIdException($salesChannelId);
+        return new InvalidChannelIdException($channelId);
     }
 
     public static function invalidVersionName(): SnapAdminHttpException
@@ -168,9 +168,9 @@ class ApiException extends HttpException
         return new InvalidVersionNameException();
     }
 
-    public static function salesChannelNotFound(): SnapAdminHttpException
+    public static function channelNotFound(): SnapAdminHttpException
     {
-        return new SalesChannelNotFoundException();
+        return new ChannelNotFoundException();
     }
 
     public static function deleteLiveVersion(): SnapAdminHttpException
@@ -225,12 +225,12 @@ class ApiException extends HttpException
         );
     }
 
-    public static function salesChannelIdParameterIsMissing(): self
+    public static function channelIdParameterIsMissing(): self
     {
         return new self(
             Response::HTTP_BAD_REQUEST,
             self::API_SALES_CHANNEL_ID_PARAMETER_IS_MISSING,
-            'Parameter "salesChannelId" is missing.',
+            'Parameter "channelId" is missing.',
         );
     }
 
@@ -289,12 +289,12 @@ class ApiException extends HttpException
         );
     }
 
-    public static function salesChannelInMaintenanceMode(): self
+    public static function channelInMaintenanceMode(): self
     {
         return new self(
             Response::HTTP_SERVICE_UNAVAILABLE,
             self::API_SALES_CHANNEL_MAINTENANCE_MODE,
-            'The sales channel is in maintenance mode.',
+            'Thechannel is in maintenance mode.',
         );
     }
 }

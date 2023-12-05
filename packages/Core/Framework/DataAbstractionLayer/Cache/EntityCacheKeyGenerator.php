@@ -5,7 +5,7 @@ namespace SnapAdmin\Core\Framework\DataAbstractionLayer\Cache;
 
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\SalesChannel\SalesChannelContext;
+use SnapAdmin\Frontend\Channel\ChannelContext;
 
 #[Package('core')]
 class EntityCacheKeyGenerator
@@ -28,12 +28,12 @@ class EntityCacheKeyGenerator
     /**
      * @param string[] $areas
      */
-    public function getSalesChannelContextHash(SalesChannelContext $context, array $areas = []): string
+    public function getChannelContextHash(ChannelContext $context, array $areas = []): string
     {
         $ruleIds = $context->getRuleIdsByAreas($areas);
 
         return md5((string)json_encode([
-            $context->getSalesChannelId(),
+            $context->getChannelId(),
             $context->getDomainId(),
             $context->getLanguageIdChain(),
             $context->getVersionId(),

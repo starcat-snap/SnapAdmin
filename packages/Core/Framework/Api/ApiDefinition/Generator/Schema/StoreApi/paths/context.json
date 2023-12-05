@@ -16,7 +16,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SalesChannelContext"
+                  "$ref": "#/components/schemas/ChannelContext"
                 }
               }
             }

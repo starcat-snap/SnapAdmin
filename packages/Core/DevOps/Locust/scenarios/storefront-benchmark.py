@@ -3,7 +3,7 @@ import sys
 sys.path.append(os.path.dirname(__file__) + '/..')
 
 from common.context import Context
-from common.storefront import Storefront
+from common.frontend import Frontend
 from locust import FastHttpUser, task, between
 
 # Optional dependency
@@ -22,7 +22,7 @@ class Visitor(FastHttpUser):
 
     @task(3)
     def listing(self):
-        page = Storefront(self.client, context)
+        page = Frontend(self.client, context)
 
         # search products over listings
         page.go_to_listing()
@@ -54,7 +54,7 @@ class Visitor(FastHttpUser):
 
     @task(2)
     def search(self):
-        page = Storefront(self.client, context)
+        page = Frontend(self.client, context)
         page.do_search()
         page.view_products(2)
 

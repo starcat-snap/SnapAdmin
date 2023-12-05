@@ -7,26 +7,26 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityRepository;
 use SnapAdmin\Core\Test\TestDefaults;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-trait CountryAddToSalesChannelTestBehaviour
+trait CountryAddToChannelTestBehaviour
 {
     abstract protected static function getContainer(): ContainerInterface;
 
-    abstract protected function getValidCountryId(?string $salesChannelId = TestDefaults::SALES_CHANNEL): string;
+    abstract protected function getValidCountryId(?string $channelId = TestDefaults::SALES_CHANNEL): string;
 
     /**
      * @param array<string> $additionalCountryIds
      */
-    protected function addCountriesToSalesChannel(array $additionalCountryIds = [], string $salesChannelId = TestDefaults::SALES_CHANNEL): void
+    protected function addCountriesToChannel(array $additionalCountryIds = [], string $channelId = TestDefaults::SALES_CHANNEL): void
     {
-        /** @var EntityRepository $salesChannelRepository */
-        $salesChannelRepository = $this->getContainer()->get('sales_channel.repository');
+        /** @var EntityRepository $channelRepository */
+        $channelRepository = $this->getContainer()->get('channel.repository');
 
         $countryIds = array_merge([
-            ['id' => $this->getValidCountryId($salesChannelId)],
+            ['id' => $this->getValidCountryId($channelId)],
         ], array_map(static fn(string $countryId) => ['id' => $countryId], $additionalCountryIds));
 
-        $salesChannelRepository->update([[
-            'id' => $salesChannelId,
+        $channelRepository->update([[
+            'id' => $channelId,
             'countries' => $countryIds,
         ]], Context::createDefaultContext());
     }

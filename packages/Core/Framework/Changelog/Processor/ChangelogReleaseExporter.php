@@ -90,9 +90,9 @@ class ChangelogReleaseExporter extends ChangelogProcessor
                 $getContentFnc = static fn(ChangelogDefinition $definition): ?string => $definition->getApi();
 
                 break;
-            case ChangelogSection::storefront->name:
-                $title = ChangelogSection::storefront->value;
-                $getContentFnc = static fn(ChangelogDefinition $definition): ?string => $definition->getStorefront();
+            case ChangelogSection::frontend->name:
+                $title = ChangelogSection::frontend->value;
+                $getContentFnc = static fn(ChangelogDefinition $definition): ?string => $definition->getFrontend();
 
                 break;
             case ChangelogSection::administration->name:

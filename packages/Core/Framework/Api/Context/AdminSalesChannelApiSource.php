@@ -6,9 +6,9 @@ use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Log\Package;
 
 #[Package('core')]
-class AdminSalesChannelApiSource extends SalesChannelApiSource
+class AdminChannelApiSource extends ChannelApiSource
 {
-    public string $type = 'admin-sales-channel-api';
+    public string $type = 'admin-channel-api';
 
     /**
      * @var Context
@@ -16,11 +16,11 @@ class AdminSalesChannelApiSource extends SalesChannelApiSource
     protected $originalContext;
 
     public function __construct(
-        string  $salesChannelId,
+        string  $channelId,
         Context $originalContext
     )
     {
-        parent::__construct($salesChannelId);
+        parent::__construct($channelId);
 
         $this->originalContext = $originalContext;
     }

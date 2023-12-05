@@ -14,7 +14,7 @@
       "*/Test/"
     ],
     "psr-4": {
-      "Shopware\\Core\\": ""
+      "SnapAdmin\\Core\\": ""
     }
   },
   "extra": {

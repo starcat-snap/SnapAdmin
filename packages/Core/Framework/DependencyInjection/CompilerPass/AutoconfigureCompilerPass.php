@@ -17,8 +17,8 @@ use SnapAdmin\Core\Checkout\Promotion\Cart\Discount\Filter\FilterPickerInterface
 use SnapAdmin\Core\Checkout\Promotion\Cart\Discount\Filter\FilterSorterInterface;
 use SnapAdmin\Core\Content\Cms\DataResolver\Element\CmsElementResolverInterface;
 use SnapAdmin\Core\Content\Flow\Dispatching\Storer\FlowStorer;
-use SnapAdmin\Core\Content\Product\SalesChannel\Listing\Filter\AbstractListingFilterHandler;
-use SnapAdmin\Core\Content\Product\SalesChannel\Listing\Processor\AbstractListingProcessor;
+use SnapAdmin\Core\Content\Product\Channel\Listing\Filter\AbstractListingFilterHandler;
+use SnapAdmin\Core\Content\Product\Channel\Listing\Processor\AbstractListingProcessor;
 use SnapAdmin\Core\Content\Seo\SeoUrlRoute\SeoUrlRouteInterface;
 use SnapAdmin\Core\Content\Sitemap\Provider\AbstractUrlProvider;
 use SnapAdmin\Core\Framework\Adapter\Filesystem\Adapter\AdapterFactoryInterface;
@@ -33,7 +33,7 @@ use SnapAdmin\Core\Framework\MessageQueue\ScheduledTask\ScheduledTask;
 use SnapAdmin\Core\Framework\Routing\AbstractRouteScope;
 use SnapAdmin\Core\Framework\Rule\Rule;
 use SnapAdmin\Core\System\NumberRange\ValueGenerator\Pattern\AbstractValueGenerator;
-use SnapAdmin\Core\System\SalesChannel\SalesChannelDefinition;
+use SnapAdmin\Frontend\Channel\ChannelDefinition;
 use SnapAdmin\Core\System\Tax\TaxRuleType\TaxRuleTypeFilterInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -48,8 +48,8 @@ class AutoconfigureCompilerPass implements CompilerPassInterface
             ->addTag('snap.entity.definition');
 
         $container
-            ->registerForAutoconfiguration(SalesChannelDefinition::class)
-            ->addTag('snap.sales_channel.entity.definition');
+            ->registerForAutoconfiguration(ChannelDefinition::class)
+            ->addTag('snap.channel.entity.definition');
 
         $container
             ->registerForAutoconfiguration(AbstractRouteScope::class)

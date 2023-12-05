@@ -2,11 +2,11 @@
 
 namespace SnapAdmin\Core\Framework\Adapter\Twig\Extension;
 
-use SnapAdmin\Core\Content\Category\CategoryDefinition;
-use SnapAdmin\Core\Content\Category\CategoryEntity;
-use SnapAdmin\Core\Content\Category\Service\AbstractCategoryUrlGenerator;
+use SnapAdmin\Frontend\Content\Category\CategoryDefinition;
+use SnapAdmin\Frontend\Content\Category\CategoryEntity;
+use SnapAdmin\Frontend\Content\Category\Service\AbstractCategoryUrlGenerator;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\SalesChannel\SalesChannelContext;
+use SnapAdmin\Frontend\Channel\ChannelContext;
 use Symfony\Bridge\Twig\Extension\RoutingExtension;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
@@ -34,12 +34,12 @@ class CategoryUrlExtension extends AbstractExtension
 
     public function getCategoryUrl(array $twigContext, CategoryEntity $category): ?string
     {
-        $salesChannel = null;
-        if (\array_key_exists('context', $twigContext) && $twigContext['context'] instanceof SalesChannelContext) {
-            $salesChannel = $twigContext['context']->getSalesChannel();
+        $channel = null;
+        if (\array_key_exists('context', $twigContext) && $twigContext['context'] instanceof ChannelContext) {
+            $channel = $twigContext['context']->getChannel();
         }
 
-        return $this->categoryUrlGenerator->generate($category, $salesChannel);
+        return $this->categoryUrlGenerator->generate($category, $channel);
     }
 
     public function isLinkNewTab(CategoryEntity $categoryEntity): bool

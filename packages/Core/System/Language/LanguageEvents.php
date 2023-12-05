@@ -4,7 +4,7 @@ namespace SnapAdmin\Core\System\Language;
 
 use SnapAdmin\Core\Framework\Log\Package;
 
-#[Package('buyers-experience')]
+
 class LanguageEvents
 {
     final public const LANGUAGE_WRITTEN_EVENT = 'language.written';

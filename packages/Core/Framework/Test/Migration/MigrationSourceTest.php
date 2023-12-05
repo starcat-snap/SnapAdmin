@@ -146,7 +146,7 @@ class MigrationSourceTest extends TestCase
     {
         return [
             ['__NOPE__', false],
-            ['SnapAdmin\Storefront\Migration\Migration1572858066UpdateDefaultCategorySeoUrlTemplate', false],
+            ['SnapAdmin\Frontend\Migration\Migration1572858066UpdateDefaultCategorySeoUrlTemplate', false],
             ['My\Test\Namespace\Haha', true],
             ['My\Test\Namespace2\Haha', true],
             ['My\Test\Namespace\2\Haha', false],

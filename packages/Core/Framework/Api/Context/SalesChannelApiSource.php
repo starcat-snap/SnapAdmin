@@ -6,18 +6,18 @@ use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Struct\JsonSerializableTrait;
 
 #[Package('core')]
-class SalesChannelApiSource implements ContextSource, \JsonSerializable
+class ChannelApiSource implements ContextSource, \JsonSerializable
 {
     use JsonSerializableTrait;
 
-    public string $type = 'sales-channel';
+    public string $type = 'channel';
 
-    public function __construct(private readonly string $salesChannelId)
+    public function __construct(private readonly string $channelId)
     {
     }
 
-    public function getSalesChannelId(): string
+    public function getChannelId(): string
     {
-        return $this->salesChannelId;
+        return $this->channelId;
     }
 }

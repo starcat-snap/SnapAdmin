@@ -3,10 +3,10 @@
 namespace SnapAdmin\Core\Framework\Event;
 
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\SalesChannel\SalesChannelContext;
+use SnapAdmin\Frontend\Channel\ChannelContext;
 
 #[Package('core')]
-interface SnapAdminSalesChannelEvent extends SnapAdminEvent
+interface SnapAdminChannelEvent extends SnapAdminEvent
 {
-    public function getSalesChannelContext(): SalesChannelContext;
+    public function getChannelContext(): ChannelContext;
 }

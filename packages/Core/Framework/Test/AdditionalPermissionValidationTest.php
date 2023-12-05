@@ -35,7 +35,7 @@ class AdditionalPermissionValidationTest extends TestCase
         'Common/vendor/',
         'Recovery/vendor',
         'recovery/vendor',
-        'storefront/vendor',
+        'frontend/vendor',
         'public/static/js',
     ];
 

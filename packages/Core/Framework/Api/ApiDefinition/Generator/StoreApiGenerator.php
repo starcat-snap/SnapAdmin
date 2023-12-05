@@ -13,7 +13,7 @@ use SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\OpenApi\OpenApiSchemaBu
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\MappingEntityDefinition;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\SalesChannel\Entity\SalesChannelDefinitionInterface;
+use SnapAdmin\Frontend\Channel\Entity\ChannelDefinitionInterface;
 
 /**
  * @internal
@@ -60,7 +60,7 @@ class StoreApiGenerator implements ApiDefinitionGeneratorInterface
         $openApi = new OpenApi([]);
         $this->openApiBuilder->enrich($openApi, $api);
 
-        $forSalesChannel = $api === DefinitionService::STORE_API;
+        $forChannel = $api === DefinitionService::STORE_API;
 
         ksort($definitions);
 
@@ -73,9 +73,9 @@ class StoreApiGenerator implements ApiDefinitionGeneratorInterface
                 continue;
             }
 
-            $onlyReference = $this->shouldIncludeReferenceOnly($definition, $forSalesChannel);
+            $onlyReference = $this->shouldIncludeReferenceOnly($definition, $forChannel);
 
-            $schema = $this->definitionSchemaBuilder->getSchemaByDefinition($definition, $this->getResourceUri($definition), $forSalesChannel, $onlyReference);
+            $schema = $this->definitionSchemaBuilder->getSchemaByDefinition($definition, $this->getResourceUri($definition), $forChannel, $onlyReference);
 
             $openApi->components->merge($schema);
         }
@@ -105,7 +105,7 @@ class StoreApiGenerator implements ApiDefinitionGeneratorInterface
     /**
      * {@inheritdoc}
      *
-     * @param array<string, EntityDefinition>|array<string, EntityDefinition&SalesChannelDefinitionInterface> $definitions
+     * @param array<string, EntityDefinition>|array<string, EntityDefinition&ChannelDefinitionInterface> $definitions
      *
      * @return never
      */
@@ -127,14 +127,14 @@ class StoreApiGenerator implements ApiDefinitionGeneratorInterface
         return true;
     }
 
-    private function shouldIncludeReferenceOnly(EntityDefinition $definition, bool $forSalesChannel): bool
+    private function shouldIncludeReferenceOnly(EntityDefinition $definition, bool $forChannel): bool
     {
         $class = new \ReflectionClass($definition);
         if ($class->isSubclassOf(MappingEntityDefinition::class)) {
             return true;
         }
 
-        if ($forSalesChannel && !is_subclass_of($definition, SalesChannelDefinitionInterface::class)) {
+        if ($forChannel && !is_subclass_of($definition, ChannelDefinitionInterface::class)) {
             return true;
         }
 

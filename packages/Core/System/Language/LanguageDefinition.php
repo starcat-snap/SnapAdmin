@@ -25,7 +25,7 @@ use SnapAdmin\Core\Framework\Plugin\Aggregate\PluginTranslation\PluginTranslatio
 use SnapAdmin\Core\System\Locale\Aggregate\LocaleTranslation\LocaleTranslationDefinition;
 use SnapAdmin\Core\System\Locale\LocaleDefinition;
 
-#[Package('buyers-experience')]
+
 class LanguageDefinition extends EntityDefinition
 {
     final public const ENTITY_NAME = 'language';

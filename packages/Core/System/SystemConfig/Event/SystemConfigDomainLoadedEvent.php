@@ -12,7 +12,7 @@ class SystemConfigDomainLoadedEvent extends Event
         private readonly string  $domain,
         private array            $config,
         private readonly bool    $inherit,
-        private readonly ?string $salesChannelId
+        private readonly ?string $channelId
     )
     {
     }
@@ -37,8 +37,8 @@ class SystemConfigDomainLoadedEvent extends Event
         return $this->inherit;
     }
 
-    public function getSalesChannelId(): ?string
+    public function getChannelId(): ?string
     {
-        return $this->salesChannelId;
+        return $this->channelId;
     }
 }

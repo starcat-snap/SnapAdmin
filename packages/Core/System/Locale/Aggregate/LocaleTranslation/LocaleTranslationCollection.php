@@ -8,7 +8,7 @@ use SnapAdmin\Core\Framework\Log\Package;
 /**
  * @extends EntityCollection<LocaleTranslationEntity>
  */
-#[Package('buyers-experience')]
+
 class LocaleTranslationCollection extends EntityCollection
 {
     public function getLocaleIds(): array

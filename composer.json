@@ -194,10 +194,10 @@
     "admin:unit": "Launches the jest unit test-suite for the Admin",
     "admin:unit:watch": "Launches the interactive jest unit test-suite watcher for the Admin",
     "bc-check": "Checks for backwards compatibility breaks in the current branch",
-    "build:js": "Builds Administration & Storefront",
+    "build:js": "Builds Administration & Frontend",
     "build:js:admin": "Builds the Administration",
     "build:js:component-library": "Builds the component library",
-    "build:js:storefront": "Builds the Storefront's JavaScript",
+    "build:js:frontend": "Builds the Frontend's JavaScript",
     "check:license": "Check thrid-party dependency licenses",
     "e2e:cypress": " ",
     "e2e:cypress-repeat": " ",
@@ -213,12 +213,12 @@
     "e2e:web-update:start": " ",
     "ecs": "Checks all files regarding the Easy Coding Standard",
     "ecs-fix": "Checks all files regarding the Easy Coding Standard and fixes them if possible",
-    "eslint": "Codestyle checks all (Administration/Storefront/E2E) JS/TS files",
+    "eslint": "Codestyle checks all (Administration/Frontend/E2E) JS/TS files",
     "eslint:admin": "Codestyle checks Administration JS/TS files",
     "eslint:admin:fix": "Codestyle checks Administration JS/TS files and fixes them if possible",
     "eslint:e2e": "Codestyle checks all E2E JS/TS files",
     "eslint:e2e:fix": "Codestyle checks all E2E JS/TS files and fixes them if possible",
-    "eslint:storefront": "Codestyle checks all Storefront JS/TS files",
+    "eslint:frontend": "Codestyle checks all Frontend JS/TS files",
     "framework:schema:dump": " ",
     "hook:pre-commit": " ",
     "hook:pre-commit:install": " ",
@@ -240,9 +240,9 @@
     "npm:component-library:bin": " ",
     "npm:e2e": " ",
     "npm:e2e:bin": " ",
-    "npm:storefront": " ",
-    "npm:storefront:bin": " ",
-    "npm:storefront:check-license": "Check thrid-party dependency licenses for storefront",
+    "npm:frontend": " ",
+    "npm:frontend:bin": " ",
+    "npm:frontend:check-license": "Check thrid-party dependency licenses for frontend",
     "paratest": " ",
     "phpbench": " ",
     "phpstan": "Launches the PHP static analysis tool",
@@ -253,13 +253,13 @@
     "reset": "Resets this SnapAdmin instance, without composer and npm install. (Faster reset if no dependencies changed)",
     "setup": "Resets and re-installs this SnapAdmin instance",
     "static-analyze": " ",
-    "storefront:unit": "Launches the jest unit test-suite for the Storefront",
-    "storefront:unit:watch": "Launches the interactive jest unit test-suite watcher for the Storefront",
+    "frontend:unit": "Launches the jest unit test-suite for the Frontend",
+    "frontend:unit:watch": "Launches the interactive jest unit test-suite watcher for the Frontend",
     "stylelint": " ",
     "stylelint:admin": " ",
-    "stylelint:storefront": " ",
+    "stylelint:frontend": " ",
     "watch:admin": "Enables hot module reloading for the Admin",
-    "watch:storefront": "Enables hot module reloading for the Storefront"
+    "watch:frontend": "Enables hot module reloading for the Frontend"
   },
   "scripts": {
     "admin:create:test": "@npm:admin run create-test",
@@ -284,7 +284,7 @@
     ],
     "build:js": [
       "@build:js:admin",
-      "@build:js:storefront"
+      "@build:js:frontend"
     ],
     "build:js:admin": [
       "@php bin/console bundle:dump",
@@ -296,11 +296,11 @@
     "build:js:component-library": [
       "@npm:component-library run generate"
     ],
-    "build:js:storefront": [
+    "build:js:frontend": [
       "@php bin/console bundle:dump",
       "@php bin/console feature:dump",
-      "@npm:storefront run production",
-      "cd src/Storefront/Resources/app/storefront && node copy-to-vendor.js",
+      "@npm:frontend run production",
+      "cd src/Frontend/Resources/app/frontend && node copy-to-vendor.js",
       "@php bin/console theme:compile"
     ],
     "check:license": "bash -c \"vendor/bin/composer-license-checker check -a $(sed -z 's/\\n/ -a /g' .allowed-licenses)\"",
@@ -384,14 +384,14 @@
     "ecs-fix": "ecs check --fix src tests",
     "eslint": [
       "@eslint:admin",
-      "@eslint:storefront",
+      "@eslint:frontend",
       "@eslint:e2e"
     ],
     "eslint:admin": "@npm:admin run lint:all",
     "eslint:admin:fix": "@npm:admin run lint:fix",
     "eslint:e2e": "@npm:e2e run lint",
     "eslint:e2e:fix": "@npm:e2e run lint:fix",
-    "eslint:storefront": "@npm:storefront:bin eslint --config .eslintrc.js --ext .js,.vue",
+    "eslint:frontend": "@npm:frontend:bin eslint --config .eslintrc.js --ext .js,.vue",
     "framework:schema:dump": "@php bin/console -e prod framework:schema -s 'entity-schema' src/Administration/Resources/app/administration/test/_mocks_/entity-schema.json",
     "hook:pre-commit": [
       "bin/pre-commit"
@@ -411,7 +411,7 @@
     "init:e2e": "@npm:e2e clean-install --no-audit --prefer-offline",
     "init:js": [
       "@npm:admin clean-install --no-audit --prefer-offline",
-      "@npm:storefront clean-install --no-audit --prefer-offline",
+      "@npm:frontend clean-install --no-audit --prefer-offline",
       "export PROJECT_ROOT=\"$PWD\"; \"$PROJECT_ROOT\"/bin/install-extension-npm"
     ],
     "init:testdb": [
@@ -435,9 +435,9 @@
     "npm:component-library:bin": "export PROJECT_ROOT=\"$PWD\"; cd src/Administration/Resources/app/administration/build/nuxt-component-library; export PATH=\"$PWD/node_modules/.bin/:$PATH\"; \"$PROJECT_ROOT\"/bin/exec-with-env ",
     "npm:e2e": "@npm:e2e:bin npm",
     "npm:e2e:bin": "export CYPRESS_shopwareRoot=\"$PWD\"; cd tests/e2e; export PATH=\"$PWD/node_modules/.bin/:$PATH\"; \"$CYPRESS_shopwareRoot\"/bin/exec-with-env ",
-    "npm:storefront": "@npm:storefront:bin npm",
-    "npm:storefront:bin": "export PROJECT_ROOT=\"$PWD\"; cd src/Storefront/Resources/app/storefront; export PATH=\"$PWD/node_modules/.bin/:$PATH\"; \"$PROJECT_ROOT\"/bin/exec-with-env ",
-    "npm:storefront:check-license": "export ALLOWED_LICENSES=\"$(sed -z 's/\\n/;/g' .allowed-licenses)\"; cd src/Storefront/Resources/app/storefront; bash -c \"node_modules/.bin/license-checker-rseidelsohn --onlyAllow \\\"$ALLOWED_LICENSES\\\" --excludePrivatePackages\"",
+    "npm:frontend": "@npm:frontend:bin npm",
+    "npm:frontend:bin": "export PROJECT_ROOT=\"$PWD\"; cd src/Frontend/Resources/app/frontend; export PATH=\"$PWD/node_modules/.bin/:$PATH\"; \"$PROJECT_ROOT\"/bin/exec-with-env ",
+    "npm:frontend:check-license": "export ALLOWED_LICENSES=\"$(sed -z 's/\\n/;/g' .allowed-licenses)\"; cd src/Frontend/Resources/app/frontend; bash -c \"node_modules/.bin/license-checker-rseidelsohn --onlyAllow \\\"$ALLOWED_LICENSES\\\" --excludePrivatePackages\"",
     "paratest": [
       "paratest --configuration phpunit.xml.dist --testsuite=paratest --exclude-group=skip-paratest,needsWebserver,quarantined --processes $(getconf _NPROCESSORS_ONLN)"
     ],
@@ -468,7 +468,7 @@
     "reset": [
       "@init:db",
       "@build:js",
-      "@php bin/console theme:change --all Storefront",
+      "@php bin/console theme:change --all Frontend",
       "@php bin/console assets:install"
     ],
     "setup": [
@@ -478,25 +478,25 @@
       "@init:db",
       "@init:js",
       "@build:js",
-      "@php bin/console theme:change --all Storefront",
+      "@php bin/console theme:change --all Frontend",
       "@php bin/console assets:install"
     ],
     "static-analyze": [
       "@phpstan src/"
     ],
-    "storefront:unit": [
-      "@npm:storefront run unit"
+    "frontend:unit": [
+      "@npm:frontend run unit"
     ],
-    "storefront:unit:watch": [
+    "frontend:unit:watch": [
       "Composer\\Config::disableProcessTimeout",
-      "@npm:storefront run unit-watch"
+      "@npm:frontend run unit-watch"
     ],
     "stylelint": [
       "@stylelint:admin src/**/*.scss",
-      "@stylelint:storefront src/**/*.scss"
+      "@stylelint:frontend src/**/*.scss"
     ],
     "stylelint:admin": "@npm:admin run lint:scss",
-    "stylelint:storefront": "@npm:storefront run lint:scss",
+    "stylelint:frontend": "@npm:frontend run lint:scss",
     "watch:admin": [
       "Composer\\Config::disableProcessTimeout",
       "@php bin/console feature:dump",
@@ -504,11 +504,11 @@
       "@admin:generate-entity-schema-types",
       "@npm:admin run dev"
     ],
-    "watch:storefront": [
+    "watch:frontend": [
       "Composer\\Config::disableProcessTimeout",
       "@php bin/console feature:dump",
       "@php bin/console theme:dump",
-      "@npm:storefront run hot-proxy"
+      "@npm:frontend run hot-proxy"
     ]
   },
   "autoload": {

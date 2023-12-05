@@ -39,7 +39,7 @@ class SystemInstallCommand extends Command
     {
         $this->addOption('create-database', null, InputOption::VALUE_NONE, 'Create database if it doesn\'t exist.')
             ->addOption('drop-database', null, InputOption::VALUE_NONE, 'Drop existing database')
-            ->addOption('basic-setup', null, InputOption::VALUE_NONE, 'Create storefront sales channel and admin user')
+            ->addOption('basic-setup', null, InputOption::VALUE_NONE, 'Create frontendchannel and admin user')
             ->addOption('force', 'f', InputOption::VALUE_NONE, 'Force install even if install.lock exists')
             ->addOption('skip-jwt-keys-generation', null, InputOption::VALUE_NONE, 'Skips generation of jwt private and public key')
             ->addOption('skip-assets-install', null, InputOption::VALUE_NONE, 'Skips installing of assets');

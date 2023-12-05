@@ -45,7 +45,7 @@ class DefinitionValidator
         'customer.activeShippingAddress',
         'customer.activeBillingAddress',
         'product_configurator_setting.selected',
-        'sales_channel.wishlists',
+        'channel.wishlists',
         'product.wishlists',
         'order.billingAddress',
         'product_search_config.excludedTerms',
@@ -97,7 +97,7 @@ class DefinitionValidator
         'app_config',
         'cart',
         'migration',
-        'sales_channel_api_context',
+        'channel_api_context',
         'elasticsearch_index_task',
         'increment',
         'messenger_messages',
@@ -129,7 +129,7 @@ class DefinitionValidator
     private const IGNORED_PARENT_DEFINITION = [
         // is a root definition, but is in aggregate namespace
         'customer_group',
-        'sales_channel_type',
+        'channel_type',
         'flow_template',
         'import_export_file',
         'import_export_log',

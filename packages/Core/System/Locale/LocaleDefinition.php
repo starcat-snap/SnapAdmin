@@ -20,7 +20,7 @@ use SnapAdmin\Core\System\Language\LanguageDefinition;
 use SnapAdmin\Core\System\Locale\Aggregate\LocaleTranslation\LocaleTranslationDefinition;
 use SnapAdmin\Core\System\User\UserDefinition;
 
-#[Package('buyers-experience')]
+
 class LocaleDefinition extends EntityDefinition
 {
     final public const ENTITY_NAME = 'locale';
@@ -56,7 +56,7 @@ class LocaleDefinition extends EntityDefinition
             (new OneToManyAssociationField('languages', LanguageDefinition::class, 'locale_id', 'id'))->addFlags(new CascadeDelete()),
             (new TranslationsAssociationField(LocaleTranslationDefinition::class, 'locale_id'))->addFlags(new Required()),
 
-            // Reverse Associations not available in sales-channel-api
+            // Reverse Associations not available in channel-api
             (new OneToManyAssociationField('users', UserDefinition::class, 'locale_id', 'id'))->addFlags(new RestrictDelete()),
         ]);
     }

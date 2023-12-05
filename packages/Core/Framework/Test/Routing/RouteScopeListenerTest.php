@@ -5,7 +5,7 @@ namespace SnapAdmin\Core\Framework\Test\Routing;
 use PHPUnit\Framework\TestCase;
 use SnapAdmin\Core\Framework\Api\Context\AdminApiSource;
 use SnapAdmin\Core\Framework\Api\Context\ContextSource;
-use SnapAdmin\Core\Framework\Api\Context\SalesChannelApiSource;
+use SnapAdmin\Core\Framework\Api\Context\ChannelApiSource;
 use SnapAdmin\Core\Framework\Api\Controller\ApiController;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Routing\Exception\InvalidRouteScopeException;
@@ -84,7 +84,7 @@ class RouteScopeListenerTest extends TestCase
         $stack = $this->getContainer()->get(RequestStack::class);
         $listener = $this->getContainer()->get(RouteScopeListener::class);
 
-        $request = $this->createRequest('/api', 'api', new SalesChannelApiSource(Uuid::randomHex()));
+        $request = $this->createRequest('/api', 'api', new ChannelApiSource(Uuid::randomHex()));
 
         $stack->push($request);
         $event = $this->createEvent($request);
@@ -99,7 +99,7 @@ class RouteScopeListenerTest extends TestCase
         $listener = $this->getContainer()->get(RouteScopeListener::class);
 
         $requestMaster = $this->createRequest('/api', 'api', new AdminApiSource(null, null));
-        $requestSub = $this->createRequest('/api', 'api', new SalesChannelApiSource(Uuid::randomHex()));
+        $requestSub = $this->createRequest('/api', 'api', new ChannelApiSource(Uuid::randomHex()));
 
         $stack->push($requestMaster);
         $stack->push($requestSub);

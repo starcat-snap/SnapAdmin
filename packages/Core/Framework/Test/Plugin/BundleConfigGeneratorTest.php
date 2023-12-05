@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use SnapAdmin\Core\Framework\Plugin\BundleConfigGenerator;
 use SnapAdmin\Core\Framework\Plugin\BundleConfigGeneratorInterface;
 use SnapAdmin\Core\Framework\Test\TestCaseBase\IntegrationTestBehaviour;
-use SnapAdmin\Storefront\Theme\StorefrontPluginRegistry;
+use SnapAdmin\Frontend\Theme\FrontendPluginRegistry;
 use SnapAdmin\Tests\Integration\Core\Framework\App\AppSystemTestBehaviour;
 
 /**
@@ -48,21 +48,21 @@ class BundleConfigGeneratorTest extends TestCase
         static::assertEquals('swag-app', $appConfig['technicalName']);
         static::assertArrayNotHasKey('administration', $appConfig);
 
-        static::assertArrayHasKey('storefront', $appConfig);
-        $storefrontConfig = $appConfig['storefront'];
+        static::assertArrayHasKey('frontend', $appConfig);
+        $frontendConfig = $appConfig['frontend'];
 
-        static::assertEquals('Resources/app/storefront/src', $storefrontConfig['path']);
-        static::assertEquals('Resources/app/storefront/src/main.js', $storefrontConfig['entryFilePath']);
-        static::assertNull($storefrontConfig['webpack']);
+        static::assertEquals('Resources/app/frontend/src', $frontendConfig['path']);
+        static::assertEquals('Resources/app/frontend/src/main.js', $frontendConfig['entryFilePath']);
+        static::assertNull($frontendConfig['webpack']);
 
-        // Style files can and need only be imported if storefront is installed
-        if ($this->getContainer()->has(StorefrontPluginRegistry::class)) {
+        // Style files can and need only be imported if frontend is installed
+        if ($this->getContainer()->has(FrontendPluginRegistry::class)) {
             $expectedStyles = [
-                $appPath . 'Resources/app/storefront/src/scss/base.scss',
-                $appPath . 'Resources/app/storefront/src/scss/overrides.scss',
+                $appPath . 'Resources/app/frontend/src/scss/base.scss',
+                $appPath . 'Resources/app/frontend/src/scss/overrides.scss',
             ];
 
-            static::assertEquals([], array_diff($expectedStyles, $storefrontConfig['styleFiles']));
+            static::assertEquals([], array_diff($expectedStyles, $frontendConfig['styleFiles']));
         }
     }
 
@@ -85,15 +85,15 @@ class BundleConfigGeneratorTest extends TestCase
         static::assertEquals('swag-app', $appConfig['technicalName']);
         static::assertArrayNotHasKey('administration', $appConfig);
 
-        static::assertArrayHasKey('storefront', $appConfig);
-        $storefrontConfig = $appConfig['storefront'];
+        static::assertArrayHasKey('frontend', $appConfig);
+        $frontendConfig = $appConfig['frontend'];
 
-        static::assertEquals('Resources/app/storefront/src', $storefrontConfig['path']);
-        static::assertEquals('Resources/app/storefront/src/main.js', $storefrontConfig['entryFilePath']);
-        static::assertNull($storefrontConfig['webpack']);
+        static::assertEquals('Resources/app/frontend/src', $frontendConfig['path']);
+        static::assertEquals('Resources/app/frontend/src/main.js', $frontendConfig['entryFilePath']);
+        static::assertNull($frontendConfig['webpack']);
 
-        // Style files can and need only be imported if storefront is installed
-        if ($this->getContainer()->has(StorefrontPluginRegistry::class)) {
+        // Style files can and need only be imported if frontend is installed
+        if ($this->getContainer()->has(FrontendPluginRegistry::class)) {
             if (mb_strpos($appPath, $projectDir) === 0) {
                 // make relative
                 $appPath = ltrim(mb_substr($appPath, mb_strlen($projectDir)), '/');
@@ -101,10 +101,10 @@ class BundleConfigGeneratorTest extends TestCase
 
             // Only base.scss from /_fixture/apps/plugin/ should be included
             $expectedStyles = [
-                $appPath . 'Resources/app/storefront/src/scss/base.scss',
+                $appPath . 'Resources/app/frontend/src/scss/base.scss',
             ];
 
-            static::assertEquals($expectedStyles, $storefrontConfig['styleFiles']);
+            static::assertEquals($expectedStyles, $frontendConfig['styleFiles']);
         }
     }
 
@@ -136,12 +136,12 @@ class BundleConfigGeneratorTest extends TestCase
         static::assertEquals('swag-test', $appConfig['technicalName']);
         static::assertArrayNotHasKey('administration', $appConfig);
 
-        static::assertArrayHasKey('storefront', $appConfig);
-        $storefrontConfig = $appConfig['storefront'];
+        static::assertArrayHasKey('frontend', $appConfig);
+        $frontendConfig = $appConfig['frontend'];
 
-        static::assertEquals('Resources/app/storefront/src', $storefrontConfig['path']);
-        static::assertNull($storefrontConfig['entryFilePath']);
-        static::assertEquals('Resources/app/storefront/build/webpack.config.js', $storefrontConfig['webpack']);
-        static::assertEquals([], $storefrontConfig['styleFiles']);
+        static::assertEquals('Resources/app/frontend/src', $frontendConfig['path']);
+        static::assertNull($frontendConfig['entryFilePath']);
+        static::assertEquals('Resources/app/frontend/build/webpack.config.js', $frontendConfig['webpack']);
+        static::assertEquals([], $frontendConfig['styleFiles']);
     }
 }

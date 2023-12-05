@@ -3,7 +3,7 @@
 namespace SnapAdmin\Core\Framework\Routing;
 
 use SnapAdmin\Core\Framework\Api\ApiDefinition\DefinitionService;
-use SnapAdmin\Core\Framework\Api\Context\SalesChannelApiSource;
+use SnapAdmin\Core\Framework\Api\Context\ChannelApiSource;
 use SnapAdmin\Core\Framework\Api\Context\SystemSource;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Log\Package;
@@ -33,7 +33,7 @@ class StoreApiRouteScope extends AbstractRouteScope
             return $requestContext->getSource() instanceof SystemSource;
         }
 
-        return $requestContext->getSource() instanceof SalesChannelApiSource;
+        return $requestContext->getSource() instanceof ChannelApiSource;
     }
 
     public function getId(): string

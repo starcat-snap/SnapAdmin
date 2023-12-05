@@ -3,7 +3,7 @@
 namespace SwagTestTheme;
 
 use SnapAdmin\Core\Framework\Plugin;
-use SnapAdmin\Storefront\Framework\ThemeInterface;
+use SnapAdmin\Frontend\Framework\ThemeInterface;
 
 class SwagTestTheme extends Plugin implements ThemeInterface
 {

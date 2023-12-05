@@ -15,3 +15,9 @@ parameters:
         return_type: 99
         param_type: 98
         property_type: 55
+    bootstrapFiles:
+        - src/Core/DevOps/StaticAnalyze/phpstan-bootstrap.php
+    symfony:
+        constantHassers: false
+        containerXmlPath: 'var/cache/phpstan_dev/SnapAdmin_Core_DevOps_StaticAnalyze_StaticAnalyzeKernelPhpstan_devDebugContainer.xml'
+        consoleApplicationLoader: packages/Core/DevOps/StaticAnalyze/console-application.php

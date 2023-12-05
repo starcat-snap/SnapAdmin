@@ -11,7 +11,7 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\Locale\LocaleDefinition;
 
-#[Package('buyers-experience')]
+
 class LocaleTranslationDefinition extends EntityTranslationDefinition
 {
     final public const ENTITY_NAME = 'locale_translation';

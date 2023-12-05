@@ -458,7 +458,7 @@ PHP;
         $route = new Route('/');
         $route->setMethods(['GET']);
         $route->setDefault('_controller', FallbackController::class . '::rootFallback');
-        $route->setDefault(PlatformRequest::ATTRIBUTE_ROUTE_SCOPE, ['storefront']);
+        $route->setDefault(PlatformRequest::ATTRIBUTE_ROUTE_SCOPE, ['frontend']);
 
         $routes->add('root.fallback', $route->getPath());
     }

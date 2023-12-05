@@ -12,7 +12,7 @@ use OpenApi\Annotations\Response as OpenApiResponse;
 use OpenApi\Annotations\Tag;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\SalesChannel\Entity\SalesChannelDefinitionInterface;
+use SnapAdmin\Frontend\Channel\Entity\ChannelDefinitionInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 #[Package('core')]
@@ -36,7 +36,7 @@ class OpenApiPathBuilder
         ]);
         $paths[$path . '/{id}']->get = $this->getDetailPath($definition);
 
-        if (is_subclass_of($definition, SalesChannelDefinitionInterface::class)) {
+        if (is_subclass_of($definition, ChannelDefinitionInterface::class)) {
             return $paths;
         }
 

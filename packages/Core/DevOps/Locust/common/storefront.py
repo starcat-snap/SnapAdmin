@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-class Storefront:
+class Frontend:
     def __init__(self, client, context, url='', previous=None, params={}, name='home-page'):
         self.client = client
         self.context = context
@@ -24,7 +24,7 @@ class Storefront:
         return self
 
     def go_to_home(self):
-        return Storefront(self.client, self.context, '', self)
+        return Frontend(self.client, self.context, '', self)
 
     def new(self, url, params, name):
         self.url = url
@@ -108,7 +108,7 @@ class Storefront:
 
         register = {
             'redirectTo': 'frontend.account.home.page',
-            'salutationId': self.context.sales_channel['salutationId'],
+            'salutationId': self.context.channel['salutationId'],
             'firstName': 'Firstname',
             'lastName': 'Lastname',
             'email': self.email,
@@ -116,7 +116,7 @@ class Storefront:
             'billingAddress[street]': 'Test street',
             'billingAddress[zipcode]': '11111',
             'billingAddress[city]': 'Test city',
-            'billingAddress[countryId]': self.context.sales_channel['countryId']
+            'billingAddress[countryId]': self.context.channel['countryId']
         }
 
         if guest == 1:
@@ -151,7 +151,7 @@ class Storefront:
         filters = self.__get_filters(self.response)
 
         if len(filters['manufacturers']) < 1:
-            return Storefront(self.client, self.context, self.url, self, params, self.name)
+            return Frontend(self.client, self.context, self.url, self, params, self.name)
 
         manufacturer = random.choice(filters['manufacturers'])
         if 'manufacturer' in params:
@@ -168,7 +168,7 @@ class Storefront:
         filters = self.__get_filters(self.response)
 
         if len(filters['properties']) < 1:
-            return Storefront(self.client, self.context, self.url, self, params, self.name)
+            return Frontend(self.client, self.context, self.url, self, params, self.name)
 
         manufacturer = random.choice(filters['properties'])
         if 'properties' in params:
@@ -185,7 +185,7 @@ class Storefront:
         filters = self.__get_filters(self.response)
 
         if filters['max-price'] == None:
-            return Storefront(self.client, self.context, self.url, self, params, self.name)
+            return Frontend(self.client, self.context, self.url, self, params, self.name)
 
         price = filters['max-price']
 

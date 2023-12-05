@@ -61,7 +61,7 @@ class Api:
                 { 'currencyId': 'b7d2554b0ce847cd82f3ac9bd1c0dfca', 'gross': random.randint(100, 1000), 'net': random.randint(100, 1000), 'linked': False }
             ],
             'visibilities': [
-                { 'salesChannelId': self.context.imports['salesChannelId'], 'visibility': 30 }
+                { 'channelId': self.context.imports['channelId'], 'visibility': 30 }
             ],
             'taxId': self.context.imports['taxId'],
             'stock': random.randint(1, 100),

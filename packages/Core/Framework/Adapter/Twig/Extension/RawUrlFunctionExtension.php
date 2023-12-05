@@ -37,12 +37,12 @@ class RawUrlFunctionExtension extends AbstractExtension
             return $this->addDomain($url, $domain);
         }
 
-        $attribute = $request->attributes->get('sw-sales-channel-base-url');
-        $request->attributes->set('sw-sales-channel-base-url', '');
+        $attribute = $request->attributes->get('sw-channel-base-url');
+        $request->attributes->set('sw-channel-base-url', '');
 
         $url = $this->router->generate($name, $parameters);
 
-        $request->attributes->set('sw-sales-channel-base-url', $attribute);
+        $request->attributes->set('sw-channel-base-url', $attribute);
 
         return $this->addDomain($url, $domain);
     }

@@ -25,7 +25,7 @@ class Migration1536761533Test extends MigrationStep
         $result = $connection->executeQuery(
             'SELECT id, configuration_value
              FROM system_config
-             WHERE sales_channel_id IS NULL
+             WHERE channel_id IS NULL
                AND configuration_key = ?',
             [self::TEST_SYSTEM_CONFIG_KEY]
         );

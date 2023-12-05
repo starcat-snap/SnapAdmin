@@ -23,7 +23,7 @@ class ChangelogParser
             ->setAuthorGitHub($this->parseMetadata($content, 'author_github'))
             ->setCore($this->parseSection($content, ChangelogSection::core->value))
             ->setAdministration($this->parseSection($content, ChangelogSection::administration->value))
-            ->setStorefront($this->parseSection($content, ChangelogSection::storefront->value))
+            ->setFrontend($this->parseSection($content, ChangelogSection::frontend->value))
             ->setApi($this->parseSection($content, ChangelogSection::api->value))
             ->setUpgradeInformation($this->parseSection($content, ChangelogSection::upgrade->value))
             ->setNextMajorVersionChanges($this->parseSection($content, ChangelogSection::major->value));

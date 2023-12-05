@@ -6,23 +6,23 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCollection;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\EntitySearchResult;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\SalesChannel\Entity\SalesChannelRepository;
-use SnapAdmin\Core\System\SalesChannel\SalesChannelContext;
+use SnapAdmin\Frontend\Channel\Entity\ChannelRepository;
+use SnapAdmin\Frontend\Channel\ChannelContext;
 
 /**
  * @template TEntityCollection of EntityCollection
  */
 #[Package('core')]
-class SalesChannelRepositoryIterator
+class ChannelRepositoryIterator
 {
     private readonly Criteria $criteria;
 
     /**
-     * @param SalesChannelRepository<TEntityCollection> $repository
+     * @param ChannelRepository<TEntityCollection> $repository
      */
     public function __construct(
-        private readonly SalesChannelRepository $repository,
-        private readonly SalesChannelContext    $context,
+        private readonly ChannelRepository $repository,
+        private readonly ChannelContext    $context,
         ?Criteria                               $criteria = null
     )
     {
