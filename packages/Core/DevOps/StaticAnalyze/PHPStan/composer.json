@@ -1,0 +1,49 @@
+{
+    "name": "snap/phpstan-extension",
+    "type": "phpstan-extension",
+    "description": "Phpstant extension with snap specific ruleset.",
+    "keywords": [
+        "snap",
+        "shop",
+        "phpstan"
+    ],
+    "homepage": "http://www.snap.com",
+    "license": "MIT",
+    "autoload": {
+        "exclude-from-classmap": [
+            "*/Test/"
+        ],
+        "psr-4": {
+            "SnapAdmin\\Core\\DevOps\\StaticAnalyze\\PHPStan": "."
+        }
+    },
+    "support": {
+        "issues": "https://issues.snap.com",
+        "forum": "https://forum.snap.com",
+        "wiki": "https://developer.snap.com",
+        "docs": "https://developer.snap.com",
+        "chat": "https://slack.snap.com"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "6.5.x-dev",
+            "dev-trunk": "6.5.x-dev"
+        },
+        "phpstan": {
+            "includes": [
+                "phpstan-extension.neon",
+                "rules.neon"
+            ]
+        }
+    },
+    "require": {
+        "php": "~8.1.0 || ~8.2.0",
+        "phpstan/phpstan": "^1.9.14"
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    }
+}

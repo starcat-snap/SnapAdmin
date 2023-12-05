@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="src/Core/TestBootstrap.php"
+         cacheResult="false"
+         executionOrder="random"
+         convertDeprecationsToExceptions="false">
+    <coverage cacheDirectory="var/cache/phpunit/" includeUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">src/Core/Framework</directory>
+            <directory suffix=".php">src/Core/DevOps</directory>
+            <directory suffix=".php">src/Core/Maintenance</directory>
+            <directory suffix=".php">src/Core/System</directory>
+
+            <file>src/Core/Defaults.php</file>
+            <file>src/Core/HttpKernel.php</file>
+            <file>src/Core/HttpKernelResult.php</file>
+            <file>src/Core/Kernel.php</file>
+            <file>src/Core/PlatformRequest.php</file>
+        </include>
+        <exclude>
+            <directory suffix=".php">src/Core/Framework/Test</directory>
+            <directory suffix=".php">src/Core/DevOps/StaticAnalyze</directory>
+            <directory suffix=".php">src/Core/DevOps/Test</directory>
+            <directory suffix=".php">src/Core/Maintenance/Test</directory>
+            <directory suffix=".php">src/Core/Migration/Test</directory>
+            <directory suffix=".php">src/Core/System/Test</directory>
+            <directory suffix=".php">src/Administration/Test</directory>
+        </exclude>
+    </coverage>
+    <php>
+        <ini name="error_reporting" value="-1"/>
+        <server name="KERNEL_CLASS" value="SnapAdmin\Core\Kernel"/>
+        <env name="APP_ENV" value="test"/>
+        <env name="APP_DEBUG" value="1"/>
+        <env name="APP_SECRET" value="s$cretf0rt3st"/>
+        <env name="SHELL_VERBOSITY" value="-1"/>
+        <server name="MAILER_URL" value="null://localhost"/>
+        <server name="HTTPS" value="off"/>
+        <!--To see the full stackTrace of a Deprecation set the value to a regex matching the deprecation warning-->
+        <!--https://symfony.com/doc/current/components/phpunit_bridge.html#display-the-full-stack-trace-->
+        <!--        <env name="SYMFONY_DEPRECATIONS_HELPER" value="ignoreFile=./deprecation.ignore" />-->
+        <env name="SYMFONY_DEPRECATIONS_HELPER" value="disabled"/>
+    </php>
+    <testsuites>
+        <testsuite name="administration">
+            <directory>src/Administration/Test</directory>
+        </testsuite>
+        <testsuite name="framework">
+            <directory>src/Core/Framework/Test</directory>
+            <directory>src/Core/Test</directory>
+        </testsuite>
+        <testsuite name="migration">
+            <directory>src/Core/Migration/Test</directory>
+        </testsuite>
+        <testsuite name="maintenance">
+            <directory>src/Core/Maintenance/Test</directory>
+        </testsuite>
+        <testsuite name="system">
+            <directory>src/Core/System/Test</directory>
+        </testsuite>
+    </testsuites>
+    <listeners>
+        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener">
+            <arguments>
+                <array>
+                    <!-- set this option to 0 to disable the DebugClassLoader integration -->
+                    <element key="debug-class-loader">
+                        <integer>0</integer>
+                    </element>
+                    <element key="time-sensitive">
+                        <string>Symfony\Bridge\Doctrine\Middleware\Debug</string>
+                    </element>
+                </array>
+            </arguments>
+        </listener>
+        <listener class="JohnKary\PHPUnit\Listener\SpeedTrapListener"/>
+        <listener class="SnapAdmin\Core\Test\PHPUnit\Extension\DatadogListener"/>
+    </listeners>
+    <extensions>
+        <extension class="SnapAdmin\Core\Test\PHPUnit\Extension\FeatureFlagExtension"/>
+        <!--Enable to see the db sideeffects of the tests. -->
+        <!--<extension class="SnapAdmin\Core\Framework\Test\TestCaseBase\DatabaseCleanTestExtension" />-->
+    </extensions>
+</phpunit>

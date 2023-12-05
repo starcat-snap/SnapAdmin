@@ -1,0 +1,40 @@
+<?php declare(strict_types=1);
+
+namespace SnapAdmin\Core\Framework\Store\Struct;
+
+use SnapAdmin\Core\Framework\Log\Package;
+
+/**
+ * @codeCoverageIgnore
+ */
+#[Package('services-settings')]
+class FaqStruct extends StoreStruct
+{
+    /**
+     * @var string
+     */
+    protected $question;
+
+    /**
+     * @var string
+     */
+    protected $answer;
+
+    /**
+     * @return FaqStruct
+     */
+    public static function fromArray(array $data): StoreStruct
+    {
+        return (new self())->assign($data);
+    }
+
+    public function getQuestion(): string
+    {
+        return $this->question;
+    }
+
+    public function getAnswer(): string
+    {
+        return $this->answer;
+    }
+}

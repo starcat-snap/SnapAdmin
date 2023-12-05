@@ -1,0 +1,42 @@
+{
+    "name": "swag/testnodefaultlang",
+    "description": "Test description no default lang",
+    "version": "v1.0.1",
+    "type": "snap-platform-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "snap AG",
+            "role": "Manufacturer"
+        },
+        {
+            "name": "John Doe",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "snap/core": ">=6.0"
+    },
+    "extra": {
+        "snap-plugin-class": "SwagTestNoDefaultLang\\SwagTestNoDefaultLang",
+        "plugin-icon": "src/Resources/public/plugin.png",
+        "copyright": "(c) by snap AG",
+        "label": {
+            "nl-NL": "Dutch Pluginname"
+        },
+        "description": {
+            "nl-NL": "Dutch Beschrijving"
+        },
+        "manufacturerLink": {
+            "nl-NL": "https://www.test.nl/"
+        },
+        "supportLink": {
+            "nl-NL": "https://www.test.nl/support"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+           "SwagTestNoDefaultLang\\": "src"
+        }
+    }
+}

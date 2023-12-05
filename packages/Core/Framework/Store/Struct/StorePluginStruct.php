@@ -1,0 +1,188 @@
+<?php declare(strict_types=1);
+
+namespace SnapAdmin\Core\Framework\Store\Struct;
+
+use SnapAdmin\Core\Framework\Log\Package;
+use SnapAdmin\Core\Framework\Struct\Struct;
+
+/**
+ * @codeCoverageIgnore
+ */
+#[Package('services-settings')]
+class StorePluginStruct extends Struct
+{
+    /**
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * @var string
+     */
+    protected $label;
+
+    /**
+     * @var string
+     */
+    protected $shortDescription;
+
+    /**
+     * @var string|null
+     */
+    protected $iconPath;
+
+    /**
+     * @var string|null
+     */
+    protected $version;
+
+    /**
+     * @var string|null
+     */
+    protected $description;
+
+    /**
+     * @var string|null
+     */
+    protected $changelog;
+
+    /**
+     * @var \DateTimeInterface|null
+     */
+    protected $releaseDate;
+
+    /**
+     * @var bool
+     */
+    protected $installed = false;
+
+    /**
+     * @var bool
+     */
+    protected $active = false;
+
+    /**
+     * @var string|null
+     */
+    protected $language;
+
+    /**
+     * @var string|null
+     */
+    protected $region;
+
+    /**
+     * @var string|null
+     */
+    protected $category;
+
+    /**
+     * @var string|null
+     */
+    protected $manufacturer;
+
+    /**
+     * @var int|null
+     */
+    protected $position;
+
+    /**
+     * @var bool
+     */
+    protected $isCategoryLead;
+
+    /**
+     * @var 'plugin'|'app'
+     */
+    protected string $type;
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getLabel(): string
+    {
+        return $this->label;
+    }
+
+    public function getShortDescription(): string
+    {
+        return $this->shortDescription;
+    }
+
+    public function getIconPath(): ?string
+    {
+        return $this->iconPath;
+    }
+
+    public function getVersion(): ?string
+    {
+        return $this->version;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function getChangelog(): ?string
+    {
+        return $this->changelog;
+    }
+
+    public function getReleaseDate(): ?\DateTimeInterface
+    {
+        return $this->releaseDate;
+    }
+
+    public function isInstalled(): bool
+    {
+        return $this->installed;
+    }
+
+    public function isActive(): bool
+    {
+        return $this->active;
+    }
+
+    public function getLanguage(): ?string
+    {
+        return $this->language;
+    }
+
+    public function getRegion(): ?string
+    {
+        return $this->region;
+    }
+
+    public function getCategory(): ?string
+    {
+        return $this->category;
+    }
+
+    public function getManufacturer(): ?string
+    {
+        return $this->manufacturer;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function isCategoryLead(): bool
+    {
+        return $this->isCategoryLead;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    public function getApiAlias(): string
+    {
+        return 'store_plugin';
+    }
+}

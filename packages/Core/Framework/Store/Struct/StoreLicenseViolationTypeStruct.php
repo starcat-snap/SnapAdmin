@@ -1,0 +1,52 @@
+<?php declare(strict_types=1);
+
+namespace SnapAdmin\Core\Framework\Store\Struct;
+
+use SnapAdmin\Core\Framework\Log\Package;
+use SnapAdmin\Core\Framework\Struct\Struct;
+
+/**
+ * @codeCoverageIgnore
+ */
+#[Package('services-settings')]
+class StoreLicenseViolationTypeStruct extends Struct
+{
+    final public const LEVEL_VIOLATION = 'violation';
+    final public const LEVEL_WARNING = 'warning';
+    final public const LEVEL_INFO = 'info';
+
+    /**
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * @var string
+     */
+    protected $label;
+
+    /**
+     * @var string
+     */
+    protected $level;
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getLevel(): string
+    {
+        return $this->level;
+    }
+
+    public function getLabel(): string
+    {
+        return $this->label;
+    }
+
+    public function getApiAlias(): string
+    {
+        return 'store_license_violation_type';
+    }
+}

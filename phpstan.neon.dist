@@ -1,0 +1,17 @@
+includes:
+    - vendor/phpstan/phpstan/conf/bleedingEdge.neon
+parameters:
+    phpVersion: 80200
+    level: 8
+    treatPhpDocTypesAsCertain: false
+    checkMissingIterableValueType: true
+    inferPrivatePropertyTypeFromConstructor: true
+    reportUnmatchedIgnoredErrors: true # Could be set to false if necessary during PHPStan update
+    tmpDir: var/cache/phpstan
+    paths:
+        - src
+        - tests
+    type_coverage:
+        return_type: 99
+        param_type: 98
+        property_type: 55

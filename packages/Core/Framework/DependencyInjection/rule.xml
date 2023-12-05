@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="SnapAdmin\Core\Framework\Rule\Collector\RuleConditionRegistry">
+            <argument type="tagged" tag="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Framework\Rule\Container\AndRule">
+            <tag name="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Framework\Rule\Container\NotRule">
+            <tag name="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Framework\Rule\Container\OrRule">
+            <tag name="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Framework\Rule\Container\XorRule">
+            <tag name="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Framework\Rule\Container\MatchAllLineItemsRule">
+            <tag name="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Framework\Rule\ScriptRule">
+            <tag name="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Framework\Rule\DateRangeRule">
+            <tag name="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Framework\Rule\SimpleRule">
+            <tag name="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Framework\Rule\SalesChannelRule">
+            <tag name="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Framework\Rule\TimeRangeRule">
+            <tag name="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Framework\Rule\WeekdayRule">
+            <tag name="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Framework\Rule\Api\RuleConfigController"
+                 public="true">
+            <argument type="tagged" tag="snap.rule.definition"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+    </services>
+</container>

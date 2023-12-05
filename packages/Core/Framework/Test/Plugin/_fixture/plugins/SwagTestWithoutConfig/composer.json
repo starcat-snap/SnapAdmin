@@ -1,0 +1,27 @@
+{
+    "name": "swag/test-without-config",
+    "description": "Test description",
+    "version": "1.0.0",
+    "type": "snap-platform-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "snap AG"
+        }
+    ],
+    "require": {
+        "snap/core": ">=6.0"
+    },
+    "extra": {
+        "snap-plugin-class": "SwagTestWithoutConfig\\SwagTestWithoutConfig",
+        "label": {
+            "de-DE": "Deutscher Pluginname",
+            "en-GB": "English plugin name"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+           "SwagTestWithoutConfig\\": "src"
+        }
+    }
+}

@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
 
+use SnapAdmin\Core\DevOps\Environment\EnvironmentHelper;
 use SnapAdmin\Core\Framework\Adapter\Kernel\KernelFactory;
+use SnapAdmin\Core\Framework\Plugin\KernelPluginLoader\ComposerPluginLoader;
 
 $_SERVER['SCRIPT_FILENAME'] = __FILE__;
 
@@ -15,10 +17,15 @@ return function (array $context) {
 
     $appEnv = $context['APP_ENV'] ?? 'dev';
     $debug = (bool)($context['APP_DEBUG'] ?? ($appEnv !== 'prod'));
+    $pluginLoader = null;
 
+    if (EnvironmentHelper::getVariable('COMPOSER_PLUGIN_LOADER', false)) {
+        $pluginLoader = new ComposerPluginLoader($classLoader, null);
+    }
     return KernelFactory::create(
         environment: $appEnv,
         debug: $debug,
         classLoader: $classLoader,
+        pluginLoader: $pluginLoader
     );
 };

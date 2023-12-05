@@ -1,0 +1,27 @@
+{
+    "name": "{{ composerName }}",
+    "description": "Skeleton plugin",
+    "type": "snap-platform-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "require": {
+        "snap/core": "6.5.*"
+    },
+    "extra": {
+        "snap-plugin-class": "{{ namespace }}\\{{ className }}",
+        "label": {
+            "de-DE": "Skeleton plugin",
+            "en-GB": "Skeleton plugin"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "{{ namespace }}\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "{{ namespace }}\\Tests\\": "tests/"
+        }
+    }
+}

@@ -1,0 +1,5 @@
+services:
+        -
+            class: SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Type\CollectionHasSpecifyingExtension
+            tags:
+                - phpstan.typeSpecifier.methodTypeSpecifyingExtension

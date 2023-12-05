@@ -1,0 +1,25 @@
+{
+    "name": "swag/test-validate-conflicts-wildcard-incompatibility",
+    "description": "Test conflict handling",
+    "version": "v1.0.0",
+    "type": "snap-platform-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "snap AG",
+            "role": "Manufacturer"
+        }
+    ],
+    "conflict": {
+        "snap/core": "*",
+        "snap/storefront": "*"
+    },
+    "extra": {
+        "snap-plugin-class": "SwagTestValidateConflictsWildcardIncompatibility\\SwagTestValidateConflictsWildcardIncompatibility",
+        "copyright": "(c) by snap AG",
+        "label": {
+            "de-DE": "Test für Konflikte-Handling",
+            "en-GB": "Test for conflict handling"
+        }
+    }
+}

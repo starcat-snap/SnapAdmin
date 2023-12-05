@@ -1,0 +1,56 @@
+<?php declare(strict_types=1);
+
+namespace SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan;
+
+use SnapAdmin\Core\DevOps\StaticAnalyze\StaticAnalyzeKernel;
+use SnapAdmin\Core\Framework\Adapter\Kernel\KernelFactory;
+use SnapAdmin\Core\Framework\Plugin\KernelPluginLoader\StaticKernelPluginLoader;
+use Symfony\Component\Dotenv\Dotenv;
+
+if (!\defined('TEST_PROJECT_DIR')) {
+    \define('TEST_PROJECT_DIR', (function (): string {
+        if (isset($_SERVER['PROJECT_ROOT']) && file_exists($_SERVER['PROJECT_ROOT'])) {
+            return $_SERVER['PROJECT_ROOT'];
+        }
+
+        if (isset($_ENV['PROJECT_ROOT']) && file_exists($_ENV['PROJECT_ROOT'])) {
+            return $_ENV['PROJECT_ROOT'];
+        }
+
+        if (file_exists('vendor') && (file_exists('.env') || file_exists('.env.dist'))) {
+            return (string) getcwd();
+        }
+
+        $dir = $rootDir = __DIR__;
+        while (!file_exists($dir . '/vendor')) {
+            if ($dir === \dirname($dir)) {
+                return $rootDir;
+            }
+            $dir = \dirname($dir);
+        }
+
+        return $dir;
+    })());
+}
+
+$_ENV['PROJECT_ROOT'] = $_SERVER['PROJECT_ROOT'] = TEST_PROJECT_DIR;
+$classLoader = require TEST_PROJECT_DIR . '/vendor/autoload.php';
+
+if (class_exists(Dotenv::class) && (file_exists(TEST_PROJECT_DIR . '/.env.local.php') || file_exists(TEST_PROJECT_DIR . '/.env') || file_exists(TEST_PROJECT_DIR . '/.env.dist'))) {
+    (new Dotenv())->usePutenv()->bootEnv(TEST_PROJECT_DIR . '/.env');
+}
+
+$pluginLoader = new StaticKernelPluginLoader($classLoader);
+KernelFactory::$kernelClass = StaticAnalyzeKernel::class;
+
+/** @var StaticAnalyzeKernel $kernel */
+$kernel = KernelFactory::create(
+    environment: 'phpstan_dev',
+    debug: true,
+    classLoader: $classLoader,
+    pluginLoader: $pluginLoader
+);
+
+$kernel->boot();
+
+return $classLoader;

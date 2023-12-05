@@ -1,0 +1,29 @@
+<?php declare(strict_types=1);
+
+namespace SnapAdmin\Core\Framework\Plugin\Exception;
+
+use SnapAdmin\Core\Framework\Log\Package;
+use SnapAdmin\Core\Framework\SnapAdminHttpException;
+use Symfony\Component\HttpFoundation\Response;
+
+#[Package('core')]
+class DecorationPatternException extends SnapAdminHttpException
+{
+    /**
+     * @var string
+     */
+    protected $class;
+
+    public function __construct(string $class)
+    {
+        parent::__construct(sprintf(
+            'The getDecorated() function of core class %s cannot be used. This class is the base class.',
+            $class
+        ));
+    }
+
+    public function getErrorCode(): string
+    {
+        return (string) Response::HTTP_INTERNAL_SERVER_ERROR;
+    }
+}

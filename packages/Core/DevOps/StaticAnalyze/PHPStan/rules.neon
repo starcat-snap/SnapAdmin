@@ -1,0 +1,10 @@
+rules:
+    - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\Tests\PHPUnitDataProviderStaticRule
+    - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\ScheduledTaskTooLowIntervalRule
+    - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\RuleAreasFlagNotAllowedRule
+    - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\RuleConditionHasRuleConfigRule
+    - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\NoFlowEventAwareExtendsRule
+    - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\NoFlowStoreFunctionRule
+    - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\NoEnvironmentHelperInsideCompilerPassRule
+    - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\NoSuperGlobalsInsideCompilerPassRule
+    - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\NoDALAutoload
