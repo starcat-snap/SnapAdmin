@@ -2,8 +2,6 @@
 
 namespace SnapAdmin\Core\System\CustomField\Aggregate\CustomFieldSet;
 
-use SnapAdmin\Core\Content\Product\ProductCollection;
-use SnapAdmin\Core\Framework\App\AppEntity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 use SnapAdmin\Core\Framework\Log\Package;
@@ -50,20 +48,6 @@ class CustomFieldSetEntity extends Entity
      */
     protected $relations;
 
-    /**
-     * @var ProductCollection|null
-     */
-    protected $products;
-
-    /**
-     * @var string|null
-     */
-    protected $appId;
-
-    /**
-     * @var AppEntity|null
-     */
-    protected $app;
 
     public function getName(): string
     {
@@ -125,16 +109,6 @@ class CustomFieldSetEntity extends Entity
         $this->relations = $relations;
     }
 
-    public function getProducts(): ?ProductCollection
-    {
-        return $this->products;
-    }
-
-    public function setProducts(ProductCollection $products): void
-    {
-        $this->products = $products;
-    }
-
     public function isGlobal(): bool
     {
         return $this->global;
@@ -143,25 +117,5 @@ class CustomFieldSetEntity extends Entity
     public function setGlobal(bool $global): void
     {
         $this->global = $global;
-    }
-
-    public function getAppId(): ?string
-    {
-        return $this->appId;
-    }
-
-    public function setAppId(?string $appId): void
-    {
-        $this->appId = $appId;
-    }
-
-    public function getApp(): ?AppEntity
-    {
-        return $this->app;
-    }
-
-    public function setApp(?AppEntity $app): void
-    {
-        $this->app = $app;
     }
 }

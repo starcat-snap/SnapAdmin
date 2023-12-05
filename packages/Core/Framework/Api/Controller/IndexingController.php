@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\Api\Controller;
 
-use SnapAdmin\Core\Content\Product\DataAbstractionLayer\ProductIndexingMessage;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Indexing\EntityIndexerRegistry;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\PlatformRequest;
@@ -63,29 +62,5 @@ class IndexingController extends AbstractController
         }
 
         return new JsonResponse(['finish' => false, 'offset' => $message->getOffset()]);
-    }
-
-    #[Route(path: '/api/_action/index-products', name: 'api.action.indexing.products', methods: ['POST'])]
-    public function products(Request $request): JsonResponse
-    {
-        if (!$request->request->has('ids')) {
-            throw new BadRequestHttpException('Parameter `ids` missing');
-        }
-
-        $ids = $request->request->all('ids');
-
-        if (empty($ids)) {
-            throw new BadRequestHttpException('Parameter `ids` is no array or empty');
-        }
-
-        $skips = array_filter(explode(',', (string)$request->headers->get(PlatformRequest::HEADER_INDEXING_SKIP, '')));
-
-        $message = new ProductIndexingMessage($ids, null);
-        $message->setIndexer('product.indexer');
-        $message->addSkip(...$skips);
-
-        $this->messageBus->dispatch($message);
-
-        return new JsonResponse(null, Response::HTTP_NO_CONTENT);
     }
 }

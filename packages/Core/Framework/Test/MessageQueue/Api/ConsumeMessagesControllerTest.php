@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\Framework\Test\MessageQueue\Api;
 
 use Doctrine\DBAL\Connection;
 use PHPUnit\Framework\TestCase;
-use SnapAdmin\Core\Content\Product\DataAbstractionLayer\ProductIndexingMessage;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Increment\AbstractIncrementer;
 use SnapAdmin\Core\Framework\Increment\IncrementGatewayRegistry;
@@ -68,27 +67,5 @@ class ConsumeMessagesControllerTest extends TestCase
         static::assertArrayHasKey('handledMessages', $response);
         static::assertIsInt($response['handledMessages']);
         static::assertEquals(1, $response['handledMessages']);
-    }
-
-    public function testMessageStatsDecrement(): void
-    {
-        $messageBus = $this->getContainer()->get('messenger.bus.snap');
-        $message = new ProductIndexingMessage([Uuid::randomHex()]);
-        $messageBus->dispatch($message);
-
-        $gateway = $this->getContainer()->get('snap.increment.gateway.registry');
-        $entries = $gateway->get(IncrementGatewayRegistry::MESSAGE_QUEUE_POOL)->list('message_queue_stats');
-
-        static::assertArrayHasKey(ProductIndexingMessage::class, $entries);
-        static::assertGreaterThan(0, $entries[ProductIndexingMessage::class]['count']);
-
-        $url = '/api/_action/message-queue/consume';
-        $client = $this->getBrowser();
-        $client->request('POST', $url, ['receiver' => 'async']);
-
-        $entries = $this->gateway->list('message_queue_stats');
-
-        static::assertArrayHasKey(ProductIndexingMessage::class, $entries);
-        static::assertEquals(0, $entries[ProductIndexingMessage::class]['count']);
     }
 }

@@ -9,7 +9,6 @@ use PhpParser\Node\Stmt\Return_;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleError;
-use SnapAdmin\Core\Content\ProductExport\ScheduledTask\ProductExportGenerateTask;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\MessageQueue\ScheduledTask\ScheduledTask;
 
@@ -22,7 +21,6 @@ use SnapAdmin\Core\Framework\MessageQueue\ScheduledTask\ScheduledTask;
 class ScheduledTaskTooLowIntervalRule implements Rule
 {
     private const EXCEPTION_CLASSES = [
-        ProductExportGenerateTask::class, // Ticket: NEXT-21167
     ];
 
     private const MIN_SCHEDULED_TASK_INTERVAL = 3600;

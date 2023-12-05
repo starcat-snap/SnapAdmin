@@ -12,7 +12,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Doctrine\RetryableQuery;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Doctrine\RetryableTransaction;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityTranslationDefinition;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Event\BeforeDeleteEvent;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Event\EntityDeleteEvent;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Event\EntityWriteEvent;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Exception\CanNotFindParentStorageFieldException;
@@ -58,13 +57,12 @@ class EntityWriteGateway implements EntityWriteGatewayInterface
     private ?PrimaryKeyBag $primaryKeyBag = null;
 
     public function __construct(
-        private readonly int                        $batchSize,
-        private readonly Connection                 $connection,
-        private readonly EventDispatcherInterface   $eventDispatcher,
-        private readonly ExceptionHandlerRegistry   $exceptionHandlerRegistry,
+        private readonly int $batchSize,
+        private readonly Connection $connection,
+        private readonly EventDispatcherInterface $eventDispatcher,
+        private readonly ExceptionHandlerRegistry $exceptionHandlerRegistry,
         private readonly DefinitionInstanceRegistry $definitionInstanceRegistry
-    )
-    {
+    ) {
     }
 
     public function prefetchExistences(WriteParameterBag $parameters): void
@@ -135,11 +133,8 @@ class EntityWriteGateway implements EntityWriteGatewayInterface
     private function executeCommands(array $commands, WriteContext $context): void
     {
         $entityDeleteEvent = EntityDeleteEvent::create($context, $commands);
-        $entityDeleteEventLegacy = BeforeDeleteEvent::create($context, $commands);
         if ($entityDeleteEvent->filled()) {
             $this->eventDispatcher->dispatch($entityDeleteEvent);
-
-            Feature::ifNotActive('v6.6.0.0', fn() => $this->eventDispatcher->dispatch($entityDeleteEventLegacy));
         }
 
         // throws exception on violation and then aborts/rollbacks this transaction
@@ -239,7 +234,6 @@ class EntityWriteGateway implements EntityWriteGatewayInterface
             $mappings->execute();
             $inserts->execute();
             $entityDeleteEvent->success();
-            Feature::ifNotActive('v6.6.0.0', fn() => $entityDeleteEventLegacy->success());
         } catch (Exception $e) {
             // Match exception without passing a specific command when feature-flag 16640 is active
             $innerException = $this->exceptionHandlerRegistry->matchException($e);
@@ -249,7 +243,6 @@ class EntityWriteGateway implements EntityWriteGatewayInterface
             $context->getExceptions()->add($e);
 
             $entityDeleteEvent->error();
-            Feature::ifNotActive('v6.6.0.0', fn() => $entityDeleteEventLegacy->error());
 
             throw $e;
         }

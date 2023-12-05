@@ -2,9 +2,6 @@
 
 namespace SnapAdmin\Core\System\CustomField\Aggregate\CustomFieldSet;
 
-use SnapAdmin\Core\Content\Product\Aggregate\ProductCustomFieldSet\ProductCustomFieldSetDefinition;
-use SnapAdmin\Core\Content\Product\ProductDefinition;
-use SnapAdmin\Core\Framework\App\AppDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BoolField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\FkField;
@@ -63,12 +60,8 @@ class CustomFieldSetDefinition extends EntityDefinition
             new BoolField('active', 'active'),
             new BoolField('global', 'global'),
             new IntField('position', 'position'),
-            new FkField('app_id', 'appId', AppDefinition::class),
-
             (new OneToManyAssociationField('customFields', CustomFieldDefinition::class, 'set_id'))->addFlags(new CascadeDelete()),
             (new OneToManyAssociationField('relations', CustomFieldSetRelationDefinition::class, 'set_id'))->addFlags(new CascadeDelete()),
-            (new ManyToManyAssociationField('products', ProductDefinition::class, ProductCustomFieldSetDefinition::class, 'custom_field_set_id', 'product_id'))->addFlags(new CascadeDelete(), new ReverseInherited('customFieldSets')),
-            new ManyToOneAssociationField('app', 'app_id', AppDefinition::class),
         ]);
     }
 }

@@ -2,17 +2,14 @@
 
 namespace SnapAdmin\Core\System\CustomField;
 
-use SnapAdmin\Core\Content\Product\Aggregate\ProductSearchConfigField\ProductSearchConfigFieldDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BoolField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\FkField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\CascadeDelete;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\IdField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\JsonField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 use SnapAdmin\Core\Framework\Log\Package;
@@ -46,8 +43,6 @@ class CustomFieldDefinition extends EntityDefinition
     public function getDefaults(): array
     {
         return [
-            'allowCustomerWrites' => false,
-            'allowCartExpose' => false,
         ];
     }
 
@@ -60,10 +55,7 @@ class CustomFieldDefinition extends EntityDefinition
             new JsonField('config', 'config', [], []),
             new BoolField('active', 'active'),
             new FkField('set_id', 'customFieldSetId', CustomFieldSetDefinition::class),
-            new BoolField('allow_customer_write', 'allowCustomerWrite'),
-            new BoolField('allow_cart_expose', 'allowCartExpose'),
             new ManyToOneAssociationField('customFieldSet', 'set_id', CustomFieldSetDefinition::class, 'id', false),
-            (new OneToManyAssociationField('productSearchConfigFields', ProductSearchConfigFieldDefinition::class, 'custom_field_id', 'id'))->addFlags(new CascadeDelete()),
         ]);
     }
 }

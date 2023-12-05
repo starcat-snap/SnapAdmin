@@ -15,7 +15,6 @@ use SnapAdmin\Core\Framework\Uuid\Exception\InvalidUuidException;
 use SnapAdmin\Core\Framework\Uuid\Uuid;
 use SnapAdmin\Core\System\SystemConfig\Event\BeforeSystemConfigChangedEvent;
 use SnapAdmin\Core\System\SystemConfig\Event\SystemConfigChangedEvent;
-use SnapAdmin\Core\System\SystemConfig\Event\SystemConfigChangedHook;
 use SnapAdmin\Core\System\SystemConfig\Event\SystemConfigDomainLoadedEvent;
 use SnapAdmin\Core\System\SystemConfig\Exception\BundleConfigNotFoundException;
 use SnapAdmin\Core\System\SystemConfig\Exception\InvalidDomainException;
@@ -298,9 +297,6 @@ class SystemConfigService implements ResetInterface
         }
 
         $insertQueue->execute();
-
-        // Dispatch the hook before the events to invalid the cache
-        $this->eventDispatcher->dispatch(new SystemConfigChangedHook($values, $this->getAppMapping()));
 
         // Dispatch events that the given values have been changed
         foreach ($events as $event) {

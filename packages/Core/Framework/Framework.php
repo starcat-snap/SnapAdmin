@@ -76,7 +76,6 @@ class Framework extends Bundle
         $loader->load('custom-field.xml');
         $loader->load('data-abstraction-layer.xml');
         $loader->load('event.xml');
-        $loader->load('hydrator.xml');
         $loader->load('filesystem.xml');
         $loader->load('message-queue.xml');
         $loader->load('plugin.xml');

@@ -141,3 +141,5 @@ vendor-bin/**/composer.lock
 # Devenv
 .devenv*
 devenv.local.nix
+
+plugins

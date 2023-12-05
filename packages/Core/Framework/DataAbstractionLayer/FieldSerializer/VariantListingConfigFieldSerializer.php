@@ -2,7 +2,7 @@
 
 namespace SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer;
 
-use SnapAdmin\Core\Content\Product\DataAbstractionLayer\VariantListingConfig;
+
 use SnapAdmin\Core\Framework\DataAbstractionLayer\DataAbstractionLayerException;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Field;

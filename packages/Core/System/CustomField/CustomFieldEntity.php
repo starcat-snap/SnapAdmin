@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\System\CustomField;
 
-use SnapAdmin\Core\Content\Product\Aggregate\ProductSearchConfigField\ProductSearchConfigFieldCollection;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 use SnapAdmin\Core\Framework\Log\Package;
@@ -48,12 +47,6 @@ class CustomFieldEntity extends Entity
      */
     protected $productSearchConfigFields;
 
-    /**
-     * @var bool
-     */
-    protected $allowCustomerWrite = false;
-
-    protected bool $allowCartExpose = false;
 
     public function getName(): string
     {
@@ -119,35 +112,5 @@ class CustomFieldEntity extends Entity
     public function setCustomFieldSet(?CustomFieldSetEntity $attributeSet): void
     {
         $this->customFieldSet = $attributeSet;
-    }
-
-    public function getProductSearchConfigFields(): ?ProductSearchConfigFieldCollection
-    {
-        return $this->productSearchConfigFields;
-    }
-
-    public function setProductSearchConfigFields(ProductSearchConfigFieldCollection $productSearchConfigFields): void
-    {
-        $this->productSearchConfigFields = $productSearchConfigFields;
-    }
-
-    public function isAllowCustomerWrite(): bool
-    {
-        return $this->allowCustomerWrite;
-    }
-
-    public function setAllowCustomerWrite(bool $allowCustomerWrite): void
-    {
-        $this->allowCustomerWrite = $allowCustomerWrite;
-    }
-
-    public function isAllowCartExpose(): bool
-    {
-        return $this->allowCartExpose;
-    }
-
-    public function setAllowCartExpose(bool $allowCartExpose): void
-    {
-        $this->allowCartExpose = $allowCartExpose;
     }
 }

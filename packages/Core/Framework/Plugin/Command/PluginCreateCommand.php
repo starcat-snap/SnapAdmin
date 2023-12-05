@@ -72,7 +72,7 @@ class PluginCreateCommand extends Command
                 $pluginName = $this->askPascalCaseString('Please enter a plugin name (PascalCase)', $io);
             }
 
-            $directory = $this->projectDir . '/custom/plugins/' . $pluginName;
+            $directory = $this->projectDir . '/plugins/' . $pluginName;
 
             if ($this->filesystem->exists($directory)) {
                 $io->error(sprintf('Plugin directory %s already exists', $directory));
