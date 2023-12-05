@@ -44,9 +44,9 @@ abstract class AbstractTranslator implements TranslatorInterface, TranslatorBagI
         $this->getDecorated()->resetInjection();
     }
 
-    public function injectSettings(string $salesChannelId, string $languageId, string $locale, Context $context): void
+    public function injectSettings(string $languageId, string $locale, Context $context): void
     {
-        $this->getDecorated()->injectSettings($salesChannelId, $languageId, $locale, $context);
+        $this->getDecorated()->injectSettings( $languageId, $locale, $context);
     }
 
     public function getSnippetSetId(?string $locale = null): ?string

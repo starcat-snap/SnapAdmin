@@ -24,10 +24,11 @@ class CreateEntitiesCommand extends Command
      * @internal
      */
     public function __construct(
-        private readonly EntityGenerator $entityGenerator,
+        private readonly EntityGenerator            $entityGenerator,
         private readonly DefinitionInstanceRegistry $registry,
-        string $rootDir
-    ) {
+        string                                      $rootDir
+    )
+    {
         parent::__construct();
         $this->dir = $rootDir . '/../schema/';
     }

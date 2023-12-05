@@ -79,9 +79,9 @@ class ErrorResponseFactory
         $statusCode = $this->getStatusCodeFromException($exception);
 
         $error = [
-            'code' => (string) $exception->getCode(),
-            'status' => (string) $statusCode,
-            'title' => (string) (Response::$statusTexts[$statusCode] ?? 'unknown status'),
+            'code' => (string)$exception->getCode(),
+            'status' => (string)$statusCode,
+            'title' => (string)(Response::$statusTexts[$statusCode] ?? 'unknown status'),
             'detail' => $exception->getMessage(),
         ];
 

@@ -45,13 +45,14 @@ class Price extends Struct
 
     public function __construct(
         string $currencyId,
-        float $net,
-        float $gross,
-        bool $linked,
+        float  $net,
+        float  $gross,
+        bool   $linked,
         ?Price $listPrice = null,
         ?array $percentage = null,
         ?Price $regulationPrice = null
-    ) {
+    )
+    {
         $this->net = $net;
         $this->gross = $gross;
         $this->linked = $linked;

@@ -16,8 +16,9 @@ class FirstRunWizardFinishedEvent extends Event
     public function __construct(
         private readonly FrwState $state,
         private readonly FrwState $previousState,
-        private readonly Context $context
-    ) {
+        private readonly Context  $context
+    )
+    {
     }
 
     public function getState(): FrwState

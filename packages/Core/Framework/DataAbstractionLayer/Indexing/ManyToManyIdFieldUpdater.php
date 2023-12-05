@@ -24,8 +24,9 @@ class ManyToManyIdFieldUpdater
      */
     public function __construct(
         private readonly DefinitionInstanceRegistry $registry,
-        private readonly Connection $connection
-    ) {
+        private readonly Connection                 $connection
+    )
+    {
     }
 
     /**
@@ -56,7 +57,7 @@ class ManyToManyIdFieldUpdater
         $fields = $definition->getFields()->filterInstance(ManyToManyIdField::class);
 
         if ($propertyName) {
-            $fields = $fields->filter(fn (ManyToManyIdField $field) => $field->getPropertyName() === $propertyName);
+            $fields = $fields->filter(fn(ManyToManyIdField $field) => $field->getPropertyName() === $propertyName);
         }
 
         if ($fields->count() <= 0) {
@@ -84,7 +85,7 @@ SQL;
             $resetTemplate .= ' AND #table#.version_id = :version';
         }
 
-        $bytes = array_map(fn ($id) => Uuid::fromHexToBytes($id), $ids);
+        $bytes = array_map(fn($id) => Uuid::fromHexToBytes($id), $ids);
 
         /** @var ManyToManyIdField $field */
         foreach ($fields as $field) {

@@ -77,7 +77,7 @@ class AnnotationTagTest extends TestCase
 
         foreach ($finder->getIterator() as $file) {
             $filePath = $file->getRealPath();
-            $content = (string) file_get_contents($filePath);
+            $content = (string)file_get_contents($filePath);
 
             try {
                 $this->getDeprecationTagTester()->validateDeprecatedAnnotations($content);
@@ -107,7 +107,7 @@ class AnnotationTagTest extends TestCase
 
         foreach ($finder->getIterator() as $file) {
             $filePath = $file->getRealPath();
-            $content = (string) file_get_contents($filePath);
+            $content = (string)file_get_contents($filePath);
 
             try {
                 $this->getDeprecationTagTester()->validateDeprecationElements($content);
@@ -123,7 +123,7 @@ class AnnotationTagTest extends TestCase
 
     private function getPathForClass(string $className): string
     {
-        $path = realpath(\dirname((string) KernelLifecycleManager::getClassLoader()->findFile($className)) . '/../');
+        $path = realpath(\dirname((string)KernelLifecycleManager::getClassLoader()->findFile($className)) . '/../');
 
         if ($path === false) {
             throw new \LogicException("could not locate filepath for class {$className}");
@@ -155,18 +155,18 @@ class AnnotationTagTest extends TestCase
         } elseif (InstalledVersions::isInstalled('snap/platform')) {
             $snapVersion = InstalledVersions::getVersion('snap/platform');
         } else {
-            $snapVersion = InstalledVersions::getVersion('snap/core');
+            $snapVersion = InstalledVersions::getVersion('snapadmin/core');
         }
-        $snapVersion = ltrim((string) $snapVersion, 'v ');
+        $snapVersion = ltrim((string)$snapVersion, 'v ');
 
         if (!preg_match('/^\d+\.\d+[.-].*$/', $snapVersion)) {
             // this will only check the syntax of the deprecated tags. The real test happens in the prod pipeline
 
             $matches = [];
-            preg_match('/(\d+\.\d+)\..*/', Kernel::SHOPWARE_FALLBACK_VERSION, $matches);
+            preg_match('/(\d+\.\d+)\..*/', Kernel::SNAP_FALLBACK_VERSION, $matches);
             static::assertArrayHasKey(1, $matches);
 
-            // get major version from Kernel::SHOPWARE_FALLBACK_VERSION
+            // get major version from Kernel::SNAP_FALLBACK_VERSION
             $snapVersion = $matches[1] . '.0';
         }
 

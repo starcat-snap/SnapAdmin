@@ -15,7 +15,8 @@ class ProfilingMiddleware implements Middleware
 
     public function __construct(
         public BacktraceDebugDataHolder $debugDataHolder = new BacktraceDebugDataHolder([self::CONNECTION]),
-    ) {
+    )
+    {
     }
 
     public function wrap(Driver $driver): DebugDriver

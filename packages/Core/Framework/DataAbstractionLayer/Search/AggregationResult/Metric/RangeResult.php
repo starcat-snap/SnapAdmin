@@ -15,9 +15,10 @@ class RangeResult extends AggregationResult
      * @param array<string, int> $ranges
      */
     public function __construct(
-        string $name,
+        string          $name,
         protected array $ranges
-    ) {
+    )
+    {
         parent::__construct($name);
     }
 

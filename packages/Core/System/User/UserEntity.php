@@ -2,18 +2,13 @@
 
 namespace SnapAdmin\Core\System\User;
 
-use SnapAdmin\Core\Checkout\Customer\CustomerCollection;
-use SnapAdmin\Core\Checkout\Order\OrderCollection;
-use SnapAdmin\Core\Content\ImportExport\Aggregate\ImportExportLog\ImportExportLogCollection;
-use SnapAdmin\Core\Content\Media\MediaCollection;
-use SnapAdmin\Core\Content\Media\MediaEntity;
+
 use SnapAdmin\Core\Framework\Api\Acl\Role\AclRoleCollection;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\Locale\LocaleEntity;
-use SnapAdmin\Core\System\StateMachine\Aggregation\StateMachineHistory\StateMachineHistoryCollection;
 use SnapAdmin\Core\System\User\Aggregate\UserAccessKey\UserAccessKeyCollection;
 use SnapAdmin\Core\System\User\Aggregate\UserConfig\UserConfigCollection;
 use SnapAdmin\Core\System\User\Aggregate\UserRecovery\UserRecoveryEntity;
@@ -49,12 +44,7 @@ class UserEntity extends Entity
     /**
      * @var string
      */
-    protected $firstName;
-
-    /**
-     * @var string
-     */
-    protected $lastName;
+    protected $name;
 
     /**
      * @var string|null
@@ -155,25 +145,6 @@ class UserEntity extends Entity
 
     protected string $timeZone;
 
-    public function getStateMachineHistoryEntries(): ?StateMachineHistoryCollection
-    {
-        return $this->stateMachineHistoryEntries;
-    }
-
-    public function setStateMachineHistoryEntries(StateMachineHistoryCollection $stateMachineHistoryEntries): void
-    {
-        $this->stateMachineHistoryEntries = $stateMachineHistoryEntries;
-    }
-
-    public function getImportExportLogEntries(): ?ImportExportLogCollection
-    {
-        return $this->importExportLogEntries;
-    }
-
-    public function setImportExportLogEntries(ImportExportLogCollection $importExportLogEntries): void
-    {
-        $this->importExportLogEntries = $importExportLogEntries;
-    }
 
     public function getLocaleId(): string
     {
@@ -223,24 +194,14 @@ class UserEntity extends Entity
         $this->password = $password;
     }
 
-    public function getFirstName(): string
+    public function getName(): string
     {
-        return $this->firstName;
+        return $this->name;
     }
 
-    public function setFirstName(string $firstName): void
+    public function setName(string $name): void
     {
-        $this->firstName = $firstName;
-    }
-
-    public function getLastName(): string
-    {
-        return $this->lastName;
-    }
-
-    public function setLastName(string $lastName): void
-    {
-        $this->lastName = $lastName;
+        $this->name = $name;
     }
 
     public function getEmail(): string
@@ -271,26 +232,6 @@ class UserEntity extends Entity
     public function setLocale(LocaleEntity $locale): void
     {
         $this->locale = $locale;
-    }
-
-    public function getAvatarMedia(): ?MediaEntity
-    {
-        return $this->avatarMedia;
-    }
-
-    public function setAvatarMedia(MediaEntity $avatarMedia): void
-    {
-        $this->avatarMedia = $avatarMedia;
-    }
-
-    public function getMedia(): ?MediaCollection
-    {
-        return $this->media;
-    }
-
-    public function setMedia(MediaCollection $media): void
-    {
-        $this->media = $media;
     }
 
     public function getAccessKeys(): ?UserAccessKeyCollection
@@ -371,25 +312,6 @@ class UserEntity extends Entity
         $this->title = $title;
     }
 
-    public function getCreatedOrders(): ?OrderCollection
-    {
-        return $this->createdOrders;
-    }
-
-    public function setCreatedOrders(OrderCollection $createdOrders): void
-    {
-        $this->createdOrders = $createdOrders;
-    }
-
-    public function getUpdatedOrders(): ?OrderCollection
-    {
-        return $this->updatedOrders;
-    }
-
-    public function setUpdatedOrders(OrderCollection $updatedOrders): void
-    {
-        $this->updatedOrders = $updatedOrders;
-    }
 
     public function getCreatedCustomers(): ?CustomerCollection
     {

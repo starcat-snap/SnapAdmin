@@ -18,8 +18,9 @@ class EntityExistsValidator extends ConstraintValidator
      */
     public function __construct(
         private readonly DefinitionInstanceRegistry $definitionRegistry,
-        private readonly EntitySearcherInterface $entitySearcher
-    ) {
+        private readonly EntitySearcherInterface    $entitySearcher
+    )
+    {
     }
 
     public function validate(mixed $value, Constraint $constraint): void

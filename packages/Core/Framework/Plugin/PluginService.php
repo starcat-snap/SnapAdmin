@@ -34,13 +34,14 @@ class PluginService
      * @param EntityRepository<LanguageCollection> $languageRepo
      */
     public function __construct(
-        private readonly string $pluginDir,
-        private readonly string $projectDir,
+        private readonly string           $pluginDir,
+        private readonly string           $projectDir,
         private readonly EntityRepository $pluginRepo,
         private readonly EntityRepository $languageRepo,
-        private readonly PluginFinder $pluginFinder,
+        private readonly PluginFinder     $pluginFinder,
         private readonly VersionSanitizer $versionSanitizer
-    ) {
+    )
+    {
     }
 
     public function refreshPlugins(Context $snapContext, IOInterface $composerIO): ExceptionCollection
@@ -202,7 +203,7 @@ class PluginService
     {
         $composerAuthors = $info->getAuthors();
 
-        $manufacturerAuthors = array_filter($composerAuthors, static fn (array $author): bool => ($author['role'] ?? '') === self::COMPOSER_AUTHOR_ROLE_MANUFACTURER);
+        $manufacturerAuthors = array_filter($composerAuthors, static fn(array $author): bool => ($author['role'] ?? '') === self::COMPOSER_AUTHOR_ROLE_MANUFACTURER);
 
         if (empty($manufacturerAuthors)) {
             $manufacturerAuthors = $composerAuthors;

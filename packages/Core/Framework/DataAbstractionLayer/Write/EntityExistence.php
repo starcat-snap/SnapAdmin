@@ -18,18 +18,19 @@ class EntityExistence
     public function __construct(
         private readonly ?string $entityName,
         // @see a hack in \SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\JsonFieldSerializer
-        private readonly array $primaryKey,
-        private readonly bool $exists,
-        private readonly bool $isChild,
-        private readonly bool $wasChild,
-        private readonly array $state
-    ) {
+        private readonly array   $primaryKey,
+        private readonly bool    $exists,
+        private readonly bool    $isChild,
+        private readonly bool    $wasChild,
+        private readonly array   $state
+    )
+    {
     }
 
     /**
+     * @param array<string, mixed> $primaryKey
      * @internal
      *
-     * @param array<string, mixed> $primaryKey
      */
     public static function createForEntity(?string $entity, array $primaryKey): self
     {

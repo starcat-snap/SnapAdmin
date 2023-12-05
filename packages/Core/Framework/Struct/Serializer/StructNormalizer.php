@@ -68,7 +68,7 @@ class StructNormalizer implements DenormalizerInterface, NormalizerInterface
         unset($data['_class']);
 
         // iterate arguments to resolve other serialized objects
-        $arguments = array_map(fn ($argument) => $this->denormalize($argument), $data);
+        $arguments = array_map(fn($argument) => $this->denormalize($argument), $data);
 
         // create object instance
         return $this->createInstance($class, $arguments);

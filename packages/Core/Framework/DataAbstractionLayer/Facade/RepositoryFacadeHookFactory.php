@@ -21,10 +21,11 @@ class RepositoryFacadeHookFactory extends HookServiceFactory
      */
     public function __construct(
         private readonly DefinitionInstanceRegistry $registry,
-        private readonly AppContextCreator $appContextCreator,
-        private readonly RequestCriteriaBuilder $criteriaBuilder,
-        private readonly AclCriteriaValidator $criteriaValidator
-    ) {
+        private readonly AppContextCreator          $appContextCreator,
+        private readonly RequestCriteriaBuilder     $criteriaBuilder,
+        private readonly AclCriteriaValidator       $criteriaValidator
+    )
+    {
     }
 
     public function factory(Hook $hook, Script $script): RepositoryFacade

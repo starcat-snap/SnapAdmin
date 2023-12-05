@@ -25,11 +25,12 @@ class SystemConfigFacade
      * @internal
      */
     public function __construct(
-        private readonly SystemConfigService $systemConfigService,
-        private readonly Connection $connection,
+        private readonly SystemConfigService   $systemConfigService,
+        private readonly Connection            $connection,
         private readonly ?ScriptAppInformation $scriptAppInformation,
-        private readonly ?string $salesChannelId
-    ) {
+        private readonly ?string               $salesChannelId
+    )
+    {
     }
 
     /**
@@ -103,6 +104,6 @@ class SystemConfigFacade
             throw new \RuntimeException(sprintf('Privileges for app with id "%s" not found.', $appId));
         }
 
-        return $this->appData[$appId] = json_decode((string) $privileges, true, 512, \JSON_THROW_ON_ERROR);
+        return $this->appData[$appId] = json_decode((string)$privileges, true, 512, \JSON_THROW_ON_ERROR);
     }
 }

@@ -26,19 +26,21 @@ class RemoteAddressFieldSerializer extends AbstractFieldSerializer
      * @internal
      */
     public function __construct(
-        ValidatorInterface $validator,
-        DefinitionInstanceRegistry $definitionRegistry,
+        ValidatorInterface                   $validator,
+        DefinitionInstanceRegistry           $definitionRegistry,
         private readonly SystemConfigService $configService
-    ) {
+    )
+    {
         parent::__construct($validator, $definitionRegistry);
     }
 
     public function encode(
-        Field $field,
-        EntityExistence $existence,
-        KeyValuePair $data,
+        Field             $field,
+        EntityExistence   $existence,
+        KeyValuePair      $data,
         WriteParameterBag $parameters
-    ): \Generator {
+    ): \Generator
+    {
         if (!$field instanceof RemoteAddressField) {
             throw DataAbstractionLayerException::invalidSerializerField(RemoteAddressField::class, $field);
         }

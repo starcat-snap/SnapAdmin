@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\System\SystemConfig;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\SalesChannel\SalesChannelEntity;
 
 #[Package('system-settings')]
 class SystemConfigEntity extends Entity
@@ -22,15 +21,6 @@ class SystemConfigEntity extends Entity
      */
     protected $configurationValue;
 
-    /**
-     * @var string|null
-     */
-    protected $salesChannelId;
-
-    /**
-     * @var SalesChannelEntity|null
-     */
-    protected $salesChannel;
 
     public function getConfigurationKey(): string
     {
@@ -56,25 +46,5 @@ class SystemConfigEntity extends Entity
     public function setConfigurationValue($configurationValue): void
     {
         $this->configurationValue = $configurationValue;
-    }
-
-    public function getSalesChannelId(): ?string
-    {
-        return $this->salesChannelId;
-    }
-
-    public function setSalesChannelId(?string $salesChannelId): void
-    {
-        $this->salesChannelId = $salesChannelId;
-    }
-
-    public function getSalesChannel(): ?SalesChannelEntity
-    {
-        return $this->salesChannel;
-    }
-
-    public function setSalesChannel(SalesChannelEntity $salesChannel): void
-    {
-        $this->salesChannel = $salesChannel;
     }
 }

@@ -37,15 +37,16 @@ class JsonFieldSerializer extends AbstractFieldSerializer
             Feature::deprecatedMethodMessage(self::class, __METHOD__, 'v6.6.0.0', Json::class . '::encode')
         );
 
-        return (string) json_encode($value, $options);
+        return (string)json_encode($value, $options);
     }
 
     public function encode(
-        Field $field,
-        EntityExistence $existence,
-        KeyValuePair $data,
+        Field             $field,
+        EntityExistence   $existence,
+        KeyValuePair      $data,
         WriteParameterBag $parameters
-    ): \Generator {
+    ): \Generator
+    {
         if (!$field instanceof JsonField) {
             throw DataAbstractionLayerException::invalidSerializerField(JsonField::class, $field);
         }
@@ -75,7 +76,7 @@ class JsonFieldSerializer extends AbstractFieldSerializer
             return $field->getDefault();
         }
 
-        $raw = json_decode((string) $value, true);
+        $raw = json_decode((string)$value, true);
         $decoded = $raw;
         if (empty($field->getPropertyMapping())) {
             return $raw;
@@ -112,10 +113,11 @@ class JsonFieldSerializer extends AbstractFieldSerializer
     }
 
     protected function validateMapping(
-        JsonField $field,
-        array $data,
+        JsonField         $field,
+        array             $data,
         WriteParameterBag $parameters
-    ): array {
+    ): array
+    {
         if (\array_key_exists('_class', $data)) {
             unset($data['_class']);
         }
@@ -124,7 +126,7 @@ class JsonFieldSerializer extends AbstractFieldSerializer
         $existence = EntityExistence::createEmpty();
         $fieldPath = $parameters->getPath() . '/' . $field->getPropertyName();
 
-        $propertyKeys = array_map(fn (Field $field) => $field->getPropertyName(), $field->getPropertyMapping());
+        $propertyKeys = array_map(fn(Field $field) => $field->getPropertyName(), $field->getPropertyMapping());
 
         // If a mapping is defined, you should not send properties that are undefined.
         // Sending undefined fields will throw an UnexpectedFieldException
@@ -132,7 +134,7 @@ class JsonFieldSerializer extends AbstractFieldSerializer
         if (\count($keyDiff)) {
             foreach ($keyDiff as $fieldName) {
                 $parameters->getContext()->getExceptions()->add(
-                    new UnexpectedFieldException($fieldPath . '/' . $fieldName, (string) $fieldName)
+                    new UnexpectedFieldException($fieldPath . '/' . $fieldName, (string)$fieldName)
                 );
             }
         }
@@ -179,7 +181,7 @@ class JsonFieldSerializer extends AbstractFieldSerializer
 
                 foreach ($encoded as $fieldKey => $fieldValue) {
                     if ($nestedField instanceof JsonField && $fieldValue !== null) {
-                        $fieldValue = json_decode((string) $fieldValue, true, 512, \JSON_THROW_ON_ERROR);
+                        $fieldValue = json_decode((string)$fieldValue, true, 512, \JSON_THROW_ON_ERROR);
                     }
 
                     $stack->update($fieldKey, $fieldValue);

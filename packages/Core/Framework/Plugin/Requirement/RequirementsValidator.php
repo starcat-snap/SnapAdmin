@@ -37,8 +37,9 @@ class RequirementsValidator
      */
     public function __construct(
         private readonly EntityRepository $pluginRepo,
-        private readonly string $projectDir
-    ) {
+        private readonly string           $projectDir
+    )
+    {
     }
 
     /**
@@ -88,7 +89,7 @@ class RequirementsValidator
     /**
      * dependsOn determines, whether a given plugin depends on another one.
      *
-     * @param PluginEntity $plugin     the plugin to be checked
+     * @param PluginEntity $plugin the plugin to be checked
      * @param PluginEntity $dependency the potential dependency
      */
     private function dependsOn(PluginEntity $plugin, PluginEntity $dependency): bool
@@ -125,9 +126,10 @@ class RequirementsValidator
      * @return array{'require': Link[], 'conflict': Link[]}
      */
     private function validateComposerPackages(
-        array $pluginDependencies,
+        array                     $pluginDependencies,
         RequirementExceptionStack $exceptionStack
-    ): array {
+    ): array
+    {
         return $this->checkComposerDependencies(
             $pluginDependencies,
             $exceptionStack,
@@ -146,10 +148,11 @@ class RequirementsValidator
      * @return array{'require': Link[], 'conflict': Link[]}
      */
     private function checkComposerDependencies(
-        array $pluginDependencies,
+        array                     $pluginDependencies,
         RequirementExceptionStack $exceptionStack,
-        Composer $composer
-    ): array {
+        Composer                  $composer
+    ): array
+    {
         $packages = $composer->getRepositoryManager()->getLocalRepository()->getPackages();
 
         // Get PHP extension "packages"
@@ -194,11 +197,12 @@ class RequirementsValidator
      * @return array{'require': Link[], 'conflict': Link[]}
      */
     private function validateInstalledPlugins(
-        Context $context,
-        PluginEntity $installingPlugin,
-        array $pluginDependencies,
+        Context                   $context,
+        PluginEntity              $installingPlugin,
+        array                     $pluginDependencies,
         RequirementExceptionStack $exceptionStack
-    ): array {
+    ): array
+    {
         $parser = new VersionParser();
         $pluginPackages = $this->getComposerPackagesFromPlugins();
 
@@ -261,7 +265,7 @@ class RequirementsValidator
     private function getComposerPackagesFromPlugins(): array
     {
         $packages = $this->snapProjectComposer->getRepositoryManager()->getLocalRepository()->getPackages();
-        $pluginPackages = array_filter($packages, static fn (PackageInterface $package) => $package->getType() === PluginFinder::COMPOSER_TYPE);
+        $pluginPackages = array_filter($packages, static fn(PackageInterface $package) => $package->getType() === PluginFinder::COMPOSER_TYPE);
 
         $pluginPackagesWithNameAsKey = [];
         foreach ($pluginPackages as $pluginPackage) {
@@ -277,10 +281,11 @@ class RequirementsValidator
      * @return array{'require': Link[], 'conflict': Link[]}
      */
     private function validateReplaces(
-        PackageInterface $package,
-        array $pluginDependencies,
+        PackageInterface          $package,
+        array                     $pluginDependencies,
         RequirementExceptionStack $exceptionStack
-    ): array {
+    ): array
+    {
         foreach ($package->getReplaces() as $replace) {
             $replaceConstraint = $replace->getConstraint();
 
@@ -313,11 +318,12 @@ class RequirementsValidator
      * @return Link[]
      */
     private function checkRequirement(
-        array $pluginRequirements,
-        string $installedName,
-        ConstraintInterface $installedVersion,
+        array                     $pluginRequirements,
+        string                    $installedName,
+        ConstraintInterface       $installedVersion,
         RequirementExceptionStack $exceptionStack
-    ): array {
+    ): array
+    {
         if (!isset($pluginRequirements[$installedName])) {
             return $pluginRequirements;
         }
@@ -341,12 +347,13 @@ class RequirementsValidator
      * @return Link[]
      */
     private function checkConflict(
-        array $pluginConflicts,
-        string $sourceName,
-        string $targetName,
-        ConstraintInterface $installedVersion,
+        array                     $pluginConflicts,
+        string                    $sourceName,
+        string                    $targetName,
+        ConstraintInterface       $installedVersion,
         RequirementExceptionStack $exceptionStack
-    ): array {
+    ): array
+    {
         if (!isset($pluginConflicts[$targetName])) {
             return $pluginConflicts;
         }
@@ -368,9 +375,10 @@ class RequirementsValidator
      * @param Link[] $pluginRequirements
      */
     private function addRemainingRequirementsAsException(
-        array $pluginRequirements,
+        array                     $pluginRequirements,
         RequirementExceptionStack $exceptionStack
-    ): void {
+    ): void
+    {
         foreach ($pluginRequirements as $installedPackage => $requirement) {
             $exceptionStack->add(
                 new MissingRequirementException($installedPackage, $requirement->getPrettyConstraint())
@@ -384,10 +392,11 @@ class RequirementsValidator
      * @return array{'require': Link[], 'conflict': Link[]}
      */
     private function validateShippedDependencies(
-        PluginEntity $plugin,
-        array $pluginDependencies,
+        PluginEntity              $plugin,
+        array                     $pluginDependencies,
         RequirementExceptionStack $exceptionStack
-    ): array {
+    ): array
+    {
         if ($plugin->getManagedByComposer()) {
             return $pluginDependencies;
         }

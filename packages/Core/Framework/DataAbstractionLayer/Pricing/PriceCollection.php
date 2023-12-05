@@ -22,25 +22,6 @@ class PriceCollection extends Collection
         parent::set($element->getCurrencyId(), $element);
     }
 
-    public function getCurrencyPrice(string $currencyId, bool $fallback = true): ?Price
-    {
-        $price = $this->get($currencyId);
-
-        if ($price) {
-            return $price;
-        }
-
-        if ($currencyId === Defaults::CURRENCY) {
-            return null;
-        }
-
-        if (!$fallback) {
-            return null;
-        }
-
-        return $this->get(Defaults::CURRENCY);
-    }
-
     public function getApiAlias(): string
     {
         return 'price_collection';

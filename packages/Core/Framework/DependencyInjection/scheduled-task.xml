@@ -16,7 +16,7 @@
         </service>
 
         <service id="SnapAdmin\Core\Framework\MessageQueue\ScheduledTask\Registry\TaskRegistry">
-            <argument type="tagged" tag="snap.scheduled.task" />
+            <argument type="tagged" tag="snap.scheduled.task"/>
             <argument type="service" id="scheduled_task.repository"/>
             <argument type="service" id="parameter_bag"/>
         </service>
@@ -29,12 +29,13 @@
 
         <service id="SnapAdmin\Core\Framework\MessageQueue\Subscriber\PluginLifecycleSubscriber">
             <argument type="service" id="SnapAdmin\Core\Framework\MessageQueue\ScheduledTask\Registry\TaskRegistry"/>
-            <argument type="service" id="cache.messenger.restart_workers_signal" />
+            <argument type="service" id="cache.messenger.restart_workers_signal"/>
 
             <tag name="kernel.event_subscriber"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\MessageQueue\ScheduledTask\Compatibility\ScheduledTaskCompatibilitySubscriber">
+        <service
+                id="SnapAdmin\Core\Framework\MessageQueue\ScheduledTask\Compatibility\ScheduledTaskCompatibilitySubscriber">
             <tag name="kernel.event_subscriber"/>
         </service>
 
@@ -51,7 +52,7 @@
 
         <service id="SnapAdmin\Core\Framework\MessageQueue\Command\ScheduledTaskRunner">
             <argument type="service" id="SnapAdmin\Core\Framework\MessageQueue\ScheduledTask\Scheduler\TaskScheduler"/>
-            <argument type="service" id="cache.messenger.restart_workers_signal" />
+            <argument type="service" id="cache.messenger.restart_workers_signal"/>
 
             <tag name="console.command"/>
         </service>

@@ -19,19 +19,20 @@ use Symfony\Component\Messenger\MessageBusInterface;
 class CacheClearer
 {
     /**
+     * @param CacheItemPoolInterface[] $adapters
      * @internal
      *
-     * @param CacheItemPoolInterface[] $adapters
      */
     public function __construct(
-        private readonly array $adapters,
+        private readonly array                 $adapters,
         private readonly CacheClearerInterface $cacheClearer,
-        private readonly Filesystem $filesystem,
-        private readonly string $cacheDir,
-        private readonly string $environment,
-        private readonly bool $clusterMode,
-        private readonly MessageBusInterface $messageBus
-    ) {
+        private readonly Filesystem            $filesystem,
+        private readonly string                $cacheDir,
+        private readonly string                $environment,
+        private readonly bool                  $clusterMode,
+        private readonly MessageBusInterface   $messageBus
+    )
+    {
     }
 
     public function clear(): void
@@ -147,7 +148,7 @@ class CacheClearer
         $files = iterator_to_array($finder->getIterator());
 
         if (\count($files) > 0) {
-            $this->filesystem->remove(array_map(static fn (\SplFileInfo $file): string => $file->getPathname(), $files));
+            $this->filesystem->remove(array_map(static fn(\SplFileInfo $file): string => $file->getPathname(), $files));
         }
     }
 }

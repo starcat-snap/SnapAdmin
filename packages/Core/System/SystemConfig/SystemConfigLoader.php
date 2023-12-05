@@ -18,8 +18,9 @@ class SystemConfigLoader extends AbstractSystemConfigLoader
      */
     public function __construct(
         protected Connection $connection,
-        protected Kernel $kernel
-    ) {
+        protected Kernel     $kernel
+    )
+    {
     }
 
     public function getDecorated(): AbstractSystemConfigLoader
@@ -33,17 +34,6 @@ class SystemConfigLoader extends AbstractSystemConfigLoader
 
         $query->from('system_config');
         $query->select(['configuration_key', 'configuration_value']);
-
-        if ($salesChannelId === null) {
-            $query
-                ->andWhere('sales_channel_id IS NULL');
-        } else {
-            $query->andWhere('sales_channel_id = :salesChannelId OR system_config.sales_channel_id IS NULL');
-            $query->setParameter('salesChannelId', Uuid::fromHexToBytes($salesChannelId));
-        }
-
-        $query->addOrderBy('sales_channel_id', 'ASC');
-
         $result = $query->executeQuery();
 
         return $this->buildSystemConfigArray($result->fetchAllKeyValue());
@@ -54,10 +44,10 @@ class SystemConfigLoader extends AbstractSystemConfigLoader
         $configValues = [];
 
         foreach ($systemConfigs as $key => $value) {
-            $keys = \explode('.', (string) $key);
+            $keys = \explode('.', (string)$key);
 
             if ($value !== null) {
-                $value = \json_decode((string) $value, true, 512, \JSON_THROW_ON_ERROR);
+                $value = \json_decode((string)$value, true, 512, \JSON_THROW_ON_ERROR);
 
                 if ($value === false || !isset($value[ConfigJsonField::STORAGE_KEY])) {
                     $value = null;
@@ -102,7 +92,7 @@ class SystemConfigLoader extends AbstractSystemConfigLoader
 
     private function filterNotActivatedPlugins(array $configValues): array
     {
-        $notActivatedPlugins = $this->kernel->getPluginLoader()->getPluginInstances()->filter(fn (Plugin $plugin) => !$plugin->isActive())->all();
+        $notActivatedPlugins = $this->kernel->getPluginLoader()->getPluginInstances()->filter(fn(Plugin $plugin) => !$plugin->isActive())->all();
 
         foreach ($notActivatedPlugins as $plugin) {
             if (isset($configValues[$plugin->getName()])) {

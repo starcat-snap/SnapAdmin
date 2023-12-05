@@ -18,9 +18,10 @@ class PluginExtractor
      * @param array<string, string> $extensionDirectories
      */
     public function __construct(
-        private readonly array $extensionDirectories,
+        private readonly array      $extensionDirectories,
         private readonly Filesystem $filesystem
-    ) {
+    )
+    {
     }
 
     /**
@@ -90,7 +91,7 @@ class PluginExtractor
         $entry = $archive->statIndex(0);
         \assert($entry !== false);
 
-        return explode(\DIRECTORY_SEPARATOR, (string) $entry['name'])[0];
+        return explode(\DIRECTORY_SEPARATOR, (string)$entry['name'])[0];
     }
 
     /**

@@ -6,11 +6,12 @@
 
     <services>
         <service id="SnapAdmin\Core\Framework\Plugin\KernelPluginLoader\KernelPluginLoader" public="true">
-            <factory service="kernel" method="getPluginLoader" />
+            <factory service="kernel" method="getPluginLoader"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\Plugin\KernelPluginCollection" public="true">
-            <factory service="SnapAdmin\Core\Framework\Plugin\KernelPluginLoader\KernelPluginLoader" method="getPluginInstances"/>
+            <factory service="SnapAdmin\Core\Framework\Plugin\KernelPluginLoader\KernelPluginLoader"
+                     method="getPluginInstances"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\Plugin\Command\BundleDumpCommand">
@@ -21,8 +22,7 @@
         </service>
 
         <service id="SnapAdmin\Core\Framework\Plugin\BundleConfigGenerator">
-            <argument type="service" id="kernel" />
-            <argument type="service" id="SnapAdmin\Core\Framework\App\ActiveAppsLoader" />
+            <argument type="service" id="kernel"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\Plugin\PluginDefinition">
@@ -160,7 +160,7 @@
         </service>
 
         <service id="SnapAdmin\Core\Framework\Plugin\Subscriber\PluginAclPrivilegesSubscriber">
-            <argument type="service" id="SnapAdmin\Core\Framework\Plugin\KernelPluginCollection" />
+            <argument type="service" id="SnapAdmin\Core\Framework\Plugin\KernelPluginCollection"/>
             <tag name="kernel.event_subscriber"/>
         </service>
 
@@ -182,7 +182,6 @@
             <argument type="service" id="kernel"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Plugin\KernelPluginLoader\KernelPluginLoader"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\CacheInvalidator"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\App\Lifecycle\AppLoader"/>
             <argument type="service" id="parameter_bag"/>
         </service>
 

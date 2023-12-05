@@ -11,7 +11,8 @@ class LicenseDomainVerificationException extends SnapAdminHttpException
     public function __construct(
         string $domain,
         string $reason = ''
-    ) {
+    )
+    {
         $reason = $reason ? (' ' . $reason) : '';
         $message = 'License host verification failed for domain "{{ domain }}.{{ reason }}"';
         parent::__construct($message, ['domain' => $domain, 'reason' => $reason]);

@@ -37,16 +37,17 @@ class UpdateController extends AbstractController
      * @internal
      */
     public function __construct(
-        private readonly ApiClient $apiClient,
-        private readonly WriteableCheck $writeableCheck,
-        private readonly LicenseCheck $licenseCheck,
-        private readonly ExtensionCompatibility $extensionCompatibility,
-        private readonly EventDispatcherInterface $eventDispatcher,
-        private readonly SystemConfigService $systemConfig,
+        private readonly ApiClient                  $apiClient,
+        private readonly WriteableCheck             $writeableCheck,
+        private readonly LicenseCheck               $licenseCheck,
+        private readonly ExtensionCompatibility     $extensionCompatibility,
+        private readonly EventDispatcherInterface   $eventDispatcher,
+        private readonly SystemConfigService        $systemConfig,
         private readonly AbstractExtensionLifecycle $extensionLifecycleService,
-        private readonly string $snapVersion,
-        private readonly bool $disableUpdateCheck = false
-    ) {
+        private readonly string                     $snapVersion,
+        private readonly bool                       $disableUpdateCheck = false
+    )
+    {
     }
 
     #[Route(path: '/api/_action/update/check', name: 'api.custom.updateapi.check', defaults: ['_acl' => ['system:core:update']], methods: ['GET'])]
@@ -105,7 +106,7 @@ class UpdateController extends AbstractController
         }
 
         // disable plugins - save active plugins
-        $deactivationFilter = (string) $request->query->get(
+        $deactivationFilter = (string)$request->query->get(
             'deactivationFilter',
             ExtensionCompatibility::PLUGIN_DEACTIVATION_FILTER_NOT_COMPATIBLE
         );

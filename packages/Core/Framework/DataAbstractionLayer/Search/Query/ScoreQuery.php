@@ -12,10 +12,11 @@ use SnapAdmin\Core\Framework\Log\Package;
 class ScoreQuery extends Filter
 {
     public function __construct(
-        protected Filter $query,
-        protected float $score,
+        protected Filter  $query,
+        protected float   $score,
         protected ?string $scoreField = null
-    ) {
+    )
+    {
     }
 
     public function getFields(): array

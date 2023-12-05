@@ -25,10 +25,8 @@ use SnapAdmin\Core\Framework\DependencyInjection\FrameworkExtension;
 use SnapAdmin\Core\Framework\Increment\IncrementerGatewayCompilerPass;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Migration\MigrationCompilerPass;
-use SnapAdmin\Core\Framework\Test\DependencyInjection\CompilerPass\ContainerVisibilityCompilerPass;
 use SnapAdmin\Core\Framework\Test\RateLimiter\DisableRateLimiterCompilerPass;
 use SnapAdmin\Core\Kernel;
-use SnapAdmin\Core\System\SalesChannel\Entity\SalesChannelDefinitionInstanceRegistry;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Loader\DelegatingLoader;
 use Symfony\Component\Config\Loader\LoaderResolver;
@@ -65,8 +63,8 @@ class Framework extends Bundle
      */
     public function build(ContainerBuilder $container): void
     {
-        $container->setParameter('locale', 'en-GB');
-        $environment = (string) $container->getParameter('kernel.environment');
+        $container->setParameter('locale', 'zh-CN');
+        $environment = (string)$container->getParameter('kernel.environment');
 
         $this->buildConfig($container, $environment);
 
@@ -75,31 +73,23 @@ class Framework extends Bundle
         $loader->load('acl.xml');
         $loader->load('cache.xml');
         $loader->load('api.xml');
-        $loader->load('app.xml');
         $loader->load('custom-field.xml');
         $loader->load('data-abstraction-layer.xml');
-        $loader->load('demodata.xml');
         $loader->load('event.xml');
         $loader->load('hydrator.xml');
         $loader->load('filesystem.xml');
         $loader->load('message-queue.xml');
         $loader->load('plugin.xml');
-        $loader->load('rule.xml');
         $loader->load('scheduled-task.xml');
         $loader->load('store.xml');
-        $loader->load('script.xml');
         $loader->load('language.xml');
         $loader->load('update.xml');
-        $loader->load('seo.xml');
-        $loader->load('webhook.xml');
         $loader->load('rate-limiter.xml');
         $loader->load('increment.xml');
 
         if ($container->getParameter('kernel.environment') === 'test') {
             $loader->load('services_test.xml');
             $loader->load('store_test.xml');
-            $loader->load('seo_test.xml');
-            $loader->load('app_test.xml');
         }
 
         // make sure to remove services behind a feature flag, before some other compiler passes may reference them, therefore the high priority
@@ -122,12 +112,9 @@ class Framework extends Bundle
 
         if ($container->getParameter('kernel.environment') === 'test') {
             $container->addCompilerPass(new DisableRateLimiterCompilerPass());
-            $container->addCompilerPass(new ContainerVisibilityCompilerPass());
         }
 
         $container->addCompilerPass(new FrameworkMigrationReplacementCompilerPass());
-
-        $container->addCompilerPass(new DemodataCompilerPass());
 
         parent::build($container);
     }
@@ -151,7 +138,6 @@ class Framework extends Bundle
 
         $this->registerEntityExtensions(
             $this->container->get(DefinitionInstanceRegistry::class),
-            $this->container->get(SalesChannelDefinitionInstanceRegistry::class),
             $this->container->get(ExtensionRegistry::class)
         );
 
@@ -201,10 +187,10 @@ class Framework extends Bundle
     }
 
     private function registerEntityExtensions(
-        DefinitionInstanceRegistry $definitionRegistry,
-        SalesChannelDefinitionInstanceRegistry $salesChannelRegistry,
-        ExtensionRegistry $registry
-    ): void {
+        DefinitionInstanceRegistry             $definitionRegistry,
+        ExtensionRegistry                      $registry
+    ): void
+    {
         foreach ($registry->getExtensions() as $extension) {
             /** @var string $class */
             $class = $extension->getDefinitionClass();
@@ -212,13 +198,6 @@ class Framework extends Bundle
             $definition = $definitionRegistry->get($class);
 
             $definition->addExtension($extension);
-
-            $salesChannelDefinition = $salesChannelRegistry->get($class);
-
-            // same definition? do not added extension
-            if ($salesChannelDefinition !== $definition) {
-                $salesChannelDefinition->addExtension($extension);
-            }
         }
     }
 }

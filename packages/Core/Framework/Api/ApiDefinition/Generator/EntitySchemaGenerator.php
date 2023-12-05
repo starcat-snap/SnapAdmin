@@ -153,7 +153,7 @@ class EntitySchemaGenerator implements ApiDefinitionGeneratorInterface
 
                 return $property;
 
-                // fields with uuid
+            // fields with uuid
             case $field instanceof VersionField:
             case $field instanceof ReferenceVersionField:
             case $field instanceof ParentFkField:
@@ -161,7 +161,7 @@ class EntitySchemaGenerator implements ApiDefinitionGeneratorInterface
             case $field instanceof IdField:
                 return ['type' => 'uuid', 'flags' => $flags];
 
-                // json fields
+            // json fields
             case $field instanceof CustomFields:
             case $field instanceof VersionDataPayloadField:
             case $field instanceof CalculatedPriceField:
@@ -178,7 +178,7 @@ class EntitySchemaGenerator implements ApiDefinitionGeneratorInterface
             case $field instanceof JsonField:
                 return $this->createJsonObjectType($definition, $field, $flags);
 
-                // association fields
+            // association fields
             case $field instanceof ChildrenAssociationField:
             case $field instanceof TranslationsAssociationField:
             case $field instanceof OneToManyAssociationField:
@@ -262,25 +262,25 @@ class EntitySchemaGenerator implements ApiDefinitionGeneratorInterface
                     'referenceField' => $referenceField ? $referenceField->getPropertyName() : null,
                 ];
 
-                // int fields
+            // int fields
             case $field instanceof ChildCountField:
             case $field instanceof TreeLevelField:
             case $field instanceof IntField:
                 return ['type' => 'int', 'flags' => $flags];
 
-                // long text fields
+            // long text fields
             case $field instanceof TreePathField:
             case $field instanceof LongTextField:
                 return ['type' => 'text', 'flags' => $flags];
 
-                // date fields
+            // date fields
             case $field instanceof UpdatedAtField:
             case $field instanceof CreatedAtField:
             case $field instanceof DateTimeField:
             case $field instanceof DateField:
                 return ['type' => 'date', 'flags' => $flags];
 
-                // scalar fields
+            // scalar fields
             case $field instanceof PasswordField:
                 return ['type' => 'password', 'flags' => $flags];
 

@@ -4,19 +4,19 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
-        <parameter key="env(SHOPWARE_DISABLE_UPDATE_CHECK)" />
+        <parameter key="env(SNAP_DISABLE_UPDATE_CHECK)"/>
     </parameters>
     <services>
         <service id="SnapAdmin\Core\Framework\Update\Api\UpdateController" public="true">
             <argument type="service" id="SnapAdmin\Core\Framework\Update\Services\ApiClient"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Update\Checkers\WriteableCheck" />
-            <argument type="service" id="SnapAdmin\Core\Framework\Update\Checkers\LicenseCheck" />
-            <argument type="service" id="SnapAdmin\Core\Framework\Update\Services\ExtensionCompatibility" />
+            <argument type="service" id="SnapAdmin\Core\Framework\Update\Checkers\WriteableCheck"/>
+            <argument type="service" id="SnapAdmin\Core\Framework\Update\Checkers\LicenseCheck"/>
+            <argument type="service" id="SnapAdmin\Core\Framework\Update\Services\ExtensionCompatibility"/>
             <argument type="service" id="event_dispatcher"/>
             <argument type="service" id="SnapAdmin\Core\System\SystemConfig\SystemConfigService"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\ExtensionLifecycleService"/>
             <argument>%kernel.snap_version%</argument>
-            <argument>%env(bool:SHOPWARE_DISABLE_UPDATE_CHECK)%</argument>
+            <argument>%env(bool:SNAP_DISABLE_UPDATE_CHECK)%</argument>
             <call method="setContainer">
                 <argument type="service" id="service_container"/>
             </call>

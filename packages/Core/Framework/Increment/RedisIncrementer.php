@@ -12,9 +12,9 @@ use SnapAdmin\Core\Framework\Plugin\Exception\DecorationPatternException;
 class RedisIncrementer extends AbstractIncrementer
 {
     /**
+     * @param \Redis|\RedisArray|\RedisCluster|\Predis\ClientInterface|\Relay\Relay $redis
      * @internal
      *
-     * @param \Redis|\RedisArray|\RedisCluster|\Predis\ClientInterface|\Relay\Relay $redis
      */
     public function __construct(private $redis)
     {
@@ -85,7 +85,7 @@ class RedisIncrementer extends AbstractIncrementer
                 'key' => $key,
                 'cluster' => $cluster,
                 'pool' => $this->getPool(),
-                'count' => max(0, (int) $count),
+                'count' => max(0, (int)$count),
             ];
         }
 

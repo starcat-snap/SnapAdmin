@@ -9,9 +9,6 @@
             <tag name="snap.entity.definition"/>
         </service>
 
-        <service id="SnapAdmin\Core\System\Language\SalesChannel\SalesChannelLanguageDefinition">
-            <tag name="snap.sales_channel.entity.definition"/>
-        </service>
 
         <service id="SnapAdmin\Core\System\Language\LanguageValidator">
             <argument type="service" id="Doctrine\DBAL\Connection"/>
@@ -22,7 +19,8 @@
             <argument type="service" id="Doctrine\DBAL\Connection"/>
         </service>
 
-        <service id="SnapAdmin\Core\System\Language\CachedLanguageLoader" decorates="SnapAdmin\Core\System\Language\LanguageLoader">
+        <service id="SnapAdmin\Core\System\Language\CachedLanguageLoader"
+                 decorates="SnapAdmin\Core\System\Language\LanguageLoader">
             <argument type="service" id="SnapAdmin\Core\System\Language\CachedLanguageLoader.inner"/>
             <argument type="service" id="cache.object"/>
             <tag name="kernel.event_subscriber"/>
@@ -36,18 +34,6 @@
             <tag name="snap.dal.exception_handler"/>
         </service>
 
-        <service id="SnapAdmin\Core\System\Language\SalesChannel\LanguageRoute" public="true">
-            <argument type="service" id="sales_channel.language.repository"/>
-        </service>
-
-        <service id="SnapAdmin\Core\System\Language\SalesChannel\CachedLanguageRoute" decorates="SnapAdmin\Core\System\Language\SalesChannel\LanguageRoute" decoration-priority="-1000" public="true">
-            <argument type="service" id="SnapAdmin\Core\System\Language\SalesChannel\CachedLanguageRoute.inner"/>
-            <argument type="service" id="cache.object"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Cache\EntityCacheKeyGenerator"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\CacheTracer"/>
-            <argument type="service" id="event_dispatcher"/>
-            <argument>%snap.cache.invalidation.language_route%</argument>
-        </service>
 
         <service id="SnapAdmin\Core\System\Language\Rule\LanguageRule">
             <tag name="snap.rule.definition"/>

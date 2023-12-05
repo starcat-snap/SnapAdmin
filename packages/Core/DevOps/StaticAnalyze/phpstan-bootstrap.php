@@ -18,7 +18,7 @@ if (!\defined('TEST_PROJECT_DIR')) {
         }
 
         if (file_exists('vendor') && (file_exists('.env') || file_exists('.env.dist'))) {
-            return (string) getcwd();
+            return (string)getcwd();
         }
 
         $dir = $rootDir = __DIR__;

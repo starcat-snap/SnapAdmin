@@ -22,12 +22,13 @@ class TemplateFinder implements TemplateFinderInterface, ResetInterface
      * @internal
      */
     public function __construct(
-        private readonly Environment $twig,
-        private readonly LoaderInterface $loader,
-        private readonly string $cacheDir,
+        private readonly Environment               $twig,
+        private readonly LoaderInterface           $loader,
+        private readonly string                    $cacheDir,
         private readonly NamespaceHierarchyBuilder $namespaceHierarchyBuilder,
-        private readonly TemplateScopeDetector $templateScopeDetector,
-    ) {
+        private readonly TemplateScopeDetector     $templateScopeDetector,
+    )
+    {
     }
 
     public function getTemplateName(string $template): string
@@ -146,7 +147,7 @@ class TemplateFinder implements TemplateFinderInterface, ResetInterface
     private function defineCache(array $queue): void
     {
         if ($this->twig->getCache(false) instanceof FilesystemCache) {
-            $configHash = md5((string) json_encode($queue, \JSON_THROW_ON_ERROR));
+            $configHash = md5((string)json_encode($queue, \JSON_THROW_ON_ERROR));
 
             $fileSystemCache = new ConfigurableFilesystemCache($this->cacheDir);
             $fileSystemCache->setConfigHash($configHash);

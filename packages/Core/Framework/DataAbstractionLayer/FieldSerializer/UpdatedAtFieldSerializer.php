@@ -20,11 +20,12 @@ class UpdatedAtFieldSerializer extends DateTimeFieldSerializer
      * @throws DataAbstractionLayerException
      */
     public function encode(
-        Field $field,
-        EntityExistence $existence,
-        KeyValuePair $data,
+        Field             $field,
+        EntityExistence   $existence,
+        KeyValuePair      $data,
         WriteParameterBag $parameters
-    ): \Generator {
+    ): \Generator
+    {
         if (!$field instanceof UpdatedAtField) {
             throw DataAbstractionLayerException::invalidSerializerField(UpdatedAtField::class, $field);
         }

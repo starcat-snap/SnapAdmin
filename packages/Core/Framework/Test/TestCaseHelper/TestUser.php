@@ -17,7 +17,8 @@ class TestUser
         private readonly string $password,
         private readonly string $name,
         private readonly string $userId
-    ) {
+    )
+    {
     }
 
     public static function getAdmin(): TestUser
@@ -46,8 +47,8 @@ class TestUser
 
         $connection->insert('user', [
             'id' => $userId,
-            'first_name' => $username,
-            'last_name' => '',
+            'name' => $username,
+            'phone' => '',
             'email' => "{$email}@example.com",
             'username' => $username,
             'password' => TestDefaults::HASHED_PASSWORD,
@@ -84,7 +85,7 @@ class TestUser
 
         $browser->request('POST', '/api/oauth/token', $authPayload);
 
-        $data = json_decode((string) $browser->getResponse()->getContent(), true, 512, \JSON_THROW_ON_ERROR);
+        $data = json_decode((string)$browser->getResponse()->getContent(), true, 512, \JSON_THROW_ON_ERROR);
 
         if (!\array_key_exists('access_token', $data)) {
             throw new \RuntimeException(
@@ -122,7 +123,7 @@ class TestUser
     {
         $builder = $connection->createQueryBuilder();
 
-        return (string) $builder->select('locale.id')
+        return (string)$builder->select('locale.id')
             ->from('language', 'language')
             ->innerJoin('language', 'locale', 'locale', 'language.locale_id = locale.id')
             ->where('language.id = :id')

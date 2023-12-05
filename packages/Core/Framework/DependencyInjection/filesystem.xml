@@ -40,15 +40,18 @@
             <argument>%snap.filesystem.asset%</argument>
         </service>
 
-        <service class="SnapAdmin\Core\Framework\Adapter\Filesystem\Adapter\LocalFactory" id="SnapAdmin\Core\Framework\Adapter\Filesystem\FilesystemFactory.local">
+        <service class="SnapAdmin\Core\Framework\Adapter\Filesystem\Adapter\LocalFactory"
+                 id="SnapAdmin\Core\Framework\Adapter\Filesystem\FilesystemFactory.local">
             <tag name="snap.filesystem.factory"/>
         </service>
 
-        <service class="SnapAdmin\Core\Framework\Adapter\Filesystem\Adapter\AwsS3v3Factory" id="SnapAdmin\Core\Framework\Adapter\Filesystem\FilesystemFactory.amazon_s3">
+        <service class="SnapAdmin\Core\Framework\Adapter\Filesystem\Adapter\AwsS3v3Factory"
+                 id="SnapAdmin\Core\Framework\Adapter\Filesystem\FilesystemFactory.amazon_s3">
             <tag name="snap.filesystem.factory"/>
         </service>
 
-        <service class="SnapAdmin\Core\Framework\Adapter\Filesystem\Adapter\GoogleStorageFactory" id="SnapAdmin\Core\Framework\Adapter\Filesystem\FilesystemFactory.google_storage">
+        <service class="SnapAdmin\Core\Framework\Adapter\Filesystem\Adapter\GoogleStorageFactory"
+                 id="SnapAdmin\Core\Framework\Adapter\Filesystem\FilesystemFactory.google_storage">
             <tag name="snap.filesystem.factory"/>
         </service>
 
@@ -60,7 +63,6 @@
         <service id="console.command.assets_install" class="SnapAdmin\Core\Framework\Adapter\Asset\AssetInstallCommand">
             <argument type="service" id="kernel"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Plugin\Util\AssetService"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\App\ActiveAppsLoader"/>
             <tag name="console.command"/>
         </service>
 
@@ -74,13 +76,15 @@
             <tag name="snap.asset" asset="public"/>
         </service>
 
-        <service id="snap.asset.theme.version_strategy" class="SnapAdmin\Core\Framework\Adapter\Asset\FlysystemLastModifiedVersionStrategy">
+        <service id="snap.asset.theme.version_strategy"
+                 class="SnapAdmin\Core\Framework\Adapter\Asset\FlysystemLastModifiedVersionStrategy">
             <argument>theme-metaData</argument>
             <argument type="service" id="snap.filesystem.theme"/>
             <argument type="service" id="cache.object"/>
         </service>
 
-        <service id="snap.asset.asset.version_strategy" class="SnapAdmin\Core\Framework\Adapter\Asset\FlysystemLastModifiedVersionStrategy">
+        <service id="snap.asset.asset.version_strategy"
+                 class="SnapAdmin\Core\Framework\Adapter\Asset\FlysystemLastModifiedVersionStrategy">
             <argument>asset-metaData</argument>
             <argument type="service" id="snap.filesystem.asset"/>
             <argument type="service" id="cache.object"/>
@@ -95,7 +99,8 @@
             <tag name="snap.asset" asset="asset"/>
         </service>
 
-        <service id="snap.asset.asset_without_versioning" class="SnapAdmin\Core\Framework\Adapter\Asset\FallbackUrlPackage" lazy="true">
+        <service id="snap.asset.asset_without_versioning"
+                 class="SnapAdmin\Core\Framework\Adapter\Asset\FallbackUrlPackage" lazy="true">
             <argument type="collection">
                 <argument>%snap.filesystem.asset.url%</argument>
             </argument>

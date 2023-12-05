@@ -11,9 +11,9 @@ use SnapAdmin\Core\Framework\Log\Package;
 class RouteScopeRegistry
 {
     /**
+     * @param AbstractRouteScope[] $routeScopes
      * @internal
      *
-     * @param AbstractRouteScope[] $routeScopes
      */
     public function __construct(private readonly iterable $routeScopes)
     {

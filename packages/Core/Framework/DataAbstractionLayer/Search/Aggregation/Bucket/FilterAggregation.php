@@ -16,10 +16,11 @@ class FilterAggregation extends BucketAggregation
      * @param array<Filter> $filter
      */
     public function __construct(
-        string $name,
-        Aggregation $aggregation,
+        string          $name,
+        Aggregation     $aggregation,
         protected array $filter
-    ) {
+    )
+    {
         parent::__construct($name, '', $aggregation);
     }
 

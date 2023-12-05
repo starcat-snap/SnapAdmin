@@ -63,7 +63,7 @@ class ConsumeMessagesControllerTest extends TestCase
         $client = $this->getBrowser();
         $client->request('POST', $url, ['receiver' => 'async']);
 
-        $response = json_decode((string) $client->getResponse()->getContent(), true, 512, \JSON_THROW_ON_ERROR);
+        $response = json_decode((string)$client->getResponse()->getContent(), true, 512, \JSON_THROW_ON_ERROR);
         static::assertSame(200, $client->getResponse()->getStatusCode(), \print_r($response, true));
         static::assertArrayHasKey('handledMessages', $response);
         static::assertIsInt($response['handledMessages']);

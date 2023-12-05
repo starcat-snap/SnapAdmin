@@ -38,7 +38,7 @@ class MigrationSourceTest extends TestCase
     {
         $pattern = $this->getContainer()->get('SnapAdmin\Core\Framework\Migration\MigrationSource.core.V6_3')->getNamespacePattern();
 
-        static::assertSame($shouldMatch, (bool) preg_match("/$pattern/", $subject, $subject));
+        static::assertSame($shouldMatch, (bool)preg_match("/$pattern/", $subject, $subject));
     }
 
     /**
@@ -54,7 +54,7 @@ class MigrationSourceTest extends TestCase
 
         $pattern = $source->getNamespacePattern();
 
-        static::assertSame($shouldMatch, (bool) preg_match("/$pattern/", $subject, $subject));
+        static::assertSame($shouldMatch, (bool)preg_match("/$pattern/", $subject, $subject));
     }
 
     public function testNestedMigrationSources(): void

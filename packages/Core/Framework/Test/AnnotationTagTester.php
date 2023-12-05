@@ -28,7 +28,8 @@ class AnnotationTagTester
     public function __construct(
         private readonly string $snapVersion,
         private readonly string $manifestVersion
-    ) {
+    )
+    {
     }
 
     /**
@@ -147,8 +148,8 @@ class AnnotationTagTester
             throw new \InvalidArgumentException('Incorrect format for experimental annotation. Properties `stableVersion` and/or `feature` are not declared.');
         }
         $properties = [
-            $match[1] => (string) $match[2],
-            $match[3] => (string) $match[4],
+            $match[1] => (string)$match[2],
+            $match[3] => (string)$match[4],
         ];
 
         match (true) {

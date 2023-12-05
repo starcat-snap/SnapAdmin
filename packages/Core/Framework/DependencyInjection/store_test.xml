@@ -42,7 +42,7 @@
         </service>
 
         <service id="SnapAdmin\Core\Framework\Store\Services\InstanceService">
-            <argument type="constant">SnapAdmin\Core\Kernel::SHOPWARE_FALLBACK_VERSION</argument>
+            <argument type="constant">SnapAdmin\Core\Kernel::SNAP_FALLBACK_VERSION</argument>
             <argument type="string">this-is-a-unique-id</argument>
         </service>
     </services>

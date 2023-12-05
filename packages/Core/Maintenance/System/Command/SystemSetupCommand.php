@@ -30,10 +30,11 @@ use Symfony\Component\Dotenv\Command\DotenvDumpCommand;
 class SystemSetupCommand extends Command
 {
     public function __construct(
-        private readonly string $projectDir,
+        private readonly string                  $projectDir,
         private readonly JwtCertificateGenerator $jwtCertificateGenerator,
-        private readonly DotenvDumpCommand $dumpEnvCommand
-    ) {
+        private readonly DotenvDumpCommand       $dumpEnvCommand
+    )
+    {
         parent::__construct();
     }
 
@@ -53,17 +54,17 @@ class SystemSetupCommand extends Command
             ->addOption('app-env', null, InputOption::VALUE_OPTIONAL, 'Application environment', $this->getDefault('APP_ENV', 'prod'))
             ->addOption('app-url', null, InputOption::VALUE_OPTIONAL, 'Application URL', $this->getDefault('APP_URL', 'http://localhost'))
             ->addOption('blue-green', null, InputOption::VALUE_OPTIONAL, 'Blue green deployment', $this->getDefault('BLUE_GREEN_DEPLOYMENT', '1'))
-            ->addOption('es-enabled', null, InputOption::VALUE_OPTIONAL, 'Elasticsearch enabled', $this->getDefault('SHOPWARE_ES_ENABLED', '0'))
+            ->addOption('es-enabled', null, InputOption::VALUE_OPTIONAL, 'Elasticsearch enabled', $this->getDefault('SNAP_ES_ENABLED', '0'))
             ->addOption('es-hosts', null, InputOption::VALUE_OPTIONAL, 'Elasticsearch Hosts', $this->getDefault('OPENSEARCH_URL', 'elasticsearch:9200'))
-            ->addOption('es-indexing-enabled', null, InputOption::VALUE_OPTIONAL, 'Elasticsearch Indexing enabled', $this->getDefault('SHOPWARE_ES_INDEXING_ENABLED', '0'))
-            ->addOption('es-index-prefix', null, InputOption::VALUE_OPTIONAL, 'Elasticsearch Index prefix', $this->getDefault('SHOPWARE_ES_INDEX_PREFIX', 'sw'))
+            ->addOption('es-indexing-enabled', null, InputOption::VALUE_OPTIONAL, 'Elasticsearch Indexing enabled', $this->getDefault('SNAP_ES_INDEXING_ENABLED', '0'))
+            ->addOption('es-index-prefix', null, InputOption::VALUE_OPTIONAL, 'Elasticsearch Index prefix', $this->getDefault('SNAP_ES_INDEX_PREFIX', 'sw'))
             ->addOption('admin-es-hosts', null, InputOption::VALUE_OPTIONAL, 'Admin Elasticsearch Hosts', $this->getDefault('ADMIN_OPENSEARCH_URL', 'elasticsearch:9200'))
-            ->addOption('admin-es-index-prefix', null, InputOption::VALUE_OPTIONAL, 'Admin Elasticsearch Index prefix', $this->getDefault('SHOPWARE_ADMIN_ES_INDEX_PREFIX', 'sw-admin'))
-            ->addOption('admin-es-enabled', null, InputOption::VALUE_OPTIONAL, 'Admin Elasticsearch Enabled', $this->getDefault('SHOPWARE_ADMIN_ES_ENABLED', '0'))
-            ->addOption('admin-es-refresh-indices', null, InputOption::VALUE_OPTIONAL, 'Admin Elasticsearch Refresh Indices', $this->getDefault('SHOPWARE_ADMIN_ES_REFRESH_INDICES', '0'))
-            ->addOption('http-cache-enabled', null, InputOption::VALUE_OPTIONAL, 'Http-Cache enabled', $this->getDefault('SHOPWARE_HTTP_CACHE_ENABLED', '1'))
-            ->addOption('http-cache-ttl', null, InputOption::VALUE_OPTIONAL, 'Http-Cache TTL', $this->getDefault('SHOPWARE_HTTP_DEFAULT_TTL', '7200'))
-            ->addOption('cdn-strategy', null, InputOption::VALUE_OPTIONAL, 'CDN Strategy', $this->getDefault('SHOPWARE_CDN_STRATEGY_DEFAULT', 'id'))
+            ->addOption('admin-es-index-prefix', null, InputOption::VALUE_OPTIONAL, 'Admin Elasticsearch Index prefix', $this->getDefault('SNAP_ADMIN_ES_INDEX_PREFIX', 'sw-admin'))
+            ->addOption('admin-es-enabled', null, InputOption::VALUE_OPTIONAL, 'Admin Elasticsearch Enabled', $this->getDefault('SNAP_ADMIN_ES_ENABLED', '0'))
+            ->addOption('admin-es-refresh-indices', null, InputOption::VALUE_OPTIONAL, 'Admin Elasticsearch Refresh Indices', $this->getDefault('SNAP_ADMIN_ES_REFRESH_INDICES', '0'))
+            ->addOption('http-cache-enabled', null, InputOption::VALUE_OPTIONAL, 'Http-Cache enabled', $this->getDefault('SNAP_HTTP_CACHE_ENABLED', '1'))
+            ->addOption('http-cache-ttl', null, InputOption::VALUE_OPTIONAL, 'Http-Cache TTL', $this->getDefault('SNAP_HTTP_DEFAULT_TTL', '7200'))
+            ->addOption('cdn-strategy', null, InputOption::VALUE_OPTIONAL, 'CDN Strategy', $this->getDefault('SNAP_CDN_STRATEGY_DEFAULT', 'id'))
             ->addOption('mailer-url', null, InputOption::VALUE_OPTIONAL, 'Mailer URL', $this->getDefault('MAILER_DSN', 'native://default'))
             ->addOption('dump-env', null, InputOption::VALUE_NONE, 'Dump the generated .env file in a optimized .env.local.php file, to skip parsing of the .env file on each request');
     }
@@ -73,19 +74,19 @@ class SystemSetupCommand extends Command
         /** @var array<string, string> $env */
         $env = [
             'APP_ENV' => $input->getOption('app-env'),
-            'APP_URL' => trim((string) $input->getOption('app-url')),
+            'APP_URL' => trim((string)$input->getOption('app-url')),
             'DATABASE_URL' => $input->getOption('database-url'),
             'OPENSEARCH_URL' => $input->getOption('es-hosts'),
-            'SHOPWARE_ES_ENABLED' => $input->getOption('es-enabled'),
-            'SHOPWARE_ES_INDEXING_ENABLED' => $input->getOption('es-indexing-enabled'),
-            'SHOPWARE_ES_INDEX_PREFIX' => $input->getOption('es-index-prefix'),
+            'SNAP_ES_ENABLED' => $input->getOption('es-enabled'),
+            'SNAP_ES_INDEXING_ENABLED' => $input->getOption('es-indexing-enabled'),
+            'SNAP_ES_INDEX_PREFIX' => $input->getOption('es-index-prefix'),
             'ADMIN_OPENSEARCH_URL' => $input->getOption('admin-es-hosts'),
-            'SHOPWARE_ADMIN_ES_INDEX_PREFIX' => $input->getOption('admin-es-index-prefix'),
-            'SHOPWARE_ADMIN_ES_ENABLED' => $input->getOption('admin-es-enabled'),
-            'SHOPWARE_ADMIN_ES_REFRESH_INDICES' => $input->getOption('admin-es-refresh-indices'),
-            'SHOPWARE_HTTP_CACHE_ENABLED' => $input->getOption('http-cache-enabled'),
-            'SHOPWARE_HTTP_DEFAULT_TTL' => $input->getOption('http-cache-ttl'),
-            'SHOPWARE_CDN_STRATEGY_DEFAULT' => $input->getOption('cdn-strategy'),
+            'SNAP_ADMIN_ES_INDEX_PREFIX' => $input->getOption('admin-es-index-prefix'),
+            'SNAP_ADMIN_ES_ENABLED' => $input->getOption('admin-es-enabled'),
+            'SNAP_ADMIN_ES_REFRESH_INDICES' => $input->getOption('admin-es-refresh-indices'),
+            'SNAP_HTTP_CACHE_ENABLED' => $input->getOption('http-cache-enabled'),
+            'SNAP_HTTP_DEFAULT_TTL' => $input->getOption('http-cache-ttl'),
+            'SNAP_CDN_STRATEGY_DEFAULT' => $input->getOption('cdn-strategy'),
             'BLUE_GREEN_DEPLOYMENT' => $input->getOption('blue-green'),
             'MAILER_DSN' => $input->getOption('mailer-url'),
             'COMPOSER_HOME' => $input->getOption('composer-home'),
@@ -214,10 +215,10 @@ class SystemSetupCommand extends Command
 
         $dsnWithoutDb = sprintf(
             'mysql://%s:%s@%s:%d',
-            (string) $dbUser,
-            rawurlencode((string) $dbPass),
-            (string) $dbHost,
-            (int) $dbPort
+            (string)$dbUser,
+            rawurlencode((string)$dbPass),
+            (string)$dbHost,
+            (int)$dbPort
         );
         $dsn = $dsnWithoutDb . '/' . $dbName;
 
@@ -344,6 +345,6 @@ class SystemSetupCommand extends Command
 
     private function getDefault(string $var, string $default): string
     {
-        return (string) EnvironmentHelper::getVariable($var, $default);
+        return (string)EnvironmentHelper::getVariable($var, $default);
     }
 }

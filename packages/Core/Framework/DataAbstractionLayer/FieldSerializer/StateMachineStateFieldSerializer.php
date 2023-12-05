@@ -20,11 +20,12 @@ use Symfony\Component\Validator\ConstraintViolationList;
 class StateMachineStateFieldSerializer extends FkFieldSerializer
 {
     public function encode(
-        Field $field,
-        EntityExistence $existence,
-        KeyValuePair $data,
+        Field             $field,
+        EntityExistence   $existence,
+        KeyValuePair      $data,
         WriteParameterBag $parameters
-    ): \Generator {
+    ): \Generator
+    {
         if (!($field instanceof StateMachineStateField)) {
             throw DataAbstractionLayerException::invalidSerializerField(StateMachineStateField::class, $field);
         }

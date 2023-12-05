@@ -74,7 +74,7 @@ class ServiceDefinitionTest extends TestCase
         $command->setApplication(new Application(KernelLifecycleManager::getKernel()));
         $commandTester = new CommandTester($command);
 
-        set_error_handler(fn (): bool => true, \E_USER_DEPRECATED);
+        set_error_handler(fn(): bool => true, \E_USER_DEPRECATED);
         $commandTester->execute([]);
         restore_error_handler();
 
@@ -105,7 +105,7 @@ class ServiceDefinitionTest extends TestCase
 
             $errors[] = sprintf(
                 '%s:%d - invalid order (type should be first)',
-                (string) ($match['id'][0] ?? $fullMatch[0]),
+                (string)($match['id'][0] ?? $fullMatch[0]),
                 $this->getLineNumber($content, $fullMatch[1])
             );
         }
@@ -133,7 +133,7 @@ class ServiceDefinitionTest extends TestCase
             $fullMatch = $match[0];
             $errors[] = sprintf(
                 '%s:%d - parameter class and id are identical. class parameter should be removed',
-                (string) ($match['class'][0] ?? $fullMatch[0]),
+                (string)($match['class'][0] ?? $fullMatch[0]),
                 $this->getLineNumber($content, $fullMatch[1])
             );
         }

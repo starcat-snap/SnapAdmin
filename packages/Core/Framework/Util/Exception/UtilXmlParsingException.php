@@ -12,7 +12,8 @@ class UtilXmlParsingException extends UtilException
     public function __construct(
         string $xmlFile,
         string $message
-    ) {
+    )
+    {
         parent::__construct(
             Response::HTTP_BAD_REQUEST,
             self::XML_PARSE_ERROR,

@@ -32,10 +32,11 @@ use Symfony\Component\Console\Question\Question;
 class StoreLoginCommand extends Command
 {
     public function __construct(
-        private readonly StoreClient $storeClient,
-        private readonly EntityRepository $userRepository,
+        private readonly StoreClient         $storeClient,
+        private readonly EntityRepository    $userRepository,
         private readonly SystemConfigService $configService
-    ) {
+    )
+    {
         parent::__construct();
     }
 
@@ -45,8 +46,7 @@ class StoreLoginCommand extends Command
             ->addOption('snapId', 'i', InputOption::VALUE_REQUIRED, 'SnapAdmin ID')
             ->addOption('password', 'p', InputOption::VALUE_REQUIRED, 'Password')
             ->addOption('user', 'u', InputOption::VALUE_REQUIRED, 'User')
-            ->addOption('host', 'g', InputOption::VALUE_OPTIONAL, 'License host')
-        ;
+            ->addOption('host', 'g', InputOption::VALUE_OPTIONAL, 'License host');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -102,6 +102,6 @@ class StoreLoginCommand extends Command
 
         $io->success('Successfully logged in.');
 
-        return (int) Command::SUCCESS;
+        return (int)Command::SUCCESS;
     }
 }

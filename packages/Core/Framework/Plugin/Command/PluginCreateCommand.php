@@ -23,17 +23,18 @@ use Symfony\Component\Filesystem\Filesystem;
 class PluginCreateCommand extends Command
 {
     /**
+     * @param iterable<ScaffoldingGenerator> $generators
      * @internal
      *
-     * @param iterable<ScaffoldingGenerator> $generators
      */
     public function __construct(
-        private readonly string $projectDir,
+        private readonly string               $projectDir,
         private readonly ScaffoldingCollector $scaffoldingCollector,
-        private readonly ScaffoldingWriter $scaffoldingWriter,
-        private readonly Filesystem $filesystem,
-        private readonly iterable $generators
-    ) {
+        private readonly ScaffoldingWriter    $scaffoldingWriter,
+        private readonly Filesystem           $filesystem,
+        private readonly iterable             $generators
+    )
+    {
         parent::__construct();
     }
 
@@ -125,7 +126,7 @@ class PluginCreateCommand extends Command
             return $this->askPascalCaseString($question, $io);
         }
 
-        if (!ctype_upper((string) $answer[0])) {
+        if (!ctype_upper((string)$answer[0])) {
             $io->error('The name must start with an uppercase character');
 
             return $this->askPascalCaseString($question, $io);

@@ -145,10 +145,10 @@ class HappyPathValidator implements ValidatorInterface
 
                 break;
             case $constraint instanceof Type:
-                $types = (array) $constraint->type;
+                $types = (array)$constraint->type;
 
                 foreach ($types as $type) {
-                    $type = strtolower((string) $type);
+                    $type = strtolower((string)$type);
                     $type = $type === 'boolean' ? 'bool' : $type;
                     $isFunction = 'is_' . $type;
                     $ctypeFunction = 'ctype_' . $type;
@@ -231,7 +231,7 @@ class HappyPathValidator implements ValidatorInterface
                 }
 
                 break;
-                // unknown constraint
+            // unknown constraint
             default:
                 return false;
         }

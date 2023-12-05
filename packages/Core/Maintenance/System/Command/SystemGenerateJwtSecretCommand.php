@@ -23,9 +23,10 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 class SystemGenerateJwtSecretCommand extends Command
 {
     public function __construct(
-        private readonly string $projectDir,
+        private readonly string                  $projectDir,
         private readonly JwtCertificateGenerator $jwtCertificateGenerator
-    ) {
+    )
+    {
         parent::__construct();
     }
 
@@ -35,8 +36,7 @@ class SystemGenerateJwtSecretCommand extends Command
             ->addOption('public-key-path', null, InputOption::VALUE_OPTIONAL, 'JWT public key path')
             ->addOption('jwt-passphrase', null, InputOption::VALUE_OPTIONAL, 'JWT private key passphrase', 'snap')
             ->addOption('force', 'f', InputOption::VALUE_NONE, 'Force recreation')
-            ->addOption('use-env', null, InputOption::VALUE_NONE, 'Print JWT secret to console to use it as environment variable')
-        ;
+            ->addOption('use-env', null, InputOption::VALUE_NONE, 'Print JWT secret to console to use it as environment variable');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

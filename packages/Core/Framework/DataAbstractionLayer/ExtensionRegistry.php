@@ -12,9 +12,9 @@ use SnapAdmin\Core\Framework\Log\Package;
 class ExtensionRegistry
 {
     /**
+     * @param iterable<EntityExtension> $extensions
      * @internal
      *
-     * @param iterable<EntityExtension> $extensions
      */
     public function __construct(private readonly iterable $extensions)
     {

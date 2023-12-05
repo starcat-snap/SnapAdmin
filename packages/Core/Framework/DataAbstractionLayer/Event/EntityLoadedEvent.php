@@ -41,9 +41,10 @@ class EntityLoadedEvent extends NestedEvent implements GenericEvent, \IteratorAg
      */
     public function __construct(
         EntityDefinition $definition,
-        array $entities,
-        Context $context
-    ) {
+        array            $entities,
+        Context          $context
+    )
+    {
         $this->entities = $entities;
         $this->definition = $definition;
         $this->context = $context;

@@ -23,9 +23,10 @@ class DoctrineSQLHandler extends AbstractProcessingHandler
      */
     public function __construct(
         Connection $connection,
-        Level $level = Level::Debug,
-        bool $bubble = true
-    ) {
+        Level      $level = Level::Debug,
+        bool       $bubble = true
+    )
+    {
         $this->connection = $connection;
         parent::__construct($level, $bubble);
     }

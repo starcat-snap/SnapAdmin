@@ -11,7 +11,8 @@ class BundleConfigNotFoundException extends SnapAdminHttpException
     public function __construct(
         string $configPath,
         string $bundleName
-    ) {
+    )
+    {
         parent::__construct(
             'Could not find "{{ configPath }}" for bundle "{{ bundle }}".',
             [

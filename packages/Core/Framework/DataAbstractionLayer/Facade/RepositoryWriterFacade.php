@@ -25,9 +25,10 @@ class RepositoryWriterFacade
      */
     public function __construct(
         private readonly DefinitionInstanceRegistry $registry,
-        private readonly SyncService $syncService,
-        private readonly Context $context
-    ) {
+        private readonly SyncService                $syncService,
+        private readonly Context                    $context
+    )
+    {
     }
 
     /**
@@ -82,7 +83,7 @@ class RepositoryWriterFacade
             if (isset($operation['key'])) {
                 $key = $operation['key'];
             }
-            $operations[] = new SyncOperation((string) $key, (string) $operation['entity'], (string) $operation['action'], $operation['payload']);
+            $operations[] = new SyncOperation((string)$key, (string)$operation['entity'], (string)$operation['action'], $operation['payload']);
         }
 
         return $this->syncService->sync($operations, $this->context, new SyncBehavior());

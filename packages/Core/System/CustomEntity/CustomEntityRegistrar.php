@@ -47,10 +47,10 @@ class CustomEntityRegistrar
         $registry = $this->container->get(DefinitionInstanceRegistry::class);
 
         foreach ($entities as $entity) {
-            $fields = json_decode((string) $entity['fields'], true, 512, \JSON_THROW_ON_ERROR);
+            $fields = json_decode((string)$entity['fields'], true, 512, \JSON_THROW_ON_ERROR);
 
             try {
-                $flags = json_decode((string) $entity['flags'], true, 512, \JSON_THROW_ON_ERROR);
+                $flags = json_decode((string)$entity['flags'], true, 512, \JSON_THROW_ON_ERROR);
             } catch (\JsonException $e) {
                 $flags = [];
             }

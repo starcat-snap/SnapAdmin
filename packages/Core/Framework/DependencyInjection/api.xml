@@ -10,7 +10,7 @@
 
         <service id="SnapAdmin\Core\Framework\Api\Controller\FallbackController" public="true">
             <call method="setContainer">
-                <argument type="service" id="service_container" />
+                <argument type="service" id="service_container"/>
             </call>
         </service>
 
@@ -41,7 +41,8 @@
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
             <argument type="service" id="serializer"/>
             <argument type="service" id="api.request_criteria_builder"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\EntityProtection\EntityProtectionValidator"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\EntityProtection\EntityProtectionValidator"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Api\Acl\AclCriteriaValidator"/>
             <call method="setContainer">
                 <argument type="service" id="service_container"/>
@@ -80,17 +81,6 @@
             <tag name="serializer.encoder"/>
         </service>
 
-        <!-- Response types -->
-        <service id="SnapAdmin\Core\Framework\Api\Response\ResponseFactoryRegistry">
-            <argument type="service" id="SnapAdmin\Core\Framework\Api\Response\Type\Api\JsonApiType"/>
-            <!-- deactivated, the current sales channel api design does not match the json api requirements -->
-            <argument type="service" id="SnapAdmin\Core\Framework\Api\Response\Type\Api\JsonType"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Api\Response\Type\Api\JsonApiType">
-            <argument type="service" id="SnapAdmin\Core\Framework\Api\Serializer\JsonApiEncoder"/>
-            <argument type="service" id="SnapAdmin\Core\System\SalesChannel\Api\StructEncoder"/>
-        </service>
 
         <service id="SnapAdmin\Core\Framework\Api\Serializer\JsonApiEncoder"/>
 
@@ -98,10 +88,6 @@
             <argument type="service" id="serializer"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Api\Response\Type\Api\JsonType">
-            <argument type="service" id="SnapAdmin\Core\Framework\Api\Serializer\JsonEntityEncoder"/>
-            <argument type="service" id="SnapAdmin\Core\System\SalesChannel\Api\StructEncoder"/>
-        </service>
 
         <!-- Converter -->
         <service id="SnapAdmin\Core\Framework\Api\Converter\ConverterRegistry">
@@ -115,7 +101,6 @@
         <!-- API Docs -->
         <service id="SnapAdmin\Core\Framework\Api\ApiDefinition\DefinitionService">
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
-            <argument type="service" id="SnapAdmin\Core\System\SalesChannel\Entity\SalesChannelDefinitionInstanceRegistry"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\StoreApiGenerator"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\OpenApi3Generator"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\EntitySchemaGenerator"/>
@@ -134,34 +119,43 @@
         </service>
 
         <service id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\OpenApi3Generator">
-            <argument type="service" id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\OpenApi\OpenApiSchemaBuilder"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\OpenApi\OpenApiPathBuilder"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\OpenApi\OpenApiDefinitionSchemaBuilder"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\OpenApi\OpenApiSchemaBuilder"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\OpenApi\OpenApiPathBuilder"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\OpenApi\OpenApiDefinitionSchemaBuilder"/>
             <argument>%kernel.bundles_metadata%</argument>
-            <argument type="service" id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\BundleSchemaPathCollection"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\BundleSchemaPathCollection"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\StoreApiGenerator">
-            <argument type="service" id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\OpenApi\OpenApiSchemaBuilder"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\OpenApi\OpenApiDefinitionSchemaBuilder"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\OpenApi\OpenApiSchemaBuilder"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\OpenApi\OpenApiDefinitionSchemaBuilder"/>
             <argument>%kernel.bundles_metadata%</argument>
-            <argument type="service" id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\BundleSchemaPathCollection"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\BundleSchemaPathCollection"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\EntitySchemaGenerator">
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\CachedEntitySchemaGenerator" decorates="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\EntitySchemaGenerator">
-            <argument type="service" id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\CachedEntitySchemaGenerator.inner"/>
+        <service id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\CachedEntitySchemaGenerator"
+                 decorates="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\EntitySchemaGenerator">
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\CachedEntitySchemaGenerator.inner"/>
             <argument type="service" id="cache.object"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\Api\Controller\InfoController" public="true">
             <argument type="service" id="SnapAdmin\Core\Framework\Api\ApiDefinition\DefinitionService"/>
             <argument type="service" id="parameter_bag"/>
-            <argument type="service" id="kernel" />
-            <argument type="service" id="assets.packages" />
-            <argument type="service" id="SnapAdmin\Core\Framework\Event\BusinessEventCollector" />
+            <argument type="service" id="kernel"/>
+            <argument type="service" id="assets.packages"/>
+            <argument type="service" id="SnapAdmin\Core\Framework\Event\BusinessEventCollector"/>
             <argument type="service" id="snap.increment.gateway.registry"/>
             <argument type="service" id="Doctrine\DBAL\Connection"/>
             <argument type="service" id="SnapAdmin\Core\Maintenance\System\Service\AppUrlVerifier"/>
@@ -185,12 +179,13 @@
         <service id="SnapAdmin\Core\Framework\Api\Controller\CacheController" public="true">
             <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\CacheClearer"/>
             <argument type="service" id="cache.object"/>
-            <argument type="service" id="SnapAdmin\Storefront\Framework\Cache\CacheWarmer\CacheWarmer" on-invalid="null"/>
+            <argument type="service" id="SnapAdmin\Storefront\Framework\Cache\CacheWarmer\CacheWarmer"
+                      on-invalid="null"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Indexing\EntityIndexerRegistry"/>
-            <tag name="container.service_subscriber" />
-            <tag name="controller.service_arguments" />
+            <tag name="container.service_subscriber"/>
+            <tag name="controller.service_arguments"/>
             <call method="setContainer">
-                <argument type="service" id="Psr\Container\ContainerInterface" />
+                <argument type="service" id="Psr\Container\ContainerInterface"/>
             </call>
         </service>
 
@@ -234,6 +229,16 @@
             <argument>%snap.api.jwt_key.public_key_path%</argument>
         </service>
 
+        <service id="snap.jwt_signer" class="Lcobucci\JWT\Signer\Rsa\Sha256"/>
+
+        <service id="snap.jwt_config" class="Lcobucci\JWT\Configuration">
+            <factory class="SnapAdmin\Core\Framework\Api\Token\JWTConfigurationFactory"
+                     method="createJWTConfiguration"/>
+            <argument type="service" id="snap.jwt_signer"/>
+            <argument type="service" id="snap.private_key"/>
+            <argument type="service" id="snap.public_key"/>
+        </service>
+
         <service class="League\OAuth2\Server\AuthorizationServer" id="snap.api.authorization_server">
             <argument type="service" id="SnapAdmin\Core\Framework\Api\OAuth\ClientRepository"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Api\OAuth\AccessTokenRepository"/>
@@ -255,7 +260,8 @@
             </call>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Api\OAuth\BearerTokenValidator" decorates="League\OAuth2\Server\AuthorizationValidators\BearerTokenValidator">
+        <service id="SnapAdmin\Core\Framework\Api\OAuth\BearerTokenValidator"
+                 decorates="League\OAuth2\Server\AuthorizationValidators\BearerTokenValidator">
             <argument type="service" id="SnapAdmin\Core\Framework\Api\OAuth\BearerTokenValidator.inner"/>
             <argument type="service" id="Doctrine\DBAL\Connection"/>
             <argument type="service" id="snap.jwt_config"/>
@@ -272,12 +278,6 @@
             <tag name="kernel.event_subscriber"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Api\EventListener\Authentication\SalesChannelAuthenticationListener">
-            <tag name="kernel.event_subscriber"/>
-            <argument type="service" id="Doctrine\DBAL\Connection"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Routing\RouteScopeRegistry"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Routing\MaintenanceModeResolver"/>
-        </service>
 
         <service id="SnapAdmin\Core\Framework\Api\EventListener\Authentication\ApiAuthenticationListener">
             <tag name="kernel.event_subscriber"/>
@@ -308,18 +308,6 @@
             </call>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Api\Controller\IntegrationController" public="true">
-            <argument type="service" id="integration.repository"/>
-            <call method="setContainer">
-                <argument type="service" id="service_container"/>
-            </call>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Api\Response\ResponseFactoryInterfaceValueResolver">
-            <tag name="controller.argument_value_resolver" priority="50"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Api\Response\ResponseFactoryRegistry"/>
-        </service>
-
         <service id="SnapAdmin\Core\Framework\Api\Route\ApiRouteLoader">
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
             <tag name="routing.loader"/>
@@ -343,7 +331,7 @@
         </service>
 
         <service id="SnapAdmin\Core\Framework\Api\Controller\CustomSnippetFormatController" public="true">
-            <argument type="service" id="SnapAdmin\Core\Framework\Plugin\KernelPluginCollection" />
+            <argument type="service" id="SnapAdmin\Core\Framework\Plugin\KernelPluginCollection"/>
             <argument type="service" id="twig"/>
         </service>
     </services>

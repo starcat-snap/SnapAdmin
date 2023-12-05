@@ -23,7 +23,7 @@ class ChangelogValidator extends ChangelogProcessor
                 $errors[$entry][] = 'Changelog has invalid filename, please use only alphanumeric characters, dots, dashes and underscores.';
             }
 
-            $changelog = $this->parser->parse((string) file_get_contents($entry));
+            $changelog = $this->parser->parse((string)file_get_contents($entry));
             $violations = $this->validator->validate($changelog);
             if (\count($violations)) {
                 $errors[$entry] = [];
@@ -46,7 +46,7 @@ class ChangelogValidator extends ChangelogProcessor
         $finder->in($this->getUnreleasedDir())->files()->sortByName()->depth('0')->name('*.md');
         if ($finder->hasResults()) {
             foreach ($finder as $file) {
-                $entries[] = (string) $file->getRealPath();
+                $entries[] = (string)$file->getRealPath();
             }
         }
 

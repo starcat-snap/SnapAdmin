@@ -35,7 +35,7 @@ class Kernel extends HttpKernel
     /**
      * @var string Fallback version if nothing is provided via kernel constructor
      */
-    final public const SHOPWARE_FALLBACK_VERSION = '6.6.9999999.9999999-dev';
+    final public const SNAP_FALLBACK_VERSION = '6.6.9999999.9999999-dev';
 
     /**
      * @var Connection|null
@@ -72,18 +72,19 @@ class Kernel extends HttpKernel
      * {@inheritdoc}
      */
     public function __construct(
-        string $environment,
-        bool $debug,
+        string             $environment,
+        bool               $debug,
         KernelPluginLoader $pluginLoader,
-        private string $cacheId,
+        private string     $cacheId,
         // @deprecated tag:v6.6.0 - change signature to `string $version,`
-        ?string $version = self::SHOPWARE_FALLBACK_VERSION,
+        ?string            $version = self::SNAP_FALLBACK_VERSION,
         // @deprecated tag:v6.6.0 - change signature to `Connection $connection,`
-        ?Connection $connection = null,
+        ?Connection        $connection = null,
         // @deprecated tag:v6.6.0 - change signature to `protected string $projectDir`
-        ?string $projectDir = null
-    ) {
-        $version = $version ?? self::SHOPWARE_FALLBACK_VERSION;
+        ?string            $projectDir = null
+    )
+    {
+        $version = $version ?? self::SNAP_FALLBACK_VERSION;
 
         date_default_timezone_set('Asia/Shanghai');
 
@@ -132,7 +133,7 @@ class Kernel extends HttpKernel
 
         $r = new \ReflectionObject($this);
 
-        $dir = (string) $r->getFileName();
+        $dir = (string)$r->getFileName();
         if (!file_exists($dir)) {
             throw FrameworkException::projectDirNotExists($dir);
         }
@@ -329,7 +330,7 @@ class Kernel extends HttpKernel
 
         $pluginDir = $this->pluginLoader->getPluginDir($this->getProjectDir());
 
-        $coreDir = \dirname((string) (new \ReflectionClass(self::class))->getFileName());
+        $coreDir = \dirname((string)(new \ReflectionClass(self::class))->getFileName());
 
         return array_merge(
             $parameters,
@@ -360,11 +361,11 @@ class Kernel extends HttpKernel
             $plugins[$plugin['name']] = $plugin['version'];
         }
 
-        $pluginHash = md5((string) json_encode($plugins, \JSON_THROW_ON_ERROR));
+        $pluginHash = md5((string)json_encode($plugins, \JSON_THROW_ON_ERROR));
 
-        return md5((string) \json_encode([
+        return md5((string)\json_encode([
             $this->cacheId,
-            substr((string) $this->snapVersionRevision, 0, 8),
+            substr((string)$this->snapVersionRevision, 0, 8),
             substr($pluginHash, 0, 8),
             EnvironmentHelper::getVariable('DATABASE_URL', ''),
         ], \JSON_THROW_ON_ERROR));
@@ -372,7 +373,7 @@ class Kernel extends HttpKernel
 
     protected function initializeDatabaseConnectionVariables(): void
     {
-        $snapSkipConnectionVariables = EnvironmentHelper::getVariable('SHOPWARE_SKIP_CONNECTION_VARIABLES', false);
+        $snapSkipConnectionVariables = EnvironmentHelper::getVariable('SNAP_SKIP_CONNECTION_VARIABLES', false);
 
         if ($snapSkipConnectionVariables) {
             return;
@@ -381,10 +382,10 @@ class Kernel extends HttpKernel
         $connection = self::getConnection();
 
         try {
-            $setSessionVariables = (bool) EnvironmentHelper::getVariable('SQL_SET_DEFAULT_SESSION_VARIABLES', true);
+            $setSessionVariables = (bool)EnvironmentHelper::getVariable('SQL_SET_DEFAULT_SESSION_VARIABLES', true);
             $connectionVariables = [];
 
-            $timeZoneSupportEnabled = (bool) EnvironmentHelper::getVariable('SHOPWARE_DBAL_TIMEZONE_SUPPORT_ENABLED', false);
+            $timeZoneSupportEnabled = (bool)EnvironmentHelper::getVariable('SNAP_DBAL_TIMEZONE_SUPPORT_ENABLED', false);
             if ($timeZoneSupportEnabled) {
                 $connectionVariables[] = 'SET @@session.time_zone = "UTC"';
             }

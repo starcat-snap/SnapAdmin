@@ -35,16 +35,18 @@ class SqlQueryParser
      */
     public function __construct(
         private readonly EntityDefinitionQueryHelper $queryHelper,
-        private readonly Connection $connection
-    ) {
+        private readonly Connection                  $connection
+    )
+    {
     }
 
     public function parseRanking(
-        array $queries,
+        array            $queries,
         EntityDefinition $definition,
-        string $root,
-        Context $context
-    ): ParseResult {
+        string           $root,
+        Context          $context
+    ): ParseResult
+    {
         $result = new ParseResult();
 
         /** @var ScoreQuery $query */
@@ -61,14 +63,14 @@ class SqlQueryParser
                     );
 
                     $result->addWhere(
-                        sprintf('IF(%s , %s * %s, 0)', $where, (string) $this->connection->quote($query->getScore()), $field)
+                        sprintf('IF(%s , %s * %s, 0)', $where, (string)$this->connection->quote($query->getScore()), $field)
                     );
 
                     continue;
                 }
 
                 $result->addWhere(
-                    sprintf('IF(%s , %s, 0)', $where, (string) $this->connection->quote($query->getScore()))
+                    sprintf('IF(%s , %s, 0)', $where, (string)$this->connection->quote($query->getScore()))
                 );
             }
 
@@ -81,19 +83,20 @@ class SqlQueryParser
     }
 
     public function parse(
-        Filter $query,
+        Filter           $query,
         EntityDefinition $definition,
-        Context $context,
-        ?string $root = null,
-        bool $negated = false
-    ): ParseResult {
+        Context          $context,
+        ?string          $root = null,
+        bool             $negated = false
+    ): ParseResult
+    {
         if ($root === null) {
             $root = $definition->getEntityName();
         }
 
         if ($query instanceof SingleFieldFilter && $query->getResolved()) {
             $result = new ParseResult();
-            $result->addWhere((string) $query->getResolved());
+            $result->addWhere((string)$query->getResolved());
 
             return $result;
         }
@@ -112,11 +115,12 @@ class SqlQueryParser
     }
 
     private function parseRangeFilter(
-        RangeFilter $query,
+        RangeFilter      $query,
         EntityDefinition $definition,
-        string $root,
-        Context $context
-    ): ParseResult {
+        string           $root,
+        Context          $context
+    ): ParseResult
+    {
         $result = new ParseResult();
 
         $key = $this->getKey();
@@ -158,7 +162,7 @@ class SqlQueryParser
         $result = new ParseResult();
         $result->addWhere($field . ' LIKE :' . $key);
 
-        $escaped = addcslashes((string) $query->getValue(), '\\_%');
+        $escaped = addcslashes((string)$query->getValue(), '\\_%');
         $result->addParameter($key, '%' . $escaped . '%');
 
         return $result;
@@ -219,7 +223,7 @@ class SqlQueryParser
 
         $value = array_values($query->getValue());
         if ($field instanceof IdField || $field instanceof FkField) {
-            $value = array_filter(array_map(fn (bool|float|int|string $id): string => Uuid::fromHexToBytes((string) $id), $value));
+            $value = array_filter(array_map(fn(bool|float|int|string $id): string => Uuid::fromHexToBytes((string)$id), $value));
         }
         $result->addParameter($key, $value, ArrayParameterType::STRING);
 
@@ -260,7 +264,7 @@ class SqlQueryParser
         }
 
         if ($field instanceof IdField || $field instanceof FkField) {
-            $value = Uuid::fromHexToBytes((string) $value);
+            $value = Uuid::fromHexToBytes((string)$value);
         }
 
         $result->addParameter($key, $value);

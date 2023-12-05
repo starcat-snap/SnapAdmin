@@ -11,14 +11,15 @@ use SnapAdmin\Core\Framework\Log\Package;
 class ExcludeExceptionHandler extends AbstractHandler
 {
     /**
+     * @param array<int, string> $excludeExceptionList
      * @internal
      *
-     * @param array<int, string> $excludeExceptionList
      */
     public function __construct(
         private readonly HandlerInterface $handler,
-        private readonly array $excludeExceptionList
-    ) {
+        private readonly array            $excludeExceptionList
+    )
+    {
         parent::__construct();
     }
 

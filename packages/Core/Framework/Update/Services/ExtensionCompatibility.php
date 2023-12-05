@@ -37,9 +37,10 @@ class ExtensionCompatibility
      * @internal
      */
     public function __construct(
-        private StoreClient $storeClient,
+        private StoreClient                   $storeClient,
         private AbstractExtensionDataProvider $extensionDataProvider
-    ) {
+    )
+    {
     }
 
     /**

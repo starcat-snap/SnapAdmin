@@ -11,9 +11,7 @@ use SnapAdmin\Core\Framework\Feature;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin\Exception\DecorationPatternException;
 use SnapAdmin\Core\PlatformRequest;
-use SnapAdmin\Core\SalesChannelRequest;
 use SnapAdmin\Core\System\Locale\LanguageLocaleCodeProvider;
-use SnapAdmin\Core\System\Snippet\SnippetService;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\CacheWarmer\WarmableInterface;
 use Symfony\Component\Intl\Locale;
@@ -37,10 +35,6 @@ class Translator extends AbstractTranslator
      */
     private array $isCustomized = [];
 
-    private ?string $snippetSetId = null;
-
-    private ?string $salesChannelId = null;
-
     private ?string $localeBeforeInject = null;
 
     /**
@@ -63,21 +57,21 @@ class Translator extends AbstractTranslator
      */
     public function __construct(
         private readonly TranslatorInterface&TranslatorBagInterface&LocaleAwareInterface $translator,
-        private readonly RequestStack $requestStack,
-        private readonly CacheInterface $cache,
-        private readonly MessageFormatterInterface $formatter,
-        private readonly string $environment,
-        private readonly Connection $connection,
-        private readonly LanguageLocaleCodeProvider $languageLocaleProvider,
-        private readonly SnippetService $snippetService,
-        private readonly bool $fineGrainedCache
-    ) {
+        private readonly RequestStack                                                    $requestStack,
+        private readonly CacheInterface                                                  $cache,
+        private readonly MessageFormatterInterface                                       $formatter,
+        private readonly string                                                          $environment,
+        private readonly Connection                                                      $connection,
+        private readonly LanguageLocaleCodeProvider                                      $languageLocaleProvider,
+        private readonly bool                                                            $fineGrainedCache
+    )
+    {
     }
 
     public static function buildName(string $id): string
     {
-        if (\strpbrk($id, (string) ItemInterface::RESERVED_CHARACTERS) !== false) {
-            $id = \str_replace(\str_split((string) ItemInterface::RESERVED_CHARACTERS, 1), '_r_', $id);
+        if (\strpbrk($id, (string)ItemInterface::RESERVED_CHARACTERS) !== false) {
+            $id = \str_replace(\str_split((string)ItemInterface::RESERVED_CHARACTERS, 1), '_r_', $id);
         }
 
         return 'translator.' . $id;
@@ -206,8 +200,6 @@ class Translator extends AbstractTranslator
         $this->snippets = [];
         $this->traces = [];
         $this->keys = ['all' => true];
-        $this->snippetSetId = null;
-        $this->salesChannelId = null;
         $this->localeBeforeInject = null;
         $this->locale = null;
         if ($this->translator instanceof SymfonyTranslator) {
@@ -222,12 +214,10 @@ class Translator extends AbstractTranslator
      * Injects temporary settings for translation which differ from Context.
      * Call resetInjection() when specific translation is done
      */
-    public function injectSettings(string $salesChannelId, string $languageId, string $locale, Context $context): void
+    public function injectSettings(string $languageId, string $locale, Context $context): void
     {
         $this->localeBeforeInject = $this->getLocale();
-        $this->salesChannelId = $salesChannelId;
         $this->setLocale($locale);
-        $this->resolveSnippetSetId($salesChannelId, $languageId, $locale);
         $this->getCatalogue($locale);
     }
 
@@ -239,38 +229,6 @@ class Translator extends AbstractTranslator
         }
 
         $this->setLocale($this->localeBeforeInject);
-        $this->snippetSetId = null;
-        $this->salesChannelId = null;
-    }
-
-    public function getSnippetSetId(?string $locale = null): ?string
-    {
-        $snippetSetId = $this->snippetSetId;
-        $currentRequest = $this->requestStack->getMainRequest();
-
-        // when document is rendered from admin, SalesChannelRequest::ATTRIBUTE_DOMAIN_SNIPPET_SET_ID is not set thus we use snippetSetId from injectSetting method
-        if ($currentRequest !== null && $currentRequest->attributes->has(SalesChannelRequest::ATTRIBUTE_DOMAIN_SNIPPET_SET_ID)) {
-            $snippetSetId = $currentRequest->attributes->get(SalesChannelRequest::ATTRIBUTE_DOMAIN_SNIPPET_SET_ID);
-        }
-
-        if ($locale === null) {
-            return $this->snippetSetId = $snippetSetId;
-        }
-        // If locale parameter is using, prioritize it over snippet set of request
-        if (\array_key_exists($locale, $this->snippets)) {
-            return $this->snippets[$locale];
-        }
-
-        // get snippet set by locale but in case there are more than one sets with a same locale, we should prioritize the domain's snippet set
-        $snippetSetIds = $this->connection->fetchFirstColumn('SELECT LOWER(HEX(id)) FROM snippet_set WHERE iso = :iso', ['iso' => $locale]);
-
-        if (!empty($snippetSetIds)) {
-            $snippetSetId = \in_array($snippetSetId, $snippetSetIds, true) ? $snippetSetId : $snippetSetIds[0];
-        }
-
-        $this->snippets[$locale] = $snippetSetId;
-
-        return $this->snippetSetId = $snippetSetId;
     }
 
     /**
@@ -296,13 +254,6 @@ class Translator extends AbstractTranslator
         return mb_strpos($catalog->getLocale(), '-') !== false;
     }
 
-    private function resolveSnippetSetId(string $salesChannelId, string $languageId, string $locale): void
-    {
-        $snippetSetId = $this->snippetService->findSnippetSetId($salesChannelId, $languageId, $locale);
-
-        $this->snippetSetId = $snippetSetId;
-    }
-
     /**
      * Add language specific snippets provided by the admin
      */
@@ -323,30 +274,10 @@ class Translator extends AbstractTranslator
             return $this->isCustomized[$snippetSetId];
         }
 
-        $snippets = $this->loadSnippets($catalog, $snippetSetId, $fallbackLocale);
-
         $newCatalog = clone $catalog;
-        $newCatalog->add($snippets);
-
         return $this->isCustomized[$snippetSetId] = $newCatalog;
     }
 
-    /**
-     * @return array<string, string>
-     */
-    private function loadSnippets(MessageCatalogueInterface $catalog, string $snippetSetId, ?string $fallbackLocale): array
-    {
-        $this->resolveSalesChannelId();
-
-        $key = sprintf('translation.catalog.%s.%s', $this->salesChannelId ?: 'DEFAULT', $snippetSetId);
-
-        return $this->cache->get($key, function (ItemInterface $item) use ($catalog, $snippetSetId, $fallbackLocale) {
-            $item->tag('translation.catalog.' . $snippetSetId);
-            $item->tag(sprintf('translation.catalog.%s', $this->salesChannelId ?: 'DEFAULT'));
-
-            return $this->snippetService->getStorefrontSnippets($catalog, $snippetSetId, $fallbackLocale, $this->salesChannelId);
-        });
-    }
 
     private function getFallbackLocale(): string
     {
@@ -356,20 +287,5 @@ class Translator extends AbstractTranslator
             // this allows us to use the translator even if there's no db connection yet
             return 'en-GB';
         }
-    }
-
-    private function resolveSalesChannelId(): void
-    {
-        if ($this->salesChannelId !== null) {
-            return;
-        }
-
-        $request = $this->requestStack->getMainRequest();
-
-        if (!$request) {
-            return;
-        }
-
-        $this->salesChannelId = $request->attributes->get(PlatformRequest::ATTRIBUTE_SALES_CHANNEL_ID);
     }
 }

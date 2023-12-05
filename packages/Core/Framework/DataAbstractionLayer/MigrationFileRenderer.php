@@ -17,8 +17,9 @@ class MigrationFileRenderer
         string $namespace,
         string $className,
         string $timestamp,
-        array $queries
-    ): string {
+        array  $queries
+    ): string
+    {
         $formattedSql = $this->formatSqlQueries($queries);
 
         $stubPath = __DIR__ . '/stubs/migration.stub';

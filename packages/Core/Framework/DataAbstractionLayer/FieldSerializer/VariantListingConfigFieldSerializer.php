@@ -30,17 +30,19 @@ class VariantListingConfigFieldSerializer extends AbstractFieldSerializer
      */
     public function __construct(
         DefinitionInstanceRegistry $definitionRegistry,
-        ValidatorInterface $validator
-    ) {
+        ValidatorInterface         $validator
+    )
+    {
         parent::__construct($validator, $definitionRegistry);
     }
 
     public function encode(
-        Field $field,
-        EntityExistence $existence,
-        KeyValuePair $data,
+        Field             $field,
+        EntityExistence   $existence,
+        KeyValuePair      $data,
         WriteParameterBag $parameters
-    ): \Generator {
+    ): \Generator
+    {
         if (!$field instanceof VariantListingConfigField) {
             throw DataAbstractionLayerException::invalidSerializerField(VariantListingConfigField::class, $field);
         }
@@ -48,7 +50,7 @@ class VariantListingConfigFieldSerializer extends AbstractFieldSerializer
         $this->validateIfNeeded($field, $existence, $data, $parameters);
 
         $value = $data->getValue();
-        $value['displayParent'] = isset($value['displayParent']) ? (int) $value['displayParent'] : null;
+        $value['displayParent'] = isset($value['displayParent']) ? (int)$value['displayParent'] : null;
 
         yield $field->getStorageName() => !empty($value) ? Json::encode($value) : null;
     }
@@ -64,7 +66,7 @@ class VariantListingConfigFieldSerializer extends AbstractFieldSerializer
         }
 
         return new VariantListingConfig(
-            isset($value['displayParent']) ? (bool) $value['displayParent'] : null,
+            isset($value['displayParent']) ? (bool)$value['displayParent'] : null,
             $value['mainVariantId'] ?? null,
             $value['configuratorGroupConfig'] ?? null,
         );

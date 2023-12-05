@@ -35,8 +35,7 @@ class UserChangePasswordCommand extends Command
     {
         $this
             ->addArgument('username', InputArgument::REQUIRED)
-            ->addOption('password', 'p', InputOption::VALUE_REQUIRED, 'New password for the user')
-        ;
+            ->addOption('password', 'p', InputOption::VALUE_REQUIRED, 'New password for the user');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

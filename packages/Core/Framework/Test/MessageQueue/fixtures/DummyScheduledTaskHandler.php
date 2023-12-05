@@ -19,10 +19,11 @@ final class DummyScheduledTaskHandler extends ScheduledTaskHandler
     private bool $wasCalled = false;
 
     public function __construct(
-        EntityRepository $scheduledTaskRepository,
+        EntityRepository        $scheduledTaskRepository,
         private readonly string $taskId,
-        private readonly bool $shouldThrowException = false
-    ) {
+        private readonly bool   $shouldThrowException = false
+    )
+    {
         parent::__construct($scheduledTaskRepository);
     }
 

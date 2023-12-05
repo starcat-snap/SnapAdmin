@@ -35,8 +35,9 @@ class CompiledFieldCollection extends FieldCollection
 
     public function __construct(
         private readonly DefinitionInstanceRegistry $registry,
-        iterable $elements = []
-    ) {
+        iterable                                    $elements = []
+    )
+    {
         foreach ($elements as $element) {
             $this->addField($element);
         }
@@ -129,9 +130,9 @@ class CompiledFieldCollection extends FieldCollection
     }
 
     /**
+     * @return list<string>
      * @deprecated tag:v6.6.0 - Will be removed without replacement as it is unused
      *
-     * @return list<string>
      */
     public function getMappedByStorageName()
     {
@@ -150,7 +151,7 @@ class CompiledFieldCollection extends FieldCollection
      */
     public function filterByFlag(string $flagClass): self
     {
-        return $this->filter(static fn (Field $field) => $field->is($flagClass));
+        return $this->filter(static fn(Field $field) => $field->is($flagClass));
     }
 
     public function getChildrenAssociationField(): ?ChildrenAssociationField

@@ -10,9 +10,10 @@ use SnapAdmin\Core\Framework\Plugin\PluginEntity;
 class PluginPostUninstallEvent extends PluginLifecycleEvent
 {
     public function __construct(
-        PluginEntity $plugin,
+        PluginEntity                      $plugin,
         private readonly UninstallContext $context
-    ) {
+    )
+    {
         parent::__construct($plugin);
     }
 

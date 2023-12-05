@@ -23,18 +23,19 @@ use Symfony\Component\Validator\Constraints\Type;
 class TimeZoneFieldSerializer extends AbstractFieldSerializer
 {
     public function encode(
-        Field $field,
-        EntityExistence $existence,
-        KeyValuePair $data,
+        Field             $field,
+        EntityExistence   $existence,
+        KeyValuePair      $data,
         WriteParameterBag $parameters
-    ): \Generator {
+    ): \Generator
+    {
         if (!$field instanceof TimeZoneField) {
             throw DataAbstractionLayerException::invalidSerializerField(TimeZoneField::class, $field);
         }
 
         $this->validateIfNeeded($field, $existence, $data, $parameters);
 
-        yield $field->getStorageName() => $data->getValue() !== null ? (string) $data->getValue() : null;
+        yield $field->getStorageName() => $data->getValue() !== null ? (string)$data->getValue() : null;
     }
 
     public function decode(Field $field, mixed $value): ?string
@@ -43,7 +44,7 @@ class TimeZoneFieldSerializer extends AbstractFieldSerializer
             return $value;
         }
 
-        return (string) $value;
+        return (string)$value;
     }
 
     /**

@@ -21,9 +21,10 @@ class ShopSecretInvalidMiddleware implements MiddlewareInterface
      * @internal
      */
     public function __construct(
-        private readonly Connection $connection,
+        private readonly Connection          $connection,
         private readonly SystemConfigService $systemConfigService
-    ) {
+    )
+    {
     }
 
     public function __invoke(ResponseInterface $response): ResponseInterface

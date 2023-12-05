@@ -15,9 +15,10 @@ class BusinessEventDefinition extends Struct
     public function __construct(
         protected string $name,
         protected string $class,
-        protected array $data,
-        protected array $aware = []
-    ) {
+        protected array  $data,
+        protected array  $aware = []
+    )
+    {
     }
 
     public function getName(): string

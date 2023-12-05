@@ -14,14 +14,15 @@
             <tag name="snap.entity.definition"/>
         </service>
 
-        <service id="SnapAdmin\Core\System\CustomField\Aggregate\CustomFieldSetRelation\CustomFieldSetRelationDefinition">
+        <service
+                id="SnapAdmin\Core\System\CustomField\Aggregate\CustomFieldSetRelation\CustomFieldSetRelationDefinition">
             <tag name="snap.entity.definition"/>
         </service>
 
         <service id="SnapAdmin\Core\System\CustomField\Api\CustomFieldSetActionController" public="true">
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
             <call method="setContainer">
-                <argument type="service" id="service_container" />
+                <argument type="service" id="service_container"/>
             </call>
         </service>
 

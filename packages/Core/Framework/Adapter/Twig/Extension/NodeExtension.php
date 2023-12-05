@@ -18,9 +18,10 @@ class NodeExtension extends AbstractExtension
      * @internal
      */
     public function __construct(
-        private readonly TemplateFinder $finder,
+        private readonly TemplateFinder        $finder,
         private readonly TemplateScopeDetector $templateScopeDetector,
-    ) {
+    )
+    {
     }
 
     /**

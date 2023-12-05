@@ -880,7 +880,7 @@ class LanguageValidatorTest extends TestCase
 
     protected function addDefaultLocales(array $languages): array
     {
-        return array_map(fn ($lang) => $this->addDefaultLocale($lang), $languages);
+        return array_map(fn($lang) => $this->addDefaultLocale($lang), $languages);
     }
 
     protected function addDefaultLocale(array $lang): array
@@ -897,7 +897,7 @@ class LanguageValidatorTest extends TestCase
 
     protected function addDefaultTranslationCodes(array $languages)
     {
-        return array_map(fn ($lang) => $this->addDefaultTranslationCode($lang), $languages);
+        return array_map(fn($lang) => $this->addDefaultTranslationCode($lang), $languages);
     }
 
     protected function addDefaultTranslationCode(array $lang)

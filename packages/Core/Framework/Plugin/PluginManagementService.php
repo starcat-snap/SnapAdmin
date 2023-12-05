@@ -22,14 +22,15 @@ class PluginManagementService
     final public const APP = 'app';
 
     public function __construct(
-        private readonly string $projectDir,
+        private readonly string            $projectDir,
         private readonly PluginZipDetector $pluginZipDetector,
-        private readonly PluginExtractor $pluginExtractor,
-        private readonly PluginService $pluginService,
-        private readonly Filesystem $filesystem,
-        private readonly CacheClearer $cacheClearer,
-        private readonly Client $client
-    ) {
+        private readonly PluginExtractor   $pluginExtractor,
+        private readonly PluginService     $pluginService,
+        private readonly Filesystem        $filesystem,
+        private readonly CacheClearer      $cacheClearer,
+        private readonly Client            $client
+    )
+    {
     }
 
     public function extractPluginZip(string $file, bool $delete = true, ?string $storeType = null): string

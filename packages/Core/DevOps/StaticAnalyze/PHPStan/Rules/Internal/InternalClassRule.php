@@ -12,16 +12,9 @@ use PHPUnit\Framework\TestCase;
 use SnapAdmin\Core\Framework\Bundle;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Command\RefreshIndexCommand;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Indexing\EntityIndexerRegistry;
-use SnapAdmin\Core\Framework\Demodata\Command\DemodataCommand;
-use SnapAdmin\Core\Framework\Demodata\DemodataContext;
-use SnapAdmin\Core\Framework\Demodata\DemodataGeneratorInterface;
-use SnapAdmin\Core\Framework\Demodata\DemodataRequest;
-use SnapAdmin\Core\Framework\Demodata\DemodataService;
-use SnapAdmin\Core\Framework\Demodata\Event\DemodataRequestCreatedEvent;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Migration\MigrationStep;
 use SnapAdmin\Core\Framework\Plugin;
-use SnapAdmin\Storefront\Controller\StorefrontController;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
@@ -41,14 +34,6 @@ class InternalClassRule implements Rule
     ];
     private const MESSAGE_HANDLER_EXCEPTIONS = [
         EntityIndexerRegistry::class,
-    ];
-    private const DEMO_DATA_EXCEPTIONS = [
-        DemodataContext::class,
-        DemodataGeneratorInterface::class,
-        DemodataRequest::class,
-        DemodataService::class,
-        DemodataCommand::class,
-        DemodataRequestCreatedEvent::class,
     ];
 
     public function getNodeType(): string
@@ -73,10 +58,6 @@ class InternalClassRule implements Rule
 
         if ($this->isTestClass($node)) {
             return [\sprintf('Test classes (%s) must be flagged @internal to not be captured by the BC checker', $node->getClassReflection()->getName())];
-        }
-
-        if ($this->isStorefrontController($node)) {
-            return ['Storefront controllers must be flagged @internal to not be captured by the BC checker. The BC promise is checked over the route annotation.'];
         }
 
         if ($this->isBundle($node)) {
@@ -136,17 +117,6 @@ class InternalClassRule implements Rule
     private function isInternal(string $doc): bool
     {
         return \str_contains($doc, '@internal') || \str_contains($doc, 'reason:becomes-internal');
-    }
-
-    private function isStorefrontController(InClassNode $node): bool
-    {
-        $class = $node->getClassReflection();
-
-        if ($class->getParentClass() === null) {
-            return false;
-        }
-
-        return $class->getParentClass()->getName() === StorefrontController::class;
     }
 
     private function isBundle(InClassNode $node): bool

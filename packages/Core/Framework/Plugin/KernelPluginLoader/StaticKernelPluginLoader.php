@@ -10,9 +10,10 @@ class StaticKernelPluginLoader extends KernelPluginLoader
 {
     public function __construct(
         ClassLoader $classLoader,
-        ?string $pluginDir = null,
-        array $plugins = []
-    ) {
+        ?string     $pluginDir = null,
+        array       $plugins = []
+    )
+    {
         parent::__construct($classLoader, $pluginDir);
 
         $this->pluginInfos = $plugins;

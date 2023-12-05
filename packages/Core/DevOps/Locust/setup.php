@@ -1,4 +1,5 @@
 <?php declare(strict_types=1);
+
 use Doctrine\DBAL\ArrayParameterType;
 use Doctrine\DBAL\Connection;
 use SnapAdmin\Core\Defaults;
@@ -11,13 +12,13 @@ $connection->executeStatement('SET sql_mode=(SELECT REPLACE(@@sql_mode,\'ONLY_FU
 
 $fs = new Filesystem();
 
-$env = json_decode((string) file_get_contents(__DIR__ . '/env.dist.json'), true, 512, \JSON_THROW_ON_ERROR);
+$env = json_decode((string)file_get_contents(__DIR__ . '/env.dist.json'), true, 512, \JSON_THROW_ON_ERROR);
 if (file_exists(__DIR__ . '/env.json')) {
-    $env = array_replace_recursive($env, json_decode((string) file_get_contents(__DIR__ . '/env.json'), true, 512, \JSON_THROW_ON_ERROR));
+    $env = array_replace_recursive($env, json_decode((string)file_get_contents(__DIR__ . '/env.json'), true, 512, \JSON_THROW_ON_ERROR));
 }
 
 /** @var Connection $connection */
-$limit = $env['category_page_limit'] !== null ? ' LIMIT ' . (int) $env['category_page_limit'] : '';
+$limit = $env['category_page_limit'] !== null ? ' LIMIT ' . (int)$env['category_page_limit'] : '';
 
 $salesChannel = $connection->fetchAssociative(
     '
@@ -76,7 +77,7 @@ $listings = $connection->fetchFirstColumn(
 
 $storeApiCategories = $connection->fetchFirstColumn('SELECT LOWER(HEX(id)) FROM category WHERE level <= 5 ' . $limit);
 
-$limit = $env['product_page_limit'] !== null ? ' LIMIT ' . (int) $env['product_page_limit'] : '';
+$limit = $env['product_page_limit'] !== null ? ' LIMIT ' . (int)$env['product_page_limit'] : '';
 $details = $connection->fetchFirstColumn('
 SELECT
   CONCAT(\'/\', seo_path_info)
@@ -96,7 +97,7 @@ GROUP BY product.id
 $keywords = array_map(static function (string $term) {
     $terms = explode(' ', $term);
 
-    return array_filter($terms, static fn (string $split) => mb_strlen($split) >= 4);
+    return array_filter($terms, static fn(string $split) => mb_strlen($split) >= 4);
 }, $connection->fetchFirstColumn('SELECT name FROM product_translation WHERE name IS NOT NULL ' . $limit));
 
 $keywords = array_values(array_unique(array_merge(...$keywords)));
@@ -118,7 +119,7 @@ $advertisements = $connection->fetchAllAssociative(
        INNER JOIN seo_url
           ON seo_url.route_name = \'frontend.detail.page\' AND is_deleted = 0 AND is_canonical = 1
     WHERE is_closeout = 0 AND min_purchase = 1
-    LIMIT ' . (int) $env['advertisements']
+    LIMIT ' . (int)$env['advertisements']
 );
 
 $connection->executeStatement(

@@ -12,8 +12,9 @@ class BusinessEventCollectorEvent extends NestedEvent
 
     public function __construct(
         private readonly BusinessEventCollectorResponse $events,
-        private readonly Context $context
-    ) {
+        private readonly Context                        $context
+    )
+    {
     }
 
     public function getCollection(): BusinessEventCollectorResponse

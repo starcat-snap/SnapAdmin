@@ -29,8 +29,9 @@ class EntityIdSearchResultLoadedEvent extends NestedEvent implements GenericEven
 
     public function __construct(
         EntityDefinition $definition,
-        IdSearchResult $result
-    ) {
+        IdSearchResult   $result
+    )
+    {
         $this->result = $result;
         $this->definition = $definition;
         $this->name = $this->definition->getEntityName() . '.id.search.result.loaded';

@@ -20,7 +20,8 @@ class CacheInvalidatorStorage extends AbstractInvalidatorStorage
      */
     public function __construct(
         private readonly AdapterInterface $cache
-    ) {
+    )
+    {
     }
 
     public function store(array $tags): void

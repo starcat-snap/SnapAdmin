@@ -100,7 +100,7 @@ class KernelLifecycleManager
      */
     public static function createKernel(?string $kernelClass = null, bool $reuseConnection = true, string $cacheId = 'h8f3f0ee9c61829627676afd6294bb029', ?string $projectDir = null): Kernel
     {
-        $_SERVER['SHOPWARE_CACHE_ID'] = $cacheId;
+        $_SERVER['SNAP_CACHE_ID'] = $cacheId;
 
         if ($kernelClass === null) {
             if (static::$class === null) {
@@ -110,8 +110,8 @@ class KernelLifecycleManager
             $kernelClass = static::$class;
         }
 
-        $env = (string) EnvironmentHelper::getVariable('APP_ENV', 'test');
-        $debug = (bool) EnvironmentHelper::getVariable('APP_DEBUG', true);
+        $env = (string)EnvironmentHelper::getVariable('APP_ENV', 'test');
+        $debug = (bool)EnvironmentHelper::getVariable('APP_DEBUG', true);
 
         if (self::$classLoader === null) {
             throw new \InvalidArgumentException('No class loader set. Please call KernelLifecycleManager::prepare');
@@ -160,7 +160,7 @@ class KernelLifecycleManager
      */
     public static function getKernelClass(): string
     {
-        if (!class_exists($class = (string) EnvironmentHelper::getVariable('KERNEL_CLASS', Kernel::class))) {
+        if (!class_exists($class = (string)EnvironmentHelper::getVariable('KERNEL_CLASS', Kernel::class))) {
             throw new \RuntimeException(
                 sprintf(
                     'Class "%s" doesn\'t exist or cannot be autoloaded. Check that the KERNEL_CLASS value in phpunit.xml matches the fully-qualified class name of your Kernel or override the %s::createKernel() method.',

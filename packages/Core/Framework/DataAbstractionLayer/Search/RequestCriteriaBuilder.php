@@ -40,11 +40,12 @@ class RequestCriteriaBuilder
      * @internal
      */
     public function __construct(
-        private readonly AggregationParser $aggregationParser,
-        private readonly ApiCriteriaValidator $validator,
+        private readonly AggregationParser      $aggregationParser,
+        private readonly ApiCriteriaValidator   $validator,
         private readonly CriteriaArrayConverter $converter,
-        private readonly ?int $maxLimit = null
-    ) {
+        private readonly ?int                   $maxLimit = null
+    )
+    {
     }
 
     public function handleRequest(Request $request, Criteria $criteria, EntityDefinition $definition, Context $context): Criteria
@@ -77,7 +78,7 @@ class RequestCriteriaBuilder
     public function addTotalCountMode(string $totalCountMode, Criteria $criteria): void
     {
         if (is_numeric($totalCountMode)) {
-            $criteria->setTotalCountMode((int) $totalCountMode);
+            $criteria->setTotalCountMode((int)$totalCountMode);
 
             // total count is out of bounds
             if ($criteria->getTotalCountMode() > 2 || $criteria->getTotalCountMode() < 0) {
@@ -111,7 +112,7 @@ class RequestCriteriaBuilder
             $criteria->setLimit(null);
         } else {
             if (isset($payload['total-count-mode'])) {
-                $this->addTotalCountMode((string) $payload['total-count-mode'], $criteria);
+                $this->addTotalCountMode((string)$payload['total-count-mode'], $criteria);
             }
 
             if (isset($payload['limit'])) {
@@ -160,7 +161,7 @@ class RequestCriteriaBuilder
         }
 
         if (isset($payload['term'])) {
-            $term = trim((string) $payload['term']);
+            $term = trim((string)$payload['term']);
             $criteria->setTerm($term);
         }
 
@@ -181,7 +182,7 @@ class RequestCriteriaBuilder
                 $field = $definition->getFields()->get($propertyName);
 
                 if (!$field instanceof AssociationField) {
-                    throw new AssociationNotFoundException((string) $propertyName);
+                    throw new AssociationNotFoundException((string)$propertyName);
                 }
 
                 $ref = $field->getReferenceDefinition();
@@ -223,18 +224,18 @@ class RequestCriteriaBuilder
             $naturalSorting = $sort['naturalSorting'] ?? false;
             $type = $sort['type'] ?? '';
 
-            if (strcasecmp((string) $order, 'desc') === 0) {
+            if (strcasecmp((string)$order, 'desc') === 0) {
                 $order = FieldSorting::DESCENDING;
             } else {
                 $order = FieldSorting::ASCENDING;
             }
 
-            $class = strcasecmp((string) $type, 'count') === 0 ? CountSorting::class : FieldSorting::class;
+            $class = strcasecmp((string)$type, 'count') === 0 ? CountSorting::class : FieldSorting::class;
 
             $sortings[] = new $class(
                 $this->buildFieldName($definition, $sort['field']),
                 $order,
-                (bool) $naturalSorting
+                (bool)$naturalSorting
             );
         }
 
@@ -320,8 +321,8 @@ class RequestCriteriaBuilder
             return;
         }
 
-        $page = (int) $payload['page'];
-        $limit = (int) ($payload['limit'] ?? 0);
+        $page = (int)$payload['page'];
+        $limit = (int)($payload['limit'] ?? 0);
 
         if ($page <= 0) {
             $searchRequestException->add(new InvalidPageQueryException($page), '/page');
@@ -350,7 +351,7 @@ class RequestCriteriaBuilder
             return;
         }
 
-        $limit = (int) $payload['limit'];
+        $limit = (int)$payload['limit'];
         if ($limit <= 0) {
             $searchRequestException->add(new InvalidLimitQueryException($limit), '/limit');
 

@@ -16,9 +16,9 @@ class ExceptionHandlerRegistry
     protected $exceptionHandlers = [];
 
     /**
+     * @param iterable<ExceptionHandlerInterface> $exceptionHandlers
      * @internal
      *
-     * @param iterable<ExceptionHandlerInterface> $exceptionHandlers
      */
     public function __construct(iterable $exceptionHandlers)
     {

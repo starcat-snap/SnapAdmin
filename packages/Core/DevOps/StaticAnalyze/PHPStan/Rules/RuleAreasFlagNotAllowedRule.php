@@ -50,7 +50,7 @@ class RuleAreasFlagNotAllowedRule implements Rule
             return [];
         }
 
-        if ((string) $node->name !== 'addFlags') {
+        if ((string)$node->name !== 'addFlags') {
             return [];
         }
 
@@ -93,7 +93,7 @@ class RuleAreasFlagNotAllowedRule implements Rule
         switch (true) {
             case $node instanceof New_:
                 if ($node->class instanceof Name) {
-                    return (string) $node->class;
+                    return (string)$node->class;
                 }
 
                 return null;

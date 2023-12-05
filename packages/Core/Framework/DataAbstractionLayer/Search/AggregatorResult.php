@@ -15,9 +15,10 @@ class AggregatorResult extends Struct
 {
     public function __construct(
         private readonly AggregationResultCollection $aggregations,
-        private readonly Context $context,
-        private readonly Criteria $criteria
-    ) {
+        private readonly Context                     $context,
+        private readonly Criteria                    $criteria
+    )
+    {
     }
 
     public function getAggregations(): AggregationResultCollection

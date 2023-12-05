@@ -20,14 +20,15 @@ class CacheIdLoader
     public function __construct(
         private readonly AbstractKeyValueStorage $keyValueStorage,
         private readonly ?CacheItemPoolInterface $restartSignalCachePool = null
-    ) {
+    )
+    {
     }
 
     public function load(): string
     {
-        $cacheId = EnvironmentHelper::getVariable('SHOPWARE_CACHE_ID');
+        $cacheId = EnvironmentHelper::getVariable('SNAP_CACHE_ID');
         if ($cacheId) {
-            return (string) $cacheId;
+            return (string)$cacheId;
         }
 
         try {

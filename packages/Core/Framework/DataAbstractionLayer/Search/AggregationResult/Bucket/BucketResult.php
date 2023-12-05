@@ -15,9 +15,10 @@ class BucketResult extends AggregationResult
      * @param list<Bucket> $buckets
      */
     public function __construct(
-        string $name,
+        string          $name,
         protected array $buckets
-    ) {
+    )
+    {
         parent::__construct($name);
     }
 

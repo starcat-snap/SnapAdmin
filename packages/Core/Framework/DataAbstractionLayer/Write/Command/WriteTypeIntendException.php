@@ -12,9 +12,10 @@ class WriteTypeIntendException extends SnapAdminHttpException
 {
     public function __construct(
         EntityDefinition $definition,
-        string $expectedClass,
-        string $actualClass
-    ) {
+        string           $expectedClass,
+        string           $actualClass
+    )
+    {
         $hint = match ([$expectedClass, $actualClass]) {
             [UpdateCommand::class, InsertCommand::class] => 'Hint: Use POST method to create new entities.',
             default => '',

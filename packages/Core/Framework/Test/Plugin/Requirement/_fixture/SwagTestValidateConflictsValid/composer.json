@@ -1,24 +1,24 @@
 {
-    "name": "swag/test-validate-conflicts-valid",
-    "description": "Test conflict handling",
-    "version": "v1.0.0",
-    "type": "snap-platform-plugin",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "snap AG",
-            "role": "Manufacturer"
-        }
-    ],
-    "conflict": {
-        "snap/storefront": "< 6.1.0"
-    },
-    "extra": {
-        "snap-plugin-class": "SwagTestValidateConflictsValid\\SwagTestValidateConflictsValid",
-        "copyright": "(c) by snap AG",
-        "label": {
-            "de-DE": "Test für Konflikte-Handling",
-            "en-GB": "Test for conflict handling"
-        }
+  "name": "swag/test-validate-conflicts-valid",
+  "description": "Test conflict handling",
+  "version": "v1.0.0",
+  "type": "snap-platform-plugin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "snap AG",
+      "role": "Manufacturer"
     }
+  ],
+  "conflict": {
+    "snap/storefront": "< 6.1.0"
+  },
+  "extra": {
+    "snap-plugin-class": "SwagTestValidateConflictsValid\\SwagTestValidateConflictsValid",
+    "copyright": "(c) by snap AG",
+    "label": {
+      "de-DE": "Test für Konflikte-Handling",
+      "en-GB": "Test for conflict handling"
+    }
+  }
 }

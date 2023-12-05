@@ -2,12 +2,12 @@
 # List of all available Hooks for Scripts
 
 {% for useCase in data %}
-## {{ useCase.title }}
+##  {{ useCase.title }}
 
 {{ useCase.description|raw }}
 
 {% for hook in useCase.hooks %}
-#### {{ hook.name }}
+####  {{ hook.name }}
 
 {% if hook.deprecation %}
 {{ hook.deprecation|raw }}
@@ -51,8 +51,8 @@
 {% endfor %}
 
 {%- macro service_list(services) -%}
-    {%- for service in services -%}
-        {%- if service.deprecated -%}
+{%- for service in services -%}
+{%- if service.deprecated -%}
             [~~{{ service.name }}~~]({{ service.link }}) (**Deprecated:** {{ service.deprecated }})<br>
         {%- else -%}
             [{{ service.name }}]({{ service.link }})<br>

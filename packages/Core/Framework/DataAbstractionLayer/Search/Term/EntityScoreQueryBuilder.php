@@ -29,12 +29,13 @@ class EntityScoreQueryBuilder
      * @return ScoreQuery[]
      */
     public function buildScoreQueries(
-        SearchPattern $term,
+        SearchPattern    $term,
         EntityDefinition $definition,
-        string $root,
-        Context $context,
-        float $multiplier = 1.0
-    ): array {
+        string           $root,
+        Context          $context,
+        float            $multiplier = 1.0
+    ): array
+    {
         static $counter = 0;
         ++$counter;
 

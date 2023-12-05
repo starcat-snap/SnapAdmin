@@ -17,7 +17,8 @@ class SyncResult extends Struct
         protected array $data,
         protected array $notFound = [],
         protected array $deleted = []
-    ) {
+    )
+    {
     }
 
     /**

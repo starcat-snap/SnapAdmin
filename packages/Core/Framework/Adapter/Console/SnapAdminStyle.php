@@ -14,7 +14,7 @@ class SnapAdminStyle extends SymfonyStyle
     {
         $progressBar = parent::createProgressBar($max);
 
-        $character = (string) EnvironmentHelper::getVariable('PROGRESS_BAR_CHARACTER', '');
+        $character = (string)EnvironmentHelper::getVariable('PROGRESS_BAR_CHARACTER', '');
         if ($character) {
             $progressBar->setProgressCharacter($character);
         }

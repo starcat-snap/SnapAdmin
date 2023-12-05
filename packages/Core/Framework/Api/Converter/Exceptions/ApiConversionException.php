@@ -75,7 +75,7 @@ class ApiConversionException extends SnapAdminHttpException
                 }
 
                 $error = [
-                    'status' => (string) $this->getStatusCode(),
+                    'status' => (string)$this->getStatusCode(),
                     'code' => $errorCode,
                     'title' => Response::$statusTexts[Response::HTTP_BAD_REQUEST],
                     'detail' => $exception->getMessage(),

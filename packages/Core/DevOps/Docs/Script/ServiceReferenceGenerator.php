@@ -55,8 +55,9 @@ class ServiceReferenceGenerator implements ScriptReferenceGenerator
 
     public function __construct(
         private readonly Environment $twig,
-        private readonly string $projectDir
-    ) {
+        private readonly string      $projectDir
+    )
+    {
         $this->docFactory = DocBlockFactory::createInstance([
             'script-service' => Generic::class,
             'example' => Example::class,
@@ -68,9 +69,7 @@ class ServiceReferenceGenerator implements ScriptReferenceGenerator
         )->getTagsByName('method');
 
         foreach ($methodDocs as $methodDoc) {
-            $this->injectedServices[
-                ltrim((string) $methodDoc->getReturnType(), '\\')
-            ] = $methodDoc->getMethodName();
+            $this->injectedServices[ltrim((string)$methodDoc->getReturnType(), '\\')] = $methodDoc->getMethodName();
         }
     }
 
@@ -244,7 +243,7 @@ class ServiceReferenceGenerator implements ScriptReferenceGenerator
                 // add fragment-marker to easily link to specific classes, see https://stackoverflow.com/a/54335742/10064036
                 // as `{#` indicates a twig comment, we can't add it inside the template
                 'marker' => '{#' . strtolower($reflection->getShortName()) . '}',
-                'deprecated' => $deprecated ? (string) $deprecated : null,
+                'deprecated' => $deprecated ? (string)$deprecated : null,
                 'summary' => $docBlock->getSummary(),
                 'description' => $this->unescapeDescription($docBlock->getDescription()),
                 'methods' => $this->getMethods($reflection, $scriptServices),
@@ -300,7 +299,7 @@ class ServiceReferenceGenerator implements ScriptReferenceGenerator
                 'title' => $method->getName() . '()',
                 'summary' => $docBlock->getSummary(),
                 'description' => $this->unescapeDescription($docBlock->getDescription()),
-                'deprecated' => $deprecated ? (string) $deprecated : null,
+                'deprecated' => $deprecated ? (string)$deprecated : null,
                 'arguments' => $this->parseArguments($method, $docBlock, $scriptServices),
                 'return' => $this->parseReturn($method, $docBlock, $scriptServices),
                 'examples' => $this->parseExamples($method, $docBlock),
@@ -386,11 +385,11 @@ class ServiceReferenceGenerator implements ScriptReferenceGenerator
             return null;
         }
 
-        $body = (string) $tag;
+        $body = (string)$tag;
 
         return [
-            'type' => \substr($body, 0, (int) \strpos($body, '$' . $name)),
-            'description' => \substr($body, (int) \strpos($body, '$' . $name) + \strlen($name) + 1),
+            'type' => \substr($body, 0, (int)\strpos($body, '$' . $name)),
+            'description' => \substr($body, (int)\strpos($body, '$' . $name) + \strlen($name) + 1),
         ];
     }
 
@@ -429,7 +428,7 @@ class ServiceReferenceGenerator implements ScriptReferenceGenerator
     private function getTypeInformation(?\ReflectionType $type, TagWithType $tag, array $scriptServices): array
     {
         /** @var class-string<object> $typeName */
-        $typeName = (string) $tag->getType();
+        $typeName = (string)$tag->getType();
         if ($type instanceof \ReflectionNamedType) {
             // The docBlock probably don't use the FQCN, therefore we use the native return type if we have one
             /** @var class-string<object> $typeName */
@@ -534,6 +533,6 @@ class ServiceReferenceGenerator implements ScriptReferenceGenerator
             $file->next();
         }
 
-        return trim((string) $content);
+        return trim((string)$content);
     }
 }

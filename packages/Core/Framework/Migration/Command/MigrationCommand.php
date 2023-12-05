@@ -43,10 +43,11 @@ class MigrationCommand extends Command
      * @internal
      */
     public function __construct(
-        MigrationCollectionLoader $loader,
+        MigrationCollectionLoader                 $loader,
         private readonly TagAwareAdapterInterface $cache,
-        string $snapVersion
-    ) {
+        string                                    $snapVersion
+    )
+    {
         parent::__construct();
 
         $this->loader = $loader;
@@ -79,7 +80,7 @@ class MigrationCommand extends Command
             $identifiers = [$identifiers];
         }
 
-        $until = (int) $input->getOption('until');
+        $until = (int)$input->getOption('until');
 
         $this->io = new SnapAdminStyle($input, $output);
 
@@ -91,7 +92,7 @@ class MigrationCommand extends Command
             throw new \InvalidArgumentException('Running migrations for mutliple identifiers without --all option or with --limit option is not supported.');
         }
 
-        $limit = (int) $input->getOption('limit');
+        $limit = (int)$input->getOption('limit');
 
         if ($input->getOption('all')) {
             $until = null;

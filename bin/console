@@ -39,7 +39,7 @@ return static function (array &$context) {
     $kernel->boot();
 
     $application->setName('SnapAdmin');
-    $application->setVersion($kernel->getContainer()->getParameter('kernel.snap_admin_version'));
+    $application->setVersion($kernel->getContainer()->getParameter('kernel.snap_version'));
 
     return $application;
 };

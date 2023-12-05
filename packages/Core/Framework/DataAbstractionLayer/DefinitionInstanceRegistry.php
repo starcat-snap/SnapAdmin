@@ -34,16 +34,17 @@ class DefinitionInstanceRegistry
     protected $entityClassMapping;
 
     /**
-     * @internal
-     *
      * @param array<string, class-string<EntityDefinition>> $definitionMap array of $entityName => $definitionServiceId, e.g. 'product' => '\SnapAdmin\Core\Content\Product\ProductDefinition'
      * @param array<string, string> $repositoryMap array of $entityName => $repositoryServiceId, e.g. 'product' => 'product.repository'
+     * @internal
+     *
      */
     public function __construct(
         ContainerInterface $container,
-        array $definitionMap,
-        array $repositoryMap
-    ) {
+        array              $definitionMap,
+        array              $repositoryMap
+    )
+    {
         $this->container = $container;
         $this->definitions = $definitionMap;
         $this->repositoryMap = $repositoryMap;
@@ -110,7 +111,7 @@ class DefinitionInstanceRegistry
      */
     public function getDefinitions(): array
     {
-        return array_map(fn (string $name): EntityDefinition => $this->get($name), $this->definitions);
+        return array_map(fn(string $name): EntityDefinition => $this->get($name), $this->definitions);
     }
 
     /**
@@ -208,9 +209,9 @@ class DefinitionInstanceRegistry
     }
 
     /**
+     * @return string|class-string<EntityDefinition>
      * @throws DefinitionNotFoundException
      *
-     * @return string|class-string<EntityDefinition>
      */
     private function getDefinitionClassByEntityName(string $entityName): string
     {

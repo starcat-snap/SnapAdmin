@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\System\SystemConfig\Service;
 
 use SnapAdmin\Core\Framework\App\AppEntity;
-use SnapAdmin\Core\Framework\App\Lifecycle\AbstractAppLoader;
 use SnapAdmin\Core\Framework\Bundle;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityRepository;
@@ -21,25 +20,24 @@ use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 class ConfigurationService
 {
     /**
+     * @param BundleInterface[] $bundles
      * @internal
      *
-     * @param BundleInterface[] $bundles
      */
     public function __construct(
-        private readonly iterable $bundles,
-        private readonly ConfigReader $configReader,
-        private readonly AbstractAppLoader $appLoader,
-        private readonly EntityRepository $appRepository,
+        private readonly iterable            $bundles,
+        private readonly ConfigReader        $configReader,
         private readonly SystemConfigService $systemConfigService
-    ) {
+    )
+    {
     }
 
     /**
-     * @throws ConfigurationNotFoundException
+     * @return array<mixed>
      * @throws \InvalidArgumentException
      * @throws BundleConfigNotFoundException
      *
-     * @return array<mixed>
+     * @throws ConfigurationNotFoundException
      */
     public function getConfiguration(string $domain, Context $context): array
     {
@@ -131,24 +129,7 @@ class ConfigurationService
                 return $this->configReader->getConfigFromBundle($bundle, $configName);
             }
         }
-
-        $app = $this->getAppByName($technicalName, $context);
-        if ($app) {
-            return $this->appLoader->getConfiguration($app);
-        }
-
         return null;
-    }
-
-    private function getAppByName(string $name, Context $context): ?AppEntity
-    {
-        $criteria = new Criteria();
-        $criteria->addFilter(new EqualsFilter('name', $name));
-
-        /** @var AppEntity|null $result */
-        $result = $this->appRepository->search($criteria, $context)->first();
-
-        return $result;
     }
 
     /**

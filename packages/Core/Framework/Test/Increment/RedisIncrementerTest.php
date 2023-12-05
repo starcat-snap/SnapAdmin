@@ -21,7 +21,7 @@ class RedisIncrementerTest extends TestCase
     {
         parent::setUp();
 
-        $redisUrl = (string) EnvironmentHelper::getVariable('REDIS_URL');
+        $redisUrl = (string)EnvironmentHelper::getVariable('REDIS_URL');
 
         if ($redisUrl === '') {
             static::markTestSkipped('Redis is not available');

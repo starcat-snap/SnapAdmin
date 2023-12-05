@@ -334,9 +334,9 @@ class PluginEntity extends Entity
     }
 
     /**
+     * @return array<string, list<string>>|null
      * @deprecated tag:v6.6.0 - will be removed without a replacement
      *
-     * @return array<string, list<string>>|null
      */
     public function getChangelog(): ?array
     {
@@ -346,9 +346,9 @@ class PluginEntity extends Entity
     }
 
     /**
+     * @param array<string, list<string>> $changelog
      * @deprecated tag:v6.6.0 - will be removed without a replacement
      *
-     * @param array<string, list<string>> $changelog
      */
     public function setChangelog(array $changelog): void
     {

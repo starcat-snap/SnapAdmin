@@ -191,7 +191,7 @@ class AggregationParser
      */
     private function parseAggregation(int $index, EntityDefinition $definition, array $aggregation, SearchRequestException $exceptions): ?Aggregation
     {
-        $name = \array_key_exists('name', $aggregation) ? (string) $aggregation['name'] : null;
+        $name = \array_key_exists('name', $aggregation) ? (string)$aggregation['name'] : null;
 
         if (empty($name) || is_numeric($name)) {
             $exceptions->add(new InvalidAggregationQueryException('The aggregation name should be a non-empty string.'), '/aggregations/' . $index);
@@ -297,13 +297,13 @@ class AggregationParser
                     $order = $sort['order'] ?? FieldSorting::ASCENDING;
                     $naturalSorting = $sort['naturalSorting'] ?? false;
 
-                    if (strcasecmp((string) $order, 'desc') === 0) {
+                    if (strcasecmp((string)$order, 'desc') === 0) {
                         $order = FieldSorting::DESCENDING;
                     } else {
                         $order = FieldSorting::ASCENDING;
                     }
 
-                    $sorting = new FieldSorting($sort['field'], $order, (bool) $naturalSorting);
+                    $sorting = new FieldSorting($sort['field'], $order, (bool)$naturalSorting);
                 }
 
                 return new DateHistogramAggregation($name, $field, $interval, $sorting, $nested, $format, $timeZone);
@@ -318,20 +318,20 @@ class AggregationParser
                 }
 
                 if (isset($aggregation['limit'])) {
-                    $limit = (int) $aggregation['limit'];
+                    $limit = (int)$aggregation['limit'];
                 }
                 if (isset($aggregation['sort'])) {
                     $sort = $aggregation['sort'];
                     $order = $sort['order'] ?? FieldSorting::ASCENDING;
                     $naturalSorting = $sort['naturalSorting'] ?? false;
 
-                    if (strcasecmp((string) $order, 'desc') === 0) {
+                    if (strcasecmp((string)$order, 'desc') === 0) {
                         $order = FieldSorting::DESCENDING;
                     } else {
                         $order = FieldSorting::ASCENDING;
                     }
 
-                    $sorting = new FieldSorting($sort['field'], $order, (bool) $naturalSorting);
+                    $sorting = new FieldSorting($sort['field'], $order, (bool)$naturalSorting);
                 }
 
                 return new TermsAggregation($name, $field, $limit, $sorting, $nested);

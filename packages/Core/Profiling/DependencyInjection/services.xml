@@ -24,7 +24,7 @@
         </service>
 
         <service id="SnapAdmin\Core\Profiling\Doctrine\ConnectionProfiler">
-            <argument type="service" id="Doctrine\DBAL\Connection" />
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
             <tag name="data_collector"
                  template="@Profiling/Collector/db.html.twig"
                  id="app.connection_collector"
@@ -33,14 +33,8 @@
         </service>
 
         <service id="SnapAdmin\Core\Profiling\Twig\DoctrineExtension" public="false">
-            <tag name="twig.extension" />
+            <tag name="twig.extension"/>
         </service>
 
-        <service id="SnapAdmin\Core\Profiling\Subscriber\ActiveRulesDataCollectorSubscriber">
-            <argument type="service" id="rule.repository"/>
-
-            <tag name="kernel.event_subscriber"/>
-            <tag name="data_collector"/>
-        </service>
     </services>
 </container>

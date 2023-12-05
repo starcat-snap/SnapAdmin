@@ -54,9 +54,9 @@ abstract class AbstractIncrementer
     }
 
     /**
+     * @param array<string, mixed> $config
      * @internal
      *
-     * @param array<string, mixed> $config
      */
     public function setConfig(array $config): void
     {

@@ -22,23 +22,24 @@ use Symfony\Component\HttpKernel\KernelEvents;
 #[Package('core')]
 class ExpectationSubscriber implements EventSubscriberInterface
 {
-    private const SHOPWARE_CORE_PACKAGES = [
+    private const SNAP_CORE_PACKAGES = [
         'snap/platform',
-        'snap/core',
+        'snapadmin/core',
         'snap/administration',
         'snap/elasticsearch',
         'snap/storefront',
     ];
 
     /**
+     * @param list<PluginData> $plugins
      * @internal
      *
-     * @param list<PluginData> $plugins
      */
     public function __construct(
         private readonly string $snapVersion,
-        private readonly array $plugins
-    ) {
+        private readonly array  $plugins
+    )
+    {
     }
 
     public static function getSubscribedEvents(): array
@@ -76,7 +77,7 @@ class ExpectationSubscriber implements EventSubscriberInterface
     private function checkPackages(Request $request): array
     {
         // swag/plugin1:~6.1,swag/plugin2:~6.1
-        $extensionConstraints = array_filter(explode(',', (string) $request->headers->get(PlatformRequest::HEADER_EXPECT_PACKAGES)));
+        $extensionConstraints = array_filter(explode(',', (string)$request->headers->get(PlatformRequest::HEADER_EXPECT_PACKAGES)));
         if ($extensionConstraints === []) {
             return [];
         }
@@ -107,7 +108,7 @@ class ExpectationSubscriber implements EventSubscriberInterface
                     continue;
                 }
 
-                if (\in_array($name, self::SHOPWARE_CORE_PACKAGES, true)) {
+                if (\in_array($name, self::SNAP_CORE_PACKAGES, true)) {
                     $installedVersion = $this->snapVersion;
                 }
             }

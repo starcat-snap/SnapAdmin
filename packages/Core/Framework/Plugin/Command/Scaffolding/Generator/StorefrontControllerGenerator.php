@@ -40,9 +40,10 @@ class StorefrontControllerGenerator implements ScaffoldingGenerator
 
     public function addScaffoldConfig(
         PluginScaffoldConfiguration $config,
-        InputInterface $input,
-        SymfonyStyle $io
-    ): void {
+        InputInterface              $input,
+        SymfonyStyle                $io
+    ): void
+    {
         $hasOption = $input->getOption(self::OPTION_NAME);
 
         if ($hasOption) {
@@ -60,8 +61,9 @@ class StorefrontControllerGenerator implements ScaffoldingGenerator
 
     public function generateStubs(
         PluginScaffoldConfiguration $configuration,
-        StubCollection $stubCollection
-    ): void {
+        StubCollection              $stubCollection
+    ): void
+    {
         if (!$configuration->hasOption(self::OPTION_NAME) || !$configuration->getOption(self::OPTION_NAME)) {
             return;
         }

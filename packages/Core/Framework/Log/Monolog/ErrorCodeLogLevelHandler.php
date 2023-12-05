@@ -20,8 +20,9 @@ class ErrorCodeLogLevelHandler extends AbstractHandler
      */
     public function __construct(
         private readonly HandlerInterface $handler,
-        private readonly array $errorCodesToLogLevel
-    ) {
+        private readonly array            $errorCodesToLogLevel
+    )
+    {
         parent::__construct();
     }
 

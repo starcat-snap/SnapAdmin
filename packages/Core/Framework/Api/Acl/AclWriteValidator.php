@@ -107,7 +107,7 @@ class AclWriteValidator implements EventSubscriberInterface
         // if we update e.g. a product and add translations for a new language
         // the writeCommand on the translation would be an insert
         if ($parentCommand) {
-            return (string) $parentCommand->getPrivilege();
+            return (string)$parentCommand->getPrivilege();
         }
 
         // if we don't have a parentCommand it must be a update,

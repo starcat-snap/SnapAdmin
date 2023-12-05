@@ -43,7 +43,7 @@ class ConfigSet extends Command
             $input->getOption('salesChannelId')
         );
 
-        return (int) Command::SUCCESS;
+        return (int)Command::SUCCESS;
     }
 
     /**
@@ -53,7 +53,7 @@ class ConfigSet extends Command
     {
         $value = $input->getArgument('value');
         if ($input->getOption('json')) {
-            $decodedValue = json_decode((string) $value, true);
+            $decodedValue = json_decode((string)$value, true);
 
             if (json_last_error() === \JSON_ERROR_NONE) {
                 return $decodedValue;

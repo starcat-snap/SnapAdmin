@@ -320,7 +320,7 @@ class PluginLifecycleServiceTest extends TestCase
             $this->container->get(CommandExecutor::class),
             $this->container->get(RequirementsValidator::class),
             $this->container->get('cache.messenger.restart_workers_signal'),
-            Kernel::SHOPWARE_FALLBACK_VERSION,
+            Kernel::SNAP_FALLBACK_VERSION,
             $this->systemConfigService,
             $this->container->get(CustomEntityPersister::class),
             $this->container->get(CustomEntitySchemaUpdater::class),
@@ -803,7 +803,7 @@ class PluginLifecycleServiceTest extends TestCase
     {
         $result = $this->connection->executeQuery('SELECT LOWER(HEX(id)) FROM locale WHERE code = ?', [$iso]);
 
-        return (string) $result->fetchOne();
+        return (string)$result->fetchOne();
     }
 
     private function getMigrationCount(string $namespacePrefix): int
@@ -814,14 +814,14 @@ class PluginLifecycleServiceTest extends TestCase
         )
             ->fetchOne();
 
-        return (int) $result;
+        return (int)$result;
     }
 
     private function createNonStandardLanguageContext(): Context
     {
         $id = $this->addLanguage($this->iso);
 
-        return new Context(new SystemSource(), [], Defaults::CURRENCY, [$id]);
+        return new Context(new SystemSource(), [], [$id]);
     }
 
     private function createPluginLifecycleService(PluginService $pluginService): PluginLifecycleService
@@ -836,7 +836,7 @@ class PluginLifecycleServiceTest extends TestCase
             $this->container->get(CommandExecutor::class),
             $this->container->get(RequirementsValidator::class),
             $this->container->get('cache.messenger.restart_workers_signal'),
-            Kernel::SHOPWARE_FALLBACK_VERSION,
+            Kernel::SNAP_FALLBACK_VERSION,
             $this->systemConfigService,
             $this->container->get(CustomEntityPersister::class),
             $this->container->get(CustomEntitySchemaUpdater::class),
@@ -853,7 +853,7 @@ class PluginLifecycleServiceTest extends TestCase
             [Migration1536761533Test::TEST_SYSTEM_CONFIG_KEY]
         );
 
-        return (int) $result->fetchOne();
+        return (int)$result->fetchOne();
     }
 
     private function installPlugin(Context $context): PluginEntity

@@ -12,7 +12,7 @@ use SnapAdmin\Core\Framework\Store\Exception\StoreSignatureValidationException;
 #[Package('services-settings')]
 class VerifyResponseSignatureMiddleware implements MiddlewareInterface
 {
-    private const SHOPWARE_SIGNATURE_HEADER = 'X-SnapAdmin-Signature';
+    private const SNAP_SIGNATURE_HEADER = 'X-SnapAdmin-Signature';
 
     public function __construct(private readonly OpenSSLVerifier $openSslVerifier)
     {
@@ -20,7 +20,7 @@ class VerifyResponseSignatureMiddleware implements MiddlewareInterface
 
     public function __invoke(ResponseInterface $response): ResponseInterface
     {
-        $signatureHeaderName = self::SHOPWARE_SIGNATURE_HEADER;
+        $signatureHeaderName = self::SNAP_SIGNATURE_HEADER;
         $header = $response->getHeader($signatureHeaderName);
         if (!isset($header[0])) {
             throw new StoreSignatureValidationException(sprintf('Signature not found in header "%s"', $signatureHeaderName));

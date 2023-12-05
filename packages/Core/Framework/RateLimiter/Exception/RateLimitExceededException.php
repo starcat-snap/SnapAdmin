@@ -13,8 +13,9 @@ class RateLimitExceededException extends SnapAdminHttpException
 
     public function __construct(
         private readonly int $retryAfter,
-        ?\Throwable $e = null
-    ) {
+        ?\Throwable          $e = null
+    )
+    {
         $this->now = time();
 
         parent::__construct(

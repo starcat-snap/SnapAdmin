@@ -11,7 +11,7 @@ use SnapAdmin\Core\PlatformRequest;
 use Symfony\Component\HttpFoundation\Request;
 
 #[Package('core')]
-class StoreApiRouteScope extends AbstractRouteScope implements SalesChannelContextRouteScopeDependant
+class StoreApiRouteScope extends AbstractRouteScope
 {
     final public const ID = DefinitionService::STORE_API;
 

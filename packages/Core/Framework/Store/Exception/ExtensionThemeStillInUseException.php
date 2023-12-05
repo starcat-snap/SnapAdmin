@@ -14,10 +14,11 @@ use Symfony\Component\HttpFoundation\Response;
 class ExtensionThemeStillInUseException extends StoreException
 {
     public function __construct(
-        string $id,
-        array $parameters = [],
+        string      $id,
+        array       $parameters = [],
         ?\Throwable $e = null
-    ) {
+    )
+    {
         Feature::triggerDeprecationOrThrow(
             'v6.6.0.0',
             Feature::deprecatedMethodMessage(self::class, __METHOD__, 'v6.6.0.0', 'Use StoreException::extensionThemeStillInUse instead.')

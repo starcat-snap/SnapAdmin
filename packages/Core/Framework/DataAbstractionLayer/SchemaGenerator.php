@@ -236,15 +236,15 @@ EOL;
             $reference = $field->getReferenceDefinition();
 
             $hasOneToMany = $definition->getFields()->filter(function (Field $field) use ($reference) {
-                if (!$field instanceof OneToManyAssociationField) {
-                    return false;
-                }
-                if ($field instanceof ChildrenAssociationField) {
-                    return false;
-                }
+                    if (!$field instanceof OneToManyAssociationField) {
+                        return false;
+                    }
+                    if ($field instanceof ChildrenAssociationField) {
+                        return false;
+                    }
 
-                return $field->getReferenceDefinition() === $reference;
-            })->count() > 0;
+                    return $field->getReferenceDefinition() === $reference;
+                })->count() > 0;
 
             $columns = [
                 EntityDefinitionQueryHelper::escape($field->getStorageName()),

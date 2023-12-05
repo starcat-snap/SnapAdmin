@@ -17,7 +17,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationFiel
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\Integration\IntegrationDefinition;
 use SnapAdmin\Core\System\User\UserDefinition;
 
 #[Package('administration')]
@@ -69,11 +68,7 @@ class NotificationDefinition extends EntityDefinition
             (new StringField('message', 'message'))->addFlags(new Required()),
             new BoolField('admin_only', 'adminOnly'),
             new ListField('required_privileges', 'requiredPrivileges'),
-
-            new FkField('created_by_integration_id', 'createdByIntegrationId', IntegrationDefinition::class),
             new FkField('created_by_user_id', 'createdByUserId', UserDefinition::class),
-
-            new ManyToOneAssociationField('createdByIntegration', 'created_by_integration_id', IntegrationDefinition::class, 'id', false),
             new ManyToOneAssociationField('createdByUser', 'created_by_user_id', UserDefinition::class, 'id', false),
         ]);
     }

@@ -12,7 +12,7 @@ use SnapAdmin\Core\Framework\Log\Package;
 final class Defaults
 {
     /**
-     * Don't depend on this being en-GB, the underlying language can be overwritten by the installer!
+     * Don't depend on this being zh-CN, the underlying language can be overwritten by the installer!
      */
     public const LANGUAGE_SYSTEM = '2fbb5fe2e29a4d70aa5854ce7ce3e20b';
 

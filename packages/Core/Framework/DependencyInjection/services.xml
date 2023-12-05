@@ -158,13 +158,6 @@ base-uri 'self';
             <tag name="console.command"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Demodata\PersonalData\CleanPersonalDataCommand">
-            <argument type="service" id="Doctrine\DBAL\Connection"/>
-            <argument type="service" id="customer.repository"/>
-
-            <tag name="console.command"/>
-        </service>
-
         <service id="SnapAdmin\Core\Framework\Migration\Command\MigrationDestructiveCommand">
             <argument type="service" id="SnapAdmin\Core\Framework\Migration\MigrationCollectionLoader"/>
             <argument type="service" id="cache.object"/>
@@ -212,20 +205,10 @@ base-uri 'self';
 
             <tag name="kernel.event_subscriber"/>
         </service>
-
-        <service id="SnapAdmin\Core\Framework\Routing\CanonicalRedirectService" public="true">
-            <argument type="service" id="SnapAdmin\Core\System\SystemConfig\SystemConfigService"/>
-        </service>
-
         <service id="SnapAdmin\Core\Framework\Routing\RouteEventSubscriber">
             <tag name="kernel.event_subscriber"/>
             <argument type="service" id="event_dispatcher"/>
         </service>
-
-        <service id="SnapAdmin\Core\Framework\Routing\MaintenanceModeResolver">
-            <argument type="service" id="event_dispatcher"/>
-        </service>
-
         <!-- Custom Entity -->
         <service id="SnapAdmin\Core\System\CustomEntity\Xml\Config\CustomEntityEnrichmentService">
             <argument type="service" id="SnapAdmin\Core\System\CustomEntity\Xml\Config\AdminUi\AdminUiXmlSchemaValidator"/>
@@ -237,7 +220,6 @@ base-uri 'self';
             <argument type="service" id="SnapAdmin\Core\System\CustomEntity\Xml\Config\CustomEntityEnrichmentService"/>
             <argument type="service" id="SnapAdmin\Core\System\CustomEntity\Xml\CustomEntityXmlSchemaValidator"/>
             <argument>%kernel.project_dir%</argument>
-            <argument type="service" id="SnapAdmin\Core\Framework\App\Lifecycle\AppLoader"/>
         </service>
 
         <!-- Translation -->
@@ -250,90 +232,9 @@ base-uri 'self';
             <argument>%kernel.environment%</argument>
             <argument type="service" id="Doctrine\DBAL\Connection"/>
             <argument type="service" id="SnapAdmin\Core\System\Locale\LanguageLocaleCodeProvider"/>
-            <argument type="service" id="SnapAdmin\Core\System\Snippet\SnippetService"/>
             <argument>%snap.cache.tagging.each_snippet%</argument>
 
             <tag name="monolog.logger"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Adapter\Translation\TranslatorCacheInvalidate">
-            <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\CacheInvalidator"/>
-            <argument type="service" id="Doctrine\DBAL\Connection"/>
-
-            <tag name="kernel.event_subscriber"/>
-        </service>
-
-        <!-- Snippets -->
-        <service id="SnapAdmin\Core\System\Snippet\SnippetService" lazy="true">
-            <argument type="service" id="Doctrine\DBAL\Connection"/>
-            <argument type="service" id="SnapAdmin\Core\System\Snippet\Files\SnippetFileCollection"/>
-            <argument type="service" id="snippet.repository"/>
-            <argument type="service" id="snippet_set.repository"/>
-            <argument type="service" id="sales_channel_domain.repository"/>
-            <argument type="service" id="SnapAdmin\Core\System\Snippet\Filter\SnippetFilterFactory"/>
-            <argument type="service" id="service_container" />
-            <argument type="service" id="SnapAdmin\Storefront\Theme\SalesChannelThemeLoader" on-invalid="null" />
-        </service>
-
-        <service id="SnapAdmin\Core\System\Snippet\Api\SnippetController" public="true">
-            <argument type="service" id="SnapAdmin\Core\System\Snippet\SnippetService"/>
-            <argument type="service" id="SnapAdmin\Core\System\Snippet\Files\SnippetFileCollection"/>
-            <call method="setContainer">
-                <argument type="service" id="service_container"/>
-            </call>
-        </service>
-
-        <service id="SnapAdmin\Core\System\Snippet\Files\SnippetFileLoader">
-            <argument type="service" id="Symfony\Component\HttpKernel\KernelInterface"/>
-            <argument type="service" id="Doctrine\DBAL\Connection"/>
-            <argument type="service" id="SnapAdmin\Core\System\Snippet\Files\AppSnippetFileLoader"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\App\ActiveAppsLoader"/>
-        </service>
-
-        <service id="SnapAdmin\Core\System\Snippet\Files\AppSnippetFileLoader">
-            <argument>%kernel.project_dir%</argument>
-        </service>
-
-        <service id="SnapAdmin\Core\System\Snippet\Files\SnippetFileCollection" public="true" lazy="true">
-            <factory service="SnapAdmin\Core\System\Snippet\Files\SnippetFileCollectionFactory"
-                     method="createSnippetFileCollection"/>
-        </service>
-
-        <service id="SnapAdmin\Core\System\Snippet\Files\SnippetFileCollectionFactory">
-            <argument type="service" id="SnapAdmin\Core\System\Snippet\Files\SnippetFileLoader"/>
-        </service>
-
-        <service id="SnapAdmin\Core\System\Snippet\Filter\SnippetFilterFactory" public="true">
-            <argument type="tagged" tag="snap.snippet.filter"/>
-        </service>
-
-        <!--SnippetFilters-->
-        <service id="SnapAdmin\Core\System\Snippet\Filter\AuthorFilter">
-            <tag name="snap.snippet.filter"/>
-        </service>
-
-        <service id="SnapAdmin\Core\System\Snippet\Filter\AddedFilter">
-            <tag name="snap.snippet.filter"/>
-        </service>
-
-        <service id="SnapAdmin\Core\System\Snippet\Filter\EditedFilter">
-            <tag name="snap.snippet.filter"/>
-        </service>
-
-        <service id="SnapAdmin\Core\System\Snippet\Filter\EmptySnippetFilter">
-            <tag name="snap.snippet.filter"/>
-        </service>
-
-        <service id="SnapAdmin\Core\System\Snippet\Filter\NamespaceFilter">
-            <tag name="snap.snippet.filter"/>
-        </service>
-
-        <service id="SnapAdmin\Core\System\Snippet\Filter\TermFilter">
-            <tag name="snap.snippet.filter"/>
-        </service>
-
-        <service id="SnapAdmin\Core\System\Snippet\Filter\TranslationKeyFilter">
-            <tag name="snap.snippet.filter"/>
         </service>
 
         <!-- Twig -->
@@ -370,10 +271,6 @@ base-uri 'self';
             <tag name="twig.extension"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Adapter\Twig\Extension\PhpSyntaxExtension">
-            <tag name="twig.extension" />
-        </service>
-
         <service id="SnapAdmin\Core\Framework\Adapter\Twig\Extension\FeatureFlagExtension">
             <tag name="twig.extension"/>
         </service>
@@ -394,10 +291,6 @@ base-uri 'self';
             <tag name="twig.extension"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Adapter\Twig\Filter\CurrencyFilter">
-            <argument type="service" id="SnapAdmin\Core\System\Currency\CurrencyFormatter"/>
-            <tag name="twig.extension"/>
-        </service>
 
         <service id="Cocur\Slugify\Bridge\Twig\SlugifyExtension">
             <argument type="service" id="slugify"/>
@@ -434,13 +327,6 @@ base-uri 'self';
             <tag name="kernel.reset" method="reset"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Adapter\Twig\AppTemplateIterator"
-                 decorates="twig.template_iterator"
-                 public="true">
-            <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Twig\AppTemplateIterator.inner"/>
-            <argument type="service" id="app_template.repository"/>
-        </service>
-
         <service id="SnapAdmin\Core\Framework\Adapter\Twig\TwigVariableParser">
             <argument type="service" id="twig" />
             <deprecated package="snap/core" version="6.6.0.0">tag:v6.6.0 - The %service_id% service will be removed in v6.6.0.0 use "TwigVariableParserFactory" instead.</deprecated>
@@ -453,36 +339,6 @@ base-uri 'self';
             <argument type="service" id="SnapAdmin\Core\Framework\Routing\RouteScopeRegistry"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Routing\SalesChannelRequestContextResolver"
-                 decorates="SnapAdmin\Core\Framework\Routing\ApiRequestContextResolver">
-            <argument type="service" id="SnapAdmin\Core\Framework\Routing\SalesChannelRequestContextResolver.inner"/>
-            <argument type="service" id="SnapAdmin\Core\System\SalesChannel\Context\SalesChannelContextService"/>
-            <argument type="service" id="event_dispatcher"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Routing\RouteScopeRegistry"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Checkout\Cart\ApiOrderCartService">
-            <argument type="service" id="SnapAdmin\Core\Checkout\Cart\SalesChannel\CartService"/>
-            <argument type="service" id="SnapAdmin\Core\System\SalesChannel\Context\SalesChannelContextPersister"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Api\Controller\SalesChannelProxyController" public="true">
-            <argument type="service" id="kernel"/>
-            <argument type="service" id="sales_channel.repository"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Validation\DataValidator"/>
-            <argument type="service" id="SnapAdmin\Core\System\SalesChannel\Context\SalesChannelContextPersister"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Routing\SalesChannelRequestContextResolver"/>
-            <argument type="service" id="SnapAdmin\Core\System\SalesChannel\Context\SalesChannelContextService"/>
-            <argument type="service" id="event_dispatcher"/>
-            <argument type="service" id="SnapAdmin\Core\Checkout\Cart\ApiOrderCartService"/>
-            <argument type="service" id="SnapAdmin\Core\Checkout\Cart\SalesChannel\CartOrderRoute"/>
-            <argument type="service" id="SnapAdmin\Core\Checkout\Cart\SalesChannel\CartService"/>
-            <argument type="service" id="Doctrine\DBAL\Connection"/>
-            <argument type="service" id="request_stack"/>
-            <call method="setContainer">
-                <argument type="service" id="service_container"/>
-            </call>
-        </service>
 
         <service id="SnapAdmin\Core\Framework\Routing\RouteScope">
             <tag name="snap.route_scope"/>
@@ -661,8 +517,6 @@ base-uri 'self';
             <argument type="service" id="request_stack"/>
             <argument type="service" id="argument_resolver"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Routing\RequestTransformerInterface"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Routing\CanonicalRedirectService"/>
-
             <tag name="container.hot_path"/>
             <tag name="container.preload" class="Symfony\Component\Runtime\Runner\Symfony\HttpKernelRunner"/>
             <tag name="container.preload" class="Symfony\Component\Runtime\Runner\Symfony\ResponseRunner"/>
@@ -671,12 +525,11 @@ base-uri 'self';
 
         <service id="http_kernel.cache" class="SnapAdmin\Core\Framework\Adapter\Kernel\HttpCacheKernel" decorates="http_kernel">
             <argument type="service" id=".inner"/>
-            <argument type="service" id="SnapAdmin\Storefront\Framework\Cache\CacheStore" on-invalid="null"/>
+            <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\Http\CacheStore"/>
             <argument type="service" id="esi"/>
             <argument type="collection"/>
             <argument type="service" id="event_dispatcher"/>
             <argument>%snap.http_cache.reverse_proxy.enabled%</argument>
-            <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\Http\CacheStore"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\Adapter\Cache\Http\CacheStore" public="true">
@@ -685,9 +538,9 @@ base-uri 'self';
             <argument type="service" id="event_dispatcher"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\CacheTracer"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\Http\HttpCacheKeyGenerator"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Routing\MaintenanceModeResolver"/>
             <argument>%session.storage.options%</argument>
         </service>
+
 
         <service id="SnapAdmin\Core\Framework\Adapter\Cache\Http\HttpCacheKeyGenerator">
             <argument>%kernel.cache.hash%</argument>

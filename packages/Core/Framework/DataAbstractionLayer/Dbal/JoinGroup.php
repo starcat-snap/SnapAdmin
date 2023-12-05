@@ -16,11 +16,12 @@ class JoinGroup extends Filter
      * @param list<SingleFieldFilter> $queries
      */
     public function __construct(
-        private readonly array $queries,
+        private readonly array  $queries,
         private readonly string $path,
         private readonly string $suffix,
-        private string $operator
-    ) {
+        private string          $operator
+    )
+    {
     }
 
     public function getFields(): array

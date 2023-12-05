@@ -10,10 +10,11 @@ use Symfony\Component\HttpFoundation\Response;
 class InvalidSettingValueException extends SnapAdminHttpException
 {
     public function __construct(
-        string $key,
+        string  $key,
         ?string $neededType = null,
         ?string $actualType = null
-    ) {
+    )
+    {
         $message = 'Invalid value for \'{{ key }}\'';
         if ($neededType !== null) {
             $message .= '. Must be of type \'{{ neededType }}\'';

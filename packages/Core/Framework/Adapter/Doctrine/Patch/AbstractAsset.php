@@ -198,14 +198,14 @@ abstract class AbstractAsset
      * very long names.
      *
      * @param array<string> $columnNames
-     * @param string   $prefix
-     * @param int      $maxSize
+     * @param string $prefix
+     * @param int $maxSize
      *
      * @return string
      */
     protected function _generateIdentifierName($columnNames, $prefix = '', $maxSize = 30)
     {
-        $hash = \implode('', \array_map(static fn ($column) => \dechex(\crc32((string) $column)), $columnNames));
+        $hash = \implode('', \array_map(static fn($column) => \dechex(\crc32((string)$column)), $columnNames));
 
         return \strtoupper(\substr($prefix . '_' . $hash, 0, $maxSize));
     }

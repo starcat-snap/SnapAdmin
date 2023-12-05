@@ -21,7 +21,7 @@ class UserProvisioner
     }
 
     /**
-     * @param array{firstName?: string, lastName?: string, email?: string, localeId?: string, admin?: bool} $additionalData
+     * @param array{phone?: string, name?: string, email?: string, localeId?: string, admin?: bool} $additionalData
      */
     public function provision(string $username, ?string $password = null, array $additionalData = []): string
     {
@@ -39,8 +39,8 @@ class UserProvisioner
 
         $userPayload = [
             'id' => Uuid::randomBytes(),
-            'first_name' => $additionalData['firstName'] ?? '',
-            'last_name' => $additionalData['lastName'] ?? $username,
+            'phone' => $additionalData['phone'] ?? '',
+            'name' => $additionalData['name'] ?? '',
             'email' => $additionalData['email'] ?? 'info@snap.com',
             'username' => $username,
             'password' => password_hash($password, \PASSWORD_BCRYPT),
@@ -60,24 +60,24 @@ class UserProvisioner
         $builder = $this->connection->createQueryBuilder();
 
         return $builder->select('1')
-            ->from('user')
-            ->where('username = :username')
-            ->setParameter('username', $username)
-            ->executeQuery()
-            ->rowCount() > 0;
+                ->from('user')
+                ->where('username = :username')
+                ->setParameter('username', $username)
+                ->executeQuery()
+                ->rowCount() > 0;
     }
 
     private function getLocaleOfSystemLanguage(): string
     {
         $builder = $this->connection->createQueryBuilder();
 
-        return (string) $builder->select('locale.id')
-                ->from('language', 'language')
-                ->innerJoin('language', 'locale', 'locale', 'language.locale_id = locale.id')
-                ->where('language.id = :id')
-                ->setParameter('id', Uuid::fromHexToBytes(Defaults::LANGUAGE_SYSTEM))
-                ->executeQuery()
-                ->fetchOne();
+        return (string)$builder->select('locale.id')
+            ->from('language', 'language')
+            ->innerJoin('language', 'locale', 'locale', 'language.locale_id = locale.id')
+            ->where('language.id = :id')
+            ->setParameter('id', Uuid::fromHexToBytes(Defaults::LANGUAGE_SYSTEM))
+            ->executeQuery()
+            ->fetchOne();
     }
 
     private function getAdminPasswordMinLength(): int
@@ -85,7 +85,7 @@ class UserProvisioner
         $configKey = PasswordFieldSerializer::CONFIG_MIN_LENGTH_FOR[PasswordField::FOR_ADMIN];
 
         $result = $this->connection->fetchOne(
-            'SELECT configuration_value FROM system_config WHERE configuration_key = :configKey AND sales_channel_id is NULL;',
+            'SELECT configuration_value FROM system_config WHERE configuration_key = :configKey;',
             [
                 'configKey' => $configKey,
             ]

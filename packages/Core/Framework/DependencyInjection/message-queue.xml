@@ -29,9 +29,10 @@
             </call>
         </service>
 
-        <service id="messenger.transport.doctrine.factory" class="SnapAdmin\Core\Framework\Adapter\Doctrine\Messenger\DoctrineTransportFactory">
+        <service id="messenger.transport.doctrine.factory"
+                 class="SnapAdmin\Core\Framework\Adapter\Doctrine\Messenger\DoctrineTransportFactory">
             <argument type="service" id="Doctrine\DBAL\Connection"/>
-            <tag name="messenger.transport_factory" />
+            <tag name="messenger.transport_factory"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\MessageQueue\SendEmailMessageJsonSerializer">

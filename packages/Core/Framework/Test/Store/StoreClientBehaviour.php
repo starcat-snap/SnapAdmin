@@ -177,7 +177,7 @@ trait StoreClientBehaviour
     {
         $version = $this->getContainer()->getParameter('kernel.snap_version');
 
-        return $version === Kernel::SHOPWARE_FALLBACK_VERSION ? '___VERSION___' : $version;
+        return $version === Kernel::SNAP_FALLBACK_VERSION ? '___VERSION___' : $version;
     }
 
     protected function getUserRepository(): EntityRepository

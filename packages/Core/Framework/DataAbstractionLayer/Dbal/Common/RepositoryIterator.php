@@ -33,9 +33,10 @@ class RepositoryIterator
      */
     public function __construct(
         EntityRepository $repository,
-        Context $context,
-        ?Criteria $criteria = null
-    ) {
+        Context          $context,
+        ?Criteria        $criteria = null
+    )
+    {
         if ($criteria === null) {
             $criteria = new Criteria();
             $criteria->setOffset(0);

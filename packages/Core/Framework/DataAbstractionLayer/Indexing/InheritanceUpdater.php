@@ -27,9 +27,10 @@ class InheritanceUpdater
      * @internal
      */
     public function __construct(
-        private readonly Connection $connection,
+        private readonly Connection                 $connection,
         private readonly DefinitionInstanceRegistry $registry
-    ) {
+    )
+    {
     }
 
     /**
@@ -44,15 +45,15 @@ class InheritanceUpdater
 
         $definition = $this->registry->getByEntityName($entity);
 
-        $inherited = $definition->getFields()->filter(fn (Field $field) => $field->is(Inherited::class) && $field instanceof AssociationField);
+        $inherited = $definition->getFields()->filter(fn(Field $field) => $field->is(Inherited::class) && $field instanceof AssociationField);
 
-        $associations = $inherited->filter(fn (Field $field) => $field instanceof OneToManyAssociationField || $field instanceof ManyToManyAssociationField || $field instanceof OneToOneAssociationField);
+        $associations = $inherited->filter(fn(Field $field) => $field instanceof OneToManyAssociationField || $field instanceof ManyToManyAssociationField || $field instanceof OneToOneAssociationField);
 
         if ($associations->count() > 0) {
             $this->updateToManyAssociations($definition, $ids, $associations, $context);
         }
 
-        $associations = $inherited->filter(fn (Field $field) => $field instanceof ManyToOneAssociationField);
+        $associations = $inherited->filter(fn(Field $field) => $field instanceof ManyToOneAssociationField);
 
         if ($associations->count() > 0) {
             $this->updateToOneAssociations($definition, $ids, $associations, $context);
@@ -64,7 +65,7 @@ class InheritanceUpdater
      */
     private function updateToManyAssociations(EntityDefinition $definition, array $ids, FieldCollection $associations, Context $context): void
     {
-        $bytes = array_map(fn ($id) => Uuid::fromHexToBytes($id), $ids);
+        $bytes = array_map(fn($id) => Uuid::fromHexToBytes($id), $ids);
 
         /** @var AssociationField $association */
         foreach ($associations as $association) {
@@ -133,7 +134,7 @@ class InheritanceUpdater
      */
     private function updateToOneAssociations(EntityDefinition $definition, array $ids, FieldCollection $associations, Context $context): void
     {
-        $bytes = array_map(fn ($id) => Uuid::fromHexToBytes($id), $ids);
+        $bytes = array_map(fn($id) => Uuid::fromHexToBytes($id), $ids);
 
         /** @var ManyToOneAssociationField $association */
         foreach ($associations as $association) {

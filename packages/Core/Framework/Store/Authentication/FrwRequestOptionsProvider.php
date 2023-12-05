@@ -18,17 +18,18 @@ use SnapAdmin\Core\System\User\Aggregate\UserConfig\UserConfigEntity;
 #[Package('services-settings')]
 class FrwRequestOptionsProvider extends AbstractStoreRequestOptionsProvider
 {
-    private const SHOPWARE_TOKEN_HEADER = 'X-SnapAdmin-Token';
+    private const SNAP_TOKEN_HEADER = 'X-SnapAdmin-Token';
 
     public function __construct(
         private readonly AbstractStoreRequestOptionsProvider $optionsProvider,
-        private readonly EntityRepository $userConfigRepository,
-    ) {
+        private readonly EntityRepository                    $userConfigRepository,
+    )
+    {
     }
 
     public function getAuthenticationHeader(Context $context): array
     {
-        return array_filter([self::SHOPWARE_TOKEN_HEADER => $this->getFrwUserToken($context)]);
+        return array_filter([self::SNAP_TOKEN_HEADER => $this->getFrwUserToken($context)]);
     }
 
     public function getDefaultQueryParameters(Context $context): array

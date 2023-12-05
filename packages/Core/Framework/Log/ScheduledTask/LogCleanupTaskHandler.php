@@ -21,10 +21,11 @@ final class LogCleanupTaskHandler extends ScheduledTaskHandler
      * @internal
      */
     public function __construct(
-        EntityRepository $scheduledTaskRepository,
+        EntityRepository                     $scheduledTaskRepository,
         private readonly SystemConfigService $systemConfigService,
-        private readonly Connection $connection
-    ) {
+        private readonly Connection          $connection
+    )
+    {
         parent::__construct($scheduledTaskRepository);
     }
 

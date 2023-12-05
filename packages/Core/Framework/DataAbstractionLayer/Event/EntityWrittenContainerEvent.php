@@ -19,10 +19,11 @@ class EntityWrittenContainerEvent extends NestedEvent
     protected bool $cloned = false;
 
     public function __construct(
-        Context $context,
+        Context                                $context,
         private readonly NestedEventCollection $events,
-        private readonly array $errors
-    ) {
+        private readonly array                 $errors
+    )
+    {
         $this->context = $context;
     }
 
@@ -100,7 +101,7 @@ class EntityWrittenContainerEvent extends NestedEvent
 
     public function getDeletedPrimaryKeys(string $entity): array
     {
-        return $this->findPrimaryKeys($entity, fn (EntityWriteResult $result) => $result->getOperation() === EntityWriteResult::OPERATION_DELETE);
+        return $this->findPrimaryKeys($entity, fn(EntityWriteResult $result) => $result->getOperation() === EntityWriteResult::OPERATION_DELETE);
     }
 
     public function getPrimaryKeysWithPayload(string $entity): array

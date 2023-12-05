@@ -17,7 +17,7 @@
 {{ service.description|raw }}
 
 {% for method in service.methods %}
-### {{ method.title }}
+###  {{ method.title }}
 
 {% if method.deprecated %}
 **Deprecated:** {{ method.deprecated|raw }}
@@ -25,15 +25,15 @@
 {% endif %}
 * {{ method.summary|raw }}
 
-    {{ method.description|replace({"\n": "\n\t"})|raw }}
+{{ method.description|replace({"\n": "\n\t"})|raw }}
 {% if method.return is not empty %}
 * **Returns** {{ method.return.type }}
 
-    {{ method.return.description }}
+{{ method.return.description }}
 {% endif %}
 {% if method.arguments is not empty %}
 * **Arguments:**
-{% for argument in method.arguments %}
+  {% for argument in method.arguments %}
     * *{{ argument.type }}* **{{ argument.name }}**: {{ argument.description }}
 {% if argument.default is not null %}
 
@@ -43,15 +43,15 @@
 {% endif %}
 {% if method.examples is not empty %}
 * **Examples:**
-{% for example in method.examples %}
+  {% for example in method.examples %}
     * {{ example.description|raw }}
 
-        {% verbatim %}{% raw %}{% endverbatim %}
+{% verbatim %}{% raw %}{% endverbatim %}
         ```{{ example.extension }}
 {# somehow the rendering breaks if we use two tabs in the replace #}
         {{ example.src|replace({"\n": "\n\t\t"})|raw }}
         ```
-        {% verbatim %}{% endraw %}{% endverbatim %}
+{% verbatim %}{% endraw %}{% endverbatim %}
 {% endfor %}
 {% endif %}
 {% endfor %}

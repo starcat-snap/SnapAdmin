@@ -16,7 +16,8 @@ class MissingRequestParameterException extends RoutingException
     public function __construct(
         private readonly string $name,
         private readonly string $path = ''
-    ) {
+    )
+    {
         Feature::triggerDeprecationOrThrow(
             'v6.6.0.0',
             Feature::deprecatedClassMessage(self::class, 'v6.6.0.0', 'use RoutingException::missingRequestParameter instead')

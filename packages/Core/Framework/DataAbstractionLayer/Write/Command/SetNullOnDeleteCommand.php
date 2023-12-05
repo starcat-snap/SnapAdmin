@@ -17,13 +17,14 @@ class SetNullOnDeleteCommand extends UpdateCommand
      * @param array<string> $primaryKey
      */
     public function __construct(
-        EntityDefinition $definition,
-        array $payload,
-        array $primaryKey,
-        EntityExistence $existence,
-        string $path,
+        EntityDefinition      $definition,
+        array                 $payload,
+        array                 $primaryKey,
+        EntityExistence       $existence,
+        string                $path,
         private readonly bool $enforcedByConstraint
-    ) {
+    )
+    {
         parent::__construct($definition, $payload, $primaryKey, $existence, $path);
     }
 

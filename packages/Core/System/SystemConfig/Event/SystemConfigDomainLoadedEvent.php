@@ -9,11 +9,12 @@ use Symfony\Contracts\EventDispatcher\Event;
 class SystemConfigDomainLoadedEvent extends Event
 {
     public function __construct(
-        private readonly string $domain,
-        private array $config,
-        private readonly bool $inherit,
+        private readonly string  $domain,
+        private array            $config,
+        private readonly bool    $inherit,
         private readonly ?string $salesChannelId
-    ) {
+    )
+    {
     }
 
     public function getConfig(): array

@@ -19,6 +19,7 @@ class RangeFilter extends SingleFieldFilter
     final public const GT = 'gt';
 
     /**
+     * @param array<RangeFilter::*, float|int|string> $parameters
      * @example
      *
      * new RangeFilter('price', [
@@ -30,12 +31,12 @@ class RangeFilter extends SingleFieldFilter
      *      RangeFilter::GT => 5.99
      * ])
      *
-     * @param array<RangeFilter::*, float|int|string> $parameters
      */
     public function __construct(
         protected string $field,
-        protected array $parameters = []
-    ) {
+        protected array  $parameters = []
+    )
+    {
     }
 
     public function hasParameter(string $key): bool

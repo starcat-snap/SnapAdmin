@@ -16,7 +16,8 @@ class XmlParsingException extends SnapAdminHttpException
     public function __construct(
         string $xmlFile,
         string $message
-    ) {
+    )
+    {
         Feature::triggerDeprecationOrThrow(
             'v6.7.0.0',
             Feature::deprecatedClassMessage(self::class, 'v6.7.0.0', 'domain specific xmlParsingExceptions')

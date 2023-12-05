@@ -22,7 +22,8 @@ class AdminApiSource implements ContextSource, \JsonSerializable
     public function __construct(
         private readonly ?string $userId,
         private readonly ?string $integrationId = null
-    ) {
+    )
+    {
         $this->isAdmin = false;
     }
 

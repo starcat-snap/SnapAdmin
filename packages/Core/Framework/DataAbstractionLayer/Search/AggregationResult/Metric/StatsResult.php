@@ -12,12 +12,13 @@ use SnapAdmin\Core\Framework\Log\Package;
 class StatsResult extends AggregationResult
 {
     public function __construct(
-        string $name,
-        protected mixed $min,
-        protected mixed $max,
+        string           $name,
+        protected mixed  $min,
+        protected mixed  $max,
         protected ?float $avg,
         protected ?float $sum
-    ) {
+    )
+    {
         parent::__construct($name);
     }
 

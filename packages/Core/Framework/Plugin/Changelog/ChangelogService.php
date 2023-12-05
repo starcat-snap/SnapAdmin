@@ -43,7 +43,7 @@ class ChangelogService
     {
         Feature::triggerDeprecationOrThrow('v6.6.0.0', Feature::deprecatedMethodMessage(self::class, __METHOD__, '6.6.0'));
 
-        $fileName = basename((string) $file, '.md');
+        $fileName = basename((string)$file, '.md');
 
         if ($fileName === 'CHANGELOG') {
             return self::FALLBACK_LOCALE;

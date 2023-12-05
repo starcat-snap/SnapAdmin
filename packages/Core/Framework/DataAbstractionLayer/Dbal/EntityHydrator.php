@@ -291,7 +291,7 @@ class EntityHydrator
         }
 
         // explode hexed ids
-        $ids = explode('||', (string) $row[$accessor]);
+        $ids = explode('||', (string)$row[$accessor]);
 
         $ids = array_map('strtolower', array_filter($ids));
 

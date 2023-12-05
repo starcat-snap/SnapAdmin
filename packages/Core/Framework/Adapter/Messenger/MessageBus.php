@@ -19,8 +19,9 @@ class MessageBus implements MessageBusInterface
      */
     public function __construct(
         private readonly MessageBusInterface $decorated,
-        private readonly array $routing
-    ) {
+        private readonly array               $routing
+    )
+    {
     }
 
     /**

@@ -10,10 +10,11 @@ use SnapAdmin\Core\Framework\Log\Package;
 class TreePathField extends LongTextField
 {
     public function __construct(
-        string $storageName,
-        string $propertyName,
+        string                  $storageName,
+        string                  $propertyName,
         private readonly string $pathField = 'id'
-    ) {
+    )
+    {
         parent::__construct($storageName, $propertyName);
 
         $this->addFlags(new WriteProtected(Context::SYSTEM_SCOPE));

@@ -22,9 +22,10 @@ class SalesChannelRepositoryIterator
      */
     public function __construct(
         private readonly SalesChannelRepository $repository,
-        private readonly SalesChannelContext $context,
-        ?Criteria $criteria = null
-    ) {
+        private readonly SalesChannelContext    $context,
+        ?Criteria                               $criteria = null
+    )
+    {
         if ($criteria === null) {
             $criteria = new Criteria();
             $criteria->setOffset(0);

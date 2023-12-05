@@ -14,12 +14,13 @@ class CopyBatchInput
 
     /**
      * @param string|resource $sourceFile
-     * @param array<string>        $targetFiles
+     * @param array<string> $targetFiles
      */
     public function __construct(
         $sourceFile,
         private readonly array $targetFiles
-    ) {
+    )
+    {
         if (!\is_resource($sourceFile) && !\is_string($sourceFile)) {
             throw new \InvalidArgumentException(sprintf(
                 'CopyBatchInput expects first parameter to be either a resource or the filepath as a string, "%s" given.',

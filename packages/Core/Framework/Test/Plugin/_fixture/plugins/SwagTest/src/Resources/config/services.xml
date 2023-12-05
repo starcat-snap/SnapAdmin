@@ -16,12 +16,12 @@
         </service>
 
         <service id="SwagTest\SwagTestTask">
-            <tag name="snap.scheduled.task" />
+            <tag name="snap.scheduled.task"/>
         </service>
 
         <service id="SwagTest\SwagTestTaskHandler">
-            <argument type="service" id="scheduled_task.repository" />
-            <tag name="messenger.message_handler" />
+            <argument type="service" id="scheduled_task.repository"/>
+            <tag name="messenger.message_handler"/>
         </service>
     </services>
 </container>

@@ -20,11 +20,12 @@ use Symfony\Component\Validator\Constraints\Type;
 class DateIntervalFieldSerializer extends AbstractFieldSerializer
 {
     public function encode(
-        Field $field,
-        EntityExistence $existence,
-        KeyValuePair $data,
+        Field             $field,
+        EntityExistence   $existence,
+        KeyValuePair      $data,
         WriteParameterBag $parameters
-    ): \Generator {
+    ): \Generator
+    {
         if (!$field instanceof DateIntervalField) {
             throw DataAbstractionLayerException::invalidSerializerField(self::class, $field);
         }
@@ -55,12 +56,12 @@ class DateIntervalFieldSerializer extends AbstractFieldSerializer
         }
 
         if (!$interval instanceof DateInterval) {
-            yield $field->getStorageName() => (string) DateInterval::createFromDateInterval($interval);
+            yield $field->getStorageName() => (string)DateInterval::createFromDateInterval($interval);
 
             return;
         }
 
-        yield $field->getStorageName() => (string) $interval;
+        yield $field->getStorageName() => (string)$interval;
     }
 
     /**

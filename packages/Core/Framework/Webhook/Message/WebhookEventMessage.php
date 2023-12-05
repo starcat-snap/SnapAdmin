@@ -12,21 +12,22 @@ use SnapAdmin\Core\Framework\MessageQueue\AsyncMessageInterface;
 class WebhookEventMessage implements AsyncMessageInterface
 {
     /**
-     * @internal
-     *
      * @param array<string, mixed> $payload
-     **/
+     **@internal
+     *
+     */
     public function __construct(
-        private readonly string $webhookEventId,
-        private readonly array $payload,
+        private readonly string  $webhookEventId,
+        private readonly array   $payload,
         private readonly ?string $appId,
-        private readonly string $webhookId,
-        private readonly string $snapVersion,
-        private readonly string $url,
+        private readonly string  $webhookId,
+        private readonly string  $snapVersion,
+        private readonly string  $url,
         private readonly ?string $secret,
-        private readonly string $languageId,
-        private readonly string $userLocale
-    ) {
+        private readonly string  $languageId,
+        private readonly string  $userLocale
+    )
+    {
     }
 
     /**

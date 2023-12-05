@@ -16,9 +16,9 @@ use Symfony\Component\HttpKernel\KernelEvents;
 class CoreSubscriber implements EventSubscriberInterface
 {
     /**
+     * @param array<string> $cspTemplates
      * @internal
      *
-     * @param array<string> $cspTemplates
      */
     public function __construct(private array $cspTemplates)
     {

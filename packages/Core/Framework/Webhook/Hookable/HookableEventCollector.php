@@ -49,9 +49,10 @@ class HookableEventCollector
     private array $hookableEventNamesWithPrivileges = [];
 
     public function __construct(
-        private readonly BusinessEventCollector $businessEventCollector,
+        private readonly BusinessEventCollector     $businessEventCollector,
         private readonly DefinitionInstanceRegistry $definitionRegistry
-    ) {
+    )
+    {
     }
 
     public function getHookableEventNamesWithPrivileges(Context $context): array
@@ -111,7 +112,7 @@ class HookableEventCollector
     private function getHookableEventNames(): array
     {
         return array_reduce(array_values(
-            array_map(static fn ($hookableEvent) => [$hookableEvent => [self::PRIVILEGES => []]], Hookable::HOOKABLE_EVENTS)
+            array_map(static fn($hookableEvent) => [$hookableEvent => [self::PRIVILEGES => []]], Hookable::HOOKABLE_EVENTS)
         ), 'array_merge', []);
     }
 

@@ -21,14 +21,15 @@ class ScopeRepository implements ScopeRepositoryInterface
     private readonly array $scopes;
 
     /**
+     * @param ScopeEntityInterface[] $scopes
      * @internal
      *
-     * @param ScopeEntityInterface[] $scopes
      */
     public function __construct(
-        iterable $scopes,
+        iterable                    $scopes,
         private readonly Connection $connection
-    ) {
+    )
+    {
         $scopeIndex = [];
         foreach ($scopes as $scope) {
             $scopeIndex[$scope->getIdentifier()] = $scope;
@@ -49,11 +50,12 @@ class ScopeRepository implements ScopeRepositoryInterface
      * {@inheritdoc}
      */
     public function finalizeScopes(
-        array $scopes,
-        $grantType,
+        array                 $scopes,
+                              $grantType,
         ClientEntityInterface $clientEntity,
-        $userIdentifier = null
-    ): array {
+                              $userIdentifier = null
+    ): array
+    {
         $hasWrite = false;
 
         if ($grantType === 'password') {

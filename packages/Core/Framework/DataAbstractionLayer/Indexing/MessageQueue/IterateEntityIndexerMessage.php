@@ -15,18 +15,19 @@ class IterateEntityIndexerMessage implements AsyncMessageInterface
     protected $indexer;
 
     /**
+     * @param array{offset: int|null}|null $offset
+     * @param array<string> $skip
      * @internal
      *
      * @deprecated tag:v6.6.0 - parameter $offset will be natively typed to type `?array`
      *
-     * @param array{offset: int|null}|null $offset
-     * @param array<string> $skip
      */
     public function __construct(
-        string $indexer,
-        protected $offset,
+        string          $indexer,
+        protected       $offset,
         protected array $skip = []
-    ) {
+    )
+    {
         $this->indexer = $indexer;
     }
 
@@ -36,9 +37,9 @@ class IterateEntityIndexerMessage implements AsyncMessageInterface
     }
 
     /**
+     * @return array{offset: int|null}|null
      * @deprecated tag:v6.6.0 - reason:return-type-change - return type will be natively typed to type `?array`
      *
-     * @return array{offset: int|null}|null
      */
     public function getOffset()
     {
@@ -46,9 +47,9 @@ class IterateEntityIndexerMessage implements AsyncMessageInterface
     }
 
     /**
+     * @param array{offset: int|null}|null $offset
      * @deprecated tag:v6.6.0 - parameter $offset will be natively typed to type `?array`
      *
-     * @param array{offset: int|null}|null $offset
      */
     public function setOffset($offset): void
     {

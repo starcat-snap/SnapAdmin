@@ -15,7 +15,8 @@ abstract class Aggregation extends Struct implements CriteriaPartInterface
     public function __construct(
         protected string $name,
         protected string $field
-    ) {
+    )
+    {
     }
 
     public function getField(): string

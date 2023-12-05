@@ -22,9 +22,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 class SystemRestoreDatabaseCommand extends Command
 {
     public function __construct(
-        private readonly string $defaultDirectory,
+        private readonly string     $defaultDirectory,
         private readonly Connection $connection
-    ) {
+    )
+    {
         parent::__construct();
     }
 
@@ -49,7 +50,7 @@ class SystemRestoreDatabaseCommand extends Command
             escapeshellarg($params['user'] ?? ''),
             $portString,
             escapeshellarg($params['host'] ?? ''),
-            escapeshellarg((string) ($params['port'] ?? '')),
+            escapeshellarg((string)($params['port'] ?? '')),
             escapeshellarg($dbName),
             escapeshellarg($path)
         );

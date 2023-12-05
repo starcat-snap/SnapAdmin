@@ -16,10 +16,11 @@ use Symfony\Component\HttpFoundation\Response;
 class ExtensionUpdateRequiresConsentAffirmationException extends StoreException
 {
     public function __construct(
-        string $message,
-        array $parameters = [],
+        string      $message,
+        array       $parameters = [],
         ?\Throwable $e = null
-    ) {
+    )
+    {
         Feature::triggerDeprecationOrThrow(
             'v6.6.0.0',
             Feature::deprecatedClassMessage(self::class, 'v6.6.0.0', 'Use StoreException::extensionUpdateRequiresConsentAffirmationException instead.')

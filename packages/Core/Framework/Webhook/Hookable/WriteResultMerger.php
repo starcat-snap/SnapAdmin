@@ -22,9 +22,10 @@ class WriteResultMerger
     }
 
     public function mergeWriteResults(
-        EntityWrittenEvent $writtenEvent,
+        EntityWrittenEvent  $writtenEvent,
         ?EntityWrittenEvent $translationEvent
-    ): ?EntityWrittenEvent {
+    ): ?EntityWrittenEvent
+    {
         if ($writtenEvent instanceof EntityDeletedEvent) {
             return $writtenEvent;
         }
@@ -60,8 +61,9 @@ class WriteResultMerger
 
     private function getMergedWriteResult(
         EntityWrittenEvent $translationEvent,
-        EntityWriteResult $writeResult
-    ): ?EntityWriteResult {
+        EntityWriteResult  $writeResult
+    ): ?EntityWriteResult
+    {
         $translationResults = $this->findWriteResultByPrimaryKey(
             $translationEvent->getWriteResults(),
             $writeResult->getPrimaryKey()

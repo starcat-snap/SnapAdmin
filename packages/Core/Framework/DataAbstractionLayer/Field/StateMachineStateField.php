@@ -15,11 +15,12 @@ class StateMachineStateField extends FkField
      *                                  using the StateMachine
      */
     public function __construct(
-        string $storageName,
-        string $propertyName,
+        string                  $storageName,
+        string                  $propertyName,
         private readonly string $stateMachineName,
-        private readonly array $allowedWriteScopes = [Context::SYSTEM_SCOPE]
-    ) {
+        private readonly array  $allowedWriteScopes = [Context::SYSTEM_SCOPE]
+    )
+    {
         parent::__construct($storageName, $propertyName, StateMachineStateDefinition::class);
     }
 

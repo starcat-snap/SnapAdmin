@@ -59,11 +59,12 @@ class EntityWrittenEvent extends NestedEvent implements GenericEvent
     protected $entityName;
 
     public function __construct(
-        string $entityName,
-        array $writeResults,
+        string  $entityName,
+        array   $writeResults,
         Context $context,
-        array $errors = []
-    ) {
+        array   $errors = []
+    )
+    {
         $this->events = new NestedEventCollection();
         $this->context = $context;
         $this->errors = $errors;

@@ -21,11 +21,12 @@ use Symfony\Component\Validator\Constraints\Type;
 class DateFieldSerializer extends AbstractFieldSerializer
 {
     public function encode(
-        Field $field,
-        EntityExistence $existence,
-        KeyValuePair $data,
+        Field             $field,
+        EntityExistence   $existence,
+        KeyValuePair      $data,
         WriteParameterBag $parameters
-    ): \Generator {
+    ): \Generator
+    {
         if (!$field instanceof DateField) {
             throw DataAbstractionLayerException::invalidSerializerField(DateField::class, $field);
         }

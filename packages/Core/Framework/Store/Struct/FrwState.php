@@ -13,8 +13,9 @@ final class FrwState
     private function __construct(
         private readonly ?\DateTimeImmutable $completedAt = null,
         private readonly ?\DateTimeImmutable $failedAt = null,
-        private readonly int $failureCount = 0
-    ) {
+        private readonly int                 $failureCount = 0
+    )
+    {
     }
 
     public static function openState(): FrwState

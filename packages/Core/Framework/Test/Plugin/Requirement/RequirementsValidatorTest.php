@@ -210,7 +210,7 @@ class RequirementsValidatorTest extends TestCase
         $this->expectExceptionMessageMatches(sprintf(
             $regexTemplate,
             preg_quote($plugin->getComposerName(), '#'),
-            preg_quote('snap/core', '#')
+            preg_quote('snapadmin/core', '#')
         ));
         $this->createValidator()->validateRequirements($plugin, Context::createDefaultContext(), 'test');
     }

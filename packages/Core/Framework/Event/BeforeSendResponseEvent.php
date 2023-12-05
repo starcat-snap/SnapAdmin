@@ -24,9 +24,10 @@ class BeforeSendResponseEvent extends Event
     protected $response;
 
     public function __construct(
-        Request $request,
+        Request  $request,
         Response $response
-    ) {
+    )
+    {
         $this->request = $request;
         $this->response = $response;
     }

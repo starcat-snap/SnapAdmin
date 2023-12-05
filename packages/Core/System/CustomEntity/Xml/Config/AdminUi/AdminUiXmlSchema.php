@@ -19,7 +19,8 @@ final class AdminUiXmlSchema
 
     private function __construct(
         private readonly AdminUi $adminUi
-    ) {
+    )
+    {
     }
 
     public static function createFromXmlFile(string $xmlFilePath): self

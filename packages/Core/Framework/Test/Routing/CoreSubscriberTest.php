@@ -59,7 +59,7 @@ class CoreSubscriberTest extends TestCase
         $browser->request('GET', $_SERVER['APP_URL']);
         $response = $browser->getResponse();
 
-        static::assertSame(Response::HTTP_OK, $response->getStatusCode(), (string) $response->getContent());
+        static::assertSame(Response::HTTP_OK, $response->getStatusCode(), (string)$response->getContent());
 
         static::assertTrue($response->headers->has('X-Frame-Options'));
         static::assertTrue($response->headers->has('X-Content-Type-Options'));
@@ -84,11 +84,11 @@ class CoreSubscriberTest extends TestCase
 
         static::assertMatchesRegularExpression(
             '/.*script-src[^;]+nonce-' . preg_quote($nonce, '/') . '.*/',
-            (string) $response->headers->get('Content-Security-Policy'),
+            (string)$response->headers->get('Content-Security-Policy'),
             'CSP should contain the nonce'
         );
-        static::assertStringNotContainsString("\n", (string) $response->headers->get('Content-Security-Policy'));
-        static::assertStringNotContainsString("\r", (string) $response->headers->get('Content-Security-Policy'));
+        static::assertStringNotContainsString("\n", (string)$response->headers->get('Content-Security-Policy'));
+        static::assertStringNotContainsString("\r", (string)$response->headers->get('Content-Security-Policy'));
     }
 
     public function testSwaggerHasCsp(): void
@@ -106,7 +106,7 @@ class CoreSubscriberTest extends TestCase
 
         static::assertMatchesRegularExpression(
             '/.*script-src[^;]+nonce-' . preg_quote($nonce, '/') . '.*/',
-            (string) $response->headers->get('Content-Security-Policy'),
+            (string)$response->headers->get('Content-Security-Policy'),
             'CSP should contain the nonce'
         );
     }
@@ -124,7 +124,7 @@ class CoreSubscriberTest extends TestCase
 
     public function getNonceFromCsp(Response $response): string
     {
-        $csp = (string) $response->headers->get('Content-Security-Policy');
+        $csp = (string)$response->headers->get('Content-Security-Policy');
         preg_match('/nonce-([\w+-=]*)/m', $csp, $matches);
 
         static::assertArrayHasKey(1, $matches);

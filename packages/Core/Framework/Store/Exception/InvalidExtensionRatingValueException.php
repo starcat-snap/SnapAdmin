@@ -11,10 +11,11 @@ use Symfony\Component\HttpFoundation\Response;
 class InvalidExtensionRatingValueException extends SnapAdminHttpException
 {
     public function __construct(
-        int $rating,
-        array $parameters = [],
+        int         $rating,
+        array       $parameters = [],
         ?\Throwable $e = null
-    ) {
+    )
+    {
         $parameters['rating'] = $rating;
         $parameters['maxRating'] = ReviewStruct::MAX_RATING;
         $parameters['minRating'] = ReviewStruct::MIN_RATING;

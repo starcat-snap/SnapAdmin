@@ -13,12 +13,12 @@ class UserAccessKeyCollection extends EntityCollection
 {
     public function getUserIds(): array
     {
-        return $this->fmap(fn (UserAccessKeyEntity $user) => $user->getUserId());
+        return $this->fmap(fn(UserAccessKeyEntity $user) => $user->getUserId());
     }
 
     public function filterByUserId(string $id): self
     {
-        return $this->filter(fn (UserAccessKeyEntity $user) => $user->getUserId() === $id);
+        return $this->filter(fn(UserAccessKeyEntity $user) => $user->getUserId() === $id);
     }
 
     public function getApiAlias(): string

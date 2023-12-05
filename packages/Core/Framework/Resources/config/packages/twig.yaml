@@ -1,4 +1,4 @@
 twig:
-    debug: '%kernel.debug%'
-    strict_variables: false
-    exception_controller: null
+  debug: '%kernel.debug%'
+  strict_variables: false
+  exception_controller: null

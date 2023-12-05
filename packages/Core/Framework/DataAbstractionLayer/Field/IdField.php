@@ -16,7 +16,8 @@ class IdField extends Field implements StorageAware
     public function __construct(
         string $storageName,
         string $propertyName
-    ) {
+    )
+    {
         $this->storageName = $storageName;
         parent::__construct($propertyName);
     }

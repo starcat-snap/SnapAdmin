@@ -31,9 +31,9 @@ class CollectionHasSpecifyingExtension implements MethodTypeSpecifyingExtension,
     public function isMethodSupported(MethodReflection $methodReflection, MethodCall $node, TypeSpecifierContext $context): bool
     {
         return (
-            $methodReflection->getDeclaringClass()->getName() === Collection::class
-            || $methodReflection->getDeclaringClass()->isSubclassOf(Collection::class)
-        )
+                $methodReflection->getDeclaringClass()->getName() === Collection::class
+                || $methodReflection->getDeclaringClass()->isSubclassOf(Collection::class)
+            )
             && $methodReflection->getName() === 'has' && !$context->null();
     }
 

@@ -32,7 +32,7 @@ class EntityCacheKeyGenerator
     {
         $ruleIds = $context->getRuleIdsByAreas($areas);
 
-        return md5((string) json_encode([
+        return md5((string)json_encode([
             $context->getSalesChannelId(),
             $context->getDomainId(),
             $context->getLanguageIdChain(),
@@ -46,7 +46,7 @@ class EntityCacheKeyGenerator
 
     public function getCriteriaHash(Criteria $criteria): string
     {
-        return md5((string) json_encode([
+        return md5((string)json_encode([
             $criteria->getIds(),
             $criteria->getFilters(),
             $criteria->getTerm(),

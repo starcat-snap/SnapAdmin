@@ -26,12 +26,13 @@ class ExtensionDownloader
     private readonly string $relativePluginDir;
 
     public function __construct(
-        private readonly EntityRepository $pluginRepository,
-        private readonly StoreClient $storeClient,
+        private readonly EntityRepository        $pluginRepository,
+        private readonly StoreClient             $storeClient,
         private readonly PluginManagementService $pluginManagementService,
-        string $pluginDir,
-        string $projectDir
-    ) {
+        string                                   $pluginDir,
+        string                                   $projectDir
+    )
+    {
         $this->relativePluginDir = (new Filesystem())->makePathRelative($pluginDir, $projectDir);
     }
 

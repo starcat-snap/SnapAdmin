@@ -13,12 +13,13 @@ use SnapAdmin\Core\Framework\Log\Package;
 class TermsAggregation extends BucketAggregation
 {
     public function __construct(
-        string $name,
-        string $field,
+        string                  $name,
+        string                  $field,
         protected readonly ?int $limit = null,
         protected ?FieldSorting $sorting = null,
-        ?Aggregation $aggregation = null
-    ) {
+        ?Aggregation            $aggregation = null
+    )
+    {
         parent::__construct($name, $field, $aggregation);
     }
 

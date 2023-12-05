@@ -11,8 +11,9 @@ class PluginComposerJsonInvalidException extends SnapAdminHttpException
 {
     public function __construct(
         string $composerJsonPath,
-        array $errors
-    ) {
+        array  $errors
+    )
+    {
         parent::__construct(
             'The file "{{ composerJsonPath }}" is invalid. Errors:' . \PHP_EOL . '{{ errorsString }}',
             ['composerJsonPath' => $composerJsonPath, 'errorsString' => implode(\PHP_EOL, $errors), 'errors' => $errors]

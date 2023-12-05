@@ -15,9 +15,10 @@ class MigrationRuntime
      * @internal
      */
     public function __construct(
-        private readonly Connection $connection,
+        private readonly Connection      $connection,
         private readonly LoggerInterface $logger
-    ) {
+    )
+    {
     }
 
     public function migrate(MigrationSource $source, ?int $until = null, ?int $limit = null): \Generator
@@ -103,7 +104,7 @@ class MigrationRuntime
 
     public function getTotalMigrationCount(MigrationSource $source, ?int $until = null, ?int $limit = null): int
     {
-        return (int) $this->getExecutableMigrationsBaseQuery($source, $until, $limit)
+        return (int)$this->getExecutableMigrationsBaseQuery($source, $until, $limit)
             ->select('COUNT(*)')
             ->executeQuery()
             ->fetchOne();
@@ -183,7 +184,7 @@ class MigrationRuntime
             $matches = [];
             preg_match(
                 '/TABLE.*?`(.*?)`.*? (REFERENCES|constraint).*?`(.*?)`/',
-                (string) preg_replace(["/\r|\n/", '/ +/'], ['', ' '], $e->getMessage()),
+                (string)preg_replace(["/\r|\n/", '/ +/'], ['', ' '], $e->getMessage()),
                 $matches
             );
 

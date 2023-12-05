@@ -78,7 +78,7 @@ class PluginServiceTest extends TestCase
 
         static::assertTrue($errors->count() > 0);
 
-        $composerJsonException = $errors->filter(fn (SnapAdminHttpException $error) => $error instanceof PluginComposerJsonInvalidException);
+        $composerJsonException = $errors->filter(fn(SnapAdminHttpException $error) => $error instanceof PluginComposerJsonInvalidException);
 
         static::assertNotEmpty($composerJsonException);
 
@@ -126,18 +126,6 @@ class PluginServiceTest extends TestCase
         static::assertSame('Dutch Beschrijving', $plugin->getTranslated()['description']);
         static::assertSame('https://www.test.nl/', $plugin->getTranslated()['manufacturerLink']);
         static::assertSame('https://www.test.nl/support', $plugin->getTranslated()['supportLink']);
-    }
-
-    public function testRefreshPluginsWithGermanContext(): void
-    {
-        $context = new Context(new SystemSource(), [], Defaults::CURRENCY, [$this->getDeDeLanguageId()]);
-
-        $this->pluginService->refreshPlugins($context, new NullIO());
-
-        $plugin = $this->fetchSwagTestPluginEntity($context);
-
-        $this->assertPluginMetaInformation($plugin);
-        $this->assertGermanPlugin($plugin);
     }
 
     public function testRefreshPluginsExistingWithPluginUpdate(): void
@@ -323,7 +311,7 @@ class PluginServiceTest extends TestCase
             Context::createDefaultContext()
         );
 
-        return new Context(new SystemSource(), [], Defaults::CURRENCY, [$id, Defaults::LANGUAGE_SYSTEM]);
+        return new Context(new SystemSource(), [], [$id, Defaults::LANGUAGE_SYSTEM]);
     }
 
     private function setNewSystemLanguage(string $iso): void

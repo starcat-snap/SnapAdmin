@@ -19,29 +19,25 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 #[Package('core')]
 class HttpCacheKernel extends HttpCache
 {
-    final public const MAINTENANCE_WHITELIST_HEADER = 'sw-maintenance-whitelist';
+    final public const MAINTENANCE_WHITELIST_HEADER = 'sa-maintenance-whitelist';
 
     private StoreInterface $store;
 
     /**
      * @internal
-     *
-     * @param array<mixed> $options
      */
     public function __construct(
-        HttpKernelInterface $kernel,
-        ?StoreInterface $store,
-        SurrogateInterface $surrogate,
-        array $options,
+        HttpKernelInterface                       $kernel,
+        StoreInterface                            $core,
+        SurrogateInterface                        $surrogate,
+        array                                     $options,
         private readonly EventDispatcherInterface $eventDispatcher,
-        private readonly bool $externalReverseProxyEnabled,
-        StoreInterface $core
-    ) {
-        $store = $store ?? $core;
+        private readonly bool                     $externalReverseProxyEnabled,
 
-        $this->store = $store;
-
-        parent::__construct($kernel, $store, $surrogate, $options);
+    )
+    {
+        $this->store = $core;
+        parent::__construct($kernel, $core, $surrogate, $options);
     }
 
     public function handle(Request $request, int $type = HttpKernelInterface::MAIN_REQUEST, bool $catch = true): Response
@@ -73,7 +69,7 @@ class HttpCacheKernel extends HttpCache
         if ($ips = $response->headers->get(self::MAINTENANCE_WHITELIST_HEADER)) {
             $ips = array_filter(explode(',', $ips));
 
-            if (IpUtils::checkIp((string) $request->getClientIp(), $ips)) {
+            if (IpUtils::checkIp((string)$request->getClientIp(), $ips)) {
                 $response = $this->getKernel()->handle($request, $type, $catch);
             }
         }

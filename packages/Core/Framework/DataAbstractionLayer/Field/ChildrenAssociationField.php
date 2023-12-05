@@ -11,7 +11,8 @@ class ChildrenAssociationField extends OneToManyAssociationField
     public function __construct(
         string $referenceClass,
         string $propertyName = 'children'
-    ) {
+    )
+    {
         parent::__construct($propertyName, $referenceClass, 'parent_id');
         $this->addFlags(new CascadeDelete());
     }

@@ -29,8 +29,9 @@ class TreeUpdater
      */
     public function __construct(
         private readonly DefinitionInstanceRegistry $registry,
-        private readonly Connection $connection
-    ) {
+        private readonly Connection                 $connection
+    )
+    {
     }
 
     /**
@@ -134,7 +135,7 @@ class TreeUpdater
                 $level = $entity['parent']['parentCount'] + 1;
             }
 
-            $query->set($field->getStorageName(), (string) $level);
+            $query->set($field->getStorageName(), (string)$level);
         }
 
         $query->andWhere('id = :id');
@@ -392,7 +393,7 @@ class TreeUpdater
         $entity['path'] = '';
         if ($parent !== null) {
             $path = $parent['path'] ?? '';
-            $path = array_filter(explode('|', (string) $path));
+            $path = array_filter(explode('|', (string)$path));
             $path[] = Uuid::fromBytesToHex($parent['id']);
             $entity['path'] = '|' . implode('|', $path) . '|';
         }

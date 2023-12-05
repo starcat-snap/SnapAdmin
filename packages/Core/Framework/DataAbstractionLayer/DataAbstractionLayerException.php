@@ -64,9 +64,10 @@ class DataAbstractionLayerException extends HttpException
     }
 
     public static function invalidDateIntervalFormat(
-        string $dateIntervalString,
+        string      $dateIntervalString,
         ?\Throwable $previous = null,
-    ): self {
+    ): self
+    {
         return new self(
             Response::HTTP_BAD_REQUEST,
             self::INVALID_DATE_INTERVAL_CODE,

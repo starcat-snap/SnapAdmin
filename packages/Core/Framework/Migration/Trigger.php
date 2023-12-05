@@ -21,10 +21,11 @@ class Trigger
     public function __construct(
         private readonly string $name,
         private readonly string $table,
-        string $time,
-        string $event,
+        string                  $time,
+        string                  $event,
         private readonly string $onTrigger
-    ) {
+    )
+    {
         $this->time = $this->validateArgumentTime($time);
         $this->event = $this->validateArgumentEvent($event);
     }

@@ -23,9 +23,10 @@ class AclController extends AbstractController
      */
     public function __construct(
         private readonly DefinitionInstanceRegistry $definitionInstanceRegistry,
-        private readonly EventDispatcherInterface $eventDispatcher,
-        private readonly RouterInterface $router
-    ) {
+        private readonly EventDispatcherInterface   $eventDispatcher,
+        private readonly RouterInterface            $router
+    )
+    {
     }
 
     #[Route(path: '/api/_action/acl/privileges', name: 'api.acl.privileges.get', methods: ['GET'], defaults: ['auth_required' => true, '_acl' => ['api_acl_privileges_get']])]

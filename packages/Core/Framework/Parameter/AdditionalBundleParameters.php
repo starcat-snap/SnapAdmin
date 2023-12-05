@@ -10,10 +10,11 @@ use SnapAdmin\Core\Framework\Plugin\KernelPluginCollection;
 final class AdditionalBundleParameters
 {
     public function __construct(
-        private ClassLoader $classLoader,
+        private ClassLoader            $classLoader,
         private KernelPluginCollection $pluginInstances,
-        private array $kernelParameters
-    ) {
+        private array                  $kernelParameters
+    )
+    {
     }
 
     public function getClassLoader(): ClassLoader

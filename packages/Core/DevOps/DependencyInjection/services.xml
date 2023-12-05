@@ -11,14 +11,6 @@
             <tag name="console.command"/>
         </service>
 
-        <service id="SnapAdmin\Core\DevOps\Docs\App\DocsAppEventCommand">
-            <argument type="service" id="SnapAdmin\Core\Framework\Event\BusinessEventCollector"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Webhook\Hookable\HookableEventCollector"/>
-            <argument type="service" id="twig"/>
-
-            <tag name="console.command"/>
-        </service>
-
         <service id="SnapAdmin\Core\DevOps\Docs\Script\ScriptReferenceGeneratorCommand">
             <argument type="tagged" tag="snap.scripts_reference.generator"/>
 

@@ -11,9 +11,10 @@ use SnapAdmin\Core\Framework\Log\Package;
 class EqualsFilter extends SingleFieldFilter
 {
     public function __construct(
-        protected readonly string $field,
+        protected readonly string                     $field,
         protected readonly string|bool|float|int|null $value
-    ) {
+    )
+    {
     }
 
     public function getField(): string

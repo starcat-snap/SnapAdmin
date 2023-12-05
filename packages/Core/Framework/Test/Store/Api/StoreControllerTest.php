@@ -190,7 +190,8 @@ class StoreControllerTest extends TestCase
 
     private function getStoreController(
         ?StoreClient $storeClient = null,
-    ): StoreController {
+    ): StoreController
+    {
         return new StoreController(
             $storeClient ?? $this->getStoreClientMock(),
             $this->userRepository,

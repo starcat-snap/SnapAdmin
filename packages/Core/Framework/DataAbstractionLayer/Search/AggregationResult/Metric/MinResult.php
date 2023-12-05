@@ -12,9 +12,10 @@ use SnapAdmin\Core\Framework\Log\Package;
 class MinResult extends AggregationResult
 {
     public function __construct(
-        string $name,
+        string                          $name,
         protected float|int|string|null $min
-    ) {
+    )
+    {
         parent::__construct($name);
     }
 

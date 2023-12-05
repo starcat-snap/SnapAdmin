@@ -16,7 +16,8 @@ class Inherited extends Flag
          * But when you have multiple inherited reference to the product table, you want to define the foreign key by your own
          */
         private readonly ?string $foreignKey = null
-    ) {
+    )
+    {
     }
 
     public function parse(): \Generator

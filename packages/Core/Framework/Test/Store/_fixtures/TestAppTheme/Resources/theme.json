@@ -2,9 +2,9 @@
   "name": "SwagTheme",
   "author": "SnapAdmin AG",
   "views": [
-     "@Storefront",
-     "@Plugins",
-     "@SwagTheme"
+    "@Storefront",
+    "@Plugins",
+    "@SwagTheme"
   ],
   "style": [
     "app/storefront/src/scss/overrides.scss",

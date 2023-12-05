@@ -39,7 +39,7 @@ class ScheduledTaskTooLowIntervalRule implements Rule
      */
     public function processNode(Node $node, Scope $scope): array
     {
-        if ((string) $node->name !== 'getDefaultInterval') {
+        if ((string)$node->name !== 'getDefaultInterval') {
             return [];
         }
 
@@ -55,7 +55,7 @@ class ScheduledTaskTooLowIntervalRule implements Rule
 
         foreach ($node->stmts ?? [] as $stmt) {
             if ($stmt instanceof Return_ && $stmt->expr instanceof LNumber) {
-                $interval = (int) $stmt->expr->value;
+                $interval = (int)$stmt->expr->value;
 
                 if ($interval < self::MIN_SCHEDULED_TASK_INTERVAL) {
                     return [

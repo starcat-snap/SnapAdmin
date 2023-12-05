@@ -16,12 +16,13 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 trait PluginTestsHelper
 {
     protected function createPluginService(
-        string $pluginDir,
-        string $projectDir,
+        string           $pluginDir,
+        string           $projectDir,
         EntityRepository $pluginRepo,
         EntityRepository $languageRepo,
-        PluginFinder $pluginFinder
-    ): PluginService {
+        PluginFinder     $pluginFinder
+    ): PluginService
+    {
         return new PluginService(
             $pluginDir,
             $projectDir,
@@ -34,10 +35,11 @@ trait PluginTestsHelper
 
     protected function createPlugin(
         EntityRepository $pluginRepo,
-        Context $context,
-        string $version = SwagTest::PLUGIN_VERSION,
-        ?string $installedAt = null
-    ): void {
+        Context          $context,
+        string           $version = SwagTest::PLUGIN_VERSION,
+        ?string          $installedAt = null
+    ): void
+    {
         $pluginRepo->create(
             [
                 [

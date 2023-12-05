@@ -12,10 +12,11 @@ use SnapAdmin\Core\Framework\Log\Package;
 class BucketAggregation extends Aggregation
 {
     public function __construct(
-        string $name,
-        string $field,
+        string                 $name,
+        string                 $field,
         protected ?Aggregation $aggregation
-    ) {
+    )
+    {
         parent::__construct($name, $field);
     }
 

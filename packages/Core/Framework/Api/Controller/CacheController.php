@@ -8,7 +8,6 @@ use SnapAdmin\Core\Framework\Feature;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Util\Random;
 use SnapAdmin\Core\Framework\Validation\DataBag\RequestDataBag;
-use SnapAdmin\Storefront\Framework\Cache\CacheWarmer\CacheWarmer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Component\Cache\Adapter\TagAwareAdapter;
@@ -25,11 +24,11 @@ class CacheController extends AbstractController
      * @internal
      */
     public function __construct(
-        private readonly CacheClearer $cacheClearer,
-        private readonly AdapterInterface $adapter,
-        private readonly ?CacheWarmer $cacheWarmer,
+        private readonly CacheClearer          $cacheClearer,
+        private readonly AdapterInterface      $adapter,
         private readonly EntityIndexerRegistry $indexerRegistry
-    ) {
+    )
+    {
     }
 
     #[Route(path: '/api/_action/cache_info', name: 'api.action.cache.info', methods: ['GET'], defaults: ['_acl' => ['system:cache:info']])]
@@ -50,7 +49,7 @@ class CacheController extends AbstractController
         $skip = !empty($data['skip']) && \is_array($data['skip']) ? $data['skip'] : [];
         $mapped = [];
         foreach ($skip as $value) {
-            $mapped[] = (string) $value;
+            $mapped[] = (string)$value;
         }
 
         $this->indexerRegistry->sendIndexingMessage([], $mapped);
@@ -102,7 +101,7 @@ class CacheController extends AbstractController
     {
         if ($adapter instanceof TagAwareAdapter || $adapter instanceof TraceableAdapter) {
             // Do not declare function as static
-            $func = \Closure::bind(fn () => $adapter->pool, $adapter, $adapter::class);
+            $func = \Closure::bind(fn() => $adapter->getPool(), $adapter, $adapter::class);
 
             $adapter = $func();
         }

@@ -21,8 +21,9 @@ class BuildBreadcrumbExtension extends AbstractExtension
      */
     public function __construct(
         private readonly CategoryBreadcrumbBuilder $categoryBreadcrumbBuilder,
-        private readonly EntityRepository $categoryRepository
-    ) {
+        private readonly EntityRepository          $categoryRepository
+    )
+    {
     }
 
     public function getFunctions(): array

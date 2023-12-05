@@ -20,19 +20,21 @@ use Symfony\Component\Cache\Adapter\AdapterInterface;
 class CustomEntityPersister
 {
     public function __construct(
-        private readonly Connection $connection,
+        private readonly Connection       $connection,
         private readonly AdapterInterface $cache
-    ) {
+    )
+    {
     }
 
     /**
      * @param array<string, array<string, mixed>> $customEntities
      */
     public function update(
-        array $customEntities,
+        array   $customEntities,
         ?string $extensionEntityType = null,
         ?string $extensionId = null
-    ): void {
+    ): void
+    {
         $names = array_column($customEntities, 'name');
 
         $existings = $this->connection->fetchAllAssociativeIndexed(

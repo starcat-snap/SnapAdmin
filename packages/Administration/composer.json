@@ -1,0 +1,28 @@
+{
+  "name": "snapadmin/administration",
+  "description": "Administration frontend for the SnapAdmin Core",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "SnapAdmin\\Administration\\": ""
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "6.6.x-dev",
+      "dev-trunk": "6.6.x-dev"
+    }
+  },
+  "require": {
+    "php": "~8.2.0 || ~8.3.0",
+    "doctrine/dbal": "^3.7",
+    "shopware/core": "*",
+    "symfony/framework-bundle": "~6.3.0",
+    "symfony/http-foundation": "~6.3.0",
+    "symfony/routing": "~6.3.0",
+    "symfony/mime": "~6.3.0"
+  }
+}

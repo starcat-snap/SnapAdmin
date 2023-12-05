@@ -8,9 +8,9 @@ use SnapAdmin\Core\Framework\Log\Package;
 class NamespaceHierarchyBuilder
 {
     /**
+     * @param TemplateNamespaceHierarchyBuilderInterface[] $namespaceHierarchyBuilders
      * @internal
      *
-     * @param TemplateNamespaceHierarchyBuilderInterface[] $namespaceHierarchyBuilders
      */
     public function __construct(private readonly iterable $namespaceHierarchyBuilders)
     {

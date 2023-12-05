@@ -28,7 +28,8 @@ class S3FilesystemVisibilityCommand extends Command
         private readonly FilesystemOperator $filesystemTheme,
         private readonly FilesystemOperator $filesystemSitemap,
         private readonly FilesystemOperator $filesystemAsset
-    ) {
+    )
+    {
         parent::__construct();
     }
 
@@ -47,7 +48,7 @@ class S3FilesystemVisibilityCommand extends Command
         $continue = $style->confirm('Continue?');
 
         if (!$continue) {
-            return (int) Command::SUCCESS;
+            return (int)Command::SUCCESS;
         }
 
         $style->comment('Setting visibility to private in private bucket.');
@@ -68,9 +69,9 @@ class S3FilesystemVisibilityCommand extends Command
 
     private function setVisibility(FilesystemOperator $filesystem, SnapAdminStyle $style, string $visibility): void
     {
-        $files = array_filter($filesystem->listContents('/', true)->toArray(), fn (StorageAttributes $object): bool => $object->type() === 'file');
+        $files = array_filter($filesystem->listContents('/', true)->toArray(), fn(StorageAttributes $object): bool => $object->type() === 'file');
         ProgressBar::setFormatDefinition('custom', '[%bar%] %current%/%max% -- %message%');
-        $progressBar = new ProgressBar($style, \count((array) $files));
+        $progressBar = new ProgressBar($style, \count((array)$files));
         $progressBar->setFormat('custom');
         $progressBar->setMessage('');
 

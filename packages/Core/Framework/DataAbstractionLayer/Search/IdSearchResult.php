@@ -29,14 +29,15 @@ class IdSearchResult extends Struct
      * @param array<array<string, mixed>> $data
      */
     public function __construct(
-        private readonly int $total,
-        array $data,
+        private readonly int      $total,
+        array                     $data,
         private readonly Criteria $criteria,
-        private readonly Context $context
-    ) {
+        private readonly Context  $context
+    )
+    {
         $this->ids = array_column($data, 'primaryKey');
 
-        $this->data = array_map(fn ($row) => $row['data'], $data);
+        $this->data = array_map(fn($row) => $row['data'], $data);
     }
 
     public function firstId(): ?string
@@ -116,7 +117,7 @@ class IdSearchResult extends Struct
             throw new \RuntimeException('No score available for id ' . $id);
         }
 
-        return (float) $score;
+        return (float)$score;
     }
 
     /**

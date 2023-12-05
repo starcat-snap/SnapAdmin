@@ -51,7 +51,7 @@ class SystemUpdateFinishCommand extends Command
     {
         $output = new SnapAdminStyle($input, $output);
 
-        $dsn = trim((string) EnvironmentHelper::getVariable('DATABASE_URL', getenv('DATABASE_URL')));
+        $dsn = trim((string)EnvironmentHelper::getVariable('DATABASE_URL', getenv('DATABASE_URL')));
         if ($dsn === '') {
             $output->note('Environment variable \'DATABASE_URL\' not defined. Skipping ' . $this->getName() . '...');
 

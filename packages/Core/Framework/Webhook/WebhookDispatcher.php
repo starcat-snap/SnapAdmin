@@ -54,15 +54,16 @@ class WebhookDispatcher implements EventDispatcherInterface
      */
     public function __construct(
         private readonly EventDispatcherInterface $dispatcher,
-        private readonly Connection $connection,
-        private readonly Client $guzzle,
-        private readonly string $shopUrl,
-        private readonly ContainerInterface $container,
-        private readonly HookableEventFactory $eventFactory,
-        private readonly string $snapVersion,
-        private readonly MessageBusInterface $bus,
-        private readonly bool $isAdminWorkerEnabled
-    ) {
+        private readonly Connection               $connection,
+        private readonly Client                   $guzzle,
+        private readonly string                   $shopUrl,
+        private readonly ContainerInterface       $container,
+        private readonly HookableEventFactory     $eventFactory,
+        private readonly string                   $snapVersion,
+        private readonly MessageBusInterface      $bus,
+        private readonly bool                     $isAdminWorkerEnabled
+    )
+    {
     }
 
     public function dispatch(object $event, ?string $eventName = null): object
@@ -248,11 +249,12 @@ class WebhookDispatcher implements EventDispatcherInterface
      */
     private function callWebhooksSynchronous(
         WebhookCollection $webhooksForEvent,
-        Hookable $event,
-        array $affectedRoleIds,
-        string $languageId,
-        string $userLocale
-    ): void {
+        Hookable          $event,
+        array             $affectedRoleIds,
+        string            $languageId,
+        string            $userLocale
+    ): void
+    {
         $requests = [];
 
         foreach ($webhooksForEvent as $webhook) {
@@ -275,8 +277,8 @@ class WebhookDispatcher implements EventDispatcherInterface
             $headers = [
                 'Content-Type' => 'application/json',
                 'sw-version' => $this->snapVersion,
-                AuthMiddleware::SHOPWARE_CONTEXT_LANGUAGE => $languageId,
-                AuthMiddleware::SHOPWARE_USER_LANGUAGE => $userLocale,
+                AuthMiddleware::SNAP_CONTEXT_LANGUAGE => $languageId,
+                AuthMiddleware::SNAP_USER_LANGUAGE => $userLocale,
             ];
 
             if ($event instanceof AppFlowActionEvent) {
@@ -292,7 +294,7 @@ class WebhookDispatcher implements EventDispatcherInterface
 
             if ($webhook->getApp() !== null && $webhook->getApp()->getAppSecret() !== null) {
                 $request = $request->withHeader(
-                    RequestSigner::SHOPWARE_SHOP_SIGNATURE,
+                    RequestSigner::SNAP_SHOP_SIGNATURE,
                     (new RequestSigner())->signPayload($jsonPayload, $webhook->getApp()->getAppSecret())
                 );
             }
@@ -311,11 +313,12 @@ class WebhookDispatcher implements EventDispatcherInterface
      */
     private function dispatchWebhooksToQueue(
         WebhookCollection $webhooksForEvent,
-        Hookable $event,
-        array $affectedRoleIds,
-        string $languageId,
-        string $userLocale
-    ): void {
+        Hookable          $event,
+        array             $affectedRoleIds,
+        string            $languageId,
+        string            $userLocale
+    ): void
+    {
         foreach ($webhooksForEvent as $webhook) {
             if (!$this->isEventDispatchingAllowed($webhook, $event, $affectedRoleIds)) {
                 continue;
@@ -440,7 +443,7 @@ class WebhookDispatcher implements EventDispatcherInterface
 
         foreach ($roles as $privilege) {
             $this->privileges[$eventName][Uuid::fromBytesToHex($privilege['id'])]
-                = new AclPrivilegeCollection(json_decode((string) $privilege['privileges'], true, 512, \JSON_THROW_ON_ERROR));
+                = new AclPrivilegeCollection(json_decode((string)$privilege['privileges'], true, 512, \JSON_THROW_ON_ERROR));
         }
     }
 

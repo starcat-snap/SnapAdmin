@@ -7,8 +7,6 @@ use SnapAdmin\Core\Framework\Adapter\Cache\CacheCompressor;
 use SnapAdmin\Core\Framework\Adapter\Cache\Event\HttpCacheHitEvent;
 use SnapAdmin\Core\Framework\Adapter\Cache\Event\HttpCacheStoreEvent;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\Framework\Routing\MaintenanceModeResolver;
-use SnapAdmin\Core\System\SalesChannel\StoreApiResponse;
 use Symfony\Component\Cache\Adapter\TagAwareAdapterInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +19,7 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 #[Package('core')]
 class CacheStore implements StoreInterface
 {
-    final public const TAG_HEADER = 'sw-cache-tags';
+    final public const TAG_HEADER = 'sa-cache-tags';
 
     /**
      * @var array<string, bool>
@@ -31,30 +29,25 @@ class CacheStore implements StoreInterface
     private readonly string $sessionName;
 
     /**
-     * @internal
-     *
      * @param AbstractCacheTracer<StoreApiResponse> $tracer
      * @param array<string, mixed> $sessionOptions
+     * @internal
+     *
      */
     public function __construct(
         private readonly TagAwareAdapterInterface $cache,
-        private readonly CacheStateValidator $stateValidator,
+        private readonly CacheStateValidator      $stateValidator,
         private readonly EventDispatcherInterface $eventDispatcher,
-        private readonly AbstractCacheTracer $tracer,
-        private readonly HttpCacheKeyGenerator $cacheKeyGenerator,
-        private readonly MaintenanceModeResolver $maintenanceResolver,
-        array $sessionOptions
-    ) {
+        private readonly AbstractCacheTracer      $tracer,
+        private readonly HttpCacheKeyGenerator    $cacheKeyGenerator,
+        array                                     $sessionOptions
+    )
+    {
         $this->sessionName = $sessionOptions['name'] ?? 'session-';
     }
 
     public function lookup(Request $request): ?Response
     {
-        // maintenance mode active and current ip is whitelisted > disable caching
-        if (!$this->maintenanceResolver->shouldBeCached($request)) {
-            return null;
-        }
-
         $key = $this->cacheKeyGenerator->generate($request);
 
         $item = $this->cache->getItem($key);
@@ -89,10 +82,6 @@ class CacheStore implements StoreInterface
         $tags = $this->tracer->get('all');
 
         $tags = array_filter($tags, static function (string $tag): bool {
-            // remove tag for global theme cache, http cache will be invalidated for each key which gets accessed in the request
-            if (str_contains($tag, 'theme-config')) {
-                return false;
-            }
 
             // remove tag for global config cache, http cache will be invalidated for each key which gets accessed in the request
             if (str_contains($tag, 'system-config')) {

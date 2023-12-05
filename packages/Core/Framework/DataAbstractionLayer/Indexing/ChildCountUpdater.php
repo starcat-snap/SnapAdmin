@@ -20,8 +20,9 @@ class ChildCountUpdater
      */
     public function __construct(
         private readonly DefinitionInstanceRegistry $registry,
-        private readonly Connection $connection
-    ) {
+        private readonly Connection                 $connection
+    )
+    {
     }
 
     /**

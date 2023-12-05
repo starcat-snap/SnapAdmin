@@ -10,9 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 class InvalidVariantIdException extends SnapAdminHttpException
 {
     public function __construct(
-        array $parameters = [],
+        array       $parameters = [],
         ?\Throwable $e = null
-    ) {
+    )
+    {
         parent::__construct('The variant id must be an non empty numeric value.', $parameters, $e);
     }
 

@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\Framework\Adapter\Twig;
 
 use Doctrine\DBAL\Connection;
 use SnapAdmin\Core\DevOps\Environment\EnvironmentHelper;
-use SnapAdmin\Core\Framework\DependencyInjection\CompilerPass\TwigLoaderConfigCompilerPass;
 use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Contracts\Service\ResetInterface;
@@ -28,8 +27,9 @@ class EntityTemplateLoader implements LoaderInterface, EventSubscriberInterface,
      */
     public function __construct(
         private readonly Connection $connection,
-        private readonly string $environment
-    ) {
+        private readonly string     $environment
+    )
+    {
     }
 
     public static function getSubscribedEvents(): array

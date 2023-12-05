@@ -20,7 +20,7 @@ class Migration1599570560FixSlovakiaDisplayedAsSloveniaTest extends TestCase
 
     private string $languageDE;
 
-    private ?string  $countryIdSlovakia = null;
+    private ?string $countryIdSlovakia = null;
 
     private Migration1599570560FixSlovakiaDisplayedAsSlovenia $migration;
 
@@ -76,13 +76,13 @@ class Migration1599570560FixSlovakiaDisplayedAsSloveniaTest extends TestCase
         } else {
             $this->migration->update($this->connection);
             if ($data['languageEnAvailable']) {
-                $this->checkMigrationForAvailableLanguage($this->languageEN, (string) $data['expectedEnTranslation'], (string) $data['EnTranslation'], $updated_at['en']);
+                $this->checkMigrationForAvailableLanguage($this->languageEN, (string)$data['expectedEnTranslation'], (string)$data['EnTranslation'], $updated_at['en']);
             } else {
                 // language is not Available so nothing should change for this language
                 $this->checkMigrationForUnavailableLanguage($this->languageEN);
             }
             if ($data['languageDeAvailable']) {
-                $this->checkMigrationForAvailableLanguage($this->languageDE, (string) $data['expectedDeTranslation'], (string) $data['DeTranslation'], $updated_at['de']);
+                $this->checkMigrationForAvailableLanguage($this->languageDE, (string)$data['expectedDeTranslation'], (string)$data['DeTranslation'], $updated_at['de']);
             } else {
                 // language is not Available so nothing should change
                 $this->checkMigrationForUnavailableLanguage($this->languageDE);
@@ -97,10 +97,10 @@ class Migration1599570560FixSlovakiaDisplayedAsSloveniaTest extends TestCase
     {
         $data
             = [
-                'SlovakiaAvailable' => true, 'languageEnAvailable' => true, 'languageDeAvailable' => true,
-                'EnTranslation' => 'Slovenia', 'DeTranslation' => 'Slowenien', 'expectedEnTranslation' => 'Slovakia',
-                'expectedDeTranslation' => 'Slowakei',
-            ];
+            'SlovakiaAvailable' => true, 'languageEnAvailable' => true, 'languageDeAvailable' => true,
+            'EnTranslation' => 'Slovenia', 'DeTranslation' => 'Slowenien', 'expectedEnTranslation' => 'Slovakia',
+            'expectedDeTranslation' => 'Slowakei',
+        ];
         $this->setDB($data);
         $updated_at = $this->getUpdatedAt();
 

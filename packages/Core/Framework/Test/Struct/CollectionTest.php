@@ -79,7 +79,7 @@ class CollectionTest extends TestCase
 
         $collection->add('a');
         $collection->add('b');
-        $result = $collection->map(fn ($element) => $element . '_test');
+        $result = $collection->map(fn($element) => $element . '_test');
         static::assertEquals(['a_test', 'b_test'], $result);
     }
 
@@ -92,7 +92,7 @@ class CollectionTest extends TestCase
 
         $collection->add('a');
         $collection->add('b');
-        $filtered = $collection->fmap(fn ($element) => $element === 'a' ? false : $element . '_test');
+        $filtered = $collection->fmap(fn($element) => $element === 'a' ? false : $element . '_test');
         static::assertEquals([1 => 'b_test'], $filtered);
     }
 
@@ -108,7 +108,7 @@ class CollectionTest extends TestCase
         $collection->add('c');
         $collection->add('a');
 
-        $collection->sort(fn ($a, $b) => strcmp((string) $a, (string) $b));
+        $collection->sort(fn($a, $b) => strcmp((string)$a, (string)$b));
 
         static::assertEquals([2 => 'a', 0 => 'b', 1 => 'c'], $collection->getElements());
     }
@@ -139,7 +139,7 @@ class CollectionTest extends TestCase
         $collection->add('b');
         $collection->add('c');
 
-        $filtered = $collection->filter(fn ($element) => $element !== 'b');
+        $filtered = $collection->filter(fn($element) => $element !== 'b');
         static::assertEquals(['a', 'c'], array_values($filtered->getElements()));
     }
 
@@ -222,7 +222,7 @@ class CollectionTest extends TestCase
     public function testFirstWhereWithEmptyCollectionWillReturnNull(): void
     {
         $collection = new TestCollection();
-        static::assertNull($collection->firstWhere(fn ($element) => $element === 'a'));
+        static::assertNull($collection->firstWhere(fn($element) => $element === 'a'));
     }
 
     public function testFirstWhereWithMatchingElementWillReturnFirstElement(): void
@@ -231,7 +231,7 @@ class CollectionTest extends TestCase
         $collection->add('a1');
         $collection->add('a2');
         $collection->add('a3');
-        static::assertEquals('a1', $collection->firstWhere(fn ($element) => str_starts_with($element, 'a')));
+        static::assertEquals('a1', $collection->firstWhere(fn($element) => str_starts_with($element, 'a')));
     }
 }
 

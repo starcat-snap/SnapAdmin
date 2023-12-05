@@ -44,13 +44,14 @@ class EntityWriter implements EntityWriterInterface
      * @internal
      */
     public function __construct(
-        private readonly WriteCommandExtractor $commandExtractor,
-        private readonly EntityForeignKeyResolver $foreignKeyResolver,
+        private readonly WriteCommandExtractor       $commandExtractor,
+        private readonly EntityForeignKeyResolver    $foreignKeyResolver,
         private readonly EntityWriteGatewayInterface $gateway,
-        private readonly LanguageLoaderInterface $languageLoader,
-        private readonly DefinitionInstanceRegistry $registry,
-        private readonly EntityWriteResultFactory $factory
-    ) {
+        private readonly LanguageLoaderInterface     $languageLoader,
+        private readonly DefinitionInstanceRegistry  $registry,
+        private readonly EntityWriteResultFactory    $factory
+    )
+    {
     }
 
     /**
@@ -313,7 +314,7 @@ class EntityWriter implements EntityWriterInterface
 
             /** @var AssociationField $associationField */
             $associationField = $setNullFields
-                ->filter(fn (Field $setNullField) => $setNullField instanceof AssociationField && $setNullField->getReferenceField() === $field)
+                ->filter(fn(Field $setNullField) => $setNullField instanceof AssociationField && $setNullField->getReferenceField() === $field)
                 ->first();
 
             $flag = $associationField->getFlag(SetNullOnDelete::class);
@@ -375,10 +376,10 @@ class EntityWriter implements EntityWriterInterface
 
                 $fieldKeys = $fields
                     ->filter(
-                        fn (Field $field) => !$field instanceof VersionField && !$field instanceof ReferenceVersionField
+                        fn(Field $field) => !$field instanceof VersionField && !$field instanceof ReferenceVersionField
                     )
                     ->map(
-                        fn (Field $field) => $field->getPropertyName()
+                        fn(Field $field) => $field->getPropertyName()
                     );
 
                 throw new IncompletePrimaryKeyException($fieldKeys);

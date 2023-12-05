@@ -57,9 +57,9 @@ abstract class ScheduledTaskHandler implements MessageSubscriberInterface
     }
 
     /**
+     * @return iterable<string>
      * @deprecated tag:v6.6.0 - reason:class-hierarchy-change - method will be removed, tag all ScheduledTaskHandlers with #[AsMessageHandler] instead
      *
-     * @return iterable<string>
      */
     public static function getHandledMessages(): iterable
     {

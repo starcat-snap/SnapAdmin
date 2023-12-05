@@ -10,9 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 class FeatureActiveException extends SnapAdminHttpException
 {
     public function __construct(
-        string $feature,
+        string      $feature,
         ?\Throwable $previous = null
-    ) {
+    )
+    {
         $message = sprintf('This function can only be used with feature flag %s inactive', $feature);
         parent::__construct($message, [], $previous);
     }

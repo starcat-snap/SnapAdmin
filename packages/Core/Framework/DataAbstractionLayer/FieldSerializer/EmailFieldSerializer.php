@@ -20,11 +20,12 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class EmailFieldSerializer extends AbstractFieldSerializer
 {
     public function encode(
-        Field $field,
-        EntityExistence $existence,
-        KeyValuePair $data,
+        Field             $field,
+        EntityExistence   $existence,
+        KeyValuePair      $data,
         WriteParameterBag $parameters
-    ): \Generator {
+    ): \Generator
+    {
         if (!$field instanceof EmailField) {
             throw DataAbstractionLayerException::invalidSerializerField(EmailField::class, $field);
         }

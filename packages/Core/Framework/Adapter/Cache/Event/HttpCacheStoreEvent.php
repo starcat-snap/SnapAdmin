@@ -16,9 +16,10 @@ class HttpCacheStoreEvent extends Event
      */
     public function __construct(
         public readonly CacheItemInterface $item,
-        public array $tags,
-        public readonly Request $request,
-        public readonly Response $response
-    ) {
+        public array                       $tags,
+        public readonly Request            $request,
+        public readonly Response           $response
+    )
+    {
     }
 }

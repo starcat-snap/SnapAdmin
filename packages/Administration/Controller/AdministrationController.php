@@ -3,30 +3,19 @@
 namespace SnapAdmin\Administration\Controller;
 
 use Doctrine\DBAL\Connection;
-use SnapAdmin\Administration\Events\PreResetExcludedSearchTermEvent;
 use SnapAdmin\Administration\Framework\Routing\KnownIps\KnownIpsCollectorInterface;
-use SnapAdmin\Administration\Snippet\SnippetFinderInterface;
-use SnapAdmin\Core\Checkout\Customer\CustomerEntity;
 use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\DevOps\Environment\EnvironmentHelper;
 use SnapAdmin\Core\Framework\Adapter\Twig\TemplateFinder;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityRepository;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\AllowHtml;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\MultiFilter;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\NotFilter;
 use SnapAdmin\Core\Framework\Feature;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Routing\RoutingException;
 use SnapAdmin\Core\Framework\Store\Services\FirstRunWizardService;
 use SnapAdmin\Core\Framework\Util\HtmlSanitizer;
-use SnapAdmin\Core\Framework\Uuid\Uuid;
-use SnapAdmin\Core\Framework\Validation\Exception\ConstraintViolationException;
 use SnapAdmin\Core\PlatformRequest;
-use SnapAdmin\Core\System\Currency\CurrencyEntity;
 use SnapAdmin\Core\System\SystemConfig\SystemConfigService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
@@ -34,84 +23,47 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\ConstraintViolation;
-use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 #[Route(defaults: ['_routeScope' => ['administration']])]
 #[Package('administration')]
 class AdministrationController extends AbstractController
 {
-    private readonly bool $esAdministrationEnabled;
-
-    private readonly bool $esStorefrontEnabled;
 
     /**
+     * @param array<int, int> $supportedApiVersions
      * @internal
      *
-     * @param array<int, int> $supportedApiVersions
      */
     public function __construct(
-        private readonly TemplateFinder $finder,
-        private readonly FirstRunWizardService $firstRunWizardService,
-        private readonly SnippetFinderInterface $snippetFinder,
-        private readonly array $supportedApiVersions,
+        private readonly TemplateFinder             $finder,
+        private readonly array                      $supportedApiVersions,
         private readonly KnownIpsCollectorInterface $knownIpsCollector,
-        private readonly Connection $connection,
-        private readonly EventDispatcherInterface $eventDispatcher,
-        private readonly string $snapCoreDir,
-        private readonly EntityRepository $customerRepo,
-        private readonly EntityRepository $currencyRepository,
-        private readonly HtmlSanitizer $htmlSanitizer,
+        private readonly Connection                 $connection,
+        private readonly EventDispatcherInterface   $eventDispatcher,
+        private readonly string                     $snapCoreDir,
+        private readonly HtmlSanitizer              $htmlSanitizer,
         private readonly DefinitionInstanceRegistry $definitionInstanceRegistry,
-        ParameterBagInterface $params,
-        private readonly SystemConfigService $systemConfigService
-    ) {
-        // param is only available if the elasticsearch bundle is enabled
-        $this->esAdministrationEnabled = $params->has('elasticsearch.administration.enabled')
-            ? $params->get('elasticsearch.administration.enabled')
-            : false;
-        $this->esStorefrontEnabled = $params->has('elasticsearch.enabled')
-            ? $params->get('elasticsearch.enabled')
-            : false;
+        ParameterBagInterface                       $params,
+        private readonly SystemConfigService        $systemConfigService
+    )
+    {
+
     }
 
     #[Route(path: '/%snap_administration.path_name%', name: 'administration.index', defaults: ['auth_required' => false], methods: ['GET'])]
     public function index(Request $request, Context $context): Response
     {
         $template = $this->finder->find('@Administration/administration/index.html.twig');
-
-        /** @var CurrencyEntity $defaultCurrency */
-        $defaultCurrency = $this->currencyRepository->search(new Criteria([Defaults::CURRENCY]), $context)->first();
-
         return $this->render($template, [
             'features' => Feature::getAll(),
             'systemLanguageId' => Defaults::LANGUAGE_SYSTEM,
             'defaultLanguageIds' => [Defaults::LANGUAGE_SYSTEM],
-            'systemCurrencyId' => Defaults::CURRENCY,
             'disableExtensions' => EnvironmentHelper::getVariable('DISABLE_EXTENSIONS', false),
-            'systemCurrencyISOCode' => $defaultCurrency->getIsoCode(),
             'liveVersionId' => Defaults::LIVE_VERSION,
-            'firstRunWizard' => $this->firstRunWizardService->frwShouldRun(),
             'apiVersion' => $this->getLatestApiVersion(),
             'cspNonce' => $request->attributes->get(PlatformRequest::ATTRIBUTE_CSP_NONCE),
-            'adminEsEnable' => $this->esAdministrationEnabled,
-            'storefrontEsEnable' => $this->esStorefrontEnabled,
         ]);
-    }
-
-    #[Route(path: '/api/_admin/snippets', name: 'api.admin.snippets', methods: ['GET'])]
-    public function snippets(Request $request): Response
-    {
-        $snippets = [];
-        $locale = $request->query->get('locale', 'en-GB');
-        $snippets[$locale] = $this->snippetFinder->findSnippets((string) $locale);
-
-        if ($locale !== 'en-GB') {
-            $snippets['en-GB'] = $this->snippetFinder->findSnippets('en-GB');
-        }
-
-        return new JsonResponse($snippets);
     }
 
     #[Route(path: '/api/_admin/known-ips', name: 'api.admin.known-ips', methods: ['GET'])]
@@ -129,94 +81,6 @@ class AdministrationController extends AbstractController
         return new JsonResponse(['ips' => $ips]);
     }
 
-    #[Route(path: '/api/_admin/reset-excluded-search-term', name: 'api.admin.reset-excluded-search-term', defaults: ['_acl' => ['system_config:update', 'system_config:create', 'system_config:delete']], methods: ['POST'])]
-    public function resetExcludedSearchTerm(Context $context): JsonResponse
-    {
-        $searchConfigId = $this->connection->fetchOne('SELECT id FROM product_search_config WHERE language_id = :language_id', ['language_id' => Uuid::fromHexToBytes($context->getLanguageId())]);
-
-        if ($searchConfigId === false) {
-            throw RoutingException::languageNotFound($context->getLanguageId());
-        }
-
-        $deLanguageId = $this->fetchLanguageIdByName('de-DE', $this->connection);
-        $enLanguageId = $this->fetchLanguageIdByName('en-GB', $this->connection);
-
-        switch ($context->getLanguageId()) {
-            case $deLanguageId:
-                $defaultExcludedTerm = require $this->snapCoreDir . '/Migration/Fixtures/stopwords/de.php';
-
-                break;
-            case $enLanguageId:
-                $defaultExcludedTerm = require $this->snapCoreDir . '/Migration/Fixtures/stopwords/en.php';
-
-                break;
-            default:
-                /** @var PreResetExcludedSearchTermEvent $preResetExcludedSearchTermEvent */
-                $preResetExcludedSearchTermEvent = $this->eventDispatcher->dispatch(new PreResetExcludedSearchTermEvent($searchConfigId, [], $context));
-                $defaultExcludedTerm = $preResetExcludedSearchTermEvent->getExcludedTerms();
-        }
-
-        $this->connection->executeStatement(
-            'UPDATE `product_search_config` SET `excluded_terms` = :excludedTerms WHERE `id` = :id',
-            [
-                'excludedTerms' => json_encode($defaultExcludedTerm, \JSON_THROW_ON_ERROR),
-                'id' => $searchConfigId,
-            ]
-        );
-
-        return new JsonResponse([
-            'success' => true,
-        ]);
-    }
-
-    #[Route(path: '/api/_admin/check-customer-email-valid', name: 'api.admin.check-customer-email-valid', methods: ['POST'])]
-    public function checkCustomerEmailValid(Request $request, Context $context): JsonResponse
-    {
-        $params = [];
-        if (!$request->request->has('email')) {
-            throw RoutingException::missingRequestParameter('email');
-        }
-
-        $email = (string) $request->request->get('email');
-        $isCustomerBoundSalesChannel = $this->systemConfigService->get('core.systemWideLoginRegistration.isCustomerBoundToSalesChannel');
-        $boundSalesChannelId = null;
-        if ($isCustomerBoundSalesChannel) {
-            $boundSalesChannelId = $request->request->get('boundSalesChannelId');
-            if ($boundSalesChannelId !== null && !\is_string($boundSalesChannelId)) {
-                throw RoutingException::invalidRequestParameter('boundSalesChannelId');
-            }
-        }
-
-        $customer = $this->getCustomerByEmail((string) $request->request->get('id'), $email, $context, $boundSalesChannelId);
-        if (!$customer) {
-            return new JsonResponse(
-                ['isValid' => true]
-            );
-        }
-
-        $message = 'The email address {{ email }} is already in use';
-        $params['{{ email }}'] = $email;
-
-        if ($customer->getBoundSalesChannel()) {
-            $message .= ' in the Sales Channel {{ salesChannel }}';
-            $params['{{ salesChannel }}'] = $customer->getBoundSalesChannel()->getName();
-        }
-
-        $violations = new ConstraintViolationList();
-        $violations->add(new ConstraintViolation(
-            str_replace(array_keys($params), array_values($params), $message),
-            $message,
-            $params,
-            null,
-            null,
-            $email,
-            null,
-            '79d30fe0-febf-421e-ac9b-1bfd5c9007f7'
-        ));
-
-        throw new ConstraintViolationException($violations, $request->request->all());
-    }
-
     #[Route(path: '/api/_admin/sanitize-html', name: 'api.admin.sanitize-html', methods: ['POST'])]
     public function sanitizeHtml(Request $request, Context $context): JsonResponse
     {
@@ -224,8 +88,8 @@ class AdministrationController extends AbstractController
             throw RoutingException::missingRequestParameter('html');
         }
 
-        $html = (string) $request->request->get('html');
-        $field = (string) $request->request->get('field');
+        $html = (string)$request->request->get('html');
+        $field = (string)$request->request->get('field');
 
         if ($field === '') {
             return new JsonResponse(
@@ -259,51 +123,12 @@ class AdministrationController extends AbstractController
         );
     }
 
-    private function fetchLanguageIdByName(string $isoCode, Connection $connection): ?string
-    {
-        $languageId = $connection->fetchOne(
-            '
-            SELECT `language`.id FROM `language`
-            INNER JOIN locale ON language.translation_code_id = locale.id
-            WHERE `code` = :code',
-            ['code' => $isoCode]
-        );
-
-        return $languageId === false ? null : Uuid::fromBytesToHex($languageId);
-    }
-
     private function getLatestApiVersion(): ?int
     {
         $sortedSupportedApiVersions = array_values($this->supportedApiVersions);
 
-        usort($sortedSupportedApiVersions, fn (int $version1, int $version2) => \version_compare((string) $version1, (string) $version2));
+        usort($sortedSupportedApiVersions, fn(int $version1, int $version2) => \version_compare((string)$version1, (string)$version2));
 
         return array_pop($sortedSupportedApiVersions);
-    }
-
-    private function getCustomerByEmail(string $customerId, string $email, Context $context, ?string $boundSalesChannelId): ?CustomerEntity
-    {
-        $criteria = new Criteria();
-        $criteria->setLimit(1);
-        if ($boundSalesChannelId) {
-            $criteria->addAssociation('boundSalesChannel');
-        }
-
-        $criteria->addFilter(new EqualsFilter('email', $email));
-        $criteria->addFilter(new EqualsFilter('guest', false));
-        $criteria->addFilter(new NotFilter(
-            NotFilter::CONNECTION_AND,
-            [new EqualsFilter('id', $customerId)]
-        ));
-
-        $criteria->addFilter(new MultiFilter(MultiFilter::CONNECTION_OR, [
-            new EqualsFilter('boundSalesChannelId', null),
-            new EqualsFilter('boundSalesChannelId', $boundSalesChannelId),
-        ]));
-
-        /** @var ?CustomerEntity $customer */
-        $customer = $this->customerRepo->search($criteria, $context)->first();
-
-        return $customer;
     }
 }

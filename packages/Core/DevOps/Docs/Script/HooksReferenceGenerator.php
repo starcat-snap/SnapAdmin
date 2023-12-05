@@ -47,10 +47,11 @@ class HooksReferenceGenerator implements ScriptReferenceGenerator
     private readonly DocBlockFactoryInterface $docFactory;
 
     public function __construct(
-        private readonly ContainerInterface $container,
-        private readonly Environment $twig,
+        private readonly ContainerInterface        $container,
+        private readonly Environment               $twig,
         private readonly ServiceReferenceGenerator $serviceReferenceGenerator
-    ) {
+    )
+    {
         $this->docFactory = DocBlockFactory::createInstance([
             'hook-use-case' => Generic::class,
             'script-service' => Generic::class,
@@ -188,7 +189,7 @@ class HooksReferenceGenerator implements ScriptReferenceGenerator
                 }
 
                 $varDoc = $varDoc[0];
-                $type = (string) $varDoc->getType();
+                $type = (string)$varDoc->getType();
             } else {
                 $type = $propertyType->getName();
             }
@@ -338,7 +339,8 @@ class HooksReferenceGenerator implements ScriptReferenceGenerator
         $hookData['interfaceHook'] = true;
         $hookData['interfaceDescription'] = "**Interface Hook**\n\n" . $hookData['trigger'];
 
-        foreach ($hook::FUNCTIONS as $functionName => $functionHook) { /* @phpstan-ignore-line */
+        foreach ($hook::FUNCTIONS as $functionName => $functionHook) {
+            /* @phpstan-ignore-line */
             $hookData['functions'][$functionName] = $this->getDataForHook($functionHook);
         }
 

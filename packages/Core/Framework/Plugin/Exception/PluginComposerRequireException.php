@@ -13,7 +13,8 @@ class PluginComposerRequireException extends SnapAdminHttpException
         string $pluginName,
         string $pluginComposerName,
         string $output
-    ) {
+    )
+    {
         parent::__construct(
             sprintf('Could not execute "composer require" for plugin "{{ pluginName }} ({{ pluginComposerName }}). Output:%s{{ output }}', \PHP_EOL),
             [

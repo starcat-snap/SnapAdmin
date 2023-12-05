@@ -14,9 +14,10 @@ class BuildValidationEvent extends Event implements SnapAdminEvent, GenericEvent
 {
     public function __construct(
         private readonly DataValidationDefinition $definition,
-        private readonly DataBag $data,
-        private readonly Context $context
-    ) {
+        private readonly DataBag                  $data,
+        private readonly Context                  $context
+    )
+    {
     }
 
     public function getName(): string

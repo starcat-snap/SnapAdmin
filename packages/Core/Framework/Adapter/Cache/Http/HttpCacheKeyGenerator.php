@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\Framework\Adapter\Cache\Http;
 
 use SnapAdmin\Core\Framework\Adapter\Cache\Event\HttpCacheKeyEvent;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\SalesChannelRequest;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
@@ -14,19 +13,9 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 #[Package('core')]
 class HttpCacheKeyGenerator
 {
-    final public const CURRENCY_COOKIE = 'sw-currency';
     final public const CONTEXT_CACHE_COOKIE = 'sw-cache-hash';
     final public const SYSTEM_STATE_COOKIE = 'sw-states';
     final public const INVALIDATION_STATES_HEADER = 'sw-invalidation-states';
-    /**
-     * Virtual path of the "domain"
-     *
-     * @example
-     * - `/de`
-     * - `/en`
-     * - {empty} - the virtual path is optional
-     */
-    private const SALES_CHANNEL_BASE_URL = 'sw-sales-channel-base-url';
 
     /**
      * @param string[] $ignoredParameters
@@ -34,10 +23,11 @@ class HttpCacheKeyGenerator
      * @internal
      */
     public function __construct(
-        private readonly string $cacheHash,
+        private readonly string                   $cacheHash,
         private readonly EventDispatcherInterface $dispatcher,
-        private readonly array $ignoredParameters
-    ) {
+        private readonly array                    $ignoredParameters
+    )
+    {
     }
 
     /**
@@ -78,13 +68,10 @@ class HttpCacheKeyGenerator
         ksort($params);
         $params = http_build_query($params);
 
-        $baseUrl = $request->attributes->get(self::SALES_CHANNEL_BASE_URL) ?? '';
-        \assert(\is_string($baseUrl));
-
         return sprintf(
             '%s%s%s%s',
             $request->getSchemeAndHttpHost(),
-            $baseUrl,
+            '',
             $request->getPathInfo(),
             '?' . $params
         );
@@ -103,20 +90,5 @@ class HttpCacheKeyGenerator
             return;
         }
 
-        if ($request->cookies->has(self::CURRENCY_COOKIE)) {
-            $event->add(
-                self::CURRENCY_COOKIE,
-                $request->cookies->get(self::CURRENCY_COOKIE)
-            );
-
-            return;
-        }
-
-        if ($request->attributes->has(SalesChannelRequest::ATTRIBUTE_DOMAIN_CURRENCY_ID)) {
-            $event->add(
-                SalesChannelRequest::ATTRIBUTE_DOMAIN_CURRENCY_ID,
-                $request->attributes->get(SalesChannelRequest::ATTRIBUTE_DOMAIN_CURRENCY_ID)
-            );
-        }
     }
 }

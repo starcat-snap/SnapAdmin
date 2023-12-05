@@ -11,7 +11,8 @@ class InvalidMigrationClassException extends SnapAdminHttpException
     public function __construct(
         string $class,
         string $path
-    ) {
+    )
+    {
         parent::__construct(
             'Unable to load migration {{ class }} at path {{ path }}',
             ['class' => $class, 'path' => $path]

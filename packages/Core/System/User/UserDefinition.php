@@ -2,10 +2,6 @@
 
 namespace SnapAdmin\Core\System\User;
 
-use SnapAdmin\Core\Checkout\Customer\CustomerDefinition;
-use SnapAdmin\Core\Checkout\Order\OrderDefinition;
-use SnapAdmin\Core\Content\ImportExport\Aggregate\ImportExportLog\ImportExportLogDefinition;
-use SnapAdmin\Core\Content\Media\MediaDefinition;
 use SnapAdmin\Core\Framework\Api\Acl\Role\AclRoleDefinition;
 use SnapAdmin\Core\Framework\Api\Acl\Role\AclUserRoleDefinition;
 use SnapAdmin\Core\Framework\Context;
@@ -21,7 +17,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\CascadeDelete;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\SearchRanking;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\SetNullOnDelete;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\IdField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationField;
@@ -33,7 +28,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TimeZoneField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\Locale\LocaleDefinition;
-use SnapAdmin\Core\System\StateMachine\Aggregation\StateMachineHistory\StateMachineHistoryDefinition;
 use SnapAdmin\Core\System\User\Aggregate\UserAccessKey\UserAccessKeyDefinition;
 use SnapAdmin\Core\System\User\Aggregate\UserConfig\UserConfigDefinition;
 use SnapAdmin\Core\System\User\Aggregate\UserRecovery\UserRecoveryDefinition;
@@ -82,8 +76,8 @@ class UserDefinition extends EntityDefinition
             (new FkField('locale_id', 'localeId', LocaleDefinition::class))->addFlags(new Required()),
             (new StringField('username', 'username'))->addFlags(new Required(), new SearchRanking(SearchRanking::HIGH_SEARCH_RANKING)),
             (new PasswordField('password', 'password', \PASSWORD_DEFAULT, [], PasswordField::FOR_ADMIN))->removeFlag(ApiAware::class)->addFlags(new Required()),
-            (new StringField('first_name', 'firstName'))->addFlags(new Required(), new SearchRanking(SearchRanking::HIGH_SEARCH_RANKING)),
-            (new StringField('last_name', 'lastName'))->addFlags(new Required(), new SearchRanking(SearchRanking::HIGH_SEARCH_RANKING)),
+            (new StringField('name', 'name'))->addFlags(new SearchRanking(SearchRanking::HIGH_SEARCH_RANKING)),
+            (new StringField('phone', 'phone'))->addFlags( new SearchRanking(SearchRanking::HIGH_SEARCH_RANKING)),
             (new StringField('title', 'title'))->addFlags(new SearchRanking(SearchRanking::MIDDLE_SEARCH_RANKING)),
             (new StringField('email', 'email'))->addFlags(new Required(), new SearchRanking(SearchRanking::HIGH_SEARCH_RANKING)),
             new BoolField('active', 'active'),
@@ -92,20 +86,11 @@ class UserDefinition extends EntityDefinition
             (new TimeZoneField('time_zone', 'timeZone'))->addFlags(new Required()),
             new CustomFields(),
             new ManyToOneAssociationField('locale', 'locale_id', LocaleDefinition::class, 'id', false),
-            new FkField('avatar_id', 'avatarId', MediaDefinition::class),
-            new ManyToOneAssociationField('avatarMedia', 'avatar_id', MediaDefinition::class),
-            (new OneToManyAssociationField('media', MediaDefinition::class, 'user_id'))->addFlags(new SetNullOnDelete()),
             (new OneToManyAssociationField('accessKeys', UserAccessKeyDefinition::class, 'user_id', 'id'))->addFlags(new CascadeDelete()),
             (new OneToManyAssociationField('configs', UserConfigDefinition::class, 'user_id', 'id'))->addFlags(new CascadeDelete()),
-            new OneToManyAssociationField('stateMachineHistoryEntries', StateMachineHistoryDefinition::class, 'user_id', 'id'),
-            (new OneToManyAssociationField('importExportLogEntries', ImportExportLogDefinition::class, 'user_id', 'id'))->addFlags(new SetNullOnDelete()),
             new ManyToManyAssociationField('aclRoles', AclRoleDefinition::class, AclUserRoleDefinition::class, 'user_id', 'acl_role_id'),
             new OneToOneAssociationField('recoveryUser', 'id', 'user_id', UserRecoveryDefinition::class, false),
             (new StringField('store_token', 'storeToken'))->removeFlag(ApiAware::class),
-            new OneToManyAssociationField('createdOrders', OrderDefinition::class, 'created_by_id', 'id'),
-            new OneToManyAssociationField('updatedOrders', OrderDefinition::class, 'updated_by_id', 'id'),
-            new OneToManyAssociationField('createdCustomers', CustomerDefinition::class, 'created_by_id', 'id'),
-            new OneToManyAssociationField('updatedCustomers', CustomerDefinition::class, 'updated_by_id', 'id'),
         ]);
     }
 }

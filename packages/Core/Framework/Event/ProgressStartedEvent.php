@@ -12,8 +12,9 @@ class ProgressStartedEvent extends Event
 
     public function __construct(
         private readonly string $message,
-        private readonly int $total
-    ) {
+        private readonly int    $total
+    )
+    {
     }
 
     public function getMessage(): string

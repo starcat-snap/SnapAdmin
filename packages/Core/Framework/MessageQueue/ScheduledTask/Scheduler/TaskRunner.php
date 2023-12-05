@@ -25,9 +25,10 @@ class TaskRunner
      * @param EntityRepository<ScheduledTaskCollection> $scheduledTaskRepository
      */
     public function __construct(
-        private readonly iterable $taskHandler,
+        private readonly iterable         $taskHandler,
         private readonly EntityRepository $scheduledTaskRepository,
-    ) {
+    )
+    {
     }
 
     public function runSingleTask(string $taskName, Context $context): void

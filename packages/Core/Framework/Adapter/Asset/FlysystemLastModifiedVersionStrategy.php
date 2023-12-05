@@ -14,10 +14,11 @@ class FlysystemLastModifiedVersionStrategy implements VersionStrategyInterface
      * @internal
      */
     public function __construct(
-        private readonly string $cacheTag,
-        private readonly FilesystemOperator $filesystem,
+        private readonly string                   $cacheTag,
+        private readonly FilesystemOperator       $filesystem,
         private readonly TagAwareAdapterInterface $cacheAdapter
-    ) {
+    )
+    {
     }
 
     public function getVersion(string $path): string
@@ -43,7 +44,7 @@ class FlysystemLastModifiedVersionStrategy implements VersionStrategyInterface
         $item = $this->cacheAdapter->getItem($cacheKey);
 
         if ($item->isHit()) {
-            return (string) $item->get();
+            return (string)$item->get();
         }
 
         $metaData = '';
@@ -55,6 +56,6 @@ class FlysystemLastModifiedVersionStrategy implements VersionStrategyInterface
         $item->tag($this->cacheTag);
         $this->cacheAdapter->saveDeferred($item);
 
-        return (string) $item->get();
+        return (string)$item->get();
     }
 }

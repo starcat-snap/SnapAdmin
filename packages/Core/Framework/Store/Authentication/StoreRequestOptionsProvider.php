@@ -24,15 +24,16 @@ class StoreRequestOptionsProvider extends AbstractStoreRequestOptionsProvider
     final public const CONFIG_KEY_STORE_LICENSE_DOMAIN = 'core.store.licenseHost';
     final public const CONFIG_KEY_STORE_SHOP_SECRET = 'core.store.shopSecret';
 
-    private const SHOPWARE_PLATFORM_TOKEN_HEADER = 'X-SnapAdmin-Platform-Token';
-    private const SHOPWARE_SHOP_SECRET_HEADER = 'X-SnapAdmin-Shop-Secret';
+    private const SNAP_PLATFORM_TOKEN_HEADER = 'X-SnapAdmin-Platform-Token';
+    private const SNAP_SHOP_SECRET_HEADER = 'X-SnapAdmin-Shop-Secret';
 
     public function __construct(
-        private readonly EntityRepository $userRepository,
+        private readonly EntityRepository    $userRepository,
         private readonly SystemConfigService $systemConfigService,
-        private readonly InstanceService $instanceService,
-        private readonly LocaleProvider $localeProvider,
-    ) {
+        private readonly InstanceService     $instanceService,
+        private readonly LocaleProvider      $localeProvider,
+    )
+    {
     }
 
     /**
@@ -41,8 +42,8 @@ class StoreRequestOptionsProvider extends AbstractStoreRequestOptionsProvider
     public function getAuthenticationHeader(Context $context): array
     {
         return array_filter([
-            self::SHOPWARE_PLATFORM_TOKEN_HEADER => $this->getUserStoreToken($context),
-            self::SHOPWARE_SHOP_SECRET_HEADER => $this->systemConfigService->getString(self::CONFIG_KEY_STORE_SHOP_SECRET),
+            self::SNAP_PLATFORM_TOKEN_HEADER => $this->getUserStoreToken($context),
+            self::SNAP_SHOP_SECRET_HEADER => $this->systemConfigService->getString(self::CONFIG_KEY_STORE_SHOP_SECRET),
         ]);
     }
 

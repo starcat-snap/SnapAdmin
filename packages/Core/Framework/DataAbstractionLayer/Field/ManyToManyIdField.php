@@ -9,10 +9,11 @@ use SnapAdmin\Core\Framework\Log\Package;
 class ManyToManyIdField extends ListField
 {
     public function __construct(
-        string $storageName,
-        string $propertyName,
+        string                  $storageName,
+        string                  $propertyName,
         private readonly string $associationName
-    ) {
+    )
+    {
         parent::__construct($storageName, $propertyName, IdField::class);
         $this->addFlags(new WriteProtected());
     }

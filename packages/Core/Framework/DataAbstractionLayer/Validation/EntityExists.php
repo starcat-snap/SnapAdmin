@@ -29,9 +29,9 @@ class EntityExists extends Constraint
     protected string $primaryProperty = 'id';
 
     /**
+     * @param array<string, mixed> $options
      * @internal
      *
-     * @param array<string, mixed> $options
      */
     public function __construct(array $options)
     {

@@ -55,7 +55,7 @@ class PluginAclTest extends TestCase
 
         $pluginCollection
             ->method('getActives')
-            ->willReturnCallback(fn () => array_filter($this->plugins, static fn (Plugin $plugin) => $plugin->isActive()));
+            ->willReturnCallback(fn() => array_filter($this->plugins, static fn(Plugin $plugin) => $plugin->isActive()));
 
         $this->pluginAclSubscriber = new PluginAclPrivilegesSubscriber($pluginCollection);
     }

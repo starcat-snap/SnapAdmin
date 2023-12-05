@@ -31,14 +31,15 @@ class CreateMigrationCommand extends Command
      */
     public function __construct(
         private readonly DefinitionInstanceRegistry $registry,
-        private readonly MigrationQueryGenerator $queryGenerator,
-        private readonly KernelInterface $kernel,
-        private readonly Filesystem $filesystem,
-        private readonly MigrationFileRenderer $migrationFileRenderer,
-        private readonly string $coreDir,
-        private readonly string $snapVersion,
-        private readonly \DateTimeImmutable $now = new \DateTimeImmutable()
-    ) {
+        private readonly MigrationQueryGenerator    $queryGenerator,
+        private readonly KernelInterface            $kernel,
+        private readonly Filesystem                 $filesystem,
+        private readonly MigrationFileRenderer      $migrationFileRenderer,
+        private readonly string                     $coreDir,
+        private readonly string                     $snapVersion,
+        private readonly \DateTimeImmutable         $now = new \DateTimeImmutable()
+    )
+    {
         parent::__construct();
     }
 
@@ -52,7 +53,7 @@ class CreateMigrationCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $timestamp = (string) $this->now->getTimestamp();
+        $timestamp = (string)$this->now->getTimestamp();
 
         $namespace = $this->getNamespace($input);
         $directory = $this->getDirectory($input);
@@ -118,12 +119,13 @@ class CreateMigrationCommand extends Command
     }
 
     private function handleEntity(
-        string $entity,
-        string $timestamp,
-        string $namespace,
-        string $directory,
+        string         $entity,
+        string         $timestamp,
+        string         $namespace,
+        string         $directory,
         SnapAdminStyle $io
-    ): void {
+    ): void
+    {
         $io->info('Processing entity: ' . $entity);
 
         $entityDefinition = $this->registry->getByEntityName($entity);

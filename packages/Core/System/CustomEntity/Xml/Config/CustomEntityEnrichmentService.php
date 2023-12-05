@@ -20,8 +20,9 @@ class CustomEntityEnrichmentService
 
     public function enrich(
         CustomEntityXmlSchema $customEntityXmlSchema,
-        ?AdminUiXmlSchema $adminUiXmlSchema
-    ): CustomEntityXmlSchema {
+        ?AdminUiXmlSchema     $adminUiXmlSchema
+    ): CustomEntityXmlSchema
+    {
         // @todo NEXT-22697 - Re-implement, when re-enabling cms-aware
         // $customEntityXmlSchema = $this->enrichCmsAware($customEntityXmlSchema);
 

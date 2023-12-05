@@ -37,11 +37,13 @@ class ArrayOfTypeValidator extends ConstraintValidator
             $isFunction = 'is_' . $type;
             $ctypeFunction = 'ctype_' . $type;
 
-            if (\function_exists($isFunction) && $isFunction($item)) { /* @phpstan-ignore-line */
+            if (\function_exists($isFunction) && $isFunction($item)) {
+                /* @phpstan-ignore-line */
                 continue;
             }
 
-            if (\function_exists($ctypeFunction) && $ctypeFunction($item)) { /* @phpstan-ignore-line */
+            if (\function_exists($ctypeFunction) && $ctypeFunction($item)) {
+                /* @phpstan-ignore-line */
                 continue;
             }
 
@@ -56,7 +58,7 @@ class ArrayOfTypeValidator extends ConstraintValidator
             $this->context->buildViolation(ArrayOfType::INVALID_MESSAGE)
                 ->setCode(Type::INVALID_TYPE_ERROR)
                 ->setParameter('{{ type }}', $constraint->type)
-                ->setParameter('{{ value }}', (string) $item)
+                ->setParameter('{{ value }}', (string)$item)
                 ->addViolation();
         }
     }

@@ -74,7 +74,7 @@ class ArrayIncrementer extends AbstractIncrementer
                 'key' => $key,
                 'cluster' => $cluster,
                 'pool' => $this->getPool(),
-                'count' => max(0, (int) $count),
+                'count' => max(0, (int)$count),
             ];
         }
 

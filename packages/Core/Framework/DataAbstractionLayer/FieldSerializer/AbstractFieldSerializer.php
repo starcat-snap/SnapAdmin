@@ -32,9 +32,10 @@ abstract class AbstractFieldSerializer implements FieldSerializerInterface
     private array $cachedConstraints = [];
 
     public function __construct(
-        protected ValidatorInterface $validator,
+        protected ValidatorInterface         $validator,
         protected DefinitionInstanceRegistry $definitionRegistry
-    ) {
+    )
+    {
     }
 
     public function normalize(Field $field, array $data, WriteParameterBag $parameters): array
@@ -43,10 +44,11 @@ abstract class AbstractFieldSerializer implements FieldSerializerInterface
     }
 
     protected function validate(
-        array $constraints,
+        array        $constraints,
         KeyValuePair $data,
-        string $path
-    ): void {
+        string       $path
+    ): void
+    {
         $violationList = new ConstraintViolationList();
 
         foreach ($constraints as $constraint) {
@@ -88,11 +90,12 @@ abstract class AbstractFieldSerializer implements FieldSerializerInterface
     }
 
     protected function requiresValidation(
-        Field $field,
-        EntityExistence $existence,
-        $value,
+        Field             $field,
+        EntityExistence   $existence,
+                          $value,
         WriteParameterBag $parameters
-    ): bool {
+    ): bool
+    {
         if ($value !== null) {
             return true;
         }
@@ -168,17 +171,17 @@ abstract class AbstractFieldSerializer implements FieldSerializerInterface
         }
 
         if (!$field->is(AllowHtml::class)) {
-            return strip_tags((string) $data->getValue());
+            return strip_tags((string)$data->getValue());
         }
 
         $flag = $field->getFlag(AllowHtml::class);
 
         if ($flag instanceof AllowHtml && $flag->isSanitized()) {
-            $fieldKey = sprintf('%s.%s', (string) $existence->getEntityName(), $field->getPropertyName());
+            $fieldKey = sprintf('%s.%s', (string)$existence->getEntityName(), $field->getPropertyName());
 
-            return $sanitizer->sanitize((string) $data->getValue(), [], false, $fieldKey);
+            return $sanitizer->sanitize((string)$data->getValue(), [], false, $fieldKey);
         }
 
-        return (string) $data->getValue();
+        return (string)$data->getValue();
     }
 }

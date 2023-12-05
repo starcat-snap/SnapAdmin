@@ -47,12 +47,13 @@ class SystemConfigService implements ResetInterface
      * @internal
      */
     public function __construct(
-        private readonly Connection $connection,
-        private readonly ConfigReader $configReader,
+        private readonly Connection                 $connection,
+        private readonly ConfigReader               $configReader,
         private readonly AbstractSystemConfigLoader $loader,
-        private readonly EventDispatcherInterface $eventDispatcher,
-        private readonly bool $fineGrainedCache
-    ) {
+        private readonly EventDispatcherInterface   $eventDispatcher,
+        private readonly bool                       $fineGrainedCache
+    )
+    {
     }
 
     public static function buildName(string $key): string
@@ -102,7 +103,7 @@ class SystemConfigService implements ResetInterface
     {
         $value = $this->get($key, $salesChannelId);
         if (!\is_array($value)) {
-            return (string) $value;
+            return (string)$value;
         }
 
         throw new InvalidSettingValueException($key, 'string', \gettype($value));
@@ -112,7 +113,7 @@ class SystemConfigService implements ResetInterface
     {
         $value = $this->get($key, $salesChannelId);
         if (!\is_array($value)) {
-            return (int) $value;
+            return (int)$value;
         }
 
         throw new InvalidSettingValueException($key, 'int', \gettype($value));
@@ -122,7 +123,7 @@ class SystemConfigService implements ResetInterface
     {
         $value = $this->get($key, $salesChannelId);
         if (!\is_array($value)) {
-            return (float) $value;
+            return (float)$value;
         }
 
         throw new InvalidSettingValueException($key, 'float', \gettype($value));
@@ -130,15 +131,15 @@ class SystemConfigService implements ResetInterface
 
     public function getBool(string $key, ?string $salesChannelId = null): bool
     {
-        return (bool) $this->get($key, $salesChannelId);
+        return (bool)$this->get($key, $salesChannelId);
     }
 
     /**
+     * @return array<mixed>
      * @internal should not be used in storefront or store api. The cache layer caches all accessed config keys and use them as cache tag.
      *
      * gets all available shop configs and returns them as an array
      *
-     * @return array<mixed>
      */
     public function all(?string $salesChannelId = null): array
     {
@@ -146,11 +147,11 @@ class SystemConfigService implements ResetInterface
     }
 
     /**
-     * @internal should not be used in storefront or store api. The cache layer caches all accessed config keys and use them as cache tag.
-     *
+     * @return array<mixed>
      * @throws InvalidDomainException
      *
-     * @return array<mixed>
+     * @internal should not be used in storefront or store api. The cache layer caches all accessed config keys and use them as cache tag.
+     *
      */
     public function getDomain(string $domain, ?string $salesChannelId = null, bool $inherit = false): array
     {
@@ -163,23 +164,13 @@ class SystemConfigService implements ResetInterface
             ->select(['configuration_key', 'configuration_value'])
             ->from('system_config');
 
-        if ($inherit) {
-            $queryBuilder->where('sales_channel_id IS NULL OR sales_channel_id = :salesChannelId');
-        } elseif ($salesChannelId === null) {
-            $queryBuilder->where('sales_channel_id IS NULL');
-        } else {
-            $queryBuilder->where('sales_channel_id = :salesChannelId');
-        }
-
         $domain = rtrim($domain, '.') . '.';
         $escapedDomain = str_replace('%', '\\%', $domain);
 
         $salesChannelId = $salesChannelId ? Uuid::fromHexToBytes($salesChannelId) : null;
 
         $queryBuilder->andWhere('configuration_key LIKE :prefix')
-            ->addOrderBy('sales_channel_id', 'ASC')
-            ->setParameter('prefix', $escapedDomain . '%')
-            ->setParameter('salesChannelId', $salesChannelId);
+            ->setParameter('prefix', $escapedDomain . '%');
 
         $configs = $queryBuilder->executeQuery()->fetchAllNumeric();
 
@@ -191,7 +182,7 @@ class SystemConfigService implements ResetInterface
 
         foreach ($configs as [$key, $value]) {
             if ($value !== null) {
-                $value = \json_decode((string) $value, true, 512, \JSON_THROW_ON_ERROR);
+                $value = \json_decode((string)$value, true, 512, \JSON_THROW_ON_ERROR);
 
                 if ($value === false || !isset($value[ConfigJsonField::STORAGE_KEY])) {
                     $value = null;
@@ -229,11 +220,10 @@ class SystemConfigService implements ResetInterface
      */
     public function setMultiple(array $values, ?string $salesChannelId = null): void
     {
-        $where = $salesChannelId ? 'sales_channel_id = :salesChannelId' : 'sales_channel_id IS NULL';
 
         $existingIds = $this->connection
             ->fetchAllKeyValue(
-                'SELECT configuration_key, id FROM system_config WHERE ' . $where . ' and configuration_key IN (:configurationKeys)',
+                'SELECT configuration_key, id FROM system_config WHERE '  . 'configuration_key IN (:configurationKeys)',
                 [
                     'salesChannelId' => $salesChannelId ? Uuid::fromHexToBytes($salesChannelId) : null,
                     'configurationKeys' => array_keys($values),
@@ -289,7 +279,6 @@ class SystemConfigService implements ResetInterface
                     'id' => Uuid::randomBytes(),
                     'configuration_key' => $key,
                     'configuration_value' => Json::encode(['_value' => $value]),
-                    'sales_channel_id' => $salesChannelId ? Uuid::fromHexToBytes($salesChannelId) : null,
                     'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
                 ],
             );
@@ -303,13 +292,6 @@ class SystemConfigService implements ResetInterface
                 ->createQueryBuilder()
                 ->where('configuration_key IN (:keys)')
                 ->setParameter('keys', $toBeDeleted, ArrayParameterType::STRING);
-
-            if ($salesChannelId) {
-                $qb->andWhere('sales_channel_id = :salesChannelId')
-                    ->setParameter('salesChannelId', Uuid::fromHexToBytes($salesChannelId));
-            } else {
-                $qb->andWhere('sales_channel_id IS NULL');
-            }
 
             $qb->delete('system_config')
                 ->executeStatement();

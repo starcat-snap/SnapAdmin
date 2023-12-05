@@ -11,8 +11,9 @@ class AuthThrottledException extends SnapAdminHttpException
 {
     public function __construct(
         private readonly int $waitTime,
-        ?\Throwable $e = null
-    ) {
+        ?\Throwable          $e = null
+    )
+    {
         parent::__construct(
             'Auth throttled for {{ seconds }} seconds.',
             ['seconds' => $this->getWaitTime()],

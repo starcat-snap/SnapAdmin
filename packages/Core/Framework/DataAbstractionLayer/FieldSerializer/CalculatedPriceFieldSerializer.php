@@ -22,11 +22,12 @@ use SnapAdmin\Core\Framework\Log\Package;
 class CalculatedPriceFieldSerializer extends JsonFieldSerializer
 {
     public function encode(
-        Field $field,
-        EntityExistence $existence,
-        KeyValuePair $data,
+        Field             $field,
+        EntityExistence   $existence,
+        KeyValuePair      $data,
         WriteParameterBag $parameters
-    ): \Generator {
+    ): \Generator
+    {
         $value = json_decode(json_encode($data->getValue(), \JSON_PRESERVE_ZERO_FRACTION | \JSON_THROW_ON_ERROR), true, 512, \JSON_THROW_ON_ERROR);
 
         unset($value['extensions']);
@@ -51,18 +52,18 @@ class CalculatedPriceFieldSerializer extends JsonFieldSerializer
         }
 
         $taxRules = array_map(
-            fn (array $tax) => new TaxRule(
-                (float) $tax['taxRate'],
-                (float) $tax['percentage']
+            fn(array $tax) => new TaxRule(
+                (float)$tax['taxRate'],
+                (float)$tax['percentage']
             ),
             $decoded['taxRules']
         );
 
         $calculatedTaxes = array_map(
-            fn (array $tax) => new CalculatedTax(
-                (float) $tax['tax'],
-                (float) $tax['taxRate'],
-                (float) $tax['price']
+            fn(array $tax) => new CalculatedTax(
+                (float)$tax['tax'],
+                (float)$tax['taxRate'],
+                (float)$tax['price']
             ),
             $decoded['calculatedTaxes']
         );
@@ -82,17 +83,17 @@ class CalculatedPriceFieldSerializer extends JsonFieldSerializer
         $listPrice = null;
         if (isset($decoded['listPrice'])) {
             $listPrice = ListPrice::createFromUnitPrice(
-                (float) $decoded['unitPrice'],
-                (float) $decoded['listPrice']['price']
+                (float)$decoded['unitPrice'],
+                (float)$decoded['listPrice']['price']
             );
         }
 
         return new CalculatedPrice(
-            (float) $decoded['unitPrice'],
-            (float) $decoded['totalPrice'],
+            (float)$decoded['unitPrice'],
+            (float)$decoded['totalPrice'],
             new CalculatedTaxCollection($calculatedTaxes),
             new TaxRuleCollection($taxRules),
-            (int) $decoded['quantity'],
+            (int)$decoded['quantity'],
             $referencePriceDefinition,
             $listPrice
         );

@@ -37,14 +37,15 @@ class StoreClient
 
     public function __construct(
         /** @var array<string, string> */
-        protected readonly array $endpoints,
-        private readonly StoreService $storeService,
-        private readonly SystemConfigService $configService,
+        protected readonly array                             $endpoints,
+        private readonly StoreService                        $storeService,
+        private readonly SystemConfigService                 $configService,
         private readonly AbstractStoreRequestOptionsProvider $optionsProvider,
-        private readonly ExtensionLoader $extensionLoader,
-        protected readonly ClientInterface $client,
-        private readonly InstanceService $instanceService,
-    ) {
+        private readonly ExtensionLoader                     $extensionLoader,
+        protected readonly ClientInterface                   $client,
+        private readonly InstanceService                     $instanceService,
+    )
+    {
     }
 
     public function loginWithSnapAdminId(string $snapId, string $password, Context $context): void
@@ -120,10 +121,11 @@ class StoreClient
     }
 
     public function checkForViolations(
-        Context $context,
+        Context             $context,
         ExtensionCollection $extensions,
-        string $hostName
-    ): void {
+        string              $hostName
+    ): void
+    {
         $indexedExtensions = [];
 
         foreach ($extensions as $extension) {
@@ -155,9 +157,10 @@ class StoreClient
      */
     public function getLicenseViolations(
         Context $context,
-        array $extensions,
-        string $hostName
-    ): array {
+        array   $extensions,
+        string  $hostName
+    ): array
+    {
         $query = $this->getQueries($context);
         $query['hostName'] = $hostName;
 
@@ -288,13 +291,13 @@ class StoreClient
             ]
         );
 
-        return \json_decode((string) $response->getBody(), true, flags: \JSON_THROW_ON_ERROR)['signature'];
+        return \json_decode((string)$response->getBody(), true, flags: \JSON_THROW_ON_ERROR)['signature'];
     }
 
     public function listMyExtensions(ExtensionCollection $extensions, Context $context): ExtensionCollection
     {
         try {
-            $payload = ['plugins' => array_map(fn (ExtensionStruct $e) => [
+            $payload = ['plugins' => array_map(fn(ExtensionStruct $e) => [
                 'name' => $e->getName(),
                 'version' => $e->getVersion(),
             ], $extensions->getElements())];
@@ -340,7 +343,7 @@ class StoreClient
             );
         } catch (ClientException $e) {
             if ($e->hasResponse()) {
-                $error = \json_decode((string) $e->getResponse()->getBody(), true, flags: \JSON_THROW_ON_ERROR);
+                $error = \json_decode((string)$e->getResponse()->getBody(), true, flags: \JSON_THROW_ON_ERROR);
 
                 // It's okay when its already canceled
                 if (isset($error['type']) && $error['type'] === 'EXTENSION_LICENSE_IS_ALREADY_CANCELLED') {

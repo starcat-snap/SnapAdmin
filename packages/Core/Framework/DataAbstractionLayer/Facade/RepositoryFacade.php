@@ -27,10 +27,11 @@ class RepositoryFacade
      */
     public function __construct(
         private readonly DefinitionInstanceRegistry $registry,
-        private readonly RequestCriteriaBuilder $criteriaBuilder,
-        private readonly AclCriteriaValidator $criteriaValidator,
-        private readonly Context $context
-    ) {
+        private readonly RequestCriteriaBuilder     $criteriaBuilder,
+        private readonly AclCriteriaValidator       $criteriaValidator,
+        private readonly Context                    $context
+    )
+    {
     }
 
     /**

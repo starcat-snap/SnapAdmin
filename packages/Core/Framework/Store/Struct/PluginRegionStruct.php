@@ -27,10 +27,11 @@ class PluginRegionStruct extends Struct
     protected $categories;
 
     public function __construct(
-        string $name,
-        string $label,
+        string   $name,
+        string   $label,
         iterable $categories
-    ) {
+    )
+    {
         $this->name = $name;
         $this->label = $label;
         $this->categories = new PluginCategoryCollection($categories);

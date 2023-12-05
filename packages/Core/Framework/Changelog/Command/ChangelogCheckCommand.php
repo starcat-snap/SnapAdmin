@@ -50,8 +50,8 @@ class ChangelogCheckCommand extends Command
         $errorCount = \count($outputArray);
         if ($errorCount) {
             foreach ($outputArray as $file => $violations) {
-                $IOHelper->writeln((string) $file);
-                $IOHelper->writeln(array_map(static fn ($message) => '* ' . $message, $violations));
+                $IOHelper->writeln((string)$file);
+                $IOHelper->writeln(array_map(static fn($message) => '* ' . $message, $violations));
                 $IOHelper->newLine();
             }
             $IOHelper->error(sprintf('You have %d syntax errors in changelog files.', $errorCount));

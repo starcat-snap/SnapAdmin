@@ -11,7 +11,7 @@ use SnapAdmin\Core\Framework\Log\Package;
 class XOrFilter extends MultiFilter
 {
     /**
-     * @param  Filter[] $queries
+     * @param Filter[] $queries
      */
     public function __construct(array $queries = [])
     {

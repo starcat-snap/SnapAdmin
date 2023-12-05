@@ -12,10 +12,11 @@ use SnapAdmin\Core\Framework\Log\Package;
 class EntityAggregation extends Aggregation
 {
     public function __construct(
-        string $name,
-        string $field,
+        string                    $name,
+        string                    $field,
         protected readonly string $entity
-    ) {
+    )
+    {
         parent::__construct($name, $field);
     }
 

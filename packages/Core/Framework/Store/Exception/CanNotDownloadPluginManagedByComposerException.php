@@ -25,6 +25,6 @@ class CanNotDownloadPluginManagedByComposerException extends SnapAdminHttpExcept
     {
         Feature::triggerDeprecationOrThrow('v6.6.0.0', Feature::deprecatedMethodMessage(__CLASS__, __METHOD__, 'v6.6.0.0'));
 
-        return 'FRAMEWORK__STORE_CANNOT_DOWNLOAD_PLUGIN_MANAGED_BY_SHOPWARE';
+        return 'FRAMEWORK__STORE_CANNOT_DOWNLOAD_PLUGIN_MANAGED_BY_SNAP';
     }
 }

@@ -31,19 +31,21 @@ class StringFieldSerializer extends AbstractFieldSerializer
      * @internal
      */
     public function __construct(
-        ValidatorInterface $validator,
-        DefinitionInstanceRegistry $definitionRegistry,
+        ValidatorInterface             $validator,
+        DefinitionInstanceRegistry     $definitionRegistry,
         private readonly HtmlSanitizer $sanitizer
-    ) {
+    )
+    {
         parent::__construct($validator, $definitionRegistry);
     }
 
     public function encode(
-        Field $field,
-        EntityExistence $existence,
-        KeyValuePair $data,
+        Field             $field,
+        EntityExistence   $existence,
+        KeyValuePair      $data,
         WriteParameterBag $parameters
-    ): \Generator {
+    ): \Generator
+    {
         if (!$field instanceof StringField) {
             throw DataAbstractionLayerException::invalidSerializerField(StringField::class, $field);
         }
@@ -63,7 +65,7 @@ class StringFieldSerializer extends AbstractFieldSerializer
 
         $this->validateIfNeeded($field, $existence, $data, $parameters);
 
-        yield $field->getStorageName() => $data->getValue() !== null ? (string) $data->getValue() : null;
+        yield $field->getStorageName() => $data->getValue() !== null ? (string)$data->getValue() : null;
     }
 
     public function decode(Field $field, mixed $value): ?string
@@ -72,7 +74,7 @@ class StringFieldSerializer extends AbstractFieldSerializer
             return $value;
         }
 
-        return (string) $value;
+        return (string)$value;
     }
 
     /**

@@ -187,7 +187,7 @@ class PluginLifecycleServiceMigrationTest extends TestCase
             $this->container->get(CommandExecutor::class),
             $this->container->get(RequirementsValidator::class),
             $this->container->get('cache.messenger.restart_workers_signal'),
-            Kernel::SHOPWARE_FALLBACK_VERSION,
+            Kernel::SNAP_FALLBACK_VERSION,
             $this->container->get(SystemConfigService::class),
             $this->container->get(CustomEntityPersister::class),
             $this->container->get(CustomEntitySchemaUpdater::class),

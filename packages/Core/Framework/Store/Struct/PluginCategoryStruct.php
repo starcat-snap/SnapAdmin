@@ -24,7 +24,8 @@ class PluginCategoryStruct extends Struct
     public function __construct(
         string $name,
         string $label
-    ) {
+    )
+    {
         $this->name = $name;
         $this->label = $label;
     }

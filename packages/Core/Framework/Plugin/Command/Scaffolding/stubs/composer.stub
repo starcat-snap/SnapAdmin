@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "license": "MIT",
     "require": {
-        "snap/core": "6.5.*"
+        "snapadmin/core": "6.5.*"
     },
     "extra": {
         "snap-plugin-class": "{{ namespace }}\\{{ className }}",

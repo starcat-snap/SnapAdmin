@@ -40,8 +40,9 @@ class CustomEntityConfigurationException extends HttpException
         string $configFileName,
         string $customEntityName,
         string $xmlElement,
-        array $duplicates
-    ): self {
+        array  $duplicates
+    ): self
+    {
         return new self(
             Response::HTTP_INTERNAL_SERVER_ERROR,
             self::DUPLICATE_REFERENCES,
@@ -68,8 +69,9 @@ class CustomEntityConfigurationException extends HttpException
         string $configFileName,
         string $customEntityName,
         string $xmlElement,
-        array $invalidRefs
-    ): self {
+        array  $invalidRefs
+    ): self
+    {
         return new self(
             Response::HTTP_INTERNAL_SERVER_ERROR,
             self::INVALID_REFERENCES,

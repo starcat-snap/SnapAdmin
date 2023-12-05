@@ -20,8 +20,9 @@ class HookableEventFactory
      */
     public function __construct(
         private readonly BusinessEventEncoder $eventEncoder,
-        private readonly WriteResultMerger $writeResultMerger
-    ) {
+        private readonly WriteResultMerger    $writeResultMerger
+    )
+    {
     }
 
     /**

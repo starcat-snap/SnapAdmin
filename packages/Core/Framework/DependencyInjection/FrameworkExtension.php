@@ -39,7 +39,7 @@ class FrameworkExtension extends Extension
              * parameter. So in the dynamic use case you have to use `defaults={"auth_required"="%snap.api.api_browser.auth_required_str%"}`
              */
             if ($key === 'snap.api.api_browser.auth_required') {
-                $container->setParameter('snap.api.api_browser.auth_required_str', (string) (int) $option);
+                $container->setParameter('snap.api.api_browser.auth_required_str', (string)(int)$option);
             }
 
             if (\is_array($option)) {

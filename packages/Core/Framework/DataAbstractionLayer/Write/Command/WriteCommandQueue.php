@@ -60,9 +60,9 @@ class WriteCommandQueue
     }
 
     /**
+     * @return list<WriteCommand>
      * @throws ImpossibleWriteOrderException
      *
-     * @return list<WriteCommand>
      */
     public function getCommandsInOrder(): array
     {
@@ -196,7 +196,7 @@ class WriteCommandQueue
     }
 
     /**
-     * @param array<string, array<string, FkField>>  $foreignKeys
+     * @param array<string, array<string, FkField>> $foreignKeys
      * @param array<string, bool> $mapping
      */
     private function hasUnresolvedForeignKey(string $entity, array $foreignKeys, array $mapping, WriteCommand $command): bool
@@ -230,7 +230,7 @@ class WriteCommandQueue
             // create a hash for the foreign key which are used for the mapping
             $primary = [$fk->getReferenceField() => $fk->getSerializer()->decode($fk, $value)];
 
-            $hash = self::createPrimaryHash((string) $fk->getReferenceEntity(), $primary);
+            $hash = self::createPrimaryHash((string)$fk->getReferenceEntity(), $primary);
 
             // check if the hash/primary isn't persisted yet
             if (isset($mapping[$hash])) {

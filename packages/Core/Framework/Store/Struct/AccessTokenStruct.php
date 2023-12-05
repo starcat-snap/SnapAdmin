@@ -13,8 +13,9 @@ class AccessTokenStruct extends Struct
 {
     public function __construct(
         protected ShopUserTokenStruct $shopUserToken,
-        protected ?string $shopSecret = null,
-    ) {
+        protected ?string             $shopSecret = null,
+    )
+    {
     }
 
     public function getShopUserToken(): ShopUserTokenStruct

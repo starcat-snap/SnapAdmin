@@ -12,10 +12,11 @@ class KeyValuePair
 {
     public function __construct(
         private readonly string $key,
-        private mixed $value,
-        private bool $isRaw,
-        private readonly bool $isDefault = false
-    ) {
+        private mixed           $value,
+        private bool            $isRaw,
+        private readonly bool   $isDefault = false
+    )
+    {
     }
 
     public function getKey(): string

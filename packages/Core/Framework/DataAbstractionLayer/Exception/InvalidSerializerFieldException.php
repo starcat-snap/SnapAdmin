@@ -21,8 +21,9 @@ class InvalidSerializerFieldException extends DataAbstractionLayerException
 
     public function __construct(
         string $expectedClass,
-        Field $field
-    ) {
+        Field  $field
+    )
+    {
         Feature::triggerDeprecationOrThrow(
             'v6.6.0.0',
             Feature::deprecatedClassMessage(self::class, 'v6.6.0.0', 'use DataAbstractionLayerException::invalidSerializerField instead')

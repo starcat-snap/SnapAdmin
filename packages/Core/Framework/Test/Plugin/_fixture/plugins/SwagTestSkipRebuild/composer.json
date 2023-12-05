@@ -1,43 +1,43 @@
 {
-    "name": "swag/test-skip-rebuild",
-    "description": "Test description",
-    "version": "v1.0.1",
-    "type": "snap-platform-plugin",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "snap AG",
-            "role": "Manufacturer"
-        }
-    ],
-    "require": {
-        "snap/core": ">=6.0"
-    },
-    "extra": {
-        "snap-plugin-class": "SwagTestSkipRebuild\\SwagTestSkipRebuild",
-        "plugin-icon": "src/Resources/public/plugin.png",
-        "copyright": "(c) by snap AG",
-        "label": {
-            "de-DE": "Deutscher Pluginname",
-            "de-CH": "Schweizerdeutsch Pluginname",
-            "en-GB": "English plugin name"
-        },
-        "description": {
-            "de-DE": "Deutsche Beschreibung",
-            "en-GB": "English description"
-        },
-        "manufacturerLink": {
-            "de-DE": "https://www.test.de/",
-            "en-GB": "https://www.test.com/"
-        },
-        "supportLink": {
-            "de-DE": "https://www.test.de/support",
-            "en-GB": "https://www.test.com/support"
-        }
-    },
-    "autoload": {
-        "psr-4": {
-           "SwagTestSkipRebuild\\": "src"
-        }
+  "name": "swag/test-skip-rebuild",
+  "description": "Test description",
+  "version": "v1.0.1",
+  "type": "snap-platform-plugin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "snap AG",
+      "role": "Manufacturer"
     }
+  ],
+  "require": {
+    "snapadmin/core": ">=6.0"
+  },
+  "extra": {
+    "snap-plugin-class": "SwagTestSkipRebuild\\SwagTestSkipRebuild",
+    "plugin-icon": "src/Resources/public/plugin.png",
+    "copyright": "(c) by snap AG",
+    "label": {
+      "de-DE": "Deutscher Pluginname",
+      "de-CH": "Schweizerdeutsch Pluginname",
+      "en-GB": "English plugin name"
+    },
+    "description": {
+      "de-DE": "Deutsche Beschreibung",
+      "en-GB": "English description"
+    },
+    "manufacturerLink": {
+      "de-DE": "https://www.test.de/",
+      "en-GB": "https://www.test.com/"
+    },
+    "supportLink": {
+      "de-DE": "https://www.test.de/support",
+      "en-GB": "https://www.test.com/support"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "SwagTestSkipRebuild\\": "src"
+    }
+  }
 }

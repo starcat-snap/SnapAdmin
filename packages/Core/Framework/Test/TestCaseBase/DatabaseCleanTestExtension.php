@@ -59,7 +59,7 @@ class DatabaseCleanTestExtension implements BeforeTestHook, AfterTestHook
             $tableName = end($nested);
             $count = $connection->fetchOne('SELECT COUNT(*) FROM ' . $tableName);
 
-            $stateResult[(string) $tableName] = (int) $count;
+            $stateResult[(string)$tableName] = (int)$count;
         }
 
         return $stateResult;

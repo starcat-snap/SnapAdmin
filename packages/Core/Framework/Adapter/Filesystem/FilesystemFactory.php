@@ -23,11 +23,11 @@ class FilesystemFactory
     private readonly iterable $adapterFactories;
 
     /**
-     * @internal
-     *
      * @param AdapterFactoryInterface[]|iterable $adapterFactories
      *
      * @throws DuplicateFilesystemFactoryException
+     * @internal
+     *
      */
     public function __construct(iterable $adapterFactories)
     {
@@ -142,7 +142,7 @@ class FilesystemFactory
         $requestUrl = rtrim($basePath, '/') . '/';
 
         if ($request->getHost() === '' && EnvironmentHelper::getVariable('APP_URL')) {
-            $requestUrl = (string) EnvironmentHelper::getVariable('APP_URL');
+            $requestUrl = (string)EnvironmentHelper::getVariable('APP_URL');
         }
 
         return $requestUrl;

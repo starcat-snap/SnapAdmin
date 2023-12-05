@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace SnapAdmin\Core\System\CustomEntity;
 
-use SnapAdmin\Core\Framework\App\AppEntity;
-use SnapAdmin\Core\Framework\App\Lifecycle\AbstractAppLoader;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin\PluginEntity;
 use SnapAdmin\Core\System\CustomEntity\Schema\CustomEntityPersister;
@@ -22,13 +20,13 @@ use Symfony\Component\Filesystem\Path;
 class CustomEntityLifecycleService
 {
     public function __construct(
-        private readonly CustomEntityPersister $customEntityPersister,
-        private readonly CustomEntitySchemaUpdater $customEntitySchemaUpdater,
-        private readonly CustomEntityEnrichmentService $customEntityEnrichmentService,
+        private readonly CustomEntityPersister          $customEntityPersister,
+        private readonly CustomEntitySchemaUpdater      $customEntitySchemaUpdater,
+        private readonly CustomEntityEnrichmentService  $customEntityEnrichmentService,
         private readonly CustomEntityXmlSchemaValidator $customEntityXmlSchemaValidator,
-        private readonly string $projectDir,
-        private readonly AbstractAppLoader $appLoader
-    ) {
+        private readonly string                         $projectDir
+    )
+    {
     }
 
     public function updatePlugin(string $pluginId, string $pluginPath): ?CustomEntityXmlSchema
@@ -44,20 +42,6 @@ class CustomEntityLifecycleService
         );
     }
 
-    public function updateApp(string $appId, string $appPath): ?CustomEntityXmlSchema
-    {
-        $resourcePath = $this->appLoader->locatePath($appPath, 'Resources');
-
-        if ($resourcePath === null) {
-            return null;
-        }
-
-        return $this->update(
-            $resourcePath,
-            AppEntity::class,
-            $appId
-        );
-    }
 
     private function update(string $pathToCustomEntityFile, string $extensionEntityType, string $extensionId): ?CustomEntityXmlSchema
     {

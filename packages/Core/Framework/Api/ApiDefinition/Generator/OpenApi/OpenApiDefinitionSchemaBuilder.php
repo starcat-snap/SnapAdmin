@@ -45,11 +45,12 @@ class OpenApiDefinitionSchemaBuilder
      */
     public function getSchemaByDefinition(
         EntityDefinition $definition,
-        string $path,
-        bool $forSalesChannel,
-        bool $onlyFlat = false,
-        string $apiType = DefinitionService::TYPE_JSON_API
-    ): array {
+        string           $path,
+        bool             $forSalesChannel,
+        bool             $onlyFlat = false,
+        string           $apiType = DefinitionService::TYPE_JSON_API
+    ): array
+    {
         $schema = [];
         $attributes = [];
         $requiredAttributes = [];

@@ -31,9 +31,10 @@ class JsonField extends Field implements StorageAware
     public function __construct(
         string $storageName,
         string $propertyName,
-        array $propertyMapping = [],
+        array  $propertyMapping = [],
         ?array $default = null
-    ) {
+    )
+    {
         $this->storageName = $storageName;
         $this->propertyMapping = $propertyMapping;
         $this->default = $default;

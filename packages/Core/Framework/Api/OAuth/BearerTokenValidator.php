@@ -20,9 +20,10 @@ class BearerTokenValidator implements AuthorizationValidatorInterface
      */
     public function __construct(
         private readonly AuthorizationValidatorInterface $decorated,
-        private readonly Connection $connection,
-        private readonly Configuration $configuration
-    ) {
+        private readonly Connection                      $connection,
+        private readonly Configuration                   $configuration
+    )
+    {
     }
 
     /**
@@ -68,7 +69,7 @@ class BearerTokenValidator implements AuthorizationValidatorInterface
             return;
         }
 
-        $lastUpdatedPasswordAt = strtotime((string) $lastUpdatedPasswordAt);
+        $lastUpdatedPasswordAt = strtotime((string)$lastUpdatedPasswordAt);
 
         if ($tokenIssuedAt->getTimestamp() <= $lastUpdatedPasswordAt) {
             throw OAuthServerException::accessDenied('Access token is expired');

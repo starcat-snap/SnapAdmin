@@ -17,7 +17,8 @@ class SystemConfigChangedHook implements Hookable
     public function __construct(
         private readonly array $values,
         private readonly array $appMapping
-    ) {
+    )
+    {
     }
 
     public function getName(): string

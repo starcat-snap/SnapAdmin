@@ -44,7 +44,7 @@ class InstanceServiceTest extends TestCase
     public function testItReturnsSnapAdminVersionStringIfVersionIsDeveloperVersion(): void
     {
         $instanceService = new InstanceService(
-            Kernel::SHOPWARE_FALLBACK_VERSION,
+            Kernel::SNAP_FALLBACK_VERSION,
             null
         );
 

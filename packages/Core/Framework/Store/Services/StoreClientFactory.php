@@ -19,7 +19,8 @@ class StoreClientFactory
 
     public function __construct(
         private readonly SystemConfigService $configService
-    ) {
+    )
+    {
     }
 
     /**

@@ -29,8 +29,9 @@ final class ExtendsTokenParser extends AbstractTokenParser
      */
     public function __construct(
         private readonly TemplateFinderInterface $finder,
-        private readonly ?TemplateScopeDetector $templateScopeDetector = null,
-    ) {
+        private readonly ?TemplateScopeDetector  $templateScopeDetector = null,
+    )
+    {
         if ($templateScopeDetector === null) {
             Feature::triggerDeprecationOrThrow(
                 'v6.6.0.0',

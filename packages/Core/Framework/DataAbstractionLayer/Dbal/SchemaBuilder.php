@@ -54,7 +54,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\RemoteAddressField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StateMachineStateField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StorageAware;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TaxFreeConfigField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TimeZoneField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TreeBreadcrumbField;
@@ -66,7 +65,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\VariantListingConfigFiel
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\VersionDataPayloadField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\VersionField;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\NumberRange\DataAbstractionLayer\NumberRangeField;
 
 /**
  * @internal
@@ -104,7 +102,6 @@ class SchemaBuilder
         BreadcrumbField::class => Types::JSON,
         CashRoundingConfigField::class => Types::JSON,
         ObjectField::class => Types::JSON,
-        TaxFreeConfigField::class => Types::JSON,
         TreeBreadcrumbField::class => Types::JSON,
         VariantListingConfigField::class => Types::JSON,
         VersionDataPayloadField::class => Types::JSON,
@@ -125,7 +122,6 @@ class SchemaBuilder
         DateIntervalField::class => Types::STRING,
         EmailField::class => Types::STRING,
         RemoteAddressField::class => Types::STRING,
-        NumberRangeField::class => Types::STRING,
 
         BlobField::class => Types::BLOB,
 
@@ -259,15 +255,15 @@ class SchemaBuilder
             $reference = $field->getReferenceDefinition();
 
             $hasOneToMany = $definition->getFields()->filter(function (Field $field) use ($reference) {
-                if (!$field instanceof OneToManyAssociationField) {
-                    return false;
-                }
-                if ($field instanceof ChildrenAssociationField) {
-                    return false;
-                }
+                    if (!$field instanceof OneToManyAssociationField) {
+                        return false;
+                    }
+                    if ($field instanceof ChildrenAssociationField) {
+                        return false;
+                    }
 
-                return $field->getReferenceDefinition() === $reference;
-            })->count() > 0;
+                    return $field->getReferenceDefinition() === $reference;
+                })->count() > 0;
 
             // skip foreign key to prevent bi-directional foreign key
             if ($hasOneToMany) {

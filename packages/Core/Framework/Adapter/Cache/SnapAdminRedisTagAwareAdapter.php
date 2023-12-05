@@ -18,7 +18,8 @@ class SnapAdminRedisTagAwareAdapter extends RedisTagAwareAdapter
         int $defaultLifetime = 0,
         ?MarshallerInterface $marshaller = null,
         ?string $prefix = null
-    ) {
+    )
+    {
         parent::__construct($redis, $prefix . $namespace, $defaultLifetime, $marshaller);
     }
 }

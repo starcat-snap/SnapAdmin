@@ -57,18 +57,6 @@
             <tag name="console.command"/>
         </service>
 
-        <service id="SnapAdmin\Core\Maintenance\SalesChannel\Command\SalesChannelUpdateDomainCommand">
-            <argument type="service" id="sales_channel_domain.repository"/>
-            <tag name="console.command"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Maintenance\System\Command\SystemConfigureShopCommand">
-            <argument type="service" id="SnapAdmin\Core\Maintenance\System\Service\ShopConfigurator"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\CacheClearer"/>
-
-            <tag name="console.command"/>
-        </service>
-
         <service id="SnapAdmin\Core\Maintenance\System\Service\JwtCertificateGenerator"/>
 
         <service id="SnapAdmin\Core\Maintenance\System\Service\AppUrlVerifier">
@@ -82,39 +70,6 @@
 
         <service id="SnapAdmin\Core\Maintenance\System\Service\ShopConfigurator">
             <argument type="service" id="Doctrine\DBAL\Connection"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Maintenance\SalesChannel\Command\SalesChannelCreateCommand">
-            <argument type="service" id="SnapAdmin\Core\Maintenance\SalesChannel\Service\SalesChannelCreator"/>
-
-            <tag name="console.command"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Maintenance\SalesChannel\Service\SalesChannelCreator" public="true">
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
-            <argument type="service" id="sales_channel.repository"/>
-            <argument type="service" id="payment_method.repository"/>
-            <argument type="service" id="shipping_method.repository"/>
-            <argument type="service" id="country.repository"/>
-            <argument type="service" id="category.repository"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Maintenance\SalesChannel\Command\SalesChannelListCommand">
-            <argument type="service" id="sales_channel.repository"/>
-
-            <tag name="console.command"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Maintenance\SalesChannel\Command\SalesChannelMaintenanceEnableCommand">
-            <argument type="service" id="sales_channel.repository"/>
-
-            <tag name="console.command"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Maintenance\SalesChannel\Command\SalesChannelMaintenanceDisableCommand">
-            <argument type="service" id="sales_channel.repository"/>
-
-            <tag name="console.command"/>
         </service>
 
         <service id="SnapAdmin\Core\Maintenance\User\Command\UserCreateCommand">

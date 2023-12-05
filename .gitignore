@@ -125,9 +125,7 @@ config/routes/*
 config/services*
 !/config/services_test.xml
 
-custom
-!/custom/scripts/boot
-!/custom/scripts/examples
+
 files/*
 install.lock
 docker-compose.override.yaml

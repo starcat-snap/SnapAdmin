@@ -11,7 +11,8 @@ class VariantListingConfigField extends JsonField
     public function __construct(
         string $storageName,
         string $propertyName
-    ) {
+    )
+    {
         parent::__construct($storageName, $propertyName);
     }
 

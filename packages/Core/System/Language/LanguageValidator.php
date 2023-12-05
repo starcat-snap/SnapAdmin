@@ -204,12 +204,13 @@ class LanguageValidator implements EventSubscriberInterface
      * @param array<string, string> $parameters
      */
     private function buildViolation(
-        string $messageTemplate,
-        array $parameters,
+        string  $messageTemplate,
+        array   $parameters,
         ?string $propertyPath = null,
         ?string $invalidValue = null,
         ?string $code = null
-    ): ConstraintViolationInterface {
+    ): ConstraintViolationInterface
+    {
         return new ConstraintViolation(
             str_replace(array_keys($parameters), array_values($parameters), $messageTemplate),
             $messageTemplate,

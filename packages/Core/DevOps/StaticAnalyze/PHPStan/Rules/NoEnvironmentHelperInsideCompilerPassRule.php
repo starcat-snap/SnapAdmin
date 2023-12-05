@@ -47,7 +47,7 @@ class NoEnvironmentHelperInsideCompilerPassRule implements Rule
             return [];
         }
 
-        if ((string) $node->name !== 'getVariable' && (string) $node->name !== 'hasVariable') {
+        if ((string)$node->name !== 'getVariable' && (string)$node->name !== 'hasVariable') {
             return [];
         }
 
@@ -55,7 +55,7 @@ class NoEnvironmentHelperInsideCompilerPassRule implements Rule
             return [];
         }
 
-        if ((string) $node->class !== EnvironmentHelper::class) {
+        if ((string)$node->class !== EnvironmentHelper::class) {
             return [];
         }
 

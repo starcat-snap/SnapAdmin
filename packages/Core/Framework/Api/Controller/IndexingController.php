@@ -23,14 +23,15 @@ class IndexingController extends AbstractController
      */
     public function __construct(
         private readonly EntityIndexerRegistry $registry,
-        private readonly MessageBusInterface $messageBus
-    ) {
+        private readonly MessageBusInterface   $messageBus
+    )
+    {
     }
 
     #[Route(path: '/api/_action/indexing', name: 'api.action.indexing', methods: ['POST'])]
     public function indexing(Request $request): JsonResponse
     {
-        $indexingSkips = array_filter(explode(',', (string) $request->headers->get(PlatformRequest::HEADER_INDEXING_SKIP, '')));
+        $indexingSkips = array_filter(explode(',', (string)$request->headers->get(PlatformRequest::HEADER_INDEXING_SKIP, '')));
 
         $this->registry->sendIndexingMessage([], $indexingSkips);
 
@@ -40,7 +41,7 @@ class IndexingController extends AbstractController
     #[Route(path: '/api/_action/indexing/{indexer}', name: 'api.action.indexing.iterate', methods: ['POST'])]
     public function iterate(string $indexer, Request $request): JsonResponse
     {
-        $indexingSkips = array_filter(explode(',', (string) $request->headers->get(PlatformRequest::HEADER_INDEXING_SKIP, '')));
+        $indexingSkips = array_filter(explode(',', (string)$request->headers->get(PlatformRequest::HEADER_INDEXING_SKIP, '')));
 
         if (!$request->request->has('offset')) {
             throw new BadRequestHttpException('Parameter `offset` missing');
@@ -77,7 +78,7 @@ class IndexingController extends AbstractController
             throw new BadRequestHttpException('Parameter `ids` is no array or empty');
         }
 
-        $skips = array_filter(explode(',', (string) $request->headers->get(PlatformRequest::HEADER_INDEXING_SKIP, '')));
+        $skips = array_filter(explode(',', (string)$request->headers->get(PlatformRequest::HEADER_INDEXING_SKIP, '')));
 
         $message = new ProductIndexingMessage($ids, null);
         $message->setIndexer('product.indexer');

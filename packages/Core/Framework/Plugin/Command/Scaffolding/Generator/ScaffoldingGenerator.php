@@ -24,8 +24,8 @@ interface ScaffoldingGenerator
 
     public function addScaffoldConfig(
         PluginScaffoldConfiguration $config,
-        InputInterface $input,
-        SymfonyStyle $io
+        InputInterface              $input,
+        SymfonyStyle                $io
     ): void;
 
     public function generateStubs(PluginScaffoldConfiguration $configuration, StubCollection $stubCollection): void;

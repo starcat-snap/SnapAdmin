@@ -1,25 +1,25 @@
 {
-    "name": "swag/requirement-invalid-test",
-    "description": "Test requirement validator",
-    "version": "3.0.0",
-    "type": "snap-platform-plugin",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "snap AG",
-            "role": "Manufacturer"
-        }
-    ],
-    "require": {
-        "snap/platform": "^12.34",
-        "test/not-installed": "~2"
-    },
-    "extra": {
-        "snap-plugin-class": "SwagRequirement\\SwagRequirement",
-        "copyright": "(c) by snap AG",
-        "label": {
-            "de-DE": "Test für Requirement Validator",
-            "en-GB": "Test for requirement validator"
-        }
+  "name": "swag/requirement-invalid-test",
+  "description": "Test requirement validator",
+  "version": "3.0.0",
+  "type": "snap-platform-plugin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "snap AG",
+      "role": "Manufacturer"
     }
+  ],
+  "require": {
+    "snap/platform": "^12.34",
+    "test/not-installed": "~2"
+  },
+  "extra": {
+    "snap-plugin-class": "SwagRequirement\\SwagRequirement",
+    "copyright": "(c) by snap AG",
+    "label": {
+      "de-DE": "Test für Requirement Validator",
+      "en-GB": "Test for requirement validator"
+    }
+  }
 }

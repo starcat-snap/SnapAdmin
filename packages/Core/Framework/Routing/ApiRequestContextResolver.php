@@ -27,9 +27,10 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
      * @internal
      */
     public function __construct(
-        private readonly Connection $connection,
+        private readonly Connection         $connection,
         private readonly RouteScopeRegistry $routeScopeRegistry
-    ) {
+    )
+    {
     }
 
     public function resolve(Request $request): void
@@ -81,11 +82,8 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
     private function getContextParameters(Request $request): array
     {
         $params = [
-            'currencyId' => Defaults::CURRENCY,
             'languageId' => Defaults::LANGUAGE_SYSTEM,
             'systemFallbackLanguageId' => Defaults::LANGUAGE_SYSTEM,
-            'currencyFactory' => 1.0,
-            'currencyPrecision' => 2,
             'versionId' => $request->headers->get(PlatformRequest::HEADER_VERSION_ID),
             'considerInheritance' => false,
         ];
@@ -283,7 +281,7 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
 
     private function isAdmin(string $userId): bool
     {
-        return (bool) $this->connection->fetchOne(
+        return (bool)$this->connection->fetchOne(
             'SELECT admin FROM `user` WHERE id = :id',
             ['id' => Uuid::fromHexToBytes($userId)]
         );
@@ -291,7 +289,7 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
 
     private function isAdminIntegration(string $integrationId): bool
     {
-        return (bool) $this->connection->fetchOne(
+        return (bool)$this->connection->fetchOne(
             'SELECT admin FROM `integration` WHERE id = :id',
             ['id' => Uuid::fromHexToBytes($integrationId)]
         );
@@ -313,7 +311,7 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
 
         $list = [];
         foreach ($permissions as $privileges) {
-            $privileges = json_decode((string) $privileges, true, 512, \JSON_THROW_ON_ERROR);
+            $privileges = json_decode((string)$privileges, true, 512, \JSON_THROW_ON_ERROR);
             $list = array_merge($list, $privileges);
         }
 
@@ -330,12 +328,12 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
             throw new \RuntimeException(sprintf('No cash rounding for currency "%s" found', $currencyId));
         }
 
-        $rounding = json_decode((string) $rounding['item_rounding'], true, 512, \JSON_THROW_ON_ERROR);
+        $rounding = json_decode((string)$rounding['item_rounding'], true, 512, \JSON_THROW_ON_ERROR);
 
         return new CashRoundingConfig(
-            (int) $rounding['decimals'],
-            (float) $rounding['interval'],
-            (bool) $rounding['roundForNet']
+            (int)$rounding['decimals'],
+            (float)$rounding['interval'],
+            (bool)$rounding['roundForNet']
         );
     }
 
@@ -359,7 +357,7 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
             return null;
         }
 
-        return json_decode((string) $privileges, true, 512, \JSON_THROW_ON_ERROR);
+        return json_decode((string)$privileges, true, 512, \JSON_THROW_ON_ERROR);
     }
 
     /**
@@ -378,7 +376,7 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
 
         $list = [];
         foreach ($permissions as $privileges) {
-            $privileges = json_decode((string) $privileges, true, 512, \JSON_THROW_ON_ERROR);
+            $privileges = json_decode((string)$privileges, true, 512, \JSON_THROW_ON_ERROR);
             $list = array_merge($list, $privileges);
         }
 

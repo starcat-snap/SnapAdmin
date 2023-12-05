@@ -21,15 +21,17 @@ use SnapAdmin\Core\Framework\Webhook\Hookable;
 class HookableBusinessEvent implements Hookable
 {
     private function __construct(
-        private readonly FlowEventAware $flowEventAware,
+        private readonly FlowEventAware       $flowEventAware,
         private readonly BusinessEventEncoder $businessEventEncoder
-    ) {
+    )
+    {
     }
 
     public static function fromBusinessEvent(
-        FlowEventAware $flowEventAware,
+        FlowEventAware       $flowEventAware,
         BusinessEventEncoder $businessEventEncoder
-    ): self {
+    ): self
+    {
         return new self($flowEventAware, $businessEventEncoder);
     }
 

@@ -27,10 +27,11 @@ final class WebhookEventMessageHandler
      * @internal
      */
     public function __construct(
-        private readonly Client $client,
+        private readonly Client           $client,
         private readonly EntityRepository $webhookRepository,
         private readonly EntityRepository $webhookEventLogRepository
-    ) {
+    )
+    {
     }
 
     public function __invoke(WebhookEventMessage $message): void
@@ -46,11 +47,11 @@ final class WebhookEventMessageHandler
         $jsonPayload = json_encode($payload, \JSON_THROW_ON_ERROR);
 
         $headers = ['Content-Type' => 'application/json',
-            'sw-version' => $snapVersion, ];
+            'sw-version' => $snapVersion,];
 
         // LanguageId and UserLocale will be required from 6.5.0 onward
         if ($message->getLanguageId() && $message->getUserLocale()) {
-            $headers = array_merge($headers, [AuthMiddleware::SHOPWARE_CONTEXT_LANGUAGE => $message->getLanguageId(), AuthMiddleware::SHOPWARE_USER_LANGUAGE => $message->getUserLocale()]);
+            $headers = array_merge($headers, [AuthMiddleware::SNAP_CONTEXT_LANGUAGE => $message->getLanguageId(), AuthMiddleware::SNAP_USER_LANGUAGE => $message->getUserLocale()]);
         }
 
         $requestContent = [

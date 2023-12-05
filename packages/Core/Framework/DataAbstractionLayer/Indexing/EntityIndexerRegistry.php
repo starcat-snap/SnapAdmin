@@ -30,15 +30,16 @@ class EntityIndexerRegistry
     private bool $working = false;
 
     /**
+     * @param iterable<EntityIndexer> $indexer
      * @internal
      *
-     * @param iterable<EntityIndexer> $indexer
      */
     public function __construct(
-        private readonly iterable $indexer,
-        private readonly MessageBusInterface $messageBus,
+        private readonly iterable                 $indexer,
+        private readonly MessageBusInterface      $messageBus,
         private readonly EventDispatcherInterface $dispatcher
-    ) {
+    )
+    {
     }
 
     /**
@@ -226,7 +227,7 @@ class EntityIndexerRegistry
     }
 
     /**
-     * @param array<string>                $skip
+     * @param array<string> $skip
      * @param array{offset: int|null}|null $offset
      */
     private function iterateIndexer(string $name, ?array $offset, array $skip): ?EntityIndexingMessage

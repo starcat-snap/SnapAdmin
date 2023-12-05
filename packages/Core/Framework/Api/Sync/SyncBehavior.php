@@ -12,8 +12,9 @@ class SyncBehavior
      */
     public function __construct(
         protected ?string $indexingBehavior = null,
-        protected array $skipIndexers = []
-    ) {
+        protected array   $skipIndexers = []
+    )
+    {
     }
 
     public function getIndexingBehavior(): ?string

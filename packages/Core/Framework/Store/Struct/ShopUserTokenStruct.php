@@ -12,9 +12,10 @@ use SnapAdmin\Core\Framework\Struct\Struct;
 class ShopUserTokenStruct extends Struct
 {
     public function __construct(
-        protected string $token,
+        protected string             $token,
         protected \DateTimeInterface $expirationDate,
-    ) {
+    )
+    {
     }
 
     public function getToken(): string

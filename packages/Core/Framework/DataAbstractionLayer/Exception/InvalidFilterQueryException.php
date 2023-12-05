@@ -10,9 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 class InvalidFilterQueryException extends SnapAdminHttpException
 {
     public function __construct(
-        string $message,
+        string                  $message,
         private readonly string $path = ''
-    ) {
+    )
+    {
         parent::__construct('{{ message }}', ['message' => $message]);
     }
 

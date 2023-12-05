@@ -13,8 +13,9 @@ class HttpCacheHitEvent extends Event
 {
     public function __construct(
         public readonly CacheItemInterface $item,
-        public readonly Request $request,
-        public readonly Response $response
-    ) {
+        public readonly Request            $request,
+        public readonly Response           $response
+    )
+    {
     }
 }

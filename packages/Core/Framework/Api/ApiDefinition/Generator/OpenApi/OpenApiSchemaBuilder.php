@@ -61,7 +61,7 @@ class OpenApiSchemaBuilder
      */
     private function createServers(string $api): array
     {
-        $url = (string) EnvironmentHelper::getVariable('APP_URL', '');
+        $url = (string)EnvironmentHelper::getVariable('APP_URL', '');
 
         return [
             new Server(['url' => rtrim($url, '/') . self::API[$api]['url']]),
@@ -393,7 +393,7 @@ EOF
             ];
         }
 
-        $url = (string) EnvironmentHelper::getVariable('APP_URL', '');
+        $url = (string)EnvironmentHelper::getVariable('APP_URL', '');
 
         return [
             'oAuth' => new SecurityScheme([
@@ -441,7 +441,7 @@ EOF
         $example = [
             'errors' => [
                 [
-                    'status' => (string) $statusCode,
+                    'status' => (string)$statusCode,
                     'title' => $title,
                     'description' => $description,
                 ],

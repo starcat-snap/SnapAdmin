@@ -45,7 +45,7 @@ class SearchRequestException extends SnapAdminHttpException
                 }
 
                 $error = [
-                    'status' => (string) $this->getStatusCode(),
+                    'status' => (string)$this->getStatusCode(),
                     'code' => $exception->getErrorCode(),
                     'title' => Response::$statusTexts[Response::HTTP_BAD_REQUEST],
                     'detail' => $exception->getMessage(),

@@ -118,7 +118,7 @@ return static function (ECSConfig $ecsConfig): void {
     ]);
 
     $parameters = $ecsConfig->parameters();
-    $parameters->set(Option::CACHE_DIRECTORY, $_SERVER['SHOPWARE_TOOL_CACHE_ECS'] ?? 'var/cache/cs_fixer');
+    $parameters->set(Option::CACHE_DIRECTORY, $_SERVER['SNAP_TOOL_CACHE_ECS'] ?? 'var/cache/cs_fixer');
     $parameters->set(Option::CACHE_NAMESPACE, 'platform');
 
     $ecsConfig->parallel();

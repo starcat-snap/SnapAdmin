@@ -19,9 +19,10 @@ class AnnotatePackageProcessor implements ProcessorInterface
      * @internal
      */
     public function __construct(
-        private readonly RequestStack $requestStack,
+        private readonly RequestStack       $requestStack,
         private readonly ContainerInterface $container,
-    ) {
+    )
+    {
     }
 
     /**
@@ -73,7 +74,7 @@ class AnnotatePackageProcessor implements ProcessorInterface
         }
 
         if (\is_string($controller)) {
-            [$controllerClass, $_] = explode('::', (string) $controller);
+            [$controllerClass, $_] = explode('::', (string)$controller);
         } elseif (\is_array($controller) && \count($controller) === 2) {
             [$controllerClass, $_] = $controller;
         } else {

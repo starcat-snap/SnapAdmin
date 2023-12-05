@@ -29,7 +29,7 @@ class IndexerQueuer
         $indexers = [];
 
         if ($current !== null) {
-            $decodedValue = json_decode((string) $current['configuration_value'], true, 512, \JSON_THROW_ON_ERROR);
+            $decodedValue = json_decode((string)$current['configuration_value'], true, 512, \JSON_THROW_ON_ERROR);
 
             $indexers = $decodedValue['_value'] ?? [];
         }
@@ -37,7 +37,8 @@ class IndexerQueuer
         $newList = [];
         /**
          * @var string $indexerName
-         * @var string|array $options */
+         * @var string|array $options
+         */
         foreach ($indexers as $indexerName => $options) {
             // Upgrade possible old format to empty array
             $newList[$indexerName] = \is_array($options) ? $options : [];
@@ -51,7 +52,7 @@ class IndexerQueuer
         $current = self::fetchCurrent($this->connection);
         $indexerList = [];
         if ($current !== null) {
-            $decodedValue = json_decode((string) $current['configuration_value'], true, 512, \JSON_THROW_ON_ERROR);
+            $decodedValue = json_decode((string)$current['configuration_value'], true, 512, \JSON_THROW_ON_ERROR);
             $indexerList = $decodedValue['_value'] ?? [];
         }
 
@@ -75,7 +76,7 @@ class IndexerQueuer
 
         if ($current !== null) {
             $id = $current['id'];
-            $decodedValue = json_decode((string) $current['configuration_value'], true, 512, \JSON_THROW_ON_ERROR);
+            $decodedValue = json_decode((string)$current['configuration_value'], true, 512, \JSON_THROW_ON_ERROR);
             $indexerList = $decodedValue['_value'] ?? [];
         }
 

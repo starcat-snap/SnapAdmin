@@ -21,7 +21,8 @@ class HookableEntityWrittenEvent implements Hookable
 
     public static function fromWrittenEvent(
         EntityWrittenEvent $event
-    ): self {
+    ): self
+    {
         return new self($event);
     }
 

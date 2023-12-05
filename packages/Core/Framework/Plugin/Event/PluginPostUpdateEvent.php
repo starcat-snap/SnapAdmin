@@ -10,9 +10,10 @@ use SnapAdmin\Core\Framework\Plugin\PluginEntity;
 class PluginPostUpdateEvent extends PluginLifecycleEvent
 {
     public function __construct(
-        PluginEntity $plugin,
+        PluginEntity                   $plugin,
         private readonly UpdateContext $context
-    ) {
+    )
+    {
         parent::__construct($plugin);
     }
 

@@ -34,10 +34,11 @@ class TestCacheClearer
     protected $adapters;
 
     public function __construct(
-        array $adapters,
+        array                 $adapters,
         CacheClearerInterface $cacheClearer,
-        string $cacheDir
-    ) {
+        string                $cacheDir
+    )
+    {
         $this->adapters = $adapters;
         $this->cacheClearer = $cacheClearer;
         $this->cacheDir = $cacheDir;

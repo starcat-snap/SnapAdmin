@@ -12,14 +12,15 @@ use SnapAdmin\Core\Kernel;
 class InstanceService
 {
     public function __construct(
-        private readonly string $snapVersion,
+        private readonly string  $snapVersion,
         private readonly ?string $instanceId
-    ) {
+    )
+    {
     }
 
     public function getSnapAdminVersion(): string
     {
-        if ($this->snapVersion === Kernel::SHOPWARE_FALLBACK_VERSION) {
+        if ($this->snapVersion === Kernel::SNAP_FALLBACK_VERSION) {
             return '___VERSION___';
         }
 

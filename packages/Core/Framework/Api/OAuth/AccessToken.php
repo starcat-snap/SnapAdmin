@@ -18,16 +18,17 @@ class AccessToken implements AccessTokenEntityInterface
     use RefreshTokenTrait;
 
     /**
-     * @internal
-     *
      * @param string $userIdentifier
      * @param ScopeEntityInterface[] $scopes
+     * @internal
+     *
      */
     public function __construct(
         private ClientEntityInterface $client,
-        private array $scopes,
-        private $userIdentifier = null
-    ) {
+        private array                 $scopes,
+        private                       $userIdentifier = null
+    )
+    {
     }
 
     public function getClient(): ClientEntityInterface

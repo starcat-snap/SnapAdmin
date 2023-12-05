@@ -16,10 +16,11 @@ trait MailTemplateTestBehaviour
      * @param class-string<object> $expectedClass
      */
     public static function assertMailEvent(
-        string $expectedClass,
-        SnapAdminEvent $event,
+        string              $expectedClass,
+        SnapAdminEvent      $event,
         SalesChannelContext $salesChannelContext
-    ): void {
+    ): void
+    {
         TestCase::assertInstanceOf($expectedClass, $event);
         TestCase::assertSame($salesChannelContext->getContext(), $event->getContext());
     }

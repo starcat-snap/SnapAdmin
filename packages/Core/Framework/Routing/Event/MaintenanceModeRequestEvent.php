@@ -16,9 +16,10 @@ class MaintenanceModeRequestEvent extends Event
      */
     public function __construct(
         private readonly Request $request,
-        private readonly array $allowedIps,
-        private bool $isClientAllowed
-    ) {
+        private readonly array   $allowedIps,
+        private bool             $isClientAllowed
+    )
+    {
     }
 
     public function getRequest(): Request

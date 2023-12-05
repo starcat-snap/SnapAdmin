@@ -5,11 +5,12 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="env(SHOPWARE_DBAL_TIMEZONE_SUPPORT_ENABLED)">0</parameter>
-        <parameter key="snap.dbal.time_zone_support_enabled">%env(bool:SHOPWARE_DBAL_TIMEZONE_SUPPORT_ENABLED)%</parameter>
+        <parameter key="env(SNAP_DBAL_TIMEZONE_SUPPORT_ENABLED)">0</parameter>
+        <parameter key="snap.dbal.time_zone_support_enabled">%env(bool:SNAP_DBAL_TIMEZONE_SUPPORT_ENABLED)%
+        </parameter>
 
-        <parameter key="env(SHOPWARE_DBAL_TOKEN_MINIMUM_LENGTH)">3</parameter>
-        <parameter key="snap.dbal.token_minimum_length">%env(int:SHOPWARE_DBAL_TOKEN_MINIMUM_LENGTH)%</parameter>
+        <parameter key="env(SNAP_DBAL_TOKEN_MINIMUM_LENGTH)">3</parameter>
+        <parameter key="snap.dbal.token_minimum_length">%env(int:SNAP_DBAL_TOKEN_MINIMUM_LENGTH)%</parameter>
     </parameters>
 
     <services>
@@ -65,7 +66,7 @@
             <argument>%kernel.project_dir%</argument>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Cache\EntityCacheKeyGenerator" public="true" />
+        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Cache\EntityCacheKeyGenerator" public="true"/>
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelper">
         </service>
@@ -98,19 +99,23 @@
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Term\Filter\TokenFilter"/>
         </service>
 
-        <service id="api.request_criteria_builder" class="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\RequestCriteriaBuilder">
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Parser\AggregationParser"/>
+        <service id="api.request_criteria_builder"
+                 class="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\RequestCriteriaBuilder">
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Parser\AggregationParser"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\ApiCriteriaValidator"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\CriteriaArrayConverter"/>
             <argument>%snap.api.max_limit%</argument>
         </service>
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\CriteriaArrayConverter">
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Parser\AggregationParser"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Parser\AggregationParser"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\RequestCriteriaBuilder">
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Parser\AggregationParser"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Parser\AggregationParser"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\ApiCriteriaValidator"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\CriteriaArrayConverter"/>
             <argument>%snap.api.store.max_limit%</argument>
@@ -133,7 +138,8 @@
             <argument type="service" id="SnapAdmin\Core\Framework\Api\Acl\AclCriteriaValidator"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Facade\RepositoryWriterFacadeHookFactory" public="true">
+        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Facade\RepositoryWriterFacadeHookFactory"
+                 public="true">
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Facade\AppContextCreator"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Api\Sync\SyncService"/>
@@ -143,16 +149,13 @@
             <argument type="service" id="Doctrine\DBAL\Connection"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Facade\SalesChannelRepositoryFacadeHookFactory" public="true">
-            <argument type="service" id="SnapAdmin\Core\System\SalesChannel\Entity\SalesChannelDefinitionInstanceRegistry"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\RequestCriteriaBuilder"/>
-        </service>
-
         <!-- EntityDefinition[] -->
-        <service class="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityReader" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Read\EntityReaderInterface" public="true">
+        <service class="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityReader"
+                 id="SnapAdmin\Core\Framework\DataAbstractionLayer\Read\EntityReaderInterface" public="true">
             <argument type="service" id="Doctrine\DBAL\Connection"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityHydrator"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelper"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelper"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Parser\SqlQueryParser"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\CriteriaQueryBuilder"/>
             <argument type="service" id="logger"/>
@@ -161,27 +164,36 @@
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\CriteriaFieldsResolver"/>
 
-        <service class="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityAggregator" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\EntityAggregatorInterface" public="true">
+        <service class="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityAggregator"
+                 id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\EntityAggregatorInterface" public="true">
             <argument type="service" id="Doctrine\DBAL\Connection"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelper"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelper"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\CriteriaQueryBuilder"/>
             <argument>%snap.dbal.time_zone_support_enabled%</argument>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Term\SearchTermInterpreter"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Term\EntityScoreQueryBuilder"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Term\SearchTermInterpreter"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Term\EntityScoreQueryBuilder"/>
         </service>
 
-        <service class="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntitySearcher" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\EntitySearcherInterface" public="true">
+        <service class="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntitySearcher"
+                 id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\EntitySearcherInterface" public="true">
             <argument type="service" id="Doctrine\DBAL\Connection"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelper"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelper"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\CriteriaQueryBuilder"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\CriteriaQueryBuilder">
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Parser\SqlQueryParser"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelper"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Term\SearchTermInterpreter"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Term\EntityScoreQueryBuilder"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelper"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Term\SearchTermInterpreter"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Term\EntityScoreQueryBuilder"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\JoinGroupBuilder"/>
             <argument type="service"
                       id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldResolver\CriteriaPartResolver"/>
@@ -195,7 +207,8 @@
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityWriter" public="true">
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\WriteCommandExtractor"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityForeignKeyResolver"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityWriteGatewayInterface"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityWriteGatewayInterface"/>
             <argument type="service" id="SnapAdmin\Core\System\Language\LanguageLoader"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityWriteResultFactory"/>
@@ -207,41 +220,49 @@
         </service>
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\WriteCommandExtractor">
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityWriteGatewayInterface"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityWriteGatewayInterface"/>
         </service>
 
-        <service class="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityWriteGateway" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityWriteGatewayInterface" public="true">
+        <service class="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityWriteGateway"
+                 id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityWriteGatewayInterface" public="true">
             <argument>%snap.dal.batch_size%</argument>
             <argument type="service" id="Doctrine\DBAL\Connection"/>
             <argument type="service" id="event_dispatcher"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\ExceptionHandlerRegistry" />
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry" />
+            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\ExceptionHandlerRegistry"/>
+            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\Validation\ConstraintBuilder"/>
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Parser\SqlQueryParser">
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelper"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelper"/>
             <argument type="service" id="Doctrine\DBAL\Connection"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityForeignKeyResolver">
             <argument type="service" id="Doctrine\DBAL\Connection"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelper"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelper"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldResolver\ManyToOneAssociationFieldResolver">
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelper"/>
+        <service
+                id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldResolver\ManyToOneAssociationFieldResolver">
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelper"/>
             <argument type="service" id="Doctrine\DBAL\Connection"/>
 
             <tag name="snap.field_resolver" priority="-50"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldResolver\OneToManyAssociationFieldResolver">
+        <service
+                id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldResolver\OneToManyAssociationFieldResolver">
             <tag name="snap.field_resolver" priority="-50"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldResolver\ManyToManyAssociationFieldResolver">
+        <service
+                id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldResolver\ManyToManyAssociationFieldResolver">
             <tag name="snap.field_resolver" priority="-50"/>
         </service>
 
@@ -250,29 +271,26 @@
             <tag name="snap.field_resolver" priority="-50"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldAccessorBuilder\PriceFieldAccessorBuilder">
-            <argument type="service" id="Doctrine\DBAL\Connection"/>
-
-            <tag name="snap.field_accessor_builder" priority="-100"/>
-        </service>
-
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldAccessorBuilder\JsonFieldAccessorBuilder">
             <argument type="service" id="Doctrine\DBAL\Connection"/>
 
             <tag name="snap.field_accessor_builder" priority="-150"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldAccessorBuilder\DefaultFieldAccessorBuilder">
+        <service
+                id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldAccessorBuilder\DefaultFieldAccessorBuilder">
             <tag name="snap.field_accessor_builder" priority="-200"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldAccessorBuilder\ConfigJsonFieldAccessorBuilder">
+        <service
+                id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldAccessorBuilder\ConfigJsonFieldAccessorBuilder">
             <argument type="service" id="Doctrine\DBAL\Connection"/>
 
             <tag name="snap.field_accessor_builder" priority="-100"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldAccessorBuilder\CustomFieldsAccessorBuilder">
+        <service
+                id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldAccessorBuilder\CustomFieldsAccessorBuilder">
             <argument type="service" id="SnapAdmin\Core\System\CustomField\CustomFieldService"/>
             <argument type="service" id="Doctrine\DBAL\Connection"/>
 
@@ -283,11 +301,13 @@
             <tag name="snap.entity.definition"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Version\Aggregate\VersionCommit\VersionCommitDefinition">
+        <service
+                id="SnapAdmin\Core\Framework\DataAbstractionLayer\Version\Aggregate\VersionCommit\VersionCommitDefinition">
             <tag name="snap.entity.definition"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Version\Aggregate\VersionCommitData\VersionCommitDataDefinition">
+        <service
+                id="SnapAdmin\Core\Framework\DataAbstractionLayer\Version\Aggregate\VersionCommitData\VersionCommitDataDefinition">
             <tag name="snap.entity.definition"/>
         </service>
 
@@ -315,25 +335,28 @@
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityWriter"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Read\EntityReaderInterface"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\EntitySearcherInterface"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityWriteGatewayInterface"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityWriteGatewayInterface"/>
             <argument type="service" id="event_dispatcher"/>
             <argument type="service" id="serializer"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Version\Aggregate\VersionCommit\VersionCommitDefinition"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Version\Aggregate\VersionCommitData\VersionCommitDataDefinition"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Version\Aggregate\VersionCommit\VersionCommitDefinition"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Version\Aggregate\VersionCommitData\VersionCommitDataDefinition"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Version\VersionDefinition"/>
             <argument type="service" id="lock.factory"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\CalculatedPriceFieldSerializer">
-            <argument type="service" id="validator" />
+            <argument type="service" id="validator"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
 
             <tag name="snap.field_serializer"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\CartPriceFieldSerializer">
-            <argument type="service" id="validator" />
+            <argument type="service" id="validator"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
 
             <tag name="snap.field_serializer"/>
@@ -342,21 +365,6 @@
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\CashRoundingConfigFieldSerializer">
             <argument type="service" id="validator"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
-
-            <tag name="snap.field_serializer"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\TaxFreeConfigFieldSerializer">
-            <argument type="service" id="validator"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
-
-            <tag name="snap.field_serializer"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\PriceDefinitionFieldSerializer">
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
-            <argument type="service" id="validator" />
-            <argument type="service" id="SnapAdmin\Core\Framework\Rule\Collector\RuleConditionRegistry"/>
 
             <tag name="snap.field_serializer"/>
         </service>
@@ -418,7 +426,7 @@
         </service>
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\IdFieldSerializer">
-            <argument type="service" id="validator" />
+            <argument type="service" id="validator"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
 
             <tag name="snap.field_serializer"/>
@@ -468,7 +476,8 @@
             <tag name="snap.field_serializer"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\ManyToManyAssociationFieldSerializer">
+        <service
+                id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\ManyToManyAssociationFieldSerializer">
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\WriteCommandExtractor"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
 
@@ -495,7 +504,8 @@
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\OneToManyAssociationFieldSerializer">
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\WriteCommandExtractor"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityWriteGatewayInterface"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityWriteGatewayInterface"/>
 
 
             <tag name="snap.field_serializer"/>
@@ -543,11 +553,13 @@
             <tag name="snap.field_serializer"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\TranslationsAssociationFieldSerializer">
+        <service
+                id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\TranslationsAssociationFieldSerializer">
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\WriteCommandExtractor"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityWriteGatewayInterface"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityWriteGatewayInterface"/>
 
-            <tag name="snap.field_serializer" />
+            <tag name="snap.field_serializer"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\UpdatedAtFieldSerializer">
@@ -595,14 +607,14 @@
         </service>
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\CronIntervalFieldSerializer">
-            <argument type="service" id="validator" />
+            <argument type="service" id="validator"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
 
             <tag name="snap.field_serializer"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\DateIntervalFieldSerializer">
-            <argument type="service" id="validator" />
+            <argument type="service" id="validator"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
 
             <tag name="snap.field_serializer"/>
@@ -628,7 +640,7 @@
         </service>
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry" public="true">
-            <argument type="service" id="service_container" />
+            <argument type="service" id="service_container"/>
             <argument type="collection"/>
             <argument type="collection"/>
         </service>
@@ -669,12 +681,12 @@
             <argument type="tagged" tag="snap.entity_indexer"/>
             <argument type="service" id="messenger.bus.snap"/>
             <argument type="service" id="event_dispatcher"/>
-            <tag name="messenger.message_handler" />
+            <tag name="messenger.message_handler"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Indexing\Subscriber\EntityIndexingSubscriber" >
+        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Indexing\Subscriber\EntityIndexingSubscriber">
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Indexing\EntityIndexerRegistry"/>
-            <tag name="kernel.event_subscriber" />
+            <tag name="kernel.event_subscriber"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Indexing\InheritanceUpdater">

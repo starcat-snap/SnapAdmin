@@ -5,8 +5,6 @@ namespace SnapAdmin\Core\Framework\Api\ApiDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\SalesChannel\Entity\SalesChannelDefinitionInstanceRegistry;
-use SnapAdmin\Core\System\SalesChannel\Entity\SalesChannelDefinitionInterface;
 
 /**
  * @phpstan-type Api DefinitionService::API|DefinitionService::STORE_API
@@ -47,10 +45,10 @@ class DefinitionService
      * @internal
      */
     public function __construct(
-        private readonly DefinitionInstanceRegistry $definitionRegistry,
-        private readonly SalesChannelDefinitionInstanceRegistry $salesChannelDefinitionRegistry,
-        ApiDefinitionGeneratorInterface ...$generators
-    ) {
+        private readonly DefinitionInstanceRegistry             $definitionRegistry,
+        ApiDefinitionGeneratorInterface                         ...$generators
+    )
+    {
         $this->generators = $generators;
     }
 
@@ -102,9 +100,9 @@ class DefinitionService
     }
 
     /**
+     * @return array<string, EntityDefinition>|array<string, EntityDefinition>
      * @throws ApiDefinitionGeneratorNotFoundException
      *
-     * @return array<string, EntityDefinition>|array<string, EntityDefinition&SalesChannelDefinitionInterface>
      */
     private function getDefinitions(string $type): array
     {

@@ -1,15 +1,15 @@
 snap:
-    api:
-        api_browser:
-            auth_required: false
+  api:
+    api_browser:
+      auth_required: false
 
-    media:
-        enable_url_upload_feature: true
-        enable_url_validation: false
+  media:
+    enable_url_upload_feature: true
+    enable_url_validation: false
 
-    profiler:
-        integrations: ['Symfony']
+  profiler:
+    integrations: [ 'Symfony' ]
 
-    usage_data:
-        gateway:
-            base_uri: 'http://localhost:8888'
+  usage_data:
+    gateway:
+      base_uri: 'http://localhost:8888'

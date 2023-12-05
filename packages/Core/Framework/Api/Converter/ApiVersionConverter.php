@@ -51,7 +51,7 @@ class ApiVersionConverter
             Feature::deprecatedClassMessage(__CLASS__, 'v6.6.0.0')
         );
 
-        $toOneFields = $definition->getFields()->filter(fn (Field $field) => $field instanceof OneToOneAssociationField || $field instanceof ManyToOneAssociationField);
+        $toOneFields = $definition->getFields()->filter(fn(Field $field) => $field instanceof OneToOneAssociationField || $field instanceof ManyToOneAssociationField);
 
         /** @var OneToOneAssociationField|OneToManyAssociationField $field */
         foreach ($toOneFields as $field) {
@@ -67,7 +67,7 @@ class ApiVersionConverter
             );
         }
 
-        $toManyFields = $definition->getFields()->filter(fn (Field $field) => $field instanceof OneToManyAssociationField || $field instanceof ManyToManyAssociationField);
+        $toManyFields = $definition->getFields()->filter(fn(Field $field) => $field instanceof OneToManyAssociationField || $field instanceof ManyToManyAssociationField);
 
         /** @var OneToManyAssociationField|ManyToManyAssociationField $field */
         foreach ($toManyFields as $field) {

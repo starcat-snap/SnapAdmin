@@ -12,13 +12,13 @@ final class Json
      */
     public static function encode(mixed $value, int $options = \JSON_UNESCAPED_UNICODE | \JSON_PRESERVE_ZERO_FRACTION | \JSON_THROW_ON_ERROR | \JSON_INVALID_UTF8_IGNORE): string
     {
-        return (string) json_encode($value, $options);
+        return (string)json_encode($value, $options);
     }
 
     /**
+     * @return list<mixed>
      * @throws UtilException when the JSON is invalid, not an array or not an object with sequential keys
      *
-     * @return list<mixed>
      */
     public static function decodeToList(string $value): array
     {

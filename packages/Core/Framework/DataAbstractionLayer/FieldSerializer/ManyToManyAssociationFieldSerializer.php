@@ -29,7 +29,8 @@ class ManyToManyAssociationFieldSerializer implements FieldSerializerInterface
      */
     public function __construct(
         private readonly WriteCommandExtractor $writeExtrator
-    ) {
+    )
+    {
     }
 
     public function normalize(Field $field, array $data, WriteParameterBag $parameters): array
@@ -99,11 +100,12 @@ class ManyToManyAssociationFieldSerializer implements FieldSerializerInterface
     }
 
     public function encode(
-        Field $field,
-        EntityExistence $existence,
-        KeyValuePair $data,
+        Field             $field,
+        EntityExistence   $existence,
+        KeyValuePair      $data,
         WriteParameterBag $parameters
-    ): \Generator {
+    ): \Generator
+    {
         if (!$field instanceof ManyToManyAssociationField) {
             throw DataAbstractionLayerException::invalidSerializerField(ManyToManyAssociationField::class, $field);
         }
@@ -144,9 +146,10 @@ class ManyToManyAssociationFieldSerializer implements FieldSerializerInterface
     }
 
     private function getMappingAssociation(
-        EntityDefinition $referencedDefinition,
+        EntityDefinition           $referencedDefinition,
         ManyToManyAssociationField $field
-    ): ?ManyToOneAssociationField {
+    ): ?ManyToOneAssociationField
+    {
         $associations = $referencedDefinition->getFields()->filterInstance(ManyToOneAssociationField::class);
 
         /** @var ManyToOneAssociationField $association */

@@ -29,10 +29,11 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 abstract class AbstractPluginLifecycleCommand extends Command
 {
     public function __construct(
-        protected PluginLifecycleService $pluginLifecycleService,
+        protected PluginLifecycleService  $pluginLifecycleService,
         private readonly EntityRepository $pluginRepo,
-        protected CacheClearer $cacheClearer
-    ) {
+        protected CacheClearer            $cacheClearer
+    )
+    {
         parent::__construct();
     }
 
@@ -66,11 +67,12 @@ abstract class AbstractPluginLifecycleCommand extends Command
     }
 
     protected function prepareExecution(
-        string $lifecycleMethod,
-        SymfonyStyle $io,
+        string         $lifecycleMethod,
+        SymfonyStyle   $io,
         InputInterface $input,
-        Context $context
-    ): ?PluginCollection {
+        Context        $context
+    ): ?PluginCollection
+    {
         $io->title('SnapAdmin Plugin Lifecycle Service');
 
         if ($input->getOption('refresh')) {
@@ -135,11 +137,12 @@ abstract class AbstractPluginLifecycleCommand extends Command
     }
 
     private function parsePluginArgument(
-        array $arguments,
-        string $lifecycleMethod,
+        array        $arguments,
+        string       $lifecycleMethod,
         SymfonyStyle $io,
-        Context $context
-    ): ?PluginCollection {
+        Context      $context
+    ): ?PluginCollection
+    {
         $plugins = array_unique($arguments);
         $filter = [];
 
@@ -200,7 +203,7 @@ abstract class AbstractPluginLifecycleCommand extends Command
                         'Which plugin do you want to %s?',
                         $lifecycleMethod
                     ),
-                    $pluginCollection->map(fn (PluginEntity $plugin) => $plugin->getName())
+                    $pluginCollection->map(fn(PluginEntity $plugin) => $plugin->getName())
                 )
             );
 

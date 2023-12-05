@@ -8,12 +8,18 @@
     </title>
 
     {% block administration_favicons %}
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('static/img/favicon/apple-touch-icon.png', '@Administration') }}">
-        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('static/img/favicon/favicon-16x16.png', '@Administration') }}">
-        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('static/img/favicon/favicon-32x32.png', '@Administration') }}" id="dynamic-favicon">
-        <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('static/img/favicon/android-chrome-192x192.png', '@Administration') }}">
-        <link rel="icon" type="image/png" sizes="256x256" href="{{ asset('static/img/favicon/android-chrome-256x256.png', '@Administration') }}">
-        <meta name="msapplication-TileImage" content="{{ asset('static/img/favicon/mstile-150x150.png', '@Administration') }}">
+        <link rel="apple-touch-icon" sizes="180x180"
+              href="{{ asset('static/img/favicon/apple-touch-icon.png', '@Administration') }}">
+        <link rel="icon" type="image/png" sizes="16x16"
+              href="{{ asset('static/img/favicon/favicon-16x16.png', '@Administration') }}">
+        <link rel="icon" type="image/png" sizes="32x32"
+              href="{{ asset('static/img/favicon/favicon-32x32.png', '@Administration') }}" id="dynamic-favicon">
+        <link rel="icon" type="image/png" sizes="192x192"
+              href="{{ asset('static/img/favicon/android-chrome-192x192.png', '@Administration') }}">
+        <link rel="icon" type="image/png" sizes="256x256"
+              href="{{ asset('static/img/favicon/android-chrome-256x256.png', '@Administration') }}">
+        <meta name="msapplication-TileImage"
+              content="{{ asset('static/img/favicon/mstile-150x150.png', '@Administration') }}">
         <meta name="msapplication-TileColor" content="#189eff">
         <meta name="theme-color" content="#189eff">
         <meta name="referrer" content="always">
@@ -40,27 +46,27 @@
 
 <script nonce="{{ cspNonce }}">
     {#
-        root-level domain configuration
+    root-level domain configuration
 
-        host:               snap.next
-        port:               80
-        scheme:             http
-        schemeAndHttpHost:  http://snap.next
-        uri:                http://snap.next/admin
-        basePath:
-        pathInfo:           /admin
+    host:               snap.next
+    port:               80
+    scheme:             http
+    schemeAndHttpHost:  http://snap.next
+    uri:                http://snap.next/admin
+    basePath:
+    pathInfo:           /admin
 
-        -----------------------------------------------
+    -----------------------------------------------
 
-        sub-folder domain configuration
+    sub-folder domain configuration
 
-        host:               localhost
-        port:               80
-        scheme:             http
-        schemeAndHttpHost:  http://localhost
-        uri:                http://localhost/next/web/admin
-        basePath:           /next/web
-        pathInfo:           /admin
+    host:               localhost
+    port:               80
+    scheme:             http
+    schemeAndHttpHost:  http://localhost
+    uri:                http://localhost/next/web/admin
+    basePath:           /next/web
+    pathInfo:           /admin
     #}
     SnapAdmin.Application.start({
         apiContext: {

@@ -31,7 +31,8 @@
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
             <argument type="service" id="serializer"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\RequestCriteriaBuilder"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\EntityProtection\EntityProtectionValidator"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\EntityProtection\EntityProtectionValidator"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Api\Acl\AclCriteriaValidator"/>
             <call method="setContainer">
                 <argument type="service" id="service_container"/>

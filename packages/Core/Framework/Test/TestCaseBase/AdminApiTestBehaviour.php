@@ -72,11 +72,12 @@ trait AdminApiTestBehaviour
      */
     public function createClient(
         ?KernelInterface $kernel = null,
-        bool $enableReboot = false,
-        bool $authorized = true,
-        array $scopes = [],
-        ?array $permissions = null
-    ): TestBrowser {
+        bool             $enableReboot = false,
+        bool             $authorized = true,
+        array            $scopes = [],
+        ?array           $permissions = null
+    ): TestBrowser
+    {
         if (!$kernel) {
             $kernel = $this->getKernel();
         }
@@ -135,8 +136,8 @@ trait AdminApiTestBehaviour
 
         $user = [
             'id' => $userId,
-            'first_name' => $username,
-            'last_name' => '',
+            'name' => $username,
+            'phone' => '',
             'username' => $username,
             'password' => TestDefaults::HASHED_PASSWORD,
             'locale_id' => $this->getLocaleOfSystemLanguage($connection),
@@ -314,7 +315,7 @@ trait AdminApiTestBehaviour
     {
         $builder = $connection->createQueryBuilder();
 
-        return (string) $builder->select('locale.id')
+        return (string)$builder->select('locale.id')
             ->from('language', 'language')
             ->innerJoin('language', 'locale', 'locale', 'language.locale_id = locale.id')
             ->where('language.id = :id')

@@ -9,8 +9,9 @@ class CloneBehavior
 {
     public function __construct(
         private readonly array $overwrites = [],
-        private readonly bool $cloneChildren = true
-    ) {
+        private readonly bool  $cloneChildren = true
+    )
+    {
     }
 
     public function getOverwrites(): array

@@ -20,7 +20,7 @@ class Tokenizer implements TokenizerInterface
         $string = trim(str_replace(['.', '/', '\\'], ' ', $string));
         $string = str_replace('<', ' <', $string);
         $string = strip_tags($string);
-        $string = trim((string) preg_replace("/[^\pL\-_0-9]/u", ' ', $string));
+        $string = trim((string)preg_replace("/[^\pL\-_0-9]/u", ' ', $string));
 
         /** @var list<string> $tags */
         $tags = array_filter(explode(' ', $string));

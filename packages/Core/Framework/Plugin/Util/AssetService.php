@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\Framework\Plugin\Util;
 
 use League\Flysystem\FilesystemOperator;
 use SnapAdmin\Core\Framework\Adapter\Cache\CacheInvalidator;
-use SnapAdmin\Core\Framework\App\Lifecycle\AbstractAppLoader;
 use SnapAdmin\Core\Framework\Feature;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Parameter\AdditionalBundleParameters;
@@ -24,14 +23,14 @@ class AssetService
      * @internal
      */
     public function __construct(
-        private readonly FilesystemOperator $filesystem,
-        private readonly FilesystemOperator $privateFilesystem,
-        private readonly KernelInterface $kernel,
-        private readonly KernelPluginLoader $pluginLoader,
-        private readonly CacheInvalidator $cacheInvalidator,
-        private readonly AbstractAppLoader $appLoader,
+        private readonly FilesystemOperator    $filesystem,
+        private readonly FilesystemOperator    $privateFilesystem,
+        private readonly KernelInterface       $kernel,
+        private readonly KernelPluginLoader    $pluginLoader,
+        private readonly CacheInvalidator      $cacheInvalidator,
         private readonly ParameterBagInterface $parameterBag
-    ) {
+    )
+    {
     }
 
     /**
@@ -65,21 +64,6 @@ class AssetService
     public function copyRecoveryAssets(): void
     {
         Feature::triggerDeprecationOrThrow('v6.6.0.0', Feature::deprecatedMethodMessage(self::class, __METHOD__, 'v6.6.0.0'));
-    }
-
-    public function copyAssetsFromApp(string $appName, string $appPath, bool $force = false): void
-    {
-        $publicDirectory = $this->appLoader->locatePath($appPath, 'Resources/public');
-
-        if ($publicDirectory === null) {
-            return;
-        }
-
-        $this->copyAssetsFromBundleOrApp(
-            $publicDirectory,
-            $appName,
-            $force
-        );
     }
 
     public function removeAssetsOfBundle(string $bundleName): void
@@ -175,8 +159,8 @@ class AssetService
     private function buildBundleManifest(array $files): array
     {
         $localManifest = array_combine(
-            array_map(fn (SplFileInfo $file) => $file->getRelativePathname(), $files),
-            array_map(fn (SplFileInfo $file) => (string) hash_file('sha256', $file->getPathname()), $files)
+            array_map(fn(SplFileInfo $file) => $file->getRelativePathname(), $files),
+            array_map(fn(SplFileInfo $file) => (string)hash_file('sha256', $file->getPathname()), $files)
         );
 
         ksort($localManifest);

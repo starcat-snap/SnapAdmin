@@ -34,7 +34,7 @@ class AwsS3v3Factory implements AdapterFactoryInterface
         }
 
         if (\array_key_exists('use_path_style_endpoint', $options)) {
-            $s3Opts['pathStyleEndpoint'] = (string) $options['use_path_style_endpoint'];
+            $s3Opts['pathStyleEndpoint'] = (string)$options['use_path_style_endpoint'];
         }
 
         if (isset($options['credentials'])) {
@@ -53,7 +53,7 @@ class AwsS3v3Factory implements AdapterFactoryInterface
     }
 
     /**
-     * @param  array<string, mixed> $definition
+     * @param array<string, mixed> $definition
      *
      * @return S3Config
      */

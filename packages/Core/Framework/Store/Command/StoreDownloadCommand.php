@@ -44,14 +44,15 @@ class StoreDownloadCommand extends Command
      * @param EntityRepository<UserCollection> $userRepository
      */
     public function __construct(
-        private readonly StoreClient $storeClient,
-        private readonly EntityRepository $pluginRepo,
+        private readonly StoreClient             $storeClient,
+        private readonly EntityRepository        $pluginRepo,
         private readonly PluginManagementService $pluginManagementService,
-        private readonly PluginLifecycleService $pluginLifecycleService,
-        private readonly EntityRepository $userRepository,
-        string $pluginDir,
-        string $projectDir,
-    ) {
+        private readonly PluginLifecycleService  $pluginLifecycleService,
+        private readonly EntityRepository        $userRepository,
+        string                                   $pluginDir,
+        string                                   $projectDir,
+    )
+    {
         parent::__construct();
 
         $this->relativePluginDir = (new Filesystem())->makePathRelative($pluginDir, $projectDir);
@@ -61,15 +62,14 @@ class StoreDownloadCommand extends Command
     {
         $this->addOption('pluginName', 'p', InputOption::VALUE_REQUIRED, 'Name of plugin')
             ->addOption('language', 'l', InputOption::VALUE_OPTIONAL, 'Language')
-            ->addOption('user', 'u', InputOption::VALUE_OPTIONAL, 'User')
-        ;
+            ->addOption('user', 'u', InputOption::VALUE_OPTIONAL, 'User');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $context = Context::createDefaultContext();
 
-        $pluginName = (string) $input->getOption('pluginName');
+        $pluginName = (string)$input->getOption('pluginName');
         $user = $input->getOption('user');
 
         $context = $this->getUserContextFromInput($user, $context);

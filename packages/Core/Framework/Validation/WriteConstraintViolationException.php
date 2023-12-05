@@ -13,9 +13,10 @@ class WriteConstraintViolationException extends SnapAdminHttpException implement
 {
     public function __construct(
         private readonly ConstraintViolationList $constraintViolationList,
-        private string $path = '',
-        private readonly int $statusCode = Response::HTTP_BAD_REQUEST
-    ) {
+        private string                           $path = '',
+        private readonly int                     $statusCode = Response::HTTP_BAD_REQUEST
+    )
+    {
         parent::__construct(
             'Caught {{ count }} constraint violation errors.',
             ['count' => $constraintViolationList->count()]
@@ -69,7 +70,7 @@ class WriteConstraintViolationException extends SnapAdminHttpException implement
             $path = $this->getPath() . $violation->getPropertyPath();
             $error = [
                 'code' => $violation->getCode() ?? $this->getErrorCode(),
-                'status' => (string) $this->getStatusCode(),
+                'status' => (string)$this->getStatusCode(),
                 'detail' => $violation->getMessage(),
                 'template' => $violation->getMessageTemplate(),
                 'meta' => [

@@ -26,12 +26,13 @@ class ChangelogProcessor
      * @param array<string, FeatureFlagConfig> $featureFlags
      */
     public function __construct(
-        protected ChangelogParser $parser,
+        protected ChangelogParser    $parser,
         protected ValidatorInterface $validator,
-        protected Filesystem $filesystem,
-        private readonly string $projectDir,
-        protected array $featureFlags
-    ) {
+        protected Filesystem         $filesystem,
+        private readonly string      $projectDir,
+        protected array              $featureFlags
+    )
+    {
     }
 
     /**
@@ -43,9 +44,9 @@ class ChangelogProcessor
     }
 
     /**
+     * @param array<string, FeatureFlagConfig> $flags
      * @internal
      *
-     * @param array<string, FeatureFlagConfig> $flags
      */
     public function setActiveFlags(array $flags): void
     {
@@ -84,7 +85,7 @@ class ChangelogProcessor
 
     protected function getMajorVersion(string $version): string
     {
-        return substr($version, 0, (int) strpos($version, '.', strpos($version, '.') + \strlen('.')));
+        return substr($version, 0, (int)strpos($version, '.', strpos($version, '.') + \strlen('.')));
     }
 
     /**
@@ -98,8 +99,8 @@ class ChangelogProcessor
             throw new \InvalidArgumentException('Unable to generate next version number, supplied version seems invalid (' . $version . ')');
         }
 
-        $superVersion = (int) $superVersion;
-        $majorVersion = (int) $majorVersion;
+        $superVersion = (int)$superVersion;
+        $majorVersion = (int)$majorVersion;
 
         return $superVersion . '.' . ($majorVersion + 1);
     }
@@ -132,7 +133,7 @@ class ChangelogProcessor
 
                 $issues = $this->validator->validate($definition);
                 if ($issues->count()) {
-                    $messages = \array_map(static fn (ConstraintViolationInterface $violation) => $violation->getMessage(), \iterator_to_array($issues));
+                    $messages = \array_map(static fn(ConstraintViolationInterface $violation) => $violation->getMessage(), \iterator_to_array($issues));
 
                     throw new \InvalidArgumentException(\sprintf('Invalid file at path: %s, errors: %s', $file->getRealPath(), \implode(', ', $messages)));
                 }
@@ -149,7 +150,7 @@ class ChangelogProcessor
 
                 $changelog = (new ChangelogFile())
                     ->setName($file->getFilename())
-                    ->setPath((string) $file->getRealPath())
+                    ->setPath((string)$file->getRealPath())
                     ->setDefinition($definition);
 
                 $entries->add($changelog);
@@ -163,7 +164,7 @@ class ChangelogProcessor
     {
         if (!isset($this->platformRoot)) {
             $platformRoot = $this->projectDir;
-            $composerJson = json_decode((string) file_get_contents($this->projectDir . '/composer.json'), true, 512, \JSON_THROW_ON_ERROR);
+            $composerJson = json_decode((string)file_get_contents($this->projectDir . '/composer.json'), true, 512, \JSON_THROW_ON_ERROR);
 
             if ($composerJson === null || $composerJson['name'] !== 'snap/platform') {
                 $platformRoot .= '/platform';

@@ -26,9 +26,10 @@ class MultiFilter extends Filter
      * @param array<Filter> $queries
      */
     public function __construct(
-        string $operator,
+        string          $operator,
         protected array $queries = []
-    ) {
+    )
+    {
         $this->operator = mb_strtoupper(trim($operator));
 
         if (!\in_array($this->operator, self::VALID_OPERATORS, true)) {

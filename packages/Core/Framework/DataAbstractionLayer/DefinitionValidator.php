@@ -157,8 +157,9 @@ class DefinitionValidator
      */
     public function __construct(
         private readonly DefinitionInstanceRegistry $registry,
-        private readonly Connection $connection
-    ) {
+        private readonly Connection                 $connection
+    )
+    {
     }
 
     /**
@@ -341,7 +342,7 @@ class DefinitionValidator
             if ($field instanceof BoolField) {
                 $getterMethods[] = 'is' . ucfirst($propertyName);
                 $getterMethods[] = 'has' . ucfirst($propertyName);
-                $getterMethods[] = 'has' . ucfirst((string) preg_replace('/^has/', '', $propertyName));
+                $getterMethods[] = 'has' . ucfirst((string)preg_replace('/^has/', '', $propertyName));
             }
 
             $hasGetter = false;
@@ -557,7 +558,7 @@ class DefinitionValidator
         $parentDefinition = $translationDefinition->getParentDefinition();
         $translationsAssociationFields = $parentDefinition->getFields()
             ->filterInstance(TranslationsAssociationField::class)
-            ->filter(fn (TranslationsAssociationField $f) => $f->getReferenceDefinition() === $translationDefinition)->getElements();
+            ->filter(fn(TranslationsAssociationField $f) => $f->getReferenceDefinition() === $translationDefinition)->getElements();
 
         $parentDefinitionClass = $parentDefinition->getClass();
         $translationDefinitionClass = $translationDefinition->getClass();
@@ -575,7 +576,7 @@ class DefinitionValidator
     {
         $translatedFieldsInParent = array_keys($parentDefinition->getFields()->filterInstance(TranslatedField::class)->getElements());
 
-        $translatedFields = array_keys($translationDefinition->getFields()->filter(fn (Field $f) => !$f->is(PrimaryKey::class)
+        $translatedFields = array_keys($translationDefinition->getFields()->filter(fn(Field $f) => !$f->is(PrimaryKey::class)
             && !$f instanceof AssociationField
             && !\in_array($f->getPropertyName(), ['createdAt', 'updatedAt'], true))->getElements());
 
@@ -799,13 +800,13 @@ class DefinitionValidator
         }
 
         if ($definition->isVersionAware() && $reference->isVersionAware()) {
-            $versionField = $mapping->getFields()->filter(fn (Field $field) => $field instanceof ReferenceVersionField && $field->getVersionReferenceDefinition() === $definition)->first();
+            $versionField = $mapping->getFields()->filter(fn(Field $field) => $field instanceof ReferenceVersionField && $field->getVersionReferenceDefinition() === $definition)->first();
 
             if (!$versionField) {
                 $violations[$mapping->getClass()][] = sprintf('Missing reference version field for definition %s in mapping definition %s', $definitionClass, $mapping->getClass());
             }
 
-            $referenceVersionField = $mapping->getFields()->filter(fn (Field $field) => $field instanceof ReferenceVersionField && $field->getVersionReferenceDefinition() === $reference)->first();
+            $referenceVersionField = $mapping->getFields()->filter(fn(Field $field) => $field instanceof ReferenceVersionField && $field->getVersionReferenceDefinition() === $reference)->first();
 
             if (!$referenceVersionField) {
                 $violations[$mapping->getClass()][] = sprintf('Missing reference version field for definition %s in mapping definition %s', $reference->getClass(), $mapping->getClass());
@@ -814,7 +815,7 @@ class DefinitionValidator
 
         $violations = $this->validateForeignKeyOnDeleteBehaviour($definition, $association, $reference, $violations);
 
-        $reverse = $reference->getFields()->filter(fn (Field $field) => $field instanceof ManyToManyAssociationField
+        $reverse = $reference->getFields()->filter(fn(Field $field) => $field instanceof ManyToManyAssociationField
             && $field->getToManyReferenceDefinition() === $definition
             && $field->getMappingDefinition() === $association->getMappingDefinition())->first();
 
@@ -1007,7 +1008,7 @@ class DefinitionValidator
 
     private function getShortClassName(EntityDefinition $definition): string
     {
-        return lcfirst((string) preg_replace('/.*\\\\([^\\\\]+)Definition/', '$1', $definition->getClass()));
+        return lcfirst((string)preg_replace('/.*\\\\([^\\\\]+)Definition/', '$1', $definition->getClass()));
     }
 
     /**
@@ -1143,12 +1144,12 @@ class DefinitionValidator
         }
 
         // see if this is the owning side
-        $owningSide = $definition->getFields()->filterInstance(FkField::class)->filter(fn (FkField $field): bool => $field->getReferenceDefinition() === $reference);
+        $owningSide = $definition->getFields()->filterInstance(FkField::class)->filter(fn(FkField $field): bool => $field->getReferenceDefinition() === $reference);
 
         if ($owningSide->count() === 0) {
             return null;
         }
-        $referenceVersionFieldForReference = $definition->getFields()->filterInstance(ReferenceVersionField::class)->filter(fn (ReferenceVersionField $field): bool => $field->getVersionReferenceDefinition()->getClass() === $association->getReferenceDefinition()->getClass());
+        $referenceVersionFieldForReference = $definition->getFields()->filterInstance(ReferenceVersionField::class)->filter(fn(ReferenceVersionField $field): bool => $field->getVersionReferenceDefinition()->getClass() === $association->getReferenceDefinition()->getClass());
 
         if (\count($referenceVersionFieldForReference) > 0) {
             return null;

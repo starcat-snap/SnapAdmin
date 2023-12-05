@@ -2,16 +2,13 @@
 
 namespace SnapAdmin\Core\Framework;
 
-use SnapAdmin\Core\Checkout\Cart\Price\Struct\CartPrice;
 use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\Framework\Api\Context\AdminApiSource;
 use SnapAdmin\Core\Framework\Api\Context\ContextSource;
 use SnapAdmin\Core\Framework\Api\Context\SystemSource;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Pricing\CashRoundingConfig;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Struct\StateAwareTrait;
 use SnapAdmin\Core\Framework\Struct\Struct;
-use SnapAdmin\Core\System\SalesChannel\Exception\ContextRulesLockedException;
 use Symfony\Component\Serializer\Annotation\Ignore;
 
 #[Package('core')]
@@ -42,19 +39,13 @@ class Context extends Struct
      * @param array<string> $ruleIds
      */
     public function __construct(
-        protected ContextSource $source,
-        protected array $ruleIds = [],
-        protected string $currencyId = Defaults::CURRENCY,
-        array $languageIdChain = [Defaults::LANGUAGE_SYSTEM],
-        protected string $versionId = Defaults::LIVE_VERSION,
-        protected float $currencyFactor = 1.0,
-        protected bool $considerInheritance = false,
-        /**
-         * @see CartPrice::TAX_STATE_GROSS, CartPrice::TAX_STATE_NET, CartPrice::TAX_STATE_FREE
-         */
-        protected string $taxState = CartPrice::TAX_STATE_GROSS,
-        protected CashRoundingConfig $rounding = new CashRoundingConfig(2, 0.01, true)
-    ) {
+        protected ContextSource      $source,
+        protected array              $ruleIds = [],
+        array                        $languageIdChain = [Defaults::LANGUAGE_SYSTEM],
+        protected string             $versionId = Defaults::LIVE_VERSION,
+        protected bool               $considerInheritance = false
+    )
+    {
         if ($source instanceof SystemSource) {
             $this->scope = self::SYSTEM_SCOPE;
         }
@@ -93,15 +84,6 @@ class Context extends Struct
         return $this->languageIdChain[0];
     }
 
-    public function getCurrencyId(): string
-    {
-        return $this->currencyId;
-    }
-
-    public function getCurrencyFactor(): float
-    {
-        return $this->currencyFactor;
-    }
 
     /**
      * @return array<string>
@@ -124,13 +106,9 @@ class Context extends Struct
         $context = new self(
             $this->source,
             $this->ruleIds,
-            $this->currencyId,
             $this->languageIdChain,
             $versionId,
-            $this->currencyFactor,
             $this->considerInheritance,
-            $this->taxState,
-            $this->rounding
         );
         $context->scope = $this->scope;
 
@@ -177,16 +155,6 @@ class Context extends Struct
         $this->considerInheritance = $considerInheritance;
     }
 
-    public function getTaxState(): string
-    {
-        return $this->taxState;
-    }
-
-    public function setTaxState(string $taxState): void
-    {
-        $this->taxState = $taxState;
-    }
-
     public function isAllowed(string $privilege): bool
     {
         if ($this->source instanceof AdminApiSource) {
@@ -196,17 +164,6 @@ class Context extends Struct
         return true;
     }
 
-    /**
-     * @param array<string> $ruleIds
-     */
-    public function setRuleIds(array $ruleIds): void
-    {
-        if ($this->rulesLocked) {
-            throw new ContextRulesLockedException();
-        }
-
-        $this->ruleIds = array_filter(array_values($ruleIds));
-    }
 
     /**
      * @template TReturn of mixed
@@ -245,16 +202,6 @@ class Context extends Struct
     public function getApiAlias(): string
     {
         return 'context';
-    }
-
-    public function getRounding(): CashRoundingConfig
-    {
-        return $this->rounding;
-    }
-
-    public function setRounding(CashRoundingConfig $rounding): void
-    {
-        $this->rounding = $rounding;
     }
 
     public function lockRules(): void

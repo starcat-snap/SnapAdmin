@@ -12,7 +12,8 @@ class CustomFields extends JsonField
     public function __construct(
         string $storageName = 'custom_fields',
         string $propertyName = 'customFields'
-    ) {
+    )
+    {
         parent::__construct($storageName, $propertyName);
     }
 

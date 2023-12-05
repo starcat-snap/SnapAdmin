@@ -19,16 +19,17 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 class TaskRegistry
 {
     /**
-     * @internal
-     *
      * @param iterable<int, ScheduledTask> $tasks
      * @param EntityRepository<ScheduledTaskCollection> $scheduledTaskRepository
+     * @internal
+     *
      */
     public function __construct(
-        private readonly iterable $tasks,
-        private readonly EntityRepository $scheduledTaskRepository,
+        private readonly iterable              $tasks,
+        private readonly EntityRepository      $scheduledTaskRepository,
         private readonly ParameterBagInterface $parameterBag
-    ) {
+    )
+    {
     }
 
     public function getAllTasks(Context $context): ScheduledTaskCollection
@@ -107,11 +108,12 @@ class TaskRegistry
 
     private function getAlreadyRegisteredTask(
         ScheduledTaskCollection $alreadyScheduledTasks,
-        ScheduledTask $task
-    ): ?ScheduledTaskEntity {
+        ScheduledTask           $task
+    ): ?ScheduledTaskEntity
+    {
         return $alreadyScheduledTasks
-                ->filter(fn (ScheduledTaskEntity $registeredTask) => $registeredTask->getScheduledTaskClass() === $task::class)
-                ->first();
+            ->filter(fn(ScheduledTaskEntity $registeredTask) => $registeredTask->getScheduledTaskClass() === $task::class)
+            ->first();
     }
 
     private function taskClassStillAvailable(ScheduledTaskEntity $registeredTask): bool

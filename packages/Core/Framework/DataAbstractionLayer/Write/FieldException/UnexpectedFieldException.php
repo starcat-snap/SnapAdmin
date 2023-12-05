@@ -13,8 +13,9 @@ class UnexpectedFieldException extends SnapAdminHttpException implements WriteFi
 
     public function __construct(
         private readonly string $path,
-        string $fieldName
-    ) {
+        string                  $fieldName
+    )
+    {
         parent::__construct(
             'Unexpected field: {{ field }}',
             ['field' => $fieldName]

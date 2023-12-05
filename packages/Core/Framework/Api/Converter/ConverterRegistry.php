@@ -12,9 +12,9 @@ use SnapAdmin\Core\Framework\Log\Package;
 class ConverterRegistry
 {
     /**
+     * @param iterable<ApiConverter> $converters
      * @internal
      *
-     * @param iterable<ApiConverter> $converters
      */
     public function __construct(private readonly iterable $converters)
     {

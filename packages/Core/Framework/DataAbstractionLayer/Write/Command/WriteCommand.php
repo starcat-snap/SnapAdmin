@@ -20,18 +20,19 @@ abstract class WriteCommand
      */
     public function __construct(
         protected EntityDefinition $definition,
-        protected array $payload,
-        protected array $primaryKey,
-        protected EntityExistence $existence,
-        protected string $path
-    ) {
+        protected array            $payload,
+        protected array            $primaryKey,
+        protected EntityExistence  $existence,
+        protected string           $path
+    )
+    {
     }
 
     abstract public function getPrivilege(): ?string;
 
     public function isValid(): bool
     {
-        return (bool) \count($this->payload);
+        return (bool)\count($this->payload);
     }
 
     /**

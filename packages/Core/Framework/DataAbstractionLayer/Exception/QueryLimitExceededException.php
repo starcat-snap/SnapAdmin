@@ -12,7 +12,8 @@ class QueryLimitExceededException extends SnapAdminHttpException
     public function __construct(
         ?int $maxLimit,
         ?int $limit
-    ) {
+    )
+    {
         parent::__construct(
             'The limit must be lower than or equal to MAX_LIMIT(={{ maxLimit }}). Given: {{ limit }}',
             ['maxLimit' => $maxLimit, 'limit' => $limit]

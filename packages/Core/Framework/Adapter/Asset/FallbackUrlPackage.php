@@ -13,17 +13,18 @@ use Symfony\Component\HttpFoundation\RequestStack;
 class FallbackUrlPackage extends UrlPackage
 {
     /**
+     * @param string|string[] $baseUrls
      * @internal
      *
-     * @param string|string[] $baseUrls
      */
     public function __construct(
-        string|array $baseUrls,
-        VersionStrategyInterface $versionStrategy,
+        string|array                   $baseUrls,
+        VersionStrategyInterface       $versionStrategy,
         private readonly ?RequestStack $requestStack = null
-    ) {
+    )
+    {
         if (!\is_array($baseUrls)) {
-            $baseUrls = (array) $baseUrls;
+            $baseUrls = (array)$baseUrls;
         }
 
         parent::__construct($this->applyFallback($baseUrls), $versionStrategy);

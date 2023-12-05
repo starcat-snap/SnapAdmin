@@ -13,9 +13,9 @@ use Symfony\Component\HttpFoundation\Response;
 class CacheStateValidator
 {
     /**
+     * @param list<string> $states
      * @internal
      *
-     * @param list<string> $states
      */
     public function __construct(private readonly array $states)
     {
@@ -24,11 +24,11 @@ class CacheStateValidator
     public function isValid(Request $request, Response $response): bool
     {
         $states = $request->cookies->get(HttpCacheKeyGenerator::SYSTEM_STATE_COOKIE);
-        $states = explode(',', (string) $states);
+        $states = explode(',', (string)$states);
         $states = array_filter($states);
         $states = array_flip($states);
 
-        $invalidationStates = explode(',', (string) $response->headers->get(HttpCacheKeyGenerator::INVALIDATION_STATES_HEADER));
+        $invalidationStates = explode(',', (string)$response->headers->get(HttpCacheKeyGenerator::INVALIDATION_STATES_HEADER));
         $invalidationStates = array_merge($invalidationStates, $this->states);
         $invalidationStates = array_filter($invalidationStates);
 

@@ -30,9 +30,10 @@ class PluginZipImportCommand extends Command
      */
     public function __construct(
         private readonly PluginManagementService $pluginManagementService,
-        private readonly PluginService $pluginService,
-        protected CacheClearer $cacheClearer
-    ) {
+        private readonly PluginService           $pluginService,
+        protected CacheClearer                   $cacheClearer
+    )
+    {
         parent::__construct();
     }
 
@@ -56,7 +57,7 @@ class PluginZipImportCommand extends Command
         $io->title('SnapAdmin Plugin Zip Import');
 
         try {
-            $type = $this->pluginManagementService->extractPluginZip($zipFile, (bool) $input->getOption('delete'));
+            $type = $this->pluginManagementService->extractPluginZip($zipFile, (bool)$input->getOption('delete'));
         } catch (NoPluginFoundInZipException $e) {
             $io->error($e->getMessage());
 
@@ -67,7 +68,7 @@ class PluginZipImportCommand extends Command
             $this->cacheClearer->clearContainerCache();
         }
 
-        $io->success('Successfully import zip file ' . basename((string) $zipFile));
+        $io->success('Successfully import zip file ' . basename((string)$zipFile));
 
         if (!$input->getOption('no-refresh')) {
             $composerInput = clone $input;

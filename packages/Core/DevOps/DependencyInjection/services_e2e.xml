@@ -17,8 +17,8 @@
             <argument>%kernel.project_dir%/var/dumps</argument>
             <argument type="service" id="Doctrine\DBAL\Connection"/>
 
-            <tag name="console.command" command="e2e:restore-db" />
-            <tag name="console.command" command="e2e:cleanup" />
+            <tag name="console.command" command="e2e:restore-db"/>
+            <tag name="console.command" command="e2e:cleanup"/>
         </service>
 
         <service id="snap.usage_data.gateway.client" class="Symfony\Component\HttpClient\MockHttpClient" public="true"/>

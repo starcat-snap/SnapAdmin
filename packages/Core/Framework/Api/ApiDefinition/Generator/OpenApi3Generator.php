@@ -31,12 +31,13 @@ class OpenApi3Generator implements ApiDefinitionGeneratorInterface
      * @param array{Framework: array{path: string}} $bundles
      */
     public function __construct(
-        private readonly OpenApiSchemaBuilder $openApiBuilder,
-        private readonly OpenApiPathBuilder $pathBuilder,
+        private readonly OpenApiSchemaBuilder           $openApiBuilder,
+        private readonly OpenApiPathBuilder             $pathBuilder,
         private readonly OpenApiDefinitionSchemaBuilder $definitionSchemaBuilder,
-        array $bundles,
-        private readonly BundleSchemaPathCollection $bundleSchemaPathCollection
-    ) {
+        array                                           $bundles,
+        private readonly BundleSchemaPathCollection     $bundleSchemaPathCollection
+    )
+    {
         $this->schemaPath = $bundles['Framework']['path'] . '/Api/ApiDefinition/Generator/Schema/AdminApi';
     }
 

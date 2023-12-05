@@ -3,6 +3,7 @@
 // @deprecated tag:v6.6.0 - Remove double namespace and class exists check
 
 namespace SnapAdmin\Storefront\Framework\Cache\ReverseProxy {
+
     use SnapAdmin\Core\Framework\Log\Package;
     use Symfony\Component\HttpFoundation\Response;
 
@@ -40,6 +41,7 @@ namespace SnapAdmin\Storefront\Framework\Cache\ReverseProxy {
 }
 
 namespace SnapAdmin\Core\Framework\Adapter\Cache\ReverseProxy {
+
     use SnapAdmin\Core\Framework\Log\Package;
     use Symfony\Component\HttpFoundation\Response;
 

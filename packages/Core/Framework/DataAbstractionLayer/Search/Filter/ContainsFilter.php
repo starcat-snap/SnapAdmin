@@ -12,8 +12,9 @@ class ContainsFilter extends SingleFieldFilter
 {
     public function __construct(
         protected readonly string $field,
-        protected mixed $value
-    ) {
+        protected mixed           $value
+    )
+    {
     }
 
     public function getField(): string

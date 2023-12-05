@@ -40,7 +40,8 @@ EOD;
 
     public function __construct(
         private readonly Connection $connection
-    ) {
+    )
+    {
         $this->schemaManager = $connection->createSchemaManager();
     }
 
@@ -127,7 +128,7 @@ EOD;
 
     private function implodeColumns(array $columns): string
     {
-        return implode(',', array_map(fn (string $column): string => '`' . $column . '`', $columns));
+        return implode(',', array_map(fn(string $column): string => '`' . $column . '`', $columns));
     }
 
     private function isEqualForeignKey(ForeignKeyConstraint $constraint, string $foreignTable, array $foreignFieldNames): bool
@@ -173,7 +174,7 @@ EOD;
 
     private function filterHydrateForeignKeyData(array $hydratedData, string $keyColumnName): array
     {
-        $hydratedData = array_filter($hydratedData, fn (array $entry): bool => \in_array($keyColumnName, $entry['REFERENCED_COLUMN_NAME'], true));
+        $hydratedData = array_filter($hydratedData, fn(array $entry): bool => \in_array($keyColumnName, $entry['REFERENCED_COLUMN_NAME'], true));
 
         return $hydratedData;
     }
@@ -260,7 +261,7 @@ EOD;
             $keyStructure['REFERENCED_TABLE_NAME'],
             $this->implodeColumns($keyStructure['REFERENCED_COLUMN_NAME']),
             $newColumnName,
-            (string) ($fk->getOption('onDelete') ?? 'RESTRICT')
+            (string)($fk->getOption('onDelete') ?? 'RESTRICT')
         );
     }
 

@@ -20,11 +20,12 @@ use SnapAdmin\Core\Framework\Log\Package;
 class CartPriceFieldSerializer extends JsonFieldSerializer
 {
     public function encode(
-        Field $field,
-        EntityExistence $existence,
-        KeyValuePair $data,
+        Field             $field,
+        EntityExistence   $existence,
+        KeyValuePair      $data,
         WriteParameterBag $parameters
-    ): \Generator {
+    ): \Generator
+    {
         $value = json_decode(json_encode($data->getValue(), \JSON_PRESERVE_ZERO_FRACTION | \JSON_THROW_ON_ERROR), true, 512, \JSON_THROW_ON_ERROR);
 
         unset($value['extensions']);
@@ -46,30 +47,30 @@ class CartPriceFieldSerializer extends JsonFieldSerializer
         }
 
         $taxRules = array_map(
-            fn (array $tax) => new TaxRule(
-                (float) $tax['taxRate'],
-                (float) $tax['percentage']
+            fn(array $tax) => new TaxRule(
+                (float)$tax['taxRate'],
+                (float)$tax['percentage']
             ),
             $decoded['taxRules']
         );
 
         $calculatedTaxes = array_map(
-            fn (array $tax) => new CalculatedTax(
-                (float) $tax['tax'],
-                (float) $tax['taxRate'],
-                (float) $tax['price']
+            fn(array $tax) => new CalculatedTax(
+                (float)$tax['tax'],
+                (float)$tax['taxRate'],
+                (float)$tax['price']
             ),
             $decoded['calculatedTaxes']
         );
 
         return new CartPrice(
-            (float) $decoded['netPrice'],
-            (float) $decoded['totalPrice'],
-            (float) $decoded['positionPrice'],
+            (float)$decoded['netPrice'],
+            (float)$decoded['totalPrice'],
+            (float)$decoded['positionPrice'],
             new CalculatedTaxCollection($calculatedTaxes),
             new TaxRuleCollection($taxRules),
-            (string) $decoded['taxStatus'],
-            isset($decoded['rawTotal']) ? (float) $decoded['rawTotal'] : (float) $decoded['totalPrice']
+            (string)$decoded['taxStatus'],
+            isset($decoded['rawTotal']) ? (float)$decoded['rawTotal'] : (float)$decoded['totalPrice']
         );
     }
 }

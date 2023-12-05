@@ -12,9 +12,10 @@ use SnapAdmin\Core\Framework\Log\Package;
 class MaxResult extends AggregationResult
 {
     public function __construct(
-        string $name,
+        string                          $name,
         protected string|float|int|null $max
-    ) {
+    )
+    {
         parent::__construct($name);
     }
 

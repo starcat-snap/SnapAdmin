@@ -22,11 +22,12 @@ use Symfony\Component\Validator\Constraints\Type;
 class IntFieldSerializer extends AbstractFieldSerializer
 {
     public function encode(
-        Field $field,
-        EntityExistence $existence,
-        KeyValuePair $data,
+        Field             $field,
+        EntityExistence   $existence,
+        KeyValuePair      $data,
         WriteParameterBag $parameters
-    ): \Generator {
+    ): \Generator
+    {
         if (!$field instanceof IntField) {
             throw DataAbstractionLayerException::invalidSerializerField(IntField::class, $field);
         }
@@ -38,7 +39,7 @@ class IntFieldSerializer extends AbstractFieldSerializer
 
     public function decode(Field $field, mixed $value): ?int
     {
-        return $value === null ? null : (int) $value;
+        return $value === null ? null : (int)$value;
     }
 
     /**

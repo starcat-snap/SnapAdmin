@@ -13,7 +13,9 @@
             <argument type="service" id="service_container"/>
         </service>
 
-        <service id="SnapAdmin\Core\Content\Product\Aggregate\ProductConfiguratorSetting\ProductConfiguratorSettingHydrator" public="true">
+        <service
+                id="SnapAdmin\Core\Content\Product\Aggregate\ProductConfiguratorSetting\ProductConfiguratorSettingHydrator"
+                public="true">
             <argument type="service" id="service_container"/>
         </service>
 
@@ -21,11 +23,13 @@
             <argument type="service" id="service_container"/>
         </service>
 
-        <service id="SnapAdmin\Core\Content\Product\Aggregate\ProductSearchKeyword\ProductSearchKeywordHydrator" public="true">
+        <service id="SnapAdmin\Core\Content\Product\Aggregate\ProductSearchKeyword\ProductSearchKeywordHydrator"
+                 public="true">
             <argument type="service" id="service_container"/>
         </service>
 
-        <service id="SnapAdmin\Core\Content\Product\Aggregate\ProductKeywordDictionary\ProductKeywordDictionaryHydrator" public="true">
+        <service id="SnapAdmin\Core\Content\Product\Aggregate\ProductKeywordDictionary\ProductKeywordDictionaryHydrator"
+                 public="true">
             <argument type="service" id="service_container"/>
         </service>
 
@@ -33,7 +37,8 @@
             <argument type="service" id="service_container"/>
         </service>
 
-        <service id="SnapAdmin\Core\Content\Product\Aggregate\ProductManufacturer\ProductManufacturerHydrator" public="true">
+        <service id="SnapAdmin\Core\Content\Product\Aggregate\ProductManufacturer\ProductManufacturerHydrator"
+                 public="true">
             <argument type="service" id="service_container"/>
         </service>
 
@@ -41,15 +46,19 @@
             <argument type="service" id="service_container"/>
         </service>
 
-        <service id="SnapAdmin\Core\Content\Product\Aggregate\ProductCrossSelling\ProductCrossSellingHydrator" public="true">
+        <service id="SnapAdmin\Core\Content\Product\Aggregate\ProductCrossSelling\ProductCrossSellingHydrator"
+                 public="true">
             <argument type="service" id="service_container"/>
         </service>
 
-        <service id="SnapAdmin\Core\Content\Product\Aggregate\ProductCrossSellingAssignedProducts\ProductCrossSellingAssignedProductsHydrator" public="true">
+        <service
+                id="SnapAdmin\Core\Content\Product\Aggregate\ProductCrossSellingAssignedProducts\ProductCrossSellingAssignedProductsHydrator"
+                public="true">
             <argument type="service" id="service_container"/>
         </service>
 
-        <service id="SnapAdmin\Core\Content\Product\Aggregate\ProductFeatureSet\ProductFeatureSetHydrator" public="true">
+        <service id="SnapAdmin\Core\Content\Product\Aggregate\ProductFeatureSet\ProductFeatureSetHydrator"
+                 public="true">
             <argument type="service" id="service_container"/>
         </service>
 
@@ -57,15 +66,18 @@
             <argument type="service" id="service_container"/>
         </service>
 
-        <service id="SnapAdmin\Core\Content\Product\Aggregate\ProductSearchConfig\ProductSearchConfigHydrator" public="true">
+        <service id="SnapAdmin\Core\Content\Product\Aggregate\ProductSearchConfig\ProductSearchConfigHydrator"
+                 public="true">
             <argument type="service" id="service_container"/>
         </service>
 
-        <service id="SnapAdmin\Core\Content\Product\Aggregate\ProductSearchConfigField\ProductSearchConfigFieldHydrator" public="true">
+        <service id="SnapAdmin\Core\Content\Product\Aggregate\ProductSearchConfigField\ProductSearchConfigFieldHydrator"
+                 public="true">
             <argument type="service" id="service_container"/>
         </service>
 
-        <service id="SnapAdmin\Core\Content\Product\Aggregate\ProductVisibility\ProductVisibilityHydrator" public="true">
+        <service id="SnapAdmin\Core\Content\Product\Aggregate\ProductVisibility\ProductVisibilityHydrator"
+                 public="true">
             <argument type="service" id="service_container"/>
         </service>
 
@@ -73,7 +85,8 @@
             <argument type="service" id="service_container"/>
         </service>
 
-        <service id="SnapAdmin\Core\Content\ProductStream\Aggregate\ProductStreamFilter\ProductStreamFilterHydrator" public="true">
+        <service id="SnapAdmin\Core\Content\ProductStream\Aggregate\ProductStreamFilter\ProductStreamFilterHydrator"
+                 public="true">
             <argument type="service" id="service_container"/>
         </service>
 
@@ -85,7 +98,8 @@
             <argument type="service" id="service_container"/>
         </service>
 
-        <service id="SnapAdmin\Core\Content\Property\Aggregate\PropertyGroupOption\PropertyGroupOptionHydrator" public="true">
+        <service id="SnapAdmin\Core\Content\Property\Aggregate\PropertyGroupOption\PropertyGroupOptionHydrator"
+                 public="true">
             <argument type="service" id="service_container"/>
         </service>
     </services>

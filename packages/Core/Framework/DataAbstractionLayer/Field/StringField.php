@@ -10,9 +10,10 @@ class StringField extends Field implements StorageAware
 {
     public function __construct(
         private readonly string $storageName,
-        string $propertyName,
-        private readonly int $maxLength = 255
-    ) {
+        string                  $propertyName,
+        private readonly int    $maxLength = 255
+    )
+    {
         parent::__construct($propertyName);
     }
 

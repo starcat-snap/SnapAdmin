@@ -18,7 +18,7 @@ use Symfony\Component\Finder\Finder;
 class PluginFinder
 {
     final public const COMPOSER_TYPE = 'snap-platform-plugin';
-    private const SHOPWARE_PLUGIN_CLASS_EXTRA_IDENTIFIER = 'snap-plugin-class';
+    private const SNAP_PLUGIN_CLASS_EXTRA_IDENTIFIER = 'snap-plugin-class';
 
     /**
      * @internal
@@ -31,11 +31,12 @@ class PluginFinder
      * @return PluginFromFileSystemStruct[]
      */
     public function findPlugins(
-        string $pluginDir,
-        string $projectDir,
+        string              $pluginDir,
+        string              $projectDir,
         ExceptionCollection $errors,
-        IOInterface $composerIO
-    ): array {
+        IOInterface         $composerIO
+    ): array
+    {
         $plugins = $this->loadLocalPlugins($pluginDir, $composerIO, $errors);
 
         return $this->enrichWithVendorPlugins($plugins, $projectDir, $composerIO, $errors);
@@ -95,14 +96,14 @@ class PluginFinder
 
     private function isPluginComposerValid(CompletePackageInterface $package): bool
     {
-        return isset($package->getExtra()[self::SHOPWARE_PLUGIN_CLASS_EXTRA_IDENTIFIER])
-            && $package->getExtra()[self::SHOPWARE_PLUGIN_CLASS_EXTRA_IDENTIFIER] !== ''
+        return isset($package->getExtra()[self::SNAP_PLUGIN_CLASS_EXTRA_IDENTIFIER])
+            && $package->getExtra()[self::SNAP_PLUGIN_CLASS_EXTRA_IDENTIFIER] !== ''
             && !empty($package->getExtra()['label']);
     }
 
     private function getPluginNameFromPackage(CompletePackageInterface $pluginPackage): string
     {
-        return $pluginPackage->getExtra()[self::SHOPWARE_PLUGIN_CLASS_EXTRA_IDENTIFIER];
+        return $pluginPackage->getExtra()[self::SNAP_PLUGIN_CLASS_EXTRA_IDENTIFIER];
     }
 
     /**
@@ -111,11 +112,12 @@ class PluginFinder
      * @return array<string, PluginFromFileSystemStruct>
      */
     private function enrichWithVendorPlugins(
-        array $plugins,
-        string $projectDir,
-        IOInterface $composerIO,
+        array               $plugins,
+        string              $projectDir,
+        IOInterface         $composerIO,
         ExceptionCollection $errors
-    ): array {
+    ): array
+    {
         $composer = Factory::createComposer($projectDir, $composerIO);
 
         /** @var CompletePackageInterface[] $composerPackages */
@@ -178,7 +180,7 @@ class PluginFinder
                 sprintf(
                     'Plugin composer.json has invalid "type" (must be "%s"), or invalid "extra/%s" value, or missing extra.label property',
                     self::COMPOSER_TYPE,
-                    self::SHOPWARE_PLUGIN_CLASS_EXTRA_IDENTIFIER
+                    self::SNAP_PLUGIN_CLASS_EXTRA_IDENTIFIER
                 ),
             ]
         ));

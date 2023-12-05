@@ -13,8 +13,9 @@ class SalesChannelContextResolvedEvent extends Event implements SnapAdminSalesCh
 {
     public function __construct(
         private readonly SalesChannelContext $salesChannelContext,
-        private readonly string $usedToken
-    ) {
+        private readonly string              $usedToken
+    )
+    {
     }
 
     public function getSalesChannelContext(): SalesChannelContext

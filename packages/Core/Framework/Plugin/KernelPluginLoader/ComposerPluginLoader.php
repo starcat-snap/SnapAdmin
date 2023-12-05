@@ -44,7 +44,7 @@ class ComposerPluginLoader extends KernelPluginLoader
                 continue;
             }
 
-            $nameParts = \explode('\\', (string) $pluginClass);
+            $nameParts = \explode('\\', (string)$pluginClass);
 
             $this->pluginInfos[] = [
                 'name' => \end($nameParts),

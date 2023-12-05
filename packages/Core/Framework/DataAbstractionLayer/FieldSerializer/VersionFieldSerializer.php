@@ -33,11 +33,12 @@ class VersionFieldSerializer implements FieldSerializerInterface
     }
 
     public function encode(
-        Field $field,
-        EntityExistence $existence,
-        KeyValuePair $data,
+        Field             $field,
+        EntityExistence   $existence,
+        KeyValuePair      $data,
         WriteParameterBag $parameters
-    ): \Generator {
+    ): \Generator
+    {
         if (!$field instanceof VersionField) {
             throw DataAbstractionLayerException::invalidSerializerField(VersionField::class, $field);
         }

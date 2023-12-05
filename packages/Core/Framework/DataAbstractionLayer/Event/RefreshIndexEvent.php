@@ -16,10 +16,11 @@ class RefreshIndexEvent extends Event
      * @param array<int, string|null> $onlyEntities
      */
     public function __construct(
-        private readonly bool $noQueue = false,
+        private readonly bool  $noQueue = false,
         private readonly array $skipEntities = [],
         private readonly array $onlyEntities = []
-    ) {
+    )
+    {
     }
 
     public function getNoQueue(): bool

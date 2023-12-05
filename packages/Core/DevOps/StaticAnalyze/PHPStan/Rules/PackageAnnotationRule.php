@@ -169,7 +169,7 @@ class PackageAnnotationRule implements Rule
             return true;
         }
 
-        $file = (string) $node->getClassReflection()->getFileName();
+        $file = (string)$node->getClassReflection()->getFileName();
         if (\str_contains($file, '/tests/') || \str_contains($file, '/Tests/') || \str_contains($file, '/Test/')) {
             return true;
         }

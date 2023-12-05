@@ -91,12 +91,12 @@ class LockValidator implements EventSubscriberInterface
         /** @var string $entityName */
         foreach ($ids as $entityName => $primaryKeys) {
             $locked[$entityName] = $this->connection->createQueryBuilder()
-                ->select('1')
-                ->from(EntityDefinitionQueryHelper::escape($entityName))
-                ->where('`id` IN (:ids) AND `locked` = 1')
-                ->setParameter('ids', $primaryKeys, ArrayParameterType::BINARY)
-                ->executeQuery()
-                ->rowCount() > 0;
+                    ->select('1')
+                    ->from(EntityDefinitionQueryHelper::escape($entityName))
+                    ->where('`id` IN (:ids) AND `locked` = 1')
+                    ->setParameter('ids', $primaryKeys, ArrayParameterType::BINARY)
+                    ->executeQuery()
+                    ->rowCount() > 0;
         }
 
         return array_filter($locked);

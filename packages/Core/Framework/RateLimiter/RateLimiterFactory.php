@@ -29,16 +29,17 @@ use Symfony\Component\RateLimiter\Storage\StorageInterface;
 class RateLimiterFactory
 {
     /**
+     * @param RateLimiterConfig $config
      * @internal
      *
-     * @param RateLimiterConfig $config
      */
     public function __construct(
-        private array $config,
-        private readonly StorageInterface $storage,
+        private array                        $config,
+        private readonly StorageInterface    $storage,
         private readonly SystemConfigService $systemConfigService,
-        private readonly ?LockFactory $lockFactory = null
-    ) {
+        private readonly ?LockFactory        $lockFactory = null
+    )
+    {
     }
 
     public function create(?string $key = null): LimiterInterface
@@ -47,7 +48,7 @@ class RateLimiterFactory
             return new NoLimiter();
         }
 
-        $id = $this->config['id'] . '-' . (string) $key;
+        $id = $this->config['id'] . '-' . (string)$key;
         $lock = $this->lockFactory ? $this->lockFactory->createLock($id) : new NoLock();
 
         if (isset($this->config['reset']) && !($this->config['reset'] instanceof \DateInterval)) {
@@ -71,7 +72,7 @@ class RateLimiterFactory
 
         // prevent symfony errors due to customized values
         /** @var RateLimiterConfig $rateLimiterConfig */
-        $rateLimiterConfig = \array_filter($this->config, static fn ($key): bool => !\in_array($key, ['enabled', 'reset', 'cache_pool', 'lock_factory', 'limits'], true), \ARRAY_FILTER_USE_KEY);
+        $rateLimiterConfig = \array_filter($this->config, static fn($key): bool => !\in_array($key, ['enabled', 'reset', 'cache_pool', 'lock_factory', 'limits'], true), \ARRAY_FILTER_USE_KEY);
         $this->config = $rateLimiterConfig;
 
         $sfFactory = new SymfonyRateLimiterFactory($this->config, $this->storage, $this->lockFactory);

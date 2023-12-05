@@ -40,7 +40,7 @@ class ComparisonExtension extends AbstractExtension
         }
 
         if (is_numeric($value) && is_numeric($comparable)) {
-            return $this->compareNumeric($operator, (float) $value, (float) $comparable);
+            return $this->compareNumeric($operator, (float)$value, (float)$comparable);
         }
 
         return $this->compareMixed($operator, $value, $comparable);

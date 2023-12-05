@@ -22,47 +22,22 @@
     </parameters>
     <services>
         <service id="SnapAdmin\Core\Framework\Store\Api\StoreController" public="true">
-            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\StoreClient" />
-            <argument type="service" id="user.repository" />
-            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\AbstractExtensionDataProvider" />
+            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\StoreClient"/>
+            <argument type="service" id="user.repository"/>
+            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\AbstractExtensionDataProvider"/>
             <call method="setContainer">
                 <argument type="service" id="service_container"/>
             </call>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Store\Api\FirstRunWizardController" public="true">
-            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\FirstRunWizardService"/>
-            <argument type="service" id="plugin.repository" />
-            <argument type="service" id="app.repository" />
-            <call method="setContainer">
-                <argument type="service" id="service_container"/>
-            </call>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Store\Services\FirstRunWizardService">
-            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\StoreService"/>
-            <argument type="service" id="SnapAdmin\Core\System\SystemConfig\SystemConfigService"/>
-            <argument type="service" id="snap.filesystem.public"/>
-            <argument>%snap.store.frw%</argument>
-            <argument type="service" id="event_dispatcher"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\FirstRunWizardClient"/>
-            <argument type="service" id="user_config.repository"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\TrackingEventClient"/>
-        </service>
 
         <service id="SnapAdmin\Core\Framework\Store\Services\StoreClient">
             <argument>%snap.store_endpoints%</argument>
-            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\StoreService" />
+            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\StoreService"/>
             <argument type="service" id="SnapAdmin\Core\System\SystemConfig\SystemConfigService"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Store\Authentication\StoreRequestOptionsProvider" />
-            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\ExtensionLoader" />
+            <argument type="service" id="SnapAdmin\Core\Framework\Store\Authentication\StoreRequestOptionsProvider"/>
+            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\ExtensionLoader"/>
             <argument type="service" id="snap.store_client"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\InstanceService"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Store\Services\FirstRunWizardClient">
-            <argument type="service" id="snap.frw_client"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Store\Authentication\FrwRequestOptionsProvider"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\InstanceService"/>
         </service>
 
@@ -83,11 +58,11 @@
         </service>
 
         <service id="SnapAdmin\Core\Framework\Store\Command\StoreDownloadCommand">
-            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\StoreClient" />
-            <argument type="service" id="plugin.repository" />
-            <argument type="service" id="SnapAdmin\Core\Framework\Plugin\PluginManagementService" />
-            <argument type="service" id="SnapAdmin\Core\Framework\Plugin\PluginLifecycleService" />
-            <argument type="service" id="user.repository" />
+            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\StoreClient"/>
+            <argument type="service" id="plugin.repository"/>
+            <argument type="service" id="SnapAdmin\Core\Framework\Plugin\PluginManagementService"/>
+            <argument type="service" id="SnapAdmin\Core\Framework\Plugin\PluginLifecycleService"/>
+            <argument type="service" id="user.repository"/>
             <argument>%kernel.plugin_dir%</argument>
             <argument>%kernel.project_dir%</argument>
 
@@ -95,8 +70,8 @@
         </service>
 
         <service id="SnapAdmin\Core\Framework\Store\Command\StoreLoginCommand">
-            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\StoreClient" />
-            <argument type="service" id="user.repository" />
+            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\StoreClient"/>
+            <argument type="service" id="user.repository"/>
             <argument type="service" id="SnapAdmin\Core\System\SystemConfig\SystemConfigService"/>
             <tag name="console.command"/>
         </service>
@@ -118,16 +93,14 @@
         </service>
 
         <service id="SnapAdmin\Core\Framework\Store\Services\ExtensionLoader">
-            <argument type="service" id="theme.repository" on-invalid="null"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\App\Lifecycle\AppLoader"/>
             <argument type="service" id="SnapAdmin\Core\System\SystemConfig\Service\ConfigurationService"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Store\Authentication\LocaleProvider"/>
             <argument type="service" id="SnapAdmin\Core\System\Locale\LanguageLocaleCodeProvider"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Store\Services\AbstractExtensionDataProvider" class="SnapAdmin\Core\Framework\Store\Services\ExtensionDataProvider">
+        <service id="SnapAdmin\Core\Framework\Store\Services\AbstractExtensionDataProvider"
+                 class="SnapAdmin\Core\Framework\Store\Services\ExtensionDataProvider">
             <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\ExtensionLoader"/>
-            <argument type="service" id="app.repository"/>
             <argument type="service" id="plugin.repository"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\ExtensionListingLoader"/>
         </service>
@@ -145,23 +118,14 @@
             </call>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Store\Services\AbstractStoreAppLifecycleService" class="SnapAdmin\Core\Framework\Store\Services\StoreAppLifecycleService">
-            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\StoreClient"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\App\Lifecycle\AppLoader"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\App\Lifecycle\AppLifecycle"/>
-            <argument type="service" id="app.repository"/>
-            <argument type="service" id="sales_channel.repository"/>
-            <argument type="service" id="theme.repository" on-invalid="null"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\App\AppStateService"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\App\Delta\AppConfirmationDeltaProvider"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Store\Services\AbstractExtensionStoreLicensesService" class="SnapAdmin\Core\Framework\Store\Services\ExtensionStoreLicensesService">
+        <service id="SnapAdmin\Core\Framework\Store\Services\AbstractExtensionStoreLicensesService"
+                 class="SnapAdmin\Core\Framework\Store\Services\ExtensionStoreLicensesService">
             <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\StoreClient"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\Store\Api\ExtensionStoreLicensesController" public="true">
-            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\AbstractExtensionStoreLicensesService"/>
+            <argument type="service"
+                      id="SnapAdmin\Core\Framework\Store\Services\AbstractExtensionStoreLicensesService"/>
             <call method="setContainer">
                 <argument type="service" id="service_container"/>
             </call>
@@ -176,7 +140,6 @@
         </service>
 
         <service id="SnapAdmin\Core\Framework\Store\Services\ExtensionLifecycleService">
-            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\AbstractStoreAppLifecycleService"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Plugin\PluginService"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Plugin\PluginLifecycleService"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Plugin\PluginManagementService"/>
@@ -207,7 +170,7 @@
             <argument type="tagged_iterator" tag="snap.frw_client.middleware"/>
         </service>
 
-        <service id="snap.store_download_client" class="GuzzleHttp\Client" />
+        <service id="snap.store_download_client" class="GuzzleHttp\Client"/>
 
         <service id="SnapAdmin\Core\Framework\Store\Subscriber\LicenseHostChangedSubscriber">
             <argument type="service" id="SnapAdmin\Core\System\SystemConfig\SystemConfigService"/>

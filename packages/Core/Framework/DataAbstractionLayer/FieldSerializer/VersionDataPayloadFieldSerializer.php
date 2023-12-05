@@ -36,6 +36,6 @@ class VersionDataPayloadFieldSerializer implements FieldSerializerInterface
             return null;
         }
 
-        return json_decode((string) $value, true, 512, \JSON_THROW_ON_ERROR);
+        return json_decode((string)$value, true, 512, \JSON_THROW_ON_ERROR);
     }
 }

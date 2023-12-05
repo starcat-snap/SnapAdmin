@@ -2,11 +2,8 @@
 
 namespace SnapAdmin\Core\Framework\Adapter\Kernel;
 
-use SnapAdmin\Core\Framework\Event\BeforeSendRedirectResponseEvent;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\Framework\Routing\CanonicalRedirectService;
 use SnapAdmin\Core\Framework\Routing\RequestTransformerInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,13 +25,13 @@ class HttpKernel extends SymfonyHttpKernel
     protected $dispatcher;
 
     public function __construct(
-        EventDispatcherInterface $dispatcher,
-        ControllerResolverInterface $resolver,
-        RequestStack $requestStack,
-        ArgumentResolverInterface $argumentResolver,
-        private readonly RequestTransformerInterface $requestTransformer,
-        private readonly CanonicalRedirectService $canonicalRedirectService,
-    ) {
+        EventDispatcherInterface                     $dispatcher,
+        ControllerResolverInterface                  $resolver,
+        RequestStack                                 $requestStack,
+        ArgumentResolverInterface                    $argumentResolver,
+        private readonly RequestTransformerInterface $requestTransformer
+    )
+    {
         parent::__construct($dispatcher, $resolver, $requestStack, $argumentResolver);
     }
 
@@ -45,16 +42,6 @@ class HttpKernel extends SymfonyHttpKernel
         }
 
         $request = $this->requestTransformer->transform($request);
-
-        $redirect = $this->canonicalRedirectService->getRedirect($request);
-
-        // move redirect to service
-        if ($redirect instanceof RedirectResponse) {
-            $event = new BeforeSendRedirectResponseEvent($request, $redirect);
-            $this->dispatcher->dispatch($event);
-
-            return $event->getResponse();
-        }
 
         return parent::handle($request, $type, $catch);
     }

@@ -5,34 +5,20 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="env(SHOPWARE_ADMINISTRATION_PATH_NAME)">admin</parameter>
-        <parameter key="snap_administration.path_name">%env(resolve:SHOPWARE_ADMINISTRATION_PATH_NAME)%</parameter>
+        <parameter key="env(SNAP_ADMINISTRATION_PATH_NAME)">admin</parameter>
+        <parameter key="snap_administration.path_name">%env(resolve:SNAP_ADMINISTRATION_PATH_NAME)%</parameter>
     </parameters>
 
     <services>
-        <service id="SnapAdmin\Administration\Controller\AdminExtensionApiController" public="true">
-            <argument type="service" id="SnapAdmin\Core\Framework\App\ActionButton\Executor"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\App\ShopId\ShopIdProvider"/>
-            <argument type="service" id="app.repository"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\App\Hmac\QuerySigner"/>
-
-            <call method="setContainer">
-                <argument type="service" id="service_container"/>
-            </call>
-        </service>
 
         <service id="SnapAdmin\Administration\Controller\AdministrationController"
                  public="true">
             <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Twig\TemplateFinder"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\FirstRunWizardService"/>
-            <argument type="service" id="SnapAdmin\Administration\Snippet\SnippetFinder"/>
             <argument>%kernel.supported_api_versions%</argument>
             <argument type="service" id="SnapAdmin\Administration\Framework\Routing\KnownIps\KnownIpsCollector"/>
             <argument type="service" id="Doctrine\DBAL\Connection"/>
             <argument type="service" id="event_dispatcher"/>
             <argument>%kernel.snap_core_dir%</argument>
-            <argument type="service" id="customer.repository"/>
-            <argument type="service" id="currency.repository"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Util\HtmlSanitizer"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
             <argument type="service" id="parameter_bag"/>
@@ -66,27 +52,6 @@
             </call>
         </service>
 
-        <service id="SnapAdmin\Administration\Controller\AdminProductStreamController"
-                 public="true">
-            <argument type="service" id="SnapAdmin\Core\Content\Product\ProductDefinition"/>
-            <argument type="service" id="sales_channel.product.repository"/>
-            <argument type="service" id="SnapAdmin\Core\System\SalesChannel\Context\SalesChannelContextService"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\RequestCriteriaBuilder"/>
-
-            <call method="setContainer">
-                <argument type="service" id="service_container"/>
-            </call>
-        </service>
-
-        <service id="SnapAdmin\Administration\Controller\AdminTagController"
-                 public="true">
-            <argument type="service" id="SnapAdmin\Core\System\Tag\Service\FilterTagIdsService"/>
-
-            <call method="setContainer">
-                <argument type="service" id="service_container"/>
-            </call>
-        </service>
-
         <service id="SnapAdmin\Administration\Controller\NotificationController" public="true">
             <argument type="service" id="snap.rate_limiter"/>
             <argument type="service" id="SnapAdmin\Administration\Notification\NotificationService"/>
@@ -101,7 +66,7 @@
         </service>
 
         <service id="SnapAdmin\Administration\Notification\Subscriber\UpdateSubscriber">
-            <argument type="service" id="SnapAdmin\Administration\Notification\NotificationService" />
+            <argument type="service" id="SnapAdmin\Administration\Notification\NotificationService"/>
             <tag name="kernel.event_subscriber"/>
         </service>
 
@@ -114,56 +79,14 @@
             <tag name="snap.route_scope"/>
         </service>
 
-        <service id="SnapAdmin\Administration\Snippet\AppAdministrationSnippetDefinition">
-            <tag name="snap.entity.definition"/>
-        </service>
-
-        <service id="SnapAdmin\Administration\Snippet\AppAdministrationSnippetPersister">
-            <argument type="service" id="app_administration_snippet.repository"/>
-            <argument type="service" id="locale.repository"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\CacheInvalidator"/>
-        </service>
-
-        <service id="SnapAdmin\Administration\Snippet\SnippetFinder">
-            <argument type="service" id="kernel" />
-            <argument type="service" id="Doctrine\DBAL\Connection"/>
-        </service>
-
-        <service id="SnapAdmin\Administration\Snippet\CachedSnippetFinder" decorates="SnapAdmin\Administration\Snippet\SnippetFinder">
-            <argument type="service" id="SnapAdmin\Administration\Snippet\CachedSnippetFinder.inner" />
-            <argument type="service" id="cache.object" />
-        </service>
-
         <service id="SnapAdmin\Administration\Framework\Routing\KnownIps\KnownIpsCollector"/>
 
         <service id="SnapAdmin\Administration\Notification\NotificationDefinition">
             <tag name="snap.entity.definition"/>
         </service>
 
-        <service id="SnapAdmin\Administration\Notification\Extension\IntegrationExtension">
-            <tag name="snap.entity.extension"/>
-        </service>
-
         <service id="SnapAdmin\Administration\Notification\Extension\UserExtension">
             <tag name="snap.entity.extension"/>
-        </service>
-
-        <service id="SnapAdmin\Administration\System\SalesChannel\Subscriber\SalesChannelUserConfigSubscriber">
-            <argument type="service" id="user_config.repository" />
-            <tag name="kernel.event_subscriber"/>
-        </service>
-
-        <service id="SnapAdmin\Administration\Dashboard\OrderAmountService">
-            <argument type="service" id="Doctrine\DBAL\Connection"/>
-            <argument type="service" id="SnapAdmin\Core\Checkout\Cart\Price\CashRounding"/>
-            <argument>%snap.dbal.time_zone_support_enabled%</argument>
-        </service>
-
-        <service id="SnapAdmin\Administration\Controller\DashboardController" public="true">
-            <argument type="service" id="SnapAdmin\Administration\Dashboard\OrderAmountService"/>
-            <call method="setContainer">
-                <argument type="service" id="service_container"/>
-            </call>
         </service>
 
     </services>

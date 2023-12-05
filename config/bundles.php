@@ -1,4 +1,5 @@
 <?php declare(strict_types=1);
+use Composer\InstalledVersions;
 
 $bundles = [
     Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
@@ -11,5 +12,7 @@ $bundles = [
     SnapAdmin\Core\Maintenance\Maintenance::class => ['all' => true],
     SnapAdmin\Administration\Administration::class => ['all' => true],
 ];
-
+if (InstalledVersions::isInstalled('symfony/web-profiler-bundle')) {
+    $bundles[Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class] = ['dev' => true, 'test' => true, 'phpstan_dev' => true];
+}
 return $bundles;

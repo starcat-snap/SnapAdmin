@@ -26,7 +26,8 @@ class RetryWebhookMessageFailedSubscriber implements EventSubscriberInterface
     public function __construct(
         private readonly EntityRepository $webhookRepository,
         private readonly EntityRepository $webhookEventLogRepository
-    ) {
+    )
+    {
     }
 
     public static function getSubscribedEvents(): array

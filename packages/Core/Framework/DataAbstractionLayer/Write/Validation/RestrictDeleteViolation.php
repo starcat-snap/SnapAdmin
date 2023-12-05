@@ -28,7 +28,8 @@ class RestrictDeleteViolation
          *          )
          */
         private readonly array $restrictions
-    ) {
+    )
+    {
     }
 
     public function getRestrictions(): array

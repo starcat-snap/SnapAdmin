@@ -24,10 +24,11 @@ class CreateSchemaCommand extends Command
      * @internal
      */
     public function __construct(
-        private readonly SchemaGenerator $schemaGenerator,
+        private readonly SchemaGenerator            $schemaGenerator,
         private readonly DefinitionInstanceRegistry $registry,
-        string $rootDir
-    ) {
+        string                                      $rootDir
+    )
+    {
         parent::__construct();
         $this->dir = $rootDir . '/schema/';
     }

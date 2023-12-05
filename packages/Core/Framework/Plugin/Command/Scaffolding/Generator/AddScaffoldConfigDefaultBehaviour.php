@@ -17,9 +17,10 @@ trait AddScaffoldConfigDefaultBehaviour
 
     public function addScaffoldConfig(
         PluginScaffoldConfiguration $config,
-        InputInterface $input,
-        SymfonyStyle $io
-    ): void {
+        InputInterface              $input,
+        SymfonyStyle                $io
+    ): void
+    {
         $hasOption = $input->getOption(self::OPTION_NAME);
 
         if ($hasOption) {

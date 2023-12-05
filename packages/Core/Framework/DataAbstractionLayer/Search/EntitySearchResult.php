@@ -47,18 +47,19 @@ class EntitySearchResult extends EntityCollection
      * @param TEntityCollection $entities
      */
     final public function __construct(
-        protected string $entity,
-        protected int $total,
-        protected EntityCollection $entities,
+        protected string             $entity,
+        protected int                $total,
+        protected EntityCollection   $entities,
         ?AggregationResultCollection $aggregations,
-        Criteria $criteria,
-        Context $context
-    ) {
+        Criteria                     $criteria,
+        Context                      $context
+    )
+    {
         $this->criteria = $criteria;
         $this->context = $context;
         $this->aggregations = $aggregations ?? new AggregationResultCollection();
         $this->limit = $criteria->getLimit();
-        $this->page = !$criteria->getLimit() ? 1 : (int) ceil((($criteria->getOffset() ?? 0) + 1) / $criteria->getLimit());
+        $this->page = !$criteria->getLimit() ? 1 : (int)ceil((($criteria->getOffset() ?? 0) + 1) / $criteria->getLimit());
 
         parent::__construct($entities);
     }

@@ -21,13 +21,13 @@ class Factory
 
         $composerJsonPath = $composerJsonDir . '/composer.json';
 
-        $json = json_decode((string) file_get_contents($composerJsonPath), true, \JSON_THROW_ON_ERROR);
+        $json = json_decode((string)file_get_contents($composerJsonPath), true, \JSON_THROW_ON_ERROR);
 
         $previousRootVersion = EnvironmentHelper::hasVariable('COMPOSER_ROOT_VERSION') ? EnvironmentHelper::getVariable('COMPOSER_ROOT_VERSION') : null;
 
         // This is a workaround to make sure that the snap platform package has the correct version
         if (($json['name'] ?? '') === 'snap/platform' && !isset($json['version']) && !EnvironmentHelper::hasVariable('COMPOSER_ROOT_VERSION')) {
-            $_SERVER['COMPOSER_ROOT_VERSION'] = Kernel::SHOPWARE_FALLBACK_VERSION;
+            $_SERVER['COMPOSER_ROOT_VERSION'] = Kernel::SNAP_FALLBACK_VERSION;
         }
 
         $composer = (new ComposerFactory())->createComposer(

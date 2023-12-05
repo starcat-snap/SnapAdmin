@@ -10,8 +10,9 @@ class RemoteAddressField extends Field implements StorageAware
 {
     public function __construct(
         private readonly string $storageName,
-        string $propertyName
-    ) {
+        string                  $propertyName
+    )
+    {
         parent::__construct($propertyName);
     }
 

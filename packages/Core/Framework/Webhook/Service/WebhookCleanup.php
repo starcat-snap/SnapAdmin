@@ -20,9 +20,10 @@ class WebhookCleanup
      */
     public function __construct(
         private readonly SystemConfigService $systemConfigService,
-        private readonly Connection $connection,
-        private readonly ClockInterface $clock = new NativeClock(),
-    ) {
+        private readonly Connection          $connection,
+        private readonly ClockInterface      $clock = new NativeClock(),
+    )
+    {
     }
 
     public function removeOldLogs(): void

@@ -73,6 +73,6 @@ class AppContextCreator
             throw new \RuntimeException(sprintf('Privileges for app with id "%s" not found.', $appId));
         }
 
-        return json_decode((string) $privileges, true, 512, \JSON_THROW_ON_ERROR);
+        return json_decode((string)$privileges, true, 512, \JSON_THROW_ON_ERROR);
     }
 }

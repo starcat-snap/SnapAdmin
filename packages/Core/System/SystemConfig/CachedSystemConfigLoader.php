@@ -17,8 +17,9 @@ class CachedSystemConfigLoader extends AbstractSystemConfigLoader
      */
     public function __construct(
         private readonly AbstractSystemConfigLoader $decorated,
-        private readonly CacheInterface $cache
-    ) {
+        private readonly CacheInterface             $cache
+    )
+    {
     }
 
     public function getDecorated(): AbstractSystemConfigLoader

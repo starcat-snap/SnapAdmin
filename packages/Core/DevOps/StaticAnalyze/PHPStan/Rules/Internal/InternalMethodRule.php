@@ -90,7 +90,7 @@ class InternalMethodRule implements Rule
 
     private function isConstructor(ClassMethod $node): bool
     {
-        return (string) $node->name === '__construct';
+        return (string)$node->name === '__construct';
     }
 
     private function isEvent(Scope $scope): bool

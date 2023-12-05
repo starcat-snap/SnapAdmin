@@ -38,14 +38,15 @@ class EntityRepository
      * @internal
      */
     public function __construct(
-        private readonly EntityDefinition $definition,
-        private readonly EntityReaderInterface $reader,
-        private readonly VersionManager $versionManager,
-        private readonly EntitySearcherInterface $searcher,
+        private readonly EntityDefinition          $definition,
+        private readonly EntityReaderInterface     $reader,
+        private readonly VersionManager            $versionManager,
+        private readonly EntitySearcherInterface   $searcher,
         private readonly EntityAggregatorInterface $aggregator,
-        private readonly EventDispatcherInterface $eventDispatcher,
-        private readonly EntityLoadedEventFactory $eventFactory
-    ) {
+        private readonly EventDispatcherInterface  $eventDispatcher,
+        private readonly EntityLoadedEventFactory  $eventFactory
+    )
+    {
     }
 
     public function getDefinition(): EntityDefinition
@@ -62,7 +63,7 @@ class EntityRepository
             return $this->_search($criteria, $context);
         }
 
-        return Profiler::trace($criteria->getTitle(), fn () => $this->_search($criteria, $context), 'repository');
+        return Profiler::trace($criteria->getTitle(), fn() => $this->_search($criteria, $context), 'repository');
     }
 
     public function aggregate(Criteria $criteria, Context $context): AggregationResultCollection

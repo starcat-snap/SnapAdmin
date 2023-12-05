@@ -13,12 +13,13 @@ class InstallContext
     private bool $autoMigrate = true;
 
     public function __construct(
-        private readonly Plugin $plugin,
-        private readonly Context $context,
-        private readonly string $currentSnapAdminVersion,
-        private readonly string $currentPluginVersion,
+        private readonly Plugin              $plugin,
+        private readonly Context             $context,
+        private readonly string              $currentSnapAdminVersion,
+        private readonly string              $currentPluginVersion,
         private readonly MigrationCollection $migrationCollection
-    ) {
+    )
+    {
     }
 
     public function getPlugin(): Plugin

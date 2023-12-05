@@ -18,14 +18,15 @@ class LanguageRule extends Rule
     final public const RULE_NAME = 'language';
 
     /**
+     * @param list<string>|null $languageIds
      * @internal
      *
-     * @param list<string>|null $languageIds
      */
     public function __construct(
         protected string $operator = self::OPERATOR_EQ,
         protected ?array $languageIds = null
-    ) {
+    )
+    {
         parent::__construct();
     }
 

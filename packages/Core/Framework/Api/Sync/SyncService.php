@@ -27,13 +27,14 @@ class SyncService implements SyncServiceInterface
      * @internal
      */
     public function __construct(
-        private readonly EntityWriterInterface $writer,
-        private readonly EventDispatcherInterface $eventDispatcher,
+        private readonly EntityWriterInterface      $writer,
+        private readonly EventDispatcherInterface   $eventDispatcher,
         private readonly DefinitionInstanceRegistry $registry,
-        private readonly EntitySearcherInterface $searcher,
-        private readonly RequestCriteriaBuilder $criteriaBuilder,
-        private readonly SyncFkResolver $syncFkResolver
-    ) {
+        private readonly EntitySearcherInterface    $searcher,
+        private readonly RequestCriteriaBuilder     $criteriaBuilder,
+        private readonly SyncFkResolver             $syncFkResolver
+    )
+    {
     }
 
     public function sync(array $operations, Context $context, SyncBehavior $behavior): SyncResult

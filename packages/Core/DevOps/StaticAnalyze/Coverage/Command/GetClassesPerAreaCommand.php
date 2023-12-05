@@ -42,7 +42,8 @@ class GetClassesPerAreaCommand extends Command
      */
     public function __construct(
         private readonly string $projectDir,
-    ) {
+    )
+    {
         parent::__construct();
 
         $this->classLoader = require $this->projectDir . '/vendor/autoload.php';
@@ -172,7 +173,7 @@ class GetClassesPerAreaCommand extends Command
     {
         return array_filter($this->classLoader->getClassMap(), function (string $class): bool {
             if (str_starts_with($class, 'SnapAdmin\\')) {
-                return (bool) preg_match($this->nsPattern, $class);
+                return (bool)preg_match($this->nsPattern, $class);
             }
 
             return false;

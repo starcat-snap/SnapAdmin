@@ -18,9 +18,9 @@ class ConfigReader extends XmlReader
     protected $xsdFile = __DIR__ . '/../Schema/config.xsd';
 
     /**
+     * @return array<array<string, mixed>>
      * @throws BundleConfigNotFoundException
      *
-     * @return array<array<string, mixed>>
      */
     public function getConfigFromBundle(Bundle $bundle, ?string $bundleConfigName = null): array
     {

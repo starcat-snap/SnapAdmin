@@ -10,9 +10,9 @@ class RedisInvalidatorStorage extends AbstractInvalidatorStorage
     private const KEY = 'invalidation';
 
     /**
+     * @param \Redis|\RedisCluster $redis
      * @internal
      *
-     * @param \Redis|\RedisCluster $redis
      */
     public function __construct(private $redis)
     {
@@ -29,8 +29,8 @@ class RedisInvalidatorStorage extends AbstractInvalidatorStorage
         $values = $this
             ->redis
             ->multi()
-                ->sMembers(self::KEY)
-                ->del(self::KEY)
+            ->sMembers(self::KEY)
+            ->del(self::KEY)
             ->exec();
 
         return $values[0];

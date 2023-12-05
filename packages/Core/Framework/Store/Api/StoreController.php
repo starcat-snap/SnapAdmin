@@ -30,10 +30,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class StoreController extends AbstractController
 {
     public function __construct(
-        private readonly StoreClient $storeClient,
-        private readonly EntityRepository $userRepository,
+        private readonly StoreClient                   $storeClient,
+        private readonly EntityRepository              $userRepository,
         private readonly AbstractExtensionDataProvider $extensionDataProvider
-    ) {
+    )
+    {
     }
 
     #[Route(path: '/api/_action/store/login', name: 'api.custom.store.login', methods: ['POST'])]

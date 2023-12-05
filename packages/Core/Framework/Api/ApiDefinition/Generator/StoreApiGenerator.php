@@ -41,11 +41,12 @@ class StoreApiGenerator implements ApiDefinitionGeneratorInterface
      * @internal
      */
     public function __construct(
-        private readonly OpenApiSchemaBuilder $openApiBuilder,
+        private readonly OpenApiSchemaBuilder           $openApiBuilder,
         private readonly OpenApiDefinitionSchemaBuilder $definitionSchemaBuilder,
-        array $bundles,
-        private readonly BundleSchemaPathCollection $bundleSchemaPathCollection
-    ) {
+        array                                           $bundles,
+        private readonly BundleSchemaPathCollection     $bundleSchemaPathCollection
+    )
+    {
         $this->schemaPath = $bundles['Framework']['path'] . '/Api/ApiDefinition/Generator/Schema/StoreApi';
     }
 

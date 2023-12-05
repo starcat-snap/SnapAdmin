@@ -18,7 +18,7 @@ class KernelTest extends TestCase
 
     public function testDatabaseTimeZonesAreEqual(): void
     {
-        $env = (bool) EnvironmentHelper::getVariable('SHOPWARE_DBAL_TIMEZONE_SUPPORT_ENABLED', false);
+        $env = (bool)EnvironmentHelper::getVariable('SNAP_DBAL_TIMEZONE_SUPPORT_ENABLED', false);
 
         if ($env === false) {
             static::markTestSkipped('Database does not support timezones');

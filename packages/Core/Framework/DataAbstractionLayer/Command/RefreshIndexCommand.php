@@ -31,9 +31,10 @@ class RefreshIndexCommand extends Command implements EventSubscriberInterface
      * @internal
      */
     public function __construct(
-        private readonly EntityIndexerRegistry $registry,
+        private readonly EntityIndexerRegistry    $registry,
         private readonly EventDispatcherInterface $eventDispatcher
-    ) {
+    )
+    {
         parent::__construct();
     }
 
@@ -44,22 +45,21 @@ class RefreshIndexCommand extends Command implements EventSubscriberInterface
     {
         $this->addOption('use-queue', null, InputOption::VALUE_NONE, 'Ignore cache and force generation')
             ->addOption('skip', null, InputArgument::OPTIONAL, 'Comma separated list of indexer names to be skipped')
-            ->addOption('only', null, InputArgument::OPTIONAL, 'Comma separated list of indexer names to be generated')
-        ;
+            ->addOption('only', null, InputArgument::OPTIONAL, 'Comma separated list of indexer names to be generated');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->io = new SnapAdminStyle($input, $output);
 
-        $skip = \is_string($input->getOption('skip')) ? explode(',', (string) $input->getOption('skip')) : [];
-        $only = \is_string($input->getOption('only')) ? explode(',', (string) $input->getOption('only')) : [];
+        $skip = \is_string($input->getOption('skip')) ? explode(',', (string)$input->getOption('skip')) : [];
+        $only = \is_string($input->getOption('only')) ? explode(',', (string)$input->getOption('only')) : [];
 
         $this->registry->index($input->getOption('use-queue'), $skip, $only);
 
-        $skipEntities = array_map(fn ($indexer) => str_replace('.indexer', '', (string) $indexer), $skip);
+        $skipEntities = array_map(fn($indexer) => str_replace('.indexer', '', (string)$indexer), $skip);
 
-        $onlyEntities = array_map(fn ($indexer) => str_replace('.indexer', '', (string) $indexer), $only);
+        $onlyEntities = array_map(fn($indexer) => str_replace('.indexer', '', (string)$indexer), $only);
 
         $event = new RefreshIndexEvent(!$input->getOption('use-queue'), $skipEntities, $onlyEntities);
         $this->eventDispatcher->dispatch($event);

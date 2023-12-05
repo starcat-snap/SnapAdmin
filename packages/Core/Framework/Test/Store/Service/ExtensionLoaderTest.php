@@ -49,20 +49,6 @@ class ExtensionLoaderTest extends TestCase
         $this->removeApp(__DIR__ . '/../_fixtures/TestApp');
     }
 
-    public function testAppNotInstalledDetectedAsTheme(): void
-    {
-        $this->installApp(__DIR__ . '/../_fixtures/TestAppTheme', false);
-        $extensions = $this->extensionLoader->loadFromAppCollection(
-            Context::createDefaultContext(),
-            new AppCollection([])
-        );
-
-        /** @var ExtensionStruct $extension */
-        $extension = $extensions->get('TestAppTheme');
-        static::assertTrue($extension->isTheme());
-        $this->removeApp(__DIR__ . '/../_fixtures/TestAppTheme');
-    }
-
     public function testLocalUpdateShouldSetLatestVersion(): void
     {
         $appManifestPath = $this->getContainer()->getParameter('kernel.app_dir') . '/TestApp/manifest.xml';

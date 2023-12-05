@@ -18,9 +18,9 @@ abstract class XmlReader
     /**
      * load and validate xml file - parse to array
      *
-     * @throws XmlParsingException|UtilException
-     *
      * @return array<array<string, mixed>>
+     *
+     * @throws XmlParsingException|UtilException
      *
      * @deprecated tag:v6.7.0 - reason:exception-change Thrown exception will change from XmlParsingException to UtilXmlParsingException
      */
@@ -82,7 +82,7 @@ abstract class XmlReader
             return $defaultValue;
         }
 
-        return (bool) static::phpize($value);
+        return (bool)static::phpize($value);
     }
 
     /**

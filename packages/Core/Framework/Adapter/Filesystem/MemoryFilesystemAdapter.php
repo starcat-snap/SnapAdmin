@@ -36,8 +36,9 @@ class MemoryFilesystemAdapter implements FilesystemAdapter
 
     public function __construct(
         private readonly string $defaultVisibility = Visibility::PUBLIC,
-        ?MimeTypeDetector $mimeTypeDetector = null
-    ) {
+        ?MimeTypeDetector       $mimeTypeDetector = null
+    )
+    {
         $this->mimeTypeDetector = $mimeTypeDetector ?: new FinfoMimeTypeDetector();
     }
 
@@ -58,7 +59,7 @@ class MemoryFilesystemAdapter implements FilesystemAdapter
 
     public function writeStream(string $path, $contents, Config $config): void
     {
-        $this->write($path, (string) stream_get_contents($contents), $config);
+        $this->write($path, (string)stream_get_contents($contents), $config);
     }
 
     public function read(string $path): string
