@@ -80,7 +80,6 @@
         <service id="SnapAdmin\Core\Framework\Plugin\PluginExtractor">
             <argument type="collection">
                 <argument key="plugin">%kernel.plugin_dir%</argument>
-                <argument key="app">%kernel.app_dir%</argument>
             </argument>
             <argument type="service" id="Symfony\Component\Filesystem\Filesystem"/>
         </service>
@@ -236,14 +235,6 @@
         </service>
 
         <service id="SnapAdmin\Core\Framework\Plugin\Command\Scaffolding\Generator\EventSubscriberGenerator">
-            <tag name="snap.scaffold.generator"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Plugin\Command\Scaffolding\Generator\StorefrontControllerGenerator">
-            <tag name="snap.scaffold.generator"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Plugin\Command\Scaffolding\Generator\StoreApiRouteGenerator">
             <tag name="snap.scaffold.generator"/>
         </service>
 

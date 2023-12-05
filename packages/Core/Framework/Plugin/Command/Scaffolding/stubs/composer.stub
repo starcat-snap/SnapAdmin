@@ -3,15 +3,14 @@
     "description": "Skeleton plugin",
     "type": "snap-platform-plugin",
     "version": "1.0.0",
-    "license": "MIT",
+    "license": "proprietary",
     "require": {
-        "snapadmin/core": "6.5.*"
+        "snapadmin/core": "6.6.*"
     },
     "extra": {
         "snap-plugin-class": "{{ namespace }}\\{{ className }}",
         "label": {
-            "de-DE": "Skeleton plugin",
-            "en-GB": "Skeleton plugin"
+            "zh-CN": "SnapAdmin 插件结构"
         }
     },
     "autoload": {

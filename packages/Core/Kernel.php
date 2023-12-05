@@ -340,7 +340,6 @@ class Kernel extends HttpKernel
                 'kernel.snap_version_revision' => $this->snapVersionRevision,
                 'kernel.snap_core_dir' => $coreDir,
                 'kernel.plugin_dir' => $pluginDir,
-                'kernel.app_dir' => rtrim($this->getProjectDir(), '/') . '/custom/apps',
                 'kernel.active_plugins' => $activePluginMeta,
                 'kernel.plugin_infos' => $this->pluginLoader->getPluginInfos(),
                 'kernel.supported_api_versions' => [2, 3, 4],

@@ -49,24 +49,6 @@ class ExtensionLoaderTest extends TestCase
         $this->removeApp(__DIR__ . '/../_fixtures/TestApp');
     }
 
-    public function testLocalUpdateShouldSetLatestVersion(): void
-    {
-        $appManifestPath = $this->getContainer()->getParameter('kernel.app_dir') . '/TestApp/manifest.xml';
-        $appManifestXml = file_get_contents($appManifestPath);
-        static::assertIsString($appManifestXml, 'Could not read manifest.xml file');
-        file_put_contents($appManifestPath, str_replace('1.0.0', '1.0.1', $appManifestXml));
-
-        $extensions = $this->extensionLoader->loadFromAppCollection(
-            Context::createDefaultContext(),
-            new AppCollection([$this->getInstalledApp()])
-        );
-
-        /** @var ExtensionStruct $extension */
-        $extension = $extensions->get('TestApp');
-        static::assertSame('1.0.0', $extension->getVersion());
-        static::assertSame('1.0.1', $extension->getLatestVersion());
-    }
-
     public function testItLoadsExtensionFromResponseLikeArray(): void
     {
         $listingResponse = $this->getDetailResponseFixture();

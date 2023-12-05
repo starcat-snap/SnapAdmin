@@ -329,15 +329,15 @@
       "@php bin/console e2e:dump-db"
     ],
     "e2e:sdk-plugin:fixture-to-plugin": [
-      "rm -rf $PWD/custom/plugins/TestPlugin;",
-      "cp -a $PWD/tests/e2e/cypress/fixtures/TestPlugin/. $PWD/custom/plugins/TestPlugin/"
+      "rm -rf $PWD/plugins/TestPlugin;",
+      "cp -a $PWD/tests/e2e/cypress/fixtures/TestPlugin/. $PWD/plugins/TestPlugin/"
     ],
     "e2e:sdk-plugin:plugin-to-fixture": [
       "rm -rf $PWD/tests/e2e/cypress/fixtures/TestPlugin;",
-      "cp -a $PWD/custom/plugins/TestPlugin/. $PWD/tests/e2e/cypress/fixtures/TestPlugin/"
+      "cp -a $PWD/plugins/TestPlugin/. $PWD/tests/e2e/cypress/fixtures/TestPlugin/"
     ],
     "e2e:sdk-plugin:prepare-plugin": [
-      "cd $PWD/custom/plugins/TestPlugin/src/Resources/app/administration/; npm install --no-audit --prefer-offline;",
+      "cd $PWD/plugins/TestPlugin/src/Resources/app/administration/; npm install --no-audit --prefer-offline;",
       "bin/console plugin:refresh;",
       "bin/console plugin:install --activate TestPlugin;",
       "@build:js:admin"
@@ -474,7 +474,7 @@
     "setup": [
       "@composer install -o",
       "mkdir -p config/jwt || true",
-      "mkdir -p custom/plugins || true",
+      "mkdir -p plugins || true",
       "@init:db",
       "@init:js",
       "@build:js",
