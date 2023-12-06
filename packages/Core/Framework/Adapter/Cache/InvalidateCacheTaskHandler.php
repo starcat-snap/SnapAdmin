@@ -27,7 +27,7 @@ final class InvalidateCacheTaskHandler extends ScheduledTaskHandler
     {
         try {
             if ($this->delay <= 0) {
-                $this->cacheInvalidator->invalidateExpired(null);
+                $this->cacheInvalidator->invalidateExpired();
 
                 return;
             }

@@ -3,26 +3,20 @@
 namespace SnapAdmin\Core\Framework\Increment;
 
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\Framework\Plugin\Exception\DecorationPatternException;
 
 /**
- * @deprecated tag:v6.6.0 - reason:becomes-internal - Type hint to AbstractIncrementer, implementations are internal and should not be used for type hints
+ * @internal
  */
 #[Package('core')]
 class RedisIncrementer extends AbstractIncrementer
 {
     /**
-     * @param \Redis|\RedisArray|\RedisCluster|\Predis\ClientInterface|\Relay\Relay $redis
      * @internal
      *
+     * @param \Redis|\RedisArray|\RedisCluster|\Predis\ClientInterface|\Relay\Relay $redis
      */
     public function __construct(private $redis)
     {
-    }
-
-    public function getDecorated(): AbstractIncrementer
-    {
-        throw new DecorationPatternException(self::class);
     }
 
     public function increment(string $cluster, string $key): void
@@ -85,7 +79,7 @@ class RedisIncrementer extends AbstractIncrementer
                 'key' => $key,
                 'cluster' => $cluster,
                 'pool' => $this->getPool(),
-                'count' => max(0, (int)$count),
+                'count' => max(0, (int) $count),
             ];
         }
 

@@ -87,16 +87,7 @@
         <service id="SnapAdmin\Core\Framework\Api\Serializer\JsonEntityEncoder">
             <argument type="service" id="serializer"/>
         </service>
-
-
-        <!-- Converter -->
-        <service id="SnapAdmin\Core\Framework\Api\Converter\ConverterRegistry">
-            <argument type="tagged" tag="snap.api.converter"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Api\Converter\ApiVersionConverter">
-            <argument type="service" id="SnapAdmin\Core\Framework\Api\Converter\ConverterRegistry"/>
-        </service>
+        
 
         <!-- API Docs -->
         <service id="SnapAdmin\Core\Framework\Api\ApiDefinition\DefinitionService">
@@ -178,13 +169,11 @@
         <service id="SnapAdmin\Core\Framework\Api\Controller\CacheController" public="true">
             <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\CacheClearer"/>
             <argument type="service" id="cache.object"/>
-            <argument type="service" id="SnapAdmin\Frontend\Framework\Cache\CacheWarmer\CacheWarmer"
-                      on-invalid="null"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Indexing\EntityIndexerRegistry"/>
-            <tag name="container.service_subscriber"/>
-            <tag name="controller.service_arguments"/>
+            <tag name="container.service_subscriber" />
+            <tag name="controller.service_arguments" />
             <call method="setContainer">
-                <argument type="service" id="Psr\Container\ContainerInterface"/>
+                <argument type="service" id="Psr\Container\ContainerInterface" />
             </call>
         </service>
 

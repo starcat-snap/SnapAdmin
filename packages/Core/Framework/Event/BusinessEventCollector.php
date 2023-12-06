@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Framework\Event;
 
 use Doctrine\DBAL\Connection;
-use SnapAdmin\Core\Framework\App\Event\CustomAppEvent;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
@@ -15,11 +14,10 @@ class BusinessEventCollector
      * @internal
      */
     public function __construct(
-        private readonly BusinessEventRegistry    $registry,
+        private readonly BusinessEventRegistry $registry,
         private readonly EventDispatcherInterface $eventDispatcher,
-        private readonly Connection               $connection
-    )
-    {
+        private readonly Connection $connection
+    ) {
     }
 
     public function collect(Context $context): BusinessEventCollectorResponse
@@ -43,7 +41,7 @@ class BusinessEventCollector
 
         $result = $event->getCollection();
 
-        $result->sort(fn(BusinessEventDefinition $a, BusinessEventDefinition $b) => $a->getName() <=> $b->getName());
+        $result->sort(fn (BusinessEventDefinition $a, BusinessEventDefinition $b) => $a->getName() <=> $b->getName());
 
         return $result;
     }
@@ -69,8 +67,8 @@ class BusinessEventCollector
 
         $aware = [];
         foreach ($interfaces as $interface) {
-            if (is_subclass_of($interface, FlowEventAware::class)
-                && $interface !== FlowEventAware::class) {
+            $reflection = new \ReflectionClass($interface);
+            if ($reflection->getAttributes(IsFlowEventAware::class) !== []) {
                 $aware[] = lcfirst((new \ReflectionClass($interface))->getShortName());
                 $aware[] = $interface;
             }

@@ -23,21 +23,17 @@ class MemorySizeCalculator
         } elseif (str_starts_with($max, '0')) {
             $max = \intval($max, 8);
         } else {
-            $max = (int)$max;
+            $max = (int) $max;
         }
 
         switch (substr(rtrim($memoryLimit, 'b'), -1)) {
-            case 't':
-                $max *= 1024;
-            // no break
-            case 'g':
-                $max *= 1024;
-            // no break
-            case 'm':
-                $max *= 1024;
-            // no break
-            case 'k':
-                $max *= 1024;
+            case 't': $max *= 1024;
+                // no break
+            case 'g': $max *= 1024;
+                // no break
+            case 'm': $max *= 1024;
+                // no break
+            case 'k': $max *= 1024;
         }
 
         return $max;
@@ -54,5 +50,22 @@ class MemorySizeCalculator
         $bytes /= (1 << (10 * $pow));
 
         return round($bytes, 2) . ' ' . $units[$pow];
+    }
+
+    public static function getMaxUploadSize(?int $maxSize = null): int
+    {
+        $values = [
+            self::convertToBytes((string) ini_get('upload_max_filesize')),
+            self::convertToBytes((string) ini_get('post_max_size')),
+        ];
+
+        if ($maxSize !== null) {
+            $values[] = $maxSize;
+        }
+
+        /** @var non-empty-array<int> $limits */
+        $limits = array_filter($values, static fn (int $value) => $value > 0);
+
+        return min($limits);
     }
 }

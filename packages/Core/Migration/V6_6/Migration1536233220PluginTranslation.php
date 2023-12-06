@@ -29,12 +29,10 @@ class Migration1536233220PluginTranslation extends MigrationStep
                 `description`        LONGTEXT COLLATE utf8mb4_unicode_ci NULL,
                 `manufacturer_link`  TEXT COLLATE utf8mb4_unicode_ci NULL,
                 `support_link`       TEXT COLLATE utf8mb4_unicode_ci NULL,
-                `changelog`          JSON        NULL,
                 `custom_fields`      JSON        NULL,
                 `created_at`         DATETIME(3) NOT NULL,
                 `updated_at`         DATETIME(3) NULL,
                 PRIMARY KEY (`plugin_id`, `language_id`),
-                CONSTRAINT `json.plugin_translation.changelog` CHECK (JSON_VALID(`changelog`)),
                 CONSTRAINT `json.plugin_translation.custom_fields` CHECK (JSON_VALID(`custom_fields`)),
                 CONSTRAINT `fk.plugin_translation.plugin_id` FOREIGN KEY (`plugin_id`)
                   REFERENCES `plugin` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,

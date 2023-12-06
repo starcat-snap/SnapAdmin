@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Framework\Adapter\Translation;
 
 use SnapAdmin\Core\Framework\Context;
-use SnapAdmin\Core\Framework\Feature;
 use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\Translation\TranslatorBagInterface;
 use Symfony\Contracts\Service\ResetInterface;
@@ -13,19 +12,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Package('core')]
 abstract class AbstractTranslator implements TranslatorInterface, TranslatorBagInterface, LocaleAwareInterface, ResetInterface
 {
-    /**
-     * @deprecated tag:v6.6.0 - Will be removed, use `reset` instead
-     */
-    public function resetInMemoryCache(): void
-    {
-        Feature::triggerDeprecationOrThrow(
-            'v6.6.0.0',
-            Feature::deprecatedMethodMessage(self::class, __METHOD__, 'v6.6.0.0', 'Use reset instead')
-        );
-
-        $this->reset();
-    }
-
     /**
      * @param string $cacheDir
      */
@@ -44,9 +30,9 @@ abstract class AbstractTranslator implements TranslatorInterface, TranslatorBagI
         $this->getDecorated()->resetInjection();
     }
 
-    public function injectSettings(string $languageId, string $locale, Context $context): void
+    public function injectSettings(string $salesChannelId, string $languageId, string $locale, Context $context): void
     {
-        $this->getDecorated()->injectSettings( $languageId, $locale, $context);
+        $this->getDecorated()->injectSettings($salesChannelId, $languageId, $locale, $context);
     }
 
     public function getSnippetSetId(?string $locale = null): ?string

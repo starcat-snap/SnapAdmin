@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\Framework\Adapter\Twig\TokenParser;
 use SnapAdmin\Core\Framework\Adapter\AdapterException;
 use SnapAdmin\Core\Framework\Adapter\Twig\TemplateFinderInterface;
 use SnapAdmin\Core\Framework\Adapter\Twig\TemplateScopeDetector;
-use SnapAdmin\Core\Framework\Feature;
 use SnapAdmin\Core\Framework\Log\Package;
 use Twig\Node\Expression\AbstractExpression;
 use Twig\Node\Expression\ArrayExpression;
@@ -24,20 +23,10 @@ final class ExtendsTokenParser extends AbstractTokenParser
      */
     protected $parser;
 
-    /**
-     * @deprecated tag:v6.6.0 - Parameter $templateScopeDetector will be required
-     */
     public function __construct(
         private readonly TemplateFinderInterface $finder,
-        private readonly ?TemplateScopeDetector  $templateScopeDetector = null,
-    )
-    {
-        if ($templateScopeDetector === null) {
-            Feature::triggerDeprecationOrThrow(
-                'v6.6.0.0',
-                \sprintf('The parameter $templateScopeDetector of the class "%s" will be required.', static::class),
-            );
-        }
+        private readonly TemplateScopeDetector $templateScopeDetector,
+    ) {
     }
 
     public function parse(Token $token): Node
@@ -114,12 +103,7 @@ final class ExtendsTokenParser extends AbstractTokenParser
      */
     private function shouldEndFile(array $scopes, string $source): bool
     {
-        if ($this->templateScopeDetector === null) {
-            // @deprecated tag:v6.6.0 - Remove this check
-            return false;
-        }
-
-        return !\array_intersect($this->templateScopeDetector->getScopes(), $scopes) && !str_starts_with($source, '@Frontend');
+        return !\array_intersect($this->templateScopeDetector->getScopes(), $scopes) && !str_starts_with($source, '@Storefront');
     }
 
     private function convertExpressionToArray(AbstractExpression $expression): mixed

@@ -2,12 +2,9 @@
 
 namespace SnapAdmin\Core\Framework\Store;
 
-use SnapAdmin\Core\Framework\Feature;
 use SnapAdmin\Core\Framework\HttpException;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\Framework\Store\Exception\ExtensionInstallException;
 use SnapAdmin\Core\Framework\Store\Exception\ExtensionNotFoundException;
-use SnapAdmin\Core\Framework\Store\Exception\ExtensionThemeStillInUseException;
 use SnapAdmin\Core\Framework\Store\Exception\ExtensionUpdateRequiresConsentAffirmationException;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -32,24 +29,16 @@ class StoreException extends HttpException
 
     public static function extensionThemeStillInUse(string $extensionId): self
     {
-        if (!Feature::isActive('v6.6.0.0')) {
-            return new ExtensionThemeStillInUseException($extensionId);
-        }
-
         return new self(
             Response::HTTP_FORBIDDEN,
             self::EXTENSION_THEME_STILL_IN_USE,
-            'The extension with id "{{ extensionId }}" can not be removed because its theme is still assigned to achannel.',
+            'The extension with id "{{ extensionId }}" can not be removed because its theme is still assigned to a sales channel.',
             ['extensionId' => $extensionId]
         );
     }
 
     public static function extensionInstallException(string $message): self
     {
-        if (!Feature::isActive('v6.6.0.0')) {
-            return new ExtensionInstallException($message);
-        }
-
         return new self(
             Response::HTTP_INTERNAL_SERVER_ERROR,
             self::EXTENSION_INSTALL,
@@ -62,11 +51,7 @@ class StoreException extends HttpException
      */
     public static function extensionUpdateRequiresConsentAffirmationException(string $appName, array $deltas): self
     {
-        if (!Feature::isActive('v6.6.0.0')) {
-            return ExtensionUpdateRequiresConsentAffirmationException::fromDelta($appName, $deltas);
-        }
-
-        return new self(
+        return new ExtensionUpdateRequiresConsentAffirmationException(
             Response::HTTP_INTERNAL_SERVER_ERROR,
             self::EXTENSION_UPDATE_REQUIRES_CONSENT_AFFIRMATION,
             'Updating app "{{ appName }}" requires a renewed consent affirmation.',
@@ -76,11 +61,7 @@ class StoreException extends HttpException
 
     public static function extensionNotFoundFromId(string $id): self
     {
-        if (!Feature::isActive('v6.6.0.0')) {
-            return ExtensionNotFoundException::fromId($id);
-        }
-
-        return new self(
+        return new ExtensionNotFoundException(
             Response::HTTP_NOT_FOUND,
             self::EXTENSION_NOT_FOUND,
             self::$couldNotFindMessage,
@@ -90,11 +71,7 @@ class StoreException extends HttpException
 
     public static function extensionNotFoundFromTechnicalName(string $technicalName): self
     {
-        if (!Feature::isActive('v6.6.0.0')) {
-            return ExtensionNotFoundException::fromTechnicalName($technicalName);
-        }
-
-        return new self(
+        return new ExtensionNotFoundException(
             Response::HTTP_NOT_FOUND,
             self::EXTENSION_NOT_FOUND,
             self::$couldNotFindMessage,

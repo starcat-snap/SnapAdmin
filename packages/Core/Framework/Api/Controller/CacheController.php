@@ -4,9 +4,7 @@ namespace SnapAdmin\Core\Framework\Api\Controller;
 
 use SnapAdmin\Core\Framework\Adapter\Cache\CacheClearer;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Indexing\EntityIndexerRegistry;
-use SnapAdmin\Core\Framework\Feature;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\Framework\Util\Random;
 use SnapAdmin\Core\Framework\Validation\DataBag\RequestDataBag;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
@@ -24,11 +22,10 @@ class CacheController extends AbstractController
      * @internal
      */
     public function __construct(
-        private readonly CacheClearer          $cacheClearer,
-        private readonly AdapterInterface      $adapter,
+        private readonly CacheClearer $cacheClearer,
+        private readonly AdapterInterface $adapter,
         private readonly EntityIndexerRegistry $indexerRegistry
-    )
-    {
+    ) {
     }
 
     #[Route(path: '/api/_action/cache_info', name: 'api.action.cache.info', methods: ['GET'], defaults: ['_acl' => ['system:cache:info']])]
@@ -49,26 +46,10 @@ class CacheController extends AbstractController
         $skip = !empty($data['skip']) && \is_array($data['skip']) ? $data['skip'] : [];
         $mapped = [];
         foreach ($skip as $value) {
-            $mapped[] = (string)$value;
+            $mapped[] = (string) $value;
         }
 
         $this->indexerRegistry->sendIndexingMessage([], $mapped);
-
-        return new Response('', Response::HTTP_NO_CONTENT);
-    }
-
-    #[Route(path: '/api/_action/cache_warmup', name: 'api.action.cache.delete_and_warmup', methods: ['DELETE'], defaults: ['_acl' => ['system:clear:cache']])]
-    public function clearCacheAndScheduleWarmUp(): Response
-    {
-        Feature::triggerDeprecationOrThrow(
-            'v6.6.0.0',
-            Feature::deprecatedClassMessage(self::class, 'v6.6.0.0')
-        );
-        if ($this->cacheWarmer === null) {
-            throw new \RuntimeException('Frontend is not installed');
-        }
-
-        $this->cacheWarmer->warmUp(Random::getAlphanumericString(32));
 
         return new Response('', Response::HTTP_NO_CONTENT);
     }
@@ -101,7 +82,7 @@ class CacheController extends AbstractController
     {
         if ($adapter instanceof TagAwareAdapter || $adapter instanceof TraceableAdapter) {
             // Do not declare function as static
-            $func = \Closure::bind(fn() => $adapter->getPool(), $adapter, $adapter::class);
+            $func = \Closure::bind(fn () => $adapter->getPool(), $adapter, $adapter::class);
 
             $adapter = $func();
         }

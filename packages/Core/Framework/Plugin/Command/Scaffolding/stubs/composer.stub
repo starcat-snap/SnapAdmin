@@ -11,6 +11,9 @@
         "snap-plugin-class": "{{ namespace }}\\{{ className }}",
         "label": {
             "zh-CN": "SnapAdmin 插件结构"
+        },
+        "description": {
+            "zh-CN": "插件描述"
         }
     },
     "autoload": {

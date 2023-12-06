@@ -7,11 +7,9 @@ use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityRepository;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
-use SnapAdmin\Core\Framework\Feature;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin\PluginEntity;
 use SnapAdmin\Core\Framework\Plugin\PluginManagementService;
-use SnapAdmin\Core\Framework\Store\Exception\CanNotDownloadPluginManagedByComposerException;
 use SnapAdmin\Core\Framework\Store\Exception\StoreApiException;
 use SnapAdmin\Core\Framework\Store\StoreException;
 use SnapAdmin\Core\Framework\Store\Struct\PluginDownloadDataStruct;
@@ -26,13 +24,12 @@ class ExtensionDownloader
     private readonly string $relativePluginDir;
 
     public function __construct(
-        private readonly EntityRepository        $pluginRepository,
-        private readonly StoreClient             $storeClient,
+        private readonly EntityRepository $pluginRepository,
+        private readonly StoreClient $storeClient,
         private readonly PluginManagementService $pluginManagementService,
-        string                                   $pluginDir,
-        string                                   $projectDir
-    )
-    {
+        string $pluginDir,
+        string $projectDir
+    ) {
         $this->relativePluginDir = (new Filesystem())->makePathRelative($pluginDir, $projectDir);
     }
 
@@ -45,11 +42,7 @@ class ExtensionDownloader
         $plugin = $this->pluginRepository->search($criteria, $context)->first();
 
         if ($plugin !== null && $plugin->getManagedByComposer() && !str_starts_with($plugin->getPath() ?? '', $this->relativePluginDir)) {
-            if (Feature::isActive('v6.6.0.0')) {
-                throw StoreException::cannotDeleteManaged($plugin->getName());
-            }
-
-            throw new CanNotDownloadPluginManagedByComposerException('can not download plugins managed by composer from store api');
+            throw StoreException::cannotDeleteManaged($plugin->getName());
         }
 
         try {

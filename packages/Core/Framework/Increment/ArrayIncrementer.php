@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Framework\Increment;
 
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\Framework\Plugin\Exception\DecorationPatternException;
 
 #[Package('core')]
 class ArrayIncrementer extends AbstractIncrementer
@@ -12,11 +11,6 @@ class ArrayIncrementer extends AbstractIncrementer
      * @var array<string, array<string, int>>
      */
     private array $logs = [];
-
-    public function getDecorated(): AbstractIncrementer
-    {
-        throw new DecorationPatternException(self::class);
-    }
 
     public function increment(string $cluster, string $key): void
     {
@@ -74,7 +68,7 @@ class ArrayIncrementer extends AbstractIncrementer
                 'key' => $key,
                 'cluster' => $cluster,
                 'pool' => $this->getPool(),
-                'count' => max(0, (int)$count),
+                'count' => max(0, (int) $count),
             ];
         }
 

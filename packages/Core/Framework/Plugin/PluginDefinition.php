@@ -2,6 +2,7 @@
 
 namespace SnapAdmin\Core\Framework\Plugin;
 
+
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BlobField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BoolField;
@@ -72,7 +73,6 @@ class PluginDefinition extends EntityDefinition
             new TranslatedField('description'),
             new TranslatedField('manufacturerLink'),
             new TranslatedField('supportLink'),
-            new TranslatedField('changelog'),
             new TranslatedField('customFields'),
 
             (new TranslationsAssociationField(PluginTranslationDefinition::class, 'plugin_id'))->addFlags(new Required(), new CascadeDelete()),

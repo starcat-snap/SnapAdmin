@@ -17,6 +17,7 @@ use SnapAdmin\Core\Framework\Plugin\Exception\DecorationPatternException;
 use SnapAdmin\Core\Framework\Validation\Exception\ConstraintViolationException;
 use SnapAdmin\Core\Kernel;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Messenger\Exception\RecoverableMessageHandlingException;
 use Symfony\Component\Messenger\Exception\UnrecoverableMessageHandlingException;
 use Twig\Error\LoaderError;
@@ -39,10 +40,13 @@ class DomainExceptionRule implements Rule
         ServiceNotFoundException::class, // Symfony
         UnrecoverableMessageHandlingException::class, // Symfony
         RecoverableMessageHandlingException::class, // Symfony
+        NotFoundHttpException::class, // Symfony
     ];
 
     private const VALID_SUB_DOMAINS = [
-
+        'Cart',
+        'Payment',
+        'Order',
     ];
 
     /**
@@ -88,7 +92,7 @@ class DomainExceptionRule implements Rule
         }
 
         return [
-            RuleErrorBuilder::message('Throwing new exceptions within classes are not allowed. Please use domain exception pattern. See https://github.com/shopware/platform/blob/v6.4.20.0/adr/2022-02-24-domain-exceptions.md')->build(),
+            RuleErrorBuilder::message('Throwing new exceptions within classes are not allowed. Please use domain exception pattern. See https://github.com/snap/platform/blob/v6.4.20.0/adr/2022-02-24-domain-exceptions.md')->build(),
         ];
     }
 

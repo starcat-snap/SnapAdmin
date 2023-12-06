@@ -61,12 +61,6 @@
             <argument type="service" id="SnapAdmin\Core\Framework\Plugin\Util\VersionSanitizer"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Plugin\Changelog\ChangelogParser"/>
-
-        <service id="SnapAdmin\Core\Framework\Plugin\Changelog\ChangelogService">
-            <argument type="service" id="SnapAdmin\Core\Framework\Plugin\Changelog\ChangelogParser"/>
-        </service>
-
         <service id="SnapAdmin\Core\Framework\Plugin\PluginManagementService">
             <argument>%kernel.project_dir%</argument>
             <argument type="service" id="SnapAdmin\Core\Framework\Plugin\PluginZipDetector"/>

@@ -49,7 +49,7 @@ class StoreApiException extends SnapAdminHttpException
     {
         $error = [
             'code' => $this->getErrorCode(),
-            'status' => (string)$this->getStatusCode(),
+            'status' => (string) $this->getStatusCode(),
             'title' => $this->title,
             'detail' => $this->getMessage(),
             'meta' => [

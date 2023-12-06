@@ -8,14 +8,12 @@ use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityRepository;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
-use SnapAdmin\Core\Framework\Feature;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin\Exception\PluginNotFoundException;
 use SnapAdmin\Core\Framework\Plugin\PluginCollection;
 use SnapAdmin\Core\Framework\Plugin\PluginEntity;
 use SnapAdmin\Core\Framework\Plugin\PluginLifecycleService;
 use SnapAdmin\Core\Framework\Plugin\PluginManagementService;
-use SnapAdmin\Core\Framework\Store\Exception\CanNotDownloadPluginManagedByComposerException;
 use SnapAdmin\Core\Framework\Store\Exception\StoreApiException;
 use SnapAdmin\Core\Framework\Store\Services\StoreClient;
 use SnapAdmin\Core\Framework\Store\StoreException;
@@ -44,15 +42,14 @@ class StoreDownloadCommand extends Command
      * @param EntityRepository<UserCollection> $userRepository
      */
     public function __construct(
-        private readonly StoreClient             $storeClient,
-        private readonly EntityRepository        $pluginRepo,
+        private readonly StoreClient $storeClient,
+        private readonly EntityRepository $pluginRepo,
         private readonly PluginManagementService $pluginManagementService,
-        private readonly PluginLifecycleService  $pluginLifecycleService,
-        private readonly EntityRepository        $userRepository,
-        string                                   $pluginDir,
-        string                                   $projectDir,
-    )
-    {
+        private readonly PluginLifecycleService $pluginLifecycleService,
+        private readonly EntityRepository $userRepository,
+        string $pluginDir,
+        string $projectDir,
+    ) {
         parent::__construct();
 
         $this->relativePluginDir = (new Filesystem())->makePathRelative($pluginDir, $projectDir);
@@ -62,14 +59,15 @@ class StoreDownloadCommand extends Command
     {
         $this->addOption('pluginName', 'p', InputOption::VALUE_REQUIRED, 'Name of plugin')
             ->addOption('language', 'l', InputOption::VALUE_OPTIONAL, 'Language')
-            ->addOption('user', 'u', InputOption::VALUE_OPTIONAL, 'User');
+            ->addOption('user', 'u', InputOption::VALUE_OPTIONAL, 'User')
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $context = Context::createDefaultContext();
 
-        $pluginName = (string)$input->getOption('pluginName');
+        $pluginName = (string) $input->getOption('pluginName');
         $user = $input->getOption('user');
 
         $context = $this->getUserContextFromInput($user, $context);
@@ -124,11 +122,7 @@ class StoreDownloadCommand extends Command
         }
 
         if ($plugin->getManagedByComposer() && !str_starts_with($plugin->getPath() ?? '', $this->relativePluginDir)) {
-            if (Feature::isActive('v6.6.0.0')) {
-                throw StoreException::cannotDeleteManaged($pluginName);
-            }
-
-            throw new CanNotDownloadPluginManagedByComposerException('can not download plugins managed by composer from store api');
+            throw StoreException::cannotDeleteManaged($pluginName);
         }
     }
 

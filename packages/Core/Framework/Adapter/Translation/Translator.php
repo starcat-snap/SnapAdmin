@@ -7,7 +7,6 @@ use Doctrine\DBAL\Exception\ConnectionException;
 use Doctrine\DBAL\Exception\DriverException;
 use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\Framework\Context;
-use SnapAdmin\Core\Framework\Feature;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin\Exception\DecorationPatternException;
 use SnapAdmin\Core\PlatformRequest;
@@ -35,6 +34,10 @@ class Translator extends AbstractTranslator
      */
     private array $isCustomized = [];
 
+    private ?string $snippetSetId = null;
+
+    private ?string $salesChannelId = null;
+
     private ?string $localeBeforeInject = null;
 
     /**
@@ -57,21 +60,20 @@ class Translator extends AbstractTranslator
      */
     public function __construct(
         private readonly TranslatorInterface&TranslatorBagInterface&LocaleAwareInterface $translator,
-        private readonly RequestStack                                                    $requestStack,
-        private readonly CacheInterface                                                  $cache,
-        private readonly MessageFormatterInterface                                       $formatter,
-        private readonly string                                                          $environment,
-        private readonly Connection                                                      $connection,
-        private readonly LanguageLocaleCodeProvider                                      $languageLocaleProvider,
-        private readonly bool                                                            $fineGrainedCache
-    )
-    {
+        private readonly RequestStack $requestStack,
+        private readonly CacheInterface $cache,
+        private readonly MessageFormatterInterface $formatter,
+        private readonly string $environment,
+        private readonly Connection $connection,
+        private readonly LanguageLocaleCodeProvider $languageLocaleProvider,
+        private readonly bool $fineGrainedCache
+    ) {
     }
 
     public static function buildName(string $id): string
     {
-        if (\strpbrk($id, (string)ItemInterface::RESERVED_CHARACTERS) !== false) {
-            $id = \str_replace(\str_split((string)ItemInterface::RESERVED_CHARACTERS, 1), '_r_', $id);
+        if (\strpbrk($id, (string) ItemInterface::RESERVED_CHARACTERS) !== false) {
+            $id = \str_replace(\str_split((string) ItemInterface::RESERVED_CHARACTERS, 1), '_r_', $id);
         }
 
         return 'translator.' . $id;
@@ -180,18 +182,6 @@ class Translator extends AbstractTranslator
         }
     }
 
-    /**
-     * @deprecated tag:v6.6.0 - Will be removed, use `reset` instead
-     */
-    public function resetInMemoryCache(): void
-    {
-        Feature::triggerDeprecationOrThrow(
-            'v6.6.0.0',
-            Feature::deprecatedMethodMessage(self::class, __METHOD__, 'v6.6.0.0', 'Use reset() instead')
-        );
-        $this->reset();
-    }
-
     public function reset(): void
     {
         $this->resetInjection();
@@ -200,6 +190,8 @@ class Translator extends AbstractTranslator
         $this->snippets = [];
         $this->traces = [];
         $this->keys = ['all' => true];
+        $this->snippetSetId = null;
+        $this->salesChannelId = null;
         $this->localeBeforeInject = null;
         $this->locale = null;
         if ($this->translator instanceof SymfonyTranslator) {
@@ -214,10 +206,12 @@ class Translator extends AbstractTranslator
      * Injects temporary settings for translation which differ from Context.
      * Call resetInjection() when specific translation is done
      */
-    public function injectSettings(string $languageId, string $locale, Context $context): void
+    public function injectSettings(string $salesChannelId, string $languageId, string $locale, Context $context): void
     {
         $this->localeBeforeInject = $this->getLocale();
+        $this->salesChannelId = $salesChannelId;
         $this->setLocale($locale);
+        $this->resolveSnippetSetId($salesChannelId, $languageId, $locale);
         $this->getCatalogue($locale);
     }
 
@@ -229,6 +223,26 @@ class Translator extends AbstractTranslator
         }
 
         $this->setLocale($this->localeBeforeInject);
+        $this->snippetSetId = null;
+        $this->salesChannelId = null;
+    }
+
+    public function getSnippetSetId(?string $locale = null): ?string
+    {
+        $snippetSetId = $this->snippetSetId;
+        $currentRequest = $this->requestStack->getMainRequest();
+
+        if ($locale === null) {
+            return $this->snippetSetId = $snippetSetId;
+        }
+        // If locale parameter is using, prioritize it over snippet set of request
+        if (\array_key_exists($locale, $this->snippets)) {
+            return $this->snippets[$locale];
+        }
+
+        $this->snippets[$locale] = $snippetSetId;
+
+        return $this->snippetSetId = $snippetSetId;
     }
 
     /**
@@ -254,6 +268,13 @@ class Translator extends AbstractTranslator
         return mb_strpos($catalog->getLocale(), '-') !== false;
     }
 
+    private function resolveSnippetSetId(string $salesChannelId, string $languageId, string $locale): void
+    {
+        $snippetSetId = $this->snippetService->findSnippetSetId($salesChannelId, $languageId, $locale);
+
+        $this->snippetSetId = $snippetSetId;
+    }
+
     /**
      * Add language specific snippets provided by the admin
      */
@@ -273,11 +294,10 @@ class Translator extends AbstractTranslator
         if (\array_key_exists($snippetSetId, $this->isCustomized)) {
             return $this->isCustomized[$snippetSetId];
         }
-
+        
         $newCatalog = clone $catalog;
         return $this->isCustomized[$snippetSetId] = $newCatalog;
     }
-
 
     private function getFallbackLocale(): string
     {
@@ -285,7 +305,7 @@ class Translator extends AbstractTranslator
             return $this->languageLocaleProvider->getLocaleForLanguageId(Defaults::LANGUAGE_SYSTEM);
         } catch (ConnectionException) {
             // this allows us to use the translator even if there's no db connection yet
-            return 'en-GB';
+            return 'zh-CN';
         }
     }
 }

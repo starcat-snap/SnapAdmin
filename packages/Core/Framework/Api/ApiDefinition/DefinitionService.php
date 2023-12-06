@@ -6,9 +6,10 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\Log\Package;
 
+
 /**
  * @phpstan-type Api DefinitionService::API|DefinitionService::STORE_API
- * @phpstan-type ApiType DefinitionService::TypeJsonApi|DefinitionService::TypeJson
+ * @phpstan-type ApiType DefinitionService::TYPE_JSON_API|DefinitionService::TYPE_JSON
  * @phpstan-type OpenApiSpec  array{paths: array<string,array<mixed>>, components: array<mixed>}
  * @phpstan-type ApiSchema array<string, array{name: string, translatable: list<string>, properties: array<string, mixed>}|array{entity: string, properties: array<string, mixed>, write-protected: bool, read-protected: bool}>
  */
@@ -18,21 +19,7 @@ class DefinitionService
     final public const API = 'api';
     final public const STORE_API = 'store-api';
 
-    /**
-     * @deprecated tag:v6.6.0 - Will be removed. Use DefinitionService::TYPE_JSON_API instead
-     *
-     * @phpstan-ignore-next-line ignore needs to be removed when deprecation is removed
-     */
-    final public const TypeJsonApi = self::TYPE_JSON_API;
-
     final public const TYPE_JSON_API = 'jsonapi';
-
-    /**
-     * @deprecated tag:v6.6.0 - Will be removed. Use DefinitionService::TYPE_JSON instead
-     *
-     * @phpstan-ignore-next-line ignore needs to be removed when deprecation is removed
-     */
-    final public const TypeJson = self::TYPE_JSON;
 
     final public const TYPE_JSON = 'json';
 
@@ -45,10 +32,10 @@ class DefinitionService
      * @internal
      */
     public function __construct(
-        private readonly DefinitionInstanceRegistry             $definitionRegistry,
-        ApiDefinitionGeneratorInterface                         ...$generators
-    )
-    {
+        private readonly DefinitionInstanceRegistry $definitionRegistry,
+        private readonly SalesChannelDefinitionInstanceRegistry $salesChannelDefinitionRegistry,
+        ApiDefinitionGeneratorInterface ...$generators
+    ) {
         $this->generators = $generators;
     }
 
@@ -100,9 +87,9 @@ class DefinitionService
     }
 
     /**
-     * @return array<string, EntityDefinition>|array<string, EntityDefinition>
      * @throws ApiDefinitionGeneratorNotFoundException
      *
+     * @return array<string, EntityDefinition>
      */
     private function getDefinitions(string $type): array
     {
@@ -111,7 +98,7 @@ class DefinitionService
         }
 
         if ($type === self::STORE_API) {
-            return $this->channelDefinitionRegistry->getDefinitions();
+            return $this->salesChannelDefinitionRegistry->getDefinitions();
         }
 
         throw new ApiDefinitionGeneratorNotFoundException($type);

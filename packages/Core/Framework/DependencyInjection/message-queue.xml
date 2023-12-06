@@ -39,8 +39,5 @@
             <tag name="serializer.normalizer"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\MessageQueue\Subscriber\ConsumeMessagesSubscriber">
-            <tag name="kernel.event_subscriber"/>
-        </service>
     </services>
 </container>

@@ -10,11 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 class LicenseNotFoundException extends SnapAdminHttpException
 {
     public function __construct(
-        int         $licenseId,
-        array       $parameters = [],
+        int $licenseId,
+        array $parameters = [],
         ?\Throwable $e = null
-    )
-    {
+    ) {
         $parameters['licenseId'] = $licenseId;
 
         parent::__construct('Could not find license with id {{licenseId}}', $parameters, $e);

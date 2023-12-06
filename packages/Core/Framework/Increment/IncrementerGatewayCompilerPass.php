@@ -10,14 +10,14 @@ use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
- * @deprecated tag:v6.6.0 - reason:becomes-internal - Compiler passes are always internal
+ * @internal
  */
 #[Package('core')]
 class IncrementerGatewayCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {
-        /** @var array{type?: string, config?: array}[] $services */
+        /** @var array{type?: string, config?: array<string, mixed>}[] $services */
         $services = $container->getParameter('snap.increment');
         $tag = 'snap.increment.gateway';
 
@@ -34,7 +34,7 @@ class IncrementerGatewayCompilerPass implements CompilerPassInterface
             // If service is not registered directly in the container, try to resolve them using fallback gateway
             if (!$container->hasDefinition($active)) {
                 if (\array_key_exists('config', $service)) {
-                    $config = (array)$service['config'];
+                    $config = (array) $service['config'];
                 }
 
                 $active = $this->resolveTypeDefinition($container, $pool, $type, $config);
@@ -70,6 +70,9 @@ class IncrementerGatewayCompilerPass implements CompilerPassInterface
         }
     }
 
+    /**
+     * @param array<string, mixed> $config
+     */
     private function resolveTypeDefinition(ContainerBuilder $container, string $pool, string $type, array $config = []): string
     {
         // snap.increment.gateway.mysql is fallback gateway if custom gateway is not set

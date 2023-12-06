@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\Adapter\Asset;
 
-use SnapAdmin\Core\Framework\Feature;
 use Symfony\Component\Asset\Package;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\Asset\UrlPackage;
@@ -11,14 +10,6 @@ use Symfony\Component\Asset\VersionStrategy\VersionStrategyInterface;
 #[\SnapAdmin\Core\Framework\Log\Package('core')]
 class AssetPackageService
 {
-    /**
-     * @deprecated tag:v6.6.0 - Will be removed, will be now automatically registered
-     */
-    public function addAssetPackage(string $bundleName, string $bundlePath): void
-    {
-        Feature::triggerDeprecationOrThrow('v6.6.0.0', Feature::deprecatedMethodMessage(self::class, 'addAssetPackage', 'Will be automatically registered'));
-    }
-
     /**
      * @param array<string, string> $bundleMap
      */
