@@ -159,7 +159,6 @@
             <argument type="service" id="snap.increment.gateway.registry"/>
             <argument type="service" id="Doctrine\DBAL\Connection"/>
             <argument type="service" id="SnapAdmin\Core\Maintenance\System\Service\AppUrlVerifier"/>
-            <argument type="service" id="SnapAdmin\Core\Content\Flow\Api\FlowActionCollector" on-invalid="null"/>
             <argument>%snap.media.enable_url_upload_feature%</argument>
             <argument>%snap.security.csp_templates%</argument>
             <call method="setContainer">

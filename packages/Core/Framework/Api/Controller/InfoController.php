@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Framework\Api\Controller;
 
 use Doctrine\DBAL\Connection;
-use SnapAdmin\Core\Content\Flow\Api\FlowActionCollector;
 use SnapAdmin\Core\Framework\Api\ApiDefinition\DefinitionService;
 use SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\EntitySchemaGenerator;
 use SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\OpenApi3Generator;
@@ -45,7 +44,6 @@ class InfoController extends AbstractController
         private readonly IncrementGatewayRegistry $incrementGatewayRegistry,
         private readonly Connection               $connection,
         private readonly AppUrlVerifier           $appUrlVerifier,
-        private readonly ?FlowActionCollector     $flowActionCollector = null,
         private readonly bool                     $enableUrlFeature = true,
         private readonly array                    $cspTemplates = []
     )
@@ -165,18 +163,6 @@ class InfoController extends AbstractController
         return new JsonResponse([
             'version' => $this->params->get('kernel.snap_version'),
         ]);
-    }
-
-    #[Route(path: '/api/_info/flow-actions.json', name: 'api.info.actions', methods: ['GET'])]
-    public function flowActions(Context $context): JsonResponse
-    {
-        if (!$this->flowActionCollector) {
-            return $this->json([]);
-        }
-
-        $events = $this->flowActionCollector->collect($context);
-
-        return new JsonResponse($events);
     }
 
     /**

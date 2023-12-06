@@ -47,19 +47,18 @@ class EntitySearchResult extends EntityCollection
      * @param TEntityCollection $entities
      */
     final public function __construct(
-        protected string             $entity,
-        protected int                $total,
-        protected EntityCollection   $entities,
+        protected string $entity,
+        protected int $total,
+        protected EntityCollection $entities,
         ?AggregationResultCollection $aggregations,
-        Criteria                     $criteria,
-        Context                      $context
-    )
-    {
+        Criteria $criteria,
+        Context $context
+    ) {
         $this->criteria = $criteria;
         $this->context = $context;
         $this->aggregations = $aggregations ?? new AggregationResultCollection();
         $this->limit = $criteria->getLimit();
-        $this->page = !$criteria->getLimit() ? 1 : (int)ceil((($criteria->getOffset() ?? 0) + 1) / $criteria->getLimit());
+        $this->page = !$criteria->getLimit() ? 1 : (int) ceil((($criteria->getOffset() ?? 0) + 1) / $criteria->getLimit());
 
         parent::__construct($entities);
     }
@@ -172,12 +171,7 @@ class EntitySearchResult extends EntityCollection
         return $this->entities->getAt($position);
     }
 
-    /**
-     * @return static
-     *
-     * @deprecated tag:v6.6.0  - reason:return-type-change - Return type will be changed to `static`
-     */
-    protected function createNew(iterable $elements = [])
+    protected function createNew(iterable $elements = []): static
     {
         if (!($elements instanceof EntityCollection)) {
             $elements = new EntityCollection($elements);

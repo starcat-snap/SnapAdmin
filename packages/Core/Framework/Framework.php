@@ -9,13 +9,11 @@ use SnapAdmin\Core\Framework\DependencyInjection\CompilerPass\AssetBundleRegistr
 use SnapAdmin\Core\Framework\DependencyInjection\CompilerPass\AssetRegistrationCompilerPass;
 use SnapAdmin\Core\Framework\DependencyInjection\CompilerPass\AutoconfigureCompilerPass;
 use SnapAdmin\Core\Framework\DependencyInjection\CompilerPass\DefaultTransportCompilerPass;
-use SnapAdmin\Core\Framework\DependencyInjection\CompilerPass\DemodataCompilerPass;
 use SnapAdmin\Core\Framework\DependencyInjection\CompilerPass\DisableTwigCacheWarmerCompilerPass;
 use SnapAdmin\Core\Framework\DependencyInjection\CompilerPass\EntityCompilerPass;
 use SnapAdmin\Core\Framework\DependencyInjection\CompilerPass\FeatureFlagCompilerPass;
 use SnapAdmin\Core\Framework\DependencyInjection\CompilerPass\FilesystemConfigMigrationCompilerPass;
 use SnapAdmin\Core\Framework\DependencyInjection\CompilerPass\FrameworkMigrationReplacementCompilerPass;
-use SnapAdmin\Core\Framework\DependencyInjection\CompilerPass\HttpCacheConfigCompilerPass;
 use SnapAdmin\Core\Framework\DependencyInjection\CompilerPass\RateLimiterCompilerPass;
 use SnapAdmin\Core\Framework\DependencyInjection\CompilerPass\RedisPrefixCompilerPass;
 use SnapAdmin\Core\Framework\DependencyInjection\CompilerPass\RouteScopeCompilerPass;
@@ -107,7 +105,7 @@ class Framework extends Bundle
         $container->addCompilerPass(new IncrementerGatewayCompilerPass());
         $container->addCompilerPass(new RedisPrefixCompilerPass());
         $container->addCompilerPass(new AutoconfigureCompilerPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 1000);
-        $container->addCompilerPass(new HttpCacheConfigCompilerPass());
+
 
         if ($container->getParameter('kernel.environment') === 'test') {
             $container->addCompilerPass(new DisableRateLimiterCompilerPass());

@@ -2,20 +2,20 @@
 
 namespace SnapAdmin\Core\Framework\DependencyInjection\CompilerPass;
 
-use SnapAdmin\Core\Content\Flow\Dispatching\Storer\ConfirmUrlStorer;
-use SnapAdmin\Core\Content\Flow\Dispatching\Storer\ContactFormDataStorer;
-use SnapAdmin\Core\Content\Flow\Dispatching\Storer\ContentsStorer;
-use SnapAdmin\Core\Content\Flow\Dispatching\Storer\ContextTokenStorer;
-use SnapAdmin\Core\Content\Flow\Dispatching\Storer\DataStorer;
-use SnapAdmin\Core\Content\Flow\Dispatching\Storer\EmailStorer;
-use SnapAdmin\Core\Content\Flow\Dispatching\Storer\NameStorer;
-use SnapAdmin\Core\Content\Flow\Dispatching\Storer\RecipientsStorer;
-use SnapAdmin\Core\Content\Flow\Dispatching\Storer\ResetUrlStorer;
-use SnapAdmin\Core\Content\Flow\Dispatching\Storer\ReviewFormDataStorer;
-use SnapAdmin\Core\Content\Flow\Dispatching\Storer\ShopNameStorer;
-use SnapAdmin\Core\Content\Flow\Dispatching\Storer\SubjectStorer;
-use SnapAdmin\Core\Content\Flow\Dispatching\Storer\TemplateDataStorer;
-use SnapAdmin\Core\Content\Flow\Dispatching\Storer\UrlStorer;
+use SnapAdmin\Frontend\Content\Flow\Dispatching\Storer\ConfirmUrlStorer;
+use SnapAdmin\Frontend\Content\Flow\Dispatching\Storer\ContactFormDataStorer;
+use SnapAdmin\Frontend\Content\Flow\Dispatching\Storer\ContentsStorer;
+use SnapAdmin\Frontend\Content\Flow\Dispatching\Storer\ContextTokenStorer;
+use SnapAdmin\Frontend\Content\Flow\Dispatching\Storer\DataStorer;
+use SnapAdmin\Frontend\Content\Flow\Dispatching\Storer\EmailStorer;
+use SnapAdmin\Frontend\Content\Flow\Dispatching\Storer\NameStorer;
+use SnapAdmin\Frontend\Content\Flow\Dispatching\Storer\RecipientsStorer;
+use SnapAdmin\Frontend\Content\Flow\Dispatching\Storer\ResetUrlStorer;
+use SnapAdmin\Frontend\Content\Flow\Dispatching\Storer\ReviewFormDataStorer;
+use SnapAdmin\Frontend\Content\Flow\Dispatching\Storer\ShopNameStorer;
+use SnapAdmin\Frontend\Content\Flow\Dispatching\Storer\SubjectStorer;
+use SnapAdmin\Frontend\Content\Flow\Dispatching\Storer\TemplateDataStorer;
+use SnapAdmin\Frontend\Content\Flow\Dispatching\Storer\UrlStorer;
 use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

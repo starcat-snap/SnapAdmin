@@ -38,8 +38,6 @@ class AnnotationTagTest extends TestCase
         'deprecation.plugin.js',
         // some eslint rules check for @deprecated and therefore produce false positives
         'administration/eslint-rules',
-        // checks for deprecations too and annotation fails
-        'DataAbstractionLayer/DefinitionValidator.php',
     ];
 
     private string $rootDir;

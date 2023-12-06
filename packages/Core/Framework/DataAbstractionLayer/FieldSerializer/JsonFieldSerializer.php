@@ -15,7 +15,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityExistence;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\FieldException\UnexpectedFieldException;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\FieldException\WriteFieldException;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\WriteParameterBag;
-use SnapAdmin\Core\Framework\Feature;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Util\Json;
 use Symfony\Component\Validator\Constraints\NotNull;
@@ -27,26 +26,12 @@ use Symfony\Component\Validator\Constraints\Type;
 #[Package('core')]
 class JsonFieldSerializer extends AbstractFieldSerializer
 {
-    /**
-     * @deprecated tag:v6.6.0 - Will be removed, use \SnapAdmin\Core\Framework\Util\Json::encode instead
-     */
-    public static function encodeJson(mixed $value, int $options = \JSON_UNESCAPED_UNICODE | \JSON_PRESERVE_ZERO_FRACTION | \JSON_THROW_ON_ERROR | \JSON_INVALID_UTF8_IGNORE): string
-    {
-        Feature::triggerDeprecationOrThrow(
-            'v6.6.0.0',
-            Feature::deprecatedMethodMessage(self::class, __METHOD__, 'v6.6.0.0', Json::class . '::encode')
-        );
-
-        return (string)json_encode($value, $options);
-    }
-
     public function encode(
-        Field             $field,
-        EntityExistence   $existence,
-        KeyValuePair      $data,
+        Field $field,
+        EntityExistence $existence,
+        KeyValuePair $data,
         WriteParameterBag $parameters
-    ): \Generator
-    {
+    ): \Generator {
         if (!$field instanceof JsonField) {
             throw DataAbstractionLayerException::invalidSerializerField(JsonField::class, $field);
         }
@@ -76,7 +61,7 @@ class JsonFieldSerializer extends AbstractFieldSerializer
             return $field->getDefault();
         }
 
-        $raw = json_decode((string)$value, true);
+        $raw = json_decode((string) $value, true);
         $decoded = $raw;
         if (empty($field->getPropertyMapping())) {
             return $raw;
@@ -112,12 +97,16 @@ class JsonFieldSerializer extends AbstractFieldSerializer
         ];
     }
 
+    /**
+     * @param array<string, mixed> $data
+     *
+     * @return array<string, mixed>
+     */
     protected function validateMapping(
-        JsonField         $field,
-        array             $data,
+        JsonField $field,
+        array $data,
         WriteParameterBag $parameters
-    ): array
-    {
+    ): array {
         if (\array_key_exists('_class', $data)) {
             unset($data['_class']);
         }
@@ -126,7 +115,7 @@ class JsonFieldSerializer extends AbstractFieldSerializer
         $existence = EntityExistence::createEmpty();
         $fieldPath = $parameters->getPath() . '/' . $field->getPropertyName();
 
-        $propertyKeys = array_map(fn(Field $field) => $field->getPropertyName(), $field->getPropertyMapping());
+        $propertyKeys = array_map(fn (Field $field) => $field->getPropertyName(), $field->getPropertyMapping());
 
         // If a mapping is defined, you should not send properties that are undefined.
         // Sending undefined fields will throw an UnexpectedFieldException
@@ -134,7 +123,7 @@ class JsonFieldSerializer extends AbstractFieldSerializer
         if (\count($keyDiff)) {
             foreach ($keyDiff as $fieldName) {
                 $parameters->getContext()->getExceptions()->add(
-                    new UnexpectedFieldException($fieldPath . '/' . $fieldName, (string)$fieldName)
+                    new UnexpectedFieldException($fieldPath . '/' . $fieldName, (string) $fieldName)
                 );
             }
         }
@@ -181,7 +170,7 @@ class JsonFieldSerializer extends AbstractFieldSerializer
 
                 foreach ($encoded as $fieldKey => $fieldValue) {
                     if ($nestedField instanceof JsonField && $fieldValue !== null) {
-                        $fieldValue = json_decode((string)$fieldValue, true, 512, \JSON_THROW_ON_ERROR);
+                        $fieldValue = json_decode((string) $fieldValue, true, 512, \JSON_THROW_ON_ERROR);
                     }
 
                     $stack->update($fieldKey, $fieldValue);

@@ -105,7 +105,7 @@ abstract class Plugin extends Bundle
     final public function removeMigrations(): void
     {
         // namespace should not start with `snap`
-        if (str_starts_with(mb_strtolower($this->getMigrationNamespace()), 'snap') && !str_starts_with(mb_strtolower($this->getMigrationNamespace()), 'snap\commercial')) {
+        if (str_starts_with(mb_strtolower($this->getMigrationNamespace()), 'snapadmin') && !str_starts_with(mb_strtolower($this->getMigrationNamespace()), 'snap\commercial')) {
             throw new \RuntimeException('Deleting SnapAdmin migrations is not allowed');
         }
 

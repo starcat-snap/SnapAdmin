@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\DataAbstractionLayer;
 
-use SnapAdmin\Core\Content\Seo\SeoUrl\SeoUrlDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityHydrator;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityProtection\EntityProtectionCollection;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\AssociationField;
@@ -346,13 +345,6 @@ abstract class EntityDefinition
         $field = $this->getFields()->get('locked');
 
         return $field && $field instanceof LockedField;
-    }
-
-    public function isSeoAware(): bool
-    {
-        $field = $this->getFields()->get('seoUrls');
-
-        return $field instanceof OneToManyAssociationField && $field->getReferenceDefinition() instanceof SeoUrlDefinition;
     }
 
     public function since(): ?string

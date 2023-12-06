@@ -11,7 +11,7 @@ use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleError;
-use SnapAdmin\Core\Content\Rule\RuleDefinition;
+use SnapAdmin\Frontend\Content\Rule\RuleDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\AssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\RuleAreas;
 use SnapAdmin\Core\Framework\Log\Package;

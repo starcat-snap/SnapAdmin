@@ -3,7 +3,7 @@
 namespace SnapAdmin\Core\Framework\Test\Logging\Event;
 
 use Monolog\Level;
-use SnapAdmin\Core\Content\Test\Flow\TestFlowBusinessEvent;
+use SnapAdmin\Frontend\Content\Test\Flow\TestFlowBusinessEvent;
 use SnapAdmin\Core\Framework\Event\FlowEventAware;
 use SnapAdmin\Core\Framework\Log\LogAware;
 

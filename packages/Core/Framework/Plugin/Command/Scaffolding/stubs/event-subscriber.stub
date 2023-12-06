@@ -4,7 +4,7 @@ namespace {{ namespace }}\Subscriber;
 
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Event\EntityLoadedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use SnapAdmin\Core\Content\Product\ProductEvents;
+use SnapAdmin\Frontend\Content\Product\ProductEvents;
 
 class MySubscriber implements EventSubscriberInterface
 {

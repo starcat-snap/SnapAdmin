@@ -39,12 +39,11 @@ class FkFieldSerializer extends AbstractFieldSerializer
     }
 
     public function encode(
-        Field             $field,
-        EntityExistence   $existence,
-        KeyValuePair      $data,
+        Field $field,
+        EntityExistence $existence,
+        KeyValuePair $data,
         WriteParameterBag $parameters
-    ): \Generator
-    {
+    ): \Generator {
         if (!$field instanceof FkField) {
             throw DataAbstractionLayerException::invalidSerializerField(FkField::class, $field);
         }
@@ -84,12 +83,7 @@ class FkFieldSerializer extends AbstractFieldSerializer
         return Uuid::fromBytesToHex($value);
     }
 
-    /**
-     * @param mixed $value
-     * @deprecated tag:v6.6.0 - reason:return-type-change - Parameter $value will be natively typed as mixed
-     *
-     */
-    protected function shouldUseContext(FkField $field, bool $isRaw, $value): bool
+    protected function shouldUseContext(FkField $field, bool $isRaw, mixed $value): bool
     {
         return $isRaw && $value === null && $field->is(Required::class);
     }

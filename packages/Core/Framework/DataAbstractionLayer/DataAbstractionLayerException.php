@@ -3,13 +3,9 @@
 namespace SnapAdmin\Core\Framework\DataAbstractionLayer;
 
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Exception\InvalidFilterQueryException;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Exception\InvalidSerializerFieldException;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Exception\VersionMergeAlreadyLockedException;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Field;
-use SnapAdmin\Core\Framework\Feature;
 use SnapAdmin\Core\Framework\HttpException;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\Framework\Routing\Exception\LanguageNotFoundException;
 use SnapAdmin\Core\Framework\SnapAdminHttpException;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -41,10 +37,6 @@ class DataAbstractionLayerException extends HttpException
 
     public static function invalidSerializerField(string $expectedClass, Field $field): self
     {
-        if (!Feature::isActive('v6.6.0.0')) {
-            return new InvalidSerializerFieldException($expectedClass, $field);
-        }
-
         return new self(
             Response::HTTP_BAD_REQUEST,
             self::INVALID_FIELD_SERIALIZER_CODE,
@@ -64,10 +56,9 @@ class DataAbstractionLayerException extends HttpException
     }
 
     public static function invalidDateIntervalFormat(
-        string      $dateIntervalString,
+        string $dateIntervalString,
         ?\Throwable $previous = null,
-    ): self
-    {
+    ): self {
         return new self(
             Response::HTTP_BAD_REQUEST,
             self::INVALID_DATE_INTERVAL_CODE,
@@ -100,15 +91,8 @@ class DataAbstractionLayerException extends HttpException
         );
     }
 
-    /**
-     * @deprecated tag:v6.6.0 - reason:return-type-change - will return `self` in the future
-     */
-    public static function invalidLanguageId(?string $languageId): HttpException
+    public static function invalidLanguageId(?string $languageId): self
     {
-        if (!Feature::isActive('v6.6.0.0')) {
-            return new LanguageNotFoundException($languageId);
-        }
-
         return new self(
             Response::HTTP_BAD_REQUEST,
             self::INVALID_LANGUAGE_ID,
@@ -137,10 +121,6 @@ class DataAbstractionLayerException extends HttpException
 
     public static function versionMergeAlreadyLocked(string $versionId): self
     {
-        if (!Feature::isActive('v6.6.0.0')) {
-            return new VersionMergeAlreadyLockedException($versionId);
-        }
-
         return new self(
             Response::HTTP_BAD_REQUEST,
             self::VERSION_MERGE_ALREADY_LOCKED,

@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\Plugin;
 
-use SnapAdmin\Core\Checkout\Payment\PaymentMethodDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BlobField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BoolField;
@@ -77,7 +76,6 @@ class PluginDefinition extends EntityDefinition
             new TranslatedField('customFields'),
 
             (new TranslationsAssociationField(PluginTranslationDefinition::class, 'plugin_id'))->addFlags(new Required(), new CascadeDelete()),
-            (new OneToManyAssociationField('paymentMethods', PaymentMethodDefinition::class, 'plugin_id', 'id'))->addFlags(new SetNullOnDelete()),
         ]);
     }
 }

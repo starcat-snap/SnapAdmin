@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\DataAbstractionLayer\Indexing\MessageQueue;
 
-use SnapAdmin\Core\Framework\Feature;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\MessageQueue\AsyncMessageInterface;
 
@@ -15,19 +14,16 @@ class IterateEntityIndexerMessage implements AsyncMessageInterface
     protected $indexer;
 
     /**
-     * @param array{offset: int|null}|null $offset
-     * @param array<string> $skip
      * @internal
      *
-     * @deprecated tag:v6.6.0 - parameter $offset will be natively typed to type `?array`
-     *
+     * @param array{offset: int|null}|null $offset
+     * @param array<string> $skip
      */
     public function __construct(
-        string          $indexer,
-        protected       $offset,
+        string $indexer,
+        protected ?array $offset,
         protected array $skip = []
-    )
-    {
+    ) {
         $this->indexer = $indexer;
     }
 
@@ -38,28 +34,17 @@ class IterateEntityIndexerMessage implements AsyncMessageInterface
 
     /**
      * @return array{offset: int|null}|null
-     * @deprecated tag:v6.6.0 - reason:return-type-change - return type will be natively typed to type `?array`
-     *
      */
-    public function getOffset()
+    public function getOffset(): ?array
     {
         return $this->offset;
     }
 
     /**
      * @param array{offset: int|null}|null $offset
-     * @deprecated tag:v6.6.0 - parameter $offset will be natively typed to type `?array`
-     *
      */
-    public function setOffset($offset): void
+    public function setOffset(?array $offset): void
     {
-        if ($offset !== null && !\is_array($offset)) {
-            Feature::triggerDeprecationOrThrow(
-                'v6.6.0.0',
-                'The parameter $offset of method ' . __METHOD__ . ' will be natively typed to type `?array` in v6.6.0.0.'
-            );
-        }
-
         $this->offset = $offset;
     }
 

@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\Plugin;
 
-use SnapAdmin\Core\Checkout\Payment\PaymentMethodCollection;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
@@ -124,11 +123,6 @@ class PluginEntity extends Entity
      * @var PluginTranslationCollection|null
      */
     protected $translations;
-
-    /**
-     * @var PaymentMethodCollection|null
-     */
-    protected $paymentMethods;
 
     /**
      * @var array<string, array<string, list<string>|string>>
@@ -365,16 +359,6 @@ class PluginEntity extends Entity
     public function setTranslations(PluginTranslationCollection $translations): void
     {
         $this->translations = $translations;
-    }
-
-    public function getPaymentMethods(): ?PaymentMethodCollection
-    {
-        return $this->paymentMethods;
-    }
-
-    public function setPaymentMethods(PaymentMethodCollection $paymentMethods): void
-    {
-        $this->paymentMethods = $paymentMethods;
     }
 
     /**
