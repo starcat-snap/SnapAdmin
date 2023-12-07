@@ -32,6 +32,11 @@ base-uri 'self';
             <parameter key="frontend"/>
             <parameter key="installer"/>
         </parameter>
+        <parameter key="snap_http_cache_enabled_default">1</parameter>
+        <parameter key="snap.http.cache.enabled">%env(default:snap_http_cache_enabled_default:SNAP_HTTP_CACHE_ENABLED)%</parameter>
+
+        <parameter key="snap_http_cache_default_ttl_default">7200</parameter>
+        <parameter key="snap.http.cache.default_ttl">%env(default:snap_http_cache_default_ttl_default:SNAP_HTTP_DEFAULT_TTL)%</parameter>
     </parameters>
 
     <monolog:config>
