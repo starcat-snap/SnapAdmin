@@ -14,7 +14,6 @@ class BeforeSystemConfigChangedEvent extends Event
     public function __construct(
         private readonly string  $key,
         private                  $value,
-        private readonly ?string $channelId
     )
     {
     }
@@ -38,10 +37,5 @@ class BeforeSystemConfigChangedEvent extends Event
     public function setValue($value): void
     {
         $this->value = $value;
-    }
-
-    public function getChannelId(): ?string
-    {
-        return $this->channelId;
     }
 }
