@@ -58,26 +58,14 @@ class DataBag extends ParameterBag
      */
     public function add(array $parameters = []): void
     {
-        /**
-         * @deprecated tag:v6.6.0 - remove complete if statement, parameters will always be translated to databags
-         */
-        if (Feature::isActive('v6.6.0.0')) {
-            $parameters = $this->wrapArrayParameters($parameters);
-        }
+        parent::add($this->wrapArrayParameters($parameters));
 
-        parent::add($parameters);
     }
 
     public function set(string $key, mixed $value): void
     {
-        /**
-         * @deprecated tag:v6.6.0 - remove complete if statement, parameters will always be translated to databags
-         */
-        if (Feature::isActive('v6.6.0.0')) {
-            $value = $this->wrapArrayParameters([$value])[0];
-        }
+        parent::set($key, $this->wrapArrayParameters([$value])[0]);
 
-        parent::set($key, $value);
     }
 
     /**

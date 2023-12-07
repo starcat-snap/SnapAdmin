@@ -171,9 +171,6 @@ base-uri 'self';
             <tag name="serializer.normalizer"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Struct\Serializer\StructDecoder">
-        </service>
-
         <!-- Routing -->
         <service id="SnapAdmin\Core\Framework\Routing\ContextResolverListener">
             <argument type="service" id="SnapAdmin\Core\Framework\Routing\ApiRequestContextResolver"/>
