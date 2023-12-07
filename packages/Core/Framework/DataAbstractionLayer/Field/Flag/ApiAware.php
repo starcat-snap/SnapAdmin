@@ -12,7 +12,7 @@ class ApiAware extends Flag
 {
     private const BASE_URLS = [
         AdminApiSource::class => '/api/',
-        ChannelApiSource::class => '/store-api/',
+        ChannelApiSource::class => '/frontend-api/',
     ];
 
     /**

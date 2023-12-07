@@ -5,7 +5,7 @@ namespace SnapAdmin\Core\Framework\DataAbstractionLayer\FieldType;
 use Cron\CronExpression;
 use SnapAdmin\Core\Framework\Log\Package;
 
-#[Package('checkout')]
+
 class CronInterval extends CronExpression
 {
     public const EMPTY_EXPRESSION = '* * * * *';

@@ -28,7 +28,7 @@ class OpenApiSchemaBuilder
         ],
         DefinitionService::STORE_API => [
             'name' => 'Store API',
-            'url' => '/store-api',
+            'url' => '/frontend-api',
             'apiKey' => true,
         ],
     ];

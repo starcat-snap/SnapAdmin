@@ -14,7 +14,7 @@ use SnapAdmin\Core\Framework\Update\Services\ApiClient;
 use SnapAdmin\Core\Framework\Update\Services\ExtensionCompatibility;
 use SnapAdmin\Core\Framework\Update\Steps\DeactivateExtensionsStep;
 use SnapAdmin\Core\Kernel;
-use SnapAdmin\Frontend\Channel\NoContentResponse;
+use SaagFrontend\Channel\NoContentResponse;
 use SnapAdmin\Core\System\SystemConfig\SystemConfigService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ContainerInterface;

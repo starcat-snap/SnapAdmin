@@ -6,7 +6,7 @@ use SnapAdmin\Core\Framework\HttpException;
 use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\HttpFoundation\Response;
 
-#[Package('buyers-experience')]
+
 class LocaleException extends HttpException
 {
     final public const LOCALE_DOES_NOT_EXISTS_EXCEPTION = 'SYSTEM__LOCALE_DOES_NOT_EXISTS';

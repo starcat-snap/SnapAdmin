@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Constraints\Type;
 /**
  * @internal
  */
-#[Package('checkout')]
+
 class DateIntervalFieldSerializer extends AbstractFieldSerializer
 {
     public function encode(

@@ -26,7 +26,6 @@ class Configuration implements ConfigurationInterface
             ->append($this->createApiSection())
             ->append($this->createStoreSection())
             ->append($this->createCartSection())
-            ->append($this->createChannelContextSection())
             ->append($this->createAdminWorkerSection())
             ->append($this->createAutoUpdateSection())
             ->append($this->createSitemapSection())
@@ -535,22 +534,6 @@ class Configuration implements ConfigurationInterface
             ->children()
             ->scalarNode('increment_storage')->end()
             ->scalarNode('redis_url')->end()
-            ->end();
-
-        return $rootNode;
-    }
-
-    private function createChannelContextSection(): ArrayNodeDefinition
-    {
-        $treeBuilder = new TreeBuilder('channel_context');
-
-        $rootNode = $treeBuilder->getRootNode();
-        $rootNode
-            ->children()
-            ->integerNode('expire_days')
-            ->min(1)
-            ->defaultValue(120)
-            ->end()
             ->end();
 
         return $rootNode;

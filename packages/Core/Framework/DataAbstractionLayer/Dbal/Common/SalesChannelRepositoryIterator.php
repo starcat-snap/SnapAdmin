@@ -6,8 +6,8 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCollection;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\EntitySearchResult;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Frontend\Channel\Entity\ChannelRepository;
-use SnapAdmin\Frontend\Channel\ChannelContext;
+use SaagFrontend\Channel\Entity\ChannelRepository;
+use SaagFrontend\Channel\ChannelContext;
 
 /**
  * @template TEntityCollection of EntityCollection

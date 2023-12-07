@@ -7,7 +7,7 @@ use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Node\Expression\AbstractExpression;
 
-#[Package('checkout')]
+
 class AdapterException extends HttpException
 {
     public const UNEXPECTED_TWIG_EXPRESSION = 'FRAMEWORK__UNEXPECTED_TWIG_EXPRESSION';

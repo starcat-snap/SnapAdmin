@@ -226,7 +226,7 @@ class DynamicFieldFactory
                 // mapping table records can always be deleted
                 $association->addFlags(new CascadeDelete());
 
-                // field is maybe flag to be store-api aware
+                // field is maybe flag to be frontend-api aware
                 self::addFlag($association, $apiAware);
 
                 // check product inheritance and add ReverseInherited(reverse-property-name)
@@ -279,7 +279,7 @@ class DynamicFieldFactory
                 // now build association field for custom entity definition
                 $association = new ManyToOneAssociationField($property, self::id($name), $field['reference'], 'id', false);
 
-                // add flag for store-api awareness
+                // add flag for frontend-api awareness
                 self::addFlag($association, $apiAware);
 
                 // check for product inheritance use case and define reverse inherited flag. Used when joining from custom entity table to product table
@@ -325,7 +325,7 @@ class DynamicFieldFactory
                 // now build association field for custom entity definition
                 $association = new OneToOneAssociationField($property, self::id($name), 'id', $field['reference'], false);
 
-                // add flag for store-api awareness
+                // add flag for frontend-api awareness
                 self::addFlag($association, $apiAware);
 
                 // check for product inheritance use case and define reverse inherited flag. Used when joining from custom entity table to product table
@@ -371,7 +371,7 @@ class DynamicFieldFactory
                 // in sql we define the on-delete flag on the foreign key, for the DAL we need the flag on the reverse side, so we can check which association are affected when deleting the record (e.g. product)
                 $association->addFlags(self::getOnDeleteFlag($field));
 
-                // add flag for store-api awareness
+                // add flag for frontend-api awareness
                 self::addFlag($association, $apiAware);
 
                 // check for product inheritance use case and define reverse inherited flag. Used when joining from custom entity table to product table
@@ -383,7 +383,7 @@ class DynamicFieldFactory
                 // now define the reverse side, starting with the foreign key field: custom_entity_blog_comments_id
                 $fk = new FkField(self::id($reverse), self::kebabCaseToCamelCase(self::id($reverse)), $entityName, 'id');
 
-                // add flag for store-api awareness
+                // add flag for frontend-api awareness
                 self::addFlag($fk, $apiAware);
 
                 // if reference is not a custom entity definition, we need to add the dal extension flag to get the hydrated objects as `entity.extensions` value

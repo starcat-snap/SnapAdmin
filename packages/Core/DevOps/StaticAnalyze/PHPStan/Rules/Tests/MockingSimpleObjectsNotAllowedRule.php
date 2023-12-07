@@ -18,7 +18,7 @@ use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\EntitySearchResult;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Struct\Struct;
-use SnapAdmin\Frontend\Channel\ChannelContext;
+use SaagFrontend\Channel\ChannelContext;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 

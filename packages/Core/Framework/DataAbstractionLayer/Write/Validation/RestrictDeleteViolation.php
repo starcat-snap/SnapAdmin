@@ -21,7 +21,7 @@ class RestrictDeleteViolation
          *              [0] => c708bb9dc2c34243b9fb1fd6a676f2fb
          *              [1] => c708bb9dc2c34243b9fb1fd6a676f2fb
          *          )
-         *      [SnapAdmin\Core\Content\Product\ProductDefinition] => Array
+         *      [Storefront\Content\Product\ProductDefinition] => Array
          *          (
          *              [0] => c708bb9dc2c34243b9fb1fd6a676f2fb
          *              [1] => c708bb9dc2c34243b9fb1fd6a676f2fb

@@ -17,7 +17,7 @@ use SnapAdmin\Core\Framework\Log\Package;
 class DefinitionService
 {
     final public const API = 'api';
-    final public const STORE_API = 'store-api';
+    final public const STORE_API = 'frontend-api';
 
     final public const TYPE_JSON_API = 'jsonapi';
 
@@ -33,7 +33,7 @@ class DefinitionService
      */
     public function __construct(
         private readonly DefinitionInstanceRegistry $definitionRegistry,
-        private readonly SalesChannelDefinitionInstanceRegistry $salesChannelDefinitionRegistry,
+        private readonly ChannelDefinitionInstanceRegistry $channelDefinitionRegistry,
         ApiDefinitionGeneratorInterface ...$generators
     ) {
         $this->generators = $generators;
@@ -98,7 +98,7 @@ class DefinitionService
         }
 
         if ($type === self::STORE_API) {
-            return $this->salesChannelDefinitionRegistry->getDefinitions();
+            return $this->channelDefinitionRegistry->getDefinitions();
         }
 
         throw new ApiDefinitionGeneratorNotFoundException($type);

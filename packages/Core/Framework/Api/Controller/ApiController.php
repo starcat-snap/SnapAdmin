@@ -472,7 +472,7 @@ class ApiController extends AbstractController
             /*
              * Example
              * Route:           /api/product/SW1/prices
-             * $definition:     \SnapAdmin\Core\Content\Product\Definition\ProductPriceDefinition
+             * $definition:     \Storefront\Content\Product\Definition\ProductPriceDefinition
              */
 
             // get foreign key definition of reference
@@ -492,7 +492,7 @@ class ApiController extends AbstractController
             /*
              * Example
              * Route:           /api/product/SW1/manufacturer
-             * $definition:     \SnapAdmin\Core\Content\Product\Aggregate\ProductManufacturer\ProductManufacturerDefinition
+             * $definition:     \Storefront\Content\Product\Aggregate\ProductManufacturer\ProductManufacturerDefinition
              */
 
             // get inverse association to filter to parent value
@@ -571,7 +571,7 @@ class ApiController extends AbstractController
             /*
              * Example:
              * route:           /api/product/SW1/categories
-             * $definition:     \SnapAdmin\Core\Content\Category\CategoryDefinition
+             * $definition:     \SaagFrontend\Content\Category\CategoryDefinition
              */
             return $association->getToManyReferenceDefinition();
         }

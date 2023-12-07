@@ -28,7 +28,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @script-service miscellaneous
  *
- * @example scripts/store-api-request-test/store-api-request-test.twig Use request to determine method and return all json body back
+ * @example scripts/frontend-api-request-test/frontend-api-request-test.twig Use request to determine method and return all json body back
  */
 #[Package('core')]
 final class RequestFacade

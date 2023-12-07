@@ -39,7 +39,7 @@ class DumpSchemaCommand extends Command
                 'simple'
             )
             ->addOption(
-                'store-api',
+                'frontend-api',
                 '',
                 InputOption::VALUE_NONE,
                 'If set, the store api definition will be dumped. Only applies to the openapi3 format.'
@@ -64,7 +64,7 @@ class DumpSchemaCommand extends Command
 
                 break;
             case 'openapi3':
-                $api = $input->getOption('store-api') ? DefinitionService::STORE_API : DefinitionService::API;
+                $api = $input->getOption('frontend-api') ? DefinitionService::STORE_API : DefinitionService::API;
                 $definitionContents = $this->definitionService->generate('openapi-3', $api, DefinitionService::TYPE_JSON_API, $bundleName);
 
                 break;

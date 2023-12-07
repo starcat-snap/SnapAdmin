@@ -5,7 +5,7 @@ namespace SnapAdmin\Core\Framework\DataAbstractionLayer\Cache;
 
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Frontend\Channel\ChannelContext;
+use SaagFrontend\Channel\ChannelContext;
 
 #[Package('core')]
 class EntityCacheKeyGenerator

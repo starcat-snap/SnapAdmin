@@ -49,28 +49,28 @@
 
     <xs:complexType name="field-int-type">
         <xs:attribute type="xs:string" name="name" use="required"/>
-        <xs:attribute type="xs:boolean" name="store-api-aware" use="required"/>
+        <xs:attribute type="xs:boolean" name="frontend-api-aware" use="required"/>
         <xs:attribute type="xs:boolean" name="required" default="false"/>
         <xs:attribute type="xs:boolean" name="translatable" default="false"/>
     </xs:complexType>
 
     <xs:complexType name="field-float-type">
         <xs:attribute type="xs:string" name="name" use="required"/>
-        <xs:attribute type="xs:boolean" name="store-api-aware" use="required"/>
+        <xs:attribute type="xs:boolean" name="frontend-api-aware" use="required"/>
         <xs:attribute type="xs:boolean" name="required" default="false"/>
         <xs:attribute type="xs:boolean" name="translatable" default="false"/>
     </xs:complexType>
 
     <xs:complexType name="field-string-type">
         <xs:attribute type="xs:string" name="name" use="required"/>
-        <xs:attribute type="xs:boolean" name="store-api-aware" use="required"/>
+        <xs:attribute type="xs:boolean" name="frontend-api-aware" use="required"/>
         <xs:attribute type="xs:boolean" name="required" default="false"/>
         <xs:attribute type="xs:boolean" name="translatable" default="false"/>
     </xs:complexType>
 
     <xs:complexType name="field-text-type">
         <xs:attribute type="xs:string" name="name" use="required"/>
-        <xs:attribute type="xs:boolean" name="store-api-aware" use="required"/>
+        <xs:attribute type="xs:boolean" name="frontend-api-aware" use="required"/>
         <xs:attribute type="xs:boolean" name="required" default="false"/>
         <xs:attribute type="xs:boolean" name="allow-html" default="false"/>
         <xs:attribute type="xs:boolean" name="translatable" default="false"/>
@@ -78,34 +78,34 @@
 
     <xs:complexType name="field-bool-type">
         <xs:attribute type="xs:string" name="name" use="required"/>
-        <xs:attribute type="xs:boolean" name="store-api-aware" use="required"/>
+        <xs:attribute type="xs:boolean" name="frontend-api-aware" use="required"/>
         <xs:attribute type="xs:boolean" name="required" default="false"/>
         <xs:attribute type="xs:boolean" name="translatable" default="false"/>
     </xs:complexType>
 
     <xs:complexType name="field-json-type">
         <xs:attribute type="xs:string" name="name" use="required"/>
-        <xs:attribute type="xs:boolean" name="store-api-aware" use="required"/>
+        <xs:attribute type="xs:boolean" name="frontend-api-aware" use="required"/>
         <xs:attribute type="xs:boolean" name="required" default="false"/>
         <xs:attribute type="xs:boolean" name="translatable" default="false"/>
     </xs:complexType>
 
     <xs:complexType name="field-email-type">
         <xs:attribute type="xs:string" name="name" use="required"/>
-        <xs:attribute type="xs:boolean" name="store-api-aware" use="required"/>
+        <xs:attribute type="xs:boolean" name="frontend-api-aware" use="required"/>
         <xs:attribute type="xs:boolean" name="required" default="false"/>
         <xs:attribute type="xs:boolean" name="translatable" default="false"/>
     </xs:complexType>
 
     <xs:complexType name="field-price-type">
         <xs:attribute type="xs:string" name="name" use="required"/>
-        <xs:attribute type="xs:boolean" name="store-api-aware" use="required"/>
+        <xs:attribute type="xs:boolean" name="frontend-api-aware" use="required"/>
         <xs:attribute type="xs:boolean" name="required" default="false"/>
     </xs:complexType>
 
     <xs:complexType name="field-date-type">
         <xs:attribute type="xs:string" name="name" use="required"/>
-        <xs:attribute type="xs:boolean" name="store-api-aware" use="required"/>
+        <xs:attribute type="xs:boolean" name="frontend-api-aware" use="required"/>
         <xs:attribute type="xs:boolean" name="required" default="false"/>
         <xs:attribute type="xs:boolean" name="translatable" default="false"/>
     </xs:complexType>
@@ -113,7 +113,7 @@
     <xs:complexType name="field-many-to-many-type">
         <xs:attribute type="xs:string" name="name" use="required"/>
         <xs:attribute type="xs:string" name="reference" use="required"/>
-        <xs:attribute type="xs:boolean" name="store-api-aware" use="required"/>
+        <xs:attribute type="xs:boolean" name="frontend-api-aware" use="required"/>
         <xs:attribute type="xs:boolean" name="inherited"/>
     </xs:complexType>
 
@@ -121,7 +121,7 @@
         <xs:attribute type="xs:string" name="name" use="required"/>
         <xs:attribute type="xs:string" name="reference" use="required"/>
         <xs:attribute type="xs:boolean" name="required" default="false"/>
-        <xs:attribute type="xs:boolean" name="store-api-aware" use="required"/>
+        <xs:attribute type="xs:boolean" name="frontend-api-aware" use="required"/>
         <xs:attribute type="xs:boolean" name="inherited"/>
         <xs:attribute type="on-delete" name="on-delete" use="required"/>
     </xs:complexType>
@@ -129,7 +129,7 @@
     <xs:complexType name="field-one-to-many-type">
         <xs:attribute type="xs:string" name="name" use="required"/>
         <xs:attribute type="xs:string" name="reference" use="required"/>
-        <xs:attribute type="xs:boolean" name="store-api-aware" use="required"/>
+        <xs:attribute type="xs:boolean" name="frontend-api-aware" use="required"/>
         <xs:attribute type="xs:boolean" name="inherited"/>
         <xs:attribute type="xs:boolean" name="reverse-required" default="false"/>
         <xs:attribute type="on-delete" name="on-delete" use="required"/>
@@ -139,7 +139,7 @@
         <xs:attribute type="xs:string" name="name" use="required"/>
         <xs:attribute type="xs:string" name="reference" use="required"/>
         <xs:attribute type="xs:boolean" name="required" default="false"/>
-        <xs:attribute type="xs:boolean" name="store-api-aware" use="required"/>
+        <xs:attribute type="xs:boolean" name="frontend-api-aware" use="required"/>
         <xs:attribute type="xs:boolean" name="inherited"/>
         <xs:attribute type="on-delete" name="on-delete" use="required"/>
     </xs:complexType>

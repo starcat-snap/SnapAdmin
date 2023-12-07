@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use SnapAdmin\Core\Framework\Event\EventData\MailRecipientStruct;
 use SnapAdmin\Core\Framework\Event\MailAware;
 use SnapAdmin\Core\Framework\Event\SnapAdminEvent;
-use SnapAdmin\Frontend\Channel\ChannelContext;
+use SaagFrontend\Channel\ChannelContext;
 
 trait MailTemplateTestBehaviour
 {

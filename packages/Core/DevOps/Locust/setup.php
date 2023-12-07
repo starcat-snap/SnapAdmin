@@ -169,7 +169,7 @@ $fs->dumpFile(__DIR__ . '/fixtures/keywords.json', json_encode($keywords, \JSON_
 echo 'Collected: ' . count($products) . ' products' . \PHP_EOL;
 $fs->dumpFile(__DIR__ . '/fixtures/products.json', json_encode($products, \JSON_THROW_ON_ERROR));
 
-echo 'Collected: ' . count($storeApiCategories) . ' categories for store-api' . \PHP_EOL;
+echo 'Collected: ' . count($storeApiCategories) . ' categories for frontend-api' . \PHP_EOL;
 $fs->dumpFile(__DIR__ . '/fixtures/categories.json', json_encode($storeApiCategories, \JSON_THROW_ON_ERROR));
 
 echo 'Collected: ' . count($categories) . ' categories' . \PHP_EOL;

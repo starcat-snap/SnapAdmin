@@ -289,9 +289,6 @@ snap:
     increment_storage: "SQL"
     redis_url: false
 
-  channel_context:
-    expire_days: 120
-
   html_sanitizer:
     enabled: true
     cache_dir: '%kernel.cache_dir%'

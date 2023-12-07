@@ -6,7 +6,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Exception\InvalidFilterQueryEx
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Field;
 use SnapAdmin\Core\Framework\HttpException;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\Framework\SnapAdminHttpException;
 use Symfony\Component\HttpFoundation\Response;
 
 #[Package('core')]
@@ -34,6 +33,7 @@ class DataAbstractionLayerException extends HttpException
     public const DATABASE_PLATFORM_INVALID = 'FRAMEWORK__DATABASE_PLATFORM_INVALID';
     public const FIELD_TYPE_NOT_FOUND = 'FRAMEWORK__FIELD_TYPE_NOT_FOUND';
     public const PLUGIN_NOT_FOUND = 'FRAMEWORK__PLUGIN_NOT_FOUND';
+    public const INVALID_FILTER_QUERY = 'FRAMEWORK__INVALID_FILTER_QUERY';
 
     public static function invalidSerializerField(string $expectedClass, Field $field): self
     {
@@ -101,12 +101,14 @@ class DataAbstractionLayerException extends HttpException
         );
     }
 
-    /**
-     * @deprecated tag:v6.6.0 - reason:return-type-change - will return `self` in the future
-     */
-    public static function invalidFilterQuery(string $message, string $path = ''): SnapAdminHttpException
+    public static function invalidFilterQuery(string $message, string $path = ''): self
     {
-        return new InvalidFilterQueryException($message, $path);
+        return new InvalidFilterQueryException(
+            Response::HTTP_BAD_REQUEST,
+            self::INVALID_FILTER_QUERY,
+            $message,
+            ['path' => $path]
+        );
     }
 
     public static function cannotCreateNewVersion(string $entity, string $id): self

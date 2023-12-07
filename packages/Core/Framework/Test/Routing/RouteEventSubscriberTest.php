@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use SnapAdmin\Core\Framework\Routing\RouteEventSubscriber;
 use SnapAdmin\Core\Framework\Test\TestCaseHelper\CallableClass;
 use SnapAdmin\Core\Kernel;
-use SnapAdmin\Frontend\Channel\ChannelContext;
+use SaagFrontend\Channel\ChannelContext;
 use SnapAdmin\Frontend\Event\FrontendRenderEvent;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;

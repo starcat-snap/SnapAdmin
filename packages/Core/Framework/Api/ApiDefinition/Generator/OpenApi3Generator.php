@@ -13,7 +13,7 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\AssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\MappingEntityDefinition;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Frontend\Channel\Entity\ChannelDefinitionInterface;
+use SaagFrontend\Channel\Entity\ChannelDefinitionInterface;
 
 /**
  * @internal

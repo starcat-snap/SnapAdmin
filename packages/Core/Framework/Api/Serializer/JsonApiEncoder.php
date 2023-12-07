@@ -14,7 +14,7 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationFiel
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\OneToOneAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Frontend\Channel\Api\ResponseFields;
+use SaagFrontend\Channel\Api\ResponseFields;
 
 #[Package('core')]
 class JsonApiEncoder

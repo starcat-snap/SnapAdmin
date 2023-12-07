@@ -6,7 +6,7 @@
     "schemas": {
       "Criteria": {
         "type": "object",
-        "description": "Search parameters. For more information, see our documentation on [Search Queries](https:\/\/snap.stoplight.io\/docs\/store-api\/docs\/concepts\/search-queries.md#structure)",
+        "description": "Search parameters. For more information, see our documentation on [Search Queries](https:\/\/snap.stoplight.io\/docs\/frontend-api\/docs\/concepts\/search-queries.md#structure)",
         "properties": {
           "page": {
             "description": "Search result page",
@@ -18,7 +18,7 @@
           },
           "filter": {
             "type": "array",
-            "description": "List of filters to restrict the search result. For more information, see [Search Queries > Filter](https:\/\/snap.stoplight.io\/docs\/store-api\/docs\/concepts\/search-queries.md#filter)",
+            "description": "List of filters to restrict the search result. For more information, see [Search Queries > Filter](https:\/\/snap.stoplight.io\/docs\/frontend-api\/docs\/concepts\/search-queries.md#filter)",
             "items": {
               "type": "object",
               "properties": {
@@ -62,7 +62,7 @@
           },
           "post-filter": {
             "type": "array",
-            "description": "Filters that applied without affecting aggregations. For more information, see [Search Queries > Post Filter](https:\/\/snap.stoplight.io\/docs\/store-api\/docs\/concepts\/search-queries.md#post-filter)",
+            "description": "Filters that applied without affecting aggregations. For more information, see [Search Queries > Post Filter](https:\/\/snap.stoplight.io\/docs\/frontend-api\/docs\/concepts\/search-queries.md#post-filter)",
             "items": {
               "type": "object",
               "properties": {
@@ -89,7 +89,7 @@
           },
           "aggregations": {
             "type": "array",
-            "description": "Used to perform aggregations on the search result. For more information, see [Search Queries > Aggregations](https:\/\/snap.stoplight.io\/docs\/store-api\/docs\/concepts\/search-queries.md#aggregations)",
+            "description": "Used to perform aggregations on the search result. For more information, see [Search Queries > Aggregations](https:\/\/snap.stoplight.io\/docs\/frontend-api\/docs\/concepts\/search-queries.md#aggregations)",
             "items": {
               "type": "object",
               "properties": {

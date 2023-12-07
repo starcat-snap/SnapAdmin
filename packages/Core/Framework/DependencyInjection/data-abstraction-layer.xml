@@ -17,6 +17,10 @@
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\SchemaGenerator"/>
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\EntityGenerator"/>
 
+        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Indexing\TreeUpdater">
+            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+        </service>
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Command\CreateSchemaCommand">
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\SchemaGenerator"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
@@ -502,13 +506,6 @@
         </service>
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\PHPUnserializeFieldSerializer">
-            <tag name="snap.field_serializer"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\PriceFieldSerializer">
-            <argument type="service" id="validator"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
-
             <tag name="snap.field_serializer"/>
         </service>
 

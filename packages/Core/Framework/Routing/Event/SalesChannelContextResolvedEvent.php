@@ -3,9 +3,9 @@
 namespace SnapAdmin\Core\Framework\Routing\Event;
 
 use SnapAdmin\Core\Framework\Context;
-use SnapAdmin\Core\Framework\Event\SnapAdminChannelEvent;
+use SaagFrontend\Framework\Event\SnapAdminChannelEvent;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Frontend\Channel\ChannelContext;
+use SaagFrontend\Channel\ChannelContext;
 use Symfony\Contracts\EventDispatcher\Event;
 
 #[Package('core')]

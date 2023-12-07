@@ -4,7 +4,7 @@ namespace SnapAdmin\Core\Framework\DataAbstractionLayer\FieldType;
 
 use SnapAdmin\Core\Framework\Log\Package;
 
-#[Package('checkout')]
+
 class DateInterval extends \DateInterval
 {
     public const FORMAT = 'P%yY%mM%dDT%hH%iM%sS';

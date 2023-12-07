@@ -4,8 +4,8 @@ namespace SnapAdmin\Core\Framework\Adapter\Cache;
 
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Frontend\Channel\ChannelContext;
-use SnapAdmin\Frontend\Channel\StoreApiResponse;
+use SaagFrontend\Channel\ChannelContext;
+use SaagFrontend\Channel\StoreApiResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\EventDispatcher\Event;
 

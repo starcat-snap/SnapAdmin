@@ -13,8 +13,8 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\EntitySearchResult;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\SalesChannel\Api\ResponseFields;
-use SnapAdmin\Core\System\SalesChannel\Api\StructEncoder;
+use SaagFrontend\Channel\Api\ResponseFields;
+use SaagFrontend\Channel\Api\StructEncoder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 

@@ -14,7 +14,7 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\EntitySearcherInterface;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\IdSearchResult;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\NumberRange\DataAbstractionLayer\NumberRangeField;
+use Storefront\System\NumberRange\DataAbstractionLayer\NumberRangeField;
 
 /**
  * Used for all search operations in the system.

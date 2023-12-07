@@ -7,7 +7,7 @@ use SnapAdmin\Core\Checkout\Shipping\ShippingException;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\ExceptionHandlerInterface;
 use SnapAdmin\Core\Framework\Log\Package;
 
-#[Package('checkout')]
+
 class TechnicalNameExceptionHandler implements ExceptionHandlerInterface
 {
     public function getPriority(): int

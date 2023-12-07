@@ -5,7 +5,7 @@ namespace SnapAdmin\Core;
 use SnapAdmin\Core\Framework\Log\Package;
 
 #[Package('core')]
-final class PlatformRequest
+class PlatformRequest
 {
     /**
      * Response Headers

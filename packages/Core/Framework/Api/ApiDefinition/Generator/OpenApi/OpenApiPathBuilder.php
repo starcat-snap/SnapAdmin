@@ -12,7 +12,7 @@ use OpenApi\Annotations\Response as OpenApiResponse;
 use OpenApi\Annotations\Tag;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Frontend\Channel\Entity\ChannelDefinitionInterface;
+use SaagFrontend\Channel\Entity\ChannelDefinitionInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 #[Package('core')]

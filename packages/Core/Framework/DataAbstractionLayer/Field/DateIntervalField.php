@@ -5,7 +5,7 @@ namespace SnapAdmin\Core\Framework\DataAbstractionLayer\Field;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\DateIntervalFieldSerializer;
 use SnapAdmin\Core\Framework\Log\Package;
 
-#[Package('checkout')]
+
 class DateIntervalField extends Field implements StorageAware
 {
     private string $storageName;

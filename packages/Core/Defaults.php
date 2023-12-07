@@ -9,7 +9,7 @@ use SnapAdmin\Core\Framework\Log\Package;
  * System wide defaults that are fixed for performance measures
  */
 #[Package('core')]
-final class Defaults
+class Defaults
 {
     /**
      * Don't depend on this being zh-CN, the underlying language can be overwritten by the installer!

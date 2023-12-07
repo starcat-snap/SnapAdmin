@@ -2,7 +2,7 @@
 
 namespace SnapAdmin\Core\Framework\Test\TestCaseBase;
 
-use SnapAdmin\Frontend\Channel\ChannelContext;
+use SaagFrontend\Channel\ChannelContext;
 use SnapAdmin\Core\System\Tax\Aggregate\TaxRule\TaxRuleCollection;
 use SnapAdmin\Core\System\Tax\TaxEntity;
 

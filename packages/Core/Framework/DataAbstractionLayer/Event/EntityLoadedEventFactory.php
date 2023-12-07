@@ -9,9 +9,9 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCollection;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Struct\Collection;
-use SnapAdmin\Frontend\Channel\Entity\PartialChannelEntityLoadedEvent;
-use SnapAdmin\Frontend\Channel\Entity\ChannelEntityLoadedEvent;
-use SnapAdmin\Frontend\Channel\ChannelContext;
+use SaagFrontend\Channel\Entity\PartialChannelEntityLoadedEvent;
+use SaagFrontend\Channel\Entity\ChannelEntityLoadedEvent;
+use SaagFrontend\Channel\ChannelContext;
 
 /**
  * @internal

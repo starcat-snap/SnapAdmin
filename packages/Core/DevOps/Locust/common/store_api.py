@@ -17,61 +17,61 @@ class StoreApi:
         })
 
     def home(self):
-        return self.request('/store-api/category/home', name='home')
+        return self.request('/frontend-api/category/home', name='home')
 
     def navigation(self, activeId = 'main-navigation'):
-        return self.request('/store-api/navigation/' + activeId + '/main-navigation', name = 'main-navigation')
+        return self.request('/frontend-api/navigation/' + activeId + '/main-navigation', name = 'main-navigation')
 
     def footer(self, activeId = 'footer-navigation'):
-        return self.request('/store-api/navigation/' + activeId + '/footer-navigation', name = 'footer-navigation')
+        return self.request('/frontend-api/navigation/' + activeId + '/footer-navigation', name = 'footer-navigation')
 
     def service(self, activeId = 'service-navigation'):
-        return self.request('/store-api/navigation/' + activeId + '/service-navigation', name = 'service-navigation')
+        return self.request('/frontend-api/navigation/' + activeId + '/service-navigation', name = 'service-navigation')
 
     def shipping_methods(self):
-        return self.request('/store-api/shipping-method', name='shipping-methods')
+        return self.request('/frontend-api/shipping-method', name='shipping-methods')
 
     def payment_methods(self):
-        return self.request('/store-api/payment-method', name='payment-methods')
+        return self.request('/frontend-api/payment-method', name='payment-methods')
 
     def languages(self):
-        return self.request('/store-api/language', name='languages')
+        return self.request('/frontend-api/language', name='languages')
 
     def currencies(self):
-        return self.request('/store-api/currency', name='currencies')
+        return self.request('/frontend-api/currency', name='currencies')
 
     def salutations(self):
-        return self.request('/store-api/salutation', name='salutations')
+        return self.request('/frontend-api/salutation', name='salutations')
 
     def countries(self):
-        return self.request('/store-api/country', name='countries')
+        return self.request('/frontend-api/country', name='countries')
 
     def search(self):
-        return self.request('/store-api/search', name='search', parameters = {'search': random.choice(self.context.keywords)})
+        return self.request('/frontend-api/search', name='search', parameters = {'search': random.choice(self.context.keywords)})
 
     def searchWithSorting(self):
         field = random.choice(['name', 'price']);
         order = random.choice(['asc', 'desc']);
 
-        return self.request('/store-api/search', name='search-sorting', parameters = {'search': random.choice(self.context.keywords), 'order': field + '-' + order})
+        return self.request('/frontend-api/search', name='search-sorting', parameters = {'search': random.choice(self.context.keywords), 'order': field + '-' + order})
 
     def suggest(self):
-        return self.request('/store-api/search-suggest', name='suggest', parameters = {'search': random.choice(self.context.keywords)})
+        return self.request('/frontend-api/search-suggest', name='suggest', parameters = {'search': random.choice(self.context.keywords)})
 
     def cart(self):
-        return self.request('/store-api/checkout/cart', name='cart')
+        return self.request('/frontend-api/checkout/cart', name='cart')
 
     def product(self):
-        return self.request('/store-api/product/' + random.choice(self.context.product_ids), name='product')
+        return self.request('/frontend-api/product/' + random.choice(self.context.product_ids), name='product')
 
     def listing(self):
-        return self.request('/store-api/category/' + random.choice(self.context.category_ids), name='listing')
+        return self.request('/frontend-api/category/' + random.choice(self.context.category_ids), name='listing')
 
     def add_product_to_cart(self):
         id = random.choice(self.context.product_ids)
 
         return self.request(
-            '/store-api/checkout/cart/line-item',
+            '/frontend-api/checkout/cart/line-item',
             name='add-product-to-cart',
             parameters = {
                 'items': [{'type': 'product', 'id': id, 'referencedId': id}]
@@ -79,12 +79,12 @@ class StoreApi:
         )
 
     def order(self):
-        return self.request('/store-api/checkout/order', name='order')
+        return self.request('/frontend-api/checkout/order', name='order')
 
     def register(self):
         self.email = 'user-' + str(uuid.uuid4()).replace('-', '') + '@example.com'
 
-        response = self.request('/store-api/account/register', name='register', parameters={
+        response = self.request('/frontend-api/account/register', name='register', parameters={
             'frontendUrl': self.context.channel['domain'],
             'salutationId': self.context.channel['salutationId'],
             'firstName': 'Firstname',
@@ -105,7 +105,7 @@ class StoreApi:
         return response
 
     def switch_context(self, parameters):
-        response = self.request('/store-api/context', name='context-switch', parameters=parameters, method='PATCH')
+        response = self.request('/frontend-api/context', name='context-switch', parameters=parameters, method='PATCH')
 
         self.token = response.headers['sw-context-token']
 

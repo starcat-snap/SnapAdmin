@@ -147,14 +147,14 @@
             <tag name="messenger.message_handler"/>
         </service>
 
-        <service id="SnapAdmin\Core\Content\Test\Category\Service\CountingEntityReader"
+        <service id="Storefront\Content\Test\Category\Service\CountingEntityReader"
                  decorates="SnapAdmin\Core\Framework\DataAbstractionLayer\Read\EntityReaderInterface">
-            <argument type="service" id="SnapAdmin\Core\Content\Test\Category\Service\CountingEntityReader.inner"/>
+            <argument type="service" id="Storefront\Content\Test\Category\Service\CountingEntityReader.inner"/>
         </service>
 
-        <service id="SnapAdmin\Core\Content\Test\Category\Service\CountingEntitySearcher"
+        <service id="Storefront\Content\Test\Category\Service\CountingEntitySearcher"
                  decorates="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\EntitySearcherInterface">
-            <argument type="service" id="SnapAdmin\Core\Content\Test\Category\Service\CountingEntitySearcher.inner"/>
+            <argument type="service" id="Storefront\Content\Test\Category\Service\CountingEntitySearcher.inner"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\Test\TestCacheClearer">

@@ -12,7 +12,7 @@ use Lcobucci\JWT\Validation\Constraint\SignedWith;
 use League\OAuth2\Server\CryptKey;
 use SnapAdmin\Core\Framework\Log\Package;
 
-#[Package('checkout')]
+
 class JWTConfigurationFactory
 {
     public static function createJWTConfiguration(

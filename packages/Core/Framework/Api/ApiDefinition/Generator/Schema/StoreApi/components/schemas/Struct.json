@@ -9,7 +9,7 @@
         "properties": {
           "apiAlias": {
             "type": "string",
-            "description": "Alias which can be used to restrict response fields. For more information see [includes](https:\/\/snap.stoplight.io\/docs\/store-api\/docs\/concepts\/search-queries.md#includes-apialias)."
+            "description": "Alias which can be used to restrict response fields. For more information see [includes](https:\/\/snap.stoplight.io\/docs\/frontend-api\/docs\/concepts\/search-queries.md#includes-apialias)."
           }
         }
       }
