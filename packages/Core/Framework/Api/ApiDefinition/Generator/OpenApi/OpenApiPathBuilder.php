@@ -12,7 +12,6 @@ use OpenApi\Annotations\Response as OpenApiResponse;
 use OpenApi\Annotations\Tag;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\Log\Package;
-use SaagFrontend\Channel\Entity\ChannelDefinitionInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 #[Package('core')]
@@ -35,10 +34,6 @@ class OpenApiPathBuilder
             'path' => $path . '/{id}',
         ]);
         $paths[$path . '/{id}']->get = $this->getDetailPath($definition);
-
-        if (is_subclass_of($definition, ChannelDefinitionInterface::class)) {
-            return $paths;
-        }
 
         $paths[$path]->post = $this->getCreatePath($definition);
         $paths[$path . '/{id}']->patch = $this->getUpdatePath($definition);

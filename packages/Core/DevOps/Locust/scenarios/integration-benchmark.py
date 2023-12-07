@@ -4,7 +4,6 @@ sys.path.append(os.path.dirname(__file__) + '/..')
 
 from common.api import Api
 from common.context import Context
-from common.frontend import Frontend
 from locust import FastHttpUser, task, between
 
 # Optional dependency

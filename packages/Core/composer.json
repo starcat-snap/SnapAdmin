@@ -119,7 +119,8 @@
     "twig/string-extra": "^3.4",
     "twig/twig": "^3.4.3",
     "zircote/swagger-php": "^4.5.1",
-    "squirrelphp/twig-php-syntax": "^1.7.0"
+    "squirrelphp/twig-php-syntax": "^1.7.0",
+    "ext-http": "*"
   },
   "require-dev": {
     "ext-tokenizer": "*",

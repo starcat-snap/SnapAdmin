@@ -13,7 +13,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\AssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\MappingEntityDefinition;
 use SnapAdmin\Core\Framework\Log\Package;
-use SaagFrontend\Channel\Entity\ChannelDefinitionInterface;
 
 /**
  * @internal
@@ -47,7 +46,7 @@ class OpenApi3Generator implements ApiDefinitionGeneratorInterface
     }
 
     /**
-     * @param array<string, EntityDefinition>|array<string, EntityDefinition&ChannelDefinitionInterface> $definitions
+     * @param array<string, EntityDefinition>|array<string, EntityDefinition> $definitions
      *
      * @return OpenApiSpec
      */
@@ -111,7 +110,7 @@ class OpenApi3Generator implements ApiDefinitionGeneratorInterface
     }
 
     /**
-     * @param array<string, EntityDefinition>|list<EntityDefinition&ChannelDefinitionInterface> $definitions
+     * @param array<string, EntityDefinition>|list<EntityDefinition> $definitions
      *
      * @return array<string, array{name: string, translatable: array<int|string, mixed>, properties: array<string, mixed>}>
      */
@@ -225,7 +224,7 @@ class OpenApi3Generator implements ApiDefinitionGeneratorInterface
     }
 
     /**
-     * @param array<string, EntityDefinition>|list<EntityDefinition&ChannelDefinitionInterface> $definitions
+     * @param array<string, EntityDefinition>|list<EntityDefinition> $definitions
      */
     private function containsChannelDefinition(array $definitions): bool
     {
@@ -257,11 +256,6 @@ class OpenApi3Generator implements ApiDefinitionGeneratorInterface
         if ($class->isSubclassOf(MappingEntityDefinition::class)) {
             return true;
         }
-
-        if ($forChannel && !is_subclass_of($definition, ChannelDefinitionInterface::class)) {
-            return true;
-        }
-
         return false;
     }
 }

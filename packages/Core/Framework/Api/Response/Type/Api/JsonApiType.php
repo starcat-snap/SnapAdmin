@@ -6,15 +6,15 @@ use SnapAdmin\Core\Framework\Api\Context\AdminApiSource;
 use SnapAdmin\Core\Framework\Api\Context\ContextSource;
 use SnapAdmin\Core\Framework\Api\Response\JsonApiResponse;
 use SnapAdmin\Core\Framework\Api\Response\Type\JsonFactoryBase;
+use SnapAdmin\Core\Framework\Api\ResponseFields;
 use SnapAdmin\Core\Framework\Api\Serializer\JsonApiEncoder;
+use SnapAdmin\Core\Framework\Api\StructEncoder;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\EntitySearchResult;
 use SnapAdmin\Core\Framework\Log\Package;
-use SaagFrontend\Channel\Api\ResponseFields;
-use SaagFrontend\Channel\Api\StructEncoder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 

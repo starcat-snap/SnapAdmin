@@ -11,7 +11,6 @@ use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleError;
-use SnapAdmin\Frontend\Content\Rule\RuleDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\AssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\RuleAreas;
 use SnapAdmin\Core\Framework\Log\Package;
@@ -63,12 +62,6 @@ class RuleAreasFlagNotAllowedRule implements Rule
         foreach ($node->getArgs() as $arg) {
             if ($this->resolveClassName($arg->value) !== RuleAreas::class) {
                 continue;
-            }
-
-            if ($class->getName() !== RuleDefinition::class && !$class->isSubclassOf(RuleDefinition::class)) {
-                return [
-                    'RuleAreas flag may only be added within the scope of RuleDefinition',
-                ];
             }
 
             $fieldClassName = $this->resolveClassName($node->var);

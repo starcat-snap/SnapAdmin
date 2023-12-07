@@ -70,7 +70,6 @@ class TemplateFinder implements TemplateFinderInterface, ResetInterface
         }
 
         // iterate over all bundles but exclude the originally requested bundle
-        // example: if @Frontend/frontend/index.html.twig is requested, all bundles except Frontend will be checked first
         foreach ($modifiedQueue as $prefix) {
             $name = '@' . $prefix . '/' . $templatePath;
 

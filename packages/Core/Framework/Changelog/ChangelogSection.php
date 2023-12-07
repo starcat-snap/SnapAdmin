@@ -10,7 +10,6 @@ enum ChangelogSection: string
     case core = 'Core';
     case api = 'API';
     case administration = 'Administration';
-    case frontend = 'Frontend';
     case upgrade = 'Upgrade Information';
     case major = 'Next Major Version Changes';
 }

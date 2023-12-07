@@ -33,8 +33,6 @@ class ChangelogDefinition
 
     private ?string $core = null;
 
-    private ?string $frontend = null;
-
     private ?string $administration = null;
 
     private ?string $api = null;
@@ -56,13 +54,6 @@ class ChangelogDefinition
                 $this->buildViolationSectionSeparator($context, ChangelogSection::api, $matches[1]);
             }
             $this->checkChangelogEntries($context, $this->api, ChangelogSection::api);
-        }
-
-        if ($this->frontend) {
-            if (preg_match('/\n+#\s+(\w+)/', $this->frontend, $matches)) {
-                $this->buildViolationSectionSeparator($context, ChangelogSection::frontend, $matches[1]);
-            }
-            $this->checkChangelogEntries($context, $this->frontend, ChangelogSection::frontend);
         }
 
         if ($this->administration) {
@@ -174,18 +165,6 @@ class ChangelogDefinition
     public function setCore(?string $core): ChangelogDefinition
     {
         $this->core = $core;
-
-        return $this;
-    }
-
-    public function getFrontend(): ?string
-    {
-        return $this->frontend;
-    }
-
-    public function setFrontend(?string $frontend): ChangelogDefinition
-    {
-        $this->frontend = $frontend;
 
         return $this;
     }

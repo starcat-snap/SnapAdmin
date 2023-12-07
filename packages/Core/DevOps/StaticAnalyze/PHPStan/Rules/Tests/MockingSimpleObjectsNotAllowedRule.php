@@ -18,7 +18,6 @@ use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\EntitySearchResult;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Struct\Struct;
-use SaagFrontend\Channel\ChannelContext;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -39,7 +38,6 @@ class MockingSimpleObjectsNotAllowedRule implements Rule
     ];
 
     private const ALLOWED_CLASSES = [
-        ChannelContext::class,
         EntitySearchResult::class,
     ];
 

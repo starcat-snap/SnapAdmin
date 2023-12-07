@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Framework\DependencyInjection\CompilerPass;
 
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Frontend\Theme\ThemeCompiler;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
@@ -22,8 +21,6 @@ class AssetRegistrationCompilerPass implements CompilerPassInterface
         $assetService = $container->getDefinition('assets.packages');
         $assetService->addMethodCall('setDefaultPackage', [$assets['asset']]);
 
-        if ($container->hasDefinition(ThemeCompiler::class)) {
-            $container->getDefinition(ThemeCompiler::class)->replaceArgument(6, $assets);
-        }
+
     }
 }

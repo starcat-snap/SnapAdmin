@@ -9,9 +9,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCollection;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Struct\Collection;
-use SaagFrontend\Channel\Entity\PartialChannelEntityLoadedEvent;
-use SaagFrontend\Channel\Entity\ChannelEntityLoadedEvent;
-use SaagFrontend\Channel\ChannelContext;
 
 /**
  * @internal
@@ -47,43 +44,6 @@ class EntityLoadedEventFactory
         return $this->buildEvents($mapping, $generator, $context);
     }
 
-    /**
-     * @param array<mixed> $entities
-     *
-     * @return EntityLoadedContainerEvent[]
-     */
-    public function createForChannel(array $entities, ChannelContext $context): array
-    {
-        $mapping = $this->recursion($entities, []);
-
-        $generator = fn(EntityDefinition $definition, array $entities) => new EntityLoadedEvent($definition, $entities, $context->getContext());
-
-        $salesGenerator = fn(EntityDefinition $definition, array $entities) => new ChannelEntityLoadedEvent($definition, $entities, $context);
-
-        return [
-            $this->buildEvents($mapping, $generator, $context->getContext()),
-            $this->buildEvents($mapping, $salesGenerator, $context->getContext()),
-        ];
-    }
-
-    /**
-     * @param array<mixed> $entities
-     *
-     * @return EntityLoadedContainerEvent[]
-     */
-    public function createPartialForChannel(array $entities, ChannelContext $context): array
-    {
-        $mapping = $this->recursion($entities, []);
-
-        $generator = fn(EntityDefinition $definition, array $entities) => new PartialEntityLoadedEvent($definition, $entities, $context->getContext());
-
-        $salesGenerator = fn(EntityDefinition $definition, array $entities) => new PartialChannelEntityLoadedEvent($definition, $entities, $context);
-
-        return [
-            $this->buildEvents($mapping, $generator, $context->getContext()),
-            $this->buildEvents($mapping, $salesGenerator, $context->getContext()),
-        ];
-    }
 
     /**
      * @param array<string, list<Entity>> $mapping

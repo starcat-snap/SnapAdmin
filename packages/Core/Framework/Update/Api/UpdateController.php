@@ -14,7 +14,6 @@ use SnapAdmin\Core\Framework\Update\Services\ApiClient;
 use SnapAdmin\Core\Framework\Update\Services\ExtensionCompatibility;
 use SnapAdmin\Core\Framework\Update\Steps\DeactivateExtensionsStep;
 use SnapAdmin\Core\Kernel;
-use SaagFrontend\Channel\NoContentResponse;
 use SnapAdmin\Core\System\SystemConfig\SystemConfigService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -81,14 +80,6 @@ class UpdateController extends AbstractController
         $update = $this->apiClient->checkForUpdates();
 
         return new JsonResponse($this->extensionCompatibility->getExtensionCompatibilities($update, $context));
-    }
-
-    #[Route(path: '/api/_action/update/download-recovery', name: 'api.custom.updateapi.download-recovery', defaults: ['_acl' => ['system:core:update', 'system_config:read']], methods: ['GET'])]
-    public function downloadLatestRecovery(): Response
-    {
-        $this->apiClient->downloadRecoveryTool();
-
-        return new NoContentResponse();
     }
 
     #[Route(path: '/api/_action/update/deactivate-plugins', name: 'api.custom.updateapi.deactivate-plugins', defaults: ['_acl' => ['system:core:update', 'system_config:read']], methods: ['GET'])]

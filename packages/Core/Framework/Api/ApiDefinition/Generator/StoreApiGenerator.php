@@ -13,7 +13,6 @@ use SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\OpenApi\OpenApiSchemaBu
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\MappingEntityDefinition;
 use SnapAdmin\Core\Framework\Log\Package;
-use SaagFrontend\Channel\Entity\ChannelDefinitionInterface;
 
 /**
  * @internal
@@ -105,7 +104,7 @@ class StoreApiGenerator implements ApiDefinitionGeneratorInterface
     /**
      * {@inheritdoc}
      *
-     * @param array<string, EntityDefinition>|array<string, EntityDefinition&ChannelDefinitionInterface> $definitions
+     * @param array<string, EntityDefinition>|array<string, EntityDefinition> $definitions
      *
      * @return never
      */
@@ -131,10 +130,6 @@ class StoreApiGenerator implements ApiDefinitionGeneratorInterface
     {
         $class = new \ReflectionClass($definition);
         if ($class->isSubclassOf(MappingEntityDefinition::class)) {
-            return true;
-        }
-
-        if ($forChannel && !is_subclass_of($definition, ChannelDefinitionInterface::class)) {
             return true;
         }
 

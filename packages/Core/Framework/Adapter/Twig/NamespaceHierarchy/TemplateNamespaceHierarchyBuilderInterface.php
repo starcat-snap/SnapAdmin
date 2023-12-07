@@ -12,7 +12,6 @@ interface TemplateNamespaceHierarchyBuilderInterface
      * Needs to return the new hierarchy.
      * Example hierarchy structure:
      * [
-     *     'Frontend',
      *     'SwagPayPal',
      *     'MyOwnTheme',
      * ]

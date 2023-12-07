@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\Framework\Api\ApiDefinition;
 
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\Log\Package;
-use SaagFrontend\Channel\Entity\ChannelDefinitionInterface;
 
 /**
  * @internal
@@ -20,7 +19,7 @@ interface ApiDefinitionGeneratorInterface
     public function supports(string $format, string $api): bool;
 
     /**
-     * @param array<string, EntityDefinition>|array<string, EntityDefinition&ChannelDefinitionInterface> $definitions
+     * @param array<string, EntityDefinition>|array<string, EntityDefinition> $definitions
      * @param Api $api
      * @param ApiType $apiType
      *
@@ -29,7 +28,7 @@ interface ApiDefinitionGeneratorInterface
     public function generate(array $definitions, string $api, string $apiType, ?string $bundleName): array;
 
     /**
-     * @param array<string, EntityDefinition>|array<string, EntityDefinition&ChannelDefinitionInterface> $definitions
+     * @param array<string, EntityDefinition>|array<string, EntityDefinition> $definitions
      *
      * @return ApiSchema
      */

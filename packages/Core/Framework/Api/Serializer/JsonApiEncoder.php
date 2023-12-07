@@ -3,6 +3,7 @@
 namespace SnapAdmin\Core\Framework\Api\Serializer;
 
 use SnapAdmin\Core\Framework\Api\Exception\UnsupportedEncoderInputException;
+use SnapAdmin\Core\Framework\Api\ResponseFields;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCollection;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
@@ -14,7 +15,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationFiel
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\OneToOneAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\Log\Package;
-use SaagFrontend\Channel\Api\ResponseFields;
 
 #[Package('core')]
 class JsonApiEncoder

@@ -6,7 +6,6 @@ use PHPUnit\Framework\TestCase;
 use SnapAdmin\Administration\Controller\AdministrationController;
 use SnapAdmin\Core\Framework\Test\TestCaseBase\AdminApiTestBehaviour;
 use SnapAdmin\Core\Framework\Test\TestCaseBase\IntegrationTestBehaviour;
-use SnapAdmin\Frontend\Controller\ProductController;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -46,25 +45,6 @@ class CoreSubscriberTest extends TestCase
         static::assertTrue($response->headers->has('Strict-Transport-Security'));
     }
 
-    /**
-     * @group slow
-     */
-    public function testFrontendNoCsp(): void
-    {
-        if (!$this->getContainer()->has(ProductController::class)) {
-            static::markTestSkipped('Frontend CSP test need frontend bundle to be installed');
-        }
-
-        $browser = $this->getBrowser();
-        $browser->request('GET', $_SERVER['APP_URL']);
-        $response = $browser->getResponse();
-
-        static::assertSame(Response::HTTP_OK, $response->getStatusCode(), (string)$response->getContent());
-
-        static::assertTrue($response->headers->has('X-Frame-Options'));
-        static::assertTrue($response->headers->has('X-Content-Type-Options'));
-        static::assertFalse($response->headers->has('Content-Security-Policy'));
-    }
 
     public function testAdminHasCsp(): void
     {
