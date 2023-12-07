@@ -14,7 +14,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Exception\DefinitionNotFoundEx
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Exception\MissingReverseAssociation;
 use SnapAdmin\Core\Framework\HttpException;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\Framework\Routing\Exception\ChannelNotFoundException;
 use SnapAdmin\Core\Framework\SnapAdminHttpException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
