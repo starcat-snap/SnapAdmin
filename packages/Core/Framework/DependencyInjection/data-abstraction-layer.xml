@@ -648,10 +648,6 @@
             <argument type="tagged" tag="snap.dal.exception_handler"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\TechnicalNameExceptionHandler">
-            <tag name="snap.dal.exception_handler"/>
-        </service>
-
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\EntityProtection\EntityProtectionValidator">
             <tag name="kernel.event_subscriber"/>
         </service>

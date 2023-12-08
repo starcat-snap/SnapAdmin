@@ -76,7 +76,6 @@
     "ramsey/uuid": "^4.7",
     "scssphp/scssphp": "v1.11.0",
     "setasign/fpdi": "^2.3.7",
-    "snap/conflicts": "*",
     "shyim/opensearch-php-dsl": "^1.0.5",
     "squirrelphp/twig-php-syntax": "^1.7.0",
     "symfony/asset": "~6.3.0",
