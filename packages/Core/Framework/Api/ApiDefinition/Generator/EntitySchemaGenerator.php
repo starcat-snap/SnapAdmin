@@ -11,7 +11,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BlobField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BoolField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BreadcrumbField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\CalculatedPriceField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\CartPriceField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ChildCountField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ChildrenAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\CreatedAtField;
@@ -35,8 +34,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\OneToOneAssociationField
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ParentAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ParentFkField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\PasswordField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\PriceDefinitionField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\PriceField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ReferenceVersionField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
@@ -165,9 +162,6 @@ class EntitySchemaGenerator implements ApiDefinitionGeneratorInterface
             case $field instanceof CustomFields:
             case $field instanceof VersionDataPayloadField:
             case $field instanceof CalculatedPriceField:
-            case $field instanceof CartPriceField:
-            case $field instanceof PriceDefinitionField:
-            case $field instanceof PriceField:
             case $field instanceof ObjectField:
                 return $this->createJsonObjectType($definition, $field, $flags);
 

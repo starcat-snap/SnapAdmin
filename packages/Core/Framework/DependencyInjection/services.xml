@@ -192,10 +192,6 @@ base-uri 'self';
             <tag name="snap.route_scope_whitelist"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Routing\PaymentScopeWhitelist">
-            <tag name="snap.route_scope_whitelist"/>
-        </service>
-
         <service id="SnapAdmin\Core\Framework\Routing\RouteScopeListener">
             <argument type="service" id="SnapAdmin\Core\Framework\Routing\RouteScopeRegistry"/>
             <argument type="service" id="request_stack"/>
@@ -559,10 +555,6 @@ base-uri 'self';
 
         <service id="SnapAdmin\Core\Framework\Adapter\Cache\RedisConnectionFactory">
             <argument>%snap.cache.redis_prefix%</argument>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Routing\Facade\RequestFacadeFactory" public="true">
-            <argument type="service" id="request_stack"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\Adapter\Storage\AbstractKeyValueStorage" class="SnapAdmin\Core\Framework\Adapter\Storage\MySQLKeyValueStorage">

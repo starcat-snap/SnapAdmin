@@ -69,11 +69,6 @@
             <argument type="service" id="SnapAdmin\Core\System\SystemConfig\Store\MemoizedSystemConfigStore"/>
         </service>
 
-        <service id="SnapAdmin\Core\System\SystemConfig\Facade\SystemConfigFacadeHookFactory" public="true">
-            <argument type="service" id="SnapAdmin\Core\System\SystemConfig\SystemConfigService"/>
-            <argument type="service" id="Doctrine\DBAL\Connection"/>
-        </service>
-
         <service id="SnapAdmin\Core\System\SystemConfig\Command\ConfigGet">
             <argument type="service" id="SnapAdmin\Core\System\SystemConfig\SystemConfigService"/>
 

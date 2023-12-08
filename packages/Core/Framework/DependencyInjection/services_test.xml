@@ -19,105 +19,10 @@
     <services>
         <defaults public="true"/>
 
-        <service id="SnapAdmin\Core\Test\Integration\PaymentHandler\AsyncTestPaymentHandler">
-            <argument type="service"
-                      id="Storefront\Checkout\Order\Aggregate\OrderTransaction\OrderTransactionStateHandler"/>
-            <tag name="snap.payment.method.async"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Test\Integration\PaymentHandler\PreparedTestPaymentHandler">
-            <tag name="snap.payment.method.prepared"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Test\Integration\PaymentHandler\MultipleTestPaymentHandler">
-            <tag name="snap.payment.method.sync"/>
-            <tag name="snap.payment.method.prepared"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Test\Integration\PaymentHandler\RefundTestPaymentHandler">
-            <argument type="service"
-                      id="Storefront\Checkout\Order\Aggregate\OrderTransactionCaptureRefund\OrderTransactionCaptureRefundStateHandler"/>
-            <tag name="snap.payment.method.refund"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Test\Integration\PaymentHandler\SyncTestFailedPaymentHandler">
-            <tag name="snap.payment.method.sync"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Test\Integration\PaymentHandler\SyncTestPaymentHandler">
-            <argument type="service"
-                      id="Storefront\Checkout\Order\Aggregate\OrderTransaction\OrderTransactionStateHandler"/>
-            <tag name="snap.payment.method.sync"/>
-        </service>
-
         <service id="SnapAdmin\Core\Framework\Test\Filesystem\Adapter\MemoryAdapterFactory">
             <tag name="snap.filesystem.factory"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Test\DataAbstractionLayer\Field\TestDefinition\NamedDefinition">
-            <tag name="snap.entity.definition"/>
-        </service>
-
-        <service
-                id="SnapAdmin\Core\Framework\Test\DataAbstractionLayer\Field\TestDefinition\NamedOptionalGroupDefinition">
-            <tag name="snap.entity.definition"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Test\DataAbstractionLayer\Field\TestDefinition\RootDefinition">
-            <tag name="snap.entity.definition" entity="root"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Test\DataAbstractionLayer\Field\TestDefinition\SubDefinition">
-            <tag name="snap.entity.definition" entity="root_sub"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Test\DataAbstractionLayer\Field\TestDefinition\SubCascadeDefinition">
-            <tag name="snap.entity.definition" entity="root_sub_cascade"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Test\DataAbstractionLayer\Field\TestDefinition\SubManyDefinition">
-            <tag name="snap.entity.definition" entity="root_sub_many"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Test\DataAbstractionLayer\Write\Validation\TestDefinition\TestDefinition">
-            <tag name="snap.entity.definition" entity="_test_lock"/>
-        </service>
-
-        <service
-                id="SnapAdmin\Core\Framework\Test\DataAbstractionLayer\Write\Validation\TestDefinition\TestTranslationDefinition">
-            <tag name="snap.entity.definition" entity="_test_lock_translation"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Test\DataAbstractionLayer\Field\TestDefinition\CustomFieldTestDefinition">
-            <tag name="snap.entity.definition" entity="attribute_test"/>
-        </service>
-
-        <service
-                id="SnapAdmin\Core\Framework\Test\DataAbstractionLayer\Field\TestDefinition\CustomFieldTestTranslationDefinition">
-            <tag name="snap.entity.definition" entity="attribute_test_translation"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Test\DataAbstractionLayer\Field\TestDefinition\WriteProtectedDefinition">
-            <tag name="snap.entity.definition" entity="_test_nullable"/>
-        </service>
-
-        <service
-                id="SnapAdmin\Core\Framework\Test\DataAbstractionLayer\Field\TestDefinition\WriteProtectedRelationDefinition">
-            <tag name="snap.entity.definition" entity="_test_relation"/>
-        </service>
-
-        <service
-                id="SnapAdmin\Core\Framework\Test\DataAbstractionLayer\Field\TestDefinition\WriteProtectedReferenceDefinition">
-            <tag name="snap.entity.definition" entity="_test_nullable_reference"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Test\DataAbstractionLayer\Field\TestDefinition\ExtendedProductDefinition">
-            <tag name="snap.entity.definition" entity="extended_product"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Test\DataAbstractionLayer\Field\TestDefinition\DateTimeDefinition">
-            <tag name="snap.entity.definition" entity="date_time_test"/>
-        </service>
 
         <service id="messenger.test_receiver_locator" alias="messenger.receiver_locator" public="true"/>
         <service id="messenger.bus.test_snap" class="Symfony\Component\Messenger\TraceableMessageBus"
@@ -156,49 +61,10 @@
             <argument>%kernel.cache_dir%</argument>
         </service>
 
-        <service id="snap.app_system.guzzle" class="GuzzleHttp\Client">
-            <argument type="collection">
-                <argument key="handler" type="service">
-                    <service class="GuzzleHttp\HandlerStack">
-                        <factory class="GuzzleHttp\HandlerStack" method="create"/>
-                        <argument type="service" id="SnapAdmin\Core\Test\Integration\App\TestAppServer"/>
-                        <call method="push">
-                            <argument type="service" id="snap.app_system.guzzle.middleware"/>
-                        </call>
-                        <call method="push">
-                            <argument type="service" id="test.guzzle.history.middleware"/>
-                        </call>
-                    </service>
-                </argument>
-            </argument>
-        </service>
-
-        <service id="SnapAdmin\Core\Test\Integration\App\TestAppServer">
-            <argument type="service" id="GuzzleHttp\Handler\MockHandler"/>
-        </service>
 
         <service id="GuzzleHttp\Handler\MockHandler" public="true">
             <argument type="collection">
             </argument>
-        </service>
-
-        <service id="test.guzzle.history.middleware" class="callable">
-            <factory service="SnapAdmin\Core\Test\Integration\App\GuzzleHistoryCollector"
-                     method="getHistoryMiddleWare"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Test\Integration\App\GuzzleHistoryCollector" public="true"/>
-
-        <service id="SnapAdmin\Core\Framework\Test\Api\Acl\fixtures\AclTestController" public="true"/>
-
-        <service id="test_payment_decoration"
-                 class="SnapAdmin\Core\Framework\App\Payment\Handler\AppAsyncPaymentHandler"
-                 decorates="SnapAdmin\Core\Framework\App\Payment\Handler\AppAsyncPaymentHandler">
-            <argument type="service"
-                      id="Storefront\Checkout\Order\Aggregate\OrderTransaction\OrderTransactionStateHandler"/>
-            <argument type="service" id="Storefront\System\StateMachine\StateMachineRegistry"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\App\Payment\Payload\PaymentPayloadService"/>
-            <argument type="service" id="order_transaction_capture_refund.repository"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\Test\TestSessionStorageFactory"

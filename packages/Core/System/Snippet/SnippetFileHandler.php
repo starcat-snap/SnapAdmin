@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\System\Snippet;
 
 use SnapAdmin\Administration\Administration;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Storefront\Storefront;
 use Symfony\Component\Finder\Finder;
 
 #[Package('system-settings')]
@@ -36,15 +35,6 @@ class SnippetFileHandler
         }
 
         return $this->findSnippetFilesByPath($bundleDir . '/Resources/app/*/src/');
-    }
-
-    public function findStorefrontSnippetFiles(): array
-    {
-        if (!($bundleDir = $this->getBundleDir(Storefront::class))) {
-            return [];
-        }
-
-        return $this->findSnippetFilesByPath($bundleDir . '/Resources/snippet/');
     }
 
     private function getBundleDir(string $bundleClass): ?string

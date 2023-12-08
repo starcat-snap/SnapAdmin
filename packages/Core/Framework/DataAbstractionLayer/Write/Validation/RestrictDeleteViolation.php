@@ -15,12 +15,6 @@ class RestrictDeleteViolation
          * Contains an array which indexed by definition class.
          * Each value represents a single restricted identity
          *
-         * Example:
-         *      [Storefront\Checkout\Cart\Price\Struct\QuantityPriceDefinition] => Array
-         *          (
-         *              [0] => c708bb9dc2c34243b9fb1fd6a676f2fb
-         *              [1] => c708bb9dc2c34243b9fb1fd6a676f2fb
-         *          )
          */
         private readonly array $restrictions
     )

@@ -2,14 +2,10 @@
 
 namespace SnapAdmin\Core\Framework\DataAbstractionLayer;
 
-use Storefront\Checkout\Cart\Price\Struct\CalculatedPrice;
-use Storefront\Checkout\Cart\Price\Struct\CartPrice;
-use Storefront\Checkout\Cart\Price\Struct\QuantityPriceDefinition;
+
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelper;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BlobField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BoolField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\CalculatedPriceField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\CartPriceField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ChildrenAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\DateField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\DateTimeField;
@@ -27,14 +23,11 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationFiel
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\OneToOneAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ParentAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\PasswordField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\PriceDefinitionField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\PriceField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ReferenceVersionField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\RemoteAddressField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\VersionField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Pricing\Price;
 use SnapAdmin\Core\Framework\Log\Package;
 
 /**
@@ -215,26 +208,6 @@ EOF;
                     $definition,
                     EntityDefinitionQueryHelper::getTranslatedField($definition, $field)
                 );
-            case $field instanceof CartPriceField:
-                $type = 'CartPrice';
-                $uses[] = 'use ' . CartPrice::class;
-
-                break;
-            case $field instanceof CalculatedPriceField:
-                $type = 'CalculatedPrice';
-                $uses[] = 'use ' . CalculatedPrice::class;
-
-                break;
-            case $field instanceof PriceDefinitionField:
-                $type = 'QuantityPriceDefinition';
-                $uses[] = 'use ' . QuantityPriceDefinition::class;
-
-                break;
-            case $field instanceof PriceField:
-                $type = 'Price';
-                $uses[] = 'use ' . Price::class;
-
-                break;
             case $field instanceof FloatField:
                 $type = 'float';
 

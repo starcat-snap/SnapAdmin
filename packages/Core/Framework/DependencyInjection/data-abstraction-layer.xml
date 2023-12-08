@@ -70,8 +70,6 @@
             <argument>%kernel.project_dir%</argument>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Cache\EntityCacheKeyGenerator" public="true"/>
-
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelper">
         </service>
 
@@ -121,24 +119,6 @@
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\ExtensionRegistry" public="true">
             <argument type="tagged" tag="snap.entity.extension"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Facade\RepositoryFacadeHookFactory" public="true">
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Facade\AppContextCreator"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\RequestCriteriaBuilder"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Api\Acl\AclCriteriaValidator"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Facade\RepositoryWriterFacadeHookFactory"
-                 public="true">
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Facade\AppContextCreator"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Api\Sync\SyncService"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Facade\AppContextCreator">
-            <argument type="service" id="Doctrine\DBAL\Connection"/>
         </service>
 
         <!-- EntityDefinition[] -->
@@ -334,20 +314,6 @@
             <argument type="service" id="lock.factory"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\CalculatedPriceFieldSerializer">
-            <argument type="service" id="validator"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
-
-            <tag name="snap.field_serializer"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\CartPriceFieldSerializer">
-            <argument type="service" id="validator"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
-
-            <tag name="snap.field_serializer"/>
-        </service>
-
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\CashRoundingConfigFieldSerializer">
             <argument type="service" id="validator"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
@@ -391,13 +357,6 @@
         </service>
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\FkFieldSerializer">
-            <argument type="service" id="validator"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
-
-            <tag name="snap.field_serializer"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\StateMachineStateFieldSerializer">
             <argument type="service" id="validator"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
 

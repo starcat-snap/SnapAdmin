@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\System\Snippet;
 
-use Doctrine\DBAL\ArrayParameterType;
 use Doctrine\DBAL\Connection;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
@@ -10,7 +9,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityRepository;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Aggregation\Bucket\TermsAggregation;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\AggregationResult\Bucket\TermsResult;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Uuid\Uuid;
 use SnapAdmin\Core\System\Snippet\Aggregate\SnippetSet\SnippetSetEntity;
@@ -18,7 +16,6 @@ use SnapAdmin\Core\System\Snippet\Files\AbstractSnippetFile;
 use SnapAdmin\Core\System\Snippet\Files\SnippetFileCollection;
 use SnapAdmin\Core\System\Snippet\Filter\SnippetFilterFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\Translation\MessageCatalogueInterface;
 
 #[Package('system-settings')]
 class SnippetService
@@ -32,10 +29,6 @@ class SnippetService
         private readonly EntityRepository $snippetRepository,
         private readonly EntityRepository $snippetSetRepository,
         private readonly SnippetFilterFactory $snippetFilterFactory,
-        /**
-         * The "kernel" service is synthetic, it needs to be set at boot time before it can be used.
-         * We need to get StorefrontPluginRegistry service from service_container lazily because it depends on kernel service.
-         */
         private readonly ContainerInterface $container,
     ) {
     }

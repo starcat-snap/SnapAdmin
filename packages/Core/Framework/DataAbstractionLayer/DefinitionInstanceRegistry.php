@@ -34,8 +34,8 @@ class DefinitionInstanceRegistry
     protected $entityClassMapping;
 
     /**
-     * @param array<string, class-string<EntityDefinition>> $definitionMap array of $entityName => $definitionServiceId, e.g. 'product' => '\Storefront\Content\Product\ProductDefinition'
-     * @param array<string, string> $repositoryMap array of $entityName => $repositoryServiceId, e.g. 'product' => 'product.repository'
+     * @param array<string, class-string<EntityDefinition>> $definitionMap
+     * @param array<string, string> $repositoryMap
      * @internal
      *
      */

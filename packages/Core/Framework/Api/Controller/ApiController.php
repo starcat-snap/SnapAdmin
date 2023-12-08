@@ -469,11 +469,7 @@ class ApiController extends AbstractController
                 );
             }
         } elseif ($association instanceof OneToManyAssociationField) {
-            /*
-             * Example
-             * Route:           /api/product/SW1/prices
-             * $definition:     \Storefront\Content\Product\Definition\ProductPriceDefinition
-             */
+
 
             // get foreign key definition of reference
             /** @var Field $foreignKey */
@@ -489,11 +485,6 @@ class ApiController extends AbstractController
                 )
             );
         } elseif ($association instanceof ManyToOneAssociationField) {
-            /*
-             * Example
-             * Route:           /api/product/SW1/manufacturer
-             * $definition:     \Storefront\Content\Product\Aggregate\ProductManufacturer\ProductManufacturerDefinition
-             */
 
             // get inverse association to filter to parent value
             $reverses = $definition->getFields()->filter(
@@ -513,11 +504,6 @@ class ApiController extends AbstractController
                 )
             );
         } elseif ($association instanceof OneToOneAssociationField) {
-            /*
-             * Example
-             * Route:           /api/order/xxxx/orderCustomer
-             * $definition:     \Storefront\Checkout\Order\Aggregate\OrderCustomer\OrderCustomerDefinition
-             */
 
             // get inverse association to filter to parent value
             $reverses = $definition->getFields()->filter(

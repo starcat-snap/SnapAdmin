@@ -13,7 +13,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BlobField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BoolField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BreadcrumbField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\CalculatedPriceField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\CartPriceField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\CashRoundingConfigField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ChildCountField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ChildrenAssociationField;
@@ -47,11 +46,8 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\OneToOneAssociationField
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ParentAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ParentFkField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\PasswordField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\PriceDefinitionField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\PriceField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ReferenceVersionField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\RemoteAddressField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StateMachineStateField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StorageAware;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TimeZoneField;
@@ -83,7 +79,6 @@ class SchemaBuilder
         ReferenceVersionField::class => Types::BINARY,
         CreatedByField::class => Types::BINARY,
         UpdatedByField::class => Types::BINARY,
-        StateMachineStateField::class => Types::BINARY,
 
         CreatedAtField::class => Types::DATETIME_MUTABLE,
         UpdatedAtField::class => Types::DATETIME_MUTABLE,
@@ -91,10 +86,6 @@ class SchemaBuilder
 
         DateField::class => Types::DATE_MUTABLE,
 
-        CartPriceField::class => Types::JSON,
-        CalculatedPriceField::class => Types::JSON,
-        PriceField::class => Types::JSON,
-        PriceDefinitionField::class => Types::JSON,
         JsonField::class => Types::JSON,
         ListField::class => Types::JSON,
         ConfigJsonField::class => Types::JSON,

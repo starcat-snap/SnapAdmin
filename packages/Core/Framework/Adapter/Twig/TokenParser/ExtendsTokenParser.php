@@ -3,6 +3,7 @@
 namespace SnapAdmin\Core\Framework\Adapter\Twig\TokenParser;
 
 
+use SnapAdmin\Core\Framework\Adapter\AdapterException;
 use SnapAdmin\Core\Framework\Adapter\Twig\TemplateFinderInterface;
 use SnapAdmin\Core\Framework\Adapter\Twig\TemplateScopeDetector;
 use SnapAdmin\Core\Framework\Log\Package;

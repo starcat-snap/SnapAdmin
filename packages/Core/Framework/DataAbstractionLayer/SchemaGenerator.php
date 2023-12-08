@@ -7,7 +7,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\AssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BlobField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BoolField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\CalculatedPriceField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\CartPriceField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ChildCountField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ChildrenAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\DateField;
@@ -29,8 +28,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationFiel
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ParentAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ParentFkField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\PasswordField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\PriceDefinitionField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\PriceField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ReferenceVersionField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\RemoteAddressField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StorageAware;
@@ -133,10 +130,7 @@ EOL;
             case $field instanceof TranslatedField:
                 return null;
 
-            case $field instanceof CartPriceField:
             case $field instanceof CalculatedPriceField:
-            case $field instanceof PriceDefinitionField:
-            case $field instanceof PriceField:
             case $field instanceof ListField:
             case $field instanceof JsonField:
                 $type = 'JSON';

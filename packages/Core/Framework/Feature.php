@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\Framework;
 use PHPUnit\Framework\TestCase;
 use SnapAdmin\Core\DevOps\Environment\EnvironmentHelper;
 use SnapAdmin\Core\Framework\Log\Package;
-use Storefront\Framework\Script\Debugging\ScriptTraces;
 
 /**
  * @phpstan-type FeatureFlagConfig array{name?: string, default?: boolean, major?: boolean, description?: string}
@@ -181,10 +180,6 @@ class Feature
         if (self::isActive($flag) === $state || (self::$registeredFeatures !== [] && !self::has($flag))) {
             throw new \RuntimeException($message);
         }
-
-        if (\PHP_SAPI !== 'cli') {
-            ScriptTraces::addDeprecationNotice($message);
-        }
     }
 
     public static function triggerDeprecationOrThrow(string $majorFlag, string $message): void
@@ -194,10 +189,6 @@ class Feature
         }
 
         if (empty(self::$silent[$majorFlag])) {
-            if (\PHP_SAPI !== 'cli') {
-                ScriptTraces::addDeprecationNotice($message);
-            }
-
             trigger_deprecation('snapadmin/core', '', $message);
         }
     }
