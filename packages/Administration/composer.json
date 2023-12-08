@@ -19,7 +19,7 @@
   "require": {
     "php": "~8.2.0 || ~8.3.0",
     "doctrine/dbal": "^3.7",
-    "snap/core": "*",
+    "snapadmin/core": "*",
     "symfony/framework-bundle": "~6.3.0",
     "symfony/http-foundation": "~6.3.0",
     "symfony/routing": "~6.3.0",
