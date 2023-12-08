@@ -5,7 +5,7 @@ namespace SnapAdmin\Core\System\SystemConfig\Facade;
 use Doctrine\DBAL\Connection;
 use SnapAdmin\Core\Framework\Api\Exception\MissingPrivilegeException;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\Framework\Script\Execution\ScriptAppInformation;
+use Storefront\Framework\Script\Execution\ScriptAppInformation;
 use SnapAdmin\Core\Framework\Uuid\Uuid;
 use SnapAdmin\Core\System\SystemConfig\SystemConfigService;
 

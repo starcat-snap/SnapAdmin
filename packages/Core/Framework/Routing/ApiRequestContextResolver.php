@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Framework\Routing;
 
 use Doctrine\DBAL\Connection;
-use SnapAdmin\Core\Checkout\Cart\Price\Struct\CartPrice;
 use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\Framework\Api\Context\AdminApiSource;
 use SnapAdmin\Core\Framework\Api\Context\ContextSource;
@@ -51,12 +50,9 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
         $context = new Context(
             $this->resolveContextSource($request),
             [],
-            $params['currencyId'],
             $languageIdChain,
             $params['versionId'] ?? Defaults::LIVE_VERSION,
-            $params['currencyFactory'],
             $params['considerInheritance'],
-            CartPrice::TAX_STATE_GROSS,
             $rounding
         );
 

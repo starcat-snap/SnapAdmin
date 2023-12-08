@@ -4,9 +4,9 @@ namespace SnapAdmin\Core\Framework\Adapter\Cache\Script\Facade;
 
 use SnapAdmin\Core\Framework\Adapter\Cache\CacheInvalidator;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\Framework\Script\Execution\Awareness\HookServiceFactory;
-use SnapAdmin\Core\Framework\Script\Execution\Hook;
-use SnapAdmin\Core\Framework\Script\Execution\Script;
+use Storefront\Framework\Script\Execution\Awareness\HookServiceFactory;
+use Storefront\Framework\Script\Execution\Hook;
+use Storefront\Framework\Script\Execution\Script;
 
 /**
  * @internal

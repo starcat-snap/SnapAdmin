@@ -14,7 +14,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\EntitySearcherInterface;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\IdSearchResult;
 use SnapAdmin\Core\Framework\Log\Package;
-use Storefront\System\NumberRange\DataAbstractionLayer\NumberRangeField;
 
 /**
  * Used for all search operations in the system.
@@ -47,11 +46,6 @@ class EntitySearcher implements EntitySearcherInterface
         $fields = [];
         foreach ($definition->getFields() as $field) {
             if (!$field instanceof StorageAware || $field instanceof ReferenceVersionField || $field instanceof VersionField) {
-                continue;
-            }
-            if ($field instanceof NumberRangeField) {
-                $fields[$field->getStorageName()] = $field;
-
                 continue;
             }
             if ($field instanceof AutoIncrementField) {

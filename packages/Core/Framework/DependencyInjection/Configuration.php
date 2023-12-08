@@ -19,7 +19,6 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
             ->append($this->createHttpCacheSection())
-            ->append($this->createNumberRangeSection())
             ->append($this->createProfilerSection())
             ->append($this->createFilesystemSection())
             ->append($this->createCdnSection())
@@ -519,20 +518,6 @@ class Configuration implements ConfigurationInterface
             ->min(1)
             ->defaultValue(120)
             ->end()
-            ->scalarNode('redis_url')->end()
-            ->end();
-
-        return $rootNode;
-    }
-
-    private function createNumberRangeSection(): ArrayNodeDefinition
-    {
-        $treeBuilder = new TreeBuilder('number_range');
-
-        $rootNode = $treeBuilder->getRootNode();
-        $rootNode
-            ->children()
-            ->scalarNode('increment_storage')->end()
             ->scalarNode('redis_url')->end()
             ->end();
 

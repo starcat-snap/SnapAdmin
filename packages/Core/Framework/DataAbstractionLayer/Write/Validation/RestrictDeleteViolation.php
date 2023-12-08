@@ -16,12 +16,7 @@ class RestrictDeleteViolation
          * Each value represents a single restricted identity
          *
          * Example:
-         *      [SnapAdmin\Core\Checkout\Cart\Price\Struct\QuantityPriceDefinition] => Array
-         *          (
-         *              [0] => c708bb9dc2c34243b9fb1fd6a676f2fb
-         *              [1] => c708bb9dc2c34243b9fb1fd6a676f2fb
-         *          )
-         *      [Storefront\Content\Product\ProductDefinition] => Array
+         *      [Storefront\Checkout\Cart\Price\Struct\QuantityPriceDefinition] => Array
          *          (
          *              [0] => c708bb9dc2c34243b9fb1fd6a676f2fb
          *              [1] => c708bb9dc2c34243b9fb1fd6a676f2fb

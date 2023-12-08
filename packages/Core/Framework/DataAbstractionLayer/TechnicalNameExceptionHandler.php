@@ -2,8 +2,8 @@
 
 namespace SnapAdmin\Core\Framework\DataAbstractionLayer;
 
-use SnapAdmin\Core\Checkout\Payment\PaymentException;
-use SnapAdmin\Core\Checkout\Shipping\ShippingException;
+use Storefront\Checkout\Payment\PaymentException;
+use Storefront\Checkout\Shipping\ShippingException;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\ExceptionHandlerInterface;
 use SnapAdmin\Core\Framework\Log\Package;
 

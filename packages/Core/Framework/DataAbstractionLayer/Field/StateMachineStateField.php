@@ -5,7 +5,7 @@ namespace SnapAdmin\Core\Framework\DataAbstractionLayer\Field;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\StateMachineStateFieldSerializer;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\StateMachine\Aggregation\StateMachineState\StateMachineStateDefinition;
+use Storefront\System\StateMachine\Aggregation\StateMachineState\StateMachineStateDefinition;
 
 #[Package('core')]
 class StateMachineStateField extends FkField

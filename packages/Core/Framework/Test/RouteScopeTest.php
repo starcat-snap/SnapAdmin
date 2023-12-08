@@ -2,7 +2,7 @@
 
 namespace SnapAdmin\Core\Framework\Test;
 
-use SnapAdmin\Core\Checkout\Payment\Controller\PaymentController;
+use Storefront\Checkout\Payment\Controller\PaymentController;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Test\TestCaseBase\KernelTestBehaviourTest;
 use SnapAdmin\Core\PlatformRequest;

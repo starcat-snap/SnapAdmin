@@ -516,7 +516,7 @@ class ApiController extends AbstractController
             /*
              * Example
              * Route:           /api/order/xxxx/orderCustomer
-             * $definition:     \SnapAdmin\Core\Checkout\Order\Aggregate\OrderCustomer\OrderCustomerDefinition
+             * $definition:     \Storefront\Checkout\Order\Aggregate\OrderCustomer\OrderCustomerDefinition
              */
 
             // get inverse association to filter to parent value

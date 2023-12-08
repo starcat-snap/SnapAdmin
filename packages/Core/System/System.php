@@ -33,6 +33,7 @@ class System extends Bundle
         $loader->load('locale.xml');
         $loader->load('user.xml');
         $loader->load('configuration.xml');
+        $loader->load('snippet.xml');
     }
 
     public function boot(): void

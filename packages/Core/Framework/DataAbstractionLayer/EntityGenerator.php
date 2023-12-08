@@ -2,9 +2,9 @@
 
 namespace SnapAdmin\Core\Framework\DataAbstractionLayer;
 
-use SnapAdmin\Core\Checkout\Cart\Price\Struct\CalculatedPrice;
-use SnapAdmin\Core\Checkout\Cart\Price\Struct\CartPrice;
-use SnapAdmin\Core\Checkout\Cart\Price\Struct\QuantityPriceDefinition;
+use Storefront\Checkout\Cart\Price\Struct\CalculatedPrice;
+use Storefront\Checkout\Cart\Price\Struct\CartPrice;
+use Storefront\Checkout\Cart\Price\Struct\QuantityPriceDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelper;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BlobField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BoolField;

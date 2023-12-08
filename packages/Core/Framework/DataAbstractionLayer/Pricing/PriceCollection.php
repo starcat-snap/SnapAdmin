@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\DataAbstractionLayer\Pricing;
 
-use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Struct\Collection;
 
@@ -12,16 +11,6 @@ use SnapAdmin\Core\Framework\Struct\Collection;
 #[Package('core')]
 class PriceCollection extends Collection
 {
-    public function add($element): void
-    {
-        $this->set($element->getCurrencyId(), $element);
-    }
-
-    public function set($key, $element): void
-    {
-        parent::set($element->getCurrencyId(), $element);
-    }
-
     public function getApiAlias(): string
     {
         return 'price_collection';

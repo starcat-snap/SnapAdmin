@@ -4,6 +4,7 @@ namespace SnapAdmin\Core\Migration\V6_6;
 
 use Doctrine\DBAL\Connection;
 use SnapAdmin\Core\Defaults;
+use SnapAdmin\Core\Framework\DataAbstractionLayer\Doctrine\MultiInsertQueryQueue;
 use SnapAdmin\Core\Framework\Migration\MigrationStep;
 use SnapAdmin\Core\Framework\Uuid\Uuid;
 
@@ -21,6 +22,16 @@ class Migration1536233560BasicData extends MigrationStep
             return;
         }
         $this->createLanguage($connection);
+        $this->createDefaultSnippetSets($connection);
+    }
+
+    private function createDefaultSnippetSets(Connection $connection): void
+    {
+        $queue = new MultiInsertQueryQueue($connection);
+
+        $queue->addInsert('snippet_set', ['id' => Uuid::randomBytes(), 'name' => 'BASE zh-CN', 'base_file' => 'messages.zh-CN', 'iso' => 'zh-CN', 'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT)]);
+
+        $queue->execute();
     }
 
     private function createLanguage(Connection $connection): void

@@ -2,8 +2,8 @@
 
 namespace SnapAdmin\Core\Framework\Api\EventListener\Acl;
 
-use SnapAdmin\Core\Checkout\Cart\LineItem\LineItem;
-use SnapAdmin\Core\Checkout\Order\Aggregate\OrderLineItem\OrderLineItemDefinition;
+use Storefront\Checkout\Cart\LineItem\LineItem;
+use Storefront\Checkout\Order\Aggregate\OrderLineItem\OrderLineItemDefinition;
 use SnapAdmin\Core\Framework\Api\Acl\Event\CommandAclValidationEvent;
 use SnapAdmin\Core\Framework\Api\Acl\Role\AclRoleDefinition;
 use SnapAdmin\Core\Framework\Log\Package;

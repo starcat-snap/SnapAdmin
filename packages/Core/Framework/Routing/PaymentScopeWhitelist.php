@@ -2,7 +2,7 @@
 
 namespace SnapAdmin\Core\Framework\Routing;
 
-use SnapAdmin\Core\Checkout\Payment\Controller\PaymentController;
+use Storefront\Checkout\Payment\Controller\PaymentController;
 use SnapAdmin\Core\Framework\Log\Package;
 
 #[Package('core')]

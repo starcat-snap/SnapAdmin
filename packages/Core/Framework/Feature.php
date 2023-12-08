@@ -5,7 +5,7 @@ namespace SnapAdmin\Core\Framework;
 use PHPUnit\Framework\TestCase;
 use SnapAdmin\Core\DevOps\Environment\EnvironmentHelper;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\Framework\Script\Debugging\ScriptTraces;
+use Storefront\Framework\Script\Debugging\ScriptTraces;
 
 /**
  * @phpstan-type FeatureFlagConfig array{name?: string, default?: boolean, major?: boolean, description?: string}

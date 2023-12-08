@@ -26,6 +26,7 @@ class LanguageEntity extends Entity
      */
     protected $localeId;
 
+
     /**
      * @var string|null
      */

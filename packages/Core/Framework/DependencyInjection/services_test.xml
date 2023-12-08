@@ -21,7 +21,7 @@
 
         <service id="SnapAdmin\Core\Test\Integration\PaymentHandler\AsyncTestPaymentHandler">
             <argument type="service"
-                      id="SnapAdmin\Core\Checkout\Order\Aggregate\OrderTransaction\OrderTransactionStateHandler"/>
+                      id="Storefront\Checkout\Order\Aggregate\OrderTransaction\OrderTransactionStateHandler"/>
             <tag name="snap.payment.method.async"/>
         </service>
 
@@ -36,7 +36,7 @@
 
         <service id="SnapAdmin\Core\Test\Integration\PaymentHandler\RefundTestPaymentHandler">
             <argument type="service"
-                      id="SnapAdmin\Core\Checkout\Order\Aggregate\OrderTransactionCaptureRefund\OrderTransactionCaptureRefundStateHandler"/>
+                      id="Storefront\Checkout\Order\Aggregate\OrderTransactionCaptureRefund\OrderTransactionCaptureRefundStateHandler"/>
             <tag name="snap.payment.method.refund"/>
         </service>
 
@@ -46,7 +46,7 @@
 
         <service id="SnapAdmin\Core\Test\Integration\PaymentHandler\SyncTestPaymentHandler">
             <argument type="service"
-                      id="SnapAdmin\Core\Checkout\Order\Aggregate\OrderTransaction\OrderTransactionStateHandler"/>
+                      id="Storefront\Checkout\Order\Aggregate\OrderTransaction\OrderTransactionStateHandler"/>
             <tag name="snap.payment.method.sync"/>
         </service>
 
@@ -147,16 +147,6 @@
             <tag name="messenger.message_handler"/>
         </service>
 
-        <service id="Storefront\Content\Test\Category\Service\CountingEntityReader"
-                 decorates="SnapAdmin\Core\Framework\DataAbstractionLayer\Read\EntityReaderInterface">
-            <argument type="service" id="Storefront\Content\Test\Category\Service\CountingEntityReader.inner"/>
-        </service>
-
-        <service id="Storefront\Content\Test\Category\Service\CountingEntitySearcher"
-                 decorates="SnapAdmin\Core\Framework\DataAbstractionLayer\Search\EntitySearcherInterface">
-            <argument type="service" id="Storefront\Content\Test\Category\Service\CountingEntitySearcher.inner"/>
-        </service>
-
         <service id="SnapAdmin\Core\Framework\Test\TestCacheClearer">
             <argument type="collection">
                 <argument type="service" id="cache.object"/>
@@ -205,8 +195,8 @@
                  class="SnapAdmin\Core\Framework\App\Payment\Handler\AppAsyncPaymentHandler"
                  decorates="SnapAdmin\Core\Framework\App\Payment\Handler\AppAsyncPaymentHandler">
             <argument type="service"
-                      id="SnapAdmin\Core\Checkout\Order\Aggregate\OrderTransaction\OrderTransactionStateHandler"/>
-            <argument type="service" id="SnapAdmin\Core\System\StateMachine\StateMachineRegistry"/>
+                      id="Storefront\Checkout\Order\Aggregate\OrderTransaction\OrderTransactionStateHandler"/>
+            <argument type="service" id="Storefront\System\StateMachine\StateMachineRegistry"/>
             <argument type="service" id="SnapAdmin\Core\Framework\App\Payment\Payload\PaymentPayloadService"/>
             <argument type="service" id="order_transaction_capture_refund.repository"/>
         </service>

@@ -15,7 +15,7 @@ use phpDocumentor\Reflection\DocBlock\Tags\TagWithType;
 use phpDocumentor\Reflection\DocBlockFactory;
 use phpDocumentor\Reflection\DocBlockFactoryInterface;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\Framework\Script\ServiceStubs;
+use Storefront\Framework\Script\ServiceStubs;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 use Twig\Environment;

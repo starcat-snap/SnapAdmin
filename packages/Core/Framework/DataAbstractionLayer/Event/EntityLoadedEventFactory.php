@@ -48,7 +48,7 @@ class EntityLoadedEventFactory
     /**
      * @param array<string, list<Entity>> $mapping
      */
-    private function buildEvents(array $mapping, \Closure $generator, Context $context): EntityLoadedContainerEvent
+    protected function buildEvents(array $mapping, \Closure $generator, Context $context): EntityLoadedContainerEvent
     {
         $events = [];
         foreach ($mapping as $name => $entities) {
@@ -66,7 +66,7 @@ class EntityLoadedEventFactory
      *
      * @return array<string, list<Entity>>
      */
-    private function recursion(array $entities, array $mapping): array
+    protected function recursion(array $entities, array $mapping): array
     {
         foreach ($entities as $entity) {
             if (!$entity instanceof Entity && !$entity instanceof EntityCollection) {

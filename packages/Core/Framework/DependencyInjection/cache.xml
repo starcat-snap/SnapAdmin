@@ -108,5 +108,11 @@
             <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\CacheDecorator.inner"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\CacheTagCollection"/>
         </service>
+        <service id="snap.cache.reverse_proxy.redis" class="Redis">
+            <factory service="SnapAdmin\Core\Framework\Adapter\Cache\RedisConnectionFactory" method="create"/>
+            <argument>%storefront.reverse_proxy.redis_url%</argument>
+        </service>
+
+        <service id="snap.reverse_proxy.http_client" class="GuzzleHttp\Client"/>
     </services>
 </container>

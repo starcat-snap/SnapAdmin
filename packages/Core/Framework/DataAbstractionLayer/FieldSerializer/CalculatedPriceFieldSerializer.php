@@ -2,13 +2,13 @@
 
 namespace SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer;
 
-use SnapAdmin\Core\Checkout\Cart\Price\Struct\CalculatedPrice;
-use SnapAdmin\Core\Checkout\Cart\Price\Struct\ListPrice;
-use SnapAdmin\Core\Checkout\Cart\Price\Struct\ReferencePrice;
-use SnapAdmin\Core\Checkout\Cart\Tax\Struct\CalculatedTax;
-use SnapAdmin\Core\Checkout\Cart\Tax\Struct\CalculatedTaxCollection;
-use SnapAdmin\Core\Checkout\Cart\Tax\Struct\TaxRule;
-use SnapAdmin\Core\Checkout\Cart\Tax\Struct\TaxRuleCollection;
+use Storefront\Checkout\Cart\Price\Struct\CalculatedPrice;
+use Storefront\Checkout\Cart\Price\Struct\ListPrice;
+use Storefront\Checkout\Cart\Price\Struct\ReferencePrice;
+use Storefront\Checkout\Cart\Tax\Struct\CalculatedTax;
+use Storefront\Checkout\Cart\Tax\Struct\CalculatedTaxCollection;
+use Storefront\Checkout\Cart\Tax\Struct\TaxRule;
+use Storefront\Checkout\Cart\Tax\Struct\TaxRuleCollection;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Field;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\DataStack\KeyValuePair;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityExistence;
