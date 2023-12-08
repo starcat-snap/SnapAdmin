@@ -125,40 +125,24 @@ abstract class Collection extends Struct implements \IteratorAggregate, \Countab
 
     /**
      * @param class-string $class
-     *
-     * tag v6.6.0 Return type will be natively typed to `static`
-     *
-     * @return static
      */
-    #[\ReturnTypeWillChange]
-    public function filterInstance(string $class)
+    public function filterInstance(string $class): static
     {
         return $this->filter(static function ($item) use ($class) {
             return $item instanceof $class;
         });
     }
 
-    /**
-     * tag v6.6.0 Return type will be natively typed to `static`
-     *
-     * @return static
-     */
-    #[\ReturnTypeWillChange]
-    public function filter(\Closure $closure)
+    public function filter(\Closure $closure): static
     {
         return $this->createNew(array_filter($this->elements, $closure));
     }
 
-    /**
-     * tag v6.6.0 Return type will be natively typed to `static`
-     *
-     * @return static
-     */
-    #[\ReturnTypeWillChange]
-    public function slice(int $offset, ?int $length = null)
+    public function slice(int $offset, ?int $length = null): static
     {
         return $this->createNew(\array_slice($this->elements, $offset, $length, true));
     }
+
 
     /**
      * @return array<TElement>
@@ -240,13 +224,8 @@ abstract class Collection extends Struct implements \IteratorAggregate, \Countab
 
     /**
      * @param iterable<TElement> $elements
-     *
-     * tag v6.6.0 Return type will be natively typed to `static`
-     *
-     * @return static
      */
-    #[\ReturnTypeWillChange]
-    protected function createNew(iterable $elements = [])
+    protected function createNew(iterable $elements = []): static
     {
         return new static($elements);
     }

@@ -4,8 +4,6 @@ namespace SnapAdmin\Core\DevOps\StaticAnalyze;
 
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Kernel;
-use Symfony\Component\Config\Loader\LoaderInterface;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  * @internal
@@ -20,14 +18,5 @@ class StaticAnalyzeKernel extends Kernel
             $this->getProjectDir(),
             $this->getEnvironment()
         );
-    }
-
-    /**
-     * @see https://github.com/phpstan/phpstan/issues/6075
-     */
-    protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
-    {
-        parent::configureContainer($container, $loader);
-        $container->setParameter('container.dumper.inline_class_loader', false);
     }
 }

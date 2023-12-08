@@ -39,8 +39,6 @@ class TestBootstrapper
 
     private ?OutputInterface $output = null;
 
-    private bool $bypassFinals = true;
-
     /**
      * @var array<string>
      */
@@ -63,10 +61,6 @@ class TestBootstrapper
 
         $classLoader = $this->getClassLoader();
 
-        if (class_exists(BypassFinals::class) && $this->bypassFinals) {
-            BypassFinals::enable();
-        }
-
         if ($this->loadEnvFile) {
             $this->loadEnvFile();
         }
@@ -84,16 +78,6 @@ class TestBootstrapper
         } elseif ($this->forceInstallPlugins) {
             $this->installPlugins();
         }
-
-        return $this;
-    }
-
-    /**
-     * @deprecated tag:v6.6.0 - Will be removed without replacement - reason:remove-command
-     */
-    public function setBypassFinals(bool $bypassFinals): TestBootstrapper
-    {
-        $this->bypassFinals = $bypassFinals;
 
         return $this;
     }

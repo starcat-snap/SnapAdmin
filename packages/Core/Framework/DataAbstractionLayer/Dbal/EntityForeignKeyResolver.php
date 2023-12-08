@@ -241,10 +241,6 @@ class EntityForeignKeyResolver
             }
             $storageName = $field->getStorageName();
 
-            if (!$field instanceof Field) {
-                continue;
-            }
-
             $vars = [
                 '#root#' => EntityDefinitionQueryHelper::escape($alias),
                 '#field#' => EntityDefinitionQueryHelper::escape($storageName),

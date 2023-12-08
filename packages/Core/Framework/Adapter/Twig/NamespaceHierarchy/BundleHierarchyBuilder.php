@@ -41,34 +41,13 @@ class BundleHierarchyBuilder implements TemplateNamespaceHierarchyBuilderInterfa
         }
 
         $bundles = array_reverse($bundles);
-        $apps = $this->getAppTemplateNamespaces();
 
-        /** @var array<int, array<string, mixed>> $combinedApps */
-        $combinedApps = array_combine(array_keys($apps), array_column($apps, 'template_load_priority'));
-
-        $extensions = array_merge($combinedApps, $bundles);
+        $extensions = array_merge($bundles);
         asort($extensions);
-
-        foreach ($apps as $appName => ['version' => $version]) {
-            $extensions[$appName] = $version;
-        }
 
         return array_merge(
             $extensions,
             $namespaceHierarchy
-        );
-    }
-
-    /**
-     * @return array<mixed, array<string, mixed>>
-     */
-    private function getAppTemplateNamespaces(): array
-    {
-        return $this->connection->fetchAllAssociativeIndexed(
-            'SELECT `app`.`name`, `app`.`version`, `app`.`template_load_priority`
-             FROM `app`
-             INNER JOIN `app_template` ON `app_template`.`app_id` = `app`.`id`
-             WHERE `app`.`active` = 1 AND `app_template`.`active` = 1'
         );
     }
 }

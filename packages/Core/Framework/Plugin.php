@@ -102,7 +102,7 @@ abstract class Plugin extends Bundle
         return false;
     }
 
-    final public function removeMigrations(): void
+    public function removeMigrations(): void
     {
         // namespace should not start with `snap`
         if (str_starts_with(mb_strtolower($this->getMigrationNamespace()), 'snapadmin') && !str_starts_with(mb_strtolower($this->getMigrationNamespace()), 'snap\commercial')) {
@@ -118,6 +118,9 @@ abstract class Plugin extends Bundle
         return $this->basePath;
     }
 
+    /**
+     * @return array<string, list<string>>
+     */
     public function enrichPrivileges(): array
     {
         return [];
