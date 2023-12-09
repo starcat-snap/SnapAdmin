@@ -404,7 +404,7 @@
       "ln -sf $PWD/bin/pre-push .git/hooks/pre-push"
     ],
     "init:db": [
-      "@php bin/console system:install --drop-database --basic-setup --force --no-assign-theme"
+      "@php bin/console system:install --drop-database --basic-setup --force"
     ],
     "init:e2e": "@npm:e2e clean-install --no-audit --prefer-offline",
     "init:js": [

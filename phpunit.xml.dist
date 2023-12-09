@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
-         bootstrap="src/Core/TestBootstrap.php"
+         bootstrap="packages/Core/TestBootstrap.php"
          cacheResult="false"
          executionOrder="random"
          convertDeprecationsToExceptions="false">
     <coverage cacheDirectory="var/cache/phpunit/" includeUncoveredFiles="true">
         <include>
-            <directory suffix=".php">src/Core/Framework</directory>
-            <directory suffix=".php">src/Core/DevOps</directory>
-            <directory suffix=".php">src/Core/Maintenance</directory>
-            <directory suffix=".php">src/Core/System</directory>
+            <directory suffix=".php">packages/Core/Framework</directory>
+            <directory suffix=".php">packages/Core/DevOps</directory>
+            <directory suffix=".php">packages/Core/Maintenance</directory>
+            <directory suffix=".php">packages/Core/System</directory>
 
-            <file>src/Core/Defaults.php</file>
-            <file>src/Core/HttpKernel.php</file>
-            <file>src/Core/HttpKernelResult.php</file>
-            <file>src/Core/Kernel.php</file>
-            <file>src/Core/PlatformRequest.php</file>
+            <file>packages/Core/Defaults.php</file>
+            <file>packages/Core/HttpKernel.php</file>
+            <file>packages/Core/HttpKernelResult.php</file>
+            <file>packages/Core/Kernel.php</file>
+            <file>packages/Core/PlatformRequest.php</file>
         </include>
         <exclude>
-            <directory suffix=".php">src/Core/Framework/Test</directory>
-            <directory suffix=".php">src/Core/DevOps/StaticAnalyze</directory>
-            <directory suffix=".php">src/Core/DevOps/Test</directory>
-            <directory suffix=".php">src/Core/Maintenance/Test</directory>
-            <directory suffix=".php">src/Core/Migration/Test</directory>
-            <directory suffix=".php">src/Core/System/Test</directory>
-            <directory suffix=".php">src/Administration/Test</directory>
+            <directory suffix=".php">packages/Core/Framework/Test</directory>
+            <directory suffix=".php">packages/Core/DevOps/StaticAnalyze</directory>
+            <directory suffix=".php">packages/Core/DevOps/Test</directory>
+            <directory suffix=".php">packages/Core/Maintenance/Test</directory>
+            <directory suffix=".php">packages/Core/Migration/Test</directory>
+            <directory suffix=".php">packages/Core/System/Test</directory>
+            <directory suffix=".php">packages/Administration/Test</directory>
         </exclude>
     </coverage>
     <php>
@@ -44,20 +44,20 @@
     </php>
     <testsuites>
         <testsuite name="administration">
-            <directory>src/Administration/Test</directory>
+            <directory>packages/Administration/Test</directory>
         </testsuite>
         <testsuite name="framework">
-            <directory>src/Core/Framework/Test</directory>
-            <directory>src/Core/Test</directory>
+            <directory>packages/Core/Framework/Test</directory>
+            <directory>packages/Core/Test</directory>
         </testsuite>
         <testsuite name="migration">
-            <directory>src/Core/Migration/Test</directory>
+            <directory>packages/Core/Migration/Test</directory>
         </testsuite>
         <testsuite name="maintenance">
-            <directory>src/Core/Maintenance/Test</directory>
+            <directory>packages/Core/Maintenance/Test</directory>
         </testsuite>
         <testsuite name="system">
-            <directory>src/Core/System/Test</directory>
+            <directory>packages/Core/System/Test</directory>
         </testsuite>
     </testsuites>
     <listeners>
