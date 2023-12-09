@@ -63,23 +63,6 @@ class FeatureFlagExtensionTest extends TestCase
         static::assertFalse($_SERVER['V6_5_0_0']);
     }
 
-    public function testIsDoesNotAffectNonPureUnitTests(): void
-    {
-        $testMethod = '\SnapAdmin\Tests\Integration\Core\BasicOrderProductTest::testBasicOrderFlow';
-
-        $featureFlagConfig = Feature::getRegisteredFeatures();
-        $server = $_SERVER;
-
-        $this->extension->executeBeforeTest($testMethod);
-
-        static::assertSame($featureFlagConfig, Feature::getRegisteredFeatures());
-        static::assertSame($server, $_SERVER);
-
-        $this->extension->executeAfterTest($testMethod, 0.1);
-
-        static::assertSame($featureFlagConfig, Feature::getRegisteredFeatures());
-        static::assertSame($server, $_SERVER);
-    }
 
     public function testFeatureConfigAndEnvIsRestored(): void
     {

@@ -22,7 +22,7 @@ jobs:
           - php-version: 8.4
             stable: false
     env:
-      TEST_SUITES: 'administration system framework profiling migration'
+      TEST_SUITES: 'administration system framework profiling migration unit integration'
       APP_ENV: test
       DATABASE_URL: mysql://root:root@127.0.0.1:3306/root
       APP_URL: http://localhost:8000
