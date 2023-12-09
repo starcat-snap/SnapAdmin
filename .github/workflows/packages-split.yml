@@ -33,7 +33,7 @@ jobs:
                 uses: "symplify/monorepo-split-github-action@2.1"
                 with:
                     package_directory: 'packages/${{ matrix.package.local_path }}'
-                    repository_organization: 'starcat-snap/SnapAdmin'
+                    repository_organization: 'starcat-snap'
                     repository_name: '${{ matrix.package.split_repository }}'
 
                     # [optional, with "github.com" as default]
