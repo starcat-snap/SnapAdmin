@@ -1,0 +1,14 @@
+{
+  "subtree-splits": [
+    {
+      "name": "Core",
+      "directory": "packages/Core",
+      "target": "git@github.com:starcat-snap/Core.git"
+    },
+    {
+      "name": "Administration",
+      "directory": "packages/Administration",
+      "target": "git@github.com:starcat-snap/Administration.git"
+    }
+  ]
+}
