@@ -1,8 +1,9 @@
 <?php declare(strict_types=1);
 
 use SnapAdmin\Core\DevOps\Environment\EnvironmentHelper;
-use SnapAdmin\Core\Framework\Adapter\Kernel\KernelFactory;
 use SnapAdmin\Core\Framework\Plugin\KernelPluginLoader\ComposerPluginLoader;
+use SnapAdmin\Core\Installer\InstallerKernel;
+use SnapAdmin\Core\Framework\Adapter\Kernel\KernelFactory;
 
 $_SERVER['SCRIPT_FILENAME'] = __FILE__;
 
@@ -12,16 +13,48 @@ if (!file_exists(__DIR__ . '/../.env') && !file_exists(__DIR__ . '/../.env.dist'
     $_SERVER['APP_RUNTIME_OPTIONS']['disable_dotenv'] = true;
 }
 
+$_SERVER['APP_RUNTIME_OPTIONS']['prod_envs'] = ['prod', 'e2e'];
+
+
 return function (array $context) {
     $classLoader = require __DIR__ . '/../vendor/autoload.php';
 
+    if (!file_exists(dirname(__DIR__) . '/install.lock')) {
+        $baseURL = str_replace(basename(__FILE__), '', $_SERVER['SCRIPT_NAME']);
+        $baseURL = rtrim($baseURL, '/');
+
+        if (strpos($_SERVER['REQUEST_URI'], '/installer') === false) {
+            header('Location: ' . $baseURL . '/installer');
+            exit;
+        }
+    }
+
+    if (is_file(dirname(__DIR__) . '/files/update/update.json') || is_dir(dirname(__DIR__) . '/update-assets')) {
+        header('Content-type: text/html; charset=utf-8', true, 503);
+        header('Status: 503 Service Temporarily Unavailable');
+        header('Retry-After: 1200');
+        if (file_exists(__DIR__ . '/maintenance.html')) {
+            readfile(__DIR__ . '/maintenance.html');
+        } else {
+            readfile(__DIR__ . '/recovery/update/maintenance.html');
+        }
+
+        exit;
+    }
+
     $appEnv = $context['APP_ENV'] ?? 'dev';
-    $debug = (bool)($context['APP_DEBUG'] ?? ($appEnv !== 'prod'));
+    $debug = (bool) ($context['APP_DEBUG'] ?? ($appEnv !== 'prod'));
+
+    if (!file_exists(dirname(__DIR__) . '/install.lock')) {
+        return new InstallerKernel($appEnv, $debug);
+    }
+
     $pluginLoader = null;
 
     if (EnvironmentHelper::getVariable('COMPOSER_PLUGIN_LOADER', false)) {
         $pluginLoader = new ComposerPluginLoader($classLoader, null);
     }
+
     return KernelFactory::create(
         environment: $appEnv,
         debug: $debug,

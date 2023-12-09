@@ -240,10 +240,6 @@
             <tag name="snap.scaffold.generator"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Plugin\Command\Scaffolding\Generator\JavascriptPluginGenerator">
-            <tag name="snap.scaffold.generator"/>
-        </service>
-
         <service id="SnapAdmin\Core\Framework\Plugin\Command\Scaffolding\Generator\AdminModuleGenerator">
             <tag name="snap.scaffold.generator"/>
         </service>
