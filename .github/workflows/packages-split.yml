@@ -1,0 +1,44 @@
+name: 'Packages Split'
+
+on:
+    push:
+        branches:
+            - trunk
+
+env:
+    GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+jobs:
+    packages_split:
+        runs-on: ubuntu-latest
+
+        strategy:
+            fail-fast: false
+            matrix:
+                # define package to repository map
+                package:
+                    -
+                        local_path: 'Administration'
+                        split_repository: 'Administration'
+                    -
+                        local_path: 'Core'
+                        split_repository: 'Core'
+
+        steps:
+            -   uses: actions/checkout@v2
+
+            # no tag
+            -
+                if: "!startsWith(github.ref, 'refs/tags/')"
+                uses: "symplify/monorepo-split-github-action@2.1"
+                with:
+                    package_directory: 'packages/${{ matrix.package.local_path }}'
+                    repository_organization: 'starcat-snap/SnapAdmin'
+                    repository_name: '${{ matrix.package.split_repository }}'
+
+                    # [optional, with "github.com" as default]
+                    repository_host: github.com:starcat-snap
+
+                    # ↓ the user signed under the split commit
+                    user_name: "gxs"
+                    user_email: "lyricsong47@gmail.com"
