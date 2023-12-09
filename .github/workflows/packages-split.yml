@@ -37,7 +37,7 @@ jobs:
                     repository_name: '${{ matrix.package.split_repository }}'
 
                     # [optional, with "github.com" as default]
-                    repository_host: github.com:starcat-snap
+                    repository_host: github.com
 
                     # ↓ the user signed under the split commit
                     user_name: "gxs"
