@@ -277,33 +277,6 @@
             <argument type="service" id="SnapAdmin\Core\Content\Media\File\FileFetcher"/>
         </service>
 
-        <service id="SnapAdmin\Core\Content\Media\Cms\DefaultMediaResolver">
-            <argument type="service" id="snap.filesystem.public"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Content\Media\Cms\ImageCmsElementResolver">
-            <tag name="snap.cms.data_resolver" />
-            <argument type="service" id="SnapAdmin\Core\Content\Media\Cms\DefaultMediaResolver"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Content\Media\Cms\Type\ImageSliderTypeDataResolver">
-            <tag name="snap.cms.data_resolver" />
-            <argument type="service" id="SnapAdmin\Core\Content\Media\Cms\DefaultMediaResolver"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Content\Media\Cms\Type\ImageGalleryTypeDataResolver">
-            <tag name="snap.cms.data_resolver" />
-            <argument type="service" id="SnapAdmin\Core\Content\Media\Cms\DefaultMediaResolver"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Content\Media\Cms\YoutubeVideoCmsElementResolver">
-            <tag name="snap.cms.data_resolver" />
-        </service>
-
-        <service id="SnapAdmin\Core\Content\Media\Cms\VimeoVideoCmsElementResolver">
-            <tag name="snap.cms.data_resolver" />
-        </service>
-
         <service id="SnapAdmin\Core\Content\Media\DataAbstractionLayer\MediaIndexer">
             <tag name="snap.entity_indexer"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\Common\IteratorFactory"/>
