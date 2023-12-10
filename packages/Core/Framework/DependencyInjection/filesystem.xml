@@ -25,16 +25,6 @@
             <argument>%snap.filesystem.temp%</argument>
         </service>
 
-        <service class="League\Flysystem\FilesystemOperator" id="snap.filesystem.theme" public="true">
-            <factory service="SnapAdmin\Core\Framework\Adapter\Filesystem\FilesystemFactory" method="factory"/>
-            <argument>%snap.filesystem.theme%</argument>
-        </service>
-
-        <service class="League\Flysystem\FilesystemOperator" id="snap.filesystem.sitemap" public="true">
-            <factory service="SnapAdmin\Core\Framework\Adapter\Filesystem\FilesystemFactory" method="factory"/>
-            <argument>%snap.filesystem.sitemap%</argument>
-        </service>
-
         <service class="League\Flysystem\FilesystemOperator" id="snap.filesystem.asset" public="true">
             <factory service="SnapAdmin\Core\Framework\Adapter\Filesystem\FilesystemFactory" method="factory"/>
             <argument>%snap.filesystem.asset%</argument>
@@ -42,16 +32,6 @@
 
         <service class="SnapAdmin\Core\Framework\Adapter\Filesystem\Adapter\LocalFactory"
                  id="SnapAdmin\Core\Framework\Adapter\Filesystem\FilesystemFactory.local">
-            <tag name="snap.filesystem.factory"/>
-        </service>
-
-        <service class="SnapAdmin\Core\Framework\Adapter\Filesystem\Adapter\AwsS3v3Factory"
-                 id="SnapAdmin\Core\Framework\Adapter\Filesystem\FilesystemFactory.amazon_s3">
-            <tag name="snap.filesystem.factory"/>
-        </service>
-
-        <service class="SnapAdmin\Core\Framework\Adapter\Filesystem\Adapter\GoogleStorageFactory"
-                 id="SnapAdmin\Core\Framework\Adapter\Filesystem\FilesystemFactory.google_storage">
             <tag name="snap.filesystem.factory"/>
         </service>
 
@@ -74,13 +54,6 @@
             <argument type="service" id="assets.empty_version_strategy"/>
             <argument type="service" id="request_stack" on-invalid="null"/>
             <tag name="snap.asset" asset="public"/>
-        </service>
-
-        <service id="snap.asset.theme.version_strategy"
-                 class="SnapAdmin\Core\Framework\Adapter\Asset\FlysystemLastModifiedVersionStrategy">
-            <argument>theme-metaData</argument>
-            <argument type="service" id="snap.filesystem.theme"/>
-            <argument type="service" id="cache.object"/>
         </service>
 
         <service id="snap.asset.asset.version_strategy"
@@ -108,13 +81,6 @@
             <argument type="service" id="request_stack" on-invalid="null"/>
         </service>
 
-        <service id="snap.asset.sitemap" class="SnapAdmin\Core\Framework\Adapter\Asset\FallbackUrlPackage" lazy="true">
-            <argument type="collection">
-                <argument>%snap.filesystem.sitemap.url%</argument>
-            </argument>
-            <argument type="service" id="assets.empty_version_strategy"/>
-            <argument type="service" id="request_stack" on-invalid="null"/>
-            <tag name="snap.asset" asset="sitemap"/>
-        </service>
+
     </services>
 </container>

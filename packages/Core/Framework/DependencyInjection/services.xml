@@ -507,15 +507,6 @@ base-uri 'self';
             <tag name="console.command" command="administration:dump:features"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Adapter\Command\S3FilesystemVisibilityCommand">
-            <argument type="service" id="snap.filesystem.private"/>
-            <argument type="service" id="snap.filesystem.public"/>
-            <argument type="service" id="snap.filesystem.theme"/>
-            <argument type="service" id="snap.filesystem.sitemap"/>
-            <argument type="service" id="snap.filesystem.asset"/>
-            <tag name="console.command"/>
-        </service>
-
         <service id="SnapAdmin\Core\Framework\Util\HtmlSanitizer" public="true">
             <argument>%snap.html_sanitizer.cache_dir%</argument>
             <argument>%snap.html_sanitizer.cache_enabled%</argument>
