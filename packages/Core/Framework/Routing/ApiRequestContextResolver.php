@@ -6,12 +6,9 @@ use Doctrine\DBAL\Connection;
 use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\Framework\Api\Context\AdminApiSource;
 use SnapAdmin\Core\Framework\Api\Context\ContextSource;
-use SnapAdmin\Core\Framework\Api\Context\ChannelApiSource;
 use SnapAdmin\Core\Framework\Api\Context\SystemSource;
-use SnapAdmin\Core\Framework\Api\Exception\MissingPrivilegeException;
 use SnapAdmin\Core\Framework\Api\Util\AccessKeyHelper;
 use SnapAdmin\Core\Framework\Context;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Pricing\CashRoundingConfig;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Uuid\Uuid;
 use SnapAdmin\Core\PlatformRequest;
@@ -45,7 +42,6 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
         $params = $this->getContextParameters($request);
         $languageIdChain = $this->getLanguageIdChain($params);
 
-        $rounding = $this->getCashRounding($params['currencyId']);
 
         $context = new Context(
             $this->resolveContextSource($request),
@@ -53,7 +49,6 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
             $languageIdChain,
             $params['versionId'] ?? Defaults::LIVE_VERSION,
             $params['considerInheritance'],
-            $rounding
         );
 
         if ($request->headers->has(PlatformRequest::HEADER_SKIP_TRIGGER_FLOW)) {
@@ -73,7 +68,7 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
     }
 
     /**
-     * @return array{currencyId: string, languageId: string, systemFallbackLanguageId: string, currencyFactory: float, currencyPrecision: int, versionId: ?string, considerInheritance: bool}
+     * @return array{languageId: string, systemFallbackLanguageId: string, versionId: ?string, considerInheritance: bool}
      */
     private function getContextParameters(Request $request): array
     {
@@ -86,14 +81,14 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
 
         $runtimeParams = $this->getRuntimeParameters($request);
 
-        /** @var array{currencyId: string, languageId: string, systemFallbackLanguageId: string, currencyFactory: float, currencyPrecision: int, versionId: ?string, considerInheritance: bool} $params */
+        /** @var array{languageId: string, systemFallbackLanguageId: string, versionId: ?string, considerInheritance: bool} $params */
         $params = array_replace_recursive($params, $runtimeParams);
 
         return $params;
     }
 
     /**
-     * @return array{languageId?: string, currencyId?: string, considerInheritance?: true}
+     * @return array{languageId?: string, considerInheritance?: true}
      */
     private function getRuntimeParameters(Request $request): array
     {
@@ -107,14 +102,6 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
             }
         }
 
-        if ($request->headers->has(PlatformRequest::HEADER_CURRENCY_ID)) {
-            $currencyHeader = $request->headers->get(PlatformRequest::HEADER_CURRENCY_ID);
-
-            if ($currencyHeader !== null) {
-                $parameters['currencyId'] = $currencyHeader;
-            }
-        }
-
         if ($request->headers->has(PlatformRequest::HEADER_INHERITANCE)) {
             $parameters['considerInheritance'] = true;
         }
@@ -125,16 +112,7 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
     private function resolveContextSource(Request $request): ContextSource
     {
         if ($userId = $request->attributes->get(PlatformRequest::ATTRIBUTE_OAUTH_USER_ID)) {
-            $appIntegrationId = $request->headers->get(PlatformRequest::HEADER_APP_INTEGRATION_ID);
-
-            // The app integration id header is only to be used by a privileged user
-            if ($this->userAppIntegrationHeaderPrivileged($userId, $appIntegrationId)) {
-                $userId = null;
-            } else {
-                $appIntegrationId = null;
-            }
-
-            return $this->getAdminApiSource($userId, $appIntegrationId);
+            return $this->getAdminApiSource($userId);
         }
 
         if (!$request->attributes->has(PlatformRequest::ATTRIBUTE_OAUTH_ACCESS_TOKEN_ID)) {
@@ -148,18 +126,6 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
             $userId = $this->getUserIdByAccessKey($clientId);
 
             return $this->getAdminApiSource($userId);
-        }
-
-        if ($keyOrigin === 'integration') {
-            $integrationId = $this->getIntegrationIdByAccessKey($clientId);
-
-            return $this->getAdminApiSource(null, $integrationId);
-        }
-
-        if ($keyOrigin === 'channel') {
-            $channelId = $this->getChannelIdByAccessKey($clientId);
-
-            return new ChannelApiSource($channelId);
         }
 
         return new SystemSource();
@@ -232,46 +198,15 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
         return Uuid::fromBytesToHex($id);
     }
 
-    private function getIntegrationIdByAccessKey(string $clientId): string
+    private function getAdminApiSource(?string $userId): AdminApiSource
     {
-        $id = $this->connection->createQueryBuilder()
-            ->select(['id'])
-            ->from('integration')
-            ->where('access_key = :accessKey')
-            ->setParameter('accessKey', $clientId)
-            ->executeQuery()
-            ->fetchOne();
-
-        return Uuid::fromBytesToHex($id);
-    }
-
-    private function getAdminApiSource(?string $userId, ?string $integrationId = null): AdminApiSource
-    {
-        $source = new AdminApiSource($userId, $integrationId);
-
-        // Use the permissions associated to that app, if the request is made by an integration associated to an app
-        $appPermissions = $this->fetchPermissionsIntegrationByApp($integrationId);
-        if ($appPermissions !== null) {
-            $source->setIsAdmin(false);
-            $source->setPermissions($appPermissions);
-
-            return $source;
-        }
-
+        $source = new AdminApiSource($userId);
         if ($userId !== null) {
             $source->setPermissions($this->fetchPermissions($userId));
             $source->setIsAdmin($this->isAdmin($userId));
 
             return $source;
         }
-
-        if ($integrationId !== null) {
-            $source->setIsAdmin($this->isAdminIntegration($integrationId));
-            $source->setPermissions($this->fetchIntegrationPermissions($integrationId));
-
-            return $source;
-        }
-
         return $source;
     }
 
@@ -280,14 +215,6 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
         return (bool)$this->connection->fetchOne(
             'SELECT admin FROM `user` WHERE id = :id',
             ['id' => Uuid::fromHexToBytes($userId)]
-        );
-    }
-
-    private function isAdminIntegration(string $integrationId): bool
-    {
-        return (bool)$this->connection->fetchOne(
-            'SELECT admin FROM `integration` WHERE id = :id',
-            ['id' => Uuid::fromHexToBytes($integrationId)]
         );
     }
 
@@ -312,120 +239,5 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
         }
 
         return array_unique(array_filter($list));
-    }
-
-    private function getCashRounding(string $currencyId): CashRoundingConfig
-    {
-        $rounding = $this->connection->fetchAssociative(
-            'SELECT item_rounding FROM currency WHERE id = :id',
-            ['id' => Uuid::fromHexToBytes($currencyId)]
-        );
-        if ($rounding === false) {
-            throw new \RuntimeException(sprintf('No cash rounding for currency "%s" found', $currencyId));
-        }
-
-        $rounding = json_decode((string)$rounding['item_rounding'], true, 512, \JSON_THROW_ON_ERROR);
-
-        return new CashRoundingConfig(
-            (int)$rounding['decimals'],
-            (float)$rounding['interval'],
-            (bool)$rounding['roundForNet']
-        );
-    }
-
-    /**
-     * @return string[]|null
-     */
-    private function fetchPermissionsIntegrationByApp(?string $integrationId): ?array
-    {
-        if (!$integrationId) {
-            return null;
-        }
-
-        $privileges = $this->connection->fetchOne('
-            SELECT `acl_role`.`privileges`
-            FROM `acl_role`
-            INNER JOIN `app` ON `app`.`acl_role_id` = `acl_role`.`id`
-            WHERE `app`.`integration_id` = :integrationId
-        ', ['integrationId' => Uuid::fromHexToBytes($integrationId)]);
-
-        if ($privileges === false) {
-            return null;
-        }
-
-        return json_decode((string)$privileges, true, 512, \JSON_THROW_ON_ERROR);
-    }
-
-    /**
-     * @return string[]
-     */
-    private function fetchIntegrationPermissions(string $integrationId): array
-    {
-        $permissions = $this->connection->createQueryBuilder()
-            ->select(['role.privileges'])
-            ->from('integration_role', 'mapping')
-            ->innerJoin('mapping', 'acl_role', 'role', 'mapping.acl_role_id = role.id')
-            ->where('mapping.integration_id = :integrationId')
-            ->setParameter('integrationId', Uuid::fromHexToBytes($integrationId))
-            ->executeQuery()
-            ->fetchFirstColumn();
-
-        $list = [];
-        foreach ($permissions as $privileges) {
-            $privileges = json_decode((string)$privileges, true, 512, \JSON_THROW_ON_ERROR);
-            $list = array_merge($list, $privileges);
-        }
-
-        return array_unique(array_filter($list));
-    }
-
-    private function fetchAppNameByIntegrationId(string $integrationId): ?string
-    {
-        $name = $this->connection->createQueryBuilder()
-            ->select(['app.name'])
-            ->from('app', 'app')
-            ->innerJoin('app', 'integration', 'integration', 'integration.id = app.integration_id')
-            ->where('integration.id = :integrationId')
-            ->andWhere('app.active = 1')
-            ->setParameter('integrationId', Uuid::fromHexToBytes($integrationId))
-            ->executeQuery()
-            ->fetchOne();
-
-        if ($name === false) {
-            return null;
-        }
-
-        return $name;
-    }
-
-    /**
-     * @throws MissingPrivilegeException
-     * @throws RoutingException
-     */
-    private function userAppIntegrationHeaderPrivileged(string $userId, ?string $appIntegrationId): bool
-    {
-        if ($appIntegrationId === null) {
-            return false;
-        }
-
-        $appName = $this->fetchAppNameByIntegrationId($appIntegrationId);
-        if ($appName === null) {
-            throw RoutingException::appIntegrationNotFound($appIntegrationId);
-        }
-
-        if ($this->isAdmin($userId)) {
-            return true;
-        }
-
-        $permissions = $this->fetchPermissions($userId);
-        $allAppsPrivileged = \in_array('app.all', $permissions, true);
-        $appPrivilegeName = \sprintf('app.%s', $appName);
-        $specificAppPrivileged = \in_array($appPrivilegeName, $permissions, true);
-
-        if (!($specificAppPrivileged || $allAppsPrivileged)) {
-            throw new MissingPrivilegeException([$appPrivilegeName]);
-        }
-
-        return true;
     }
 }

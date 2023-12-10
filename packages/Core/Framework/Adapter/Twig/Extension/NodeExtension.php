@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\Framework\Adapter\Twig\Extension;
 
 use SnapAdmin\Core\Framework\Adapter\Twig\TemplateFinder;
 use SnapAdmin\Core\Framework\Adapter\Twig\TemplateScopeDetector;
-use SnapAdmin\Core\Framework\Adapter\Twig\TokenParser\ExtendsTokenParser;
 use SnapAdmin\Core\Framework\Adapter\Twig\TokenParser\IncludeTokenParser;
 use SnapAdmin\Core\Framework\Adapter\Twig\TokenParser\ReturnNodeTokenParser;
 use SnapAdmin\Core\Framework\Log\Package;
@@ -30,7 +29,6 @@ class NodeExtension extends AbstractExtension
     public function getTokenParsers(): array
     {
         return [
-            new ExtendsTokenParser($this->finder, $this->templateScopeDetector),
             new IncludeTokenParser($this->finder),
             new ReturnNodeTokenParser(),
         ];

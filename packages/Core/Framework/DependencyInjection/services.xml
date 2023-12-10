@@ -29,7 +29,6 @@ object-src 'none';
 script-src 'strict-dynamic' 'nonce-%%nonce%%' 'unsafe-inline' 'unsafe-eval' https: http:;
 base-uri 'self';
             </parameter>
-            <parameter key="frontend"/>
             <parameter key="installer"/>
         </parameter>
         <parameter key="snap_http_cache_enabled_default">1</parameter>
@@ -380,15 +379,6 @@ base-uri 'self';
                  public="true">
             <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Twig\TemplateIterator.inner"/>
             <argument>%kernel.bundles%</argument>
-        </service>
-
-        <service id="SnapAdmin\Core\Framework\Adapter\Twig\EntityTemplateLoader">
-            <argument type="service" id="Doctrine\DBAL\Connection"/>
-            <argument>%kernel.environment%</argument>
-
-            <tag name="twig.loader"/>
-            <tag name="kernel.event_subscriber"/>
-            <tag name="kernel.reset" method="reset"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\Adapter\Twig\TwigVariableParser">

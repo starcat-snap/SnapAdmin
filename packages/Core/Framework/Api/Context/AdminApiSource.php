@@ -20,8 +20,7 @@ class AdminApiSource implements ContextSource, \JsonSerializable
     private array $permissions = [];
 
     public function __construct(
-        private readonly ?string $userId,
-        private readonly ?string $integrationId = null
+        private readonly ?string $userId
     )
     {
         $this->isAdmin = false;
@@ -30,11 +29,6 @@ class AdminApiSource implements ContextSource, \JsonSerializable
     public function getUserId(): ?string
     {
         return $this->userId;
-    }
-
-    public function getIntegrationId(): ?string
-    {
-        return $this->integrationId;
     }
 
     public function setIsAdmin(bool $isAdmin): void
