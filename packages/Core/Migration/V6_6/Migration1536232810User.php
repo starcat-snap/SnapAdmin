@@ -31,6 +31,7 @@ class Migration1536232810User extends MigrationStep
               `title` varchar(255) DEFAULT NULL,
               `email` varchar(255) NOT NULL,
               `active` tinyint(1) NOT NULL DEFAULT 0,
+              `avatar_id`       BINARY(16)                              NULL,
               `admin` tinyint(1) DEFAULT NULL,
               `locale_id` binary(16) NOT NULL,
               `store_token` varchar(255) DEFAULT NULL,

@@ -2,6 +2,7 @@
 
 namespace SnapAdmin\Core\System\User;
 
+use SnapAdmin\Core\Content\Media\MediaDefinition;
 use SnapAdmin\Core\Framework\Api\Acl\Role\AclRoleDefinition;
 use SnapAdmin\Core\Framework\Api\Acl\Role\AclUserRoleDefinition;
 use SnapAdmin\Core\Framework\Context;
@@ -77,7 +78,7 @@ class UserDefinition extends EntityDefinition
             (new StringField('username', 'username'))->addFlags(new Required(), new SearchRanking(SearchRanking::HIGH_SEARCH_RANKING)),
             (new PasswordField('password', 'password', \PASSWORD_DEFAULT, [], PasswordField::FOR_ADMIN))->removeFlag(ApiAware::class)->addFlags(new Required()),
             (new StringField('name', 'name'))->addFlags(new SearchRanking(SearchRanking::HIGH_SEARCH_RANKING)),
-            (new StringField('phone', 'phone'))->addFlags( new SearchRanking(SearchRanking::HIGH_SEARCH_RANKING)),
+            (new StringField('phone', 'phone'))->addFlags(new SearchRanking(SearchRanking::HIGH_SEARCH_RANKING)),
             (new StringField('title', 'title'))->addFlags(new SearchRanking(SearchRanking::MIDDLE_SEARCH_RANKING)),
             (new StringField('email', 'email'))->addFlags(new Required(), new SearchRanking(SearchRanking::HIGH_SEARCH_RANKING)),
             new BoolField('active', 'active'),
@@ -86,6 +87,7 @@ class UserDefinition extends EntityDefinition
             (new TimeZoneField('time_zone', 'timeZone'))->addFlags(new Required()),
             new CustomFields(),
             new ManyToOneAssociationField('locale', 'locale_id', LocaleDefinition::class, 'id', false),
+            new FkField('avatar_id', 'avatarId', MediaDefinition::class),
             (new OneToManyAssociationField('accessKeys', UserAccessKeyDefinition::class, 'user_id', 'id'))->addFlags(new CascadeDelete()),
             (new OneToManyAssociationField('configs', UserConfigDefinition::class, 'user_id', 'id'))->addFlags(new CascadeDelete()),
             new ManyToManyAssociationField('aclRoles', AclRoleDefinition::class, AclUserRoleDefinition::class, 'user_id', 'acl_role_id'),

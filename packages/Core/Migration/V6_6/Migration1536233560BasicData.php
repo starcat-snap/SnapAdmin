@@ -23,6 +23,72 @@ class Migration1536233560BasicData extends MigrationStep
         }
         $this->createLanguage($connection);
         $this->createDefaultSnippetSets($connection);
+        $this->createDefaultMediaFolders($connection);
+    }
+
+    private function createDefaultMediaFolders(Connection $connection): void
+    {
+        $queue = new MultiInsertQueryQueue($connection);
+        $queue->addInsert('media_default_folder', ['id' => Uuid::randomBytes(), 'entity' => 'user', 'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT)]);
+        $queue->execute();
+
+        $notCreatedDefaultFolders = $connection->executeQuery('
+            SELECT `media_default_folder`.`id` default_folder_id, `media_default_folder`.`entity` entity
+            FROM `media_default_folder`
+                LEFT JOIN `media_folder` ON `media_folder`.`default_folder_id` = `media_default_folder`.`id`
+            WHERE `media_folder`.`id` IS NULL
+        ')->fetchAllAssociative();
+
+        foreach ($notCreatedDefaultFolders as $notCreatedDefaultFolder) {
+            $this->createDefaultFolder(
+                $connection,
+                $notCreatedDefaultFolder['default_folder_id'],
+                $notCreatedDefaultFolder['entity']
+            );
+        }
+
+    }
+
+    private function createDefaultFolder(Connection $connection, string $defaultFolderId, string $entity): void
+    {
+        $connection->transactional(function (Connection $connection) use ($defaultFolderId, $entity): void {
+            $configurationId = Uuid::randomBytes();
+            $folderId = Uuid::randomBytes();
+            $folderName = $this->getMediaFolderName($entity);
+            $private = 0;
+            if ($entity === 'document') {
+                $private = 1;
+            }
+            $connection->executeStatement('
+                INSERT INTO `media_folder_configuration` (`id`, `thumbnail_quality`, `create_thumbnails`, `private`, created_at)
+                VALUES (:id, 80, 1, :private, :createdAt)
+            ', [
+                'id' => $configurationId,
+                'createdAt' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
+                'private' => $private,
+            ]);
+
+            $connection->executeStatement('
+                INSERT into `media_folder` (`id`, `name`, `default_folder_id`, `media_folder_configuration_id`, `use_parent_configuration`, `child_count`, `created_at`)
+                VALUES (:folderId, :folderName, :defaultFolderId, :configurationId, 0, 0, :createdAt)
+            ', [
+                'folderId' => $folderId,
+                'folderName' => $folderName,
+                'defaultFolderId' => $defaultFolderId,
+                'configurationId' => $configurationId,
+                'createdAt' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
+            ]);
+        });
+    }
+
+    private function getMediaFolderName(string $entity): string
+    {
+        $capitalizedEntityParts = array_map(
+            static fn($part) => ucfirst((string)$part),
+            explode('_', $entity)
+        );
+
+        return implode(' ', $capitalizedEntityParts) . ' Media';
     }
 
     private function createDefaultSnippetSets(Connection $connection): void

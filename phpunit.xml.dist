@@ -9,6 +9,7 @@
         <include>
             <directory suffix=".php">packages/Core/Framework</directory>
             <directory suffix=".php">packages/Core/DevOps</directory>
+            <directory suffix=".php">packages/Core/Content</directory>
             <directory suffix=".php">packages/Core/Maintenance</directory>
             <directory suffix=".php">packages/Core/System</directory>
 
@@ -20,6 +21,7 @@
         </include>
         <exclude>
             <directory suffix=".php">packages/Core/Framework/Test</directory>
+            <directory suffix=".php">packages/Core/Content/Test</directory>
             <directory suffix=".php">packages/Core/DevOps/StaticAnalyze</directory>
             <directory suffix=".php">packages/Core/DevOps/Test</directory>
             <directory suffix=".php">packages/Core/Maintenance/Test</directory>
@@ -49,6 +51,9 @@
         <testsuite name="framework">
             <directory>packages/Core/Framework/Test</directory>
             <directory>packages/Core/Test</directory>
+        </testsuite>
+        <testsuite name="content">
+            <directory>packages/Core/Content/Test</directory>
         </testsuite>
         <testsuite name="migration">
             <directory>packages/Core/Migration/Test</directory>
