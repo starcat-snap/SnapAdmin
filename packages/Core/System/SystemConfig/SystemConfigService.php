@@ -152,7 +152,7 @@ class SystemConfigService implements ResetInterface
      * @internal should not be used in frontend or store api. The cache layer caches all accessed config keys and use them as cache tag.
      *
      */
-    public function getDomain(string $domain, ?string $channelId = null, bool $inherit = false): array
+    public function getDomain(string $domain, bool $inherit = false): array
     {
         $domain = trim($domain);
         if ($domain === '') {
@@ -165,8 +165,6 @@ class SystemConfigService implements ResetInterface
 
         $domain = rtrim($domain, '.') . '.';
         $escapedDomain = str_replace('%', '\\%', $domain);
-
-        $channelId = $channelId ? Uuid::fromHexToBytes($channelId) : null;
 
         $queryBuilder->andWhere('configuration_key LIKE :prefix')
             ->setParameter('prefix', $escapedDomain . '%');
@@ -200,31 +198,30 @@ class SystemConfigService implements ResetInterface
             $merged[$key] = $value;
         }
 
-        $event = new SystemConfigDomainLoadedEvent($domain, $merged, $inherit, $channelId);
+        $event = new SystemConfigDomainLoadedEvent($domain, $merged, $inherit);
         $this->eventDispatcher->dispatch($event);
 
         return $event->getConfig();
     }
 
     /**
-     * @param array<mixed>|bool|float|int|string|null $value
+     * @param array|bool|float|int|string|null $value
      */
-    public function set(string $key, $value, ?string $channelId = null): void
+    public function set(string $key, $value): void
     {
-        $this->setMultiple([$key => $value], $channelId);
+        $this->setMultiple([$key => $value]);
     }
 
     /**
-     * @param array<string, array<mixed>|bool|float|int|string|null> $values
+     * @param array<string, array|bool|float|int|string|null> $values
      */
-    public function setMultiple(array $values, ?string $channelId = null): void
+    public function setMultiple(array $values): void
     {
 
         $existingIds = $this->connection
             ->fetchAllKeyValue(
                 'SELECT configuration_key, id FROM system_config WHERE '  . 'configuration_key IN (:configurationKeys)',
                 [
-                    'channelId' => $channelId ? Uuid::fromHexToBytes($channelId) : null,
                     'configurationKeys' => array_keys($values),
                 ],
                 [
@@ -238,9 +235,9 @@ class SystemConfigService implements ResetInterface
 
         foreach ($values as $key => $value) {
             $key = trim($key);
-            $this->validate($key, $channelId);
+            $this->validate($key);
 
-            $event = new BeforeSystemConfigChangedEvent($key, $value, $channelId);
+            $event = new BeforeSystemConfigChangedEvent($key, $value);
             $this->eventDispatcher->dispatch($event);
 
             // Use modified value provided by potential event subscribers.
@@ -250,7 +247,7 @@ class SystemConfigService implements ResetInterface
             if ($value === null) {
                 $toBeDeleted[] = $key;
 
-                $events[] = new SystemConfigChangedEvent($key, $value, $channelId);
+                $events[] = new SystemConfigChangedEvent($key, $value);
 
                 continue;
             }
@@ -267,7 +264,7 @@ class SystemConfigService implements ResetInterface
                     ]
                 );
 
-                $events[] = new SystemConfigChangedEvent($key, $value, $channelId);
+                $events[] = new SystemConfigChangedEvent($key, $value);
 
                 continue;
             }
@@ -282,7 +279,7 @@ class SystemConfigService implements ResetInterface
                 ],
             );
 
-            $events[] = new SystemConfigChangedEvent($key, $value, $channelId);
+            $events[] = new SystemConfigChangedEvent($key, $value);
         }
 
         // Delete all null values
@@ -304,9 +301,9 @@ class SystemConfigService implements ResetInterface
         }
     }
 
-    public function delete(string $key, ?string $channel = null): void
+    public function delete(string $key): void
     {
-        $this->setMultiple([$key => null], $channel);
+        $this->setMultiple([$key => null]);
     }
 
     /**

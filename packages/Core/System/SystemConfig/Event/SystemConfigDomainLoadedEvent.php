@@ -12,7 +12,6 @@ class SystemConfigDomainLoadedEvent extends Event
         private readonly string  $domain,
         private array            $config,
         private readonly bool    $inherit,
-        private readonly ?string $channelId
     )
     {
     }
@@ -35,10 +34,5 @@ class SystemConfigDomainLoadedEvent extends Event
     public function isInherit(): bool
     {
         return $this->inherit;
-    }
-
-    public function getChannelId(): ?string
-    {
-        return $this->channelId;
     }
 }
