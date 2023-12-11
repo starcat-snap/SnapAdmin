@@ -40,6 +40,7 @@
     "ext-xml": "*",
     "ext-zip": "*",
     "ext-zlib": "*",
+    "ext-pcntl": "*",
     "ext-sodium": "*",
     "cocur/slugify": "^4.3.0",
     "composer-runtime-api": "^2.0",
