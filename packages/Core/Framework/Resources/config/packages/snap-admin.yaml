@@ -20,7 +20,7 @@ snap:
         invalidation:
             delay: 0
             delay_options:
-                storage: redis
+                storage: cache
     http_cache:
         reverse_proxy:
             enabled: false
