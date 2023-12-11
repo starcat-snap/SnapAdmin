@@ -63,7 +63,7 @@ class SystemConfigService implements ResetInterface
     /**
      * @return array<mixed>|bool|float|int|string|null
      */
-    public function get(string $key, ?string $channelId = null)
+    public function get(string $key)
     {
         if ($this->fineGrainedCache) {
             foreach (array_keys($this->keys) as $trace) {
@@ -75,7 +75,7 @@ class SystemConfigService implements ResetInterface
             }
         }
 
-        $config = $this->loader->load($channelId);
+        $config = $this->loader->load();
 
         $parts = explode('.', $key);
 
@@ -418,29 +418,11 @@ class SystemConfigService implements ResetInterface
      * @throws InvalidKeyException
      * @throws InvalidUuidException
      */
-    private function validate(string $key, ?string $channelId): void
+    private function validate(string $key): void
     {
         $key = trim($key);
         if ($key === '') {
             throw new InvalidKeyException('key may not be empty');
         }
-        if ($channelId && !Uuid::isValid($channelId)) {
-            throw new InvalidUuidException($channelId);
-        }
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    private function getAppMapping(): array
-    {
-        if ($this->appMapping !== null) {
-            return $this->appMapping;
-        }
-
-        /** @var array<string, string> $allKeyValue */
-        $allKeyValue = $this->connection->fetchAllKeyValue('SELECT LOWER(HEX(id)), name FROM app');
-
-        return $this->appMapping = $allKeyValue;
     }
 }

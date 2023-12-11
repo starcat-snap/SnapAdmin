@@ -28,7 +28,7 @@ class SystemConfigLoader extends AbstractSystemConfigLoader
         throw new DecorationPatternException(self::class);
     }
 
-    public function load(?string $channelId): array
+    public function load(): array
     {
         $query = $this->connection->createQueryBuilder();
 

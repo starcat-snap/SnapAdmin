@@ -23,16 +23,16 @@ class MemoizedSystemConfigLoader extends AbstractSystemConfigLoader
         return $this->decorated;
     }
 
-    public function load(?string $channelId): array
+    public function load(): array
     {
-        $config = $this->memoizedSystemConfigStore->getConfig($channelId);
+        $config = $this->memoizedSystemConfigStore->getConfig();
 
         if ($config !== null) {
             return $config;
         }
 
-        $config = $this->getDecorated()->load($channelId);
-        $this->memoizedSystemConfigStore->setConfig($channelId, $config);
+        $config = $this->getDecorated()->load();
+        $this->memoizedSystemConfigStore->setConfig($config);
 
         return $config;
     }
