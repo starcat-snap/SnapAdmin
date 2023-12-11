@@ -1,5 +1,9 @@
 includes:
+    - phpstan-baseline.neon
     - vendor/phpstan/phpstan/conf/bleedingEdge.neon
+    - packages/Core/DevOps/StaticAnalyze/PHPStan/extension.neon
+    - packages/Core/DevOps/StaticAnalyze/PHPStan/rules.neon
+    - packages/Core/DevOps/StaticAnalyze/PHPStan/core-rules.neon
 parameters:
     phpVersion: 80200
     level: 8
@@ -9,14 +13,14 @@ parameters:
     reportUnmatchedIgnoredErrors: true # Could be set to false if necessary during PHPStan update
     tmpDir: var/cache/phpstan
     paths:
-        - src
+        - packages
         - tests
     type_coverage:
         return_type: 99
         param_type: 98
         property_type: 55
     bootstrapFiles:
-        - src/Core/DevOps/StaticAnalyze/phpstan-bootstrap.php
+        - packages/Core/DevOps/StaticAnalyze/phpstan-bootstrap.php
     symfony:
         constantHassers: false
         containerXmlPath: 'var/cache/phpstan_dev/SnapAdmin_Core_DevOps_StaticAnalyze_StaticAnalyzeKernelPhpstan_devDebugContainer.xml'

@@ -10,6 +10,3 @@ snap:
   profiler:
     integrations: [ 'Symfony' ]
 
-  usage_data:
-    gateway:
-      base_uri: 'http://localhost:8888'

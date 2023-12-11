@@ -21,6 +21,5 @@
             <tag name="console.command" command="e2e:cleanup"/>
         </service>
 
-        <service id="snap.usage_data.gateway.client" class="Symfony\Component\HttpClient\MockHttpClient" public="true"/>
     </services>
 </container>
