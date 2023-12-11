@@ -22,7 +22,7 @@ jobs:
           - php-version: 8.4
             stable: false
     env:
-      TEST_SUITES: 'administration system framework profiling migration unit integration'
+      TEST_SUITES: 'administration system content framework profiling migration unit integration'
       APP_ENV: test
       DATABASE_URL: mysql://root:root@127.0.0.1:3306/root
       APP_URL: http://localhost:8000
@@ -68,3 +68,6 @@ jobs:
       - name: Setup Composer
         run: |
           composer install -o
+      - name: Run PHPUnit
+        run: |
+          for TEST_SUITE in $TEST_SUITES; do php -d memory_limit=-1 vendor/bin/phpunit --configuration phpunit.xml.dist --exclude-group "needsWebserver,quarantined" --testsuite "$TEST_SUITE"; done
