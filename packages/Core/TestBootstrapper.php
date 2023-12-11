@@ -225,9 +225,9 @@ class TestBootstrapper
         }
 
         $composer = json_decode((string) file_get_contents($pathToComposerJson), true, 512, \JSON_THROW_ON_ERROR);
-        $baseClass = $composer['extra']['shopware-plugin-class'] ?? '';
+        $baseClass = $composer['extra']['snap-plugin-class'] ?? '';
         if ($baseClass === '') {
-            throw new \RuntimeException('composer.json does not contain `extra.shopware-plugin-class`. Path: ' . $pathToComposerJson);
+            throw new \RuntimeException('composer.json does not contain `extra.snap-plugin-class`. Path: ' . $pathToComposerJson);
         }
 
         $parts = explode('\\', (string) $baseClass);
