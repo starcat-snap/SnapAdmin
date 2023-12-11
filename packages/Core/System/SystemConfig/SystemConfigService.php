@@ -38,11 +38,6 @@ class SystemConfigService implements ResetInterface
     private array $traces = [];
 
     /**
-     * @var array<string, string>|null
-     */
-    private ?array $appMapping = null;
-
-    /**
      * @internal
      */
     public function __construct(
@@ -98,9 +93,9 @@ class SystemConfigService implements ResetInterface
         return $pointer;
     }
 
-    public function getString(string $key, ?string $channelId = null): string
+    public function getString(string $key): string
     {
-        $value = $this->get($key, $channelId);
+        $value = $this->get($key);
         if (!\is_array($value)) {
             return (string)$value;
         }
@@ -108,9 +103,9 @@ class SystemConfigService implements ResetInterface
         throw new InvalidSettingValueException($key, 'string', \gettype($value));
     }
 
-    public function getInt(string $key, ?string $channelId = null): int
+    public function getInt(string $key): int
     {
-        $value = $this->get($key, $channelId);
+        $value = $this->get($key);
         if (!\is_array($value)) {
             return (int)$value;
         }
@@ -118,9 +113,9 @@ class SystemConfigService implements ResetInterface
         throw new InvalidSettingValueException($key, 'int', \gettype($value));
     }
 
-    public function getFloat(string $key, ?string $channelId = null): float
+    public function getFloat(string $key): float
     {
-        $value = $this->get($key, $channelId);
+        $value = $this->get($key);
         if (!\is_array($value)) {
             return (float)$value;
         }
@@ -128,9 +123,9 @@ class SystemConfigService implements ResetInterface
         throw new InvalidSettingValueException($key, 'float', \gettype($value));
     }
 
-    public function getBool(string $key, ?string $channelId = null): bool
+    public function getBool(string $key): bool
     {
-        return (bool)$this->get($key, $channelId);
+        return (bool)$this->get($key);
     }
 
     /**
@@ -140,9 +135,9 @@ class SystemConfigService implements ResetInterface
      * gets all available shop configs and returns them as an array
      *
      */
-    public function all(?string $channelId = null): array
+    public function all(): array
     {
-        return $this->loader->load($channelId);
+        return $this->loader->load();
     }
 
     /**
@@ -408,7 +403,7 @@ class SystemConfigService implements ResetInterface
 
     public function reset(): void
     {
-        $this->appMapping = null;
+
     }
 
     /**

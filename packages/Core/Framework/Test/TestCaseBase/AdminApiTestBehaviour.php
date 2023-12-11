@@ -4,14 +4,11 @@ namespace SnapAdmin\Core\Framework\Test\TestCaseBase;
 
 use Doctrine\DBAL\ArrayParameterType;
 use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use PHPUnit\Framework\TestCase;
 use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\Framework\Api\Context\AdminApiSource;
-use SnapAdmin\Core\Framework\Api\Util\AccessKeyHelper;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Test\TestCaseHelper\TestBrowser;
-use SnapAdmin\Core\Framework\Uuid\Exception\InvalidUuidException;
 use SnapAdmin\Core\Framework\Uuid\Uuid;
 use SnapAdmin\Core\PlatformRequest;
 use SnapAdmin\Core\Test\TestDefaults;
@@ -206,66 +203,6 @@ trait AdminApiTestBehaviour
         $browser->setServerParameter(PlatformRequest::ATTRIBUTE_CONTEXT_OBJECT, new Context(new AdminApiSource($userId)));
     }
 
-    /**
-     * @throws InvalidUuidException
-     * @throws \RuntimeException
-     */
-    public function authorizeBrowserWithIntegration(TestBrowser $browser, ?string $id = null): void
-    {
-        $accessKey = AccessKeyHelper::generateAccessKey('integration');
-
-        if (!$id) {
-            $id = Uuid::randomBytes();
-        } else {
-            $id = Uuid::fromHexToBytes($id);
-        }
-
-        $connection = $browser->getContainer()->get(Connection::class);
-
-        try {
-            $connection->insert('integration', [
-                'id' => $id,
-                'access_key' => $accessKey,
-                'secret_access_key' => TestDefaults::HASHED_PASSWORD,
-                'label' => 'test integration',
-                'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
-            ]);
-        } catch (UniqueConstraintViolationException) {
-            // update the access keys in case the integration already existed
-            $connection->update('integration', [
-                'access_key' => $accessKey,
-                'secret_access_key' => TestDefaults::HASHED_PASSWORD,
-            ], [
-                'id' => $id,
-            ]);
-        }
-
-        $this->apiIntegrations[] = $id;
-
-        $authPayload = [
-            'grant_type' => 'client_credentials',
-            'client_id' => $accessKey,
-            'client_secret' => 'snap',
-        ];
-
-        $browser->request('POST', '/api/oauth/token', $authPayload);
-
-        /** @var string $content */
-        $content = $browser->getResponse()->getContent();
-        $data = json_decode($content, true, 512, \JSON_THROW_ON_ERROR);
-
-        if (!\array_key_exists('access_token', $data)) {
-            throw new \RuntimeException(
-                'No token returned from API: ' . ($data['errors'][0]['detail'] ?? 'unknown error' . print_r($data, true))
-            );
-        }
-
-        $accessToken = $data['access_token'];
-        \assert(\is_string($accessToken));
-        $browser->setServerParameter('HTTP_Authorization', sprintf('Bearer %s', $accessToken));
-        $browser->setServerParameter('_integration_id', $id);
-    }
-
     abstract protected static function getKernel(): KernelInterface;
 
     /**
@@ -290,25 +227,6 @@ trait AdminApiTestBehaviour
     protected function resetBrowser(): void
     {
         $this->kernelBrowser = null;
-    }
-
-    protected function getBrowserAuthenticatedWithIntegration(?string $id = null): TestBrowser
-    {
-        if ($this->integrationBrowser) {
-            return $this->integrationBrowser;
-        }
-
-        $apiBrowser = KernelLifecycleManager::createBrowser($this->getKernel());
-
-        $apiBrowser->followRedirects();
-        $apiBrowser->setServerParameters([
-            'CONTENT_TYPE' => 'application/json',
-            'HTTP_ACCEPT' => ['application/vnd.api+json,application/json'],
-        ]);
-
-        $this->authorizeBrowserWithIntegration($apiBrowser, $id);
-
-        return $this->integrationBrowser = $apiBrowser;
     }
 
     private function getLocaleOfSystemLanguage(Connection $connection): string
