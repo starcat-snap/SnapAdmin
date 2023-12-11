@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core;
 
 use Composer\Autoload\ClassLoader;
-use DG\BypassFinals;
 use Doctrine\DBAL\Connection;
 use SnapAdmin\Core\DevOps\StaticAnalyze\StaticAnalyzeKernel;
 use SnapAdmin\Core\Framework\Adapter\Kernel\KernelFactory;
@@ -126,7 +125,7 @@ class TestBootstrapper
 
         // only test cwd if it's not platform embedded (custom/plugins)
         if (!$this->platformEmbedded && \is_dir('vendor')) {
-            return $this->projectDir = (string)getcwd();
+            return $this->projectDir = (string) getcwd();
         }
 
         $dir = $rootDir = __DIR__;
@@ -225,13 +224,13 @@ class TestBootstrapper
             throw new \RuntimeException('Could not auto detect plugin name via composer.json. Path: ' . $pathToComposerJson);
         }
 
-        $composer = json_decode((string)file_get_contents($pathToComposerJson), true, 512, \JSON_THROW_ON_ERROR);
-        $baseClass = $composer['extra']['snap-plugin-class'] ?? '';
+        $composer = json_decode((string) file_get_contents($pathToComposerJson), true, 512, \JSON_THROW_ON_ERROR);
+        $baseClass = $composer['extra']['shopware-plugin-class'] ?? '';
         if ($baseClass === '') {
-            throw new \RuntimeException('composer.json does not contain `extra.snap-plugin-class`. Path: ' . $pathToComposerJson);
+            throw new \RuntimeException('composer.json does not contain `extra.shopware-plugin-class`. Path: ' . $pathToComposerJson);
         }
 
-        $parts = explode('\\', (string)$baseClass);
+        $parts = explode('\\', (string) $baseClass);
         $pluginName = end($parts);
 
         $this->addActivePlugins($pluginName);
@@ -296,7 +295,7 @@ class TestBootstrapper
             return $this->forceInstall;
         }
 
-        return $this->forceInstall = (bool)($_SERVER['FORCE_INSTALL'] ?? false);
+        return $this->forceInstall = (bool) ($_SERVER['FORCE_INSTALL'] ?? false);
     }
 
     private function getKernel(): KernelInterface
@@ -343,7 +342,8 @@ class TestBootstrapper
                     '--create-database' => true,
                     '--force' => true,
                     '--drop-database' => true,
-                    '--basic-setup' => true
+                    '--basic-setup' => true,
+                    '--no-assign-theme' => true,
                 ],
                 $installCommand->getDefinition()
             ),

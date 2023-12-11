@@ -193,18 +193,6 @@
     "build:js:component-library": "Builds the component library",
     "build:js:frontend": "Builds the Frontend's JavaScript",
     "check:license": "Check thrid-party dependency licenses",
-    "e2e:cypress": " ",
-    "e2e:cypress-repeat": " ",
-    "e2e:open": "Launches the Cypress E2E test-suite UI",
-    "e2e:percy": " ",
-    "e2e:prepare": "Installs the Admin Extension SDK test plugin with fixtures and dumps the database",
-    "e2e:sdk-plugin:fixture-to-plugin": " ",
-    "e2e:sdk-plugin:plugin-to-fixture": " ",
-    "e2e:sdk-plugin:prepare-plugin": " ",
-    "e2e:setup": "Installs a clean snap instance for E2E environment and launches 'e2e:prepare'",
-    "e2e:web-update:open": " ",
-    "e2e:web-update:prepare": " ",
-    "e2e:web-update:start": " ",
     "ecs": "Checks all files regarding the Easy Coding Standard",
     "ecs-fix": "Checks all files regarding the Easy Coding Standard and fixes them if possible",
     "eslint": "Codestyle checks all (Administration/Frontend/E2E) JS/TS files",
@@ -214,13 +202,6 @@
     "eslint:e2e:fix": "Codestyle checks all E2E JS/TS files and fixes them if possible",
     "eslint:frontend": "Codestyle checks all Frontend JS/TS files",
     "framework:schema:dump": " ",
-    "hook:pre-commit": " ",
-    "hook:pre-commit:install": " ",
-    "hook:pre-push": " ",
-    "hook:pre-push:install": " ",
-    "init:db": " ",
-    "init:e2e": " ",
-    "init:js": " ",
     "init:testdb": "Initializes the test database",
     "lint": "Shorthand for the composer commands 'stylelint', 'eslint', 'ecs', 'lint:changlog' and 'lint:snippets'",
     "lint:changelog": "Validates changelogs",
@@ -232,11 +213,6 @@
     "npm:admin:check-license": "Check thrid-party dependency licenses for administration",
     "npm:component-library": " ",
     "npm:component-library:bin": " ",
-    "npm:e2e": " ",
-    "npm:e2e:bin": " ",
-    "npm:frontend": " ",
-    "npm:frontend:bin": " ",
-    "npm:frontend:check-license": "Check thrid-party dependency licenses for frontend",
     "paratest": " ",
     "phpbench": " ",
     "phpstan": "Launches the PHP static analysis tool",
@@ -277,8 +253,7 @@
       "roave-backward-compatibility-check --from=$(git tag -l --sort -version:refname | head -n 1)"
     ],
     "build:js": [
-      "@build:js:admin",
-      "@build:js:frontend"
+      "@build:js:admin"
     ],
     "build:js:admin": [
       "@php bin/console bundle:dump",
@@ -290,90 +265,8 @@
     "build:js:component-library": [
       "@npm:component-library run generate"
     ],
-    "build:js:frontend": [
-      "@php bin/console bundle:dump",
-      "@php bin/console feature:dump",
-      "@npm:frontend run production",
-      "cd src/Frontend/Resources/app/frontend && node copy-to-vendor.js",
-      "@php bin/console theme:compile"
-    ],
     "check:license": "bash -c \"vendor/bin/composer-license-checker check -a $(sed -z 's/\\n/ -a /g' .allowed-licenses)\"",
-    "e2e:cypress": [
-      "export APP_ENV=e2e; export CYPRESS_localUsage=1; export CYPRESS_snapRoot=\"$PWD\"; cd tests/e2e; export PATH=\"$PWD/node_modules/.bin/:$PATH\"; \"$CYPRESS_snapRoot\"/bin/exec-with-env cypress"
-    ],
-    "e2e:cypress-repeat": [
-      "export APP_ENV=e2e; export CYPRESS_localUsage=1; export CYPRESS_snapRoot=\"$PWD\"; cd tests/e2e; export PATH=\"$PWD/node_modules/.bin/:$PATH\"; \"$CYPRESS_snapRoot\"/bin/exec-with-env cypress-repeat"
-    ],
-    "e2e:open": [
-      "Composer\\Config::disableProcessTimeout",
-      "@e2e:cypress open"
-    ],
-    "e2e:vue3": [
-      "Composer\\Config::disableProcessTimeout",
-      "export CYPRESS_VUE3=\"true\"; export CYPRESS_grepTags=\"VUE3\"; export APP_ENV=e2e; export CYPRESS_localUsage=1; export CYPRESS_snapRoot=\"$PWD\"; cd tests/e2e; export PATH=\"$PWD/node_modules/.bin/:$PATH\"; \"$CYPRESS_snapRoot\"/bin/exec-with-env cypress open"
-    ],
-    "e2e:percy": [
-      "export APP_ENV=e2e; export CYPRESS_localUsage=1; export CYPRESS_snapRoot=\"$PWD\"; cd tests/e2e; export PATH=\"$PWD/node_modules/.bin/:$PATH\"; \"$CYPRESS_snapRoot\"/bin/exec-with-env percy"
-    ],
-    "e2e:prepare": [
-      "@putenv APP_ENV=e2e",
-      "@putenv CYPRESS_localUsage=1",
-      "@e2e:sdk-plugin:fixture-to-plugin",
-      "@e2e:sdk-plugin:prepare-plugin",
-      "@php bin/console e2e:dump-db"
-    ],
-    "e2e:sdk-plugin:fixture-to-plugin": [
-      "rm -rf $PWD/plugins/TestPlugin;",
-      "cp -a $PWD/tests/e2e/cypress/fixtures/TestPlugin/. $PWD/plugins/TestPlugin/"
-    ],
-    "e2e:sdk-plugin:plugin-to-fixture": [
-      "rm -rf $PWD/tests/e2e/cypress/fixtures/TestPlugin;",
-      "cp -a $PWD/plugins/TestPlugin/. $PWD/tests/e2e/cypress/fixtures/TestPlugin/"
-    ],
-    "e2e:sdk-plugin:prepare-plugin": [
-      "cd $PWD/plugins/TestPlugin/src/Resources/app/administration/; npm install --no-audit --prefer-offline;",
-      "bin/console plugin:refresh;",
-      "bin/console plugin:install --activate TestPlugin;",
-      "@build:js:admin"
-    ],
-    "e2e:setup": [
-      "@putenv APP_ENV=e2e",
-      "@setup",
-      "@init:e2e",
-      "@e2e:prepare"
-    ],
-    "e2e:web-update:open": [
-      "Composer\\Config::disableProcessTimeout",
-      "@e2e:web-update:start",
-      "export CYPRESS_baseUrl=${INSTALL_URL-${CYPRESS_baseUrl-http://localhost:8000}}; export APP_ENV=e2e; export CYPRESS_localUsage=1; export CYPRESS_snapRoot=\"$PWD\"; cd tests/e2e; export PATH=\"$PWD/node_modules/.bin/:$PATH\"; \"$CYPRESS_snapRoot\"/bin/exec-with-env cypress open"
-    ],
-    "e2e:web-update:prepare": [
-      "rm -rf shop",
-      "wget -q -O install.zip https://releases.snap.com/sw6/install_v6.4.17.2_4d2c85fb448571fa4f30edce635f33a67dda1d76.zip",
-      "unzip -q -o -d shop install.zip",
-      "rm install.zip",
-      "cd shop; bin/console system:setup --database-url mysql://${CYPRESS_dbUser-root}:${CYPRESS_dbPassword-root}@${CYPRESS_dbHost-localhost}/${CYPRESS_dbName-snap} --app-url ${INSTALL_URL-${CYPRESS_baseUrl-http://localhost:8000}} -f -n",
-      "echo PROJECT_ROOT=$PWD/shop >> shop/.env",
-      "cd shop; APP_URL=${INSTALL_URL-${CYPRESS_baseUrl-http://localhost:8000}} bin/console system:install --basic-setup --create-database --drop-database --force -n",
-      "cd shop; bin/console system:config:set core.frw.completedAt '2019-10-07T10:46:23+00:00'",
-      "cd shop; bin/console system:config:set core.store.apiUri http://localhost:8060",
-      "cd shop; bin/console system:config:set core.update.apiUri http://localhost:8060",
-      "cd shop; composer config repositories.0 '{\"type\": \"path\", \"url\": \"../src/*\"}'",
-      "cd shop; sed -i '/\\$this->verifyResponseSignature(\\$response);/d' vendor/snap/core/Framework/Update/Services/ApiClient.php",
-      "cd shop; sed -i 's/\\$signatureHeaderName = self::SNAP_SIGNATURE_HEADER;/return \\$response;/g' vendor/snap/core/Framework/Store/Services/VerifyResponseSignatureMiddleware.php",
-      "cd src/WebInstaller; composer install",
-      "cd src/WebInstaller; composer build-phar",
-      "mv src/WebInstaller/snap-installer.phar.php shop/public/snap-installer.phar.php"
-    ],
-    "e2e:web-update:start": [
-      "@putenv SW_RECOVERY_NEXT_VERSION=6.5.99.9",
-      "@putenv SW_RECOVERY_NEXT_BRANCH=dev-trunk",
-      "@putenv CYPRESS_SKIP_INIT=1",
-      "symfony local:server:stop --dir=shop",
-      "symfony local:server:stop --dir=tests/e2e/update-api-mock",
-      "APP_URL=${INSTALL_URL-${CYPRESS_baseUrl-http://localhost:8000}} symfony local:server:start --dir=shop --port=8050 -d",
-      "symfony local:server:start --dir=tests/e2e/update-api-mock --port=8060 -d"
-    ],
+
     "ecs": "ecs check src tests",
     "ecs-fix": "ecs check --fix src tests",
     "eslint": [
@@ -383,8 +276,6 @@
     ],
     "eslint:admin": "@npm:admin run lint:all",
     "eslint:admin:fix": "@npm:admin run lint:fix",
-    "eslint:e2e": "@npm:e2e run lint",
-    "eslint:e2e:fix": "@npm:e2e run lint:fix",
     "eslint:frontend": "@npm:frontend:bin eslint --config .eslintrc.js --ext .js,.vue",
     "framework:schema:dump": "@php bin/console -e prod framework:schema -s 'entity-schema' src/Administration/Resources/app/administration/test/_mocks_/entity-schema.json",
     "hook:pre-commit": [
