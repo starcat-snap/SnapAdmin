@@ -25,3 +25,22 @@ parameters:
         constantHassers: false
         containerXmlPath: 'var/cache/phpstan_dev/SnapAdmin_Core_DevOps_StaticAnalyze_StaticAnalyzeKernelPhpstan_devDebugContainer.xml'
         consoleApplicationLoader: packages/Core/DevOps/StaticAnalyze/console-application.php
+    excludePaths:
+        # vendor patches over autoload files
+        - packages/Core/Framework/Adapter/Doctrine/Patch/AbstractAsset.php
+    ignoreErrors:
+        -
+            message: '#Service ".*" is not registered in the container\.#'
+            paths:
+                - packages/**/*Test.php
+                - tests/unit
+                - tests/integration
+                - packages/Core/Framework/Test/TestCaseBase/*.php
+        -
+            message: '#Service ".*" is private#'
+            paths:
+                - packages/**/*Test.php
+                - tests/performance/**/*Bench.php
+                - tests/unit/**/*Test.php
+                - tests/integration/**/*Test.php
+                - tests/integration/**/*TestCase.php

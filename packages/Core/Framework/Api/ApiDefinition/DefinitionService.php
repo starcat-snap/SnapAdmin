@@ -33,7 +33,6 @@ class DefinitionService
      */
     public function __construct(
         private readonly DefinitionInstanceRegistry $definitionRegistry,
-        private readonly ChannelDefinitionInstanceRegistry $channelDefinitionRegistry,
         ApiDefinitionGeneratorInterface ...$generators
     ) {
         $this->generators = $generators;
