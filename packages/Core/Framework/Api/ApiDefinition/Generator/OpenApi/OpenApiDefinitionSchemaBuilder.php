@@ -6,7 +6,6 @@ use OpenApi\Annotations\Property;
 use OpenApi\Annotations\Schema;
 use SnapAdmin\Core\Framework\Api\ApiDefinition\DefinitionService;
 use SnapAdmin\Core\Framework\Api\Context\AdminApiSource;
-use SnapAdmin\Core\Framework\Api\Context\ChannelApiSource;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\AssociationField;
@@ -234,10 +233,6 @@ class OpenApiDefinitionSchemaBuilder
 
         $flag = $field->getFlag(ApiAware::class);
         if ($flag === null) {
-            return false;
-        }
-
-        if (!$flag->isSourceAllowed($forChannel ? ChannelApiSource::class : AdminApiSource::class)) {
             return false;
         }
 

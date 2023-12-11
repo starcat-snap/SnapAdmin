@@ -402,9 +402,6 @@ base-uri 'self';
             <tag name="snap.route_scope"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Routing\StoreApiRouteScope">
-            <tag name="snap.route_scope"/>
-        </service>
 
         <service id="SnapAdmin\Core\Framework\Routing\RouteScopeRegistry">
             <argument type="tagged" tag="snap.route_scope"/>

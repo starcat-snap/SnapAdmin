@@ -6,7 +6,6 @@ use SnapAdmin\Core\Framework\Api\Acl\Event\CommandAclValidationEvent;
 use SnapAdmin\Core\Framework\Api\Acl\Role\AclRoleDefinition;
 use SnapAdmin\Core\Framework\Api\ApiException;
 use SnapAdmin\Core\Framework\Api\Context\AdminApiSource;
-use SnapAdmin\Core\Framework\Api\Context\AdminChannelApiSource;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityTranslationDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\Command\WriteCommand;
@@ -41,10 +40,6 @@ class AclWriteValidator implements EventSubscriberInterface
     {
         $context = $event->getContext();
         $source = $event->getContext()->getSource();
-        if ($source instanceof AdminChannelApiSource) {
-            $context = $source->getOriginalContext();
-            $source = $context->getSource();
-        }
 
         if ($context->getScope() === Context::SYSTEM_SCOPE || !$source instanceof AdminApiSource || $source->isAdmin()) {
             return;

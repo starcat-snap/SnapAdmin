@@ -223,8 +223,6 @@
     "reset": "Resets this SnapAdmin instance, without composer and npm install. (Faster reset if no dependencies changed)",
     "setup": "Resets and re-installs this SnapAdmin instance",
     "static-analyze": " ",
-    "frontend:unit": "Launches the jest unit test-suite for the Frontend",
-    "frontend:unit:watch": "Launches the interactive jest unit test-suite watcher for the Frontend",
     "stylelint": " ",
     "stylelint:admin": " ",
     "stylelint:frontend": " ",
@@ -318,11 +316,6 @@
     "npm:admin:check-license": "export ALLOWED_LICENSES=\"$(sed -z 's/\\n/;/g' .allowed-licenses)\"; cd src/Administration/Resources/app/administration; bash -c \"node_modules/.bin/license-checker-rseidelsohn --onlyAllow \\\"$ALLOWED_LICENSES\\\" --excludePrivatePackages\"",
     "npm:component-library": "@npm:component-library:bin npm",
     "npm:component-library:bin": "export PROJECT_ROOT=\"$PWD\"; cd src/Administration/Resources/app/administration/build/nuxt-component-library; export PATH=\"$PWD/node_modules/.bin/:$PATH\"; \"$PROJECT_ROOT\"/bin/exec-with-env ",
-    "npm:e2e": "@npm:e2e:bin npm",
-    "npm:e2e:bin": "export CYPRESS_snapRoot=\"$PWD\"; cd tests/e2e; export PATH=\"$PWD/node_modules/.bin/:$PATH\"; \"$CYPRESS_snapRoot\"/bin/exec-with-env ",
-    "npm:frontend": "@npm:frontend:bin npm",
-    "npm:frontend:bin": "export PROJECT_ROOT=\"$PWD\"; cd src/Frontend/Resources/app/frontend; export PATH=\"$PWD/node_modules/.bin/:$PATH\"; \"$PROJECT_ROOT\"/bin/exec-with-env ",
-    "npm:frontend:check-license": "export ALLOWED_LICENSES=\"$(sed -z 's/\\n/;/g' .allowed-licenses)\"; cd src/Frontend/Resources/app/frontend; bash -c \"node_modules/.bin/license-checker-rseidelsohn --onlyAllow \\\"$ALLOWED_LICENSES\\\" --excludePrivatePackages\"",
     "paratest": [
       "paratest --configuration phpunit.xml.dist --testsuite=paratest --exclude-group=skip-paratest,needsWebserver,quarantined --processes $(getconf _NPROCESSORS_ONLN)"
     ],
