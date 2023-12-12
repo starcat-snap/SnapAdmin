@@ -6,7 +6,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\SalesChannel\Aggregate\SalesChannelDomain\SalesChannelDomainCollection;
 use SnapAdmin\Core\System\Snippet\SnippetCollection;
 
 #[Package('system-settings')]
@@ -35,10 +34,6 @@ class SnippetSetEntity extends Entity
      */
     protected $snippets;
 
-    /**
-     * @var SalesChannelDomainCollection|null
-     */
-    protected $salesChannelDomains;
 
     public function getName(): string
     {
@@ -78,15 +73,5 @@ class SnippetSetEntity extends Entity
     public function setSnippets(SnippetCollection $snippets): void
     {
         $this->snippets = $snippets;
-    }
-
-    public function getSalesChannelDomains(): ?SalesChannelDomainCollection
-    {
-        return $this->salesChannelDomains;
-    }
-
-    public function setSalesChannelDomains(SalesChannelDomainCollection $salesChannelDomains): void
-    {
-        $this->salesChannelDomains = $salesChannelDomains;
     }
 }

@@ -44,9 +44,6 @@
             <tag name="snap.entity.definition"/>
         </service>
 
-        <service id="SnapAdmin\Core\Content\Media\Aggregate\MediaTag\MediaTagDefinition">
-            <tag name="snap.entity.definition"/>
-        </service>
         <!-- end of Entity definitions -->
 
         <!-- message handlers -->

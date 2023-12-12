@@ -21,15 +21,6 @@
             }
           },
           {
-            "name": "channel",
-            "in": "path",
-            "description": "Sales channel for the number range. Number ranges can be defined perchannel, so you can pass achannel ID here.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "preview",
             "in": "query",
             "description": "If this parameter has a true value, the number will not actually be incremented, but only previewed.",

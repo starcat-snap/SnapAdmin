@@ -14,7 +14,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationFiel
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\SalesChannel\Aggregate\SalesChannelDomain\SalesChannelDomainDefinition;
 use SnapAdmin\Core\System\Snippet\SnippetDefinition;
 
 #[Package('system-settings')]
@@ -51,7 +50,6 @@ class SnippetSetDefinition extends EntityDefinition
             (new StringField('iso', 'iso'))->addFlags(new ApiAware(), new Required()),
             (new CustomFields())->addFlags(new ApiAware()),
             (new OneToManyAssociationField('snippets', SnippetDefinition::class, 'snippet_set_id'))->addFlags(new ApiAware(), new CascadeDelete()),
-            (new OneToManyAssociationField('salesChannelDomains', SalesChannelDomainDefinition::class, 'snippet_set_id'))->addFlags(new RestrictDelete()),
         ]);
     }
 }
