@@ -136,7 +136,6 @@ parameters:
 
         # Internal deprecations of SnapAdmin are handled in other places
         - '#deprecated.*class SnapAdmin\\#'
-        - '#deprecated.*interface SnapAdmin\\#'
 
         - # tests are allowed to add dummy classes in the same file
             message: '#Multiple class\/interface\/trait is not allowed in single file#'

@@ -8,12 +8,9 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\CustomFields;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\IdField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ListField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\OneToOneAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
-use SnapAdmin\Core\Framework\Feature;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class MediaDefaultFolderDefinition extends EntityDefinition
@@ -42,23 +39,12 @@ class MediaDefaultFolderDefinition extends EntityDefinition
 
     protected function defineFields(): FieldCollection
     {
-        $fields = new FieldCollection([
+        return new FieldCollection([
             (new IdField('id', 'id'))->addFlags(new PrimaryKey(), new Required()),
 
             (new StringField('entity', 'entity'))->addFlags(new Required()),
             new OneToOneAssociationField('folder', 'id', 'default_folder_id', MediaFolderDefinition::class),
             new CustomFields(),
         ]);
-
-        if (!Feature::isActive('v6.6.0.0')) {
-            /**
-             * @deprecated tag:v6.6.0 Associations are now determined by `\SnapAdmin\Core\Content\Media\MediaDefinition`
-             */
-            $fields->add(
-                (new ListField('association_fields', 'associationFields', StringField::class))->addFlags(new Required())
-            );
-        }
-
-        return $fields;
     }
 }

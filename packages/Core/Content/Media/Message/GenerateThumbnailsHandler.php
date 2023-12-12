@@ -7,8 +7,6 @@ use SnapAdmin\Core\Content\Media\Thumbnail\ThumbnailService;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityRepository;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsAnyFilter;
-use SnapAdmin\Core\Framework\Feature;
-use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 /**
@@ -29,11 +27,8 @@ final class GenerateThumbnailsHandler
 
     public function __invoke(GenerateThumbnailsMessage|UpdateThumbnailsMessage $msg): void
     {
-        if (Feature::isActive('v6.6.0.0')) {
-            $context = $msg->getContext();
-        } else {
-            $context = $msg->readContext();
-        }
+        $context = $msg->getContext();
+
 
         $criteria = new Criteria();
         $criteria->addAssociation('mediaFolder.configuration.mediaThumbnailSizes');

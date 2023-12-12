@@ -66,8 +66,6 @@
         <!-- end of message handlers -->
 
         <service id="SnapAdmin\Core\Content\Media\Subscriber\MediaLoadedSubscriber">
-            <argument type="service" id="SnapAdmin\Core\Content\Media\Pathname\UrlGeneratorInterface"/>
-
             <!-- unseralize read optimized (serialized) database objects > restores thumbnails from `RO` into real property-->
             <tag name="kernel.event_listener" event="media.loaded" method="unserialize" priority="100" />
         </service>
@@ -145,45 +143,6 @@
             <tag name="console.command"/>
         </service>
 
-        <!-- Pathname -->
-        <service class="SnapAdmin\Core\Content\Media\Pathname\UrlGenerator" id="SnapAdmin\Core\Content\Media\Pathname\UrlGeneratorInterface">
-            <argument type="service" id="SnapAdmin\Core\Content\Media\Pathname\PathnameStrategy\PathnameStrategyInterface"/>
-            <argument type="service" id="snap.filesystem.public"/>
-
-            <tag name="kernel.reset" method="reset"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Content\Media\Pathname\PathnameStrategy\StrategyFactory">
-            <argument type="tagged" tag="snap.pathname.strategy"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Content\Media\Pathname\PathnameStrategy\PathnameStrategyInterface">
-            <factory service="SnapAdmin\Core\Content\Media\Pathname\PathnameStrategy\StrategyFactory" method="factory"/>
-            <argument>%snap.cdn.strategy%</argument>
-        </service>
-
-        <service id="SnapAdmin\Core\Content\Media\Pathname\PathnameStrategy\FilenamePathnameStrategy">
-            <argument type="service" id="SnapAdmin\Core\Content\Media\Pathname\PathnameStrategy\PlainPathnameStrategy"/>
-
-            <tag name="snap.pathname.strategy"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Content\Media\Pathname\PathnameStrategy\PhysicalFilenamePathnameStrategy">
-            <argument type="service" id="SnapAdmin\Core\Content\Media\Pathname\PathnameStrategy\PlainPathnameStrategy"/>
-
-            <tag name="snap.pathname.strategy"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Content\Media\Pathname\PathnameStrategy\PlainPathnameStrategy">
-            <tag name="snap.pathname.strategy"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Content\Media\Pathname\PathnameStrategy\IdPathnameStrategy">
-            <argument type="service" id="SnapAdmin\Core\Content\Media\Pathname\PathnameStrategy\PlainPathnameStrategy"/>
-
-            <tag name="snap.pathname.strategy"/>
-        </service>
-
         <!-- Controller -->
         <service id="SnapAdmin\Core\Content\Media\Api\MediaUploadController" public="true">
             <argument type="service" id="SnapAdmin\Core\Content\Media\MediaService"/>
@@ -243,10 +202,6 @@
         </service>
 
         <!-- Services -->
-        <service id="SnapAdmin\Core\Content\Media\DeleteNotUsedMediaService">
-            <argument type="service" id="media.repository"/>
-            <argument type="service" id="media_default_folder.repository"/>
-        </service>
 
         <service id="SnapAdmin\Core\Content\Media\UnusedMediaPurger">
             <argument type="service" id="media.repository"/>

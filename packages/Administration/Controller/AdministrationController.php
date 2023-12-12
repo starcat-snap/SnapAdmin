@@ -13,7 +13,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\AllowHtml;
 use SnapAdmin\Core\Framework\Feature;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Routing\RoutingException;
-use SnapAdmin\Core\Framework\Store\Services\FirstRunWizardService;
 use SnapAdmin\Core\Framework\Util\HtmlSanitizer;
 use SnapAdmin\Core\PlatformRequest;
 use SnapAdmin\Core\System\SystemConfig\SystemConfigService;

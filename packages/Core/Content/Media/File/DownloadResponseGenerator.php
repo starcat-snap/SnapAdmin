@@ -12,10 +12,6 @@ use SnapAdmin\Core\Content\Media\MediaEntity;
 use SnapAdmin\Core\Content\Media\MediaException;
 use SnapAdmin\Core\Content\Media\MediaService;
 use SnapAdmin\Core\Framework\Context;
-use SnapAdmin\Core\Framework\Feature;
-use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\SalesChannel\SalesChannelContext;
-use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
 use Symfony\Component\HttpFoundation\HeaderUtils;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,7 +37,7 @@ class DownloadResponseGenerator
 
     public function getResponse(
         MediaEntity $media,
-        SalesChannelContext $context,
+        Context $context,
         string $expiration = '+120 minutes'
     ): Response {
         $fileSystem = $this->getFileSystem($media);
@@ -58,7 +54,7 @@ class DownloadResponseGenerator
         return $this->getDefaultResponse($media, $context, $fileSystem);
     }
 
-    private function getDefaultResponse(MediaEntity $media, SalesChannelContext $context, FilesystemOperator $fileSystem): Response
+    private function getDefaultResponse(MediaEntity $media, Context $context, FilesystemOperator $fileSystem): Response
     {
         if (!$media->isPrivate()) {
             $url = $this->mediaUrlGenerator->generate([UrlParams::fromMedia($media)]);
@@ -92,9 +88,9 @@ class DownloadResponseGenerator
         }
     }
 
-    private function createStreamedResponse(MediaEntity $media, SalesChannelContext $context): StreamedResponse
+    private function createStreamedResponse(MediaEntity $media, Context $context): StreamedResponse
     {
-        $stream = $context->getContext()->scope(
+        $stream = $context->scope(
             Context::SYSTEM_SCOPE,
             fn (Context $context): StreamInterface => $this->mediaService->loadFileStream($media->getId(), $context)
         );
@@ -106,10 +102,6 @@ class DownloadResponseGenerator
         $stream = $stream->detach();
 
         if (!\is_resource($stream)) {
-            if (!Feature::isActive('v6.6.0.0')) {
-                throw new FileNotFoundException($media->getFilename() . '.' . $media->getFileExtension());
-            }
-
             throw MediaException::fileNotFound($media->getFilename() . '.' . $media->getFileExtension());
         }
 

@@ -24,8 +24,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\MultiFilter;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\NotFilter;
-use SnapAdmin\Core\Framework\Feature;
-use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 
@@ -98,12 +96,7 @@ class FileSaver
         $message = new GenerateThumbnailsMessage();
         $message->setMediaIds([$mediaId]);
 
-        if (Feature::isActive('v6.6.0.0')) {
-            $message->setContext($context);
-        } else {
-            $message->withContext($context);
-        }
-
+        $message->setContext($context);
         $this->messageBus->dispatch($message);
     }
 

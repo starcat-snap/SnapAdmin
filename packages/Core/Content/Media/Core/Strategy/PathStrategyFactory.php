@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\Content\Media\Core\Strategy;
 
 use SnapAdmin\Core\Content\Media\Core\Application\AbstractMediaPathStrategy;
 use SnapAdmin\Core\Content\Media\MediaException;
-use SnapAdmin\Core\Framework\Feature;
 use SnapAdmin\Core\Framework\Log\Package;
 
 /**
@@ -18,7 +17,7 @@ class PathStrategyFactory
      *
      * @param AbstractMediaPathStrategy[] $strategies
      */
-    public function __construct(private readonly iterable $strategies, private readonly AbstractMediaPathStrategy $bc)
+    public function __construct(private readonly iterable $strategies)
     {
     }
 
@@ -38,10 +37,6 @@ class PathStrategyFactory
             }
         }
 
-        if (Feature::isActive('v6.6.0.0')) {
-            throw MediaException::strategyNotFound($strategyName);
-        }
-
-        return $this->bc;
+        throw MediaException::strategyNotFound($strategyName);
     }
 }

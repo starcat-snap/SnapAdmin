@@ -13,10 +13,6 @@ snap:
       - name: VUE3
         default: false
         major: true
-      - name: media_path
-        default: false
-        major: true
-        description: "Enables new media path behavior, which calls new services to generate media urls"
       - name: STOCK_HANDLING
         default: false
         major: false
