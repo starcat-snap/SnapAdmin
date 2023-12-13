@@ -42,7 +42,7 @@ class BundleHierarchyBuilder implements TemplateNamespaceHierarchyBuilderInterfa
 
         $extensions = array_merge($bundles);
         asort($extensions);
-
+        /** @var array<string> */
         return array_merge(
             $extensions,
             $namespaceHierarchy

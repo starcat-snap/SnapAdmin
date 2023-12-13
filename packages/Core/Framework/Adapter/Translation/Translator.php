@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\Adapter\Translation;
 
-use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Exception\ConnectionException;
 use Doctrine\DBAL\Exception\DriverException;
 use SnapAdmin\Core\Defaults;
@@ -18,7 +17,6 @@ use Symfony\Component\Translation\Formatter\MessageFormatterInterface;
 use Symfony\Component\Translation\MessageCatalogueInterface;
 use Symfony\Component\Translation\Translator as SymfonyTranslator;
 use Symfony\Component\Translation\TranslatorBagInterface;
-use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\Cache\ItemInterface;
 use Symfony\Contracts\Translation\LocaleAwareInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -49,7 +47,7 @@ class Translator extends AbstractTranslator
     private array $traces = [];
 
     /**
-     * @var array<string, string>
+     * @var array<string, ?string>
      */
     private array $snippets = [];
 
@@ -59,10 +57,8 @@ class Translator extends AbstractTranslator
     public function __construct(
         private readonly TranslatorInterface&TranslatorBagInterface&LocaleAwareInterface $translator,
         private readonly RequestStack                                                    $requestStack,
-        private readonly CacheInterface                                                  $cache,
         private readonly MessageFormatterInterface                                       $formatter,
         private readonly string                                                          $environment,
-        private readonly Connection                                                      $connection,
         private readonly LanguageLocaleCodeProvider                                      $languageLocaleProvider,
         private readonly SnippetService                                                  $snippetService,
         private readonly bool                                                            $fineGrainedCache
@@ -209,7 +205,7 @@ class Translator extends AbstractTranslator
     {
         $this->localeBeforeInject = $this->getLocale();
         $this->setLocale($locale);
-        $this->resolveSnippetSetId($languageId, $locale);
+        $this->resolveSnippetSetId($locale);
         $this->getCatalogue($locale);
     }
 
@@ -265,12 +261,13 @@ class Translator extends AbstractTranslator
         return mb_strpos($catalog->getLocale(), '-') !== false;
     }
 
-    private function resolveSnippetSetId(string $languageId, string $locale): void
+    private function resolveSnippetSetId(string $locale): void
     {
-        $snippetSetId = $this->snippetService->findSnippetSetId($languageId, $locale);
+        $snippetSetId = $this->snippetService->findSnippetSetId($locale);
 
         $this->snippetSetId = $snippetSetId;
     }
+
 
     /**
      * Add language specific snippets provided by the admin

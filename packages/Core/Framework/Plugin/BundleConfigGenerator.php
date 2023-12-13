@@ -99,11 +99,6 @@ class BundleConfigGenerator implements BundleConfigGeneratorInterface
     }
 
 
-    private function asSnakeCase(string $string): string
-    {
-        return (new CamelCaseToSnakeCaseNameConverter())->normalize($string);
-    }
-
     private function getActivePlugins(): array
     {
         $activePlugins = $this->kernel->getPluginLoader()->getPluginInstances()->getActives();

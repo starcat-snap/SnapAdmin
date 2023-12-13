@@ -96,25 +96,6 @@ class PluginExtractor
         }
     }
 
-    private function assertPrefix(string $filename, string $prefix): void
-    {
-        if (mb_strpos($filename, $prefix) !== 0) {
-            throw new PluginExtractionException(
-                sprintf(
-                    'Detected invalid file/directory %s in the plugin zip: %s',
-                    $filename,
-                    $prefix
-                )
-            );
-        }
-    }
-
-    private function assertNoDirectoryTraversal(string $filename): void
-    {
-        if (mb_strpos($filename, '..' . \DIRECTORY_SEPARATOR) !== false) {
-            throw new PluginExtractionException('Directory Traversal detected');
-        }
-    }
 
     private function findOldFile(string $destination, string $pluginName): string
     {

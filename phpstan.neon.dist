@@ -62,30 +62,22 @@ parameters:
         - packages/Core/Test/Stub/Redis/RedisMultiCompatibility.php
 
     ignoreErrors:
+        - # No need to fix for now, as the facades are only used in twig context
+            message: '#.* generic class SnapAdmin\\Core\\Framework\\DataAbstractionLayer\\Search\\EntitySearchResult.*does not specify its types: TEntityCollection#'
+            paths:
+                - packages/Core/Framework/DataAbstractionLayer/Facade/RepositoryFacade.php
+
         # The symfony extension checks against the "normal" container, not the test container
         # Therefore some services in the tests are not found and the extension can not infer that all private services are public during test execution
         -
             message: '#Service ".*" is not registered in the container\.#'
             paths:
                 - packages/**/*Test.php
-                - tests/unit
-                - tests/integration
                 - packages/Core/Framework/Test/TestCaseBase/*.php
         -
             message: '#Service ".*" is private#'
             paths:
                 - packages/**/*Test.php
-                - tests/performance/**/*Bench.php
-                - tests/unit/**/*Test.php
-                - tests/integration/**/*Test.php
-                - tests/integration/**/*TestCase.php
-
-        # ignore errors caused by static::markTestSkipped
-        -
-            message: '#Unreachable statement - code above always terminates.#'
-            paths:
-                - packages/**/*Test.php
-                - tests/**/*Test.php
 
         # To fix this error, the \SnapAdmin\Core\Framework\Struct\Collection::createNew method has to be implemented
         # in every implementation of `Collection` and needs to return `new self` instead of `new static`. See https://github.com/phpstan/phpstan/issues/2773
@@ -93,20 +85,8 @@ parameters:
             message: '#Unsafe usage of new static\(\)#'
             paths:
              - packages/Core/Framework/Struct/Collection.php
-             - packages/Core/Framework/Rule/RuleCollection.php
              - packages/Core/Framework/DataAbstractionLayer/CompiledFieldCollection.php
 
-        # @final annotation of internal classes
-        - '#.*extends @final class SnapAdmin\\Core\\Framework\\DataAbstractionLayer\\Search\\EntitySearchResult\.#'
-        - '#.*extends @final class SnapAdmin\\Core\\Framework\\DataAbstractionLayer\\EntityRepository.#'
-
-        # dynamic hydrator performance
-        -
-            message: '#Access to an undefined property SnapAdmin\\Core\\Framework\\DataAbstractionLayer\\Entity#'
-            path: packages/*/*Hydrator.php
-        -
-            message: '#Access to protected property *#'
-            path: packages/*/*Hydrator.php
         -
             message: '#Method SnapAdmin\\Core\\Framework\\DataAbstractionLayer\\Entity::\_\_.*\(\) has.*#'
             path: packages/Core/Framework/DataAbstractionLayer/Entity.php
@@ -134,19 +114,14 @@ parameters:
             message: '#Multiple class\/interface\/trait is not allowed in single file#'
             paths:
                 - packages/**/Test/**
-                - tests/**
-
-        - # It explicitly tests array access on object, so it works from twig scripts
-            message: "#Use explicit methods over array access on object$#"
-            path: packages/Core/Framework/Test/Script/Service/ArrayFacadeTest.php
 
         - # Classes that are allowed to use dynamic property name access
             message: '#Use explicit names over dynamic ones#'
             paths:
-                - packages/Core/Framework/Api/ApiDefinition/Generator/StoreApiGenerator.php
                 - packages/Core/Framework/Struct/AssignArrayTrait.php
                 - packages/Core/Framework/Struct/CloneTrait.php
                 - packages/Core/Framework/Struct/CreateFromTrait.php
+                - packages/Core/Framework/Struct/XmlElement.php
                 - packages/Core/Framework/DataAbstractionLayer/Dbal/EntityHydrator.php
                 - packages/Core/Framework/DataAbstractionLayer/Entity.php
                 - packages/Core/Framework/DataAbstractionLayer/Util/AfterSort.php
@@ -160,25 +135,10 @@ parameters:
                 - packages/Core/Framework/Plugin/Util/AssetService.php
                 - packages/Core/Content/Media/File/FileSaver.php
 
-        - # Will be fixed with NEXT-26122
-            message: '#Doing instanceof PHPStan\\Type\\.* is error-prone and deprecated. Use Type::.*\(\) instead#'
-            paths:
-                - packages/Core/DevOps/StaticAnalyze/PHPStan/Rules/NoFlowStoreFunctionRule.php
-
         - # Can not be fixed currently. See https://github.com/phpstan/phpstan/discussions/9159
             message: '#Method SnapAdmin\\Core\\Framework\\DataAbstractionLayer\\Field\\Field::getFlag\(\) should return \(TFlag of SnapAdmin\\Core\\Framework\\DataAbstractionLayer\\Field\\Flag\\Flag\)\|null but returns SnapAdmin\\Core\\Framework\\DataAbstractionLayer\\Field\\Flag\\Flag\|null#'
             path: packages/Core/Framework/DataAbstractionLayer/Field/Field.php
             count: 1
-
-        # test plugin implementations in fixtures, the files can't be excluded as that would lead to errors when they are used
-        -
-            message: '#.*#'
-            paths:
-                - packages/Core/Framework/Test/Store/_fixtures/AppStoreTestPlugin/*
-                - packages/Core/Framework/Test/Plugin/_fixture/plugins/*
-                - packages/Core/Framework/Test/Plugin/Requirement/_fixture/SwagRequirementValidTestExtension/*
-                - tests/integration/Core/System/CustomEntity/Xml/Config/_fixtures/plugins/*
-                - tests/integration/Core/Framework/Store/_fixtures/AppStoreTestPlugin/*
 
         - # Hard to fix, as no proper var annotation could be used within the while loop
             message: "#^Parameter \\#1 \\$mediaIds of method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\UnusedMediaPurger\\:\\:filterOutNewMedia\\(\\) expects array\\<string\\>, array\\<int, array\\<string, string\\>\\|string\\> given\\.$#"
@@ -187,12 +147,6 @@ parameters:
 
         # NEXT-29041 - Needs to be fixed with a script, rest goes to baseline
         - '#.* generic class SnapAdmin\\Core\\Framework\\DataAbstractionLayer\\EntityRepository.*not specify its types: TEntityCollection#'
-
-        - # No need to fix for now, as the facades are only used in twig context
-            message: '#.* generic class SnapAdmin\\Core\\Framework\\DataAbstractionLayer\\Search\\EntitySearchResult.*does not specify its types: TEntityCollection#'
-            paths:
-                - packages/Core/Framework/DataAbstractionLayer/Facade/RepositoryFacade.php
-                - packages/Core/Framework/DataAbstractionLayer/Facade/SalesChannelRepositoryFacade.php
 
         - # Needs a proper class-string annotation in `\SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition::getCollectionClass` and all child classes
             message: '#PHPDoc tag @var with type .*SnapAdmin\\Core\\Framework\\DataAbstractionLayer\\EntityCollection.* is not subtype of native type string#'
@@ -204,15 +158,10 @@ parameters:
             message: '#Method SnapAdmin\\.*::hydrateEntityAggregation\(\) return type with generic class SnapAdmin\\Core\\Framework\\DataAbstractionLayer\\Search\\AggregationResult\\Metric\\EntityResult does not specify its types: TEntityCollection#'
             paths:
                 - packages/Core/Framework/DataAbstractionLayer/Dbal/EntityAggregator.php
-
-        - message: '#Method SnapAdmin\\Core\\Test\\Stub\\Redis\\RedisStub::do.*\(\) is unused#'
-          path: packages/Core/Test/Stub/Redis/RedisStub.php
-
         # To not have a single case for each type, we check them dynamically.
         - message: '#Use explicit names over dynamic ones#'
           path: packages/Core/Framework/Validation/HappyPathValidator.php
           count: 2
-
 services:
     -   # register the class so we can decorate it, but don't tag it as a rule, so only our decorator is used by phpstan
         class: Symplify\PHPStanRules\Rules\NoReturnSetterMethodRule

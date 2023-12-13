@@ -5,9 +5,7 @@ namespace SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Aggregation\Bucke
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Aggregation\Aggregation;
 use SnapAdmin\Core\Framework\Log\Package;
 
-/**
- * @phpstan-ignore-next-line cannot be final, as it is extended, also designed to be used directly
- */
+
 #[Package('core')]
 class BucketAggregation extends Aggregation
 {

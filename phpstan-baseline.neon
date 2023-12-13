@@ -1,13 +1,158 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\ResponseFields\\:\\:\\__construct type has no value type specified in iterable type array\\.$#"
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\SystemConfigService\\:\\:set\\(\\) has parameter \\$value with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: SnapAdmin\Core\Framework\Api/ResponseFields.php
+			path: packages/Core/System/SystemConfig/SystemConfigService.php
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\SystemConfigService\\:\\:setMultiple\\(\\) has parameter \\$values with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/SystemConfigService.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\Event\\\\MediaUploadedEvent:\\:getValues\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/Event/MediaUploadedEvent.php
+
 		-
 			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\ResponseFields\\:\\:\\$includes type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: SnapAdmin\Core\Framework\Api/ResponseFields.php
+			path: packages/Core/Framework/Api/ResponseFields.php
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\ResponseFields\\:\\:__construct\\(\\) has parameter \\$includes with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/ResponseFields.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:get\\(\\)\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/ServiceDefinitionTest.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getServiceIds\\(\\)\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/ServiceDefinitionTest.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\ServiceDefinitionTest\\:\\:checkArgumentOrder\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/ServiceDefinitionTest.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\ServiceDefinitionTest\\:\\:checkServiceParameterOrder\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/ServiceDefinitionTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$position of method SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\ServiceDefinitionTest\\:\\:getLineNumber\\(\\) expects int\\<1, max\\>, int given\\.$#"
+			count: 2
+			path: packages/Core/Framework/Test/ServiceDefinitionTest.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\Validation\\\\HappyPathValidatorTest\\:\\:testValidator\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/Validation/HappyPathValidatorTest.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\TestCacheClearer\\:\\:__construct\\(\\) has parameter \\$adapters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/TestCacheClearer.php
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\Filesystem\\\\Adapter\\\\MemoryAdapterFactory\\:\\:create\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/Filesystem/Adapter/MemoryAdapterFactory.php
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\AdditionalPermissionValidationTest\\:\\:getAdditionalPermissions\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/AdditionalPermissionValidationTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$subject of function preg_match expects string, string\\|false given\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/AdditionalPermissionValidationTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$subject of function preg_match_all expects string, string\\|false given\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/AdditionalPermissionValidationTest.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\AdditionalPermissionValidationTest\\:\\:\\$blacklist type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/AdditionalPermissionValidationTest.php
+		-
+			message: "#^Unsafe access to private property SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\Filesystem\\\\Adapter\\\\MemoryAdapterFactory\\:\\:\\$instances through static\\:\\:\\.$#"
+			count: 7
+			path: packages/Core/Framework/Test/Filesystem/Adapter/MemoryAdapterFactory.php
+
+		-
+			message: "#^Unsafe call to private method SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\Filesystem\\\\Adapter\\\\MemoryAdapterFactory\\:\\:addAdapter\\(\\) through static\\:\\:\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/Filesystem/Adapter/MemoryAdapterFactory.php
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\Language\\\\LanguageValidatorTest\\:\\:addDefaultLocale\\(\\) has parameter \\$lang with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/Language/LanguageValidatorTest.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\Language\\\\LanguageValidatorTest\\:\\:addDefaultLocale\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/Language/LanguageValidatorTest.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\Language\\\\LanguageValidatorTest\\:\\:addDefaultLocales\\(\\) has parameter \\$languages with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/Language/LanguageValidatorTest.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\Language\\\\LanguageValidatorTest\\:\\:addDefaultLocales\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/Language/LanguageValidatorTest.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\Language\\\\LanguageValidatorTest\\:\\:addDefaultTranslationCode\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/Language/LanguageValidatorTest.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\Language\\\\LanguageValidatorTest\\:\\:addDefaultTranslationCode\\(\\) has parameter \\$lang with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/Language/LanguageValidatorTest.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\Language\\\\LanguageValidatorTest\\:\\:addDefaultTranslationCodes\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/Language/LanguageValidatorTest.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\Language\\\\LanguageValidatorTest\\:\\:addDefaultTranslationCodes\\(\\) has parameter \\$languages with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/Language/LanguageValidatorTest.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\Language\\\\LanguageValidatorTest\\:\\:addLanguagesWithDefaultLocales\\(\\) has parameter \\$languages with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/Language/LanguageValidatorTest.php
+		-
+			message: "#^Argument of an invalid type array\\<string\\>\\|null supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/TestCaseHelper/ExtensionHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\TestCaseHelper\\\\ExtensionHelper\\:\\:removeExtensions\\(\\) has parameter \\$object with no type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/TestCaseHelper/ExtensionHelper.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\Test\\\\TestSessionStorage\\:\\:\\$data type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Test/TestSessionStorage.php
+
+		-
+			message: "#^Anonymous variable in a `\\$oldBag\\-\\>\\.\\.\\.\\(\\)` method call can lead to false dead methods\\. Make sure the variable type is known$#"
+			count: 3
+			path: packages/Core/Framework/Test/TestSessionStorage.php
+
 		-
 			message: "#^Method SnapAdmin\\\\Administration\\\\Controller\\\\UserConfigController\\:\\:getOwnUserConfig\\(\\) has parameter \\$keys with no value type specified in iterable type array\\.$#"
 			count: 1
@@ -167,11 +312,6 @@ parameters:
 			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\TypeDetector\\\\TypeDetector\\:\\:detect\\(\\) should return SnapAdmin\\\\Core\\\\Content\\\\Media\\\\MediaType\\\\MediaType but returns SnapAdmin\\\\Core\\\\Content\\\\Media\\\\MediaType\\\\MediaType\\|null\\.$#"
 			count: 1
 			path: packages/Core/Content/Media/TypeDetector/TypeDetector.php
-
-		-
-			message: "#^Anonymous variable in a `\\$connection\\-\\>\\.\\.\\.\\(\\)` method call can lead to false dead methods\\. Make sure the variable type is known$#"
-			count: 1
-			path: packages/Core/DevOps/Locust/setup.php
 
 		-
 			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Adapter\\\\Cache\\\\InvalidateCacheEvent\\:\\:__construct\\(\\) has parameter \\$keys with no value type specified in iterable type array\\.$#"
@@ -1384,10 +1524,6 @@ parameters:
 			count: 1
 			path: packages/Core/Framework/Parameter/AdditionalBundleParameters.php
 
-		-
-			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Plugin\\\\BundleConfigGenerator\\:\\:generateAppConfigs\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/Core/Framework/Plugin/BundleConfigGenerator.php
 
 		-
 			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Plugin\\\\BundleConfigGenerator\\:\\:generatePluginConfigs\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -1401,11 +1537,6 @@ parameters:
 
 		-
 			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Plugin\\\\BundleConfigGenerator\\:\\:getConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/Core/Framework/Plugin/BundleConfigGenerator.php
-
-		-
-			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Plugin\\\\BundleConfigGenerator\\:\\:getStyleFiles\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/Core/Framework/Plugin/BundleConfigGenerator.php
 

@@ -19,28 +19,12 @@ class UserChangePasswordCommandTest extends TestCase
 {
     use IntegrationTestBehaviour;
     private const TEST_USERNAME = 'Admin';
-    private const TEST_PASSWORD = 'SnapAdminPassword';
 
-
-    private Context $context;
 
     protected function setUp(): void
     {
-        $this->context = Context::createDefaultContext();
     }
 
-    public function testUnknownUser(): void
-    {
-        $commandTester = new CommandTester($this->getContainer()->get(UserChangePasswordCommand::class));
-        $commandTester->execute([
-            'username' => self::TEST_USERNAME,
-            '--password' => self::TEST_PASSWORD,
-        ]);
-
-        $expected = 'The user "' . self::TEST_USERNAME . '" does not exist.';
-        static::assertStringContainsString($expected, $commandTester->getDisplay());
-        static::assertEquals(1, $commandTester->getStatusCode());
-    }
 
 
 

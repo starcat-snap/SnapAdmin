@@ -7,9 +7,7 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityExistence;
 use SnapAdmin\Core\Framework\Log\Package;
 
-/**
- * @phpstan-ignore-next-line cannot be final, as it is extended, also designed to be used directly
- */
+
 #[Package('core')]
 class DeleteCommand extends WriteCommand implements ChangeSetAware
 {

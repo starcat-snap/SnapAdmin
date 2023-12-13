@@ -169,33 +169,6 @@ class ExtensionLoader
     }
 
     /**
-     * @param array<string> $appPrivileges
-     *
-     * @return array<array<string, string>>
-     */
-    private function makePermissionArray(array $appPrivileges): array
-    {
-        $permissions = [];
-
-        foreach ($appPrivileges as $privilege) {
-            if (substr_count($privilege, ':') === 1) {
-                $entityAndOperation = explode(':', $privilege);
-                if (\array_key_exists($entityAndOperation[1], AclRoleDefinition::PRIVILEGE_DEPENDENCE)) {
-                    /** @var array<string, string> $permission */
-                    $permission = array_combine(['entity', 'operation'], $entityAndOperation);
-                    $permissions[] = $permission;
-
-                    continue;
-                }
-            }
-
-            $permissions[] = ['operation' => $privilege, 'entity' => 'additional_privileges'];
-        }
-
-        return $permissions;
-    }
-
-    /**
      * @param array<string, StoreCollection|mixed|null> $data
      *
      * @return array<string, StoreCollection|mixed|null>
@@ -213,43 +186,5 @@ class ExtensionLoader
         }
 
         return $data;
-    }
-
-    /**
-     * @return array<array{name: string}>
-     */
-    private function makeLanguagesArray(AppTranslationCollection $translations): array
-    {
-        $languageIds = array_map(
-            static fn($translation) => $translation->getLanguageId(),
-            $translations->getElements()
-        );
-
-        $translationLocales = $this->getLocalesCodesFromLanguageIds($languageIds);
-
-        return array_map(
-            static fn($translationLocale) => ['name' => $translationLocale],
-            $translationLocales
-        );
-    }
-
-    /**
-     * @param array<string, string> $translations
-     */
-    private function getTranslationFromArray(
-        array  $translations,
-        string $currentLanguage,
-        string $fallbackLanguage = self::DEFAULT_LOCALE
-    ): ?string
-    {
-        if (isset($translations[$currentLanguage])) {
-            return $translations[$currentLanguage];
-        }
-
-        if (isset($translations[$fallbackLanguage])) {
-            return $translations[$fallbackLanguage];
-        }
-
-        return null;
     }
 }

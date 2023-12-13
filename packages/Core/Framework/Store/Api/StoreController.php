@@ -157,7 +157,7 @@ class StoreController extends AbstractController
         }
 
         $userId = $contextSource->getUserId();
-        if ($userId === null) {
+        if ($userId == null) {
             throw new InvalidContextSourceUserException($contextSource::class);
         }
 

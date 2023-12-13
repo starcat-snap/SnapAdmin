@@ -2,6 +2,7 @@
 
 namespace SnapAdmin\Core\System\Snippet;
 
+use Doctrine\DBAL\ArrayParameterType;
 use Doctrine\DBAL\Connection;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
@@ -24,12 +25,13 @@ class SnippetService
      * @internal
      */
     public function __construct(
-        private readonly Connection $connection,
+        private readonly Connection            $connection,
         private readonly SnippetFileCollection $snippetFileCollection,
-        private readonly EntityRepository $snippetRepository,
-        private readonly EntityRepository $snippetSetRepository,
-        private readonly SnippetFilterFactory $snippetFilterFactory
-    ) {
+        private readonly EntityRepository      $snippetRepository,
+        private readonly EntityRepository      $snippetSetRepository,
+        private readonly SnippetFilterFactory  $snippetFilterFactory
+    )
+    {
     }
 
     /**
@@ -85,6 +87,22 @@ class SnippetService
             'data' => $this->mergeSnippetsComparison($snippets),
         ];
     }
+
+    public function findSnippetSetId(string $locale): string
+    {
+        $sets = $this->connection->fetchAllKeyValue(
+            'SELECT iso, LOWER(HEX(id)) FROM snippet_set WHERE iso IN (:locales) LIMIT 2',
+            ['locales' => array_unique([$locale, 'zh-CN'])],
+            ['locales' => ArrayParameterType::STRING]
+        );
+
+        if (isset($sets[$locale])) {
+            return $sets[$locale];
+        }
+
+        return array_pop($sets);
+    }
+
     /**
      * @return array<int, string>
      */
@@ -136,7 +154,7 @@ class SnippetService
 
         /** @var TermsResult|null $aggregation */
         $aggregation = $this->snippetRepository->aggregate($criteria, $context)
-                ->get('distinct_author');
+            ->get('distinct_author');
 
         if (!$aggregation || empty($aggregation->getBuckets())) {
             $result = [];
@@ -153,6 +171,7 @@ class SnippetService
 
         return $result;
     }
+
     /**
      * Second parameter $unusedThemes is used for external dependencies
      *
@@ -170,32 +189,7 @@ class SnippetService
         return $snippets;
     }
 
-    /**
-     * @return array<string, string>
-     */
-    private function getSnippetsByLocale(SnippetFileCollection $snippetFileCollection, string $locale): array
-    {
-        $files = $snippetFileCollection->getSnippetFilesByIso($locale);
-        $snippets = [];
 
-        foreach ($files as $file) {
-            $json = json_decode(file_get_contents($file->getPath()) ?: '', true);
-
-            $jsonError = json_last_error();
-            if ($jsonError !== 0) {
-                throw new \RuntimeException(sprintf('Invalid JSON in snippet file at path \'%s\' with code \'%d\'', $file->getPath(), $jsonError));
-            }
-
-            $flattenSnippetFileSnippets = $this->flatten($json);
-
-            $snippets = array_replace_recursive(
-                $snippets,
-                $flattenSnippetFileSnippets
-            );
-        }
-
-        return $snippets;
-    }
     /**
      * @param array<string, string> $isoList
      *
@@ -220,7 +214,7 @@ class SnippetService
     {
         $result = [];
         foreach ($languageFiles as $snippetFile) {
-            $json = json_decode((string) file_get_contents($snippetFile->getPath()), true);
+            $json = json_decode((string)file_get_contents($snippetFile->getPath()), true);
 
             $jsonError = json_last_error();
             if ($jsonError !== 0) {
@@ -257,19 +251,6 @@ class SnippetService
         }
 
         return $result;
-    }
-
-    private function getLocaleBySnippetSetId(string $snippetSetId): string
-    {
-        $locale = $this->connection->fetchOne('SELECT iso FROM snippet_set WHERE id = :snippetSetId', [
-            'snippetSetId' => Uuid::fromHexToBytes($snippetSetId),
-        ]);
-
-        if ($locale === false) {
-            throw new \InvalidArgumentException(sprintf('No snippetSet with id "%s" found', $snippetSetId));
-        }
-
-        return (string) $locale;
     }
 
     /**
@@ -435,8 +416,8 @@ class SnippetService
         unset($snippets[$sort['sortBy']]);
 
         uasort($mainSet['snippets'], static function ($a, $b) use ($sort) {
-            $a = mb_strtolower((string) $a['value']);
-            $b = mb_strtolower((string) $b['value']);
+            $a = mb_strtolower((string)$a['value']);
+            $b = mb_strtolower((string)$b['value']);
 
             return $sort['sortDirection'] !== 'DESC' ? $a <=> $b : $b <=> $a;
         });

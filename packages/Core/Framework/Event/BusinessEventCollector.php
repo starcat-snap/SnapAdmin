@@ -15,8 +15,7 @@ class BusinessEventCollector
      */
     public function __construct(
         private readonly BusinessEventRegistry $registry,
-        private readonly EventDispatcherInterface $eventDispatcher,
-        private readonly Connection $connection
+        private readonly EventDispatcherInterface $eventDispatcher
     ) {
     }
 

@@ -11,7 +11,7 @@ use SnapAdmin\Core\Framework\Log\Package;
 class AnnotationTagTester
 {
     /**
-     * captures any snap version like 6.4.0.0 but also old version with 3 digits like 6.2.0
+     * captures any shopware version like 6.4.0.0 but also old version with 3 digits like 6.2.0
      */
     private const PLATFORM_VERSION_SCHEMA = '(\d+\.?){2,3}\d+';
 
@@ -26,9 +26,9 @@ class AnnotationTagTester
     private const MANIFEST_VERSION_SCHEMA = '\d+\.\d+';
 
     public function __construct(
-        private readonly string $snapVersion
-    )
-    {
+        private readonly string $shopwareVersion,
+        private readonly string $manifestVersion
+    ) {
     }
 
     /**
@@ -128,6 +128,13 @@ class AnnotationTagTester
 
             return;
         }
+
+        if ($tag === 'manifest') {
+            $this->validateAgainstManifestVersion($version);
+
+            return;
+        }
+
         throw new \InvalidArgumentException('Could not find indicator manifest or tag in deprecation annotation.');
     }
 
@@ -140,8 +147,8 @@ class AnnotationTagTester
             throw new \InvalidArgumentException('Incorrect format for experimental annotation. Properties `stableVersion` and/or `feature` are not declared.');
         }
         $properties = [
-            $match[1] => (string)$match[2],
-            $match[3] => (string)$match[4],
+            $match[1] => (string) $match[2],
+            $match[3] => (string) $match[4],
         ];
 
         match (true) {
@@ -160,9 +167,19 @@ class AnnotationTagTester
             throw new \InvalidArgumentException('The tag version should start with `v` and comprise 3 digits separated by periods.');
         }
 
-        $this->compareVersion($this->snapVersion, $matches[1]);
+        $this->compareVersion($this->shopwareVersion, $matches[1]);
     }
 
+    private function validateAgainstManifestVersion(string $version): void
+    {
+        $pattern = sprintf('/^v%s$/', self::MANIFEST_VERSION_SCHEMA);
+
+        if (!preg_match($pattern, $version)) {
+            throw new \InvalidArgumentException('Manifest version must have 2 digits.');
+        }
+
+        $this->compareVersion($this->manifestVersion, $version);
+    }
 
     private function compareVersion(string $highestVersion, string $deprecatedVersion): void
     {

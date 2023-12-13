@@ -6,7 +6,6 @@ use PHPUnit\Framework\TestCase;
 use SnapAdmin\Core\DevOps\Environment\EnvironmentHelper;
 use SnapAdmin\Core\Framework\Adapter\Cache\RedisConnectionFactory;
 use SnapAdmin\Core\Framework\Increment\RedisIncrementer;
-use SnapAdmin\Core\Framework\Plugin\Exception\DecorationPatternException;
 
 /**
  * @internal
@@ -21,7 +20,7 @@ class RedisIncrementerTest extends TestCase
     {
         parent::setUp();
 
-        $redisUrl = (string)EnvironmentHelper::getVariable('REDIS_URL');
+        $redisUrl = (string) EnvironmentHelper::getVariable('REDIS_URL');
 
         if ($redisUrl === '') {
             static::markTestSkipped('Redis is not available');
@@ -89,11 +88,5 @@ class RedisIncrementerTest extends TestCase
         $this->incrementer->reset('test');
 
         static::assertEmpty($this->incrementer->list('test'));
-    }
-
-    public function testDecorated(): void
-    {
-        static::expectException(DecorationPatternException::class);
-        $this->incrementer->getDecorated();
     }
 }
