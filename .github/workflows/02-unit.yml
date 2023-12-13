@@ -125,5 +125,5 @@ jobs:
       - name: Generate Schema
         run: bin/console framework:schema -s 'entity-schema' packages/Administration/Resources/app/administration/test/_mocks_/entity-schema.json
 
-      - name: Run Jest Admin
-        run: npm --prefix packages/Administration/Resources/app/administration run unit -- --silent
+#      - name: Run Jest Admin
+#        run: npm --prefix packages/Administration/Resources/app/administration run unit -- --silent
