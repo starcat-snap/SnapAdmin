@@ -52,10 +52,6 @@ class VersionCommitDataEntity extends Entity
      */
     protected $userId;
 
-    /**
-     * @var string|null
-     */
-    protected $integrationId;
 
     public function getAutoIncrement(): int
     {
@@ -147,15 +143,5 @@ class VersionCommitDataEntity extends Entity
     public function setUserId(string $userId): void
     {
         $this->userId = $userId;
-    }
-
-    public function getIntegrationId(): ?string
-    {
-        return $this->integrationId;
-    }
-
-    public function setIntegrationId(string $integrationId): void
-    {
-        $this->integrationId = $integrationId;
     }
 }

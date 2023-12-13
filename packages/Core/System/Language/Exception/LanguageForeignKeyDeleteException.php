@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\System\Language\Exception;
 
-use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\SnapAdminHttpException;
 use Symfony\Component\HttpFoundation\Response;
 

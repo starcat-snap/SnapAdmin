@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\System\Locale;
 
 use SnapAdmin\Core\Framework\HttpException;
-use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\HttpFoundation\Response;
 
 

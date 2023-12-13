@@ -2,8 +2,6 @@
 
 namespace SnapAdmin\Core\Content\Media\MediaType;
 
-use SnapAdmin\Core\Framework\Log\Package;
-
 
 class VideoType extends MediaType
 {

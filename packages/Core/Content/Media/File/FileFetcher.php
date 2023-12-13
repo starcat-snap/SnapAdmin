@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Content\Media\File;
 
 use SnapAdmin\Core\Content\Media\MediaException;
-use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\HttpFoundation\Request;
 
 

@@ -17,10 +17,9 @@ class CustomEntityXmlSchema
     private const XSD_FILE = __DIR__ . '/entity-1.0.xsd';
 
     public function __construct(
-        private string             $path,
+        private string $path,
         private readonly ?Entities $entities
-    )
-    {
+    ) {
     }
 
     public static function createFromXmlFile(string $xmlFile): self

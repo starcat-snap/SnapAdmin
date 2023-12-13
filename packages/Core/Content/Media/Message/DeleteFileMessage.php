@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Content\Media\Message;
 
 use League\Flysystem\Visibility;
-use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\MessageQueue\AsyncMessageInterface;
 
 

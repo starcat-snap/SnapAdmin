@@ -2,7 +2,7 @@
 
 namespace SnapAdmin\Core\System\CustomEntity\Xml\Config;
 
-use SnapAdmin\Core\Framework\App\Manifest\Xml\XmlElement;
+use SnapAdmin\Core\Framework\Struct\XmlElement;
 use SnapAdmin\Core\Framework\Log\Package;
 
 /**

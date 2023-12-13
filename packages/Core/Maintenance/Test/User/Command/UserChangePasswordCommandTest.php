@@ -5,12 +5,10 @@ namespace SnapAdmin\Core\Maintenance\Test\User\Command;
 use PHPUnit\Framework\TestCase;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityRepository;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Test\TestCaseBase\IntegrationTestBehaviour;
 use SnapAdmin\Core\Framework\Uuid\Uuid;
 use SnapAdmin\Core\Maintenance\User\Command\UserChangePasswordCommand;
-use SnapAdmin\Core\System\User\UserEntity;
 use Symfony\Component\Console\Tester\CommandTester;
 
 /**
@@ -62,24 +60,5 @@ class UserChangePasswordCommandTest extends TestCase
         $commandTester->execute([
             'username' => self::TEST_USERNAME,
         ]);
-    }
-
-    private function createUser(): string
-    {
-        $uuid = Uuid::randomHex();
-
-        $this->userRepository->create([
-            [
-                'id' => $uuid,
-                'localeId' => $this->getLocaleIdOfSystemLanguage(),
-                'username' => self::TEST_USERNAME,
-                'password' => self::TEST_PASSWORD,
-                'firstName' => sprintf('Foo%s', Uuid::randomHex()),
-                'lastName' => sprintf('Bar%s', Uuid::randomHex()),
-                'email' => sprintf('%s@foo.bar', $uuid),
-            ],
-        ], $this->context);
-
-        return $uuid;
     }
 }

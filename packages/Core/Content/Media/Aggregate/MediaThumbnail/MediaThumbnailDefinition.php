@@ -17,7 +17,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\IntField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class MediaThumbnailDefinition extends EntityDefinition

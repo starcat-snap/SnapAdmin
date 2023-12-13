@@ -2,8 +2,6 @@
 
 namespace SnapAdmin\Core\System\Locale;
 
-use SnapAdmin\Core\Framework\Log\Package;
-
 
 class LocaleEvents
 {

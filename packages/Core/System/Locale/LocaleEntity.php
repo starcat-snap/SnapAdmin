@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\System\Locale;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
-use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\Language\LanguageCollection;
 use SnapAdmin\Core\System\Locale\Aggregate\LocaleTranslation\LocaleTranslationCollection;
 use SnapAdmin\Core\System\User\UserCollection;

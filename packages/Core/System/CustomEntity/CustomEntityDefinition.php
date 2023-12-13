@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\System\CustomEntity;
 
-use SnapAdmin\Core\Framework\App\AppDefinition;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityProtection\EntityProtectionCollection;
@@ -59,7 +58,6 @@ class CustomEntityDefinition extends EntityDefinition
             (new StringField('name', 'name'))->addFlags(new Required()),
             (new JsonField('fields', 'fields'))->addFlags(new Required()),
             new JsonField('flags', 'flags'),
-            new FkField('app_id', 'appId', AppDefinition::class),
             new FkField('plugin_id', 'pluginId', PluginDefinition::class),
             (new BoolField('cms_aware', 'cmsAware'))->addFlags(new Runtime()),
             (new BoolField('store_api_aware', 'storeApiAware'))->addFlags(new Runtime()),

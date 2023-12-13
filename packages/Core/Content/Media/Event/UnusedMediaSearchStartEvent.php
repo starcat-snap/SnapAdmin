@@ -2,8 +2,6 @@
 
 namespace SnapAdmin\Core\Content\Media\Event;
 
-use SnapAdmin\Core\Framework\Log\Package;
-
 /**
  * @internal
  */

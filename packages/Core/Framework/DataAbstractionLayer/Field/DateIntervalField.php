@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Framework\DataAbstractionLayer\Field;
 
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\DateIntervalFieldSerializer;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class DateIntervalField extends Field implements StorageAware

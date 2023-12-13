@@ -7,7 +7,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ConfigJsonField;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin;
 use SnapAdmin\Core\Framework\Plugin\Exception\DecorationPatternException;
-use SnapAdmin\Core\Framework\Uuid\Uuid;
 use SnapAdmin\Core\Kernel;
 
 #[Package('system-settings')]

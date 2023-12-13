@@ -16,7 +16,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\IdField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\IntField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\PriceField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StorageAware;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Aggregation\Aggregation;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Aggregation\Bucket\BucketAggregation;
@@ -444,7 +443,7 @@ class EntityAggregator implements EntityAggregatorInterface
     {
         $accessor = $this->queryHelper->getFieldAccessor($aggregation->getField(), $definition, $definition->getEntityName(), $context);
         $field = $this->queryHelper->getField($aggregation->getField(), $definition, $definition->getEntityName());
-        if (!$field instanceof PriceField && !$field instanceof FloatField && !$field instanceof IntField) {
+        if ( !$field instanceof FloatField && !$field instanceof IntField) {
             throw new \RuntimeException(sprintf('Provided field "%s" is not supported in RangeAggregation (supports : PriceField, FloatField, IntField)', $aggregation->getField()));
         }
         // build SUM() with range criteria for each range and add it to select

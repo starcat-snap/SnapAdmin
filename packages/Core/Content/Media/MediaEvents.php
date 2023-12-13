@@ -6,7 +6,6 @@ use SnapAdmin\Core\Content\Media\Event\MediaFolderConfigurationIndexerEvent;
 use SnapAdmin\Core\Content\Media\Event\MediaFolderIndexerEvent;
 use SnapAdmin\Core\Content\Media\Event\MediaIndexerEvent;
 use SnapAdmin\Core\Content\Media\Event\MediaUploadedEvent;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class MediaEvents

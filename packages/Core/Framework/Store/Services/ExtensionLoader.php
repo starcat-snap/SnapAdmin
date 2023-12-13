@@ -4,10 +4,6 @@ namespace SnapAdmin\Core\Framework\Store\Services;
 
 use SnapAdmin\Core\Framework\Api\Acl\Role\AclRoleDefinition;
 use SnapAdmin\Core\Framework\Context;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityRepository;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Aggregation\Bucket\TermsAggregation;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\AggregationResult\Bucket\TermsResult;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin\PluginCollection;
 use SnapAdmin\Core\Framework\Plugin\PluginEntity;
@@ -34,10 +30,6 @@ class ExtensionLoader
 {
     private const DEFAULT_LOCALE = 'zh_CN';
 
-    /**
-     * @var array<string>|null
-     */
-    private ?array $installedThemeNames = null;
 
     public function __construct(
         private readonly ConfigurationService       $configurationService,

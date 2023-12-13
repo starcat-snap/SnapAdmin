@@ -15,7 +15,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TranslationsAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
-use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\Language\LanguageDefinition;
 use SnapAdmin\Core\System\Locale\Aggregate\LocaleTranslation\LocaleTranslationDefinition;
 use SnapAdmin\Core\System\User\UserDefinition;

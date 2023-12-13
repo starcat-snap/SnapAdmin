@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Content\Media\Metadata\MetadataLoader;
 
 use SnapAdmin\Core\Content\Media\MediaType\MediaType;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 interface MetadataLoaderInterface

@@ -2,7 +2,7 @@
  * @private
  * @package admin
  */
-import { ArrowFunction, CallExpression, Project, SourceFile, ts} from "ts-morph";
+import {ArrowFunction, CallExpression, Project, SourceFile, ts} from "ts-morph";
 import * as path from "path";
 import * as fs from "fs";
 

@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\Validation\DataBag;
 
-use SnapAdmin\Core\Framework\Feature;
 use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpFoundation\ParameterBag;

@@ -26,8 +26,7 @@ class AnnotationTagTester
     private const MANIFEST_VERSION_SCHEMA = '\d+\.\d+';
 
     public function __construct(
-        private readonly string $snapVersion,
-        private readonly string $manifestVersion
+        private readonly string $snapVersion
     )
     {
     }
@@ -129,13 +128,6 @@ class AnnotationTagTester
 
             return;
         }
-
-        if ($tag === 'manifest') {
-            $this->validateAgainstManifestVersion($version);
-
-            return;
-        }
-
         throw new \InvalidArgumentException('Could not find indicator manifest or tag in deprecation annotation.');
     }
 
@@ -171,16 +163,6 @@ class AnnotationTagTester
         $this->compareVersion($this->snapVersion, $matches[1]);
     }
 
-    private function validateAgainstManifestVersion(string $version): void
-    {
-        $pattern = sprintf('/^v%s$/', self::MANIFEST_VERSION_SCHEMA);
-
-        if (!preg_match($pattern, $version)) {
-            throw new \InvalidArgumentException('Manifest version must have 2 digits.');
-        }
-
-        $this->compareVersion($this->manifestVersion, $version);
-    }
 
     private function compareVersion(string $highestVersion, string $deprecatedVersion): void
     {

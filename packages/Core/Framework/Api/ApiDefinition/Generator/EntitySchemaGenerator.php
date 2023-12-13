@@ -10,7 +10,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityProtection\WriteProtecti
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BlobField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BoolField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BreadcrumbField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\CalculatedPriceField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ChildCountField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ChildrenAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\CreatedAtField;
@@ -161,7 +160,6 @@ class EntitySchemaGenerator implements ApiDefinitionGeneratorInterface
             // json fields
             case $field instanceof CustomFields:
             case $field instanceof VersionDataPayloadField:
-            case $field instanceof CalculatedPriceField:
             case $field instanceof ObjectField:
                 return $this->createJsonObjectType($definition, $field, $flags);
 

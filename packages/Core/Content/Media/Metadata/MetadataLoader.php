@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\Content\Media\Metadata;
 use SnapAdmin\Core\Content\Media\File\MediaFile;
 use SnapAdmin\Core\Content\Media\MediaType\MediaType;
 use SnapAdmin\Core\Content\Media\Metadata\MetadataLoader\MetadataLoaderInterface;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class MetadataLoader

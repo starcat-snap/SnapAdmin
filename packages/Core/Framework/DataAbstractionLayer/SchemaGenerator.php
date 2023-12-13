@@ -6,7 +6,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelp
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\AssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BlobField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BoolField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\CalculatedPriceField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ChildCountField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ChildrenAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\DateField;
@@ -130,7 +129,6 @@ EOL;
             case $field instanceof TranslatedField:
                 return null;
 
-            case $field instanceof CalculatedPriceField:
             case $field instanceof ListField:
             case $field instanceof JsonField:
                 $type = 'JSON';

@@ -17,7 +17,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\Runtime;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\JsonField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\LockedField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\OneToOneAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ParentAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ReferenceVersionField;

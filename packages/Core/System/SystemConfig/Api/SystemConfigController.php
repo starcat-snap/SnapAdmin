@@ -69,7 +69,7 @@ class SystemConfigController extends AbstractController
 
         $inherit = $request->query->getBoolean('inherit');
 
-        $values = $this->systemConfig->getDomain($domain, $channelId, $inherit);
+        $values = $this->systemConfig->getDomain($domain, $inherit);
         if (empty($values)) {
             $json = '{}';
         } else {
@@ -119,7 +119,7 @@ class SystemConfigController extends AbstractController
                 $channelId = null;
             }
 
-            $this->systemConfig->setMultiple($kvs, $channelId);
+            $this->systemConfig->setMultiple($kvs);
         }
 
         return new JsonResponse(null, Response::HTTP_NO_CONTENT);

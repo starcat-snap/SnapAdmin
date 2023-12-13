@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\Framework\Test;
 
 use Composer\InstalledVersions;
 use PHPUnit\Framework\TestCase;
-use SnapAdmin\Core\Framework\App\Manifest\Manifest;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Test\TestCaseBase\KernelLifecycleManager;
 use SnapAdmin\Core\Kernel;
@@ -42,14 +41,12 @@ class AnnotationTagTest extends TestCase
 
     private string $rootDir;
 
-    private string $manifestRoot;
 
     private ?AnnotationTagTester $deprecationTagTester = null;
 
     protected function setUp(): void
     {
         $this->rootDir = $this->getPathForClass(Kernel::class);
-        $this->manifestRoot = $this->getPathForClass(Manifest::class);
 
         static::markTestSkipped('ToDo: NEXT-31639 - Activate again after first RC release');
     }
@@ -134,8 +131,7 @@ class AnnotationTagTest extends TestCase
     {
         if ($this->deprecationTagTester === null) {
             $this->deprecationTagTester = new AnnotationTagTester(
-                $this->getSnapAdminVersion(),
-                $this->getManifestVersion()
+                $this->getSnapAdminVersion()
             );
         }
 
@@ -169,20 +165,6 @@ class AnnotationTagTest extends TestCase
         }
 
         return $snapVersion;
-    }
-
-    private function getManifestVersion(): string
-    {
-        $finder = new Finder();
-        $finder->in($this->manifestRoot)
-            ->path('/Schema');
-
-        $manifestVersions = [];
-        foreach ($finder->getIterator() as $file) {
-            $manifestVersions[] = AnnotationTagTester::getVersionFromManifestFileName($file->getFilename());
-        }
-
-        return $this->getCurrentManifestVersion($manifestVersions);
     }
 
     /**

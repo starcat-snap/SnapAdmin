@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\OpenApi;
 use OpenApi\Annotations\Property;
 use OpenApi\Annotations\Schema;
 use SnapAdmin\Core\Framework\Api\ApiDefinition\DefinitionService;
-use SnapAdmin\Core\Framework\Api\Context\AdminApiSource;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\AssociationField;
@@ -45,7 +44,6 @@ class OpenApiDefinitionSchemaBuilder
     public function getSchemaByDefinition(
         EntityDefinition $definition,
         string           $path,
-        bool             $forChannel,
         bool             $onlyFlat = false,
         string           $apiType = DefinitionService::TYPE_JSON_API
     ): array
@@ -63,9 +61,6 @@ class OpenApiDefinitionSchemaBuilder
         $extensionRelationships = [];
 
         foreach ($definition->getFields() as $field) {
-            if (!$this->shouldFieldBeIncluded($field, $forChannel)) {
-                continue;
-            }
 
             if ($field->is(Extension::class)) {
                 $extensions[] = $field;

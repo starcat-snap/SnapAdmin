@@ -2,8 +2,6 @@
 
 namespace SnapAdmin\Core\Content\Media\File;
 
-use SnapAdmin\Core\Framework\Log\Package;
-
 
 class FileUrlValidator implements FileUrlValidatorInterface
 {

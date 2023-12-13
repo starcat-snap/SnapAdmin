@@ -1,6 +1,6 @@
 import entitySchema from "../../test/_mocks_/entity-schema.json";
 import path from 'path';
-import { EntitySchemaConverter } from "./entity-schema-converter";
+import {EntitySchemaConverter} from "./entity-schema-converter";
 
 const converter = new EntitySchemaConverter();
 

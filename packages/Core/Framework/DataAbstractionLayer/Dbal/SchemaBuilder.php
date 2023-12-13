@@ -12,7 +12,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\AutoIncrementField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BlobField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BoolField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BreadcrumbField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\CalculatedPriceField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\CashRoundingConfigField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ChildCountField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ChildrenAssociationField;

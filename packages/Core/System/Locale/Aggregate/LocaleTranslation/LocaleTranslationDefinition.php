@@ -8,7 +8,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\ApiAware;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
-use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\Locale\LocaleDefinition;
 
 

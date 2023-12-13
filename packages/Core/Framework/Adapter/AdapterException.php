@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Framework\Adapter;
 
 use SnapAdmin\Core\Framework\HttpException;
-use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Node\Expression\AbstractExpression;
 

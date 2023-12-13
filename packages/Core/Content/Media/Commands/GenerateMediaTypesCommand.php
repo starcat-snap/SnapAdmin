@@ -11,7 +11,6 @@ use SnapAdmin\Core\Framework\Adapter\Console\SnapAdminStyle;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityRepository;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
-use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;

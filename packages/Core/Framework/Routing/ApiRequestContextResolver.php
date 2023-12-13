@@ -185,19 +185,6 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
         return Uuid::fromBytesToHex($id);
     }
 
-    private function getChannelIdByAccessKey(string $clientId): string
-    {
-        $id = $this->connection->createQueryBuilder()
-            ->select(['id'])
-            ->from('channel')
-            ->where('access_key = :accessKey')
-            ->setParameter('accessKey', $clientId)
-            ->executeQuery()
-            ->fetchOne();
-
-        return Uuid::fromBytesToHex($id);
-    }
-
     private function getAdminApiSource(?string $userId): AdminApiSource
     {
         $source = new AdminApiSource($userId);

@@ -20,7 +20,7 @@ class AdminUiXmlSchemaValidator
     public function validateConfigurations(AdminUiEntity $adminUiEntity, Entity $entity): void
     {
         $entityFields = \array_map(
-            fn($arr) => $arr->getName(),
+            fn ($arr) => $arr->getName(),
             $entity->getFields()
         );
         $this->validateListingConfiguration(
@@ -39,11 +39,10 @@ class AdminUiXmlSchemaValidator
      * @param string[] $entityFields
      */
     private function validateListingConfiguration(
-        array   $entityFields,
+        array $entityFields,
         Listing $listing,
-        string  $customEntityName
-    ): void
-    {
+        string $customEntityName
+    ): void {
         $this->checkReferences(
             $entityFields,
             $this->getRefsAsList($listing->getColumns()->getContent()),
@@ -56,11 +55,10 @@ class AdminUiXmlSchemaValidator
      * @param string[] $entityFields
      */
     private function validateDetailConfiguration(
-        array  $entityFields,
+        array $entityFields,
         Detail $detail,
         string $customEntityName
-    ): void
-    {
+    ): void {
         $tabs = $detail->getTabs()->getContent();
 
         foreach ($tabs as $tab) {
@@ -81,12 +79,11 @@ class AdminUiXmlSchemaValidator
      * @param string[] $referencedFields
      */
     private function checkReferences(
-        array  $entityFields,
-        array  $referencedFields,
+        array $entityFields,
+        array $referencedFields,
         string $customEntityName,
         string $xmlElement
-    ): void
-    {
+    ): void {
         if (\count($referencedFields) !== \count(\array_unique($referencedFields))) {
             throw CustomEntityConfigurationException::duplicateReferences(
                 AdminUiXmlSchema::FILENAME,
@@ -125,7 +122,7 @@ class AdminUiXmlSchemaValidator
     private function getRefsAsList(array $listOfObjectsWithRefProperty): array
     {
         return \array_map(
-            fn($object) => $object->getRef(),
+            fn ($object) => $object->getRef(),
             $listOfObjectsWithRefProperty
         );
     }

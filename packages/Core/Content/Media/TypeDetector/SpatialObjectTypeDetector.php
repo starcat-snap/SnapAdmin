@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\Content\Media\TypeDetector;
 use SnapAdmin\Core\Content\Media\File\MediaFile;
 use SnapAdmin\Core\Content\Media\MediaType\MediaType;
 use SnapAdmin\Core\Content\Media\MediaType\SpatialObjectType;
-use SnapAdmin\Core\Framework\Log\Package;
 
 /**
  * @experimental stableVersion:v6.7.0 feature:SPATIAL_BASES

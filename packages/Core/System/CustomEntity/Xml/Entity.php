@@ -2,7 +2,7 @@
 
 namespace SnapAdmin\Core\System\CustomEntity\Xml;
 
-use SnapAdmin\Core\Framework\App\Manifest\Xml\XmlElement;
+use SnapAdmin\Core\Framework\Struct\XmlElement;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\CustomEntity\Xml\Config\ConfigXmlElement;
 use SnapAdmin\Core\System\CustomEntity\Xml\Field\Field;
@@ -141,7 +141,7 @@ class Entity extends XmlElement
     private static function parseChild(\DOMElement $child, array $values): array
     {
         if ($child->tagName === 'fields') {
-            $values[$child->tagName] = self::parseChildNodes($child, static fn(\DOMElement $element): Field => FieldFactory::createFromXml($element));
+            $values[$child->tagName] = self::parseChildNodes($child, static fn (\DOMElement $element): Field => FieldFactory::createFromXml($element));
 
             return $values;
         }

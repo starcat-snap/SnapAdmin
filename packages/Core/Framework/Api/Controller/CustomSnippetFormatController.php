@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\Api\Controller;
 
-use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin\KernelPluginCollection;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\JsonResponse;

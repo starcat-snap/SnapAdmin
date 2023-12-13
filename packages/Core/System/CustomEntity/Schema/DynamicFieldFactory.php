@@ -29,7 +29,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationFie
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\OneToOneAssociationField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\PriceField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ReferenceVersionField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
@@ -189,13 +188,6 @@ class DynamicFieldFactory
                 }
 
                 $collection->add($instance);
-
-                break;
-            case 'price':
-                $collection->add(
-                    (new PriceField($name, $property))
-                        ->addFlags(...$flags)
-                );
 
                 break;
             case 'date':

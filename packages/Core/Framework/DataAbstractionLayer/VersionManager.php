@@ -818,7 +818,6 @@ class VersionManager
                     'entityId' => $id,
                     'payload' => Json::encode($payload),
                     'userId' => $data->getUserId(),
-                    'integrationId' => $data->getIntegrationId(),
                     'entityName' => $data->getEntityName(),
                     'action' => $data->getAction(),
                     'createdAt' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),

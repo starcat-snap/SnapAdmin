@@ -10,7 +10,6 @@ use SnapAdmin\Core\Content\Media\MediaException;
 use SnapAdmin\Core\Content\Media\MediaService;
 use SnapAdmin\Core\Framework\Api\Response\ResponseFactoryInterface;
 use SnapAdmin\Core\Framework\Context;
-use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

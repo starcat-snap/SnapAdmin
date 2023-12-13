@@ -25,12 +25,7 @@ class OpenApiSchemaBuilder
             'name' => 'Admin API',
             'url' => '/api',
             'apiKey' => false,
-        ],
-        DefinitionService::STORE_API => [
-            'name' => 'Store API',
-            'url' => '/frontend-api',
-            'apiKey' => true,
-        ],
+        ]
     ];
 
     /**

@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\Content\Media\TypeDetector;
 use SnapAdmin\Core\Content\Media\File\MediaFile;
 use SnapAdmin\Core\Content\Media\MediaType\DocumentType;
 use SnapAdmin\Core\Content\Media\MediaType\MediaType;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class DocumentTypeDetector implements TypeDetectorInterface

@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Framework\DataAbstractionLayer\Field;
 
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\CronIntervalFieldSerializer;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class CronIntervalField extends Field implements StorageAware

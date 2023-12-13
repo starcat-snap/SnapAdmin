@@ -167,11 +167,6 @@ class ApiException extends HttpException
         return new InvalidVersionNameException();
     }
 
-    public static function channelNotFound(): SnapAdminHttpException
-    {
-        return new ChannelNotFoundException();
-    }
-
     public static function deleteLiveVersion(): SnapAdminHttpException
     {
         return new LiveVersionDeleteException();

@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\Content\Media\Aggregate\MediaTranslation;
 use SnapAdmin\Core\Content\Media\MediaEntity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\TranslationEntity;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class MediaTranslationEntity extends TranslationEntity

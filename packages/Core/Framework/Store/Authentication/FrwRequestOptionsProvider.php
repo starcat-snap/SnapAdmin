@@ -9,7 +9,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityRepository;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\Framework\Store\Services\FirstRunWizardService;
 use SnapAdmin\Core\System\User\Aggregate\UserConfig\UserConfigEntity;
 
 /**
@@ -47,13 +46,10 @@ class FrwRequestOptionsProvider extends AbstractStoreRequestOptionsProvider
         $contextSource = $context->getSource();
 
         $criteria = (new Criteria())->addFilter(
-            new EqualsFilter('userId', $contextSource->getUserId()),
-            new EqualsFilter('key', FirstRunWizardService::USER_CONFIG_KEY_FRW_USER_TOKEN),
+            new EqualsFilter('userId', $contextSource->getUserId())
         );
 
-        /** @var UserConfigEntity|null $userConfig */
-        $userConfig = $this->userConfigRepository->search($criteria, $context)->first();
 
-        return $userConfig === null ? null : $userConfig->getValue()[FirstRunWizardService::USER_CONFIG_VALUE_FRW_USER_TOKEN] ?? null;
+        return null;
     }
 }

@@ -10,7 +10,6 @@ use SnapAdmin\Core\Content\Media\MediaException;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityRepository;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class FileLoader

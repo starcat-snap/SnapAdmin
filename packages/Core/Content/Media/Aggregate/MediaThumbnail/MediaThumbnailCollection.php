@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Content\Media\Aggregate\MediaThumbnail;
 
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCollection;
-use SnapAdmin\Core\Framework\Log\Package;
 
 /**
  * @extends EntityCollection<MediaThumbnailEntity>

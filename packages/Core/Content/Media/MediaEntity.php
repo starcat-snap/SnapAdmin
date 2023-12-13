@@ -8,7 +8,6 @@ use SnapAdmin\Core\Content\Media\Aggregate\MediaTranslation\MediaTranslationColl
 use SnapAdmin\Core\Content\Media\MediaType\MediaType;
 use SnapAdmin\Core\Content\Media\MediaType\SpatialObjectType;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCollection;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 use SnapAdmin\Core\System\User\UserCollection;
@@ -130,7 +129,12 @@ class MediaEntity extends Entity
      * @var bool
      */
     protected $private = false;
-
+    /**
+     * @internal
+     *
+     * @var string|null
+     */
+    protected $thumbnailsRo;
 
     protected ?string $path = null;
 

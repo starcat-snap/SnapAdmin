@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\Content\Media\Subscriber;
 use SnapAdmin\Core\Content\Media\Aggregate\MediaThumbnail\MediaThumbnailCollection;
 use SnapAdmin\Core\Content\Media\MediaEntity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Event\EntityLoadedEvent;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class MediaLoadedSubscriber

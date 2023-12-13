@@ -52,7 +52,6 @@ class OpenApi3Generator implements ApiDefinitionGeneratorInterface
      */
     public function generate(array $definitions, string $api, string $apiType = DefinitionService::TYPE_JSON_API, ?string $bundleName = null): array
     {
-        $forChannel = $this->containsChannelDefinition($definitions);
 
         $openApi = new OpenApi([]);
         $this->openApiBuilder->enrich($openApi, $api);
@@ -66,7 +65,7 @@ class OpenApi3Generator implements ApiDefinitionGeneratorInterface
 
             $onlyFlat = match ($apiType) {
                 DefinitionService::TYPE_JSON => true,
-                default => $this->shouldIncludeReferenceOnly($definition, $forChannel),
+                default => $this->shouldIncludeReferenceOnly($definition, false),
             };
 
             $schema = $this->definitionSchemaBuilder->getSchemaByDefinition(
@@ -118,8 +117,6 @@ class OpenApi3Generator implements ApiDefinitionGeneratorInterface
     {
         $schemaDefinitions = [];
 
-        $forChannel = $this->containsChannelDefinition($definitions);
-
         ksort($definitions);
 
         foreach ($definitions as $definition) {
@@ -138,7 +135,7 @@ class OpenApi3Generator implements ApiDefinitionGeneratorInterface
                 continue;
             }
 
-            $schema = $this->definitionSchemaBuilder->getSchemaByDefinition($definition, $this->getResourceUri($definition), $forChannel);
+            $schema = $this->definitionSchemaBuilder->getSchemaByDefinition($definition, $this->getResourceUri($definition));
             $schema = array_shift($schema);
             if ($schema === null) {
                 throw new \RuntimeException('Invalid schema detected. Aborting');
@@ -223,19 +220,6 @@ class OpenApi3Generator implements ApiDefinitionGeneratorInterface
         return ltrim('/', $rootPath) . '/' . str_replace('_', '-', $definition->getEntityName());
     }
 
-    /**
-     * @param array<string, EntityDefinition>|list<EntityDefinition> $definitions
-     */
-    private function containsChannelDefinition(array $definitions): bool
-    {
-        foreach ($definitions as $definition) {
-            if (is_subclass_of($definition, ChannelDefinitionInterface::class)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
 
     private function shouldDefinitionBeIncluded(EntityDefinition $definition): bool
     {
@@ -250,7 +234,7 @@ class OpenApi3Generator implements ApiDefinitionGeneratorInterface
         return true;
     }
 
-    private function shouldIncludeReferenceOnly(EntityDefinition $definition, bool $forChannel): bool
+    private function shouldIncludeReferenceOnly(EntityDefinition $definition): bool
     {
         $class = new \ReflectionClass($definition);
         if ($class->isSubclassOf(MappingEntityDefinition::class)) {

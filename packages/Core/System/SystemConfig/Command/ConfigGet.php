@@ -57,8 +57,7 @@ class ConfigGet extends Command
 
         $configKey = $input->getArgument('key');
         $value = $this->systemConfigService->get(
-            $configKey,
-            $input->getOption('channelId')
+            $configKey
         );
 
         if ($format === self::FORMAT_LEGACY) {

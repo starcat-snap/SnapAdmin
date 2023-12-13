@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\Framework\Adapter\Cache;
 use Doctrine\DBAL\Connection;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\SystemConfig\CachedSystemConfigLoader;
-use SnapAdmin\Core\System\SystemConfig\SystemConfigService;
 
 #[Package('core')]
 class CacheInvalidationSubscriber

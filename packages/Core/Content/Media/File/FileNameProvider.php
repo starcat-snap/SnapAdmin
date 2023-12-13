@@ -10,7 +10,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\ContainsFilter;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\MultiFilter;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\NotFilter;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 abstract class FileNameProvider

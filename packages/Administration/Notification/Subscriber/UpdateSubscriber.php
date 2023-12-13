@@ -49,10 +49,9 @@ class UpdateSubscriber implements EventSubscriberInterface
         }
 
         $source = $event->getContext()->getSource();
-        $integrationId = null;
+
         $createdByUserId = null;
         if ($source instanceof AdminApiSource) {
-            $integrationId = $source->getIntegrationId();
             $createdByUserId = $source->getUserId();
         }
 
@@ -63,7 +62,6 @@ class UpdateSubscriber implements EventSubscriberInterface
                 'message' => $message,
                 'adminOnly' => true,
                 'requiredPrivileges' => [],
-                'createdByIntegrationId' => $integrationId,
                 'createdByUserId' => $createdByUserId,
             ],
             $event->getContext()

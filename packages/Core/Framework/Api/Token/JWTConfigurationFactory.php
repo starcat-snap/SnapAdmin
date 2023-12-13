@@ -10,7 +10,6 @@ use Lcobucci\JWT\Signer;
 use Lcobucci\JWT\Signer\Key\InMemory;
 use Lcobucci\JWT\Validation\Constraint\SignedWith;
 use League\OAuth2\Server\CryptKey;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class JWTConfigurationFactory

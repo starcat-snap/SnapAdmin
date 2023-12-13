@@ -8,7 +8,6 @@ use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityRepository;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
-use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Uuid\Uuid;
 
 

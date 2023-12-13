@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\Log;
 
-use Monolog\Level;
 use Monolog\Logger;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 

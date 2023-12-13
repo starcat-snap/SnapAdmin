@@ -12,7 +12,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\FloatField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\IntField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\JsonField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\LongTextField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\PriceField;
 use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Contracts\Service\ResetInterface;
@@ -49,7 +48,6 @@ class CustomFieldService implements EventSubscriberInterface, ResetInterface
             CustomFieldTypes::DATETIME => (new DateTimeField($attributeName, $attributeName))->addFlags(new ApiAware()),
             CustomFieldTypes::TEXT => (new LongTextField($attributeName, $attributeName))->addFlags(new ApiAware()),
             CustomFieldTypes::HTML => (new LongTextField($attributeName, $attributeName))->addFlags(new ApiAware(), new AllowHtml()),
-            CustomFieldTypes::PRICE => (new PriceField($attributeName, $attributeName))->addFlags(new ApiAware()),
             default => (new JsonField($attributeName, $attributeName))->addFlags(new ApiAware()),
         };
     }

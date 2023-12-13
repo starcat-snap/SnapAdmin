@@ -6,6 +6,11 @@ use PHPUnit\Framework\TestCase;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Update\Event\UpdatePostPrepareEvent;
 
+/**
+ * @internal
+ *
+ * @covers \SnapAdmin\Core\Framework\Update\Event\UpdatePostPrepareEvent
+ */
 class UpdatePostPrepareEventTest extends TestCase
 {
     public function testGetters(): void

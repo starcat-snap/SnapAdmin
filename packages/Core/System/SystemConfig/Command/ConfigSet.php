@@ -39,8 +39,7 @@ class ConfigSet extends Command
     {
         $this->systemConfigService->set(
             $input->getArgument('key'),
-            $this->handleDecode($input),
-            $input->getOption('channelId')
+            $this->handleDecode($input)
         );
 
         return (int)Command::SUCCESS;

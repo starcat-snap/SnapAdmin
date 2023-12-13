@@ -3,6 +3,7 @@
 namespace SnapAdmin\Administration\Controller;
 
 use Doctrine\DBAL\Connection;
+use SnapAdmin\Administration\Events\PreResetExcludedSearchTermEvent;
 use SnapAdmin\Administration\Framework\Routing\KnownIps\KnownIpsCollectorInterface;
 use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\DevOps\Environment\EnvironmentHelper;
@@ -38,13 +39,8 @@ class AdministrationController extends AbstractController
         private readonly TemplateFinder             $finder,
         private readonly array                      $supportedApiVersions,
         private readonly KnownIpsCollectorInterface $knownIpsCollector,
-        private readonly Connection                 $connection,
-        private readonly EventDispatcherInterface   $eventDispatcher,
-        private readonly string                     $snapCoreDir,
         private readonly HtmlSanitizer              $htmlSanitizer,
         private readonly DefinitionInstanceRegistry $definitionInstanceRegistry,
-        ParameterBagInterface                       $params,
-        private readonly SystemConfigService        $systemConfigService
     )
     {
 

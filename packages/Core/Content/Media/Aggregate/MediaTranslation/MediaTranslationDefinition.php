@@ -9,7 +9,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\ApiAware;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\LongTextField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class MediaTranslationDefinition extends EntityTranslationDefinition

@@ -10,7 +10,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\MappingEntityDefinition;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class MediaFolderConfigurationMediaThumbnailSizeDefinition extends MappingEntityDefinition

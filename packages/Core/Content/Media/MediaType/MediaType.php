@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Content\Media\MediaType;
 
-use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Struct\Struct;
 
 

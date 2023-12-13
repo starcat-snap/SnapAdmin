@@ -6,7 +6,6 @@ use SnapAdmin\Core\Content\Media\Aggregate\MediaFolderConfiguration\MediaFolderC
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class MediaThumbnailSizeEntity extends Entity

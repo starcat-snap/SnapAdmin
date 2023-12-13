@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\Plugin;
 
-use SnapAdmin\Core\Framework\App\Manifest\Manifest;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin\Exception\PluginExtractionException;
 use SnapAdmin\Core\Framework\Plugin\Util\ZipUtils;
@@ -71,19 +70,7 @@ class PluginExtractor
      */
     private function validatePluginZip(string $prefix, \ZipArchive $archive): void
     {
-        $file = $prefix . '/manifest.xml';
-        $manifestAsString = $archive->getFromName($file);
-        if (\is_string($manifestAsString)) {
-            Manifest::validate($manifestAsString, $file);
-        }
 
-        for ($i = 2; $i < $archive->numFiles; ++$i) {
-            $stat = $archive->statIndex($i);
-            \assert($stat !== false);
-
-            $this->assertNoDirectoryTraversal($stat['name']);
-            $this->assertPrefix($stat['name'], $prefix);
-        }
     }
 
     private function getPluginName(\ZipArchive $archive): string

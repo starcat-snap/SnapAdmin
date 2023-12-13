@@ -10,7 +10,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldType\CronInterval;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\DataStack\KeyValuePair;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityExistence;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\WriteParameterBag;
-use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Constraints\Type;
 

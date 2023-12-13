@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\Content\Media\Event;
 
 use SnapAdmin\Core\Content\Media\Aggregate\MediaThumbnail\MediaThumbnailCollection;
 use SnapAdmin\Core\Framework\Context;
-use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Contracts\EventDispatcher\Event;
 
 

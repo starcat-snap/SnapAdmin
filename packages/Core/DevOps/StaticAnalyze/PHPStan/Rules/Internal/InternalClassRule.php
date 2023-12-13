@@ -72,10 +72,6 @@ class InternalClassRule implements Rule
             return ['Classes in `' . $namespace . '` namespace must be flagged @internal to not be captured by the BC checker.'];
         }
 
-        if ($this->isInNamespace($node, '\\Framework\\Demodata') && !\in_array($class, self::DEMO_DATA_EXCEPTIONS, true)) {
-            return ['Classes in `Framework\\Demodata` namespace must be flagged @internal to not be captured by the BC checker.'];
-        }
-
         if ($this->isMigrationStep($node)) {
             return ['Migrations must be flagged @internal to not be captured by the BC checker.'];
         }

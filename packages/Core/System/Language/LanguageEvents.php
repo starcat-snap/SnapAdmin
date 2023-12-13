@@ -2,8 +2,6 @@
 
 namespace SnapAdmin\Core\System\Language;
 
-use SnapAdmin\Core\Framework\Log\Package;
-
 
 class LanguageEvents
 {

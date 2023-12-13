@@ -5,7 +5,6 @@ namespace SnapAdmin\Administration\Notification;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\Integration\IntegrationEntity;
 use SnapAdmin\Core\System\User\UserEntity;
 
 #[Package('administration')]
@@ -15,7 +14,6 @@ class NotificationEntity extends Entity
 
     protected ?string $createdByIntegrationId = null;
 
-    protected ?IntegrationEntity $createdByIntegration = null;
 
     protected ?string $createdByUserId = null;
 
@@ -40,16 +38,6 @@ class NotificationEntity extends Entity
     public function setCreatedByIntegrationId(string $createdByIntegrationId): void
     {
         $this->createdByIntegrationId = $createdByIntegrationId;
-    }
-
-    public function getCreatedByIntegration(): ?IntegrationEntity
-    {
-        return $this->createdByIntegration;
-    }
-
-    public function setCreatedByIntegration(IntegrationEntity $createdByIntegration): void
-    {
-        $this->createdByIntegration = $createdByIntegration;
     }
 
     public function getCreatedByUserId(): ?string

@@ -28,8 +28,7 @@ class SnippetService
         private readonly SnippetFileCollection $snippetFileCollection,
         private readonly EntityRepository $snippetRepository,
         private readonly EntityRepository $snippetSetRepository,
-        private readonly SnippetFilterFactory $snippetFilterFactory,
-        private readonly ContainerInterface $container,
+        private readonly SnippetFilterFactory $snippetFilterFactory
     ) {
     }
 

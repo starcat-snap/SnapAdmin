@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\Content\Media\Api;
 
 use SnapAdmin\Core\Content\Media\MediaFolderService;
 use SnapAdmin\Core\Framework\Context;
-use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

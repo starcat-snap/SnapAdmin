@@ -8,7 +8,6 @@ use SnapAdmin\Core\Content\Media\MediaType\BinaryType;
 use SnapAdmin\Core\Content\Media\MediaType\ImageType;
 use SnapAdmin\Core\Content\Media\MediaType\MediaType;
 use SnapAdmin\Core\Content\Media\MediaType\VideoType;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class DefaultTypeDetector implements TypeDetectorInterface

@@ -21,7 +21,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsAnyFilter;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\MultiFilter;
-use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Uuid\Uuid;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

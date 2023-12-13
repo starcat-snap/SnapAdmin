@@ -42,11 +42,6 @@ class CustomFieldEntity extends Entity
      */
     protected $customFieldSet;
 
-    /**
-     * @var ProductSearchConfigFieldCollection|null
-     */
-    protected $productSearchConfigFields;
-
 
     public function getName(): string
     {

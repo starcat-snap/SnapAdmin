@@ -55,7 +55,15 @@ class LanguageEntity extends Entity
      * @var LanguageCollection|null
      */
     protected $children;
+    /**
+     * @var LocaleTranslationCollection|null
+     */
+    protected $localeTranslations;
 
+        /**
+     * @var PluginTranslationCollection|null
+     */
+    protected $pluginTranslations;
 
     public function getParentId(): ?string
     {

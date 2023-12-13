@@ -87,12 +87,11 @@
         <service id="SnapAdmin\Core\Framework\Api\Serializer\JsonEntityEncoder">
             <argument type="service" id="serializer"/>
         </service>
-        
+
 
         <!-- API Docs -->
         <service id="SnapAdmin\Core\Framework\Api\ApiDefinition\DefinitionService">
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\StoreApiGenerator"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\OpenApi3Generator"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\EntitySchemaGenerator"/>
         </service>
@@ -121,15 +120,6 @@
                       id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\BundleSchemaPathCollection"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\StoreApiGenerator">
-            <argument type="service"
-                      id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\OpenApi\OpenApiSchemaBuilder"/>
-            <argument type="service"
-                      id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\OpenApi\OpenApiDefinitionSchemaBuilder"/>
-            <argument>%kernel.bundles_metadata%</argument>
-            <argument type="service"
-                      id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\BundleSchemaPathCollection"/>
-        </service>
 
         <service id="SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\EntitySchemaGenerator">
         </service>

@@ -24,7 +24,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ParentFkField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TreePathField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class MediaFolderDefinition extends EntityDefinition

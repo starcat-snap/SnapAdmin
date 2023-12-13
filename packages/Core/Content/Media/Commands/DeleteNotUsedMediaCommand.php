@@ -7,7 +7,6 @@ use SnapAdmin\Core\Content\Media\Event\UnusedMediaSearchStartEvent;
 use SnapAdmin\Core\Content\Media\MediaEntity;
 use SnapAdmin\Core\Content\Media\UnusedMediaPurger;
 use SnapAdmin\Core\Framework\Adapter\Console\SnapAdminStyle;
-use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Util\MemorySizeCalculator;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;

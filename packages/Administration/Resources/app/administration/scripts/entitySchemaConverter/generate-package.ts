@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import entitySchema from "../../test/_mocks_/entity-schema.json";
-import { EntitySchemaConverter } from "./entity-schema-converter";
+import {EntitySchemaConverter} from "./entity-schema-converter";
 
 async function main() {
     const gitCommitTag = process.env.CI_COMMIT_TAG;

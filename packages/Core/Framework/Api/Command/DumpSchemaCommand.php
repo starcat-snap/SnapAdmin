@@ -58,23 +58,11 @@ class DumpSchemaCommand extends Command
         $formatType = $input->getOption('schema-format');
         $bundleName = (empty($input->getOption('bundle-name'))) ? '' : $input->getOption('bundle-name');
 
-        switch ($formatType) {
-            case 'simple':
-                $definitionContents = $this->definitionService->getSchema();
-
-                break;
-            case 'openapi3':
-                $api = $input->getOption('frontend-api') ? DefinitionService::STORE_API : DefinitionService::API;
-                $definitionContents = $this->definitionService->generate('openapi-3', $api, DefinitionService::TYPE_JSON_API, $bundleName);
-
-                break;
-            case 'entity-schema':
-                $definitionContents = $this->definitionService->getSchema(EntitySchemaGenerator::FORMAT, DefinitionService::API);
-
-                break;
-            default:
-                throw new \InvalidArgumentException('Invalid "format-type" given. Aborting.');
-        }
+        $definitionContents = match ($formatType) {
+            'simple' => $this->definitionService->getSchema(),
+            'entity-schema' => $this->definitionService->getSchema(EntitySchemaGenerator::FORMAT, DefinitionService::API),
+            default => throw new \InvalidArgumentException('Invalid "format-type" given. Aborting.'),
+        };
 
         $jsonFlags = $input->getOption('pretty') ? \JSON_PRETTY_PRINT : 0;
 

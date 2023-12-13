@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Content\Media\File;
 
 use SnapAdmin\Core\Content\Media\MediaCollection;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class WindowsStyleFileNameProvider extends FileNameProvider

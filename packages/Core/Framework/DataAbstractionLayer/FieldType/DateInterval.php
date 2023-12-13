@@ -2,8 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\DataAbstractionLayer\FieldType;
 
-use SnapAdmin\Core\Framework\Log\Package;
-
 
 class DateInterval extends \DateInterval
 {

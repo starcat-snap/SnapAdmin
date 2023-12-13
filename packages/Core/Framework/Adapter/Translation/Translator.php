@@ -9,7 +9,6 @@ use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin\Exception\DecorationPatternException;
-use SnapAdmin\Core\PlatformRequest;
 use SnapAdmin\Core\System\Locale\LanguageLocaleCodeProvider;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\CacheWarmer\WarmableInterface;
@@ -294,7 +293,7 @@ class Translator extends AbstractTranslator
         if (\array_key_exists($snippetSetId, $this->isCustomized)) {
             return $this->isCustomized[$snippetSetId];
         }
-        
+
         $newCatalog = clone $catalog;
         return $this->isCustomized[$snippetSetId] = $newCatalog;
     }

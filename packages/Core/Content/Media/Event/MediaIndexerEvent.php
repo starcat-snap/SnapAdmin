@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\Content\Media\Event;
 
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Event\NestedEvent;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class MediaIndexerEvent extends NestedEvent

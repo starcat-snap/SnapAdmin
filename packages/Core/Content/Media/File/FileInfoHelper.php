@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Content\Media\File;
 
-use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\Mime\MimeTypes;
 
 /**

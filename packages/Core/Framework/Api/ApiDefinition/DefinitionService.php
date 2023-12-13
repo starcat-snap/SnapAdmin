@@ -8,7 +8,7 @@ use SnapAdmin\Core\Framework\Log\Package;
 
 
 /**
- * @phpstan-type Api DefinitionService::API|DefinitionService::STORE_API
+ * @phpstan-type Api DefinitionService::API
  * @phpstan-type ApiType DefinitionService::TYPE_JSON_API|DefinitionService::TYPE_JSON
  * @phpstan-type OpenApiSpec  array{paths: array<string,array<mixed>>, components: array<mixed>}
  * @phpstan-type ApiSchema array<string, array{name: string, translatable: list<string>, properties: array<string, mixed>}|array{entity: string, properties: array<string, mixed>, write-protected: bool, read-protected: bool}>
@@ -17,7 +17,6 @@ use SnapAdmin\Core\Framework\Log\Package;
 class DefinitionService
 {
     final public const API = 'api';
-    final public const STORE_API = 'frontend-api';
 
     final public const TYPE_JSON_API = 'jsonapi';
 
@@ -95,11 +94,6 @@ class DefinitionService
         if ($type === self::API) {
             return $this->definitionRegistry->getDefinitions();
         }
-
-        if ($type === self::STORE_API) {
-            return $this->channelDefinitionRegistry->getDefinitions();
-        }
-
         throw new ApiDefinitionGeneratorNotFoundException($type);
     }
 }

@@ -14,7 +14,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Indexing\ChildCountUpdater;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Indexing\EntityIndexer;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Indexing\EntityIndexingMessage;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Indexing\TreeUpdater;
-use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin\Exception\DecorationPatternException;
 use SnapAdmin\Core\Framework\Uuid\Uuid;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;

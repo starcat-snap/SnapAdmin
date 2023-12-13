@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\System\Language;
 
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\ExceptionHandlerInterface;
-use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\Language\Exception\LanguageForeignKeyDeleteException;
 
 

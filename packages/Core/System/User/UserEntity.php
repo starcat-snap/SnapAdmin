@@ -3,6 +3,8 @@
 namespace SnapAdmin\Core\System\User;
 
 
+use SnapAdmin\Core\Content\Media\MediaCollection;
+use SnapAdmin\Core\Content\Media\MediaEntity;
 use SnapAdmin\Core\Framework\Api\Acl\Role\AclRoleCollection;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
@@ -96,15 +98,6 @@ class UserEntity extends Entity
      */
     protected $configs;
 
-    /**
-     * @var StateMachineHistoryCollection|null
-     */
-    protected $stateMachineHistoryEntries;
-
-    /**
-     * @var ImportExportLogCollection|null
-     */
-    protected $importExportLogEntries;
 
     /**
      * @var UserRecoveryEntity|null
@@ -123,25 +116,6 @@ class UserEntity extends Entity
      */
     protected $lastUpdatedPasswordAt;
 
-    /**
-     * @var OrderCollection|null
-     */
-    protected $createdOrders;
-
-    /**
-     * @var OrderCollection|null
-     */
-    protected $updatedOrders;
-
-    /**
-     * @var CustomerCollection|null
-     */
-    protected $createdCustomers;
-
-    /**
-     * @var CustomerCollection|null
-     */
-    protected $updatedCustomers;
 
     protected string $timeZone;
 
@@ -310,27 +284,6 @@ class UserEntity extends Entity
     public function setTitle(?string $title): void
     {
         $this->title = $title;
-    }
-
-
-    public function getCreatedCustomers(): ?CustomerCollection
-    {
-        return $this->createdCustomers;
-    }
-
-    public function setCreatedCustomers(CustomerCollection $createdCustomers): void
-    {
-        $this->createdCustomers = $createdCustomers;
-    }
-
-    public function getUpdatedCustomers(): ?CustomerCollection
-    {
-        return $this->updatedCustomers;
-    }
-
-    public function setUpdatedCustomers(CustomerCollection $updatedCustomers): void
-    {
-        $this->updatedCustomers = $updatedCustomers;
     }
 
     public function getLastUpdatedPasswordAt(): ?\DateTimeInterface

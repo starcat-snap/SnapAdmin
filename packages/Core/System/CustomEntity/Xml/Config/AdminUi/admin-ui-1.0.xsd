@@ -4,7 +4,7 @@
     <xs:element name="admin-ui">
         <xs:complexType>
             <xs:choice>
-                <xs:element name="entity" type="entity" maxOccurs="unbounded"/>
+                <xs:element name="entity" type="entity" maxOccurs="unbounded" />
             </xs:choice>
         </xs:complexType>
     </xs:element>

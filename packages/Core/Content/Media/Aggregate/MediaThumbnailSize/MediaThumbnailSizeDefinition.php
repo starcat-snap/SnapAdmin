@@ -13,7 +13,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\IdField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\IntField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class MediaThumbnailSizeDefinition extends EntityDefinition

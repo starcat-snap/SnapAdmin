@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\Content\Media\TypeDetector;
 use SnapAdmin\Core\Content\Media\File\MediaFile;
 use SnapAdmin\Core\Content\Media\MediaType\MediaType;
 use SnapAdmin\Core\Content\Media\MediaType\VideoType;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class VideoTypeDetector implements TypeDetectorInterface

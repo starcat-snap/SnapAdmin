@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Content\Media\Event;
 
-use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Contracts\EventDispatcher\Event;
 
 

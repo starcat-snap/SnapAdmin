@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\System\Locale\Aggregate\LocaleTranslation;
 
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCollection;
-use SnapAdmin\Core\Framework\Log\Package;
 
 /**
  * @extends EntityCollection<LocaleTranslationEntity>

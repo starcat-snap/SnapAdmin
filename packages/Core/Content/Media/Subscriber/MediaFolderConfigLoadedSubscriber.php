@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\Content\Media\Subscriber;
 use SnapAdmin\Core\Content\Media\Aggregate\MediaFolderConfiguration\MediaFolderConfigurationEntity;
 use SnapAdmin\Core\Content\Media\Aggregate\MediaThumbnailSize\MediaThumbnailSizeCollection;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Event\EntityLoadedEvent;
-use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**

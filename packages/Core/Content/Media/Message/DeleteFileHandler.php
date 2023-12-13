@@ -6,7 +6,6 @@ use League\Flysystem\FilesystemOperator;
 use League\Flysystem\UnableToDeleteFile;
 use League\Flysystem\Visibility;
 use SnapAdmin\Core\Content\Media\MediaException;
-use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 /**

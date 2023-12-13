@@ -28,10 +28,6 @@ class VersionCommitEntity extends Entity
      */
     protected $userId;
 
-    /**
-     * @var string|null
-     */
-    protected $integrationId;
 
     /**
      * @var VersionCommitDataCollection
@@ -111,15 +107,5 @@ class VersionCommitEntity extends Entity
     public function setVersion(VersionEntity $version): void
     {
         $this->version = $version;
-    }
-
-    public function getIntegrationId(): ?string
-    {
-        return $this->integrationId;
-    }
-
-    public function setIntegrationId(string $integrationId): void
-    {
-        $this->integrationId = $integrationId;
     }
 }

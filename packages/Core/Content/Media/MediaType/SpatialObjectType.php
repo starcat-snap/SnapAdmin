@@ -2,8 +2,6 @@
 
 namespace SnapAdmin\Core\Content\Media\MediaType;
 
-use SnapAdmin\Core\Framework\Log\Package;
-
 /**
  * @experimental stableVersion:v6.7.0 feature:SPATIAL_BASES
  */

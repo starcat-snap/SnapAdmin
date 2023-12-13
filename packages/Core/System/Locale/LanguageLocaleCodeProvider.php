@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\System\Locale;
 
-use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\Language\LanguageLoaderInterface;
 use Symfony\Contracts\Service\ResetInterface;
 

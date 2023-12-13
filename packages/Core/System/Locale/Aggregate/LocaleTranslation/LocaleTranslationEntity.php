@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\System\Locale\Aggregate\LocaleTranslation;
 
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\TranslationEntity;
-use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\Locale\LocaleEntity;
 
 

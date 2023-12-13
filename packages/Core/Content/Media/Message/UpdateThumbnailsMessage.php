@@ -2,8 +2,6 @@
 
 namespace SnapAdmin\Core\Content\Media\Message;
 
-use SnapAdmin\Core\Framework\Log\Package;
-
 
 class UpdateThumbnailsMessage extends GenerateThumbnailsMessage
 {

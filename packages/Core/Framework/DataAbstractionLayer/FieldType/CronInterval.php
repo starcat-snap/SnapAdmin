@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Framework\DataAbstractionLayer\FieldType;
 
 use Cron\CronExpression;
-use SnapAdmin\Core\Framework\Log\Package;
 
 
 class CronInterval extends CronExpression

@@ -16,13 +16,8 @@
             <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Twig\TemplateFinder"/>
             <argument>%kernel.supported_api_versions%</argument>
             <argument type="service" id="SnapAdmin\Administration\Framework\Routing\KnownIps\KnownIpsCollector"/>
-            <argument type="service" id="Doctrine\DBAL\Connection"/>
-            <argument type="service" id="event_dispatcher"/>
-            <argument>%kernel.snap_core_dir%</argument>
             <argument type="service" id="SnapAdmin\Core\Framework\Util\HtmlSanitizer"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
-            <argument type="service" id="parameter_bag"/>
-            <argument type="service" id="SnapAdmin\Core\System\SystemConfig\SystemConfigService"/>
 
             <call method="setContainer">
                 <argument type="service" id="service_container"/>

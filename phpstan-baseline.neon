@@ -1,2 +1,2070 @@
 parameters:
 	ignoreErrors:
+
+		-
+			message: "#^Method SnapAdmin\\\\Administration\\\\Controller\\\\UserConfigController\\:\\:getOwnUserConfig\\(\\) has parameter \\$keys with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Administration/Controller/UserConfigController.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Administration\\\\Controller\\\\UserConfigController\\:\\:getOwnUserConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Administration/Controller/UserConfigController.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Administration\\\\Controller\\\\UserConfigController\\:\\:massUpsert\\(\\) has parameter \\$postUpdateConfigs with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Administration/Controller/UserConfigController.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Administration\\\\Framework\\\\Routing\\\\KnownIps\\\\KnownIpsCollector\\:\\:collectIps\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Administration/Framework/Routing/KnownIps/KnownIpsCollector.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Administration\\\\Framework\\\\Routing\\\\KnownIps\\\\KnownIpsCollectorInterface\\:\\:collectIps\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Administration/Framework/Routing/KnownIps/KnownIpsCollectorInterface.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Administration\\\\Notification\\\\NotificationService\\:\\:createNotification\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Administration/Notification/NotificationService.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Administration\\\\Notification\\\\NotificationService\\:\\:getNotifications\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Administration/Notification/NotificationService.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Administration\\\\Notification\\\\NotificationService\\:\\:isAllow\\(\\) has parameter \\$privileges with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Administration/Notification/NotificationService.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Administration\\\\Service\\\\AdminSearcher\\:\\:search\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Administration/Service/AdminSearcher.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\Aggregate\\\\MediaThumbnailSize\\\\MediaThumbnailSizeEntity\\:\\:getMediaFolderConfigurations\\(\\) should return SnapAdmin\\\\Core\\\\Content\\\\Media\\\\Aggregate\\\\MediaFolderConfiguration\\\\MediaFolderConfigurationCollection but returns SnapAdmin\\\\Core\\\\Content\\\\Media\\\\Aggregate\\\\MediaFolderConfiguration\\\\MediaFolderConfigurationCollection\\|null\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/Aggregate/MediaThumbnailSize/MediaThumbnailSizeEntity.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\DataAbstractionLayer\\\\MediaFolderIndexer\\:\\:fetchChildren\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/DataAbstractionLayer/MediaFolderIndexer.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\DataAbstractionLayer\\\\MediaFolderIndexer\\:\\:getParentIds\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/DataAbstractionLayer/MediaFolderIndexer.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\Event\\\\MediaFolderConfigurationIndexerEvent\\:\\:__construct\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/Event/MediaFolderConfigurationIndexerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\Event\\\\MediaFolderConfigurationIndexerEvent\\:\\:__construct\\(\\) has parameter \\$skip with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/Event/MediaFolderConfigurationIndexerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\Event\\\\MediaFolderConfigurationIndexerEvent\\:\\:getIds\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/Event/MediaFolderConfigurationIndexerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\Event\\\\MediaFolderConfigurationIndexerEvent\\:\\:getSkip\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/Event/MediaFolderConfigurationIndexerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\Event\\\\MediaFolderIndexerEvent\\:\\:__construct\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/Event/MediaFolderIndexerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\Event\\\\MediaFolderIndexerEvent\\:\\:__construct\\(\\) has parameter \\$skip with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/Event/MediaFolderIndexerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\Event\\\\MediaFolderIndexerEvent\\:\\:getIds\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/Event/MediaFolderIndexerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\Event\\\\MediaFolderIndexerEvent\\:\\:getSkip\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/Event/MediaFolderIndexerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\Event\\\\MediaIndexerEvent\\:\\:__construct\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/Event/MediaIndexerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\Event\\\\MediaIndexerEvent\\:\\:__construct\\(\\) has parameter \\$skip with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/Event/MediaIndexerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\Event\\\\MediaIndexerEvent\\:\\:getIds\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/Event/MediaIndexerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\Event\\\\MediaIndexerEvent\\:\\:getSkip\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/Event/MediaIndexerEvent.php
+
+		-
+			message: "#^Cannot call method getId\\(\\) on SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Entity\\|null\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/MediaService.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\MediaType\\\\MediaType\\:\\:addFlags\\(\\) has parameter \\$flags with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/MediaType/MediaType.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\MediaType\\\\MediaType\\:\\:getFlags\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/MediaType/MediaType.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\Message\\\\DeleteFileMessage\\:\\:__construct\\(\\) has parameter \\$files with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/Message/DeleteFileMessage.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\Message\\\\DeleteFileMessage\\:\\:getFiles\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/Message/DeleteFileMessage.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\Message\\\\DeleteFileMessage\\:\\:setFiles\\(\\) has parameter \\$files with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/Message/DeleteFileMessage.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\Metadata\\\\MetadataLoader\\:\\:loadFromFile\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/Metadata/MetadataLoader.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Media\\\\TypeDetector\\\\TypeDetector\\:\\:detect\\(\\) should return SnapAdmin\\\\Core\\\\Content\\\\Media\\\\MediaType\\\\MediaType but returns SnapAdmin\\\\Core\\\\Content\\\\Media\\\\MediaType\\\\MediaType\\|null\\.$#"
+			count: 1
+			path: packages/Core/Content/Media/TypeDetector/TypeDetector.php
+
+		-
+			message: "#^Anonymous variable in a `\\$connection\\-\\>\\.\\.\\.\\(\\)` method call can lead to false dead methods\\. Make sure the variable type is known$#"
+			count: 1
+			path: packages/Core/DevOps/Locust/setup.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Adapter\\\\Cache\\\\InvalidateCacheEvent\\:\\:__construct\\(\\) has parameter \\$keys with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Adapter/Cache/InvalidateCacheEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Adapter\\\\Cache\\\\InvalidateCacheEvent\\:\\:getKeys\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Adapter/Cache/InvalidateCacheEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Adapter\\\\Filesystem\\\\Adapter\\\\AdapterFactoryInterface\\:\\:create\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Adapter/Filesystem/Adapter/AdapterFactoryInterface.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Adapter\\\\Twig\\\\Extension\\\\InstanceOfExtension\\:\\:isInstanceOf\\(\\) has parameter \\$class with no type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/Adapter/Twig/Extension/InstanceOfExtension.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Adapter\\\\Twig\\\\Extension\\\\InstanceOfExtension\\:\\:isInstanceOf\\(\\) has parameter \\$var with no type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/Adapter/Twig/Extension/InstanceOfExtension.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Adapter\\\\Twig\\\\Extension\\\\RawUrlFunctionExtension\\:\\:rawUrl\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Adapter/Twig/Extension/RawUrlFunctionExtension.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Adapter\\\\Twig\\\\NamespaceHierarchy\\\\NamespaceHierarchyBuilder\\:\\:buildHierarchy\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Adapter/Twig/NamespaceHierarchy/NamespaceHierarchyBuilder.php
+
+		-
+			message: "#^Anonymous variable in a `\\$expr\\-\\>\\.\\.\\.\\(\\)` method call can lead to false dead methods\\. Make sure the variable type is known$#"
+			count: 3
+			path: packages/Core/Framework/Adapter/Twig/TokenParser/IncludeTokenParser.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Adapter\\\\Twig\\\\TokenParser\\\\IncludeTokenParser\\:\\:parseArguments\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Adapter/Twig/TokenParser/IncludeTokenParser.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Adapter\\\\Twig\\\\TwigVariableParser\\:\\:getVariables\\(\\) has parameter \\$aliases with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Adapter/Twig/TwigVariableParser.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Adapter\\\\Twig\\\\TwigVariableParser\\:\\:getVariables\\(\\) has parameter \\$nodes with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: packages/Core/Framework/Adapter/Twig/TwigVariableParser.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Adapter\\\\Twig\\\\TwigVariableParser\\:\\:getVariables\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Adapter/Twig/TwigVariableParser.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Adapter\\\\Twig\\\\TwigVariableParser\\:\\:parse\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Adapter/Twig/TwigVariableParser.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Acl\\\\AclCriteriaValidator\\:\\:validate\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Acl/AclCriteriaValidator.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Acl\\\\Event\\\\AclGetAdditionalPrivilegesEvent\\:\\:__construct\\(\\) has parameter \\$privileges with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Acl/Event/AclGetAdditionalPrivilegesEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Acl\\\\Event\\\\AclGetAdditionalPrivilegesEvent\\:\\:getPrivileges\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Acl/Event/AclGetAdditionalPrivilegesEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Acl\\\\Event\\\\AclGetAdditionalPrivilegesEvent\\:\\:setPrivileges\\(\\) has parameter \\$privileges with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Acl/Event/AclGetAdditionalPrivilegesEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Acl\\\\Role\\\\AclRoleEntity\\:\\:getPrivileges\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Acl/Role/AclRoleEntity.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Acl\\\\Role\\\\AclRoleEntity\\:\\:setPrivileges\\(\\) has parameter \\$privileges with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Acl/Role/AclRoleEntity.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Acl\\\\Role\\\\AclRoleEntity\\:\\:\\$privileges type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Acl/Role/AclRoleEntity.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\ApiDefinition\\\\Generator\\\\OpenApi\\\\OpenApiSchemaBuilder\\:\\:createSecurity\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/ApiDefinition/Generator/OpenApi/OpenApiSchemaBuilder.php
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$security has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/ApiDefinition/Generator/OpenApi/OpenApiSchemaBuilder.php
+
+		-
+			message: "#^Cannot cast PhpParser\\\\Node\\\\Expr\\|PhpParser\\\\Node\\\\Name to string\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Command/DumpClassSchemaCommand.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Command\\\\DumpClassSchemaCommand\\:\\:__construct\\(\\) has parameter \\$bundles with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Command/DumpClassSchemaCommand.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Command\\\\DumpClassSchemaCommand\\:\\:dumpProperties\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Command/DumpClassSchemaCommand.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Command\\\\DumpClassSchemaCommand\\:\\:parseFile\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Command/DumpClassSchemaCommand.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Command\\\\DumpClassSchemaCommand\\:\\:resolveNames\\(\\) has parameter \\$stmts with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Command/DumpClassSchemaCommand.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Command\\\\DumpClassSchemaCommand\\:\\:resolveNames\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Command/DumpClassSchemaCommand.php
+
+		-
+			message: "#^Parameter \\#1 \\$code of method PhpParser\\\\Parser\\:\\:parse\\(\\) expects string, string\\|false given\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Command/DumpClassSchemaCommand.php
+
+		-
+			message: "#^Parameter \\#1 \\$filePath of method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Command\\\\DumpClassSchemaCommand\\:\\:parseFile\\(\\) expects string, string\\|false given\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Command/DumpClassSchemaCommand.php
+
+		-
+			message: "#^Parameter \\#1 \\$stmts of method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Command\\\\DumpClassSchemaCommand\\:\\:resolveNames\\(\\) expects array, array\\<PhpParser\\\\Node\\\\Stmt\\>\\|null given\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Command/DumpClassSchemaCommand.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Exception\\\\IncompletePrimaryKeyException\\:\\:__construct\\(\\) has parameter \\$primaryKeyFields with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Exception/IncompletePrimaryKeyException.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Exception\\\\MissingPrivilegeException\\:\\:__construct\\(\\) has parameter \\$privilege with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Exception/MissingPrivilegeException.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Exception\\\\ResourceNotFoundException\\:\\:__construct\\(\\) has parameter \\$primaryKey with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Exception/ResourceNotFoundException.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\OAuth\\\\AccessToken\\:\\:\\$userIdentifier \\(string\\) does not accept int\\|string\\|null\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/OAuth/AccessToken.php
+
+		-
+			message: "#^Parameter \\#1 \\$uuid of static method SnapAdmin\\\\Core\\\\Framework\\\\Uuid\\\\Uuid\\:\\:fromHexToBytes\\(\\) expects string, int\\|string\\|null given\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/OAuth/RefreshTokenRepository.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\OAuth\\\\ScopeRepository\\:\\:removeScope\\(\\) has parameter \\$scopes with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/OAuth/ScopeRepository.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\OAuth\\\\ScopeRepository\\:\\:removeScope\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/OAuth/ScopeRepository.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\OAuth\\\\ScopeRepository\\:\\:uniqueScopes\\(\\) has parameter \\$scopes with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/OAuth/ScopeRepository.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\OAuth\\\\ScopeRepository\\:\\:uniqueScopes\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/OAuth/ScopeRepository.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\JsonApiDecoder\\:\\:convertToStruct\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/JsonApiDecoder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\JsonApiDecoder\\:\\:convertToStruct\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/JsonApiDecoder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\JsonApiDecoder\\:\\:decodeCollection\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/JsonApiDecoder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\JsonApiDecoder\\:\\:decodeCollection\\(\\) has parameter \\$includes with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/JsonApiDecoder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\JsonApiDecoder\\:\\:decodeCollection\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/JsonApiDecoder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\JsonApiDecoder\\:\\:decodeResource\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/JsonApiDecoder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\JsonApiDecoder\\:\\:decodeResource\\(\\) has parameter \\$includes with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/JsonApiDecoder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\JsonApiDecoder\\:\\:decodeResource\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/JsonApiDecoder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\JsonApiDecoder\\:\\:getIdentifierHash\\(\\) has parameter \\$resource with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/JsonApiDecoder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\JsonApiDecoder\\:\\:isCollection\\(\\) has parameter \\$array with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/JsonApiDecoder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\JsonApiDecoder\\:\\:resolveIncludes\\(\\) has parameter \\$included with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/JsonApiDecoder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\JsonApiDecoder\\:\\:resolveIncludes\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/JsonApiDecoder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\JsonApiDecoder\\:\\:resolveRelationship\\(\\) has parameter \\$includes with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/JsonApiDecoder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\JsonApiDecoder\\:\\:resolveRelationship\\(\\) has parameter \\$resource with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/JsonApiDecoder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\JsonApiDecoder\\:\\:resolveRelationship\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/JsonApiDecoder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\JsonApiDecoder\\:\\:resolveRelationshipCollection\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/JsonApiDecoder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\JsonApiDecoder\\:\\:resolveRelationshipCollection\\(\\) has parameter \\$includes with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/JsonApiDecoder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\JsonApiDecoder\\:\\:resolveRelationshipCollection\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/JsonApiDecoder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\JsonApiDecoder\\:\\:validateResourceIdentifier\\(\\) has parameter \\$resource with no type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/JsonApiDecoder.php
+
+		-
+			message: "#^Anonymous variable in a `\\$relationship\\['tmp'\\]\\['definition'\\]\\-\\>\\.\\.\\.\\(\\)` method call can lead to false dead methods\\. Make sure the variable type is known$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/Record.php
+
+		-
+			message: "#^Cannot call method jsonSerialize\\(\\) on SnapAdmin\\\\Core\\\\Framework\\\\Struct\\\\Struct\\|null\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/Record.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\Record\\:\\:addExtension\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/Record.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\Record\\:\\:addMeta\\(\\) has parameter \\$data with no type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/Record.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\Record\\:\\:addRelationship\\(\\) has parameter \\$relationship with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/Record.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\Record\\:\\:getAttributes\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/Record.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\Record\\:\\:getExtensions\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/Record.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\Record\\:\\:getLinks\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/Record.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\Record\\:\\:getMeta\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/Record.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\Record\\:\\:getRelationships\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/Record.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\Record\\:\\:jsonSerialize\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/Record.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\Record\\:\\:setAttribute\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/Record.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\Record\\:\\:setRelationships\\(\\) has parameter \\$relationships with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/Record.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\Record\\:\\:\\$attributes type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/Record.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\Record\\:\\:\\$extensions type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/Record.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\Record\\:\\:\\$links type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/Record.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\Record\\:\\:\\$meta type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/Record.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Serializer\\\\Record\\:\\:\\$relationships type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Api/Serializer/Record.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Command\\\\CreateHydratorCommand\\:\\:renderClass\\(\\) has parameter \\$calls with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Command/CreateHydratorCommand.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Command\\\\CreateHydratorCommand\\:\\:renderClass\\(\\) has parameter \\$fields with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Command/CreateHydratorCommand.php
+
+		-
+			message: "#^Anonymous variable in a `\\$field\\-\\>\\.\\.\\.\\(\\)` method call can lead to false dead methods\\. Make sure the variable type is known$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Dbal/FieldAccessorBuilder/JsonFieldAccessorBuilder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Dbal\\\\FieldAccessorBuilder\\\\JsonFieldAccessorBuilder\\:\\:getField\\(\\) has parameter \\$fields with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Dbal/FieldAccessorBuilder/JsonFieldAccessorBuilder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Dbal\\\\QueryBuilder\\:\\:getStates\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Dbal/QueryBuilder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Doctrine\\\\FetchModeHelper\\:\\:group\\(\\) has parameter \\$result with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Doctrine/FetchModeHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Doctrine\\\\FetchModeHelper\\:\\:group\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Doctrine/FetchModeHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Doctrine\\\\FetchModeHelper\\:\\:groupUnique\\(\\) has parameter \\$result with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Doctrine/FetchModeHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Doctrine\\\\FetchModeHelper\\:\\:groupUnique\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Doctrine/FetchModeHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Doctrine\\\\FetchModeHelper\\:\\:keyPair\\(\\) has parameter \\$result with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Doctrine/FetchModeHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Doctrine\\\\FetchModeHelper\\:\\:keyPair\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Doctrine/FetchModeHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\EntityGenerator\\:\\:generate\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/EntityGenerator.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\EntityGenerator\\:\\:generateCollection\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/EntityGenerator.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\EntityGenerator\\:\\:generateEntity\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/EntityGenerator.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\EntityGenerator\\:\\:generateProperty\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/EntityGenerator.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\EntityGenerator\\:\\:getClassTypeHint\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/EntityGenerator.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\EntityGenerator\\:\\:getUsage\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/EntityGenerator.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\EntityProtection\\\\WriteProtection\\:\\:getAllowedScopes\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/EntityProtection/WriteProtection.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityDeletedEvent\\:\\:__construct\\(\\) has parameter \\$errors with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityDeletedEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityDeletedEvent\\:\\:__construct\\(\\) has parameter \\$writeResult with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityDeletedEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityLoadedContainerEvent\\:\\:__construct\\(\\) has parameter \\$events with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityLoadedContainerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenContainerEvent\\:\\:__construct\\(\\) has parameter \\$errors with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenContainerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenContainerEvent\\:\\:createEvents\\(\\) has parameter \\$errors with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenContainerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenContainerEvent\\:\\:createEvents\\(\\) has parameter \\$identifiers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenContainerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenContainerEvent\\:\\:createWithDeletedEvents\\(\\) has parameter \\$errors with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenContainerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenContainerEvent\\:\\:createWithDeletedEvents\\(\\) has parameter \\$identifiers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenContainerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenContainerEvent\\:\\:createWithWrittenEvents\\(\\) has parameter \\$errors with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenContainerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenContainerEvent\\:\\:createWithWrittenEvents\\(\\) has parameter \\$identifiers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenContainerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenContainerEvent\\:\\:findPrimaryKeys\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenContainerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenContainerEvent\\:\\:getDeletedPrimaryKeys\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenContainerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenContainerEvent\\:\\:getErrors\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenContainerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenContainerEvent\\:\\:getList\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenContainerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenContainerEvent\\:\\:getPrimaryKeys\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenContainerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenContainerEvent\\:\\:getPrimaryKeysWithPayload\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenContainerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenContainerEvent\\:\\:getPrimaryKeysWithPayloadIgnoringFields\\(\\) has parameter \\$ignoredFields with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenContainerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenContainerEvent\\:\\:getPrimaryKeysWithPayloadIgnoringFields\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenContainerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenContainerEvent\\:\\:getPrimaryKeysWithPropertyChange\\(\\) has parameter \\$properties with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenContainerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenContainerEvent\\:\\:getPrimaryKeysWithPropertyChange\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenContainerEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenEvent\\:\\:__construct\\(\\) has parameter \\$errors with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenEvent\\:\\:__construct\\(\\) has parameter \\$writeResults with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenEvent\\:\\:getErrors\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenEvent\\:\\:getIds\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenEvent\\:\\:getPayloads\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenEvent.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenEvent\\:\\:\\$errors type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenEvent.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenEvent\\:\\:\\$ids type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenEvent.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Event\\\\EntityWrittenEvent\\:\\:\\$payloads type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Event/EntityWrittenEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Exception\\\\ImpossibleWriteOrderException\\:\\:__construct\\(\\) has parameter \\$remaining with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Exception/ImpossibleWriteOrderException.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Exception\\\\SearchRequestException\\:\\:__construct\\(\\) has parameter \\$exceptions with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Exception/SearchRequestException.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Field\\\\CreatedByField\\:\\:__construct\\(\\) has parameter \\$allowedWriteScopes with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Field/CreatedByField.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Field\\\\CreatedByField\\:\\:getAllowedWriteScopes\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Field/CreatedByField.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Field\\\\Flag\\\\Runtime\\:\\:__construct\\(\\) has parameter \\$dependsOn with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Field/Flag/Runtime.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Field\\\\Flag\\\\Runtime\\:\\:getDepends\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Field/Flag/Runtime.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Field\\\\Flag\\\\WriteProtected\\:\\:getAllowedScopes\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Field/Flag/WriteProtected.php
+
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Field\\\\UpdatedByField\\:\\:__construct\\(\\) has parameter \\$allowedWriteScopes with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Field/UpdatedByField.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Field\\\\UpdatedByField\\:\\:getAllowedWriteScopes\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Field/UpdatedByField.php
+
+		-
+			message: "#^Cannot call method is\\(\\) on SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Field\\\\Field\\|null\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/FieldSerializer/AbstractFieldSerializer.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\FieldSerializer\\\\AbstractFieldSerializer\\:\\:requiresValidation\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/FieldSerializer/AbstractFieldSerializer.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\FieldSerializer\\\\AbstractFieldSerializer\\:\\:validate\\(\\) has parameter \\$constraints with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/FieldSerializer/AbstractFieldSerializer.php
+
+		-
+			message: "#^Parameter \\#1 \\$entityName of method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\DefinitionInstanceRegistry\\:\\:getByEntityName\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/FieldSerializer/AbstractFieldSerializer.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\FieldSerializer\\\\ListFieldSerializer\\:\\:decode\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/FieldSerializer/ListFieldSerializer.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\FieldSerializer\\\\ListFieldSerializer\\:\\:validateTypes\\(\\) has parameter \\$values with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/FieldSerializer/ListFieldSerializer.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\FieldSerializer\\\\ManyToManyAssociationFieldSerializer\\:\\:map\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/FieldSerializer/ManyToManyAssociationFieldSerializer.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\FieldSerializer\\\\ManyToManyAssociationFieldSerializer\\:\\:map\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/FieldSerializer/ManyToManyAssociationFieldSerializer.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\FieldVisibility\\:\\:filterInvisible\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/FieldVisibility.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\FieldVisibility\\:\\:filterInvisible\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/FieldVisibility.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\EntityIndexingMessage\\:\\:__construct\\(\\) has parameter \\$data with no type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/EntityIndexingMessage.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\EntityIndexingMessage\\:\\:__construct\\(\\) has parameter \\$offset with no type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/EntityIndexingMessage.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\EntityIndexingMessage\\:\\:getData\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/EntityIndexingMessage.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\EntityIndexingMessage\\:\\:getOffset\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/EntityIndexingMessage.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\TreeUpdater\\:\\:buildPathArray\\(\\) has parameter \\$parent with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/TreeUpdater.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\TreeUpdater\\:\\:buildPathArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/TreeUpdater.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\TreeUpdater\\:\\:fetchByColumn\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/TreeUpdater.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\TreeUpdater\\:\\:fetchByColumn\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/TreeUpdater.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\TreeUpdater\\:\\:getChildren\\(\\) has parameter \\$parent with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/TreeUpdater.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\TreeUpdater\\:\\:getChildren\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/TreeUpdater.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\TreeUpdater\\:\\:getFieldsToSelect\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/TreeUpdater.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\TreeUpdater\\:\\:loadAllParents\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/TreeUpdater.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\TreeUpdater\\:\\:loadParents\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/TreeUpdater.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\TreeUpdater\\:\\:singleUpdate\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/TreeUpdater.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\TreeUpdater\\:\\:updateEntity\\(\\) has parameter \\$entity with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/TreeUpdater.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\TreeUpdater\\:\\:updatePath\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/TreeUpdater.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\TreeUpdater\\:\\:updateRecursive\\(\\) has parameter \\$entity with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/TreeUpdater.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\TreeUpdater\\:\\:updateRecursive\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/TreeUpdater.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\TreeUpdater\\:\\:updateTree\\(\\) has parameter \\$entity with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/TreeUpdater.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\TreeUpdaterBag\\:\\:addEntity\\(\\) has parameter \\$entity with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/TreeUpdaterBag.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\TreeUpdaterBag\\:\\:getEntity\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/TreeUpdaterBag.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\TreeUpdaterBag\\:\\:\\$entities type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/TreeUpdaterBag.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Indexing\\\\TreeUpdaterBag\\:\\:\\$updated type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Indexing/TreeUpdaterBag.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Pricing\\\\Price\\:\\:__construct\\(\\) has parameter \\$percentage with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Pricing/Price.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Pricing\\\\Price\\:\\:getPercentage\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Pricing/Price.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Pricing\\\\Price\\:\\:setPercentage\\(\\) has parameter \\$percentage with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Pricing/Price.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Pricing\\\\Price\\:\\:\\$percentage type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Pricing/Price.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Search\\\\Parser\\\\ParseResult\\:\\:addParameter\\(\\) has parameter \\$type with no type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Search/Parser/ParseResult.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Search\\\\Parser\\\\ParseResult\\:\\:addParameter\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Search/Parser/ParseResult.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Search\\\\Parser\\\\ParseResult\\:\\:getParameters\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Search/Parser/ParseResult.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Search\\\\Parser\\\\ParseResult\\:\\:getType\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Search/Parser/ParseResult.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Search\\\\Parser\\\\ParseResult\\:\\:getTypes\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Search/Parser/ParseResult.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Search\\\\Parser\\\\ParseResult\\:\\:\\$parameters type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Search/Parser/ParseResult.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Search\\\\Parser\\\\ParseResult\\:\\:\\$types type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Search/Parser/ParseResult.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Search\\\\Parser\\\\SqlQueryParser\\:\\:parseRanking\\(\\) has parameter \\$queries with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Search/Parser/SqlQueryParser.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Version\\\\Aggregate\\\\VersionCommitData\\\\VersionCommitDataCollection\\:\\:filterByEntityPrimary\\(\\) has parameter \\$primary with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Version/Aggregate/VersionCommitData/VersionCommitDataCollection.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\CloneBehavior\\:\\:__construct\\(\\) has parameter \\$overwrites with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/CloneBehavior.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\CloneBehavior\\:\\:getOverwrites\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/CloneBehavior.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\Command\\\\ChangeSet\\:\\:__construct\\(\\) has parameter \\$payload with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/Command/ChangeSet.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\Command\\\\ChangeSet\\:\\:__construct\\(\\) has parameter \\$state with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/Command/ChangeSet.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\Command\\\\ChangeSet\\:\\:\\$after type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/Command/ChangeSet.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\Command\\\\ChangeSet\\:\\:\\$state type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/Command/ChangeSet.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\PrimaryKeyBag\\:\\:add\\(\\) has parameter \\$primaryKey with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/PrimaryKeyBag.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\PrimaryKeyBag\\:\\:addExistenceState\\(\\) has parameter \\$primaryKey with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/PrimaryKeyBag.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\PrimaryKeyBag\\:\\:addExistenceState\\(\\) has parameter \\$state with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/PrimaryKeyBag.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\PrimaryKeyBag\\:\\:getCacheKey\\(\\) has parameter \\$primaryKey with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/PrimaryKeyBag.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\PrimaryKeyBag\\:\\:getExistenceState\\(\\) has parameter \\$primaryKey with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/PrimaryKeyBag.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\PrimaryKeyBag\\:\\:getExistenceState\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/PrimaryKeyBag.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\PrimaryKeyBag\\:\\:getPrimaryKeys\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/PrimaryKeyBag.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\PrimaryKeyBag\\:\\:hasExistence\\(\\) has parameter \\$primaryKey with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/PrimaryKeyBag.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\PrimaryKeyBag\\:\\:\\$existences type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/PrimaryKeyBag.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\Validation\\\\ConstraintBuilder\\:\\:isInArray\\(\\) has parameter \\$values with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/Validation/ConstraintBuilder.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\Validation\\\\ConstraintBuilder\\:\\:\\$constraints type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/Validation/ConstraintBuilder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\Validation\\\\RestrictDeleteViolation\\:\\:getRestrictions\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/Validation/RestrictDeleteViolation.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\Validation\\\\Validator\\:\\:addConstraint\\(\\) has parameter \\$propertyValue with no type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/Validation/Validator.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\Validation\\\\Validator\\:\\:\\$data type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/Validation/Validator.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\Validation\\\\WriteCommandExceptionEvent\\:\\:getCommands\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/Validation/WriteCommandExceptionEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\WriteException\\:\\:getExceptions\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DataAbstractionLayer/Write/WriteException.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DependencyInjection\\\\FrameworkExtension\\:\\:addSnapAdminConfig\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/DependencyInjection/FrameworkExtension.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Event\\\\BusinessEventRegistry\\:\\:addClasses\\(\\) has parameter \\$classes with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Event/BusinessEventRegistry.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Event\\\\BusinessEventRegistry\\:\\:getClasses\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Event/BusinessEventRegistry.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Event\\\\DataMappingEvent\\:\\:__construct\\(\\) has parameter \\$output with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Event/DataMappingEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Event\\\\DataMappingEvent\\:\\:getOutput\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Event/DataMappingEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Event\\\\DataMappingEvent\\:\\:setOutput\\(\\) has parameter \\$output with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Event/DataMappingEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Event\\\\EventData\\\\MailRecipientStruct\\:\\:__construct\\(\\) has parameter \\$recipients with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Event/EventData/MailRecipientStruct.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Event\\\\EventData\\\\MailRecipientStruct\\:\\:getRecipients\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Event/EventData/MailRecipientStruct.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Event\\\\EventData\\\\MailRecipientStruct\\:\\:setRecipients\\(\\) has parameter \\$recipients with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Event/EventData/MailRecipientStruct.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\Event\\\\EventData\\\\ObjectType\\:\\:\\$data type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Event/EventData/ObjectType.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\Command\\\\RefreshMigrationCommand\\:\\:updateMigrationFile\\(\\) has parameter \\$replace with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/Command/RefreshMigrationCommand.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\Command\\\\RefreshMigrationCommand\\:\\:updateMigrationFile\\(\\) has parameter \\$search with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/Command/RefreshMigrationCommand.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\IndexerQueuer\\:\\:fetchCurrent\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/IndexerQueuer.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\IndexerQueuer\\:\\:finishIndexer\\(\\) has parameter \\$names with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/IndexerQueuer.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\IndexerQueuer\\:\\:registerIndexer\\(\\) has parameter \\$requiredIndexers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/IndexerQueuer.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\IndexerQueuer\\:\\:upsert\\(\\) has parameter \\$indexerList with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/IndexerQueuer.php
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$options has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/IndexerQueuer.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:createAddColumnsAndKeysPlaybookEntries\\(\\) has parameter \\$keyStructures with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:createAddColumnsAndKeysPlaybookEntries\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:createAddKeysPlaybookEntries\\(\\) has parameter \\$keyStructures with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:createAddKeysPlaybookEntries\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:createDropKeysPlaybookEntries\\(\\) has parameter \\$keyStructures with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:createDropKeysPlaybookEntries\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:createSql\\(\\) has parameter \\$keyStructures with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:createSql\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:determineAddColumnSql\\(\\) has parameter \\$keyStructure with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:determineModifyPrimaryKeySql\\(\\) has parameter \\$keyStructure with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:fetchRelationData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:filterHydrateForeignKeyData\\(\\) has parameter \\$hydratedData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:filterHydrateForeignKeyData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:findForeignKeyDefinition\\(\\) has parameter \\$keyStructure with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:getAddForeignKeySql\\(\\) has parameter \\$keyStructure with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:getRelationData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:hydrateForeignKeyData\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:hydrateForeignKeyData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:implodeColumns\\(\\) has parameter \\$columns with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:isEqualForeignKey\\(\\) has parameter \\$foreignFieldNames with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:mapHydrateForeignKeyData\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Migration\\\\MakeVersionableMigrationHelper\\:\\:mapHydrateForeignKeyData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Migration/MakeVersionableMigrationHelper.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Parameter\\\\AdditionalBundleParameters\\:\\:__construct\\(\\) has parameter \\$kernelParameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Parameter/AdditionalBundleParameters.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Parameter\\\\AdditionalBundleParameters\\:\\:getKernelParameters\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Parameter/AdditionalBundleParameters.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Parameter\\\\AdditionalBundleParameters\\:\\:setKernelParameters\\(\\) has parameter \\$kernelParameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Parameter/AdditionalBundleParameters.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Plugin\\\\BundleConfigGenerator\\:\\:generateAppConfigs\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Plugin/BundleConfigGenerator.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Plugin\\\\BundleConfigGenerator\\:\\:generatePluginConfigs\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Plugin/BundleConfigGenerator.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Plugin\\\\BundleConfigGenerator\\:\\:getActivePlugins\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Plugin/BundleConfigGenerator.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Plugin\\\\BundleConfigGenerator\\:\\:getConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Plugin/BundleConfigGenerator.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Plugin\\\\BundleConfigGenerator\\:\\:getStyleFiles\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Plugin/BundleConfigGenerator.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Plugin\\\\BundleConfigGeneratorInterface\\:\\:getConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Plugin/BundleConfigGeneratorInterface.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Plugin\\\\Command\\\\Lifecycle\\\\AbstractPluginLifecycleCommand\\:\\:parsePluginArgument\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Plugin/Command/Lifecycle/AbstractPluginLifecycleCommand.php
+
+		-
+			message: "#^Parameter \\#1 \\$elements of class SnapAdmin\\\\Core\\\\Framework\\\\Plugin\\\\PluginCollection constructor expects iterable\\<SnapAdmin\\\\Core\\\\Framework\\\\Plugin\\\\PluginEntity\\>, array\\<int, SnapAdmin\\\\Core\\\\Framework\\\\Plugin\\\\PluginEntity\\|null\\> given\\.$#"
+			count: 1
+			path: packages/Core/Framework/Plugin/Command/Lifecycle/AbstractPluginLifecycleCommand.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Plugin\\\\Exception\\\\PluginComposerJsonInvalidException\\:\\:__construct\\(\\) has parameter \\$errors with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Plugin/Exception/PluginComposerJsonInvalidException.php
+
+		-
+			message: "#^Call to function method_exists\\(\\) with 'Composer\\\\\\\\InstalledVersions' and 'getInstalledPackage…' will always evaluate to true\\.$#"
+			count: 1
+			path: packages/Core/Framework/Plugin/KernelPluginLoader/ComposerPluginLoader.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Plugin\\\\KernelPluginLoader\\\\StaticKernelPluginLoader\\:\\:__construct\\(\\) has parameter \\$plugins with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Plugin/KernelPluginLoader/StaticKernelPluginLoader.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Plugin\\\\Util\\\\VersionSanitizer\\:\\:sanitizePluginVersion\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: packages/Core/Framework/Plugin/Util/VersionSanitizer.php
+
+		-
+			message: "#^Parameter \\#1 \\$interval of static method Symfony\\\\Component\\\\RateLimiter\\\\Util\\\\TimeUtil\\:\\:dateIntervalToSeconds\\(\\) expects DateInterval, DateInterval\\|false given\\.$#"
+			count: 1
+			path: packages/Core/Framework/RateLimiter/Policy/TimeBackoff.php
+
+		-
+			message: "#^Parameter \\#1 \\.\\.\\.\\$arg1 of function min expects non\\-empty\\-array, list\\<int\\> given\\.$#"
+			count: 1
+			path: packages/Core/Framework/RateLimiter/Policy/TimeBackoff.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Routing\\\\AbstractRouteScope\\:\\:getRoutePrefixes\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Routing/AbstractRouteScope.php
+
+		-
+			message: "#^Call to an undefined method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Entity\\:\\:getLocale\\(\\)\\.$#"
+			count: 1
+			path: packages/Core/Framework/Store/Authentication/LocaleProvider.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Store\\\\Search\\\\EqualsFilterStruct\\:\\:fromArray\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Store/Search/EqualsFilterStruct.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Store\\\\Search\\\\ExtensionCriteria\\:\\:addFilter\\(\\) has parameter \\$filter with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Store/Search/ExtensionCriteria.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Store\\\\Search\\\\ExtensionCriteria\\:\\:fromArray\\(\\) has parameter \\$parameter with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Store/Search/ExtensionCriteria.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Store\\\\Search\\\\FilterStruct\\:\\:fromArray\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Store/Search/FilterStruct.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Store\\\\Struct\\\\CartPositionCollection\\:\\:getElementFromArray\\(\\) has parameter \\$element with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Store/Struct/CartPositionCollection.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Store\\\\Struct\\\\CartPositionStruct\\:\\:fromArray\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Store/Struct/CartPositionStruct.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Store\\\\Struct\\\\CartPositionStruct\\:\\:getExtensionInformation\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Store/Struct/CartPositionStruct.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Store\\\\Struct\\\\CartPositionStruct\\:\\:getVariant\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Store/Struct/CartPositionStruct.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Store\\\\Struct\\\\CartPositionStruct\\:\\:setExtensionInformation\\(\\) has parameter \\$extensionInformation with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Store/Struct/CartPositionStruct.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Store\\\\Struct\\\\CartPositionStruct\\:\\:setVariant\\(\\) has parameter \\$variant with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Store/Struct/CartPositionStruct.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\Store\\\\Struct\\\\CartPositionStruct\\:\\:\\$extension type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Store/Struct/CartPositionStruct.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\Store\\\\Struct\\\\CartPositionStruct\\:\\:\\$variant type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Store/Struct/CartPositionStruct.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Store\\\\Struct\\\\CartStruct\\:\\:fromArray\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Store/Struct/CartStruct.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Store\\\\Struct\\\\CartStruct\\:\\:getShop\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Store/Struct/CartStruct.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Store\\\\Struct\\\\CartStruct\\:\\:setShop\\(\\) has parameter \\$shop with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Store/Struct/CartStruct.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\Store\\\\Struct\\\\CartStruct\\:\\:\\$shop type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Store/Struct/CartStruct.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Store\\\\Struct\\\\PluginRegionStruct\\:\\:__construct\\(\\) has parameter \\$categories with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: packages/Core/Framework/Store/Struct/PluginRegionStruct.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Store\\\\Struct\\\\StoreLicenseViolationStruct\\:\\:getActions\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Store/Struct/StoreLicenseViolationStruct.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Util\\\\Random\\:\\:getRandomArrayElement\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/Core/Framework/Util/Random.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Util\\\\Random\\:\\:getRandomArrayElement\\(\\) has parameter \\$array with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Util/Random.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Validation\\\\DataValidator\\:\\:getViolations\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Validation/DataValidator.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Validation\\\\DataValidator\\:\\:validate\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Validation/DataValidator.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Validation\\\\DataValidator\\:\\:validateListDefinitions\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Validation/DataValidator.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Validation\\\\DataValidator\\:\\:validateProperties\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Validation/DataValidator.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Validation\\\\DataValidator\\:\\:validateSubDefinitions\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Validation/DataValidator.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Validation\\\\Exception\\\\ConstraintViolationException\\:\\:__construct\\(\\) has parameter \\$inputData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Validation/Exception/ConstraintViolationException.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Validation\\\\Exception\\\\ConstraintViolationException\\:\\:getInputData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Validation/Exception/ConstraintViolationException.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\Validation\\\\WriteConstraintViolationException\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Framework/Validation/WriteConstraintViolationException.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Migration\\\\Traits\\\\Translations\\:\\:__construct\\(\\) has parameter \\$english with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Migration/Traits/Translations.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Migration\\\\Traits\\\\Translations\\:\\:__construct\\(\\) has parameter \\$german with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Migration/Traits/Translations.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Migration\\\\Traits\\\\Translations\\:\\:getColumns\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Migration/Traits/Translations.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Migration\\\\Traits\\\\Translations\\:\\:getEnglish\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Migration/Traits/Translations.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Migration\\\\Traits\\\\Translations\\:\\:getGerman\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Migration/Traits/Translations.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Migration\\\\Traits\\\\Translations\\:\\:\\$english type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Migration/Traits/Translations.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Migration\\\\Traits\\\\Translations\\:\\:\\$german type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Migration/Traits/Translations.php
+
+		-
+			message: "#^Anonymous variable in a `\\$span\\-\\>\\.\\.\\.\\(\\)` method call can lead to false dead methods\\. Make sure the variable type is known$#"
+			count: 1
+			path: packages/Core/Profiling/Integration/Datadog.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Profiling\\\\Integration\\\\Datadog\\:\\:start\\(\\) has parameter \\$tags with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Profiling/Integration/Datadog.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Profiling\\\\Integration\\\\Datadog\\:\\:\\$spans type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Profiling/Integration/Datadog.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Profiling\\\\Integration\\\\ProfilerInterface\\:\\:start\\(\\) has parameter \\$tags with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Profiling/Integration/ProfilerInterface.php
+
+
+
+		-
+			message: "#^Anonymous variable in a `\\$span\\-\\>\\.\\.\\.\\(\\)` method call can lead to false dead methods\\. Make sure the variable type is known$#"
+			count: 1
+			path: packages/Core/Profiling/Integration/Tideways.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Profiling\\\\Integration\\\\Tideways\\:\\:start\\(\\) has parameter \\$tags with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Profiling/Integration/Tideways.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Profiling\\\\Integration\\\\Tideways\\:\\:\\$spans type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Profiling/Integration/Tideways.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\System\\\\CustomEntity\\\\Schema\\\\DynamicMappingEntityDefinition\\:\\:\\$fieldDefinitions type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/CustomEntity/Schema/DynamicMappingEntityDefinition.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\CustomField\\\\Aggregate\\\\CustomFieldSet\\\\CustomFieldSetEntity\\:\\:getConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/CustomField/Aggregate/CustomFieldSet/CustomFieldSetEntity.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\CustomField\\\\Aggregate\\\\CustomFieldSet\\\\CustomFieldSetEntity\\:\\:setConfig\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/CustomField/Aggregate/CustomFieldSet/CustomFieldSetEntity.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\System\\\\CustomField\\\\Aggregate\\\\CustomFieldSet\\\\CustomFieldSetEntity\\:\\:\\$config type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/CustomField/Aggregate/CustomFieldSet/CustomFieldSetEntity.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Locale\\\\Aggregate\\\\LocaleTranslation\\\\LocaleTranslationCollection\\:\\:getLanguageIds\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Locale/Aggregate/LocaleTranslation/LocaleTranslationCollection.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Locale\\\\Aggregate\\\\LocaleTranslation\\\\LocaleTranslationCollection\\:\\:getLocaleIds\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Locale/Aggregate/LocaleTranslation/LocaleTranslationCollection.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Command\\\\ValidateSnippetsCommand\\:\\:hydrateMissingSnippets\\(\\) has parameter \\$missingSnippetsArray with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Command/ValidateSnippetsCommand.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\AbstractFilter\\:\\:readjust\\(\\) has parameter \\$result with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/AbstractFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\AbstractFilter\\:\\:readjust\\(\\) has parameter \\$snippetSets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/AbstractFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\AbstractFilter\\:\\:readjust\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/AbstractFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\AddedFilter\\:\\:filter\\(\\) has parameter \\$requestFilterValue with no type specified\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/AddedFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\AddedFilter\\:\\:filter\\(\\) has parameter \\$snippets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/AddedFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\AddedFilter\\:\\:filter\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/AddedFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\AuthorFilter\\:\\:filter\\(\\) has parameter \\$requestFilterValue with no type specified\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/AuthorFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\AuthorFilter\\:\\:filter\\(\\) has parameter \\$snippets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/AuthorFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\AuthorFilter\\:\\:filter\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/AuthorFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\EditedFilter\\:\\:filter\\(\\) has parameter \\$requestFilterValue with no type specified\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/EditedFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\EditedFilter\\:\\:filter\\(\\) has parameter \\$snippets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/EditedFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\EditedFilter\\:\\:filter\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/EditedFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\EmptySnippetFilter\\:\\:filter\\(\\) has parameter \\$requestFilterValue with no type specified\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/EmptySnippetFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\EmptySnippetFilter\\:\\:filter\\(\\) has parameter \\$snippets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/EmptySnippetFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\EmptySnippetFilter\\:\\:filter\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/EmptySnippetFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\NamespaceFilter\\:\\:filter\\(\\) has parameter \\$requestFilterValue with no type specified\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/NamespaceFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\NamespaceFilter\\:\\:filter\\(\\) has parameter \\$snippets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/NamespaceFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\NamespaceFilter\\:\\:filter\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/NamespaceFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\SnippetFilterFactory\\:\\:__construct\\(\\) has parameter \\$filters with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/SnippetFilterFactory.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\SnippetFilterInterface\\:\\:filter\\(\\) has parameter \\$requestFilterValue with no type specified\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/SnippetFilterInterface.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\SnippetFilterInterface\\:\\:filter\\(\\) has parameter \\$snippets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/SnippetFilterInterface.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\SnippetFilterInterface\\:\\:filter\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/SnippetFilterInterface.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\TermFilter\\:\\:filter\\(\\) has parameter \\$requestFilterValue with no type specified\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/TermFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\TermFilter\\:\\:filter\\(\\) has parameter \\$snippets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/TermFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\TermFilter\\:\\:filter\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/TermFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\TranslationKeyFilter\\:\\:filter\\(\\) has parameter \\$requestFilterValue with no type specified\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/TranslationKeyFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\TranslationKeyFilter\\:\\:filter\\(\\) has parameter \\$snippets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/TranslationKeyFilter.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\Filter\\\\TranslationKeyFilter\\:\\:filter\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/Filter/TranslationKeyFilter.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\SnippetEntity\\:\\:\\$value \\(string\\) does not accept string\\|null\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/SnippetEntity.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\SnippetFileHandler\\:\\:findAdministrationSnippetFiles\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/SnippetFileHandler.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\SnippetFileHandler\\:\\:findSnippetFilesByPath\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/SnippetFileHandler.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\SnippetFileHandler\\:\\:openJsonFile\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/SnippetFileHandler.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\SnippetFileHandler\\:\\:writeJsonFile\\(\\) has parameter \\$content with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/SnippetFileHandler.php
+
+		-
+			message: "#^Parameter \\#1 \\$json of function json_decode expects string, string\\|false given\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/SnippetFileHandler.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\SnippetFixer\\:\\:addTranslationUsingSnippetKey\\(\\) has parameter \\$json with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/SnippetFixer.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\SnippetFixer\\:\\:addTranslationUsingSnippetKey\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/SnippetFixer.php
+
+		-
+			message: "#^Parameter \\#2 \\$translation of method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\SnippetFixer\\:\\:addTranslationUsingSnippetKey\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/SnippetFixer.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\Snippet\\\\SnippetValidatorInterface\\:\\:validate\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/Snippet/SnippetValidatorInterface.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\AbstractSystemConfigLoader\\:\\:load\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/AbstractSystemConfigLoader.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\CachedSystemConfigLoader\\:\\:load\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/CachedSystemConfigLoader.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\Command\\\\ConfigGet\\:\\:writeConfigDefault\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/Command/ConfigGet.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\Command\\\\ConfigGet\\:\\:writeConfigJson\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/Command/ConfigGet.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\Command\\\\ConfigGet\\:\\:writeConfigLegacy\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/Command/ConfigGet.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\Command\\\\ConfigSet\\:\\:handleDecode\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/Command/ConfigSet.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\Event\\\\BeforeSystemConfigChangedEvent\\:\\:__construct\\(\\) has parameter \\$value with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/Event/BeforeSystemConfigChangedEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\Event\\\\BeforeSystemConfigChangedEvent\\:\\:getValue\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/Event/BeforeSystemConfigChangedEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\Event\\\\BeforeSystemConfigChangedEvent\\:\\:setValue\\(\\) has parameter \\$value with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/Event/BeforeSystemConfigChangedEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\Event\\\\SystemConfigChangedEvent\\:\\:__construct\\(\\) has parameter \\$value with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/Event/SystemConfigChangedEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\Event\\\\SystemConfigChangedEvent\\:\\:getValue\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/Event/SystemConfigChangedEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\Event\\\\SystemConfigDomainLoadedEvent\\:\\:__construct\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/Event/SystemConfigDomainLoadedEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\Event\\\\SystemConfigDomainLoadedEvent\\:\\:getConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/Event/SystemConfigDomainLoadedEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\Event\\\\SystemConfigDomainLoadedEvent\\:\\:setConfig\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/Event/SystemConfigDomainLoadedEvent.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\MemoizedSystemConfigLoader\\:\\:load\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/MemoizedSystemConfigLoader.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\Store\\\\MemoizedSystemConfigStore\\:\\:getConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/Store/MemoizedSystemConfigStore.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\Store\\\\MemoizedSystemConfigStore\\:\\:setConfig\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/Store/MemoizedSystemConfigStore.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\Store\\\\MemoizedSystemConfigStore\\:\\:\\$configs type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/Store/MemoizedSystemConfigStore.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\SystemConfigEntity\\:\\:getConfigurationValue\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/SystemConfigEntity.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\SystemConfigEntity\\:\\:setConfigurationValue\\(\\) has parameter \\$configurationValue with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/SystemConfigEntity.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\SystemConfigEntity\\:\\:\\$configurationValue type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/SystemConfigEntity.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\SystemConfigLoader\\:\\:buildSystemConfigArray\\(\\) has parameter \\$systemConfigs with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/SystemConfigLoader.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\SystemConfigLoader\\:\\:buildSystemConfigArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/SystemConfigLoader.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\SystemConfigLoader\\:\\:filterNotActivatedPlugins\\(\\) has parameter \\$configValues with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/SystemConfigLoader.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\SystemConfigLoader\\:\\:filterNotActivatedPlugins\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/SystemConfigLoader.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\SystemConfigLoader\\:\\:getSubArray\\(\\) has parameter \\$configValues with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/SystemConfigLoader.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\SystemConfigLoader\\:\\:getSubArray\\(\\) has parameter \\$keys with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/SystemConfigLoader.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\SystemConfigLoader\\:\\:getSubArray\\(\\) has parameter \\$value with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/SystemConfigLoader.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\SystemConfigLoader\\:\\:getSubArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/SystemConfigLoader.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\SystemConfig\\\\SystemConfigLoader\\:\\:load\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/SystemConfig/SystemConfigLoader.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\User\\\\Aggregate\\\\UserAccessKey\\\\UserAccessKeyCollection\\:\\:getUserIds\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/User/Aggregate/UserAccessKey/UserAccessKeyCollection.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\User\\\\Aggregate\\\\UserConfig\\\\UserConfigEntity\\:\\:getValue\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/User/Aggregate/UserConfig/UserConfigEntity.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\User\\\\Aggregate\\\\UserConfig\\\\UserConfigEntity\\:\\:setValue\\(\\) has parameter \\$value with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/User/Aggregate/UserConfig/UserConfigEntity.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\System\\\\User\\\\Aggregate\\\\UserConfig\\\\UserConfigEntity\\:\\:\\$value type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/User/Aggregate/UserConfig/UserConfigEntity.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\User\\\\UserCollection\\:\\:getLocaleIds\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/User/UserCollection.php

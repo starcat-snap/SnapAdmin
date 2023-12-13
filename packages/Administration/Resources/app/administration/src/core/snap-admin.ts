@@ -8,6 +8,7 @@
 import Bottle from 'bottlejs';
 import Feature from 'src/core/feature';
 import ApplicationBootstrapper from 'src/core/application';
+import utils from 'src/core/service/util.service';
 
 /** Initialize feature flags at the beginning */
 if (window.hasOwnProperty('_features_')) {
@@ -23,7 +24,7 @@ const application = new ApplicationBootstrapper(container);
 
 class SnapAdminClass {
     public Application = application;
-
+    public Utils = utils;
 }
 
 const SnapAdminInstance = new SnapAdminClass();

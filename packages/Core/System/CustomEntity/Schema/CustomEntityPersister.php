@@ -6,7 +6,6 @@ use Doctrine\DBAL\ArrayParameterType;
 use Doctrine\DBAL\Connection;
 use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\Framework\Api\ApiDefinition\Generator\CachedEntitySchemaGenerator;
-use SnapAdmin\Core\Framework\App\AppEntity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Doctrine\MultiInsertQueryQueue;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin\PluginEntity;
@@ -63,7 +62,6 @@ class CustomEntityPersister
             unset($customEntity['cmsAware']);
 
             $customEntity['plugin_id'] = $extensionEntityType === PluginEntity::class && $extensionId ? Uuid::fromHexToBytes($extensionId) : null;
-            $customEntity['app_id'] = $extensionEntityType === AppEntity::class && $extensionId ? Uuid::fromHexToBytes($extensionId) : null;
 
             $customEntity['flags'] = json_encode($customEntity['flags'], \JSON_THROW_ON_ERROR | \JSON_PRESERVE_ZERO_FRACTION);
             $customEntity['fields'] = json_encode($customEntity['fields'], \JSON_THROW_ON_ERROR | \JSON_PRESERVE_ZERO_FRACTION);

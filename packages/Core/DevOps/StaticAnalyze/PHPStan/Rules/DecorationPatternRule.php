@@ -9,16 +9,10 @@ use PHPStan\BetterReflection\Reflection\ReflectionMethod;
 use PHPStan\Node\InClassNode;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Rules\Rule;
-use SnapAdmin\Core\Framework\App\AppUrlChangeResolver\AbstractAppUrlChangeStrategy;
-use SnapAdmin\Core\Framework\App\Lifecycle\AbstractAppLifecycle;
-use SnapAdmin\Core\Framework\App\Lifecycle\AbstractAppLoader;
-use SnapAdmin\Core\Framework\App\Lifecycle\RefreshableAppDryRun;
-use SnapAdmin\Core\Framework\App\Lifecycle\Update\AbstractAppUpdater;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Store\Services\AbstractExtensionDataProvider;
 use SnapAdmin\Core\Framework\Store\Services\AbstractExtensionLifecycle;
 use SnapAdmin\Core\Framework\Store\Services\AbstractExtensionStoreLicensesService;
-use SnapAdmin\Core\Framework\Store\Services\AbstractStoreAppLifecycleService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -33,15 +27,8 @@ class DecorationPatternRule implements Rule
 
     private const SKIP = [
         AbstractExtensionStoreLicensesService::class,
-        AbstractStoreAppLifecycleService::class,
         AbstractExtensionLifecycle::class,
         AbstractExtensionDataProvider::class,
-        AbstractAppUpdater::class,
-        RefreshableAppDryRun::class,
-        RefreshableAppDryRun::class,
-        AbstractAppLoader::class,
-        AbstractAppLifecycle::class,
-        AbstractAppUrlChangeStrategy::class,
     ];
 
     public function getNodeType(): string

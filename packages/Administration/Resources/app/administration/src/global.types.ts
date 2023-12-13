@@ -4,11 +4,8 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable import/no-named-default */
-import type {default as Bottle, Decorator} from 'bottlejs';
+import type {Decorator, default as Bottle} from 'bottlejs';
 import type {SnapAdminClass} from 'src/core/snap-admin';
-
-
-import type {AxiosInstance} from 'axios';
 // trick to make it an "external module" to support global type extension
 
 // base methods for subContainer

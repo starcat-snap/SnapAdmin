@@ -2,11 +2,9 @@
 
 namespace SnapAdmin\Core\Framework\Api\Acl\Role;
 
-use SnapAdmin\Core\Framework\App\AppEntity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\Integration\IntegrationCollection;
 use SnapAdmin\Core\System\User\UserCollection;
 
 #[Package('core')]
@@ -34,15 +32,6 @@ class AclRoleEntity extends Entity
      */
     protected $users;
 
-    /**
-     * @var AppEntity|null
-     */
-    protected $app;
-
-    /**
-     * @var IntegrationCollection|null
-     */
-    protected $integrations;
 
     protected ?\DateTimeInterface $deletedAt = null;
 
@@ -84,26 +73,6 @@ class AclRoleEntity extends Entity
     public function setDescription(?string $description): void
     {
         $this->description = $description;
-    }
-
-    public function getApp(): ?AppEntity
-    {
-        return $this->app;
-    }
-
-    public function setApp(?AppEntity $app): void
-    {
-        $this->app = $app;
-    }
-
-    public function getIntegrations(): ?IntegrationCollection
-    {
-        return $this->integrations;
-    }
-
-    public function setIntegrations(IntegrationCollection $integrations): void
-    {
-        $this->integrations = $integrations;
     }
 
     public function getDeletedAt(): ?\DateTimeInterface

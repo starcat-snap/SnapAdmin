@@ -18,7 +18,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsAnyFilter;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\RangeFilter;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Sorting\FieldSorting;
-use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
