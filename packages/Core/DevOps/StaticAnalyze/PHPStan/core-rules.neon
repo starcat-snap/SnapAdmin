@@ -1,7 +1,7 @@
 rules:
     - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\Deprecation\DeprecatedMethodsThrowDeprecationRule
     - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\Internal\InternalMethodRule
-    - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\Tests\CoversAnnotationRule
+    - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\Tests\CoversAttributeRule
     - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\Tests\MockingSimpleObjectsNotAllowedRule
     - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\FinalClassRule
     - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\DecorationPatternRule

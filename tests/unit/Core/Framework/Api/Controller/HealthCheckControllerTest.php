@@ -2,6 +2,7 @@
 
 namespace SnapAdmin\Tests\Unit\Core\Framework\Api\Controller;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use SnapAdmin\Core\Framework\Api\Controller\HealthCheckController;
 use SnapAdmin\Core\Framework\Api\HealthCheck\Event\HealthCheckEvent;
@@ -12,9 +13,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @internal
- *
- * @covers \SnapAdmin\Core\Framework\Api\Controller\HealthCheckController
  */
+#[CoversClass(HealthCheckController::class)]
 class HealthCheckControllerTest extends TestCase
 {
     public function testCheck(): void

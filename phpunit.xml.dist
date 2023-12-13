@@ -1,32 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.4/phpunit.xsd"
          bootstrap="packages/Core/TestBootstrap.php"
          cacheResult="false"
          executionOrder="random"
-         convertDeprecationsToExceptions="false">
-    <coverage cacheDirectory="var/cache/phpunit/" includeUncoveredFiles="true">
-        <include >
+         cacheDirectory=".phpunit.cache">
+    <coverage includeUncoveredFiles="true"/>
+    <source>
+        <include>
             <!--
-                DO NOT change this to a more generic structure.
-                The phpunit file traversal is really inefficient for our test structure. A naive definition results in
-                more than 70000 files being traversed, which has to be done for each thread/process.
-            -->
+                      DO NOT change this to a more generic structure.
+                      The phpunit file traversal is really inefficient for our test structure. A naive definition results in
+                      more than 70000 files being traversed, which has to be done for each thread/process.
+                  -->
             <directory suffix=".php">packages/Core/Framework</directory>
             <directory suffix=".php">packages/Core/Content</directory>
             <directory suffix=".php">packages/Core/DevOps</directory>
             <directory suffix=".php">packages/Core/Maintenance</directory>
             <directory suffix=".php">packages/Core/System</directory>
             <directory suffix=".php">packages/Core/Installer</directory>
-
             <file>packages/Core/Defaults.php</file>
             <file>packages/Core/HttpKernel.php</file>
             <file>packages/Core/HttpKernelResult.php</file>
             <file>packages/Core/Kernel.php</file>
             <file>packages/Core/PlatformRequest.php</file>
-
-
             <directory suffix=".php">packages/Administration/Controller</directory>
             <directory suffix=".php">packages/Administration/DependencyInjection</directory>
             <directory suffix=".php">packages/Administration/Events</directory>
@@ -34,10 +31,7 @@
             <directory suffix=".php">packages/Administration/Notification</directory>
             <directory suffix=".php">packages/Administration/Service</directory>
             <directory suffix=".php">packages/Administration/Snippet</directory>
-            <directory suffix=".php">packages/Administration/System</directory>
             <file>packages/Administration/Administration.php</file>
-
-
             <file>packages/Core/Test/FeatureFlagExtension.php</file>
             <file>packages/Core/Test/Annotation/ActiveFeatures.php</file>
         </include>
@@ -51,12 +45,9 @@
             <directory suffix=".php">packages/Core/Maintenance/Test</directory>
             <directory suffix=".php">packages/Core/Migration/Test</directory>
             <directory suffix=".php">packages/Core/System/Test</directory>
-
-
             <directory suffix=".php">packages/Administration/Test</directory>
             <directory suffix=".php">./vendor</directory>
             <directory suffix=".php">./var</directory>
-
             <directory suffix="Definition.php">packages/</directory>
             <directory suffix="Entity.php">packages/</directory>
             <directory suffix="Event.php">packages/</directory>
@@ -64,22 +55,21 @@
             <directory suffix="Struct.php">packages/</directory>
             <directory suffix="Collection.php">packages/</directory>
         </exclude>
-      </coverage>
+    </source>
     <php>
-        <ini name="error_reporting" value="-1" />
+        <ini name="error_reporting" value="-1"/>
         <server name="KERNEL_CLASS" value="SnapAdmin\Core\Kernel"/>
-        <env name="APP_ENV" value="test" />
-        <env name="APP_DEBUG" value="1" />
-        <env name="APP_SECRET" value="s$cretf0rt3st" />
-        <env name="SNAP_HTTP_CACHE_ENABLED" value="0" />
-
-        <env name="SHELL_VERBOSITY" value="-1" />
+        <env name="APP_ENV" value="test"/>
+        <env name="APP_DEBUG" value="1"/>
+        <env name="APP_SECRET" value="s$cretf0rt3st"/>
+        <env name="SNAP_HTTP_CACHE_ENABLED" value="0"/>
+        <env name="SHELL_VERBOSITY" value="-1"/>
         <server name="MAILER_URL" value="null://localhost"/>
         <server name="HTTPS" value="off"/>
         <!--To see the full stackTrace of a Deprecation set the value to a regex matching the deprecation warning-->
         <!--https://symfony.com/doc/current/components/phpunit_bridge.html#display-the-full-stack-trace-->
-<!--        <env name="SYMFONY_DEPRECATIONS_HELPER" value="ignoreFile=./deprecation.ignore" />-->
-         <env name="SYMFONY_DEPRECATIONS_HELPER" value="disabled" />
+        <!--        <env name="SYMFONY_DEPRECATIONS_HELPER" value="ignoreFile=./deprecation.ignore" />-->
+        <env name="SYMFONY_DEPRECATIONS_HELPER" value="disabled"/>
     </php>
     <testsuites>
         <testsuite name="administration">
@@ -105,15 +95,12 @@
         <testsuite name="unit">
             <directory>tests/unit</directory>
         </testsuite>
-
         <testsuite name="integration">
             <directory>tests/integration</directory>
         </testsuite>
-
         <testsuite name="migration-tests">
             <directory>tests/migration</directory>
         </testsuite>
-
         <testsuite name="paratest">
             <directory>packages/Core/*/Test</directory>
             <directory>packages/*/Test</directory>
@@ -121,22 +108,11 @@
             <exclude>packages/Core/Migration/Test</exclude>
         </testsuite>
     </testsuites>
-    <listeners>
-        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener">
-            <arguments>
-                <array>
-                    <!-- set this option to 0 to disable the DebugClassLoader integration -->
-                    <element key="debug-class-loader"><integer>0</integer></element>
-                    <element key="time-sensitive"><string>Symfony\Bridge\Doctrine\Middleware\Debug</string></element>
-                </array>
-            </arguments>
-        </listener>
-        <listener class="JohnKary\PHPUnit\Listener\SpeedTrapListener" />
-        <listener class="SnapAdmin\Core\Test\PHPUnit\Extension\DatadogListener" />
-    </listeners>
     <extensions>
-        <extension class="SnapAdmin\Core\Test\PHPUnit\Extension\FeatureFlagExtension" />
-        <!--Enable to see the db sideeffects of the tests. -->
-        <!--<extension class="SnapAdmin\Core\Framework\Test\TestCaseBase\DatabaseCleanTestExtension" />-->
+        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
+        <bootstrap class="SnapAdmin\Core\Test\PHPUnit\Extension\FeatureFlag\FeatureFlagExtension"/>
+        <bootstrap class="SnapAdmin\Core\Test\PHPUnit\Extension\Datadog\DatadogExtension"/>
+        <!-- Enable to see the db side effects of the tests. -->
+<!--        <bootstrap class="SnapAdmin\Core\Test\PHPUnit\Extension\DatabaseDiff\DatabaseDiffExtension"/>-->
     </extensions>
 </phpunit>

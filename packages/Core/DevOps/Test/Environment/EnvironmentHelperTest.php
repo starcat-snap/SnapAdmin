@@ -2,6 +2,8 @@
 
 namespace SnapAdmin\Core\DevOps\Test\Environment;
 
+use PHPUnit\Framework\Attributes\After;
+use PHPUnit\Framework\Attributes\Before;
 use PHPUnit\Framework\TestCase;
 use SnapAdmin\Core\DevOps\Environment\EnvironmentHelper;
 use SnapAdmin\Core\DevOps\Environment\EnvironmentHelperTransformerInterface;
@@ -166,11 +168,8 @@ class EnvironmentHelperTest extends TestCase
         EnvironmentHelper::addTransformer(self::class);
     }
 
-    /**
-     * @before
-     *
-     * @after
-     */
+    #[Before]
+    #[After]
     public function removeAllTransformers(): void
     {
         EnvironmentHelper::removeAllTransformers();

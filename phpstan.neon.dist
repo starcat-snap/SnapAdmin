@@ -103,10 +103,6 @@ parameters:
             count: 1
             path: packages/Core/Framework/DataAbstractionLayer/VersionManager.php
 
-        - # NEXT-25276 - Needs to be fixed with the update ot PHPUnit 10
-            message: '#deprecated interface PHPUnit\\Framework\\TestListener#'
-            path: packages/Core/Test/PHPUnit/Extension/DatadogListener.php
-
         # Internal deprecations of SnapAdmin are handled in other places
         - '#deprecated.*class SnapAdmin\\#'
 
