@@ -468,13 +468,6 @@
             <tag name="snap.field_serializer"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\VariantListingConfigFieldSerializer">
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
-            <argument type="service" id="validator"/>
-
-            <tag name="snap.field_serializer"/>
-        </service>
-
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\ReferenceVersionFieldSerializer">
             <tag name="snap.field_serializer"/>
         </service>

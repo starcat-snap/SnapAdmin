@@ -91,9 +91,6 @@
 
         <service id="SnapAdmin\Core\Framework\Adapter\Cache\CacheInvalidationSubscriber">
             <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\CacheInvalidator"/>
-            <argument type="service" id="Doctrine\DBAL\Connection"/>
-            <argument>%snap.cache.tagging.each_snippet%</argument>
-            <argument>%snap.cache.tagging.each_config%</argument>
         </service>
 
         <service id="SnapAdmin\Core\Framework\Adapter\Cache\CacheTagCollection"/>

@@ -79,11 +79,7 @@ EOF
 
     private function createSecurity(string $api): array
     {
-        if (self::API[$api]['apiKey']) {
-            return ['ApiKey' => []];
-        }
-
-        return ['oAuth' => ['write']];
+        return ['ApiKey' => []];
     }
 
     private function enrichComponents(Components $components, string $api): void
@@ -369,39 +365,13 @@ EOF
      */
     private function createSecurityScheme(string $api): array
     {
-        if (self::API[$api]['apiKey']) {
-            return [
-                'User Context Token' => new SecurityScheme([
-                    'securityScheme' => 'ContextToken',
-                    'type' => 'apiKey',
-                    'in' => 'header',
-                    'name' => PlatformRequest::HEADER_CONTEXT_TOKEN,
-                    'description' => 'Identifies an anonymous or identified user session',
-                ]),
-            ];
-        }
-
-        $url = (string)EnvironmentHelper::getVariable('APP_URL', '');
-
         return [
-            'oAuth' => new SecurityScheme([
-                'securityScheme' => 'oAuth',
-                'type' => 'oauth2',
-                'description' => 'Authentication API',
-                'flows' => [
-                    'password' => [
-                        'tokenUrl' => $url . '/api/oauth/token',
-                        'scopes' => [
-                            'write' => 'Full write access',
-                        ],
-                    ],
-                    'clientCredentials' => [
-                        'tokenUrl' => $url . '/api/oauth/token',
-                        'scopes' => [
-                            'write' => 'Full write access',
-                        ],
-                    ],
-                ],
+            'User Context Token' => new SecurityScheme([
+                'securityScheme' => 'ContextToken',
+                'type' => 'apiKey',
+                'in' => 'header',
+                'name' => PlatformRequest::HEADER_CONTEXT_TOKEN,
+                'description' => 'Identifies an anonymous or identified user session',
             ]),
         ];
     }

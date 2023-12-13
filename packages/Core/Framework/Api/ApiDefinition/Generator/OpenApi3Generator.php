@@ -65,13 +65,12 @@ class OpenApi3Generator implements ApiDefinitionGeneratorInterface
 
             $onlyFlat = match ($apiType) {
                 DefinitionService::TYPE_JSON => true,
-                default => $this->shouldIncludeReferenceOnly($definition, false),
+                default => $this->shouldIncludeReferenceOnly($definition),
             };
 
             $schema = $this->definitionSchemaBuilder->getSchemaByDefinition(
                 $definition,
                 $this->getResourceUri($definition),
-                $forChannel,
                 $onlyFlat,
                 $apiType
             );

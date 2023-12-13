@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\Adapter\Twig\NamespaceHierarchy;
 
-use Doctrine\DBAL\Connection;
 use SnapAdmin\Core\Framework\Bundle;
 use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -14,8 +13,7 @@ class BundleHierarchyBuilder implements TemplateNamespaceHierarchyBuilderInterfa
      * @internal
      */
     public function __construct(
-        private readonly KernelInterface $kernel,
-        private readonly Connection      $connection
+        private readonly KernelInterface $kernel
     )
     {
     }

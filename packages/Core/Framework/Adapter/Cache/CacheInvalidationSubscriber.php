@@ -13,10 +13,7 @@ class CacheInvalidationSubscriber
      * @internal
      */
     public function __construct(
-        private readonly CacheInvalidator $cacheInvalidator,
-        private readonly Connection       $connection,
-        private readonly bool             $fineGrainedCacheSnippet,
-        private readonly bool             $fineGrainedCacheConfig
+        private readonly CacheInvalidator $cacheInvalidator
     )
     {
     }

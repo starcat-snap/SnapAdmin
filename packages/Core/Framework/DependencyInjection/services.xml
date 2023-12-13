@@ -317,8 +317,6 @@ base-uri 'self';
 
         <service id="SnapAdmin\Core\Framework\Adapter\Twig\NamespaceHierarchy\BundleHierarchyBuilder">
             <argument type="service" id="kernel"/>
-            <argument type="service" id="Doctrine\DBAL\Connection"/>
-
             <tag name="snap.twig.hierarchy_builder" priority="1000"/>
         </service>
 
@@ -328,7 +326,6 @@ base-uri 'self';
 
         <service id="SnapAdmin\Core\Framework\Adapter\Twig\Extension\NodeExtension">
             <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Twig\TemplateFinder"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Twig\TemplateScopeDetector"/>
             <tag name="twig.extension"/>
         </service>
 

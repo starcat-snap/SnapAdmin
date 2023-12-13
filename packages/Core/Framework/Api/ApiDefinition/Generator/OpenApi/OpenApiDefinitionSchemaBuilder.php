@@ -218,22 +218,6 @@ class OpenApiDefinitionSchemaBuilder
         return str_replace('_', '', ucwords($input, '_'));
     }
 
-    private function shouldFieldBeIncluded(Field $field, bool $forChannel): bool
-    {
-        if ($field->getPropertyName() === 'translations'
-            || $field->getPropertyName() === 'id'
-            || preg_match('#translations$#i', $field->getPropertyName())) {
-            return false;
-        }
-
-        $flag = $field->getFlag(ApiAware::class);
-        if ($flag === null) {
-            return false;
-        }
-
-        return true;
-    }
-
     private function createToOneLinkage(ManyToOneAssociationField|OneToOneAssociationField $field, string $basePath): Property
     {
         return new Property([

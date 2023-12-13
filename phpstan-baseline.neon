@@ -1,6 +1,13 @@
 parameters:
 	ignoreErrors:
-
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\ResponseFields\\:\\:\\__construct type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: SnapAdmin\Core\Framework\Api/ResponseFields.php
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\ResponseFields\\:\\:\\$includes type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: SnapAdmin\Core\Framework\Api/ResponseFields.php
 		-
 			message: "#^Method SnapAdmin\\\\Administration\\\\Controller\\\\UserConfigController\\:\\:getOwnUserConfig\\(\\) has parameter \\$keys with no value type specified in iterable type array\\.$#"
 			count: 1

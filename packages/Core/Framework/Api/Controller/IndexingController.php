@@ -20,8 +20,7 @@ class IndexingController extends AbstractController
      * @internal
      */
     public function __construct(
-        private readonly EntityIndexerRegistry $registry,
-        private readonly MessageBusInterface   $messageBus
+        private readonly EntityIndexerRegistry $registry
     )
     {
     }

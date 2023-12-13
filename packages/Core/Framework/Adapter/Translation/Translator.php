@@ -35,8 +35,6 @@ class Translator extends AbstractTranslator
 
     private ?string $snippetSetId = null;
 
-    private ?string $channelId = null;
-
     private ?string $localeBeforeInject = null;
 
     /**
@@ -205,12 +203,11 @@ class Translator extends AbstractTranslator
      * Injects temporary settings for translation which differ from Context.
      * Call resetInjection() when specific translation is done
      */
-    public function injectSettings(string $channelId, string $languageId, string $locale, Context $context): void
+    public function injectSettings(string $languageId, string $locale, Context $context): void
     {
         $this->localeBeforeInject = $this->getLocale();
-        $this->channelId = $channelId;
         $this->setLocale($locale);
-        $this->resolveSnippetSetId($channelId, $languageId, $locale);
+        $this->resolveSnippetSetId($languageId, $locale);
         $this->getCatalogue($locale);
     }
 
@@ -267,9 +264,9 @@ class Translator extends AbstractTranslator
         return mb_strpos($catalog->getLocale(), '-') !== false;
     }
 
-    private function resolveSnippetSetId(string $channelId, string $languageId, string $locale): void
+    private function resolveSnippetSetId(string $languageId, string $locale): void
     {
-        $snippetSetId = $this->snippetService->findSnippetSetId($channelId, $languageId, $locale);
+        $snippetSetId = $this->snippetService->findSnippetSetId($languageId, $locale);
 
         $this->snippetSetId = $snippetSetId;
     }

@@ -56,7 +56,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TreeLevelField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TreePathField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\UpdatedAtField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\UpdatedByField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\VariantListingConfigField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\VersionDataPayloadField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\VersionField;
 use SnapAdmin\Core\Framework\Log\Package;
@@ -93,7 +92,7 @@ class SchemaBuilder
         CashRoundingConfigField::class => Types::JSON,
         ObjectField::class => Types::JSON,
         TreeBreadcrumbField::class => Types::JSON,
-        VariantListingConfigField::class => Types::JSON,
+
         VersionDataPayloadField::class => Types::JSON,
         ManyToManyIdField::class => Types::JSON,
 
