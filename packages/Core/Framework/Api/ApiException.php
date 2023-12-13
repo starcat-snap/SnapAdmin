@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Framework\Api;
 
 use SnapAdmin\Core\Framework\Api\Exception\ExpectationFailedException;
-use SnapAdmin\Core\Framework\Api\Exception\InvalidChannelIdException;
 use SnapAdmin\Core\Framework\Api\Exception\InvalidSyncOperationException;
 use SnapAdmin\Core\Framework\Api\Exception\InvalidVersionNameException;
 use SnapAdmin\Core\Framework\Api\Exception\LiveVersionDeleteException;
@@ -155,11 +154,6 @@ class ApiException extends HttpException
     public static function invalidSyncOperation(string $message): SnapAdminHttpException
     {
         return new InvalidSyncOperationException($message);
-    }
-
-    public static function invalidChannelId(string $channelId): SnapAdminHttpException
-    {
-        return new InvalidChannelIdException($channelId);
     }
 
     public static function invalidVersionName(): SnapAdminHttpException
