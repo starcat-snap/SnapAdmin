@@ -4,8 +4,8 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable import/no-named-default */
-import type {Decorator, default as Bottle} from 'bottlejs';
-import type {SnapAdminClass} from 'src/core/snap-admin';
+import type { Decorator, default as Bottle } from 'bottlejs';
+import type { SnapAdminClass } from 'src/core/snap-admin';
 // trick to make it an "external module" to support global type extension
 
 // base methods for subContainer
@@ -75,12 +75,5 @@ declare module 'bottlejs' { // Use the same module name as the import string
         factory: FactoryContainer,
         service: ServiceContainer,
         init: InitContainer,
-    }
-}
-
-declare module 'axios' {
-    interface AxiosRequestConfig {
-        // adds the shopware API version to the RequestConfig
-        version?: number
     }
 }

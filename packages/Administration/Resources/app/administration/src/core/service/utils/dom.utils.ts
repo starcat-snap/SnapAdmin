@@ -4,7 +4,7 @@
  * @module core/service/utils/dom
  */
 
-import {warn} from './debug.utils';
+import { warn } from './debug.utils';
 
 /**
  * Returns the scrollbar height of an HTML element.

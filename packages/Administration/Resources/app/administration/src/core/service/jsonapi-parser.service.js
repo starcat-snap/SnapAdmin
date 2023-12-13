@@ -4,7 +4,7 @@
  * @module core/helper/jsonapi-parser
  */
 import types from 'src/core/service/utils/types.utils';
-import {hasOwnProperty} from 'src/core/service/utils/object.utils';
+import { hasOwnProperty } from 'src/core/service/utils/object.utils';
 
 /**
  * Converts a JSONApi compliant data structure into a nested object structure which suits the data entry management

@@ -24,6 +24,7 @@ const application = new ApplicationBootstrapper(container);
 
 class SnapAdminClass {
     public Application = application;
+
     public Utils = utils;
 }
 

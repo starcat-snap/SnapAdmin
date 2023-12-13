@@ -6,19 +6,6 @@ import type Bottle from 'bottlejs';
  * @module core/application
  */
 
-interface bundlesSinglePluginResponse {
-    css?: string | string[],
-    js?: string | string[],
-    html?: string,
-    baseUrl?: null | string,
-    type?: 'plugin',
-    version?: string,
-    active?: boolean,
-}
-
-interface bundlesPluginResponse {
-    [key: string]: bundlesSinglePluginResponse
-}
 
 /**
  * @private
@@ -52,7 +39,7 @@ class ApplicationBootstrapper {
     /**
      * Starts the bootstrapping process of the application.
      */
-    start(config = {}) {
+    start() {
 
     }
 }
