@@ -34,7 +34,7 @@ export namespace EntitySchemaTypes {
         'int'|
         'float'|
         'password'|
-        'Shopware\\Core\\Framework\\DataAbstractionLayer\\Field\\RemoteAddressField';
+        'SnapAdmin\\Core\\Framework\\DataAbstractionLayer\\Field\\RemoteAddressField';
 
     export type relations = 'one_to_one'|'many_to_one'|'one_to_many'|'many_to_many';
 

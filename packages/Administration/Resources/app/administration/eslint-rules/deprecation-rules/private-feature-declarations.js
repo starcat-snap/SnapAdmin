@@ -19,9 +19,9 @@ const nodeContainsLeadingBlockComment = (node) => {
  * Invalid:
  * class Example {}
  * Component.register('foo', {});
- * Shopware.Component.register('bar', {});
+ * SnapAdmin.Component.register('bar', {});
  * Module.register('foo', {});
- * Shopware.Module.register('bar', {});
+ * SnapAdmin.Module.register('bar', {});
  * export const foo = 'foo';
  * export default foo;
  *
@@ -44,7 +44,7 @@ const nodeContainsLeadingBlockComment = (node) => {
  * \**
  *  * @deprecated tag:v6.X.0 - Will be @private
  *  *\
- * Shopware.Component.register('bar', {});
+ * SnapAdmin.Component.register('bar', {});
  *
  * \**
  *  * @private
@@ -54,7 +54,7 @@ const nodeContainsLeadingBlockComment = (node) => {
  * \**
  *  * @deprecated tag:v6.X.0 - Will be @private
  *  *\
- * Shopware.Module.register('bar', {});
+ * SnapAdmin.Module.register('bar', {});
  *
  * \**
  *  * @private
@@ -114,7 +114,7 @@ module.exports = {
                     isFeatureRegister = true;
                 }
 
-                if (!isFeatureRegister && root?.object && root?.property && root?.object?.name === 'Shopware' && root.property.name === 'Component' && property === 'register') {
+                if (!isFeatureRegister && root?.object && root?.property && root?.object?.name === 'SnapAdmin' && root.property.name === 'Component' && property === 'register') {
                     isFeatureRegister = true;
                 }
 
@@ -122,7 +122,7 @@ module.exports = {
                     isFeatureRegister = true;
                 }
 
-                if (!isFeatureRegister && root?.object && root?.property && root?.object?.name === 'Shopware' && root.property.name === 'Module' && property === 'register') {
+                if (!isFeatureRegister && root?.object && root?.property && root?.object?.name === 'SnapAdmin' && root.property.name === 'Module' && property === 'register') {
                     isFeatureRegister = true;
                 }
 
@@ -130,7 +130,7 @@ module.exports = {
                     isFeatureRegister = true;
                 }
 
-                if (!isFeatureRegister && root?.callee?.object && root?.callee?.property && root?.callee?.object.name === 'Shopware' && root.callee.property.name === 'Service' && property === 'register') {
+                if (!isFeatureRegister && root?.callee?.object && root?.callee?.property && root?.callee?.object.name === 'SnapAdmin' && root.callee.property.name === 'Service' && property === 'register') {
                     isFeatureRegister = true;
                 }
 

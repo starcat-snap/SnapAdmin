@@ -290,7 +290,7 @@ snap:
         exclude_exception:
             - League\OAuth2\Server\Exception\OAuthServerException
             - Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-            - Shopware\Core\Framework\Routing\Exception\LanguageNotFoundException
+            - SnapAdmin\Core\Framework\Routing\Exception\LanguageNotFoundException
         exclude_events:
             - user.recovery.request
             - customer.recovery.request

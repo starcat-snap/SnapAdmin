@@ -37,7 +37,7 @@ const baseRules = {
 module.exports = {
     root: true,
     extends: [
-        '@shopware-ag/eslint-config-base',
+        '@snap-admin/eslint-config-base',
     ],
     env: {
         browser: true,
@@ -45,7 +45,7 @@ module.exports = {
     },
 
     globals: {
-        Shopware: true,
+        SnapAdmin: true,
         VueJS: true,
         Cypress: true,
         cy: true,
@@ -82,7 +82,7 @@ module.exports = {
                             scss: path.join(__dirname, 'src/app/assets/scss'),
                             assets: path.join(__dirname, 'static'),
                             // Alias for externals
-                            Shopware: path.join(__dirname, 'src/core/shopware'),
+                            SnapAdmin: path.join(__dirname, 'src/core/shopware'),
                             '@administration': path.join(__dirname, 'src'),
                         },
                     },
@@ -99,7 +99,7 @@ module.exports = {
         {
             extends: [
                 'plugin:vue/vue3-recommended',
-                '@shopware-ag/eslint-config-base',
+                '@snap-admin/eslint-config-base',
             ],
             files: ['**/*.js'],
             excludedFiles: ['*.spec.js', '*.spec.vue3.js'],
@@ -228,7 +228,7 @@ module.exports = {
         }, {
             files: ['**/*.ts', '**/*.tsx'],
             extends: [
-                '@shopware-ag/eslint-config-base',
+                '@snap-admin/eslint-config-base',
                 'plugin:@typescript-eslint/eslint-recommended',
                 'plugin:@typescript-eslint/recommended',
                 'plugin:@typescript-eslint/recommended-requiring-type-checking',

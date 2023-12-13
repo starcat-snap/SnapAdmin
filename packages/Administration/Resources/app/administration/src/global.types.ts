@@ -5,7 +5,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable import/no-named-default */
 import type {default as Bottle, Decorator} from 'bottlejs';
-import type { AxiosInstance } from 'axios';
+import type {SnapAdminClass} from 'src/core/snap-admin';
+
+
+import type {AxiosInstance} from 'axios';
 // trick to make it an "external module" to support global type extension
 
 // base methods for subContainer
@@ -33,6 +36,22 @@ declare global {
      * You should avoid using these.
      */
     type $TSDangerUnknownObject = { [key: string | symbol]: unknown };
+    /**
+     * Make the SnapAdmin object globally available
+     */
+    const SnapAdmin: SnapAdminClass;
+
+    interface Window {
+        SnapAdmin: SnapAdminClass;
+        _features_: {
+            [featureName: string]: boolean
+        };
+        processingInactivityLogout?: boolean;
+    }
+
+    const _features_: {
+        [featureName: string]: boolean
+    };
 
     /**
      * Define global container for the bottle.js containers

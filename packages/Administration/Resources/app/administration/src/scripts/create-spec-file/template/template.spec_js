@@ -6,11 +6,11 @@ async function createWrapper(/* TODO: add or remove options = {} */) {
     const localVue = createLocalVue();
 
     // TODO: adjust component name
-    return shallowMount(await Shopware.Component.build('sw-your-component-for-test'), {
+    return shallowMount(await SnapAdmin.Component.build('sw-your-component-for-test'), {
         // TODO: add or remove localVue
         localVue,
         stubs: {
-            // 'sw-missing-component-one': Shopware.Component.build('sw-missing-component-one'),
+            // 'sw-missing-component-one': SnapAdmin.Component.build('sw-missing-component-one'),
         },
         mocks: {
         },
