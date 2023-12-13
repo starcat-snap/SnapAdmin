@@ -57,6 +57,10 @@
             </call>
         </service>
 
+        <service id="SnapAdmin\Core\Framework\Api\Controller\HealthCheckController" public="true">
+            <argument type="service" id="event_dispatcher"/>
+        </service>
+
         <service id="SnapAdmin\Core\Framework\Api\Controller\IndexingController" public="true">
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Indexing\EntityIndexerRegistry"/>
             <call method="setContainer">
@@ -159,10 +163,10 @@
             <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\CacheClearer"/>
             <argument type="service" id="cache.object"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Indexing\EntityIndexerRegistry"/>
-            <tag name="container.service_subscriber" />
-            <tag name="controller.service_arguments" />
+            <tag name="container.service_subscriber"/>
+            <tag name="controller.service_arguments"/>
             <call method="setContainer">
-                <argument type="service" id="Psr\Container\ContainerInterface" />
+                <argument type="service" id="Psr\Container\ContainerInterface"/>
             </call>
         </service>
 
