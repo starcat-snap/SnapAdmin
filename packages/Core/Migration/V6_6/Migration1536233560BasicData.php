@@ -28,7 +28,7 @@ class Migration1536233560BasicData extends MigrationStep
 
     public function updateDestructive(Connection $connection): void
     {
-        // TODO: Implement updateDestructive() method.
+
     }
 
     private function createDefaultMediaFolders(Connection $connection): void
