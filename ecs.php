@@ -126,7 +126,7 @@ return static function (ECSConfig $ecsConfig): void {
 
     $ecsConfig->skip([
         // Fixture
-        'src/WebInstaller/Tests/_fixtures/Options.php',
+        'packages/WebInstaller/Tests/_fixtures/Options.php',
 
         ArrayOpenerAndCloserNewlineFixer::class => null,
         ArrayListItemNewlineFixer::class => null,
@@ -142,20 +142,20 @@ return static function (ECSConfig $ecsConfig): void {
         PhpdocAlignFixer::class => null,
         PhpdocAnnotationWithoutDotFixer::class => null,
         // would otherwise destroy the example in the annotation
-        NoUselessCommentFixer::class => ['src/Core/System/Annotation/Concept/DeprecationPattern/ReplaceDecoratedInterface.php'],
+        NoUselessCommentFixer::class => ['packages/Core/System/Annotation/Concept/DeprecationPattern/ReplaceDecoratedInterface.php'],
         // Would otherwise fix the blocking whitespace in the currency formatter tests
-        NonPrintableCharacterFixer::class => ['src/Core/System/Test/Currency/CurrencyFormatterTest.php'],
+        NonPrintableCharacterFixer::class => ['packages/Core/System/Test/Currency/CurrencyFormatterTest.php'],
         // skip php files in node modules (stylelint ships both js and php)
         '**/node_modules',
         // would otherwise destroy markdown in the description of a route annotation, since markdown interpreted spaces/indents
         PhpdocIndentFixer::class => [
-            'src/**/*Controller.php',
-            'src/**/*Route.php',
+            'packages/**/*Controller.php',
+            'packages/**/*Route.php',
         ],
         // would otherwise remove lines in the description of route annotations
         PhpdocTrimConsecutiveBlankLineSeparationFixer::class => [
-            'src/**/*Controller.php',
-            'src/**/*Route.php',
+            'packages/**/*Controller.php',
+            'packages/**/*Route.php',
         ],
         PhpdocNoPackageFixer::class => null,
         StandaloneLineConstructorParamFixer::class => null,
