@@ -75,15 +75,6 @@ then
     fi
 fi
 
-if [[ -n "$SCSS_STOREFRONT_FILES" ]]
-then
-    if [[ -x src/Storefront/Resources/app/storefront/node_modules/.bin/stylelint ]]
-    then
-        composer run stylelint:admin -- --fix ${SCSS_STOREFRONT_FILES}
-    else
-        echo "Skipped Stylelint checks on administration, because it's not installed."
-    fi
-fi
 
 if [[ -n "$JS_ADMIN_FILES" ]]
 then
@@ -92,16 +83,6 @@ then
         composer run eslint:admin -- --fix ${JS_ADMIN_FILES}
     else
         echo "Skipped ESLint checks on administration, because it's not installed."
-    fi
-fi
-
-if [[ -n "$JS_STOREFRONT_FILES" ]]
-then
-    if [[ -x src/Storefront/Resources/app/storefront/node_modules/.bin/eslint ]]
-    then
-        echo composer run eslint:storefront -- --fix ${JS_STOREFRONT_FILES}
-    else
-        echo "Skipped ESLint checks on Storefront, because it's not installed."
     fi
 fi
 
