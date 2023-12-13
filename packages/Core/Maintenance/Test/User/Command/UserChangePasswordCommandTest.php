@@ -18,19 +18,14 @@ use Symfony\Component\Console\Tester\CommandTester;
 class UserChangePasswordCommandTest extends TestCase
 {
     use IntegrationTestBehaviour;
-    private const TEST_USERNAME = 'shopware';
-    private const TEST_PASSWORD = 'shopwarePassword';
+    private const TEST_USERNAME = 'Admin';
+    private const TEST_PASSWORD = 'SnapAdminPassword';
 
-    /**
-     * @var EntityRepository
-     */
-    private $userRepository;
 
     private Context $context;
 
     protected function setUp(): void
     {
-        $this->userRepository = $this->getContainer()->get('user.repository');
         $this->context = Context::createDefaultContext();
     }
 

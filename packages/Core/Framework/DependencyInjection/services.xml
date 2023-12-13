@@ -225,8 +225,8 @@ base-uri 'self';
             <argument>%kernel.environment%</argument>
             <argument type="service" id="Doctrine\DBAL\Connection"/>
             <argument type="service" id="SnapAdmin\Core\System\Locale\LanguageLocaleCodeProvider"/>
+            <argument type="service" id="SnapAdmin\Core\System\Snippet\SnippetService"/>
             <argument>%snap.cache.tagging.each_snippet%</argument>
-
             <tag name="monolog.logger"/>
         </service>
 

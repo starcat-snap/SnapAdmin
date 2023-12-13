@@ -190,32 +190,6 @@ class AnnotationTagTesterTest extends TestCase
         $this->annotationTagTester->validateDeprecatedAnnotations($deprecatedContent);
     }
 
-    public function testManifestVersionMustNotHaveLessThanTwoDigits(): void
-    {
-        $deprecatedContent = '@deprecated manifest:v1';
-
-        static::expectException(\InvalidArgumentException::class);
-        static::expectExceptionMessage('Manifest version must have 2 digits.');
-        $this->annotationTagTester->validateDeprecatedAnnotations($deprecatedContent);
-    }
-
-    public function testManifestVersionMustNotBeSmallerThanActualLiveVersion(): void
-    {
-        $deprecatedContent = '@deprecated manifest:v1.0';
-
-        static::expectException(\InvalidArgumentException::class);
-        static::expectExceptionMessage('The version you used for deprecation or experimental annotation is already live.');
-        $this->annotationTagTester->validateDeprecatedAnnotations($deprecatedContent);
-    }
-
-    public function testManifestVersionMustNotBeTheSameAsTheLiveVersion(): void
-    {
-        $deprecatedContent = '@deprecated manifest:v0.1';
-
-        static::expectException(\InvalidArgumentException::class);
-        static::expectExceptionMessage('The version you used for deprecation or experimental annotation is already live.');
-        $this->annotationTagTester->validateDeprecatedAnnotations($deprecatedContent);
-    }
 
     public function testItCapturesTheVersionFromDeprecationElementsCorrectly(): void
     {

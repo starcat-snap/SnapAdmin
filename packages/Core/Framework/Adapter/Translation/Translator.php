@@ -10,6 +10,7 @@ use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin\Exception\DecorationPatternException;
 use SnapAdmin\Core\System\Locale\LanguageLocaleCodeProvider;
+use SnapAdmin\Core\System\Snippet\SnippetService;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\CacheWarmer\WarmableInterface;
 use Symfony\Component\Intl\Locale;
@@ -57,20 +58,22 @@ class Translator extends AbstractTranslator
      */
     public function __construct(
         private readonly TranslatorInterface&TranslatorBagInterface&LocaleAwareInterface $translator,
-        private readonly RequestStack $requestStack,
-        private readonly CacheInterface $cache,
-        private readonly MessageFormatterInterface $formatter,
-        private readonly string $environment,
-        private readonly Connection $connection,
-        private readonly LanguageLocaleCodeProvider $languageLocaleProvider,
-        private readonly bool $fineGrainedCache
-    ) {
+        private readonly RequestStack                                                    $requestStack,
+        private readonly CacheInterface                                                  $cache,
+        private readonly MessageFormatterInterface                                       $formatter,
+        private readonly string                                                          $environment,
+        private readonly Connection                                                      $connection,
+        private readonly LanguageLocaleCodeProvider                                      $languageLocaleProvider,
+        private readonly SnippetService                                                  $snippetService,
+        private readonly bool                                                            $fineGrainedCache
+    )
+    {
     }
 
     public static function buildName(string $id): string
     {
-        if (\strpbrk($id, (string) ItemInterface::RESERVED_CHARACTERS) !== false) {
-            $id = \str_replace(\str_split((string) ItemInterface::RESERVED_CHARACTERS, 1), '_r_', $id);
+        if (\strpbrk($id, (string)ItemInterface::RESERVED_CHARACTERS) !== false) {
+            $id = \str_replace(\str_split((string)ItemInterface::RESERVED_CHARACTERS, 1), '_r_', $id);
         }
 
         return 'translator.' . $id;
@@ -188,7 +191,6 @@ class Translator extends AbstractTranslator
         $this->traces = [];
         $this->keys = ['all' => true];
         $this->snippetSetId = null;
-        $this->channelId = null;
         $this->localeBeforeInject = null;
         $this->locale = null;
         if ($this->translator instanceof SymfonyTranslator) {
@@ -220,7 +222,6 @@ class Translator extends AbstractTranslator
 
         $this->setLocale($this->localeBeforeInject);
         $this->snippetSetId = null;
-        $this->channelId = null;
     }
 
     public function getSnippetSetId(?string $locale = null): ?string

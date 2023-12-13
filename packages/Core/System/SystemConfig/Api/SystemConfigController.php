@@ -88,7 +88,7 @@ class SystemConfigController extends AbstractController
         }
 
         $kvs = $request->request->all();
-        $this->systemConfig->setMultiple($kvs, $channelId);
+        $this->systemConfig->setMultiple($kvs);
 
         return new JsonResponse(null, Response::HTTP_NO_CONTENT);
     }

@@ -143,8 +143,7 @@ class ConfigurationService
 
             foreach ($card['elements'] as &$element) {
                 $element['value'] = $this->systemConfigService->get(
-                    $element['name'],
-                    $channelId
+                    $element['name']
                 ) ?? $element['config']['defaultValue'] ?? '';
             }
         }
