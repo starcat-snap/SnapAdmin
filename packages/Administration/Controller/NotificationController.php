@@ -63,8 +63,9 @@ class NotificationController extends AbstractController
         $createdByUserId = $source->getUserId();
 
         try {
-            $cacheKey = $createdByUserId;
-            $this->rateLimiter->ensureAccepted(self::NOTIFICATION, $cacheKey);
+            if ($createdByUserId) {
+                $this->rateLimiter->ensureAccepted(self::NOTIFICATION, $createdByUserId);
+            }
         } catch (RateLimitExceededException $exception) {
             throw new NotificationThrottledException($exception->getWaitTime(), $exception);
         }

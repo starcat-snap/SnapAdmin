@@ -183,7 +183,7 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
         return Uuid::fromBytesToHex($id);
     }
 
-    private function getAdminApiSource(string $userId): AdminApiSource
+    private function getAdminApiSource(?string $userId): AdminApiSource
     {
         $source = new AdminApiSource($userId);
         if ($userId !== null) {

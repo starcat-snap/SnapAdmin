@@ -20,12 +20,12 @@ class AdminApiSource implements ContextSource, \JsonSerializable
     private array $permissions = [];
 
     public function __construct(
-        private readonly string $userId
+        private readonly ?string $userId,
     ) {
         $this->isAdmin = false;
     }
 
-    public function getUserId(): string
+    public function getUserId(): ?string
     {
         return $this->userId;
     }

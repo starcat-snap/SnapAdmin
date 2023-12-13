@@ -11,7 +11,7 @@ use SnapAdmin\Core\Framework\Log\Package;
 class AnnotationTagTester
 {
     /**
-     * captures any shopware version like 6.4.0.0 but also old version with 3 digits like 6.2.0
+     * captures any snap version like 6.4.0.0 but also old version with 3 digits like 6.2.0
      */
     private const PLATFORM_VERSION_SCHEMA = '(\d+\.?){2,3}\d+';
 
@@ -26,7 +26,7 @@ class AnnotationTagTester
     private const MANIFEST_VERSION_SCHEMA = '\d+\.\d+';
 
     public function __construct(
-        private readonly string $shopwareVersion,
+        private readonly string $snapVersion,
         private readonly string $manifestVersion
     ) {
     }
@@ -167,7 +167,7 @@ class AnnotationTagTester
             throw new \InvalidArgumentException('The tag version should start with `v` and comprise 3 digits separated by periods.');
         }
 
-        $this->compareVersion($this->shopwareVersion, $matches[1]);
+        $this->compareVersion($this->snapVersion, $matches[1]);
     }
 
     private function validateAgainstManifestVersion(string $version): void
