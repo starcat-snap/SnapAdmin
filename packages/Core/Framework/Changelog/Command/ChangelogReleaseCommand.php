@@ -51,7 +51,7 @@ class ChangelogReleaseCommand extends Command
 
                 return $version;
             });
-        if (!preg_match("/^\d+(\.\d+){3}$/", (string)$version)) {
+        if (!preg_match("/^\d+(\.\d+){3}$/", (string) $version)) {
             throw new \RuntimeException('Invalid version of release ("' . $version . '"). It should be 4-digits type');
         }
 
@@ -60,7 +60,7 @@ class ChangelogReleaseCommand extends Command
             return self::FAILURE;
         }
 
-        $outputArray = $this->releaseCreator->release($version, (bool)$force, $input->getOption('dry-run'));
+        $outputArray = $this->releaseCreator->release($version, (bool) $force, $input->getOption('dry-run'));
         $IOHelper->writeln($outputArray);
 
         $IOHelper->success('Released the given version successfully');

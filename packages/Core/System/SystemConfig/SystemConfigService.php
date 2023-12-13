@@ -41,13 +41,12 @@ class SystemConfigService implements ResetInterface
      * @internal
      */
     public function __construct(
-        private readonly Connection                 $connection,
-        private readonly ConfigReader               $configReader,
+        private readonly Connection $connection,
+        private readonly ConfigReader $configReader,
         private readonly AbstractSystemConfigLoader $loader,
-        private readonly EventDispatcherInterface   $eventDispatcher,
-        private readonly bool                       $fineGrainedCache
-    )
-    {
+        private readonly EventDispatcherInterface $eventDispatcher,
+        private readonly bool $fineGrainedCache
+    ) {
     }
 
     public static function buildName(string $key): string
@@ -97,7 +96,7 @@ class SystemConfigService implements ResetInterface
     {
         $value = $this->get($key);
         if (!\is_array($value)) {
-            return (string)$value;
+            return (string) $value;
         }
 
         throw new InvalidSettingValueException($key, 'string', \gettype($value));
@@ -107,7 +106,7 @@ class SystemConfigService implements ResetInterface
     {
         $value = $this->get($key);
         if (!\is_array($value)) {
-            return (int)$value;
+            return (int) $value;
         }
 
         throw new InvalidSettingValueException($key, 'int', \gettype($value));
@@ -117,7 +116,7 @@ class SystemConfigService implements ResetInterface
     {
         $value = $this->get($key);
         if (!\is_array($value)) {
-            return (float)$value;
+            return (float) $value;
         }
 
         throw new InvalidSettingValueException($key, 'float', \gettype($value));
@@ -125,15 +124,15 @@ class SystemConfigService implements ResetInterface
 
     public function getBool(string $key): bool
     {
-        return (bool)$this->get($key);
+        return (bool) $this->get($key);
     }
 
     /**
      * @return array<mixed>
+     *
      * @internal should not be used in frontend or store api. The cache layer caches all accessed config keys and use them as cache tag.
      *
      * gets all available shop configs and returns them as an array
-     *
      */
     public function all(): array
     {
@@ -141,11 +140,11 @@ class SystemConfigService implements ResetInterface
     }
 
     /**
-     * @return array<mixed>
      * @throws InvalidDomainException
      *
-     * @internal should not be used in frontend or store api. The cache layer caches all accessed config keys and use them as cache tag.
+     * @return array<mixed>
      *
+     * @internal should not be used in frontend or store api. The cache layer caches all accessed config keys and use them as cache tag.
      */
     public function getDomain(string $domain, bool $inherit = false): array
     {
@@ -174,7 +173,7 @@ class SystemConfigService implements ResetInterface
 
         foreach ($configs as [$key, $value]) {
             if ($value !== null) {
-                $value = \json_decode((string)$value, true, 512, \JSON_THROW_ON_ERROR);
+                $value = \json_decode((string) $value, true, 512, \JSON_THROW_ON_ERROR);
 
                 if ($value === false || !isset($value[ConfigJsonField::STORAGE_KEY])) {
                     $value = null;
@@ -212,10 +211,9 @@ class SystemConfigService implements ResetInterface
      */
     public function setMultiple(array $values): void
     {
-
         $existingIds = $this->connection
             ->fetchAllKeyValue(
-                'SELECT configuration_key, id FROM system_config WHERE '  . 'configuration_key IN (:configurationKeys)',
+                'SELECT configuration_key, id FROM system_config WHERE configuration_key IN (:configurationKeys)',
                 [
                     'configurationKeys' => array_keys($values),
                 ],
@@ -403,7 +401,6 @@ class SystemConfigService implements ResetInterface
 
     public function reset(): void
     {
-
     }
 
     /**

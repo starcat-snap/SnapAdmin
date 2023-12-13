@@ -12,10 +12,9 @@ use SnapAdmin\Core\Framework\Log\Package;
 class AvgResult extends AggregationResult
 {
     public function __construct(
-        string          $name,
+        string $name,
         protected float $avg
-    )
-    {
+    ) {
         parent::__construct($name);
     }
 

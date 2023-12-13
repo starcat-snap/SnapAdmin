@@ -17,8 +17,8 @@ class CoreSubscriber implements EventSubscriberInterface
 {
     /**
      * @param array<string> $cspTemplates
-     * @internal
      *
+     * @internal
      */
     public function __construct(private array $cspTemplates)
     {

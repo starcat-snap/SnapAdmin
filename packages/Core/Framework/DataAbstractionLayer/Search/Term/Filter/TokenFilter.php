@@ -88,7 +88,7 @@ class TokenFilter extends AbstractTokenFilter
     {
         $filtered = [];
         foreach ($tokens as $tag) {
-            $tag = trim((string)$tag);
+            $tag = trim((string) $tag);
 
             if (empty($tag) || mb_strlen($tag) < $minSearchTermLength) {
                 continue;
@@ -126,7 +126,7 @@ class TokenFilter extends AbstractTokenFilter
 
         return $this->config[$languageId] = [
             'excluded_terms' => $excludedTerms,
-            'min_search_length' => (int)($config['min_search_length'] ?? self::DEFAULT_MIN_SEARCH_TERM_LENGTH),
+            'min_search_length' => (int) ($config['min_search_length'] ?? self::DEFAULT_MIN_SEARCH_TERM_LENGTH),
         ];
     }
 }

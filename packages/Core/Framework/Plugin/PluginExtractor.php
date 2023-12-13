@@ -17,10 +17,9 @@ class PluginExtractor
      * @param array<string, string> $extensionDirectories
      */
     public function __construct(
-        private readonly array      $extensionDirectories,
+        private readonly array $extensionDirectories,
         private readonly Filesystem $filesystem
-    )
-    {
+    ) {
     }
 
     /**
@@ -70,7 +69,6 @@ class PluginExtractor
      */
     private function validatePluginZip(string $prefix, \ZipArchive $archive): void
     {
-
     }
 
     private function getPluginName(\ZipArchive $archive): string
@@ -78,7 +76,7 @@ class PluginExtractor
         $entry = $archive->statIndex(0);
         \assert($entry !== false);
 
-        return explode(\DIRECTORY_SEPARATOR, (string)$entry['name'])[0];
+        return explode(\DIRECTORY_SEPARATOR, (string) $entry['name'])[0];
     }
 
     /**
@@ -95,7 +93,6 @@ class PluginExtractor
             apcu_clear_cache();
         }
     }
-
 
     private function findOldFile(string $destination, string $pluginName): string
     {

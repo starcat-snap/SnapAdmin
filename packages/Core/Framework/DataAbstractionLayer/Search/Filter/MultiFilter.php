@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter;
 
 use SnapAdmin\Core\Framework\Log\Package;
 
-
 #[Package('core')]
 class MultiFilter extends Filter
 {
@@ -24,10 +23,9 @@ class MultiFilter extends Filter
      * @param array<Filter> $queries
      */
     public function __construct(
-        string          $operator,
+        string $operator,
         protected array $queries = []
-    )
-    {
+    ) {
         $this->operator = mb_strtoupper(trim($operator));
 
         if (!\in_array($this->operator, self::VALID_OPERATORS, true)) {

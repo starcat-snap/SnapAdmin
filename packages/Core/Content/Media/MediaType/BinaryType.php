@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Content\Media\MediaType;
 
-
 class BinaryType extends MediaType
 {
     protected $name = 'BINARY';

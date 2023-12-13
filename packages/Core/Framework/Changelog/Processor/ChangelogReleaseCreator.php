@@ -132,12 +132,11 @@ class ChangelogReleaseCreator extends ChangelogProcessor
      * @return list<string>
      */
     private function releaseUpgradeInformation(
-        array                   $output,
-        string                  $version,
+        array $output,
+        string $version,
         ChangelogFileCollection $collection,
-        bool                    $dryRun = false
-    ): array
-    {
+        bool $dryRun = false
+    ): array {
         $append = [];
         foreach ($collection as $changelog) {
             $upgrade = $changelog->getDefinition()->getUpgradeInformation();
@@ -187,12 +186,11 @@ class ChangelogReleaseCreator extends ChangelogProcessor
      * @return list<string>
      */
     private function releaseMajorUpgradeInformation(
-        array                   $output,
-        string                  $version,
+        array $output,
+        string $version,
         ChangelogFileCollection $collection,
-        bool                    $dryRun = false
-    ): array
-    {
+        bool $dryRun = false
+    ): array {
         $append = [];
         foreach ($collection as $changelog) {
             $upgrade = $changelog->getDefinition()->getNextMajorVersionChanges();

@@ -21,10 +21,9 @@ final class PluginLifecycleSubscriber implements EventSubscriberInterface
      * @internal
      */
     public function __construct(
-        private readonly TaskRegistry           $registry,
+        private readonly TaskRegistry $registry,
         private readonly CacheItemPoolInterface $restartSignalCachePool
-    )
-    {
+    ) {
     }
 
     public static function getSubscribedEvents(): array

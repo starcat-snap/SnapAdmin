@@ -27,11 +27,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 class SystemInstallCommand extends Command
 {
     public function __construct(
-        private readonly string                    $projectDir,
-        private readonly SetupDatabaseAdapter      $setupDatabaseAdapter,
+        private readonly string $projectDir,
+        private readonly SetupDatabaseAdapter $setupDatabaseAdapter,
         private readonly DatabaseConnectionFactory $databaseConnectionFactory
-    )
-    {
+    ) {
         parent::__construct();
     }
 

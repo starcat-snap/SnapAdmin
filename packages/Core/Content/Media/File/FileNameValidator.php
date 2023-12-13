@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\Content\Media\File;
 
 use SnapAdmin\Core\Content\Media\MediaException;
 
-
 class FileNameValidator
 {
     private const RESTRICTED_CHARACTERS = [

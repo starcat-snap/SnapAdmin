@@ -32,16 +32,15 @@ class ApiAuthenticationListener implements EventSubscriberInterface
      * @internal
      */
     public function __construct(
-        private readonly ResourceServer                  $resourceServer,
-        private readonly AuthorizationServer             $authorizationServer,
-        private readonly UserRepositoryInterface         $userRepository,
+        private readonly ResourceServer $resourceServer,
+        private readonly AuthorizationServer $authorizationServer,
+        private readonly UserRepositoryInterface $userRepository,
         private readonly RefreshTokenRepositoryInterface $refreshTokenRepository,
-        private readonly PsrHttpFactory                  $psrHttpFactory,
-        private readonly RouteScopeRegistry              $routeScopeRegistry,
-        private readonly string                          $accessTokenTtl = 'PT10M',
-        private readonly string                          $refreshTokenTtl = 'P1W'
-    )
-    {
+        private readonly PsrHttpFactory $psrHttpFactory,
+        private readonly RouteScopeRegistry $routeScopeRegistry,
+        private readonly string $accessTokenTtl = 'PT10M',
+        private readonly string $refreshTokenTtl = 'P1W'
+    ) {
     }
 
     public static function getSubscribedEvents(): array

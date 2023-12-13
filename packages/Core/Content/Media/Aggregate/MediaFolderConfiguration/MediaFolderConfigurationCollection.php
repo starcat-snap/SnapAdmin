@@ -7,7 +7,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCollection;
 /**
  * @extends EntityCollection<MediaFolderConfigurationEntity>
  */
-
 class MediaFolderConfigurationCollection extends EntityCollection
 {
     public function getApiAlias(): string

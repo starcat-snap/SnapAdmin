@@ -11,7 +11,6 @@ use Lcobucci\JWT\Signer\Key\InMemory;
 use Lcobucci\JWT\Validation\Constraint\SignedWith;
 use League\OAuth2\Server\CryptKey;
 
-
 class JWTConfigurationFactory
 {
     public static function createJWTConfiguration(

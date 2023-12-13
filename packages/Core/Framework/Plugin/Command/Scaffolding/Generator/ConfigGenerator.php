@@ -32,17 +32,15 @@ class ConfigGenerator implements ScaffoldingGenerator
 
     public function addScaffoldConfig(
         PluginScaffoldConfiguration $config,
-        InputInterface              $input,
-        SymfonyStyle                $io
-    ): void
-    {
+        InputInterface $input,
+        SymfonyStyle $io
+    ): void {
     }
 
     public function generateStubs(
         PluginScaffoldConfiguration $configuration,
-        StubCollection              $stubCollection
-    ): void
-    {
+        StubCollection $stubCollection
+    ): void {
         $stubCollection->add($this->createConfig());
     }
 

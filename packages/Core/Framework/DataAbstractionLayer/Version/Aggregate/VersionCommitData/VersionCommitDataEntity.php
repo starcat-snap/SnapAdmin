@@ -52,7 +52,6 @@ class VersionCommitDataEntity extends Entity
      */
     protected $userId;
 
-
     public function getAutoIncrement(): int
     {
         return $this->autoIncrement;

@@ -13,9 +13,8 @@ class MemoizedSystemConfigLoader extends AbstractSystemConfigLoader
      */
     public function __construct(
         private readonly AbstractSystemConfigLoader $decorated,
-        private readonly MemoizedSystemConfigStore  $memoizedSystemConfigStore
-    )
-    {
+        private readonly MemoizedSystemConfigStore $memoizedSystemConfigStore
+    ) {
     }
 
     public function getDecorated(): AbstractSystemConfigLoader

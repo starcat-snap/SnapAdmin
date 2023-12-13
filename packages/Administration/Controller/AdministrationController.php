@@ -2,8 +2,6 @@
 
 namespace SnapAdmin\Administration\Controller;
 
-use Doctrine\DBAL\Connection;
-use SnapAdmin\Administration\Events\PreResetExcludedSearchTermEvent;
 use SnapAdmin\Administration\Framework\Routing\KnownIps\KnownIpsCollectorInterface;
 use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\DevOps\Environment\EnvironmentHelper;
@@ -16,40 +14,35 @@ use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Routing\RoutingException;
 use SnapAdmin\Core\Framework\Util\HtmlSanitizer;
 use SnapAdmin\Core\PlatformRequest;
-use SnapAdmin\Core\System\SystemConfig\SystemConfigService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 #[Route(defaults: ['_routeScope' => ['administration']])]
 #[Package('administration')]
 class AdministrationController extends AbstractController
 {
-
     /**
      * @param array<int, int> $supportedApiVersions
-     * @internal
      *
+     * @internal
      */
     public function __construct(
-        private readonly TemplateFinder             $finder,
-        private readonly array                      $supportedApiVersions,
+        private readonly TemplateFinder $finder,
+        private readonly array $supportedApiVersions,
         private readonly KnownIpsCollectorInterface $knownIpsCollector,
-        private readonly HtmlSanitizer              $htmlSanitizer,
+        private readonly HtmlSanitizer $htmlSanitizer,
         private readonly DefinitionInstanceRegistry $definitionInstanceRegistry,
-    )
-    {
-
+    ) {
     }
 
     #[Route(path: '/%snap_administration.path_name%', name: 'administration.index', defaults: ['auth_required' => false], methods: ['GET'])]
     public function index(Request $request, Context $context): Response
     {
         $template = $this->finder->find('@Administration/administration/index.html.twig');
+
         return $this->render($template, [
             'features' => Feature::getAll(),
             'systemLanguageId' => Defaults::LANGUAGE_SYSTEM,
@@ -83,8 +76,8 @@ class AdministrationController extends AbstractController
             throw RoutingException::missingRequestParameter('html');
         }
 
-        $html = (string)$request->request->get('html');
-        $field = (string)$request->request->get('field');
+        $html = (string) $request->request->get('html');
+        $field = (string) $request->request->get('field');
 
         if ($field === '') {
             return new JsonResponse(
@@ -122,7 +115,7 @@ class AdministrationController extends AbstractController
     {
         $sortedSupportedApiVersions = array_values($this->supportedApiVersions);
 
-        usort($sortedSupportedApiVersions, fn(int $version1, int $version2) => \version_compare((string)$version1, (string)$version2));
+        usort($sortedSupportedApiVersions, fn (int $version1, int $version2) => \version_compare((string) $version1, (string) $version2));
 
         return array_pop($sortedSupportedApiVersions);
     }

@@ -4,5 +4,5 @@ namespace SnapAdmin\Core\Framework\Store\Services;
 
 class FirstRunWizardService
 {
-  final public const USER_CONFIG_VALUE_FRW_USER_TOKEN = 'frwUserToken';
+    final public const USER_CONFIG_VALUE_FRW_USER_TOKEN = 'frwUserToken';
 }

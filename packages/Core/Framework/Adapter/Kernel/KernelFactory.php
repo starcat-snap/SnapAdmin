@@ -28,13 +28,12 @@ class KernelFactory
     public static string $kernelClass = Kernel::class;
 
     public static function create(
-        string              $environment,
-        bool                $debug,
-        ClassLoader         $classLoader,
+        string $environment,
+        bool $debug,
+        ClassLoader $classLoader,
         ?KernelPluginLoader $pluginLoader = null,
-        ?Connection         $connection = null
-    ): HttpKernelInterface
-    {
+        ?Connection $connection = null
+    ): HttpKernelInterface {
         if (InstalledVersions::isInstalled('snapadmin/platform')) {
             $snapVersion = InstalledVersions::getVersion('snapadmin/platform')
                 . '@' . InstalledVersions::getReference('snapadmin/platform');

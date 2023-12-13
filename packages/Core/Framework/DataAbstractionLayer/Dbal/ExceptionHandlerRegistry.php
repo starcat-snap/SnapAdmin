@@ -17,8 +17,8 @@ class ExceptionHandlerRegistry
 
     /**
      * @param iterable<ExceptionHandlerInterface> $exceptionHandlers
-     * @internal
      *
+     * @internal
      */
     public function __construct(iterable $exceptionHandlers)
     {

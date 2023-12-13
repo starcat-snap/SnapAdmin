@@ -17,9 +17,8 @@ class LicenseHostChangedSubscriber implements EventSubscriberInterface
 {
     public function __construct(
         private readonly SystemConfigService $systemConfigService,
-        private readonly Connection          $connection
-    )
-    {
+        private readonly Connection $connection
+    ) {
     }
 
     public static function getSubscribedEvents(): array

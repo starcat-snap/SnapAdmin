@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\System\User;
 
-
 use SnapAdmin\Core\Content\Media\MediaCollection;
 use SnapAdmin\Core\Content\Media\MediaEntity;
 use SnapAdmin\Core\Framework\Api\Acl\Role\AclRoleCollection;
@@ -98,7 +97,6 @@ class UserEntity extends Entity
      */
     protected $configs;
 
-
     /**
      * @var UserRecoveryEntity|null
      */
@@ -116,9 +114,7 @@ class UserEntity extends Entity
      */
     protected $lastUpdatedPasswordAt;
 
-
     protected string $timeZone;
-
 
     public function getLocaleId(): string
     {

@@ -11,8 +11,7 @@ class KernelPluginLoaderException extends SnapAdminHttpException
     public function __construct(
         string $plugin,
         string $reason
-    )
-    {
+    ) {
         parent::__construct(
             'Failed to load plugin "{{ plugin }}". Reason: {{ reason }}',
             ['plugin' => $plugin, 'reason' => $reason]

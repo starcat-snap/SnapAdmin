@@ -30,10 +30,9 @@ class NotificationController extends AbstractController
      * @internal
      */
     public function __construct(
-        private readonly RateLimiter         $rateLimiter,
+        private readonly RateLimiter $rateLimiter,
         private readonly NotificationService $notificationService
-    )
-    {
+    ) {
     }
 
     #[Route(path: '/api/notification', name: 'api.notification', defaults: ['_acl' => ['notification:create']], methods: ['POST'])]
@@ -41,7 +40,7 @@ class NotificationController extends AbstractController
     {
         $status = $request->request->get('status');
         $message = $request->request->get('message');
-        $adminOnly = (bool)$request->request->get('adminOnly', false);
+        $adminOnly = (bool) $request->request->get('adminOnly', false);
         $requiredPrivileges = $request->request->all('requiredPrivileges');
 
         $source = $context->getSource();
@@ -87,8 +86,8 @@ class NotificationController extends AbstractController
     public function fetchNotification(Request $request, Context $context): Response
     {
         $limit = $request->query->get('limit');
-        $limit = $limit ? (int)$limit : self::LIMIT;
-        $latestTimestamp = $request->query->has('latestTimestamp') ? (string)$request->query->get('latestTimestamp') : null;
+        $limit = $limit ? (int) $limit : self::LIMIT;
+        $latestTimestamp = $request->query->has('latestTimestamp') ? (string) $request->query->get('latestTimestamp') : null;
 
         $responseData = $this->notificationService->getNotifications($context, $limit, $latestTimestamp);
 

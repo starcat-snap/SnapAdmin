@@ -14,14 +14,13 @@ class TemplateIterator implements \IteratorAggregate
 {
     /**
      * @param array<string, Bundle> $kernelBundles
-     * @internal
      *
+     * @internal
      */
     public function __construct(
         private readonly TwigBundleIterator $templateIterator,
-        private readonly array              $kernelBundles
-    )
-    {
+        private readonly array $kernelBundles
+    ) {
     }
 
     public function getIterator(): \Traversable

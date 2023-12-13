@@ -226,7 +226,7 @@ class Entity extends Struct
         $entityName = preg_replace(
             '/_entity$/',
             '',
-            ltrim(mb_strtolower((string)preg_replace('/[A-Z]/', '_$0', $class)), '_')
+            ltrim(mb_strtolower((string) preg_replace('/[A-Z]/', '_$0', $class)), '_')
         );
 
         $this->_entityName = $entityName;
@@ -257,8 +257,8 @@ class Entity extends Struct
      * @param array<string, mixed> $data
      *
      * @return array<string, mixed>
-     * @internal
      *
+     * @internal
      */
     protected function filterInvisibleFields(array $data): array
     {

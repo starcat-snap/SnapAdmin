@@ -37,7 +37,7 @@ class ClientRepository implements ClientRepositoryInterface
                 return false;
             }
 
-            return password_verify($clientSecret, (string)$values['secret_access_key']);
+            return password_verify($clientSecret, (string) $values['secret_access_key']);
         }
 
         // @codeCoverageIgnoreStart
@@ -61,7 +61,7 @@ class ClientRepository implements ClientRepositoryInterface
             return null;
         }
 
-        return new ApiClient($clientIdentifier, true, $values['label'] ?? Uuid::fromBytesToHex((string)$values['user_id']));
+        return new ApiClient($clientIdentifier, true, $values['label'] ?? Uuid::fromBytesToHex((string) $values['user_id']));
     }
 
     /**

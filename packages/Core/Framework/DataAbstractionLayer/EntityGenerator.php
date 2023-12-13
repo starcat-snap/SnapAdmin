@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\DataAbstractionLayer;
 
-
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelper;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BlobField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BoolField;

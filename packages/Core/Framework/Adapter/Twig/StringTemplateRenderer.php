@@ -27,9 +27,8 @@ class StringTemplateRenderer
      */
     public function __construct(
         private readonly Environment $platformTwig,
-        private readonly string      $cacheDir
-    )
-    {
+        private readonly string $cacheDir
+    ) {
         $this->initialize();
     }
 

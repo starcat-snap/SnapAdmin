@@ -42,7 +42,7 @@ class MySQLKeyValueStorage extends AbstractKeyValueStorage implements ResetInter
     {
         $this->connection->executeStatement('REPLACE INTO `app_config` (`key`, `value`) VALUES (:key, :value)', [
             'key' => $key,
-            'value' => \is_array($value) ? json_encode($value) : (string)$value,
+            'value' => \is_array($value) ? json_encode($value) : (string) $value,
         ]);
 
         $this->reset();

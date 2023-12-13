@@ -109,13 +109,13 @@ class ConfigGet extends Command
 
             $output->writeln($config);
         } else {
-            $output->writeln((string)$config);
+            $output->writeln((string) $config);
         }
     }
 
     private function writeConfigJson(OutputInterface $output, array $config, int $flags): void
     {
-        $output->writeln((string)\json_encode($config, $flags));
+        $output->writeln((string) \json_encode($config, $flags));
     }
 
     private function writeConfigDefault(OutputInterface $output, array $config, int $level = 1): void
@@ -141,6 +141,6 @@ class ConfigGet extends Command
             $value = $value ? 'true' : 'false';
         }
 
-        return (string)$value;
+        return (string) $value;
     }
 }

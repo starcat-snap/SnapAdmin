@@ -25,10 +25,9 @@ class StoreSessionExpiredMiddleware implements MiddlewareInterface
      * @internal
      */
     public function __construct(
-        private readonly Connection   $connection,
+        private readonly Connection $connection,
         private readonly RequestStack $requestStack
-    )
-    {
+    ) {
     }
 
     public function __invoke(ResponseInterface $response): ResponseInterface

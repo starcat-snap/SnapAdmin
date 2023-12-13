@@ -6,7 +6,6 @@ use SnapAdmin\Core\Content\Media\Aggregate\MediaThumbnail\MediaThumbnailCollecti
 use SnapAdmin\Core\Content\Media\MediaEntity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Event\EntityLoadedEvent;
 
-
 class MediaLoadedSubscriber
 {
     public function unserialize(EntityLoadedEvent $event): void

@@ -81,13 +81,13 @@ class SetupDatabaseAdapter
     private function getBaseSchema(): string
     {
         $kernelClass = new \ReflectionClass(Kernel::class);
-        $directory = \dirname((string)$kernelClass->getFileName());
+        $directory = \dirname((string) $kernelClass->getFileName());
 
         $path = $directory . '/schema.sql';
         if (!is_readable($path) || is_dir($path)) {
             throw new \RuntimeException('schema.sql not found or readable in ' . $directory);
         }
 
-        return (string)file_get_contents($path);
+        return (string) file_get_contents($path);
     }
 }

@@ -27,13 +27,13 @@ trait BasicTestDataBehaviour
     }
 
         protected function getLocaleIdOfSystemLanguage(): string
-    {
-        /** @var EntityRepository $repository */
-        $repository = $this->getContainer()->get('language.repository');
+        {
+            /** @var EntityRepository $repository */
+            $repository = $this->getContainer()->get('language.repository');
 
-        /** @var LanguageEntity $language */
-        $language = $repository->search(new Criteria([Defaults::LANGUAGE_SYSTEM]), Context::createDefaultContext())->get(Defaults::LANGUAGE_SYSTEM);
+            /** @var LanguageEntity $language */
+            $language = $repository->search(new Criteria([Defaults::LANGUAGE_SYSTEM]), Context::createDefaultContext())->get(Defaults::LANGUAGE_SYSTEM);
 
-        return $language->getLocaleId();
-    }
+            return $language->getLocaleId();
+        }
 }

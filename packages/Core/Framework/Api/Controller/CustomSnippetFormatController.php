@@ -13,7 +13,6 @@ use Twig\Environment;
  * @internal
  */
 #[Route(defaults: ['_routeScope' => ['api']])]
-
 class CustomSnippetFormatController
 {
     /**
@@ -21,9 +20,8 @@ class CustomSnippetFormatController
      */
     public function __construct(
         private readonly KernelPluginCollection $plugins,
-        private readonly Environment            $twig
-    )
-    {
+        private readonly Environment $twig
+    ) {
     }
 
     #[Route(path: '/api/_action/custom-snippet', name: 'api.action.custom-snippet', methods: ['GET'])]
@@ -93,7 +91,7 @@ class CustomSnippetFormatController
             ->notName('render.html.twig')
             ->ignoreUnreadableDirs();
 
-        $snippets = array_values(array_map(static fn(\SplFileInfo $file): string => ltrim(mb_substr(str_replace('.html.twig', '', $file->getPathname()), mb_strlen($directory)), '/'), iterator_to_array($finder)));
+        $snippets = array_values(array_map(static fn (\SplFileInfo $file): string => ltrim(mb_substr(str_replace('.html.twig', '', $file->getPathname()), mb_strlen($directory)), '/'), iterator_to_array($finder)));
 
         return $snippets;
     }

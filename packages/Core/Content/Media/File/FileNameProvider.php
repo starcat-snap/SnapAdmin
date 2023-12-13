@@ -11,7 +11,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\MultiFilter;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\NotFilter;
 
-
 abstract class FileNameProvider
 {
     /**

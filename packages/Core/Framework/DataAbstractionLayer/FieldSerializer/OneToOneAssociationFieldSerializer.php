@@ -26,8 +26,7 @@ class OneToOneAssociationFieldSerializer implements FieldSerializerInterface
      */
     public function __construct(
         private readonly WriteCommandExtractor $writeExtractor
-    )
-    {
+    ) {
     }
 
     public function normalize(Field $field, array $data, WriteParameterBag $parameters): array
@@ -93,12 +92,11 @@ class OneToOneAssociationFieldSerializer implements FieldSerializerInterface
     }
 
     public function encode(
-        Field             $field,
-        EntityExistence   $existence,
-        KeyValuePair      $data,
+        Field $field,
+        EntityExistence $existence,
+        KeyValuePair $data,
         WriteParameterBag $parameters
-    ): \Generator
-    {
+    ): \Generator {
         if (!$field instanceof OneToOneAssociationField) {
             throw DataAbstractionLayerException::invalidSerializerField(OneToOneAssociationField::class, $field);
         }

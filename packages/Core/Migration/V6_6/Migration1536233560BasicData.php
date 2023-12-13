@@ -26,6 +26,11 @@ class Migration1536233560BasicData extends MigrationStep
         $this->createDefaultMediaFolders($connection);
     }
 
+    public function updateDestructive(Connection $connection): void
+    {
+        // TODO: Implement updateDestructive() method.
+    }
+
     private function createDefaultMediaFolders(Connection $connection): void
     {
         $queue = new MultiInsertQueryQueue($connection);
@@ -46,7 +51,6 @@ class Migration1536233560BasicData extends MigrationStep
                 $notCreatedDefaultFolder['entity']
             );
         }
-
     }
 
     private function createDefaultFolder(Connection $connection, string $defaultFolderId, string $entity): void
@@ -84,7 +88,7 @@ class Migration1536233560BasicData extends MigrationStep
     private function getMediaFolderName(string $entity): string
     {
         $capitalizedEntityParts = array_map(
-            static fn($part) => ucfirst((string)$part),
+            static fn ($part) => ucfirst((string) $part),
             explode('_', $entity)
         );
 
@@ -119,10 +123,5 @@ class Migration1536233560BasicData extends MigrationStep
             'territory' => '中国',
             'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
         ]);
-    }
-
-    public function updateDestructive(Connection $connection): void
-    {
-        // TODO: Implement updateDestructive() method.
     }
 }

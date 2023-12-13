@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\Content\Media\Event;
 
 use Symfony\Contracts\EventDispatcher\Event;
 
-
 class MediaFileExtensionWhitelistEvent extends Event
 {
     /**

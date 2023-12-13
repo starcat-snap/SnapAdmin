@@ -12,7 +12,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\OneToOneAssociationField
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 
-
 class MediaDefaultFolderDefinition extends EntityDefinition
 {
     final public const ENTITY_NAME = 'media_default_folder';

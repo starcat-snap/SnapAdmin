@@ -19,9 +19,8 @@ class PreWriteValidationEvent extends Event implements SnapAdminEvent
      */
     public function __construct(
         private readonly WriteContext $writeContext,
-        private readonly array        $commands
-    )
-    {
+        private readonly array $commands
+    ) {
     }
 
     public function getContext(): Context
@@ -60,7 +59,7 @@ class PreWriteValidationEvent extends Event implements SnapAdminEvent
      */
     public function getDeletedPrimaryKeys(string $entity): array
     {
-        return $this->findPrimaryKeys($entity, fn(WriteCommand $command) => $command instanceof DeleteCommand);
+        return $this->findPrimaryKeys($entity, fn (WriteCommand $command) => $command instanceof DeleteCommand);
     }
 
     /**

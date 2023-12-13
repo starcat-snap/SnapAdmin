@@ -12,8 +12,7 @@ class ConflictingPackageException extends RequirementException
         string $conflictSource,
         string $conflictTarget,
         string $actualVersion
-    )
-    {
+    ) {
         parent::__construct(
             '"{{ conflictSource }}" conflicts with plugin/package "{{ conflictTarget }} {{ version }}"',
             [

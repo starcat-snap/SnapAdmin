@@ -52,7 +52,6 @@ class Kernel extends HttpKernel
      */
     protected $snapVersionRevision;
 
-
     private bool $rebooting = false;
 
     /**
@@ -68,9 +67,7 @@ class Kernel extends HttpKernel
         string $version,
         Connection $connection,
         protected string $projectDir
-    )
-    {
-
+    ) {
         date_default_timezone_set('Asia/Shanghai');
 
         parent::__construct($environment, $debug);
@@ -106,12 +103,11 @@ class Kernel extends HttpKernel
 
     public function getProjectDir(): string
     {
-       return $this->projectDir;
+        return $this->projectDir;
     }
 
     public function handle(Request $request, int $type = HttpKernelInterface::MAIN_REQUEST, bool $catch = true): Response
     {
-
         if (!$this->booted) {
             $this->boot();
         }
@@ -285,7 +281,7 @@ class Kernel extends HttpKernel
 
         $pluginDir = $this->pluginLoader->getPluginDir($this->getProjectDir());
 
-        $coreDir = \dirname((string)(new \ReflectionClass(self::class))->getFileName());
+        $coreDir = \dirname((string) (new \ReflectionClass(self::class))->getFileName());
 
         return array_merge(
             $parameters,
@@ -315,11 +311,11 @@ class Kernel extends HttpKernel
             $plugins[$plugin['name']] = $plugin['version'];
         }
 
-        $pluginHash = md5((string)json_encode($plugins, \JSON_THROW_ON_ERROR));
+        $pluginHash = md5((string) json_encode($plugins, \JSON_THROW_ON_ERROR));
 
-        return md5((string)\json_encode([
+        return md5((string) \json_encode([
             $this->cacheId,
-            substr((string)$this->snapVersionRevision, 0, 8),
+            substr((string) $this->snapVersionRevision, 0, 8),
             substr($pluginHash, 0, 8),
             EnvironmentHelper::getVariable('DATABASE_URL', ''),
         ], \JSON_THROW_ON_ERROR));
@@ -336,10 +332,10 @@ class Kernel extends HttpKernel
         $connection = self::getConnection();
 
         try {
-            $setSessionVariables = (bool)EnvironmentHelper::getVariable('SQL_SET_DEFAULT_SESSION_VARIABLES', true);
+            $setSessionVariables = (bool) EnvironmentHelper::getVariable('SQL_SET_DEFAULT_SESSION_VARIABLES', true);
             $connectionVariables = [];
 
-            $timeZoneSupportEnabled = (bool)EnvironmentHelper::getVariable('SNAP_DBAL_TIMEZONE_SUPPORT_ENABLED', false);
+            $timeZoneSupportEnabled = (bool) EnvironmentHelper::getVariable('SNAP_DBAL_TIMEZONE_SUPPORT_ENABLED', false);
             if ($timeZoneSupportEnabled) {
                 $connectionVariables[] = 'SET @@session.time_zone = "UTC"';
             }

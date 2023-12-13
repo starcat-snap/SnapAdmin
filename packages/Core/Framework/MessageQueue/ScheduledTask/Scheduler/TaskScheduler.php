@@ -30,11 +30,10 @@ class TaskScheduler
      * @internal
      */
     public function __construct(
-        private readonly EntityRepository      $scheduledTaskRepository,
-        private readonly MessageBusInterface   $bus,
+        private readonly EntityRepository $scheduledTaskRepository,
+        private readonly MessageBusInterface $bus,
         private readonly ParameterBagInterface $parameterBag
-    )
-    {
+    ) {
     }
 
     public function queueScheduledTasks(): void
@@ -72,7 +71,7 @@ class TaskScheduler
             return null;
         }
 
-        return new \DateTime((string)$aggregation->getMin());
+        return new \DateTime((string) $aggregation->getMin());
     }
 
     public function getMinRunInterval(): ?int
@@ -90,7 +89,7 @@ class TaskScheduler
             return null;
         }
 
-        return (int)$aggregation->getMin();
+        return (int) $aggregation->getMin();
     }
 
     private function buildCriteriaForAllScheduledTask(): Criteria

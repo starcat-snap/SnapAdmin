@@ -19,7 +19,7 @@ class LastIdQuery implements IterableQuery
         $data = $this->query->executeQuery()->fetchAllKeyValue();
 
         $keys = array_keys($data);
-        $this->lastId = (int)array_pop($keys);
+        $this->lastId = (int) array_pop($keys);
 
         $this->query->setParameter('lastId', $this->lastId);
 
@@ -36,7 +36,7 @@ class LastIdQuery implements IterableQuery
         $query->resetQueryPart('orderBy');
         $query->select('COUNT(DISTINCT ' . array_shift($select) . ')');
 
-        return (int)$query->executeQuery()->fetchOne();
+        return (int) $query->executeQuery()->fetchOne();
     }
 
     public function getQuery(): QueryBuilder

@@ -14,9 +14,8 @@ class WriteableCheck
      */
     public function __construct(
         private readonly Filesystem $filesystem,
-        private readonly string     $rootDir
-    )
-    {
+        private readonly string $rootDir
+    ) {
     }
 
     public function check(): ValidationResult

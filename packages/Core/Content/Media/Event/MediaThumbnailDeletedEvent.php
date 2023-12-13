@@ -6,7 +6,6 @@ use SnapAdmin\Core\Content\Media\Aggregate\MediaThumbnail\MediaThumbnailCollecti
 use SnapAdmin\Core\Framework\Context;
 use Symfony\Contracts\EventDispatcher\Event;
 
-
 class MediaThumbnailDeletedEvent extends Event
 {
     final public const EVENT_NAME = 'media_thumbnail.after_delete';

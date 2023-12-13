@@ -25,7 +25,7 @@ class WrittenEventIdCollection implements \IteratorAggregate
      */
     public function only(string ...$operations): self
     {
-        $writeResults = array_filter($this->writeResults, fn(EntityWriteResult $result): bool => \in_array($result->getOperation(), $operations, true));
+        $writeResults = array_filter($this->writeResults, fn (EntityWriteResult $result): bool => \in_array($result->getOperation(), $operations, true));
 
         return new self($writeResults);
     }
@@ -38,7 +38,7 @@ class WrittenEventIdCollection implements \IteratorAggregate
      */
     public function with(string ...$properties): self
     {
-        $writeResults = array_filter($this->writeResults, fn(EntityWriteResult $result): bool => \count(\array_intersect(array_keys($result->getPayload()), $properties)) > 0);
+        $writeResults = array_filter($this->writeResults, fn (EntityWriteResult $result): bool => \count(\array_intersect(array_keys($result->getPayload()), $properties)) > 0);
 
         return new self($writeResults);
     }
@@ -50,12 +50,12 @@ class WrittenEventIdCollection implements \IteratorAggregate
 
     /**
      * @return \ArrayIterator<int, string|array<string, string>>
-     * @internal should not be used directly, loop over an ItemsFacade directly inside twig instead
      *
+     * @internal should not be used directly, loop over an ItemsFacade directly inside twig instead
      */
     public function getIterator(): \ArrayIterator
     {
-        $primaryKeys = array_values(\array_map(fn(EntityWriteResult $result) => $result->getPrimaryKey(), $this->writeResults));
+        $primaryKeys = array_values(\array_map(fn (EntityWriteResult $result) => $result->getPrimaryKey(), $this->writeResults));
 
         return new \ArrayIterator($primaryKeys);
     }

@@ -12,10 +12,9 @@ use SnapAdmin\Core\Framework\Log\Package;
 class SumResult extends AggregationResult
 {
     public function __construct(
-        string          $name,
+        string $name,
         protected float $sum
-    )
-    {
+    ) {
         parent::__construct($name);
     }
 

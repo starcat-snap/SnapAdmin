@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\Content\Media\DataAbstractionLayer;
 
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Indexing\EntityIndexingMessage;
 
-
 class MediaIndexingMessage extends EntityIndexingMessage
 {
 }

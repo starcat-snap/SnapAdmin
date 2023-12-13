@@ -6,7 +6,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\Log\Package;
 
-
 /**
  * @phpstan-type Api DefinitionService::API
  * @phpstan-type ApiType DefinitionService::TYPE_JSON_API|DefinitionService::TYPE_JSON
@@ -94,6 +93,7 @@ class DefinitionService
         if ($type === self::API) {
             return $this->definitionRegistry->getDefinitions();
         }
+
         throw new ApiDefinitionGeneratorNotFoundException($type);
     }
 }

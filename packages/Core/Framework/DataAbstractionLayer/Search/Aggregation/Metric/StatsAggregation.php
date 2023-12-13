@@ -12,14 +12,13 @@ use SnapAdmin\Core\Framework\Log\Package;
 class StatsAggregation extends Aggregation
 {
     public function __construct(
-        string                  $name,
-        string                  $field,
+        string $name,
+        string $field,
         protected readonly bool $max = true,
         protected readonly bool $min = true,
         protected readonly bool $sum = true,
         protected readonly bool $avg = true
-    )
-    {
+    ) {
         parent::__construct($name, $field);
     }
 

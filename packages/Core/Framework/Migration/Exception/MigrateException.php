@@ -9,10 +9,9 @@ use SnapAdmin\Core\Framework\SnapAdminHttpException;
 class MigrateException extends SnapAdminHttpException
 {
     public function __construct(
-        string     $message,
+        string $message,
         \Exception $previous
-    )
-    {
+    ) {
         parent::__construct('Migration error: {{ errorMessage }}', ['errorMessage' => $message], $previous);
     }
 

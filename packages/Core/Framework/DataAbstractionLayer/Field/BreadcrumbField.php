@@ -17,10 +17,9 @@ class BreadcrumbField extends JsonField
     public function __construct(
         string $storageName = 'breadcrumb',
         string $propertyName = 'breadcrumb',
-        array  $propertyMapping = [],
+        array $propertyMapping = [],
         ?array $default = null
-    )
-    {
+    ) {
         parent::__construct($storageName, $propertyName, $propertyMapping, $default);
     }
 }

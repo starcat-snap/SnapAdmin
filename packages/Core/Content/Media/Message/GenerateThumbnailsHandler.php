@@ -13,7 +13,6 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
  * @internal
  */
 #[AsMessageHandler]
-
 final class GenerateThumbnailsHandler
 {
     /**
@@ -28,7 +27,6 @@ final class GenerateThumbnailsHandler
     public function __invoke(GenerateThumbnailsMessage|UpdateThumbnailsMessage $msg): void
     {
         $context = $msg->getContext();
-
 
         $criteria = new Criteria();
         $criteria->addAssociation('mediaFolder.configuration.mediaThumbnailSizes');

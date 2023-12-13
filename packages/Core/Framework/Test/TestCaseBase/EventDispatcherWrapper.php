@@ -15,12 +15,11 @@ class EventDispatcherWrapper
      * @param callable $callback
      */
     public function __construct(
-        private                                   $callback,
+        private $callback,
         private readonly EventDispatcherInterface $dispatcher,
-        private readonly bool                     $once,
-        private readonly string                   $eventName
-    )
-    {
+        private readonly bool $once,
+        private readonly string $eventName
+    ) {
     }
 
     public function __invoke(): void

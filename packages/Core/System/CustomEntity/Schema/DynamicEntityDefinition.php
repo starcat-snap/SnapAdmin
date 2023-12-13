@@ -39,12 +39,11 @@ class DynamicEntityDefinition extends EntityDefinition
      * @param list<Flag> $flags
      */
     public static function create(
-        string             $name,
-        array              $fields,
-        array              $flags,
+        string $name,
+        array $fields,
+        array $flags,
         ContainerInterface $container
-    ): DynamicEntityDefinition
-    {
+    ): DynamicEntityDefinition {
         $self = new self();
         $self->name = $name;
         $self->fieldDefinitions = $fields;

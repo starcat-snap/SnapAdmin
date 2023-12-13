@@ -13,11 +13,10 @@ class PrefixFilter extends SingleFieldFilter
     protected readonly string $value;
 
     public function __construct(
-        protected readonly string  $field,
+        protected readonly string $field,
         string|bool|float|int|null $value
-    )
-    {
-        $this->value = (string)$value;
+    ) {
+        $this->value = (string) $value;
     }
 
     public function getField(): string

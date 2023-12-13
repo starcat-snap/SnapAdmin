@@ -66,7 +66,7 @@ class NoAfterStatementRule implements Rule
         $className = substr($class->getName(), strrpos($class->getName(), '\\') + 1);
 
         if (preg_match('/Migration(\d{10})/', $className, $matches)) {
-            $migrationUnixTimestamp = (int)$matches[1];
+            $migrationUnixTimestamp = (int) $matches[1];
             $cutoffUnixTimestamp = strtotime(self::CUTOFF_UNIX_TIMESTAMP);
 
             return $migrationUnixTimestamp > $cutoffUnixTimestamp;

@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Content\Media\MediaType;
 
-
 class ImageType extends MediaType
 {
     final public const ANIMATED = 'animated';

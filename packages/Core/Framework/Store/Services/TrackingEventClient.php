@@ -14,8 +14,7 @@ class TrackingEventClient
     public function __construct(
         private readonly ClientInterface $client,
         private readonly InstanceService $instanceService
-    )
-    {
+    ) {
     }
 
     /**

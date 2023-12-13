@@ -19,21 +19,19 @@ use Symfony\Component\Cache\Adapter\AdapterInterface;
 class CustomEntityPersister
 {
     public function __construct(
-        private readonly Connection       $connection,
+        private readonly Connection $connection,
         private readonly AdapterInterface $cache
-    )
-    {
+    ) {
     }
 
     /**
      * @param array<string, array<string, mixed>> $customEntities
      */
     public function update(
-        array   $customEntities,
+        array $customEntities,
         ?string $extensionEntityType = null,
         ?string $extensionId = null
-    ): void
-    {
+    ): void {
         $names = array_column($customEntities, 'name');
 
         $existings = $this->connection->fetchAllAssociativeIndexed(
@@ -47,7 +45,7 @@ class CustomEntityPersister
                 'DELETE FROM custom_entity WHERE plugin_id = :id',
                 ['id' => Uuid::fromHexToBytes($extensionId)]
             );
-        }  else {
+        } else {
             // custom entity without any app or plugin id --> created by the user and not by any extension
             $this->connection->executeStatement('DELETE FROM custom_entity WHERE app_id IS NULL AND plugin_id IS NULL');
         }

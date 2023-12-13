@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\Log;
 
-use Monolog\Logger;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -15,9 +14,7 @@ class LoggingService implements EventSubscriberInterface
      * @internal
      */
     public function __construct(
-
-    )
-    {
+    ) {
     }
 
     public static function getSubscribedEvents(): array

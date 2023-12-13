@@ -10,10 +10,9 @@ use Symfony\Component\HttpFoundation\Response;
 class InvalidUuidLengthException extends SnapAdminHttpException
 {
     public function __construct(
-        int    $length,
+        int $length,
         string $hex
-    )
-    {
+    ) {
         parent::__construct(
             'UUID has a invalid length. 16 bytes expected, {{ length }} given. Hexadecimal reprensentation: {{ hex }}',
             ['length' => $length, 'hex' => $hex]

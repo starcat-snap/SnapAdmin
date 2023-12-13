@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\Content\Media\File;
 use SnapAdmin\Core\Content\Media\MediaException;
 use Symfony\Component\HttpFoundation\Request;
 
-
 class FileFetcher
 {
     private const ALLOWED_PROTOCOLS = ['http', 'https', 'ftp', 'sftp'];

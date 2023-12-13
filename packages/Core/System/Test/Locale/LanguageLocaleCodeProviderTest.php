@@ -43,7 +43,6 @@ class LanguageLocaleCodeProviderTest extends TestCase
         $this->languageLocaleProvider->getLocaleForLanguageId(Uuid::randomHex());
     }
 
-
     private function createData(): void
     {
         $this->getContainer()->get('locale.repository')->create([

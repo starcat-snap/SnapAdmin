@@ -16,8 +16,7 @@ class TranslationsAssociationField extends OneToManyAssociationField
         string $referenceField,
         string $propertyName = 'translations',
         string $localField = 'id'
-    )
-    {
+    ) {
         parent::__construct($propertyName, $referenceClass, $referenceField, $localField);
         $this->addFlags(new CascadeDelete());
     }

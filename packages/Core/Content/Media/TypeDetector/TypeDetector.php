@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\Content\Media\TypeDetector;
 use SnapAdmin\Core\Content\Media\File\MediaFile;
 use SnapAdmin\Core\Content\Media\MediaType\MediaType;
 
-
 class TypeDetector implements TypeDetectorInterface
 {
     /**

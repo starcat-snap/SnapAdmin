@@ -21,9 +21,8 @@ class ManyToOneAssociationField extends AssociationField
         string $storageName,
         string $referenceClass,
         string $referenceField = 'id',
-        bool   $autoload = false
-    )
-    {
+        bool $autoload = false
+    ) {
         parent::__construct($propertyName);
 
         $this->referenceClass = $referenceClass;

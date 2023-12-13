@@ -60,19 +60,18 @@ class VersionManager
     final public const MERGE_SCOPE = 'merge-scope';
 
     public function __construct(
-        private readonly EntityWriterInterface       $entityWriter,
-        private readonly EntityReaderInterface       $entityReader,
-        private readonly EntitySearcherInterface     $entitySearcher,
+        private readonly EntityWriterInterface $entityWriter,
+        private readonly EntityReaderInterface $entityReader,
+        private readonly EntitySearcherInterface $entitySearcher,
         private readonly EntityWriteGatewayInterface $entityWriteGateway,
-        private readonly EventDispatcherInterface    $eventDispatcher,
-        private readonly SerializerInterface         $serializer,
-        private readonly DefinitionInstanceRegistry  $registry,
-        private readonly VersionCommitDefinition     $versionCommitDefinition,
+        private readonly EventDispatcherInterface $eventDispatcher,
+        private readonly SerializerInterface $serializer,
+        private readonly DefinitionInstanceRegistry $registry,
+        private readonly VersionCommitDefinition $versionCommitDefinition,
         private readonly VersionCommitDataDefinition $versionCommitDataDefinition,
-        private readonly VersionDefinition           $versionDefinition,
-        private readonly LockFactory                 $lockFactory
-    )
-    {
+        private readonly VersionDefinition $versionDefinition,
+        private readonly LockFactory $lockFactory
+    ) {
     }
 
     /**
@@ -211,13 +210,12 @@ class VersionManager
      */
     public function clone(
         EntityDefinition $definition,
-        string           $id,
-        string           $newId,
-        string           $versionId,
-        WriteContext     $context,
-        CloneBehavior    $behavior
-    ): array
-    {
+        string $id,
+        string $newId,
+        string $versionId,
+        WriteContext $context,
+        CloneBehavior $behavior
+    ): array {
         return $this->cloneEntity($definition, $id, $newId, $versionId, $context, $behavior, true);
     }
 
@@ -226,14 +224,13 @@ class VersionManager
      */
     private function cloneEntity(
         EntityDefinition $definition,
-        string           $id,
-        string           $newId,
-        string           $versionId,
-        WriteContext     $context,
-        CloneBehavior    $behavior,
-        bool             $writeAuditLog = false
-    ): array
-    {
+        string $id,
+        string $newId,
+        string $versionId,
+        WriteContext $context,
+        CloneBehavior $behavior,
+        bool $writeAuditLog = false
+    ): array {
         $criteria = new Criteria([$id]);
         $this->addCloneAssociations($definition, $criteria, $behavior->cloneChildren());
 
@@ -525,7 +522,7 @@ class VersionManager
      */
     private function addVersionToPayload(array $payload, EntityDefinition $definition, string $versionId): array
     {
-        $fields = $definition->getFields()->filter(fn(Field $field) => $field instanceof VersionField || $field instanceof ReferenceVersionField);
+        $fields = $definition->getFields()->filter(fn (Field $field) => $field instanceof VersionField || $field instanceof ReferenceVersionField);
 
         foreach ($fields as $field) {
             $payload[$field->getPropertyName()] = $versionId;
@@ -567,11 +564,10 @@ class VersionManager
 
     private function addCloneAssociations(
         EntityDefinition $definition,
-        Criteria         $criteria,
-        bool             $cloneChildren,
-        int              $childCounter = 1
-    ): void
-    {
+        Criteria $criteria,
+        bool $cloneChildren,
+        int $childCounter = 1
+    ): void {
         // add all cascade delete associations
         $cascades = $definition->getFields()->filter(function (Field $field) {
             $flag = $field->getFlag(CascadeDelete::class);

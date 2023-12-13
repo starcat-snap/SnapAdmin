@@ -24,10 +24,9 @@ class CreateMigrationCommand extends Command
      */
     public function __construct(
         private readonly KernelPluginCollection $kernelPluginCollection,
-        private readonly string                 $coreDir,
-        private readonly string                 $snapVersion
-    )
-    {
+        private readonly string $coreDir,
+        private readonly string $snapVersion
+    ) {
         parent::__construct();
     }
 
@@ -48,11 +47,11 @@ class CreateMigrationCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $output->writeln('Creating migration...');
-        $directory = (string)$input->getArgument('directory');
-        $namespace = (string)$input->getArgument('namespace');
+        $directory = (string) $input->getArgument('directory');
+        $namespace = (string) $input->getArgument('namespace');
         $name = $input->getOption('name') ?? '';
 
-        if (!preg_match('/^[a-zA-Z0-9\_]*$/', (string)$name)) {
+        if (!preg_match('/^[a-zA-Z0-9\_]*$/', (string) $name)) {
             throw new \InvalidArgumentException('Migrationname contains forbidden characters!');
         }
 
@@ -64,7 +63,7 @@ class CreateMigrationCommand extends Command
 
         // Both dir and namespace were given
         if ($directory) {
-            $this->createMigrationFile($output, (string)realpath($directory), \dirname(__DIR__) . '/Template/MigrationTemplate.txt', [
+            $this->createMigrationFile($output, (string) realpath($directory), \dirname(__DIR__) . '/Template/MigrationTemplate.txt', [
                 '%%timestamp%%' => $timestamp,
                 '%%name%%' => $name,
                 '%%namespace%%' => $namespace,
@@ -75,14 +74,14 @@ class CreateMigrationCommand extends Command
 
         $pluginName = $input->getOption('plugin');
         if ($pluginName) {
-            $pluginBundles = array_filter($this->kernelPluginCollection->all(), static fn(Plugin $value) => mb_strpos($value->getName(), (string)$pluginName) === 0);
+            $pluginBundles = array_filter($this->kernelPluginCollection->all(), static fn (Plugin $value) => mb_strpos($value->getName(), (string) $pluginName) === 0);
 
             if (\count($pluginBundles) === 0) {
                 throw new \RuntimeException(sprintf('Plugin "%s" could not be found.', $pluginName));
             }
 
             if (\count($pluginBundles) > 1) {
-                $pluginBundles = array_filter($pluginBundles, static fn(Plugin $value) => $pluginName === $value->getName());
+                $pluginBundles = array_filter($pluginBundles, static fn (Plugin $value) => $pluginName === $value->getName());
 
                 if (\count($pluginBundles) > 1) {
                     throw new \RuntimeException(

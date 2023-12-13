@@ -45,7 +45,7 @@ class ConnectionProfiler extends DataCollector implements LateDataCollectorInter
     {
         $profilingMiddleware = current(array_filter(
             $this->connection->getConfiguration()->getMiddlewares(),
-            fn(MiddlewareInterface $middleware) => $middleware instanceof ProfilingMiddleware
+            fn (MiddlewareInterface $middleware) => $middleware instanceof ProfilingMiddleware
         ));
 
         if ($profilingMiddleware === false) {
@@ -153,7 +153,7 @@ class ConnectionProfiler extends DataCollector implements LateDataCollectorInter
                 $totalExecutionMS += $query['executionMS'];
             }
 
-            usort($connectionGroupedQueries, static fn($a, $b) => $b['executionMS'] <=> $a['executionMS']);
+            usort($connectionGroupedQueries, static fn ($a, $b) => $b['executionMS'] <=> $a['executionMS']);
             $this->groupedQueries[$connection] = $connectionGroupedQueries;
         }
 
@@ -171,7 +171,7 @@ class ConnectionProfiler extends DataCollector implements LateDataCollectorInter
     {
         return array_sum(
             array_map(
-                fn(array $connectionGroupedQueries) => \count($connectionGroupedQueries),
+                fn (array $connectionGroupedQueries) => \count($connectionGroupedQueries),
                 $this->getGroupedQueries()
             )
         );
@@ -202,7 +202,7 @@ class ConnectionProfiler extends DataCollector implements LateDataCollectorInter
      */
     private function sanitizeQueries(array $queries): array
     {
-        return array_map(fn(array $query) => $this->sanitizeQuery($query), $queries);
+        return array_map(fn (array $query) => $this->sanitizeQuery($query), $queries);
     }
 
     /**

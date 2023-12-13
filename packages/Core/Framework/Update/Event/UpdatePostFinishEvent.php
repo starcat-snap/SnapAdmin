@@ -11,11 +11,10 @@ class UpdatePostFinishEvent extends UpdateEvent
     private string $postUpdateMessage = '';
 
     public function __construct(
-        Context                 $context,
+        Context $context,
         private readonly string $oldVersion,
         private readonly string $newVersion
-    )
-    {
+    ) {
         parent::__construct($context);
     }
 

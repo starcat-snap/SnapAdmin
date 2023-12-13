@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Content\Media\File;
 
-
 class MediaFile
 {
     public function __construct(

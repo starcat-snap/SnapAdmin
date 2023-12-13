@@ -23,10 +23,9 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
      * @internal
      */
     public function __construct(
-        private readonly Connection         $connection,
+        private readonly Connection $connection,
         private readonly RouteScopeRegistry $routeScopeRegistry
-    )
-    {
+    ) {
     }
 
     public function resolve(Request $request): void
@@ -41,7 +40,6 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
 
         $params = $this->getContextParameters($request);
         $languageIdChain = $this->getLanguageIdChain($params);
-
 
         $context = new Context(
             $this->resolveContextSource($request),
@@ -188,18 +186,19 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
     private function getAdminApiSource(string $userId): AdminApiSource
     {
         $source = new AdminApiSource($userId);
-        if ($userId != null) {
+        if ($userId !== null) {
             $source->setPermissions($this->fetchPermissions($userId));
             $source->setIsAdmin($this->isAdmin($userId));
 
             return $source;
         }
+
         return $source;
     }
 
     private function isAdmin(string $userId): bool
     {
-        return (bool)$this->connection->fetchOne(
+        return (bool) $this->connection->fetchOne(
             'SELECT admin FROM `user` WHERE id = :id',
             ['id' => Uuid::fromHexToBytes($userId)]
         );
@@ -221,7 +220,7 @@ class ApiRequestContextResolver implements RequestContextResolverInterface
 
         $list = [];
         foreach ($permissions as $privileges) {
-            $privileges = json_decode((string)$privileges, true, 512, \JSON_THROW_ON_ERROR);
+            $privileges = json_decode((string) $privileges, true, 512, \JSON_THROW_ON_ERROR);
             $list = array_merge($list, $privileges);
         }
 

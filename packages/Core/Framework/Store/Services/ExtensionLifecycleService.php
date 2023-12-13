@@ -16,11 +16,10 @@ use SnapAdmin\Core\Framework\Plugin\PluginService;
 class ExtensionLifecycleService extends AbstractExtensionLifecycle
 {
     public function __construct(
-        private readonly PluginService           $pluginService,
-        private readonly PluginLifecycleService  $pluginLifecycleService,
+        private readonly PluginService $pluginService,
+        private readonly PluginLifecycleService $pluginLifecycleService,
         private readonly PluginManagementService $pluginManagementService
-    )
-    {
+    ) {
     }
 
     public function install(string $type, string $technicalName, Context $context): void

@@ -21,8 +21,7 @@ class TranslationFieldResolver extends AbstractFieldResolver
 {
     public function __construct(
         private readonly Connection $connection,
-    )
-    {
+    ) {
     }
 
     public function join(FieldResolverContext $context): string
@@ -134,11 +133,10 @@ class TranslationFieldResolver extends AbstractFieldResolver
     private function getTranslationQuery(
         EntityDefinition $definition,
         EntityDefinition $translationDefinition,
-        string           $on,
-        Context          $context,
-        ?string          $versionFieldName = null,
-    ): QueryBuilder
-    {
+        string $on,
+        Context $context,
+        ?string $versionFieldName = null,
+    ): QueryBuilder {
         $table = $definition->getEntityName() . '_translation';
 
         $query = new QueryBuilder($this->connection);

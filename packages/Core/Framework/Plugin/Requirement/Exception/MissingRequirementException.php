@@ -10,8 +10,7 @@ class MissingRequirementException extends RequirementException
     public function __construct(
         string $requirement,
         string $requiredVersion
-    )
-    {
+    ) {
         parent::__construct(
             'Required plugin/package "{{ requirement }} {{ version }}" is missing or not installed and activated',
             ['requirement' => $requirement, 'version' => $requiredVersion]

@@ -13,11 +13,10 @@ use SnapAdmin\Core\Framework\Struct\Struct;
 class Bucket extends Struct
 {
     public function __construct(
-        protected ?string            $key,
-        protected int                $count,
+        protected ?string $key,
+        protected int $count,
         protected ?AggregationResult $result
-    )
-    {
+    ) {
     }
 
     public function getKey(): ?string

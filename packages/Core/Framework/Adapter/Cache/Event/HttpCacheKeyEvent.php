@@ -18,9 +18,8 @@ class HttpCacheKeyEvent
      */
     public function __construct(
         public readonly Request $request,
-        private array           $parts = []
-    )
-    {
+        private array $parts = []
+    ) {
     }
 
     public function has(string $key): bool

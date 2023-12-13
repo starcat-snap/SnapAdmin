@@ -17,7 +17,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 use SnapAdmin\Core\System\Locale\LocaleDefinition;
 
-
 class LanguageDefinition extends EntityDefinition
 {
     final public const ENTITY_NAME = 'language';

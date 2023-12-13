@@ -47,11 +47,11 @@ class CriteriaArrayConverter
         }
 
         if (\count($criteria->getFilters())) {
-            $array['filter'] = array_map(static fn(Filter $filter) => QueryStringParser::toArray($filter), $criteria->getFilters());
+            $array['filter'] = array_map(static fn (Filter $filter) => QueryStringParser::toArray($filter), $criteria->getFilters());
         }
 
         if (\count($criteria->getPostFilters())) {
-            $array['post-filter'] = array_map(static fn(Filter $filter) => QueryStringParser::toArray($filter), $criteria->getPostFilters());
+            $array['post-filter'] = array_map(static fn (Filter $filter) => QueryStringParser::toArray($filter), $criteria->getPostFilters());
         }
 
         if (\count($criteria->getAssociations())) {

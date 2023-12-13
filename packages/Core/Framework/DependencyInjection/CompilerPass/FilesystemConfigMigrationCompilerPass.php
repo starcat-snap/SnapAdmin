@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 #[Package('core')]
 class FilesystemConfigMigrationCompilerPass implements CompilerPassInterface
 {
-    private const MIGRATED_FS = [ 'asset'];
+    private const MIGRATED_FS = ['asset'];
 
     public function process(ContainerBuilder $container): void
     {

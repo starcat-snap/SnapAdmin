@@ -17,7 +17,6 @@ use SnapAdmin\Core\Framework\Plugin\Exception\DecorationPatternException;
 use SnapAdmin\Core\Framework\Uuid\Uuid;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
-
 class MediaIndexer extends EntityIndexer
 {
     /**

@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\System\Locale;
 
-
 class LocaleEvents
 {
     final public const LOCALE_WRITTEN_EVENT = 'locale.written';

@@ -30,11 +30,10 @@ use Symfony\Component\Dotenv\Command\DotenvDumpCommand;
 class SystemSetupCommand extends Command
 {
     public function __construct(
-        private readonly string                  $projectDir,
+        private readonly string $projectDir,
         private readonly JwtCertificateGenerator $jwtCertificateGenerator,
-        private readonly DotenvDumpCommand       $dumpEnvCommand
-    )
-    {
+        private readonly DotenvDumpCommand $dumpEnvCommand
+    ) {
         parent::__construct();
     }
 
@@ -74,7 +73,7 @@ class SystemSetupCommand extends Command
         /** @var array<string, string> $env */
         $env = [
             'APP_ENV' => $input->getOption('app-env'),
-            'APP_URL' => trim((string)$input->getOption('app-url')),
+            'APP_URL' => trim((string) $input->getOption('app-url')),
             'DATABASE_URL' => $input->getOption('database-url'),
             'OPENSEARCH_URL' => $input->getOption('es-hosts'),
             'SNAP_ES_ENABLED' => $input->getOption('es-enabled'),
@@ -215,10 +214,10 @@ class SystemSetupCommand extends Command
 
         $dsnWithoutDb = sprintf(
             'mysql://%s:%s@%s:%d',
-            (string)$dbUser,
-            rawurlencode((string)$dbPass),
-            (string)$dbHost,
-            (int)$dbPort
+            (string) $dbUser,
+            rawurlencode((string) $dbPass),
+            (string) $dbHost,
+            (int) $dbPort
         );
         $dsn = $dsnWithoutDb . '/' . $dbName;
 
@@ -345,6 +344,6 @@ class SystemSetupCommand extends Command
 
     private function getDefault(string $var, string $default): string
     {
-        return (string)EnvironmentHelper::getVariable($var, $default);
+        return (string) EnvironmentHelper::getVariable($var, $default);
     }
 }

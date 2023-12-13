@@ -13,12 +13,11 @@ trait EventDispatcherBehaviour
 
     public function addEventListener(
         EventDispatcherInterface $dispatcher,
-        string                   $eventName,
-        callable                 $callback,
-        int                      $priority = 0,
-        bool                     $once = false
-    ): void
-    {
+        string $eventName,
+        callable $callback,
+        int $priority = 0,
+        bool $once = false
+    ): void {
         $instance = new EventDispatcherWrapper($callback, $dispatcher, $once, $eventName);
 
         /** @var callable(object): void $callback - Specify generic callback interface callers can provide more specific implementations */

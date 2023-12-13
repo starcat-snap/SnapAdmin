@@ -46,9 +46,8 @@ class EntityDeleteEvent extends Event implements SnapAdminEvent
      */
     final private function __construct(
         private readonly WriteContext $writeContext,
-        private readonly array        $commands
-    )
-    {
+        private readonly array $commands
+    ) {
     }
 
     /**
@@ -56,7 +55,7 @@ class EntityDeleteEvent extends Event implements SnapAdminEvent
      */
     public static function create(WriteContext $writeContext, array $commands): self
     {
-        $deleteCommands = \array_filter($commands, static fn(WriteCommand $command) => $command instanceof DeleteCommand);
+        $deleteCommands = \array_filter($commands, static fn (WriteCommand $command) => $command instanceof DeleteCommand);
 
         return new static($writeContext, $deleteCommands);
     }
@@ -97,7 +96,7 @@ class EntityDeleteEvent extends Event implements SnapAdminEvent
                 continue;
             }
 
-            $primaryKeys = $definition->getPrimaryKeys()->filter(static fn(Field $field) => !$field instanceof VersionField
+            $primaryKeys = $definition->getPrimaryKeys()->filter(static fn (Field $field) => !$field instanceof VersionField
                 && !$field instanceof ReferenceVersionField
                 && $field instanceof StorageAware);
 

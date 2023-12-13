@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Content\Media\File;
 
-
 class FileUrlValidator implements FileUrlValidatorInterface
 {
     public function isValid(string $source): bool

@@ -27,12 +27,11 @@ class ExtensionStoreActionsController extends AbstractController
 {
     public function __construct(
         private readonly AbstractExtensionLifecycle $extensionLifecycleService,
-        private readonly ExtensionDownloader        $extensionDownloader,
-        private readonly PluginService              $pluginService,
-        private readonly PluginManagementService    $pluginManagementService,
-        private readonly Filesystem                 $fileSystem
-    )
-    {
+        private readonly ExtensionDownloader $extensionDownloader,
+        private readonly PluginService $pluginService,
+        private readonly PluginManagementService $pluginManagementService,
+        private readonly Filesystem $fileSystem
+    ) {
     }
 
     #[Route(path: '/api/_action/extension/refresh', name: 'api.extension.refresh', methods: ['POST'])]
@@ -59,7 +58,7 @@ class ExtensionStoreActionsController extends AbstractController
                 // Do nothing because the tmp file is already deleted by os
             }
 
-            throw new PluginNotAZipFileException((string)$file->getMimeType());
+            throw new PluginNotAZipFileException((string) $file->getMimeType());
         }
 
         try {

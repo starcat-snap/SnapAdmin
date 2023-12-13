@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\System\Language;
 
-
 class LanguageEvents
 {
     final public const LANGUAGE_WRITTEN_EVENT = 'language.written';

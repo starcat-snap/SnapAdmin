@@ -11,9 +11,8 @@ class AclGetAdditionalPrivilegesEvent extends NestedEvent
 {
     public function __construct(
         private readonly Context $context,
-        private array            $privileges
-    )
-    {
+        private array $privileges
+    ) {
     }
 
     public function getPrivileges(): array

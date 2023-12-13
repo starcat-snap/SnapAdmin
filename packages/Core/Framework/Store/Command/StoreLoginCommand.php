@@ -32,11 +32,10 @@ use Symfony\Component\Console\Question\Question;
 class StoreLoginCommand extends Command
 {
     public function __construct(
-        private readonly StoreClient         $storeClient,
-        private readonly EntityRepository    $userRepository,
+        private readonly StoreClient $storeClient,
+        private readonly EntityRepository $userRepository,
         private readonly SystemConfigService $configService
-    )
-    {
+    ) {
         parent::__construct();
     }
 
@@ -102,6 +101,6 @@ class StoreLoginCommand extends Command
 
         $io->success('Successfully logged in.');
 
-        return (int)Command::SUCCESS;
+        return (int) Command::SUCCESS;
     }
 }

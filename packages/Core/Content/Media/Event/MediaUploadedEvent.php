@@ -7,7 +7,6 @@ use SnapAdmin\Core\Framework\Event\EventData\EventDataCollection;
 use SnapAdmin\Core\Framework\Event\EventData\ScalarValueType;
 use Symfony\Contracts\EventDispatcher\Event;
 
-
 class MediaUploadedEvent extends Event
 {
     public const EVENT_NAME = 'media.uploaded';
@@ -32,7 +31,7 @@ class MediaUploadedEvent extends Event
     public function getValues(): array
     {
         return [
-            'mediaId'=>$this->mediaId
+            'mediaId' => $this->mediaId,
         ];
     }
 
@@ -45,5 +44,4 @@ class MediaUploadedEvent extends Event
     {
         return $this->context;
     }
-
 }

@@ -32,9 +32,8 @@ abstract class KernelPluginLoader extends Bundle
      */
     public function __construct(
         private readonly ClassLoader $classLoader,
-        ?string                      $pluginDir = null
-    )
-    {
+        ?string $pluginDir = null
+    ) {
         $this->pluginDir = $pluginDir ?? 'plugins';
         $this->pluginInstances = new KernelPluginCollection();
     }
@@ -229,9 +228,9 @@ abstract class KernelPluginLoader extends Bundle
     /**
      * @param array<string> $psr
      *
-     * @return list<string>
      * @throws KernelPluginLoaderException
      *
+     * @return list<string>
      */
     private function mapPsrPaths(string $plugin, array $psr, string $projectDir, string $pluginRootPath): array
     {
@@ -277,7 +276,7 @@ abstract class KernelPluginLoader extends Bundle
             }
 
             /** @var Plugin $plugin */
-            $plugin = new $className((bool)$pluginData['active'], $pluginData['path'], $projectDir);
+            $plugin = new $className((bool) $pluginData['active'], $pluginData['path'], $projectDir);
 
             if (!$plugin instanceof Plugin) {
                 $reason = sprintf('Plugin class "%s" must extend "%s"', $plugin::class, Plugin::class);

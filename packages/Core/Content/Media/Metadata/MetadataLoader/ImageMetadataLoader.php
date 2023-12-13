@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\Content\Media\Metadata\MetadataLoader;
 use SnapAdmin\Core\Content\Media\MediaType\ImageType;
 use SnapAdmin\Core\Content\Media\MediaType\MediaType;
 
-
 class ImageMetadataLoader implements MetadataLoaderInterface
 {
     /**

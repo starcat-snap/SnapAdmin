@@ -14,7 +14,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\IntField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 
-
 class MediaThumbnailSizeDefinition extends EntityDefinition
 {
     final public const ENTITY_NAME = 'media_thumbnail_size';

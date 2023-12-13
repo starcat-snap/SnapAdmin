@@ -66,24 +66,23 @@ class PluginLifecycleService
      * @param EntityRepository<PluginCollection> $pluginRepo
      */
     public function __construct(
-        private readonly EntityRepository             $pluginRepo,
-        private EventDispatcherInterface              $eventDispatcher,
-        private readonly KernelPluginCollection       $pluginCollection,
-        private ContainerInterface                    $container,
-        private readonly MigrationCollectionLoader    $migrationLoader,
-        private readonly AssetService                 $assetInstaller,
-        private readonly CommandExecutor              $executor,
-        private readonly RequirementsValidator        $requirementValidator,
-        private readonly CacheItemPoolInterface       $restartSignalCachePool,
-        private readonly string                       $snapVersion,
-        private readonly SystemConfigService          $systemConfigService,
-        private readonly CustomEntityPersister        $customEntityPersister,
-        private readonly CustomEntitySchemaUpdater    $customEntitySchemaUpdater,
+        private readonly EntityRepository $pluginRepo,
+        private EventDispatcherInterface $eventDispatcher,
+        private readonly KernelPluginCollection $pluginCollection,
+        private ContainerInterface $container,
+        private readonly MigrationCollectionLoader $migrationLoader,
+        private readonly AssetService $assetInstaller,
+        private readonly CommandExecutor $executor,
+        private readonly RequirementsValidator $requirementValidator,
+        private readonly CacheItemPoolInterface $restartSignalCachePool,
+        private readonly string $snapVersion,
+        private readonly SystemConfigService $systemConfigService,
+        private readonly CustomEntityPersister $customEntityPersister,
+        private readonly CustomEntitySchemaUpdater $customEntitySchemaUpdater,
         private readonly CustomEntityLifecycleService $customEntityLifecycleService,
-        private readonly PluginService                $pluginService,
-        private readonly VersionSanitizer             $versionSanitizer,
-    )
-    {
+        private readonly PluginService $pluginService,
+        private readonly VersionSanitizer $versionSanitizer,
+    ) {
     }
 
     /**
@@ -165,10 +164,9 @@ class PluginLifecycleService
      */
     public function uninstallPlugin(
         PluginEntity $plugin,
-        Context      $snapContext,
-        bool         $keepUserData = false
-    ): UninstallContext
-    {
+        Context $snapContext,
+        bool $keepUserData = false
+    ): UninstallContext {
         if ($plugin->getInstalledAt() === null) {
             throw new PluginNotInstalledException($plugin->getName());
         }
@@ -611,7 +609,7 @@ class PluginLifecycleService
      */
     private function getEntities(array $plugins, Context $context): EntitySearchResult
     {
-        $names = array_map(static fn(Plugin $plugin) => $plugin->getName(), $plugins);
+        $names = array_map(static fn (Plugin $plugin) => $plugin->getName(), $plugins);
 
         return $this->pluginRepo->search(
             (new Criteria())->addFilter(new EqualsAnyFilter('name', $names)),

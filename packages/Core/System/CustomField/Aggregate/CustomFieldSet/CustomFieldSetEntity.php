@@ -48,7 +48,6 @@ class CustomFieldSetEntity extends Entity
      */
     protected $relations;
 
-
     public function getName(): string
     {
         return $this->name;

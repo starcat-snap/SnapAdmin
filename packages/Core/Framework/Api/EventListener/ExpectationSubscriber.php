@@ -32,14 +32,13 @@ class ExpectationSubscriber implements EventSubscriberInterface
 
     /**
      * @param list<PluginData> $plugins
-     * @internal
      *
+     * @internal
      */
     public function __construct(
         private readonly string $snapVersion,
-        private readonly array  $plugins
-    )
-    {
+        private readonly array $plugins
+    ) {
     }
 
     public static function getSubscribedEvents(): array
@@ -77,7 +76,7 @@ class ExpectationSubscriber implements EventSubscriberInterface
     private function checkPackages(Request $request): array
     {
         // swag/plugin1:~6.1,swag/plugin2:~6.1
-        $extensionConstraints = array_filter(explode(',', (string)$request->headers->get(PlatformRequest::HEADER_EXPECT_PACKAGES)));
+        $extensionConstraints = array_filter(explode(',', (string) $request->headers->get(PlatformRequest::HEADER_EXPECT_PACKAGES)));
         if ($extensionConstraints === []) {
             return [];
         }

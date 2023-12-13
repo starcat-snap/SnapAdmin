@@ -12,10 +12,9 @@ class DataMappingEvent extends Event implements SnapAdminEvent
 {
     public function __construct(
         private readonly DataBag $input,
-        private array            $output,
+        private array $output,
         private readonly Context $context
-    )
-    {
+    ) {
     }
 
     public function getContext(): Context

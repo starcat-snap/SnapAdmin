@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\System\Locale;
 use SnapAdmin\Core\Framework\HttpException;
 use Symfony\Component\HttpFoundation\Response;
 
-
 class LocaleException extends HttpException
 {
     final public const LOCALE_DOES_NOT_EXISTS_EXCEPTION = 'SYSTEM__LOCALE_DOES_NOT_EXISTS';

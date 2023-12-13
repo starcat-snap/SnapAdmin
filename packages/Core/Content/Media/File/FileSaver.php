@@ -27,7 +27,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\NotFilter;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 
-
 class FileSaver
 {
     private readonly FileNameValidator $fileNameValidator;

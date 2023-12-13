@@ -6,7 +6,6 @@ use SnapAdmin\Core\Content\Media\File\MediaFile;
 use SnapAdmin\Core\Content\Media\MediaType\MediaType;
 use SnapAdmin\Core\Content\Media\Metadata\MetadataLoader\MetadataLoaderInterface;
 
-
 class MetadataLoader
 {
     /**

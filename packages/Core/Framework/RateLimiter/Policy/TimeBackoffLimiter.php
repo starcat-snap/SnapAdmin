@@ -29,13 +29,12 @@ class TimeBackoffLimiter implements LimiterInterface
      * @param list<TimeBackoffLimit> $limits
      */
     public function __construct(
-        string                 $id,
+        string $id,
         private readonly array $limits,
-        \DateInterval          $reset,
-        StorageInterface       $storage,
-        LockInterface|null     $lock = new NoLock()
-    )
-    {
+        \DateInterval $reset,
+        StorageInterface $storage,
+        LockInterface|null $lock = new NoLock()
+    ) {
         $this->id = $id;
         $this->reset = TimeUtil::dateIntervalToSeconds($reset);
         $this->storage = $storage;

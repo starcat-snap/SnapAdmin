@@ -7,7 +7,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCollection;
 /**
  * @extends EntityCollection<MediaThumbnailSizeEntity>
  */
-
 class MediaThumbnailSizeCollection extends EntityCollection
 {
     public function getApiAlias(): string

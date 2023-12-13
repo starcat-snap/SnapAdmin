@@ -222,7 +222,7 @@ class WriteCommandExtractor
         }
 
         // call map with child associations only
-        $children = array_filter($fields, static fn(Field $field) => $field instanceof ChildrenAssociationField);
+        $children = array_filter($fields, static fn (Field $field) => $field instanceof ChildrenAssociationField);
 
         if (\count($children) > 0) {
             $this->map($children, $stack, $existence, $parameters);
@@ -404,13 +404,12 @@ class WriteCommandExtractor
      * @param array<string, mixed> $data
      */
     private function updateCommandQueue(
-        EntityDefinition  $definition,
+        EntityDefinition $definition,
         WriteParameterBag $parameterBag,
-        EntityExistence   $existence,
-        array             $pkData,
-        array             $data
-    ): void
-    {
+        EntityExistence $existence,
+        array $pkData,
+        array $data
+    ): void {
         $queue = $parameterBag->getCommandQueue();
 
         if ($existence->exists()) {

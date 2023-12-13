@@ -17,9 +17,8 @@ class SystemConfigLoader extends AbstractSystemConfigLoader
      */
     public function __construct(
         protected Connection $connection,
-        protected Kernel     $kernel
-    )
-    {
+        protected Kernel $kernel
+    ) {
     }
 
     public function getDecorated(): AbstractSystemConfigLoader
@@ -43,10 +42,10 @@ class SystemConfigLoader extends AbstractSystemConfigLoader
         $configValues = [];
 
         foreach ($systemConfigs as $key => $value) {
-            $keys = \explode('.', (string)$key);
+            $keys = \explode('.', (string) $key);
 
             if ($value !== null) {
-                $value = \json_decode((string)$value, true, 512, \JSON_THROW_ON_ERROR);
+                $value = \json_decode((string) $value, true, 512, \JSON_THROW_ON_ERROR);
 
                 if ($value === false || !isset($value[ConfigJsonField::STORAGE_KEY])) {
                     $value = null;
@@ -91,7 +90,7 @@ class SystemConfigLoader extends AbstractSystemConfigLoader
 
     private function filterNotActivatedPlugins(array $configValues): array
     {
-        $notActivatedPlugins = $this->kernel->getPluginLoader()->getPluginInstances()->filter(fn(Plugin $plugin) => !$plugin->isActive())->all();
+        $notActivatedPlugins = $this->kernel->getPluginLoader()->getPluginInstances()->filter(fn (Plugin $plugin) => !$plugin->isActive())->all();
 
         foreach ($notActivatedPlugins as $plugin) {
             if (isset($configValues[$plugin->getName()])) {

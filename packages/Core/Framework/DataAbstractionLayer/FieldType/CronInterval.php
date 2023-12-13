@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\Framework\DataAbstractionLayer\FieldType;
 
 use Cron\CronExpression;
 
-
 class CronInterval extends CronExpression
 {
     public const EMPTY_EXPRESSION = '* * * * *';

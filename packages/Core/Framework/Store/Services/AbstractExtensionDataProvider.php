@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\Store\Services;
 
-use SnapAdmin\Core\Framework\App\AppEntity;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\Log\Package;

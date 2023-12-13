@@ -32,8 +32,7 @@ class UserRepository implements UserRepositoryInterface
         $password,
         $grantType,
         ClientEntityInterface $clientEntity
-    ): ?UserEntityInterface
-    {
+    ): ?UserEntityInterface {
         $builder = $this->connection->createQueryBuilder();
         $user = $builder->select(['user.id', 'user.password'])
             ->from('user')
@@ -46,7 +45,7 @@ class UserRepository implements UserRepositoryInterface
             return null;
         }
 
-        if (!password_verify($password, (string)$user['password'])) {
+        if (!password_verify($password, (string) $user['password'])) {
             return null;
         }
 

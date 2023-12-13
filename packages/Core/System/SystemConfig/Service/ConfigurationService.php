@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\System\SystemConfig\Service;
 
-use SnapAdmin\Core\Framework\App\AppEntity;
 use SnapAdmin\Core\Framework\Bundle;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Feature;
@@ -18,23 +17,22 @@ class ConfigurationService
 {
     /**
      * @param BundleInterface[] $bundles
-     * @internal
      *
+     * @internal
      */
     public function __construct(
-        private readonly iterable            $bundles,
-        private readonly ConfigReader        $configReader,
+        private readonly iterable $bundles,
+        private readonly ConfigReader $configReader,
         private readonly SystemConfigService $systemConfigService
-    )
-    {
+    ) {
     }
 
     /**
-     * @return array<mixed>
      * @throws \InvalidArgumentException
      * @throws BundleConfigNotFoundException
-     *
      * @throws ConfigurationNotFoundException
+     *
+     * @return array<mixed>
      */
     public function getConfiguration(string $domain, Context $context): array
     {
@@ -126,6 +124,7 @@ class ConfigurationService
                 return $this->configReader->getConfigFromBundle($bundle, $configName);
             }
         }
+
         return null;
     }
 

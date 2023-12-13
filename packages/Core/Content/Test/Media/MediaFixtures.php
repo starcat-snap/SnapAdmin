@@ -6,7 +6,6 @@ use SnapAdmin\Core\Content\Media\MediaEntity;
 use SnapAdmin\Core\Content\Media\MediaType\BinaryType;
 use SnapAdmin\Core\Content\Media\MediaType\DocumentType;
 use SnapAdmin\Core\Content\Media\MediaType\ImageType;
-use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\Framework\Uuid\Uuid;
 use SnapAdmin\Core\System\Test\EntityFixturesBase;
 

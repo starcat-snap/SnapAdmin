@@ -20,7 +20,7 @@ class KernelTestBehaviourTest extends TestCase
 
     protected function tearDown(): void
     {
-        if (!$this->kernelId == spl_object_hash($this->getKernel())) {
+        if (!$this->kernelId === spl_object_hash($this->getKernel())) {
             throw new \RuntimeException('Kernel has changed');
         }
     }

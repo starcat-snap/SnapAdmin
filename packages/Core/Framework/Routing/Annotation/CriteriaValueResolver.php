@@ -20,9 +20,8 @@ class CriteriaValueResolver implements ValueResolverInterface
      */
     public function __construct(
         private readonly DefinitionInstanceRegistry $registry,
-        private readonly RequestCriteriaBuilder     $criteriaBuilder
-    )
-    {
+        private readonly RequestCriteriaBuilder $criteriaBuilder
+    ) {
     }
 
     public function resolve(Request $request, ArgumentMetadata $argument): \Generator

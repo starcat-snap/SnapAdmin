@@ -9,7 +9,6 @@ use SnapAdmin\Core\Framework\Plugin\Aggregate\PluginTranslation\PluginTranslatio
 use SnapAdmin\Core\System\Locale\Aggregate\LocaleTranslation\LocaleTranslationCollection;
 use SnapAdmin\Core\System\Locale\LocaleEntity;
 
-
 class LanguageEntity extends Entity
 {
     use EntityCustomFieldsTrait;
@@ -24,7 +23,6 @@ class LanguageEntity extends Entity
      * @var string
      */
     protected $localeId;
-
 
     /**
      * @var string|null
@@ -55,12 +53,13 @@ class LanguageEntity extends Entity
      * @var LanguageCollection|null
      */
     protected $children;
+
     /**
      * @var LocaleTranslationCollection|null
      */
     protected $localeTranslations;
 
-        /**
+    /**
      * @var PluginTranslationCollection|null
      */
     protected $pluginTranslations;
@@ -145,7 +144,6 @@ class LanguageEntity extends Entity
         $this->children = $children;
     }
 
-
     public function getLocaleTranslations(): ?LocaleTranslationCollection
     {
         return $this->localeTranslations;
@@ -170,5 +168,4 @@ class LanguageEntity extends Entity
     {
         return 'language';
     }
-
 }

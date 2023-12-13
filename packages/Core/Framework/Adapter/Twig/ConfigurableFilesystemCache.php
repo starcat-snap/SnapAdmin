@@ -25,9 +25,8 @@ class ConfigurableFilesystemCache extends FilesystemCache
 
     public function __construct(
         string $directory,
-        int    $options = 0
-    )
-    {
+        int $options = 0
+    ) {
         $this->cacheDirectory = rtrim($directory, '\/') . '/';
         parent::__construct($directory, $options);
     }

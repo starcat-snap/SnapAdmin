@@ -16,12 +16,11 @@ use SnapAdmin\Core\Framework\Log\Package;
 class CashRoundingConfigFieldSerializer extends JsonFieldSerializer
 {
     public function encode(
-        Field             $field,
-        EntityExistence   $existence,
-        KeyValuePair      $data,
+        Field $field,
+        EntityExistence $existence,
+        KeyValuePair $data,
         WriteParameterBag $parameters
-    ): \Generator
-    {
+    ): \Generator {
         if ($data->getValue() !== null) {
             $value = $data->getValue();
             unset($value['extensions']);
@@ -38,12 +37,12 @@ class CashRoundingConfigFieldSerializer extends JsonFieldSerializer
             return null;
         }
 
-        $raw = json_decode((string)$value, true, 512, \JSON_THROW_ON_ERROR);
+        $raw = json_decode((string) $value, true, 512, \JSON_THROW_ON_ERROR);
 
         return new CashRoundingConfig(
-            (int)$raw['decimals'],
-            (float)$raw['interval'],
-            (bool)$raw['roundForNet']
+            (int) $raw['decimals'],
+            (float) $raw['interval'],
+            (bool) $raw['roundForNet']
         );
     }
 }

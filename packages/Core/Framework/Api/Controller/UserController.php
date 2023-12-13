@@ -37,9 +37,8 @@ class UserController extends AbstractController
         private readonly EntityRepository $userRoleRepository,
         private readonly EntityRepository $roleRepository,
         private readonly EntityRepository $keyRepository,
-        private readonly UserDefinition   $userDefinition
-    )
-    {
+        private readonly UserDefinition $userDefinition
+    ) {
     }
 
     #[Route(path: '/api/_info/me', name: 'api.info.me', methods: ['GET'])]
@@ -168,7 +167,7 @@ class UserController extends AbstractController
         }
 
         /** @var EntityWrittenContainerEvent $events */
-        $events = $context->scope(Context::SYSTEM_SCOPE, fn(Context $context) => $this->userRepository->upsert([$data], $context));
+        $events = $context->scope(Context::SYSTEM_SCOPE, fn (Context $context) => $this->userRepository->upsert([$data], $context));
 
         /** @var EntityWrittenEvent $event */
         $event = $events->getEventByEntityName(UserDefinition::ENTITY_NAME);
@@ -199,7 +198,7 @@ class UserController extends AbstractController
         }
 
         /** @var EntityWrittenContainerEvent $events */
-        $events = $context->scope(Context::SYSTEM_SCOPE, fn(Context $context) => $this->roleRepository->upsert([$data], $context));
+        $events = $context->scope(Context::SYSTEM_SCOPE, fn (Context $context) => $this->roleRepository->upsert([$data], $context));
 
         /** @var EntityWrittenEvent $event */
         $event = $events->getEventByEntityName(AclRoleDefinition::ENTITY_NAME);

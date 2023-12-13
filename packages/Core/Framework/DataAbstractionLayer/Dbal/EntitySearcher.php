@@ -26,11 +26,10 @@ use SnapAdmin\Core\Framework\Log\Package;
 class EntitySearcher implements EntitySearcherInterface
 {
     public function __construct(
-        private readonly Connection                  $connection,
+        private readonly Connection $connection,
         private readonly EntityDefinitionQueryHelper $queryHelper,
-        private readonly CriteriaQueryBuilder        $criteriaQueryBuilder
-    )
-    {
+        private readonly CriteriaQueryBuilder $criteriaQueryBuilder
+    ) {
     }
 
     public function search(EntityDefinition $definition, Criteria $criteria, Context $context): IdSearchResult
@@ -167,7 +166,7 @@ class EntitySearcher implements EntitySearcherInterface
             ->from(sprintf('(%s) total', $query->getSQL()))
             ->setParameters($query->getParameters(), $query->getParameterTypes());
 
-        return (int)$total->executeQuery()->fetchOne();
+        return (int) $total->executeQuery()->fetchOne();
     }
 
     private function addGroupBy(EntityDefinition $definition, Criteria $criteria, Context $context, QueryBuilder $query, string $table): void

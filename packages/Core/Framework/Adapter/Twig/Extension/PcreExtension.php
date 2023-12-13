@@ -49,6 +49,6 @@ class PcreExtension extends AbstractExtension
             throw new \RuntimeException(sprintf('Error while processing Twig preg_match function. Error: %s', preg_last_error_msg()));
         }
 
-        return (bool)$result;
+        return (bool) $result;
     }
 }

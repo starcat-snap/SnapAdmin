@@ -24,12 +24,11 @@ class ListFieldSerializer extends AbstractFieldSerializer
      * @throws DataAbstractionLayerException
      */
     public function encode(
-        Field             $field,
-        EntityExistence   $existence,
-        KeyValuePair      $data,
+        Field $field,
+        EntityExistence $existence,
+        KeyValuePair $data,
         WriteParameterBag $parameters
-    ): \Generator
-    {
+    ): \Generator {
         if (!$field instanceof ListField) {
             throw DataAbstractionLayerException::invalidSerializerField(ListField::class, $field);
         }
@@ -55,7 +54,7 @@ class ListFieldSerializer extends AbstractFieldSerializer
             return null;
         }
 
-        return array_values(json_decode((string)$value, true, 512, \JSON_THROW_ON_ERROR));
+        return array_values(json_decode((string) $value, true, 512, \JSON_THROW_ON_ERROR));
     }
 
     protected function getConstraints(Field $field): array
@@ -83,7 +82,7 @@ class ListFieldSerializer extends AbstractFieldSerializer
 
         foreach ($values as $i => $value) {
             try {
-                $kvPair = new KeyValuePair((string)$i, $value, true);
+                $kvPair = new KeyValuePair((string) $i, $value, true);
 
                 $x = $listField->getSerializer()->encode($listField, $existence, $kvPair, $nestedParameters);
                 $_x = iterator_to_array($x);

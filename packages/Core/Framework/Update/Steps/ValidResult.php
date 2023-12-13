@@ -10,8 +10,7 @@ class ValidResult
     public function __construct(
         private readonly int $offset,
         private readonly int $total
-    )
-    {
+    ) {
     }
 
     public function getOffset(): int

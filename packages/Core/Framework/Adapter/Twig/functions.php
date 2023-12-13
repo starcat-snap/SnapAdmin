@@ -34,8 +34,8 @@ if (!\function_exists('SnapAdmin\Core\Framework\Adapter\Twig\sw_get_attribute'))
                     return $object->$item(...$arguments);
                 }
 
-                $getter = 'get' . ucfirst((string)$item);
-                $isGetter = 'is' . ucfirst((string)$item);
+                $getter = 'get' . ucfirst((string) $item);
+                $isGetter = 'is' . ucfirst((string) $item);
 
                 if (method_exists($object, $getter)) {
                     return $object->$getter();
@@ -69,7 +69,7 @@ if (!\function_exists('SnapAdmin\Core\Framework\Adapter\Twig\sw_escape_filter'))
     function sw_escape_filter(Environment $env, mixed $string, string $strategy = 'html', $charset = null, $autoescape = false)
     {
         if (\is_int($string)) {
-            $string = (string)$string;
+            $string = (string) $string;
         }
         static $strings = [];
 

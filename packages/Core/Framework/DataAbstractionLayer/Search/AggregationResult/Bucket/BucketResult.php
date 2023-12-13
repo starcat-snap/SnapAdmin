@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\Framework\DataAbstractionLayer\Search\AggregationResult
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\AggregationResult\AggregationResult;
 use SnapAdmin\Core\Framework\Log\Package;
 
-
 #[Package('core')]
 class BucketResult extends AggregationResult
 {
@@ -13,10 +12,9 @@ class BucketResult extends AggregationResult
      * @param list<Bucket> $buckets
      */
     public function __construct(
-        string          $name,
+        string $name,
         protected array $buckets
-    )
-    {
+    ) {
         parent::__construct($name);
     }
 

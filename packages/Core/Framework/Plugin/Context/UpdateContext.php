@@ -11,14 +11,13 @@ use SnapAdmin\Core\Framework\Plugin;
 class UpdateContext extends InstallContext
 {
     public function __construct(
-        Plugin                  $plugin,
-        Context                 $context,
-        string                  $currentSnapAdminVersion,
-        string                  $currentPluginVersion,
-        MigrationCollection     $migrationCollection,
+        Plugin $plugin,
+        Context $context,
+        string $currentSnapAdminVersion,
+        string $currentPluginVersion,
+        MigrationCollection $migrationCollection,
         private readonly string $updatePluginVersion
-    )
-    {
+    ) {
         parent::__construct($plugin, $context, $currentSnapAdminVersion, $currentPluginVersion, $migrationCollection);
     }
 

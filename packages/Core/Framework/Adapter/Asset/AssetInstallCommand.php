@@ -23,10 +23,9 @@ class AssetInstallCommand extends Command
      * @internal
      */
     public function __construct(
-        private readonly KernelInterface  $kernel,
-        private readonly AssetService     $assetService,
-    )
-    {
+        private readonly KernelInterface $kernel,
+        private readonly AssetService $assetService,
+    ) {
         parent::__construct();
     }
 

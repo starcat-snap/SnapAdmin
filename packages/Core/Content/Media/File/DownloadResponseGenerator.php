@@ -17,7 +17,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
-
 class DownloadResponseGenerator
 {
     final public const X_SENDFILE_DOWNLOAD_STRATEGRY = 'x-sendfile';

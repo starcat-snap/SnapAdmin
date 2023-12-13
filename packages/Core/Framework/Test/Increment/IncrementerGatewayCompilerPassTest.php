@@ -47,7 +47,6 @@ class IncrementerGatewayCompilerPassTest extends TestCase
         $entityCompilerPass = new IncrementerGatewayCompilerPass();
         $entityCompilerPass->process($container);
 
-
         $definition = $container->getDefinition('snap.increment.user_activity.gateway.mysql');
         static::assertEquals(MySQLIncrementer::class, $definition->getClass());
         static::assertTrue($definition->hasTag('snap.increment.gateway'));
@@ -128,7 +127,6 @@ class IncrementerGatewayCompilerPassTest extends TestCase
 
         $entityCompilerPass = new IncrementerGatewayCompilerPass();
         $entityCompilerPass->process($container);
-
 
         $definition = $container->getDefinition('snap.increment.custom_pool.gateway.custom_type');
         static::assertEquals($customGateway::class, $definition->getClass());

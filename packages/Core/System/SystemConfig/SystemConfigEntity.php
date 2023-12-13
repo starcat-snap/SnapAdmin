@@ -21,7 +21,6 @@ class SystemConfigEntity extends Entity
      */
     protected $configurationValue;
 
-
     public function getConfigurationKey(): string
     {
         return $this->configurationKey;

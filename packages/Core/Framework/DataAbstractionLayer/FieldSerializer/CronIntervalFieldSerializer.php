@@ -16,16 +16,14 @@ use Symfony\Component\Validator\Constraints\Type;
 /**
  * @internal
  */
-
 class CronIntervalFieldSerializer extends AbstractFieldSerializer
 {
     public function encode(
-        Field             $field,
-        EntityExistence   $existence,
-        KeyValuePair      $data,
+        Field $field,
+        EntityExistence $existence,
+        KeyValuePair $data,
         WriteParameterBag $parameters
-    ): \Generator
-    {
+    ): \Generator {
         if (!$field instanceof CronIntervalField) {
             throw DataAbstractionLayerException::invalidSerializerField(self::class, $field);
         }
@@ -55,7 +53,7 @@ class CronIntervalFieldSerializer extends AbstractFieldSerializer
             return;
         }
 
-        yield $field->getStorageName() => (string)$interval;
+        yield $field->getStorageName() => (string) $interval;
     }
 
     /**

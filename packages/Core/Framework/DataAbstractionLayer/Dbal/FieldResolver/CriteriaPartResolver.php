@@ -31,10 +31,9 @@ use SnapAdmin\Core\Framework\Log\Package;
 class CriteriaPartResolver
 {
     public function __construct(
-        private readonly Connection     $connection,
+        private readonly Connection $connection,
         private readonly SqlQueryParser $parser
-    )
-    {
+    ) {
     }
 
     /**

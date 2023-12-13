@@ -10,10 +10,9 @@ use Symfony\Component\HttpFoundation\Response;
 class HttpKernelResult
 {
     public function __construct(
-        protected Request  $request,
+        protected Request $request,
         protected Response $response
-    )
-    {
+    ) {
     }
 
     public function getRequest(): Request

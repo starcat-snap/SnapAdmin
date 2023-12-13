@@ -15,9 +15,8 @@ class FirstRunWizardStartedEvent extends Event
 {
     public function __construct(
         private readonly FrwState $state,
-        private readonly Context  $context
-    )
-    {
+        private readonly Context $context
+    ) {
     }
 
     public function getState(): FrwState

@@ -29,7 +29,6 @@ use Symfony\Component\Messenger\MessageBusInterface;
 /**
  * @internal
  */
-
 class MediaDeletionSubscriber implements EventSubscriberInterface
 {
     final public const SYNCHRONE_FILE_DELETE = 'synchrone-file-delete';

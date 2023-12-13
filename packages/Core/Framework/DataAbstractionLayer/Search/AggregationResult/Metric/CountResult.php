@@ -12,10 +12,9 @@ use SnapAdmin\Core\Framework\Log\Package;
 class CountResult extends AggregationResult
 {
     public function __construct(
-        string        $name,
+        string $name,
         protected int $count
-    )
-    {
+    ) {
         parent::__construct($name);
     }
 

@@ -25,7 +25,7 @@ class Random
     {
         $byte = static::getBytes(1);
 
-        return (bool)(\ord($byte) % 2);
+        return (bool) (\ord($byte) % 2);
     }
 
     public static function getInteger(int $min, int $max): int
@@ -48,7 +48,7 @@ class Random
         // charlist is empty or not provided
         if (empty($charlist)) {
             $numBytes = ceil($length * 0.75);
-            $bytes = static::getBytes((int)$numBytes);
+            $bytes = static::getBytes((int) $numBytes);
 
             return mb_substr(rtrim(base64_encode($bytes), '='), 0, $length, '8bit');
         }
@@ -74,7 +74,7 @@ class Random
     public static function getBase64UrlString(int $length): string
     {
         $numBytes = ceil($length * 0.75);
-        $bytes = static::getBytes((int)$numBytes);
+        $bytes = static::getBytes((int) $numBytes);
 
         $base64 = mb_substr(rtrim(base64_encode($bytes), '='), 0, $length, '8bit');
 

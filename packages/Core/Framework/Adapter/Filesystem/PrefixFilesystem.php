@@ -19,9 +19,8 @@ class PrefixFilesystem implements FilesystemOperator
      */
     public function __construct(
         protected FilesystemOperator $filesystem,
-        string                       $prefix
-    )
-    {
+        string $prefix
+    ) {
         if (empty($prefix)) {
             throw new \InvalidArgumentException('The prefix must not be empty.');
         }
@@ -224,7 +223,7 @@ class PrefixFilesystem implements FilesystemOperator
     private function stripPath(string $path): string
     {
         $prefix = rtrim($this->prefix, '/');
-        $path = (string)preg_replace('#^' . preg_quote($prefix, '#') . '#', '', $path);
+        $path = (string) preg_replace('#^' . preg_quote($prefix, '#') . '#', '', $path);
 
         return ltrim($path, '/');
     }

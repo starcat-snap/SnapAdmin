@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\Content\Media\Message;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\MessageQueue\AsyncMessageInterface;
 
-
 class GenerateThumbnailsMessage implements AsyncMessageInterface
 {
     /**
@@ -30,7 +29,6 @@ class GenerateThumbnailsMessage implements AsyncMessageInterface
     {
         $this->mediaIds = $mediaIds;
     }
-
 
     public function getContext(): Context
     {

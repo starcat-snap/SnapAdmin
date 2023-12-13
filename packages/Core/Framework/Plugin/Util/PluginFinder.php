@@ -31,12 +31,11 @@ class PluginFinder
      * @return PluginFromFileSystemStruct[]
      */
     public function findPlugins(
-        string              $pluginDir,
-        string              $projectDir,
+        string $pluginDir,
+        string $projectDir,
         ExceptionCollection $errors,
-        IOInterface         $composerIO
-    ): array
-    {
+        IOInterface $composerIO
+    ): array {
         $plugins = $this->loadLocalPlugins($pluginDir, $composerIO, $errors);
 
         return $this->enrichWithVendorPlugins($plugins, $projectDir, $composerIO, $errors);
@@ -112,12 +111,11 @@ class PluginFinder
      * @return array<string, PluginFromFileSystemStruct>
      */
     private function enrichWithVendorPlugins(
-        array               $plugins,
-        string              $projectDir,
-        IOInterface         $composerIO,
+        array $plugins,
+        string $projectDir,
+        IOInterface $composerIO,
         ExceptionCollection $errors
-    ): array
-    {
+    ): array {
         $composer = Factory::createComposer($projectDir, $composerIO);
 
         /** @var CompletePackageInterface[] $composerPackages */

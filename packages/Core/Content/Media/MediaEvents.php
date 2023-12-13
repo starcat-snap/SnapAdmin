@@ -7,7 +7,6 @@ use SnapAdmin\Core\Content\Media\Event\MediaFolderIndexerEvent;
 use SnapAdmin\Core\Content\Media\Event\MediaIndexerEvent;
 use SnapAdmin\Core\Content\Media\Event\MediaUploadedEvent;
 
-
 class MediaEvents
 {
     final public const MEDIA_WRITTEN_EVENT = 'media.written';

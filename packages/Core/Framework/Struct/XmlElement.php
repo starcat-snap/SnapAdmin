@@ -2,8 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\Struct;
 
-
-use InvalidArgumentException;
 use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 
@@ -133,7 +131,7 @@ abstract class XmlElement extends Struct
     {
         foreach ($requiredFields as $field) {
             if (!isset($data[$field])) {
-                throw new InvalidArgumentException($field . ' must not be empty');
+                throw new \InvalidArgumentException($field . ' must not be empty');
             }
         }
     }

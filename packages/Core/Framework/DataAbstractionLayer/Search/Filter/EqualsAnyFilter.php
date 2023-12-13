@@ -15,9 +15,8 @@ class EqualsAnyFilter extends SingleFieldFilter
      */
     public function __construct(
         protected readonly string $field,
-        protected array           $value = []
-    )
-    {
+        protected array $value = []
+    ) {
     }
 
     public function getField(): string

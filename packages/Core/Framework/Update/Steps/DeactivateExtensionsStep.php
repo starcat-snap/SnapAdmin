@@ -15,14 +15,13 @@ class DeactivateExtensionsStep
     final public const UPDATE_DEACTIVATED_PLUGINS = 'core.update.deactivatedPlugins';
 
     public function __construct(
-        private readonly Version                    $toVersion,
-        private readonly string                     $deactivationFilter,
-        private readonly ExtensionCompatibility     $pluginCompatibility,
+        private readonly Version $toVersion,
+        private readonly string $deactivationFilter,
+        private readonly ExtensionCompatibility $pluginCompatibility,
         private readonly AbstractExtensionLifecycle $extensionLifecycleService,
-        private readonly SystemConfigService        $systemConfigService,
-        private readonly Context                    $context
-    )
-    {
+        private readonly SystemConfigService $systemConfigService,
+        private readonly Context $context
+    ) {
     }
 
     /**
@@ -41,7 +40,7 @@ class DeactivateExtensionsStep
         ++$offset;
         $this->extensionLifecycleService->deactivate($extension->getType(), $extension->getName(), $this->context);
 
-        $deactivatedPlugins = (array)$this->systemConfigService->get(self::UPDATE_DEACTIVATED_PLUGINS) ?: [];
+        $deactivatedPlugins = (array) $this->systemConfigService->get(self::UPDATE_DEACTIVATED_PLUGINS) ?: [];
         $deactivatedPlugins[] = $extension->getId();
         $this->systemConfigService->set(self::UPDATE_DEACTIVATED_PLUGINS, $deactivatedPlugins);
 

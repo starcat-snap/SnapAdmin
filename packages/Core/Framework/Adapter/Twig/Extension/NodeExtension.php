@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Framework\Adapter\Twig\Extension;
 
 use SnapAdmin\Core\Framework\Adapter\Twig\TemplateFinder;
-use SnapAdmin\Core\Framework\Adapter\Twig\TemplateScopeDetector;
 use SnapAdmin\Core\Framework\Adapter\Twig\TokenParser\IncludeTokenParser;
 use SnapAdmin\Core\Framework\Adapter\Twig\TokenParser\ReturnNodeTokenParser;
 use SnapAdmin\Core\Framework\Log\Package;
@@ -17,8 +16,8 @@ class NodeExtension extends AbstractExtension
      * @internal
      */
     public function __construct(
-        private readonly TemplateFinder        $finder)
-    {
+        private readonly TemplateFinder $finder
+    ) {
     }
 
     /**

@@ -62,7 +62,7 @@ class Framework extends Bundle
     public function build(ContainerBuilder $container): void
     {
         $container->setParameter('locale', 'zh-CN');
-        $environment = (string)$container->getParameter('kernel.environment');
+        $environment = (string) $container->getParameter('kernel.environment');
 
         $this->buildConfig($container, $environment);
 
@@ -105,7 +105,6 @@ class Framework extends Bundle
         $container->addCompilerPass(new IncrementerGatewayCompilerPass());
         $container->addCompilerPass(new RedisPrefixCompilerPass());
         $container->addCompilerPass(new AutoconfigureCompilerPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 1000);
-
 
         if ($container->getParameter('kernel.environment') === 'test') {
             $container->addCompilerPass(new DisableRateLimiterCompilerPass());
@@ -184,10 +183,9 @@ class Framework extends Bundle
     }
 
     private function registerEntityExtensions(
-        DefinitionInstanceRegistry             $definitionRegistry,
-        ExtensionRegistry                      $registry
-    ): void
-    {
+        DefinitionInstanceRegistry $definitionRegistry,
+        ExtensionRegistry $registry
+    ): void {
         foreach ($registry->getExtensions() as $extension) {
             /** @var string $class */
             $class = $extension->getDefinitionClass();

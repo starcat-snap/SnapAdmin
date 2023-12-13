@@ -71,7 +71,7 @@ class UserProvisioner
     {
         $builder = $this->connection->createQueryBuilder();
 
-        return (string)$builder->select('locale.id')
+        return (string) $builder->select('locale.id')
             ->from('language', 'language')
             ->innerJoin('language', 'locale', 'locale', 'language.locale_id = locale.id')
             ->where('language.id = :id')

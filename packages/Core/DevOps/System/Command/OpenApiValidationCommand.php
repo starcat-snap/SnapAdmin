@@ -26,9 +26,8 @@ class OpenApiValidationCommand extends Command
 {
     public function __construct(
         private HttpClientInterface $client,
-        private DefinitionService   $definitionService
-    )
-    {
+        private DefinitionService $definitionService
+    ) {
         parent::__construct();
     }
 

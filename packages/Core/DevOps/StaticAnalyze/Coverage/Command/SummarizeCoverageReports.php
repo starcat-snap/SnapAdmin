@@ -28,10 +28,9 @@ class SummarizeCoverageReports extends Command
     private const TEMPLATE_FILE = __DIR__ . '/../../../Resources/templates/coverage-by-area-report.html.twig';
 
     public function __construct(
-        private readonly string      $projectDir,
+        private readonly string $projectDir,
         private readonly Environment $twig
-    )
-    {
+    ) {
         parent::__construct();
     }
 
@@ -103,13 +102,13 @@ class SummarizeCoverageReports extends Command
     {
         $coverages = [];
         foreach ($xmlFiles as $area => $xml) {
-            $coverage = (string)floor((float)$xml->filter('coverage')->attr('line-rate') * 10000.0) / 100.0;
+            $coverage = (string) floor((float) $xml->filter('coverage')->attr('line-rate') * 10000.0) / 100.0;
 
             $coverages[$area] = [
                 'area' => $area,
                 'percentage' => $coverage >= 0 ? '' . $coverage : 'unknown',
-                'coveredLines' => (int)$xml->filter('coverage')->attr('lines-covered'),
-                'validLines' => (int)$xml->filter('coverage')->attr('lines-valid'),
+                'coveredLines' => (int) $xml->filter('coverage')->attr('lines-covered'),
+                'validLines' => (int) $xml->filter('coverage')->attr('lines-valid'),
             ];
         }
 

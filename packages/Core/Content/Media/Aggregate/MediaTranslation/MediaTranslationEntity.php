@@ -6,7 +6,6 @@ use SnapAdmin\Core\Content\Media\MediaEntity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\TranslationEntity;
 
-
 class MediaTranslationEntity extends TranslationEntity
 {
     use EntityCustomFieldsTrait;

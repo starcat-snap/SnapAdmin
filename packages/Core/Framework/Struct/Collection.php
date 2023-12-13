@@ -143,7 +143,6 @@ abstract class Collection extends Struct implements \IteratorAggregate, \Countab
         return $this->createNew(\array_slice($this->elements, $offset, $length, true));
     }
 
-
     /**
      * @return array<TElement>
      */

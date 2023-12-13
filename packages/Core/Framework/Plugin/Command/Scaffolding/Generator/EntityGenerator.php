@@ -35,10 +35,9 @@ class EntityGenerator implements ScaffoldingGenerator
 
     public function addScaffoldConfig(
         PluginScaffoldConfiguration $config,
-        InputInterface              $input,
-        SymfonyStyle                $io
-    ): void
-    {
+        InputInterface $input,
+        SymfonyStyle $io
+    ): void {
         $entities = $input->getOption(self::OPTION_NAME);
 
         if (!empty($entities)) {
@@ -58,9 +57,8 @@ class EntityGenerator implements ScaffoldingGenerator
 
     public function generateStubs(
         PluginScaffoldConfiguration $configuration,
-        StubCollection              $stubCollection
-    ): void
-    {
+        StubCollection $stubCollection
+    ): void {
         if (!$configuration->hasOption(self::OPTION_NAME)
             || empty($configuration->getOption(self::OPTION_NAME))
             || !\is_array($configuration->getOption(self::OPTION_NAME))
@@ -88,7 +86,7 @@ class EntityGenerator implements ScaffoldingGenerator
     private function createMigration(PluginScaffoldConfiguration $configuration, string $entityName): Stub
     {
         $tableName = $this->getTableName($entityName);
-        $timeStamp = (string)$this->now->getTimestamp();
+        $timeStamp = (string) $this->now->getTimestamp();
 
         $migrationPath = sprintf(
             'src/Migration/Migration%sCreate%sTable.php',

@@ -20,8 +20,7 @@ class UpdateSubscriber implements EventSubscriberInterface
      */
     public function __construct(
         private readonly NotificationService $notificationService
-    )
-    {
+    ) {
     }
 
     /**

@@ -8,7 +8,6 @@ use SnapAdmin\Core\Framework\Struct\Struct;
 #[Package('core')]
 class Price extends Struct
 {
-
     /**
      * @var string
      */

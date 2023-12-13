@@ -28,11 +28,10 @@ use SnapAdmin\Core\Framework\Log\Package;
 class ListField extends JsonField
 {
     public function __construct(
-        string                   $storageName,
-        string                   $propertyName,
+        string $storageName,
+        string $propertyName,
         private readonly ?string $fieldType = null
-    )
-    {
+    ) {
         parent::__construct($storageName, $propertyName);
     }
 

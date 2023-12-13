@@ -11,10 +11,9 @@ class PrefixVersionStrategy implements VersionStrategyInterface
     private readonly string $prefix;
 
     public function __construct(
-        string                                    $prefix,
+        string $prefix,
         private readonly VersionStrategyInterface $strategy
-    )
-    {
+    ) {
         $this->prefix = rtrim($prefix, '/');
     }
 

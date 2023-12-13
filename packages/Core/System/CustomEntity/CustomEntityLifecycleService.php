@@ -20,13 +20,12 @@ use Symfony\Component\Filesystem\Path;
 class CustomEntityLifecycleService
 {
     public function __construct(
-        private readonly CustomEntityPersister          $customEntityPersister,
-        private readonly CustomEntitySchemaUpdater      $customEntitySchemaUpdater,
-        private readonly CustomEntityEnrichmentService  $customEntityEnrichmentService,
+        private readonly CustomEntityPersister $customEntityPersister,
+        private readonly CustomEntitySchemaUpdater $customEntitySchemaUpdater,
+        private readonly CustomEntityEnrichmentService $customEntityEnrichmentService,
         private readonly CustomEntityXmlSchemaValidator $customEntityXmlSchemaValidator,
-        private readonly string                         $projectDir
-    )
-    {
+        private readonly string $projectDir
+    ) {
     }
 
     public function updatePlugin(string $pluginId, string $pluginPath): ?CustomEntityXmlSchema
@@ -41,7 +40,6 @@ class CustomEntityLifecycleService
             $pluginId
         );
     }
-
 
     private function update(string $pathToCustomEntityFile, string $extensionEntityType, string $extensionId): ?CustomEntityXmlSchema
     {

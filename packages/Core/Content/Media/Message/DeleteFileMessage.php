@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\Content\Media\Message;
 use League\Flysystem\Visibility;
 use SnapAdmin\Core\Framework\MessageQueue\AsyncMessageInterface;
 
-
 class DeleteFileMessage implements AsyncMessageInterface
 {
     public function __construct(

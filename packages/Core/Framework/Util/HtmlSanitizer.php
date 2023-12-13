@@ -24,18 +24,17 @@ class HtmlSanitizer
     /**
      * @param array<string, array{name?: string, tags?: list<string>, attributes?: list<string>, options?: array<string, mixed>, custom_attributes?: array<string, array<string, list<string>>>}> $sets
      * @param array<string, array{sets?: list<string>|null}> $fieldSets
-     * @internal
      *
+     * @internal
      */
     public function __construct(
-        ?string                $cacheDir = null,
-        private readonly bool  $cacheEnabled = true,
-        private array          $sets = [],
+        ?string $cacheDir = null,
+        private readonly bool $cacheEnabled = true,
+        private array $sets = [],
         private readonly array $fieldSets = [],
-        private readonly bool  $enabled = true
-    )
-    {
-        $this->cacheDir = (string)$cacheDir;
+        private readonly bool $enabled = true
+    ) {
+        $this->cacheDir = (string) $cacheDir;
     }
 
     /**

@@ -18,11 +18,10 @@ class Stub
      */
     public function __construct(
         private readonly string $path,
-        private string          $content,
+        private string $content,
         private readonly string $type = self::TYPE_TEMPLATE,
-        private readonly array  $params = [],
-    )
-    {
+        private readonly array $params = [],
+    ) {
     }
 
     public function getPath(): string
@@ -43,7 +42,7 @@ class Stub
         }
 
         return str_replace(
-            array_map(static fn(string $param) => '{{ ' . $param . ' }}', array_keys($this->params)),
+            array_map(static fn (string $param) => '{{ ' . $param . ' }}', array_keys($this->params)),
             array_values($this->params),
             $content
         );

@@ -10,14 +10,13 @@ class SystemConfigChangedEvent extends Event
 {
     /**
      * @param array|bool|float|int|string|null $value
-     * @internal
      *
+     * @internal
      */
     public function __construct(
-        private readonly string  $key,
-        private                  $value,
-    )
-    {
+        private readonly string $key,
+        private $value,
+    ) {
     }
 
     public function getKey(): string

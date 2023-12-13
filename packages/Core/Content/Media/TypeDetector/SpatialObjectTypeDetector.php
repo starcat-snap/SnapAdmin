@@ -9,7 +9,6 @@ use SnapAdmin\Core\Content\Media\MediaType\SpatialObjectType;
 /**
  * @experimental stableVersion:v6.7.0 feature:SPATIAL_BASES
  */
-
 class SpatialObjectTypeDetector implements TypeDetectorInterface
 {
     protected const SUPPORTED_FILE_EXTENSIONS = [

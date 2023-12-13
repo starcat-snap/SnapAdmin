@@ -25,13 +25,12 @@ class HttpKernel extends SymfonyHttpKernel
     protected $dispatcher;
 
     public function __construct(
-        EventDispatcherInterface                     $dispatcher,
-        ControllerResolverInterface                  $resolver,
-        RequestStack                                 $requestStack,
-        ArgumentResolverInterface                    $argumentResolver,
+        EventDispatcherInterface $dispatcher,
+        ControllerResolverInterface $resolver,
+        RequestStack $requestStack,
+        ArgumentResolverInterface $argumentResolver,
         private readonly RequestTransformerInterface $requestTransformer
-    )
-    {
+    ) {
         parent::__construct($dispatcher, $resolver, $requestStack, $argumentResolver);
     }
 

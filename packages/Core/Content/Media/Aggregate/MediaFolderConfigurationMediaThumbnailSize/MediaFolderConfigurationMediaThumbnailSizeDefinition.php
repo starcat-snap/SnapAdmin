@@ -11,7 +11,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationFiel
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\MappingEntityDefinition;
 
-
 class MediaFolderConfigurationMediaThumbnailSizeDefinition extends MappingEntityDefinition
 {
     final public const ENTITY_NAME = 'media_folder_configuration_media_thumbnail_size';

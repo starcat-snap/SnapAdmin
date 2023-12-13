@@ -7,7 +7,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityExistence;
 use SnapAdmin\Core\Framework\Log\Package;
 
-
 #[Package('core')]
 class DeleteCommand extends WriteCommand implements ChangeSetAware
 {
@@ -18,16 +17,15 @@ class DeleteCommand extends WriteCommand implements ChangeSetAware
      */
     public function __construct(
         EntityDefinition $definition,
-        array            $primaryKey,
-        EntityExistence  $existence
-    )
-    {
+        array $primaryKey,
+        EntityExistence $existence
+    ) {
         parent::__construct($definition, [], $primaryKey, $existence, '');
     }
 
     public function isValid(): bool
     {
-        return (bool)\count($this->primaryKey);
+        return (bool) \count($this->primaryKey);
     }
 
     public function getPrivilege(): ?string

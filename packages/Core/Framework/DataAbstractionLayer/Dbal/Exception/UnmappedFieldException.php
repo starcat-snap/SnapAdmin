@@ -11,10 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 class UnmappedFieldException extends SnapAdminHttpException
 {
     public function __construct(
-        string           $field,
+        string $field,
         EntityDefinition $definition
-    )
-    {
+    ) {
         $fieldParts = explode('.', $field);
         $name = array_pop($fieldParts);
 

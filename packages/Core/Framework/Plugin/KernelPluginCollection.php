@@ -10,8 +10,8 @@ class KernelPluginCollection
 {
     /**
      * @param array<class-string<Plugin>, Plugin> $plugins
-     * @internal
      *
+     * @internal
      */
     public function __construct(private array $plugins = [])
     {
@@ -65,7 +65,7 @@ class KernelPluginCollection
             return [];
         }
 
-        return array_filter($this->plugins, static fn(Plugin $plugin) => $plugin->isActive());
+        return array_filter($this->plugins, static fn (Plugin $plugin) => $plugin->isActive());
     }
 
     public function filter(\Closure $closure): KernelPluginCollection

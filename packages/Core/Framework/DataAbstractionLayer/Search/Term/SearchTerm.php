@@ -15,9 +15,8 @@ class SearchTerm
      */
     public function __construct(
         protected readonly string $term,
-        protected readonly float  $score = 1.0
-    )
-    {
+        protected readonly float $score = 1.0
+    ) {
     }
 
     public function getTerm(): string

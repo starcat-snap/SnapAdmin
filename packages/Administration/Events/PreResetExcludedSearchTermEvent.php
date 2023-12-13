@@ -14,11 +14,10 @@ class PreResetExcludedSearchTermEvent extends Event implements SnapAdminEvent
      * @param array<string> $excludedTerms
      */
     public function __construct(
-        private string  $searchConfigId,
-        private array   $excludedTerms,
+        private string $searchConfigId,
+        private array $excludedTerms,
         private Context $context
-    )
-    {
+    ) {
     }
 
     public function getSearchConfigId(): string

@@ -8,10 +8,9 @@ use SnapAdmin\Core\Framework\Log\Package;
 class ComposerNameMissingException extends RequirementException
 {
     public function __construct(
-        string      $pluginName,
+        string $pluginName,
         ?\Throwable $e = null
-    )
-    {
+    ) {
         parent::__construct(
             '"{{ pluginName }}" has no "name" property in its composer.json file',
             ['pluginName' => $pluginName],

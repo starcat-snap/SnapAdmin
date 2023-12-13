@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\System\CustomEntity\Xml\Config;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\CustomEntity\Xml\Config\AdminUi\AdminUiXmlSchema;
 use SnapAdmin\Core\System\CustomEntity\Xml\Config\AdminUi\AdminUiXmlSchemaValidator;
-use SnapAdmin\Core\System\CustomEntity\Xml\Config\CmsAware\CmsAwareFields;
 use SnapAdmin\Core\System\CustomEntity\Xml\CustomEntityXmlSchema;
 
 /**
@@ -22,8 +21,6 @@ class CustomEntityEnrichmentService
         CustomEntityXmlSchema $customEntityXmlSchema,
         ?AdminUiXmlSchema $adminUiXmlSchema
     ): CustomEntityXmlSchema {
-
-
         if ($adminUiXmlSchema !== null) {
             $customEntityXmlSchema = $this->enrichAdminUi($customEntityXmlSchema, $adminUiXmlSchema);
         }

@@ -19,9 +19,8 @@ class PluginScaffoldConfiguration
         public readonly string $name,
         public readonly string $namespace,
         public readonly string $directory,
-        public array           $options = []
-    )
-    {
+        public array $options = []
+    ) {
     }
 
     public function addOption(string $key, mixed $value): void

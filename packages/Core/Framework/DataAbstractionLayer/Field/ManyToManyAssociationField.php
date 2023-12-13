@@ -15,15 +15,14 @@ class ManyToManyAssociationField extends AssociationField
     private ?EntityDefinition $toManyDefinition = null;
 
     public function __construct(
-        string                  $propertyName,
-        private string          $toManyDefinitionClass,
-        string                  $mappingDefinition,
+        string $propertyName,
+        private string $toManyDefinitionClass,
+        string $mappingDefinition,
         private readonly string $mappingLocalColumn,
         private readonly string $mappingReferenceColumn,
         private readonly string $sourceColumn = 'id',
-        string                  $referenceField = 'id'
-    )
-    {
+        string $referenceField = 'id'
+    ) {
         parent::__construct($propertyName);
         $this->referenceClass = $mappingDefinition;
         $this->referenceField = $referenceField;

@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\Event;
 
-use Doctrine\DBAL\Connection;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;

@@ -21,9 +21,8 @@ class OneToOneAssociationField extends AssociationField
         string $storageName,
         string $referenceField,
         string $referenceClass,
-        bool   $autoload = true
-    )
-    {
+        bool $autoload = true
+    ) {
         parent::__construct($propertyName);
 
         $this->referenceClass = $referenceClass;

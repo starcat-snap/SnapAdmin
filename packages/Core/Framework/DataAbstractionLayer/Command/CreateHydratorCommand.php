@@ -53,9 +53,8 @@ class CreateHydratorCommand extends Command
      */
     public function __construct(
         private readonly DefinitionInstanceRegistry $registry,
-        string                                      $rootDir
-    )
-    {
+        string $rootDir
+    ) {
         parent::__construct();
         $this->dir = $rootDir . '/platform/src';
     }
@@ -177,7 +176,7 @@ EOF;
 
         $file = rtrim($this->dir, '/') . '/' . $file;
 
-        $content = (string)file_get_contents($file);
+        $content = (string) file_get_contents($file);
 
         if (str_contains($content, 'getHydratorClass')) {
             return null;
@@ -301,7 +300,7 @@ EOF;
 
     private function getClass(EntityDefinition $definition): string
     {
-        $parts = explode('_', (string)$definition->getEntityName());
+        $parts = explode('_', (string) $definition->getEntityName());
 
         $parts = array_map('ucfirst', $parts);
 
@@ -337,7 +336,7 @@ class #class# extends EntityHydrator
 
 EOF;
 
-        $entity = explode('\\', (string)$definition->getEntityClass());
+        $entity = explode('\\', (string) $definition->getEntityClass());
         $entity = array_pop($entity);
 
         $callTemplate = '';

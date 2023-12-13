@@ -24,6 +24,6 @@ class DecorationPatternException extends SnapAdminHttpException
 
     public function getErrorCode(): string
     {
-        return (string)Response::HTTP_INTERNAL_SERVER_ERROR;
+        return (string) Response::HTTP_INTERNAL_SERVER_ERROR;
     }
 }

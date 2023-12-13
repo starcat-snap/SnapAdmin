@@ -16,7 +16,6 @@ use SnapAdmin\Core\System\Snippet\Aggregate\SnippetSet\SnippetSetEntity;
 use SnapAdmin\Core\System\Snippet\Files\AbstractSnippetFile;
 use SnapAdmin\Core\System\Snippet\Files\SnippetFileCollection;
 use SnapAdmin\Core\System\Snippet\Filter\SnippetFilterFactory;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 #[Package('system-settings')]
 class SnippetService
@@ -25,13 +24,12 @@ class SnippetService
      * @internal
      */
     public function __construct(
-        private readonly Connection            $connection,
+        private readonly Connection $connection,
         private readonly SnippetFileCollection $snippetFileCollection,
-        private readonly EntityRepository      $snippetRepository,
-        private readonly EntityRepository      $snippetSetRepository,
-        private readonly SnippetFilterFactory  $snippetFilterFactory
-    )
-    {
+        private readonly EntityRepository $snippetRepository,
+        private readonly EntityRepository $snippetSetRepository,
+        private readonly SnippetFilterFactory $snippetFilterFactory
+    ) {
     }
 
     /**
@@ -189,7 +187,6 @@ class SnippetService
         return $snippets;
     }
 
-
     /**
      * @param array<string, string> $isoList
      *
@@ -214,7 +211,7 @@ class SnippetService
     {
         $result = [];
         foreach ($languageFiles as $snippetFile) {
-            $json = json_decode((string)file_get_contents($snippetFile->getPath()), true);
+            $json = json_decode((string) file_get_contents($snippetFile->getPath()), true);
 
             $jsonError = json_last_error();
             if ($jsonError !== 0) {
@@ -416,8 +413,8 @@ class SnippetService
         unset($snippets[$sort['sortBy']]);
 
         uasort($mainSet['snippets'], static function ($a, $b) use ($sort) {
-            $a = mb_strtolower((string)$a['value']);
-            $b = mb_strtolower((string)$b['value']);
+            $a = mb_strtolower((string) $a['value']);
+            $b = mb_strtolower((string) $b['value']);
 
             return $sort['sortDirection'] !== 'DESC' ? $a <=> $b : $b <=> $a;
         });

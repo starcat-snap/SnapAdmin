@@ -23,15 +23,14 @@ class DateHistogramAggregation extends BucketAggregation
     protected readonly string $interval;
 
     public function __construct(
-        string                   $name,
-        string                   $field,
-        string                   $interval,
-        private ?FieldSorting    $sorting = null,
-        ?Aggregation             $aggregation = null,
+        string $name,
+        string $field,
+        string $interval,
+        private ?FieldSorting $sorting = null,
+        ?Aggregation $aggregation = null,
         private readonly ?string $format = null,
         private readonly ?string $timeZone = null
-    )
-    {
+    ) {
         parent::__construct($name, $field, $aggregation);
 
         $interval = mb_strtolower($interval);

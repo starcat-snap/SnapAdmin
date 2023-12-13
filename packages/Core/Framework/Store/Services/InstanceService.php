@@ -12,10 +12,9 @@ use SnapAdmin\Core\Kernel;
 class InstanceService
 {
     public function __construct(
-        private readonly string  $snapVersion,
+        private readonly string $snapVersion,
         private readonly ?string $instanceId
-    )
-    {
+    ) {
     }
 
     public function getSnapAdminVersion(): string

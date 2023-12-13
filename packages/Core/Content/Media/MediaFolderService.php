@@ -10,7 +10,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use SnapAdmin\Core\Framework\Uuid\Uuid;
 
-
 class MediaFolderService
 {
     /**

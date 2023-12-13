@@ -58,13 +58,11 @@ class DataBag extends ParameterBag
     public function add(array $parameters = []): void
     {
         parent::add($this->wrapArrayParameters($parameters));
-
     }
 
     public function set(string $key, mixed $value): void
     {
         parent::set($key, $this->wrapArrayParameters([$value])[0]);
-
     }
 
     /**

@@ -26,7 +26,6 @@ use Symfony\Component\Messenger\MessageBusInterface;
     name: 'media:generate-thumbnails',
     description: 'Generates thumbnails for all media files',
 )]
-
 class GenerateThumbnailsCommand extends Command
 {
     private SnapAdminStyle $io;

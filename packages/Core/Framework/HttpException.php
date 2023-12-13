@@ -10,13 +10,12 @@ abstract class HttpException extends SnapAdminHttpException
     protected static string $couldNotFindMessage = 'Could not find {{ entity }} with {{ field }} "{{ value }}"';
 
     public function __construct(
-        protected int    $statusCode,
+        protected int $statusCode,
         protected string $errorCode,
-        string           $message,
-        array            $parameters = [],
-        ?\Throwable      $previous = null
-    )
-    {
+        string $message,
+        array $parameters = [],
+        ?\Throwable $previous = null
+    ) {
         parent::__construct($message, $parameters, $previous);
     }
 

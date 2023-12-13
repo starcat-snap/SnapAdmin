@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Content\Media\Core\Application;
 
 use SnapAdmin\Core\Content\Media\Core\Params\UrlParams;
-use SnapAdmin\Core\Content\Media\Pathname\UrlGeneratorInterface;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\Log\Package;
 

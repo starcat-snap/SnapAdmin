@@ -25,10 +25,9 @@ class ExtensionStoreDataController extends AbstractController
 {
     public function __construct(
         private readonly AbstractExtensionDataProvider $extensionDataProvider,
-        private readonly EntityRepository              $userRepository,
-        private readonly EntityRepository              $languageRepository
-    )
-    {
+        private readonly EntityRepository $userRepository,
+        private readonly EntityRepository $languageRepository
+    ) {
     }
 
     #[Route(path: '/api/_action/extension/installed', name: 'api.extension.installed', methods: ['GET'])]

@@ -11,11 +11,10 @@ class FeatureCallSilentToken extends Node
 {
     public function __construct(
         private readonly string $flag,
-        Node                    $body,
-        int                     $line,
-        string                  $tag
-    )
-    {
+        Node $body,
+        int $line,
+        string $tag
+    ) {
         parent::__construct(['body' => $body], [], $line, $tag);
     }
 

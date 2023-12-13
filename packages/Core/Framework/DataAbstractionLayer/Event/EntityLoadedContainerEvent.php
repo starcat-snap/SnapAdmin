@@ -12,9 +12,8 @@ class EntityLoadedContainerEvent extends NestedEvent
 {
     public function __construct(
         private readonly Context $context,
-        private readonly array   $events
-    )
-    {
+        private readonly array $events
+    ) {
     }
 
     public function getContext(): Context

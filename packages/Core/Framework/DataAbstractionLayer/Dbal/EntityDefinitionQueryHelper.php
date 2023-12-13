@@ -69,12 +69,12 @@ class EntityDefinitionQueryHelper
     public static function tableExists(Connection $connection, string $table): bool
     {
         return !empty(
-        $connection->fetchOne(
-            'SHOW TABLES LIKE :table',
-            [
-                'table' => $table,
-            ]
-        )
+            $connection->fetchOne(
+                'SHOW TABLES LIKE :table',
+                [
+                    'table' => $table,
+                ]
+            )
         );
     }
 
@@ -198,6 +198,7 @@ class EntityDefinitionQueryHelper
      * Builds the sql field accessor for the provided field.
      *
      * @throws UnmappedFieldException
+     *
      * @example
      *
      * fieldName => product.taxId
@@ -210,7 +211,6 @@ class EntityDefinitionQueryHelper
      * fieldName => product.name
      * root      => product
      * return    => COALESCE(`product.translation`.`name`,`product.parent.translation`.`name`)
-     *
      */
     public function getFieldAccessor(string $fieldName, EntityDefinition $definition, string $root, Context $context): string
     {
@@ -308,7 +308,7 @@ class EntityDefinitionQueryHelper
         } elseif ($definition->isVersionAware()) {
             $versionIdField = array_filter(
                 $definition->getPrimaryKeys()->getElements(),
-                fn($f) => $f instanceof VersionField || $f instanceof ReferenceVersionField
+                fn ($f) => $f instanceof VersionField || $f instanceof ReferenceVersionField
             );
 
             if (!$versionIdField) {
@@ -329,14 +329,13 @@ class EntityDefinitionQueryHelper
      * roots, the function can resolve each association part of the field name, even if one part of the fieldName contains a translation or event inherited data field.
      */
     public function resolveAccessor(
-        string                 $accessor,
-        EntityDefinition       $definition,
-        string                 $root,
-        QueryBuilder           $query,
-        Context                $context,
+        string $accessor,
+        EntityDefinition $definition,
+        string $root,
+        QueryBuilder $query,
+        Context $context,
         ?CriteriaPartInterface $criteriaPart = null
-    ): void
-    {
+    ): void {
         $accessor = str_replace('extensions.', '', $accessor);
 
         $parts = explode('.', $accessor);
@@ -417,7 +416,7 @@ class EntityDefinitionQueryHelper
 
         $fields = $translationDefinition->getFields();
         if (!empty($partial)) {
-            $fields = $translationDefinition->getFields()->filter(fn(Field $field) => $field->is(PrimaryKey::class)
+            $fields = $translationDefinition->getFields()->filter(fn (Field $field) => $field->is(PrimaryKey::class)
                 || isset($partial[$field->getPropertyName()])
                 || $field instanceof FkField);
         }
@@ -661,13 +660,12 @@ class EntityDefinitionQueryHelper
     }
 
     private function buildInheritedAccessor(
-        Field            $field,
-        string           $root,
+        Field $field,
+        string $root,
         EntityDefinition $definition,
-        Context          $context,
-        string           $original
-    ): string
-    {
+        Context $context,
+        string $original
+    ): string {
         if ($field instanceof TranslatedField) {
             $inheritedChain = self::buildTranslationChain($root, $context, $definition->isInheritanceAware() && $context->considerInheritance());
 

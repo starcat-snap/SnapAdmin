@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Content\Media\Message;
 
-
 class UpdateThumbnailsMessage extends GenerateThumbnailsMessage
 {
     private bool $isStrict = false;

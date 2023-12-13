@@ -62,12 +62,11 @@ class ApiController extends AbstractController
      */
     public function __construct(
         private readonly DefinitionInstanceRegistry $definitionRegistry,
-        private readonly DecoderInterface           $serializer,
-        private readonly RequestCriteriaBuilder     $criteriaBuilder,
-        private readonly EntityProtectionValidator  $entityProtectionValidator,
-        private readonly AclCriteriaValidator       $criteriaValidator
-    )
-    {
+        private readonly DecoderInterface $serializer,
+        private readonly RequestCriteriaBuilder $criteriaBuilder,
+        private readonly EntityProtectionValidator $entityProtectionValidator,
+        private readonly AclCriteriaValidator $criteriaValidator
+    ) {
     }
 
     #[Route(path: '/api/_action/clone/{entity}/{id}', name: 'api.clone', methods: ['POST'], requirements: ['version' => '\d+', 'entity' => '[a-zA-Z-]+', 'id' => '[0-9a-f]{32}'])]
@@ -109,8 +108,8 @@ class ApiController extends AbstractController
     {
         $entity = $this->urlToSnakeCase($entity);
 
-        $versionId = $request->request->has('versionId') ? (string)$request->request->get('versionId') : null;
-        $versionName = $request->request->has('versionName') ? (string)$request->request->get('versionName') : null;
+        $versionId = $request->request->has('versionId') ? (string) $request->request->get('versionId') : null;
+        $versionName = $request->request->has('versionName') ? (string) $request->request->get('versionName') : null;
 
         if ($versionId !== null && !Uuid::isValid($versionId)) {
             throw ApiException::invalidVersionId($versionId);
@@ -126,7 +125,7 @@ class ApiController extends AbstractController
             throw ApiException::definitionNotFound($e);
         }
 
-        $versionId = $context->scope(Context::CRUD_API_SCOPE, fn(Context $context): string => $this->definitionRegistry->getRepository($entityDefinition->getEntityName())->createVersion($id, $context, $versionName, $versionId));
+        $versionId = $context->scope(Context::CRUD_API_SCOPE, fn (Context $context): string => $this->definitionRegistry->getRepository($entityDefinition->getEntityName())->createVersion($id, $context, $versionName, $versionId));
 
         return new JsonResponse([
             'versionId' => $versionId,
@@ -232,7 +231,7 @@ class ApiController extends AbstractController
             throw ApiException::missingPrivileges($permissions);
         }
 
-        $entity = $context->scope(Context::CRUD_API_SCOPE, fn(Context $context): ?Entity => $repository->search($criteria, $context)->get($id));
+        $entity = $context->scope(Context::CRUD_API_SCOPE, fn (Context $context): ?Entity => $repository->search($criteria, $context)->get($id));
 
         if ($entity === null) {
             throw ApiException::resourceNotFound($definition->getEntityName(), ['id' => $id]);
@@ -245,7 +244,7 @@ class ApiController extends AbstractController
     {
         [$criteria, $repository] = $this->resolveSearch($request, $context, $entityName, $path);
 
-        $result = $context->scope(Context::CRUD_API_SCOPE, fn(Context $context): IdSearchResult => $repository->searchIds($criteria, $context));
+        $result = $context->scope(Context::CRUD_API_SCOPE, fn (Context $context): IdSearchResult => $repository->searchIds($criteria, $context));
 
         return new JsonResponse([
             'total' => $result->getTotal(),
@@ -257,7 +256,7 @@ class ApiController extends AbstractController
     {
         [$criteria, $repository] = $this->resolveSearch($request, $context, $entityName, $path);
 
-        $result = $context->scope(Context::CRUD_API_SCOPE, fn(Context $context): EntitySearchResult => $repository->search($criteria, $context));
+        $result = $context->scope(Context::CRUD_API_SCOPE, fn (Context $context): EntitySearchResult => $repository->search($criteria, $context));
 
         $definition = $this->getDefinitionOfPath($entityName, $path, $context);
 
@@ -268,7 +267,7 @@ class ApiController extends AbstractController
     {
         [$criteria, $repository] = $this->resolveSearch($request, $context, $entityName, $path);
 
-        $result = $context->scope(Context::CRUD_API_SCOPE, fn(Context $context): EntitySearchResult => $repository->search($criteria, $context));
+        $result = $context->scope(Context::CRUD_API_SCOPE, fn (Context $context): EntitySearchResult => $repository->search($criteria, $context));
 
         $definition = $this->getDefinitionOfPath($entityName, $path, $context);
 
@@ -442,7 +441,7 @@ class ApiController extends AbstractController
         if ($association instanceof ManyToManyAssociationField) {
             // fetch inverse association definition for filter
             $reverses = $definition->getFields()->filter(
-                fn(Field $field) => $field instanceof ManyToManyAssociationField && $association->getMappingDefinition() === $field->getMappingDefinition()
+                fn (Field $field) => $field instanceof ManyToManyAssociationField && $association->getMappingDefinition() === $field->getMappingDefinition()
             );
 
             // contains now the inverse side association: category.products
@@ -469,8 +468,6 @@ class ApiController extends AbstractController
                 );
             }
         } elseif ($association instanceof OneToManyAssociationField) {
-
-
             // get foreign key definition of reference
             /** @var Field $foreignKey */
             $foreignKey = $definition->getFields()->getByStorageName(
@@ -479,16 +476,15 @@ class ApiController extends AbstractController
 
             $criteria->addFilter(
                 new EqualsFilter(
-                // add filter to parent value: prices.productId = SW1
+                    // add filter to parent value: prices.productId = SW1
                     $definition->getEntityName() . '.' . $foreignKey->getPropertyName(),
                     $parent['value']
                 )
             );
         } elseif ($association instanceof ManyToOneAssociationField) {
-
             // get inverse association to filter to parent value
             $reverses = $definition->getFields()->filter(
-                fn(Field $field) => $field instanceof AssociationField && $parentDefinition === $field->getReferenceDefinition()
+                fn (Field $field) => $field instanceof AssociationField && $parentDefinition === $field->getReferenceDefinition()
             );
             /** @var AssociationField|null $reverse */
             $reverse = $reverses->first();
@@ -498,16 +494,15 @@ class ApiController extends AbstractController
 
             $criteria->addFilter(
                 new EqualsFilter(
-                // filter inverse association to parent value:  manufacturer.products.id = SW1
+                    // filter inverse association to parent value:  manufacturer.products.id = SW1
                     sprintf('%s.%s.id', $definition->getEntityName(), $reverse->getPropertyName()),
                     $parent['value']
                 )
             );
         } elseif ($association instanceof OneToOneAssociationField) {
-
             // get inverse association to filter to parent value
             $reverses = $definition->getFields()->filter(
-                fn(Field $field) => $field instanceof OneToOneAssociationField && $parentDefinition === $field->getReferenceDefinition()
+                fn (Field $field) => $field instanceof OneToOneAssociationField && $parentDefinition === $field->getReferenceDefinition()
             );
             /** @var OneToOneAssociationField|null $reverse */
             $reverse = $reverses->first();
@@ -517,7 +512,7 @@ class ApiController extends AbstractController
 
             $criteria->addFilter(
                 new EqualsFilter(
-                // filter inverse association to parent value:  order_customer.order_id = xxxx
+                    // filter inverse association to parent value:  order_customer.order_id = xxxx
                     sprintf('%s.%s.id', $definition->getEntityName(), $reverse->getPropertyName()),
                     $parent['value']
                 )
@@ -739,11 +734,10 @@ class ApiController extends AbstractController
      */
     private function executeWriteOperation(
         EntityDefinition $entity,
-        array            $payload,
-        Context          $context,
-        string           $type
-    ): EntityWrittenContainerEvent
-    {
+        array $payload,
+        Context $context,
+        string $type
+    ): EntityWrittenContainerEvent {
         $repository = $this->definitionRegistry->getRepository($entity->getEntityName());
 
         $event = $context->scope(Context::CRUD_API_SCOPE, function (Context $context) use ($repository, $payload, $entity, $type): ?EntityWrittenContainerEvent {
@@ -801,12 +795,11 @@ class ApiController extends AbstractController
      * @return list<EntityPathSegment>
      */
     private function buildEntityPath(
-        string  $entityName,
-        string  $pathInfo,
+        string $entityName,
+        string $pathInfo,
         Context $context,
-        array   $protections = [ReadProtection::class]
-    ): array
-    {
+        array $protections = [ReadProtection::class]
+    ): array {
         $pathInfo = str_replace('/extensions/', '/', $pathInfo);
         $exploded = explode('/', $entityName . '/' . ltrim($pathInfo, '/'));
 

@@ -15,10 +15,9 @@ class RequirementStackException extends SnapAdminHttpException
     private readonly array $requirements;
 
     public function __construct(
-        string               $method,
+        string $method,
         RequirementException ...$requirements
-    )
-    {
+    ) {
         $this->requirements = $requirements;
 
         parent::__construct(

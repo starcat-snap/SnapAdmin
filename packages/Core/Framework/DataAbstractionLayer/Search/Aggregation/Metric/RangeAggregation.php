@@ -26,15 +26,14 @@ final class RangeAggregation extends Aggregation
     public function __construct(
         string $name,
         string $field,
-        array  $ranges
-    )
-    {
+        array $ranges
+    ) {
         parent::__construct($name, $field);
         foreach ($ranges as $range) {
             $this->addRange(
-                isset($range['from']) ? (float)$range['from'] : null,
-                isset($range['to']) ? (float)$range['to'] : null,
-                isset($range['key']) ? (string)$range['key'] : null,
+                isset($range['from']) ? (float) $range['from'] : null,
+                isset($range['to']) ? (float) $range['to'] : null,
+                isset($range['key']) ? (string) $range['key'] : null,
             );
         }
     }
@@ -67,6 +66,6 @@ final class RangeAggregation extends Aggregation
      */
     protected function buildRangeKey(?float $from = null, ?float $to = null): string
     {
-        return ($from === null ? '*' : (string)$from) . '-' . ($to === null ? '*' : (string)$to);
+        return ($from === null ? '*' : (string) $from) . '-' . ($to === null ? '*' : (string) $to);
     }
 }

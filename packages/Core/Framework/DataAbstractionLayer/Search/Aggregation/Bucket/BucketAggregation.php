@@ -5,16 +5,14 @@ namespace SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Aggregation\Bucke
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Aggregation\Aggregation;
 use SnapAdmin\Core\Framework\Log\Package;
 
-
 #[Package('core')]
 class BucketAggregation extends Aggregation
 {
     public function __construct(
-        string                 $name,
-        string                 $field,
+        string $name,
+        string $field,
         protected ?Aggregation $aggregation
-    )
-    {
+    ) {
         parent::__construct($name, $field);
     }
 

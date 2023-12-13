@@ -27,9 +27,8 @@ class ManyToOneAssociationFieldResolver extends AbstractFieldResolver
 {
     public function __construct(
         private readonly EntityDefinitionQueryHelper $queryHelper,
-        private readonly Connection                  $connection,
-    )
-    {
+        private readonly Connection $connection,
+    ) {
     }
 
     public function join(FieldResolverContext $context): string
@@ -190,11 +189,10 @@ class ManyToOneAssociationFieldResolver extends AbstractFieldResolver
      * exist, the live version is returned instead.
      */
     private function createSubVersionQuery(
-        AssociationField            $field,
-        Context                     $context,
+        AssociationField $field,
+        Context $context,
         EntityDefinitionQueryHelper $queryHelper
-    ): QueryBuilder
-    {
+    ): QueryBuilder {
         $subRoot = $field->getReferenceDefinition()->getEntityName();
 
         $versionQuery = new QueryBuilder($this->connection);

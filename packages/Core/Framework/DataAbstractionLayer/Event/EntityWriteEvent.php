@@ -44,9 +44,8 @@ class EntityWriteEvent extends Event implements SnapAdminEvent
      */
     private function __construct(
         private readonly WriteContext $writeContext,
-        private readonly array        $commands
-    )
-    {
+        private readonly array $commands
+    ) {
     }
 
     /**
@@ -82,7 +81,7 @@ class EntityWriteEvent extends Event implements SnapAdminEvent
     {
         return array_values(array_filter(
             $this->commands,
-            static fn(WriteCommand $command) => $command->getDefinition()->getEntityName() === $entityName
+            static fn (WriteCommand $command) => $command->getDefinition()->getEntityName() === $entityName
         ));
     }
 
@@ -104,7 +103,7 @@ class EntityWriteEvent extends Event implements SnapAdminEvent
                 continue;
             }
 
-            $primaryKeys = $definition->getPrimaryKeys()->filter(static fn(Field $field) => !$field instanceof VersionField
+            $primaryKeys = $definition->getPrimaryKeys()->filter(static fn (Field $field) => !$field instanceof VersionField
                 && !$field instanceof ReferenceVersionField
                 && $field instanceof StorageAware);
 

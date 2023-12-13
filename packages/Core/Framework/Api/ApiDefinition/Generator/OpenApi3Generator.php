@@ -30,13 +30,12 @@ class OpenApi3Generator implements ApiDefinitionGeneratorInterface
      * @param array{Framework: array{path: string}} $bundles
      */
     public function __construct(
-        private readonly OpenApiSchemaBuilder           $openApiBuilder,
-        private readonly OpenApiPathBuilder             $pathBuilder,
+        private readonly OpenApiSchemaBuilder $openApiBuilder,
+        private readonly OpenApiPathBuilder $pathBuilder,
         private readonly OpenApiDefinitionSchemaBuilder $definitionSchemaBuilder,
-        array                                           $bundles,
-        private readonly BundleSchemaPathCollection     $bundleSchemaPathCollection
-    )
-    {
+        array $bundles,
+        private readonly BundleSchemaPathCollection $bundleSchemaPathCollection
+    ) {
         $this->schemaPath = $bundles['Framework']['path'] . '/Api/ApiDefinition/Generator/Schema/AdminApi';
     }
 
@@ -52,7 +51,6 @@ class OpenApi3Generator implements ApiDefinitionGeneratorInterface
      */
     public function generate(array $definitions, string $api, string $apiType = DefinitionService::TYPE_JSON_API, ?string $bundleName = null): array
     {
-
         $openApi = new OpenApi([]);
         $this->openApiBuilder->enrich($openApi, $api);
 
@@ -219,7 +217,6 @@ class OpenApi3Generator implements ApiDefinitionGeneratorInterface
         return ltrim('/', $rootPath) . '/' . str_replace('_', '-', $definition->getEntityName());
     }
 
-
     private function shouldDefinitionBeIncluded(EntityDefinition $definition): bool
     {
         if (str_ends_with($definition->getEntityName(), '_translation')) {
@@ -239,6 +236,7 @@ class OpenApi3Generator implements ApiDefinitionGeneratorInterface
         if ($class->isSubclassOf(MappingEntityDefinition::class)) {
             return true;
         }
+
         return false;
     }
 }

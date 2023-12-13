@@ -10,11 +10,10 @@ use SnapAdmin\Core\Framework\Plugin\PluginEntity;
 class PluginPostDeactivationFailedEvent extends PluginLifecycleEvent
 {
     public function __construct(
-        PluginEntity                     $plugin,
+        PluginEntity $plugin,
         private readonly ActivateContext $context,
-        private readonly ?\Throwable     $exception = null
-    )
-    {
+        private readonly ?\Throwable $exception = null
+    ) {
         parent::__construct($plugin);
     }
 

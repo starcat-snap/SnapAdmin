@@ -20,10 +20,9 @@ class PartialEntityLoadedEvent extends EntityLoadedEvent
      */
     public function __construct(
         EntityDefinition $definition,
-        array            $entities,
-        Context          $context
-    )
-    {
+        array $entities,
+        Context $context
+    ) {
         parent::__construct($definition, $entities, $context);
         $this->name = $this->definition->getEntityName() . '.partial_loaded';
     }

@@ -26,10 +26,9 @@ class ScheduledTaskRunner extends Command
      * @internal
      */
     public function __construct(
-        private readonly TaskScheduler          $scheduler,
+        private readonly TaskScheduler $scheduler,
         private readonly CacheItemPoolInterface $restartSignalCachePool
-    )
-    {
+    ) {
         parent::__construct();
     }
 
@@ -53,7 +52,7 @@ class ScheduledTaskRunner extends Command
 
         $startTime = microtime(true);
         $endTime = null;
-        $timeLimit = (int)$input->getOption('time-limit');
+        $timeLimit = (int) $input->getOption('time-limit');
         if ($timeLimit) {
             $endTime = $startTime + $timeLimit;
         }
@@ -74,7 +73,7 @@ class ScheduledTaskRunner extends Command
                 }
             }
 
-            $idleTime = max(1, min((int)$idleTime, 15));
+            $idleTime = max(1, min((int) $idleTime, 15));
 
             sleep($idleTime);
 

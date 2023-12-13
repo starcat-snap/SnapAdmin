@@ -30,8 +30,8 @@ class EntityExists extends Constraint
 
     /**
      * @param array<string, mixed> $options
-     * @internal
      *
+     * @internal
      */
     public function __construct(array $options)
     {

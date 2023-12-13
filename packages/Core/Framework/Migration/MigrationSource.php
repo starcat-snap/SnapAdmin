@@ -16,14 +16,13 @@ class MigrationSource
 
     /**
      * @param iterable<string|MigrationSource> $namespaces
-     * @internal
      *
+     * @internal
      */
     public function __construct(
         private readonly string $name,
-        iterable                $namespaces = []
-    )
-    {
+        iterable $namespaces = []
+    ) {
         $this->sources = $namespaces instanceof \Traversable
             ? iterator_to_array($namespaces)
             : $namespaces;

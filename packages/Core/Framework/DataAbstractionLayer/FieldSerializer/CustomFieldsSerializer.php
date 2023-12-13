@@ -23,11 +23,10 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class CustomFieldsSerializer extends JsonFieldSerializer
 {
     public function __construct(
-        DefinitionInstanceRegistry          $definitionRegistry,
-        ValidatorInterface                  $validator,
+        DefinitionInstanceRegistry $definitionRegistry,
+        ValidatorInterface $validator,
         private readonly CustomFieldService $attributeService
-    )
-    {
+    ) {
         parent::__construct($validator, $definitionRegistry);
     }
 
@@ -82,7 +81,7 @@ class CustomFieldsSerializer extends JsonFieldSerializer
         if ($value) {
             // set fields dynamically
             /** @var list<string> $attributes */
-            $attributes = array_keys(json_decode((string)$value, true, 512, \JSON_THROW_ON_ERROR));
+            $attributes = array_keys(json_decode((string) $value, true, 512, \JSON_THROW_ON_ERROR));
 
             $field->setPropertyMapping($this->getFields($attributes));
         }

@@ -88,7 +88,7 @@ class Feature
         }
 
         $featureAll = EnvironmentHelper::getVariable('FEATURE_ALL', '');
-        if (self::isTrue((string)$featureAll) && (self::$registeredFeatures === [] || \array_key_exists($feature, self::$registeredFeatures))) {
+        if (self::isTrue((string) $featureAll) && (self::$registeredFeatures === [] || \array_key_exists($feature, self::$registeredFeatures))) {
             if ($featureAll === Feature::ALL_MAJOR) {
                 return true;
             }
@@ -102,10 +102,10 @@ class Feature
         if (!EnvironmentHelper::hasVariable($feature) && !EnvironmentHelper::hasVariable(\strtolower($feature))) {
             $fallback = self::$registeredFeatures[$feature]['default'] ?? false;
 
-            return (bool)$fallback;
+            return (bool) $fallback;
         }
 
-        return self::isTrue(trim((string)EnvironmentHelper::getVariable($feature)));
+        return self::isTrue(trim((string) EnvironmentHelper::getVariable($feature)));
     }
 
     public static function ifActive(string $flagName, \Closure $closure): void
@@ -273,9 +273,9 @@ class Feature
         );
 
         // set defaults
-        $metaData['major'] = (bool)($metaData['major'] ?? false);
-        $metaData['default'] = (bool)($metaData['default'] ?? false);
-        $metaData['description'] = (string)($metaData['description'] ?? '');
+        $metaData['major'] = (bool) ($metaData['major'] ?? false);
+        $metaData['default'] = (bool) ($metaData['default'] ?? false);
+        $metaData['description'] = (string) ($metaData['description'] ?? '');
 
         self::$registeredFeatures[$name] = $metaData;
     }
@@ -294,7 +294,7 @@ class Feature
                 $data = [];
             }
 
-            self::registerFeature((string)$flag, $data);
+            self::registerFeature((string) $flag, $data);
         }
     }
 
@@ -308,8 +308,8 @@ class Feature
 
     /**
      * @return array<string, FeatureFlagConfig>
-     * @internal
      *
+     * @internal
      */
     public static function getRegisteredFeatures(): array
     {

@@ -18,10 +18,9 @@ class ArrayStruct extends Struct implements \ArrayAccess, \IteratorAggregate, \C
      * @param array<array-key, mixed> $data
      */
     public function __construct(
-        protected array   $data = [],
+        protected array $data = [],
         protected ?string $apiAlias = null
-    )
-    {
+    ) {
     }
 
     public function has(string|int $property): bool

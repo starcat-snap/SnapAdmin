@@ -16,10 +16,9 @@ class WriteCommandExceptionEvent extends Event implements SnapAdminEvent
      */
     public function __construct(
         private readonly \Throwable $exception,
-        private readonly array      $commands,
-        private readonly Context    $context
-    )
-    {
+        private readonly array $commands,
+        private readonly Context $context
+    ) {
     }
 
     public function getException(): \Throwable

@@ -30,7 +30,7 @@ class DatabaseConnectionInformation extends Struct
 
     public static function fromEnv(): self
     {
-        $dsn = trim((string)EnvironmentHelper::getVariable('DATABASE_URL', getenv('DATABASE_URL')));
+        $dsn = trim((string) EnvironmentHelper::getVariable('DATABASE_URL', getenv('DATABASE_URL')));
         if ($dsn === '') {
             throw new DatabaseSetupException('Environment variable \'DATABASE_URL\' not defined.');
         }
@@ -48,7 +48,7 @@ class DatabaseConnectionInformation extends Struct
             $params[$param] = rawurldecode($value);
         }
 
-        $path = (string)($params['path'] ?? '/');
+        $path = (string) ($params['path'] ?? '/');
         $dbName = substr($path, 1);
         if (!isset($params['scheme']) || !isset($params['host']) || trim($dbName) === '') {
             throw new DatabaseSetupException('Environment variable \'DATABASE_URL\' does not contain a valid dsn.');
@@ -56,7 +56,7 @@ class DatabaseConnectionInformation extends Struct
 
         return (new self())->assign([
             'hostname' => $params['host'],
-            'port' => (int)($params['port'] ?? '3306'),
+            'port' => (int) ($params['port'] ?? '3306'),
             'username' => $params['user'] ?? null,
             'password' => $params['pass'] ?? null,
             'databaseName' => $dbName,

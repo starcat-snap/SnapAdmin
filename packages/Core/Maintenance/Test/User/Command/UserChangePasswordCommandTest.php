@@ -3,11 +3,8 @@
 namespace SnapAdmin\Core\Maintenance\Test\User\Command;
 
 use PHPUnit\Framework\TestCase;
-use SnapAdmin\Core\Framework\Context;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityRepository;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Test\TestCaseBase\IntegrationTestBehaviour;
-use SnapAdmin\Core\Framework\Uuid\Uuid;
 use SnapAdmin\Core\Maintenance\User\Command\UserChangePasswordCommand;
 use Symfony\Component\Console\Tester\CommandTester;
 
@@ -20,13 +17,9 @@ class UserChangePasswordCommandTest extends TestCase
     use IntegrationTestBehaviour;
     private const TEST_USERNAME = 'Admin';
 
-
     protected function setUp(): void
     {
     }
-
-
-
 
     public function testEmptyPasswordOption(): void
     {

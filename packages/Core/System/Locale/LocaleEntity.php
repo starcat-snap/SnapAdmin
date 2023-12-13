@@ -9,7 +9,6 @@ use SnapAdmin\Core\System\Language\LanguageCollection;
 use SnapAdmin\Core\System\Locale\Aggregate\LocaleTranslation\LocaleTranslationCollection;
 use SnapAdmin\Core\System\User\UserCollection;
 
-
 class LocaleEntity extends Entity
 {
     use EntityCustomFieldsTrait;

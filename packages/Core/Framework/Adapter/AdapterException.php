@@ -6,7 +6,6 @@ use SnapAdmin\Core\Framework\HttpException;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Node\Expression\AbstractExpression;
 
-
 class AdapterException extends HttpException
 {
     public const UNEXPECTED_TWIG_EXPRESSION = 'FRAMEWORK__UNEXPECTED_TWIG_EXPRESSION';

@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\Framework\Event;
 
 use SnapAdmin\Core\Framework\Log\Package;
 
-
 #[Package('business-ops')]
 class BusinessEventRegistry
 {
@@ -12,7 +11,6 @@ class BusinessEventRegistry
      * @var array<string>
      */
     private array $classes = [
-
     ];
 
     public function addClasses(array $classes): void

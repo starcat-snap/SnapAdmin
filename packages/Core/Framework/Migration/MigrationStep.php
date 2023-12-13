@@ -39,7 +39,7 @@ abstract class MigrationStep
 
     public function isInstallation(): bool
     {
-        return (bool)EnvironmentHelper::getVariable(self::INSTALL_ENVIRONMENT_VARIABLE, false);
+        return (bool) EnvironmentHelper::getVariable(self::INSTALL_ENVIRONMENT_VARIABLE, false);
     }
 
     /**
@@ -48,7 +48,7 @@ abstract class MigrationStep
     protected function createTrigger(Connection $connection, string $query, array $params = []): void
     {
         $blueGreenDeployment = EnvironmentHelper::getVariable('BLUE_GREEN_DEPLOYMENT', false);
-        if ((int)$blueGreenDeployment === 0) {
+        if ((int) $blueGreenDeployment === 0) {
             return;
         }
 
@@ -98,7 +98,7 @@ abstract class MigrationStep
             $connection->beginTransaction();
 
             foreach ($roles as $role) {
-                $currentPrivileges = \json_decode((string)$role['privileges'], true, 512, \JSON_THROW_ON_ERROR);
+                $currentPrivileges = \json_decode((string) $role['privileges'], true, 512, \JSON_THROW_ON_ERROR);
                 $newPrivileges = $this->fixRolePrivileges($privileges, $currentPrivileges);
 
                 if ($currentPrivileges === $newPrivileges) {

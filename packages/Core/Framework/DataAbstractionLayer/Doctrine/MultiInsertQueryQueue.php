@@ -27,11 +27,10 @@ class MultiInsertQueryQueue
 
     public function __construct(
         private readonly Connection $connection,
-        int                         $chunkSize = 250,
-        private readonly bool       $ignoreErrors = false,
-        private readonly bool       $useReplace = false
-    )
-    {
+        int $chunkSize = 250,
+        private readonly bool $ignoreErrors = false,
+        private readonly bool $useReplace = false
+    ) {
         if ($chunkSize < 1) {
             throw new \InvalidArgumentException(
                 sprintf('Parameter $chunkSize needs to be a positive integer starting with 1, "%d" given', $chunkSize)

@@ -65,7 +65,7 @@ class MockingSimpleObjectsNotAllowedRule implements Rule
             return [];
         }
 
-        if (!\in_array((string)$node->name, self::MOCK_METHODS, true)) {
+        if (!\in_array((string) $node->name, self::MOCK_METHODS, true)) {
             return [];
         }
 
@@ -109,10 +109,10 @@ class MockingSimpleObjectsNotAllowedRule implements Rule
     {
         switch (true) {
             case $node instanceof String_:
-                return (string)$node->value;
+                return (string) $node->value;
             case $node instanceof ClassConstFetch:
                 if ($node->class instanceof Name) {
-                    return (string)$node->class;
+                    return (string) $node->class;
                 }
 
                 return null;

@@ -25,7 +25,7 @@ class RefreshMigrationCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $path = $input->getArgument('path');
-        $filename = basename((string)$path);
+        $filename = basename((string) $path);
         $className = pathinfo($filename, \PATHINFO_FILENAME);
 
         $output->writeln('Updating timestamp of migration: ' . $filename);
@@ -35,9 +35,9 @@ class RefreshMigrationCommand extends Command
         }
 
         $timestamp = $this->getCurrentTimestamp($filename);
-        $newTimestamp = (string)time();
+        $newTimestamp = (string) time();
 
-        $newPath = str_replace($timestamp, $newTimestamp, (string)$path);
+        $newPath = str_replace($timestamp, $newTimestamp, (string) $path);
 
         $search = [
             pathinfo($filename, \PATHINFO_FILENAME),

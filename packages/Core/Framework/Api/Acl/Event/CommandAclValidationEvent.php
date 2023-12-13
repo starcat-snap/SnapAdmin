@@ -14,11 +14,10 @@ class CommandAclValidationEvent extends Event
      * @param list<string> $missingPrivileges
      */
     public function __construct(
-        private array                   $missingPrivileges,
+        private array $missingPrivileges,
         private readonly AdminApiSource $source,
-        private readonly WriteCommand   $command
-    )
-    {
+        private readonly WriteCommand $command
+    ) {
     }
 
     /**

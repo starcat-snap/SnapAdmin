@@ -56,20 +56,19 @@ class Translator extends AbstractTranslator
      */
     public function __construct(
         private readonly TranslatorInterface&TranslatorBagInterface&LocaleAwareInterface $translator,
-        private readonly RequestStack                                                    $requestStack,
-        private readonly MessageFormatterInterface                                       $formatter,
-        private readonly string                                                          $environment,
-        private readonly LanguageLocaleCodeProvider                                      $languageLocaleProvider,
-        private readonly SnippetService                                                  $snippetService,
-        private readonly bool                                                            $fineGrainedCache
-    )
-    {
+        private readonly RequestStack $requestStack,
+        private readonly MessageFormatterInterface $formatter,
+        private readonly string $environment,
+        private readonly LanguageLocaleCodeProvider $languageLocaleProvider,
+        private readonly SnippetService $snippetService,
+        private readonly bool $fineGrainedCache
+    ) {
     }
 
     public static function buildName(string $id): string
     {
-        if (\strpbrk($id, (string)ItemInterface::RESERVED_CHARACTERS) !== false) {
-            $id = \str_replace(\str_split((string)ItemInterface::RESERVED_CHARACTERS, 1), '_r_', $id);
+        if (\strpbrk($id, (string) ItemInterface::RESERVED_CHARACTERS) !== false) {
+            $id = \str_replace(\str_split((string) ItemInterface::RESERVED_CHARACTERS, 1), '_r_', $id);
         }
 
         return 'translator.' . $id;
@@ -268,7 +267,6 @@ class Translator extends AbstractTranslator
         $this->snippetSetId = $snippetSetId;
     }
 
-
     /**
      * Add language specific snippets provided by the admin
      */
@@ -290,6 +288,7 @@ class Translator extends AbstractTranslator
         }
 
         $newCatalog = clone $catalog;
+
         return $this->isCustomized[$snippetSetId] = $newCatalog;
     }
 

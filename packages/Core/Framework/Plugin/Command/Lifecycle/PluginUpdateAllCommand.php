@@ -26,11 +26,10 @@ class PluginUpdateAllCommand extends Command
      * @internal
      */
     public function __construct(
-        private readonly PluginService          $pluginService,
-        private readonly EntityRepository       $pluginRepository,
+        private readonly PluginService $pluginService,
+        private readonly EntityRepository $pluginRepository,
         private readonly PluginLifecycleService $pluginLifecycleService
-    )
-    {
+    ) {
         parent::__construct();
     }
 

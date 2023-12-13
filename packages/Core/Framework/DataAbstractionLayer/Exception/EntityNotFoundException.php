@@ -12,8 +12,7 @@ class EntityNotFoundException extends SnapAdminHttpException
     public function __construct(
         string $entity,
         string $identifier
-    )
-    {
+    ) {
         parent::__construct(
             '{{ entity }} for id {{ identifier }} not found.',
             ['entity' => $entity, 'identifier' => $identifier]

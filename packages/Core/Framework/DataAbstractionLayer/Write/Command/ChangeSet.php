@@ -26,9 +26,8 @@ class ChangeSet extends Struct
     public function __construct(
         array $state,
         array $payload,
-        bool  $isDelete
-    )
-    {
+        bool $isDelete
+    ) {
         $this->state = $state;
 
         // calculate changes
@@ -37,7 +36,7 @@ class ChangeSet extends Struct
         // validate data types
         foreach ($changes as $property => $after) {
             $before = $state[$property];
-            $string = (string)$after;
+            $string = (string) $after;
             if ($string === $before) {
                 continue;
             }

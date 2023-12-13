@@ -30,9 +30,8 @@ class EventSubscriberGenerator implements ScaffoldingGenerator
 
     public function generateStubs(
         PluginScaffoldConfiguration $configuration,
-        StubCollection              $stubCollection
-    ): void
-    {
+        StubCollection $stubCollection
+    ): void {
         if (!$configuration->hasOption(self::OPTION_NAME) || !$configuration->getOption(self::OPTION_NAME)) {
             return;
         }

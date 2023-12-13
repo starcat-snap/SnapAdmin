@@ -19,10 +19,9 @@ class SyncOperation extends Struct
         protected string $key,
         protected string $entity,
         protected string $action,
-        protected array  $payload,
-        protected array  $criteria = []
-    )
-    {
+        protected array $payload,
+        protected array $criteria = []
+    ) {
     }
 
     public function getEntity(): string
@@ -95,8 +94,8 @@ class SyncOperation extends Struct
 
     /**
      * @param array<int, mixed> $payload
-     * @internal used to replace payload in case of api shorthands (e.g. delete mappings with wild cards, etc)
      *
+     * @internal used to replace payload in case of api shorthands (e.g. delete mappings with wild cards, etc)
      */
     public function replacePayload(array $payload): void
     {

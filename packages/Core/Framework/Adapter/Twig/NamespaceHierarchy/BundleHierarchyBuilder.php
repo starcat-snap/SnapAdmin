@@ -14,8 +14,7 @@ class BundleHierarchyBuilder implements TemplateNamespaceHierarchyBuilderInterfa
      */
     public function __construct(
         private readonly KernelInterface $kernel
-    )
-    {
+    ) {
     }
 
     public function buildNamespaceHierarchy(array $namespaceHierarchy): array

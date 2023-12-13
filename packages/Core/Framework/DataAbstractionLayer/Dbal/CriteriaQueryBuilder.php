@@ -25,14 +25,13 @@ use SnapAdmin\Core\Framework\Log\Package;
 class CriteriaQueryBuilder
 {
     public function __construct(
-        private readonly SqlQueryParser              $parser,
+        private readonly SqlQueryParser $parser,
         private readonly EntityDefinitionQueryHelper $helper,
-        private readonly SearchTermInterpreter       $interpreter,
-        private readonly EntityScoreQueryBuilder     $scoreBuilder,
-        private readonly JoinGroupBuilder            $joinGrouper,
-        private readonly CriteriaPartResolver        $criteriaPartResolver
-    )
-    {
+        private readonly SearchTermInterpreter $interpreter,
+        private readonly EntityScoreQueryBuilder $scoreBuilder,
+        private readonly JoinGroupBuilder $joinGrouper,
+        private readonly CriteriaPartResolver $criteriaPartResolver
+    ) {
     }
 
     /**
@@ -51,7 +50,7 @@ class CriteriaQueryBuilder
         }
 
         if ($criteria->getTerm()) {
-            $pattern = $this->interpreter->interpret((string)$criteria->getTerm());
+            $pattern = $this->interpreter->interpret((string) $criteria->getTerm());
             $queries = $this->scoreBuilder->buildScoreQueries($pattern, $definition, $definition->getEntityName(), $context);
             $criteria->addQuery(...$queries);
         }
@@ -178,7 +177,7 @@ class CriteriaQueryBuilder
             $criteria->addSorting(new FieldSorting('_score', FieldSorting::DESCENDING));
         }
 
-        $minScore = array_map(fn(ScoreQuery $query) => $query->getScore(), $criteria->getQueries());
+        $minScore = array_map(fn (ScoreQuery $query) => $query->getScore(), $criteria->getQueries());
         \assert(!empty($minScore));
 
         $minScore = min($minScore);

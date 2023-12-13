@@ -24,15 +24,14 @@ class RouteScopeListener implements EventSubscriberInterface
 
     /**
      * @param iterable<RouteScopeWhitelistInterface> $whitelists
-     * @internal
      *
+     * @internal
      */
     public function __construct(
         private readonly RouteScopeRegistry $routeScopeRegistry,
-        private readonly RequestStack       $requestStack,
-        iterable                            $whitelists
-    )
-    {
+        private readonly RequestStack $requestStack,
+        iterable $whitelists
+    ) {
         $this->whitelists = \is_array($whitelists) ? $whitelists : iterator_to_array($whitelists);
     }
 

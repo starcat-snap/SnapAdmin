@@ -25,7 +25,7 @@ class OpenApiSchemaBuilder
             'name' => 'Admin API',
             'url' => '/api',
             'apiKey' => false,
-        ]
+        ],
     ];
 
     /**
@@ -56,7 +56,7 @@ class OpenApiSchemaBuilder
      */
     private function createServers(string $api): array
     {
-        $url = (string)EnvironmentHelper::getVariable('APP_URL', '');
+        $url = (string) EnvironmentHelper::getVariable('APP_URL', '');
 
         return [
             new Server(['url' => rtrim($url, '/') . self::API[$api]['url']]),
@@ -399,7 +399,7 @@ EOF
         $example = [
             'errors' => [
                 [
-                    'status' => (string)$statusCode,
+                    'status' => (string) $statusCode,
                     'title' => $title,
                     'description' => $description,
                 ],

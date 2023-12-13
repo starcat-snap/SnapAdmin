@@ -9,11 +9,10 @@ use SnapAdmin\Core\Framework\Log\Package;
 class UpdatePrePrepareEvent extends UpdateEvent
 {
     public function __construct(
-        Context                 $context,
+        Context $context,
         private readonly string $currentVersion,
         private readonly string $newVersion
-    )
-    {
+    ) {
         parent::__construct($context);
     }
 

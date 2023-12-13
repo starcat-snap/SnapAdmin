@@ -11,8 +11,7 @@ class InvalidContextSourceException extends SnapAdminHttpException
     public function __construct(
         string $expected,
         string $actual
-    )
-    {
+    ) {
         parent::__construct(
             'Expected ContextSource of "{{expected}}", but got "{{actual}}".',
             ['expected' => $expected, 'actual' => $actual]

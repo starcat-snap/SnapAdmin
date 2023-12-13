@@ -6,7 +6,6 @@ use SnapAdmin\Core\Framework\Bundle;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin;
 use SnapAdmin\Core\Kernel;
-use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 
 #[Package('core')]
 class BundleConfigGenerator implements BundleConfigGeneratorInterface
@@ -17,9 +16,8 @@ class BundleConfigGenerator implements BundleConfigGeneratorInterface
      * @internal
      */
     public function __construct(
-        private readonly Kernel           $kernel,
-    )
-    {
+        private readonly Kernel $kernel,
+    ) {
         $projectDir = $this->kernel->getContainer()->getParameter('kernel.project_dir');
         if (!\is_string($projectDir)) {
             throw new \RuntimeException('Container parameter "kernel.project_dir" needs to be a string');
@@ -98,11 +96,10 @@ class BundleConfigGenerator implements BundleConfigGeneratorInterface
         return $path . '/build/webpack.config.js';
     }
 
-
     private function getActivePlugins(): array
     {
         $activePlugins = $this->kernel->getPluginLoader()->getPluginInstances()->getActives();
 
-        return array_map(static fn(Plugin $plugin) => $plugin->getName(), $activePlugins);
+        return array_map(static fn (Plugin $plugin) => $plugin->getName(), $activePlugins);
     }
 }

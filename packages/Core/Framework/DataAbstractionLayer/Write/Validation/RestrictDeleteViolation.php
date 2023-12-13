@@ -14,11 +14,9 @@ class RestrictDeleteViolation
         /**
          * Contains an array which indexed by definition class.
          * Each value represents a single restricted identity
-         *
          */
         private readonly array $restrictions
-    )
-    {
+    ) {
     }
 
     public function getRestrictions(): array

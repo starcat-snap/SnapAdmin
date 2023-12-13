@@ -23,12 +23,11 @@ class BlobFieldSerializer implements FieldSerializerInterface
     }
 
     public function encode(
-        Field             $field,
-        EntityExistence   $existence,
-        KeyValuePair      $data,
+        Field $field,
+        EntityExistence $existence,
+        KeyValuePair $data,
         WriteParameterBag $parameters
-    ): \Generator
-    {
+    ): \Generator {
         if (!$field instanceof BlobField) {
             throw throw DataAbstractionLayerException::invalidSerializerField(BlobField::class, $field);
         }
@@ -42,6 +41,6 @@ class BlobFieldSerializer implements FieldSerializerInterface
             return $value;
         }
 
-        return (string)$value;
+        return (string) $value;
     }
 }

@@ -2,8 +2,8 @@
 
 namespace SnapAdmin\Core\System\CustomEntity\Xml\Field;
 
-use SnapAdmin\Core\Framework\Struct\XmlElement;
 use SnapAdmin\Core\Framework\Log\Package;
+use SnapAdmin\Core\Framework\Struct\XmlElement;
 use Symfony\Component\Config\Util\XmlUtils;
 
 /**

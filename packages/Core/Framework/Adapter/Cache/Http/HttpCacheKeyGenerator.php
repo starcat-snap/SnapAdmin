@@ -23,11 +23,10 @@ class HttpCacheKeyGenerator
      * @internal
      */
     public function __construct(
-        private readonly string                   $cacheHash,
+        private readonly string $cacheHash,
         private readonly EventDispatcherInterface $dispatcher,
-        private readonly array                    $ignoredParameters
-    )
-    {
+        private readonly array $ignoredParameters
+    ) {
     }
 
     /**
@@ -89,6 +88,5 @@ class HttpCacheKeyGenerator
 
             return;
         }
-
     }
 }

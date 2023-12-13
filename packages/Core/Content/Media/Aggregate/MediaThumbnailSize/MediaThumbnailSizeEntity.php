@@ -7,7 +7,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 
-
 class MediaThumbnailSizeEntity extends Entity
 {
     use EntityCustomFieldsTrait;

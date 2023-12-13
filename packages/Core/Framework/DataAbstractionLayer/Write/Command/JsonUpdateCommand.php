@@ -17,14 +17,13 @@ class JsonUpdateCommand extends UpdateCommand
      * @param array<string> $primaryKey
      */
     public function __construct(
-        EntityDefinition        $definition,
+        EntityDefinition $definition,
         private readonly string $storageName,
-        array                   $payload,
-        array                   $primaryKey,
-        EntityExistence         $existence,
-        string                  $path
-    )
-    {
+        array $payload,
+        array $primaryKey,
+        EntityExistence $existence,
+        string $path
+    ) {
         parent::__construct($definition, $payload, $primaryKey, $existence, $path);
     }
 

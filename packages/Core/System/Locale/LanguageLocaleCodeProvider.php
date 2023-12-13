@@ -8,7 +8,6 @@ use Symfony\Contracts\Service\ResetInterface;
 /**
  * @phpstan-import-type LanguageData from \SnapAdmin\Core\System\Language\LanguageLoaderInterface
  */
-
 class LanguageLocaleCodeProvider implements ResetInterface
 {
     /**

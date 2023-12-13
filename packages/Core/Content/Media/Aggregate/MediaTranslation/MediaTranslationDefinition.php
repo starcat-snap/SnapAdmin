@@ -10,7 +10,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\LongTextField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 
-
 class MediaTranslationDefinition extends EntityTranslationDefinition
 {
     final public const ENTITY_NAME = 'media_translation';

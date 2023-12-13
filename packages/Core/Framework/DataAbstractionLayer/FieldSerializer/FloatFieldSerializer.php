@@ -33,12 +33,12 @@ class FloatFieldSerializer extends AbstractFieldSerializer
             return;
         }
 
-        yield $field->getStorageName() => (float)$data->getValue();
+        yield $field->getStorageName() => (float) $data->getValue();
     }
 
     public function decode(Field $field, mixed $value): ?float
     {
-        return $value === null ? null : (float)$value;
+        return $value === null ? null : (float) $value;
     }
 
     protected function getConstraints(Field $field): array

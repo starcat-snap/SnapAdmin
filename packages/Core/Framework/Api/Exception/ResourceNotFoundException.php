@@ -11,9 +11,8 @@ class ResourceNotFoundException extends SnapAdminHttpException
 {
     public function __construct(
         string $resourceType,
-        array  $primaryKey
-    )
-    {
+        array $primaryKey
+    ) {
         $resourceIds = [];
         foreach ($primaryKey as $key => $value) {
             $resourceIds[] = $key . '(' . $value . ')';

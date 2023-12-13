@@ -51,7 +51,7 @@ class AdditionalPermissionValidationTest extends TestCase
                 return null;
             }
 
-            return \dirname((string)(new \ReflectionClass($class))->getFileName());
+            return \dirname((string) (new \ReflectionClass($class))->getFileName());
         }, self::ROOT_CLASSES));
     }
 

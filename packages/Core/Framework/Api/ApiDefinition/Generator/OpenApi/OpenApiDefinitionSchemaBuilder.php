@@ -13,7 +13,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BreadcrumbField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\DateTimeField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Field;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\FkField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\ApiAware;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\Deprecated;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\Extension;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
@@ -43,11 +42,10 @@ class OpenApiDefinitionSchemaBuilder
      */
     public function getSchemaByDefinition(
         EntityDefinition $definition,
-        string           $path,
-        bool             $onlyFlat = false,
-        string           $apiType = DefinitionService::TYPE_JSON_API
-    ): array
-    {
+        string $path,
+        bool $onlyFlat = false,
+        string $apiType = DefinitionService::TYPE_JSON_API
+    ): array {
         $schema = [];
         $attributes = [];
         $requiredAttributes = [];
@@ -61,7 +59,6 @@ class OpenApiDefinitionSchemaBuilder
         $extensionRelationships = [];
 
         foreach ($definition->getFields() as $field) {
-
             if ($field->is(Extension::class)) {
                 $extensions[] = $field;
 

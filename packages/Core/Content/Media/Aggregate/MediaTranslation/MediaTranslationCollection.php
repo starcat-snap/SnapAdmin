@@ -7,7 +7,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCollection;
 /**
  * @extends EntityCollection<MediaTranslationEntity>
  */
-
 class MediaTranslationCollection extends EntityCollection
 {
     /**

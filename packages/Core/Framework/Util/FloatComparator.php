@@ -11,7 +11,7 @@ class FloatComparator
 
     public static function cast(float $a): float
     {
-        return (float)(string)$a;
+        return (float) (string) $a;
     }
 
     public static function equals(float $a, float $b): bool

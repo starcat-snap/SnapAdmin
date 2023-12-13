@@ -12,9 +12,8 @@ class ParentFieldForeignKeyConstraintMissingException extends SnapAdminHttpExcep
 {
     public function __construct(
         EntityDefinition $definition,
-        Field            $parentField
-    )
-    {
+        Field $parentField
+    ) {
         parent::__construct(
             'Foreign key property {{ propertyName }} of parent association in definition {{ definition }} expected to be an FkField got %s',
             [

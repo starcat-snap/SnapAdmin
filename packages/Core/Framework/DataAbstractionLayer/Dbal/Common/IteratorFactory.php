@@ -18,10 +18,9 @@ class IteratorFactory
      * @internal
      */
     public function __construct(
-        private readonly Connection                 $connection,
+        private readonly Connection $connection,
         private readonly DefinitionInstanceRegistry $registry
-    )
-    {
+    ) {
     }
 
     /**
@@ -56,7 +55,7 @@ class IteratorFactory
         $query->select([$escaped . '.id', 'LOWER(HEX(' . $escaped . '.id))']);
         $query->setFirstResult(0);
         if ($lastId !== null) {
-            $query->setFirstResult((int)$lastId['offset']);
+            $query->setFirstResult((int) $lastId['offset']);
         }
 
         return new OffsetQuery($query);

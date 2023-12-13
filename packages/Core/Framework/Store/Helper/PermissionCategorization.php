@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
 namespace SnapAdmin\Core\Framework\Store\Helper;
+
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Version\VersionDefinition;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\CustomField\Aggregate\CustomFieldSet\CustomFieldSetDefinition;

@@ -15,20 +15,19 @@ class SystemConfigLimiter extends TimeBackoffLimiter
      */
     public function __construct(
         SystemConfigService $systemConfigService,
-        string              $id,
-        array               $limits,
-        \DateInterval       $reset,
-        StorageInterface    $storage,
-        ?LockInterface      $lock = null
-    )
-    {
+        string $id,
+        array $limits,
+        \DateInterval $reset,
+        StorageInterface $storage,
+        ?LockInterface $lock = null
+    ) {
         foreach ($limits as $idx => $limit) {
             if (!isset($limit['domain'])) {
                 continue;
             }
 
             $sysLimit = $systemConfigService->get($limit['domain']);
-            $limits[$idx]['limit'] = $sysLimit && (int)$sysLimit !== 0 ? (int)$sysLimit : \PHP_INT_MAX;
+            $limits[$idx]['limit'] = $sysLimit && (int) $sysLimit !== 0 ? (int) $sysLimit : \PHP_INT_MAX;
             unset($limits[$idx]['domain']);
         }
 

@@ -21,14 +21,13 @@ class SyncFkResolver
 {
     /**
      * @param iterable<AbstractFkResolver> $resolvers
-     * @internal
      *
+     * @internal
      */
     public function __construct(
         private readonly DefinitionInstanceRegistry $registry,
-        private readonly iterable                   $resolvers
-    )
-    {
+        private readonly iterable $resolvers
+    ) {
     }
 
     /**
@@ -82,7 +81,7 @@ class SyncFkResolver
                         continue;
                     }
 
-                    $resolver = (string)$value['resolver'];
+                    $resolver = (string) $value['resolver'];
 
                     $row[$key] = $reference = new FkReference($value['value']);
 

@@ -25,7 +25,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TreePathField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 
-
 class MediaFolderDefinition extends EntityDefinition
 {
     final public const ENTITY_NAME = 'media_folder';

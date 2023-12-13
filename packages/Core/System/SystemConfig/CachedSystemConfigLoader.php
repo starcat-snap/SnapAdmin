@@ -17,9 +17,8 @@ class CachedSystemConfigLoader extends AbstractSystemConfigLoader
      */
     public function __construct(
         private readonly AbstractSystemConfigLoader $decorated,
-        private readonly CacheInterface             $cache
-    )
-    {
+        private readonly CacheInterface $cache
+    ) {
     }
 
     public function getDecorated(): AbstractSystemConfigLoader
@@ -31,7 +30,7 @@ class CachedSystemConfigLoader extends AbstractSystemConfigLoader
     {
         $key = 'system-config-';
 
-        $value = $this->cache->get($key, function (ItemInterface $item)  {
+        $value = $this->cache->get($key, function (ItemInterface $item) {
             $config = $this->getDecorated()->load();
 
             $item->tag([self::CACHE_TAG]);

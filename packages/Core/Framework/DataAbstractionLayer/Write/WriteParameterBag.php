@@ -19,16 +19,15 @@ class WriteParameterBag
 
     public function __construct(
         /** Defines the entity definition where the field placed in */
-        private readonly EntityDefinition  $definition,
+        private readonly EntityDefinition $definition,
         /** Contains the write context instance of the current write process */
-        private readonly WriteContext      $context,
+        private readonly WriteContext $context,
         /** Contains the current property path for the proccessed field e.g product/{id}/name */
-        private string                     $path,
+        private string $path,
         /** Contains all already applied write commands of the current write process */
         private readonly WriteCommandQueue $commandQueue,
-        private PrimaryKeyBag              $primaryKeyBag = new PrimaryKeyBag()
-    )
-    {
+        private PrimaryKeyBag $primaryKeyBag = new PrimaryKeyBag()
+    ) {
     }
 
     public function getDefinition(): EntityDefinition

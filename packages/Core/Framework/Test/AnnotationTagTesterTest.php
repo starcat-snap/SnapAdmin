@@ -190,7 +190,6 @@ class AnnotationTagTesterTest extends TestCase
         $this->annotationTagTester->validateDeprecatedAnnotations($deprecatedContent);
     }
 
-
     public function testItCapturesTheVersionFromDeprecationElementsCorrectly(): void
     {
         $this->annotationTagTester->validateDeprecationElements('<deprecated>tag:v6.5.0</deprecated>');

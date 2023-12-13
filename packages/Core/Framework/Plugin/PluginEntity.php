@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\Plugin;
 
-
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
@@ -116,7 +115,6 @@ class PluginEntity extends Entity
      * @var PluginTranslationCollection|null
      */
     protected $translations;
-
 
     /**
      * @var array<string, array<string, list<string>|string>>

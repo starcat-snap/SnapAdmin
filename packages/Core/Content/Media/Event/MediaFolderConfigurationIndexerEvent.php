@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\Content\Media\Event;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Event\NestedEvent;
 
-
 class MediaFolderConfigurationIndexerEvent extends NestedEvent
 {
     public function __construct(

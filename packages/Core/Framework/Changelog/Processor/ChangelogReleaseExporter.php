@@ -77,32 +77,32 @@ class ChangelogReleaseExporter extends ChangelogProcessor
      */
     private function exportByRequestedSection(array $output, ChangelogFileCollection $collection, string $section): array
     {
-        $getContentFnc = static fn(ChangelogDefinition $definition): ?string => null;
+        $getContentFnc = static fn (ChangelogDefinition $definition): ?string => null;
         $title = '';
         switch ($section) {
             case ChangelogSection::core->name:
                 $title = ChangelogSection::core->value;
-                $getContentFnc = static fn(ChangelogDefinition $definition): ?string => $definition->getCore();
+                $getContentFnc = static fn (ChangelogDefinition $definition): ?string => $definition->getCore();
 
                 break;
             case ChangelogSection::api->name:
                 $title = ChangelogSection::api->value;
-                $getContentFnc = static fn(ChangelogDefinition $definition): ?string => $definition->getApi();
+                $getContentFnc = static fn (ChangelogDefinition $definition): ?string => $definition->getApi();
 
                 break;
             case ChangelogSection::administration->name:
                 $title = ChangelogSection::administration->value;
-                $getContentFnc = static fn(ChangelogDefinition $definition): ?string => $definition->getAdministration();
+                $getContentFnc = static fn (ChangelogDefinition $definition): ?string => $definition->getAdministration();
 
                 break;
             case ChangelogSection::upgrade->name:
                 $title = ChangelogSection::upgrade->value;
-                $getContentFnc = static fn(ChangelogDefinition $definition): ?string => $definition->getUpgradeInformation();
+                $getContentFnc = static fn (ChangelogDefinition $definition): ?string => $definition->getUpgradeInformation();
 
                 break;
             case ChangelogSection::major->name:
                 $title = ChangelogSection::major->value;
-                $getContentFnc = static fn(ChangelogDefinition $definition): ?string => $definition->getNextMajorVersionChanges();
+                $getContentFnc = static fn (ChangelogDefinition $definition): ?string => $definition->getNextMajorVersionChanges();
 
                 break;
         }

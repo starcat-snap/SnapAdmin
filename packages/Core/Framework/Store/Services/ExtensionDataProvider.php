@@ -19,11 +19,10 @@ class ExtensionDataProvider extends AbstractExtensionDataProvider
     final public const HEADER_NAME_TOTAL_COUNT = 'SA-Meta-Total';
 
     public function __construct(
-        private readonly ExtensionLoader        $extensionLoader,
-        private readonly EntityRepository       $pluginRepository,
+        private readonly ExtensionLoader $extensionLoader,
+        private readonly EntityRepository $pluginRepository,
         private readonly ExtensionListingLoader $extensionListingLoader
-    )
-    {
+    ) {
     }
 
     public function getInstalledExtensions(Context $context, bool $loadCloudExtensions = true, ?Criteria $searchCriteria = null): ExtensionCollection

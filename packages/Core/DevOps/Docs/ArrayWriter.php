@@ -15,7 +15,7 @@ class ArrayWriter
     public function __construct(private readonly string $path)
     {
         if (file_exists($path)) {
-            $this->data = (array)require $path;
+            $this->data = (array) require $path;
         }
     }
 

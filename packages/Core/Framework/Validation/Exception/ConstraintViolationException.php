@@ -15,9 +15,8 @@ class ConstraintViolationException extends SnapAdminHttpException
 
     public function __construct(
         ConstraintViolationList $violations,
-        private readonly array  $inputData
-    )
-    {
+        private readonly array $inputData
+    ) {
         $this->mapErrorCodes($violations);
 
         $this->violations = $violations;

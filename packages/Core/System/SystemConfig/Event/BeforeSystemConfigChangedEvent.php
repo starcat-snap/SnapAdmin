@@ -12,10 +12,9 @@ class BeforeSystemConfigChangedEvent extends Event
      * @param array|bool|float|int|string|null $value
      */
     public function __construct(
-        private readonly string  $key,
-        private                  $value,
-    )
-    {
+        private readonly string $key,
+        private $value,
+    ) {
     }
 
     public function getKey(): string

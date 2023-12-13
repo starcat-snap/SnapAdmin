@@ -15,7 +15,7 @@ class AccessKeyHelper
      * @var array<string, string>
      */
     public static $mapping = [
-        self::USER_IDENTIFIER => 'user'
+        self::USER_IDENTIFIER => 'user',
     ];
 
     public static function generateAccessKey(string $identifier): string

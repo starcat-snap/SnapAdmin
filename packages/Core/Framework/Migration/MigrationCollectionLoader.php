@@ -45,16 +45,15 @@ class MigrationCollectionLoader
 
     /**
      * @param iterable<MigrationSource> $migrationSources
-     * @internal
      *
+     * @internal
      */
     public function __construct(
-        private readonly Connection       $connection,
+        private readonly Connection $connection,
         private readonly MigrationRuntime $migrationRuntime,
-        iterable                          $migrationSources = [],
+        iterable $migrationSources = [],
         private readonly ?LoggerInterface $logger = null
-    )
-    {
+    ) {
         foreach ($migrationSources as $migrationSource) {
             $this->addSource($migrationSource);
         }
@@ -105,7 +104,7 @@ class MigrationCollectionLoader
         }
 
         [$_, $safeMajorVersion, $currentMinor] = explode('.', $currentVersion);
-        $safeMajorVersion = (int)$safeMajorVersion;
+        $safeMajorVersion = (int) $safeMajorVersion;
 
         $simulateMajor = EnvironmentHelper::getVariable('FEATURE_ALL') === 'major';
         if ($simulateMajor) {
@@ -129,10 +128,10 @@ class MigrationCollectionLoader
     }
 
     /**
-     * @return array<string, MigrationCollection>
      * @throws UnknownMigrationSourceException
-     *
      * @throws InvalidMigrationClassException
+     *
+     * @return array<string, MigrationCollection>
      */
     public function collectAll(): array
     {

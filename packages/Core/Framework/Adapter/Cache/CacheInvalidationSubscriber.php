@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\Adapter\Cache;
 
-use Doctrine\DBAL\Connection;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\SystemConfig\CachedSystemConfigLoader;
 
@@ -14,8 +13,7 @@ class CacheInvalidationSubscriber
      */
     public function __construct(
         private readonly CacheInvalidator $cacheInvalidator
-    )
-    {
+    ) {
     }
 
     public function invalidateConfig(): void

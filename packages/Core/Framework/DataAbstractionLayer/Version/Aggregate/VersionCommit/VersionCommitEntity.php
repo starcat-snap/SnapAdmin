@@ -28,7 +28,6 @@ class VersionCommitEntity extends Entity
      */
     protected $userId;
 
-
     /**
      * @var VersionCommitDataCollection
      */

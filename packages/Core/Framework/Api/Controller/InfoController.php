@@ -36,18 +36,17 @@ class InfoController extends AbstractController
      * @internal
      */
     public function __construct(
-        private readonly DefinitionService        $definitionService,
-        private readonly ParameterBagInterface    $params,
-        private readonly Kernel                   $kernel,
-        private readonly Packages                 $packages,
-        private readonly BusinessEventCollector   $eventCollector,
+        private readonly DefinitionService $definitionService,
+        private readonly ParameterBagInterface $params,
+        private readonly Kernel $kernel,
+        private readonly Packages $packages,
+        private readonly BusinessEventCollector $eventCollector,
         private readonly IncrementGatewayRegistry $incrementGatewayRegistry,
-        private readonly Connection               $connection,
-        private readonly AppUrlVerifier           $appUrlVerifier,
-        private readonly bool                     $enableUrlFeature = true,
-        private readonly array                    $cspTemplates = []
-    )
-    {
+        private readonly Connection $connection,
+        private readonly AppUrlVerifier $appUrlVerifier,
+        private readonly bool $enableUrlFeature = true,
+        private readonly array $cspTemplates = []
+    ) {
     }
 
     #[Route(path: '/api/_info/openapi3.json', defaults: ['auth_required' => '%snap.api.api_browser.auth_required_str%'], name: 'api.info.openapi3', methods: ['GET'])]
@@ -78,9 +77,9 @@ class InfoController extends AbstractController
         // Fetch unlimited message_queue_stats
         $entries = $gateway->list('message_queue_stats', -1);
 
-        return new JsonResponse(array_map(fn(array $entry) => [
+        return new JsonResponse(array_map(fn (array $entry) => [
             'name' => $entry['key'],
-            'size' => (int)$entry['count'],
+            'size' => (int) $entry['count'],
         ], array_values($entries)));
     }
 
@@ -213,7 +212,7 @@ class InfoController extends AbstractController
 
         foreach ($this->getActiveApps() as $app) {
             $assets[$app['name']] = [
-                'active' => (bool)$app['active'],
+                'active' => (bool) $app['active'],
                 'integrationId' => $app['integrationId'],
                 'type' => 'app',
                 'baseUrl' => $app['baseUrl'],
@@ -231,7 +230,7 @@ class InfoController extends AbstractController
      */
     private function getAdministrationStyles(Bundle $bundle): array
     {
-        $path = 'administration/css/' . str_replace('_', '-', (string)$bundle->getContainerPrefix()) . '.css';
+        $path = 'administration/css/' . str_replace('_', '-', (string) $bundle->getContainerPrefix()) . '.css';
         $bundlePath = $bundle->getPath();
 
         if (!file_exists($bundlePath . '/Resources/public/' . $path) && !file_exists($bundlePath . '/Resources/.administration-css')) {
@@ -246,7 +245,7 @@ class InfoController extends AbstractController
      */
     private function getAdministrationScripts(Bundle $bundle): array
     {
-        $path = 'administration/js/' . str_replace('_', '-', (string)$bundle->getContainerPrefix()) . '.js';
+        $path = 'administration/js/' . str_replace('_', '-', (string) $bundle->getContainerPrefix()) . '.js';
         $bundlePath = $bundle->getPath();
 
         if (!file_exists($bundlePath . '/Resources/public/' . $path) && !file_exists($bundlePath . '/Resources/.administration-js')) {
@@ -296,7 +295,7 @@ LEFT JOIN acl_role ar on app.acl_role_id = ar.id
 WHERE app.active = 1 AND app.base_app_url is not null');
 
         return array_map(static function (array $item) {
-            $privileges = $item['privileges'] ? json_decode((string)$item['privileges'], true, 512, \JSON_THROW_ON_ERROR) : [];
+            $privileges = $item['privileges'] ? json_decode((string) $item['privileges'], true, 512, \JSON_THROW_ON_ERROR) : [];
 
             $item['privileges'] = [];
 

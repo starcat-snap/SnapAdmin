@@ -20,9 +20,8 @@ class RestrictDeleteViolationException extends SnapAdminHttpException
      */
     public function __construct(
         EntityDefinition $definition,
-        array            $restrictions
-    )
-    {
+        array $restrictions
+    ) {
         $restriction = $restrictions[0];
         $usages = [];
         $usagesStrings = [];

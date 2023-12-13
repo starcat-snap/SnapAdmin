@@ -14,7 +14,6 @@ class NotificationEntity extends Entity
 
     protected ?string $createdByIntegrationId = null;
 
-
     protected ?string $createdByUserId = null;
 
     protected ?UserEntity $createdByUser = null;

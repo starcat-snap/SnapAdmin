@@ -64,7 +64,7 @@ class DoctrineExtension extends AbstractExtension
                 break;
 
             case \is_object($result) && method_exists($result, '__toString'):
-                $result = addslashes((string)$result->__toString());
+                $result = addslashes((string) $result->__toString());
 
                 break;
 
@@ -79,7 +79,7 @@ class DoctrineExtension extends AbstractExtension
                 break;
         }
 
-        return (string)$result;
+        return (string) $result;
     }
 
     /**
@@ -100,7 +100,7 @@ class DoctrineExtension extends AbstractExtension
             $i = 1;
         }
 
-        return (string)preg_replace_callback(
+        return (string) preg_replace_callback(
             '/\?|((?<!:):[a-z0-9_]+)/i',
             static function ($matches) use ($parameters, &$i) {
                 $key = substr($matches[0], 1);

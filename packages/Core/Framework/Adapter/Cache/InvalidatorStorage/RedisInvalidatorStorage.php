@@ -11,8 +11,8 @@ class RedisInvalidatorStorage extends AbstractInvalidatorStorage
 
     /**
      * @param \Redis|\RedisCluster $redis
-     * @internal
      *
+     * @internal
      */
     public function __construct(private $redis)
     {

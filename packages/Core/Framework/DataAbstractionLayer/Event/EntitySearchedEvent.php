@@ -13,11 +13,10 @@ use Symfony\Contracts\EventDispatcher\Event;
 class EntitySearchedEvent extends Event implements SnapAdminEvent
 {
     public function __construct(
-        private readonly Criteria         $criteria,
+        private readonly Criteria $criteria,
         private readonly EntityDefinition $definition,
-        private readonly Context          $context
-    )
-    {
+        private readonly Context $context
+    ) {
     }
 
     public function getCriteria(): Criteria

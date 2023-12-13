@@ -9,7 +9,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 
-
 class MediaFolderEntity extends Entity
 {
     use EntityCustomFieldsTrait;

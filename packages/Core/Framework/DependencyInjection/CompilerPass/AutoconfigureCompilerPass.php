@@ -36,7 +36,6 @@ class AutoconfigureCompilerPass implements CompilerPassInterface
             ->registerForAutoconfiguration(ScheduledTask::class)
             ->addTag('snap.scheduled.task');
 
-
         $container
             ->registerForAutoconfiguration(EntityIndexer::class)
             ->addTag('snap.entity_indexer');
@@ -49,12 +48,9 @@ class AutoconfigureCompilerPass implements CompilerPassInterface
             ->registerForAutoconfiguration(FieldSerializerInterface::class)
             ->addTag('snap.field_serializer');
 
-
-
         $container
             ->registerForAutoconfiguration(TemplateNamespaceHierarchyBuilderInterface::class)
             ->addTag('snap.twig.hierarchy_builder');
-
 
         $container->registerAliasForArgument('snap.filesystem.private', FilesystemOperator::class, 'privateFilesystem');
         $container->registerAliasForArgument('snap.filesystem.public', FilesystemOperator::class, 'publicFilesystem');

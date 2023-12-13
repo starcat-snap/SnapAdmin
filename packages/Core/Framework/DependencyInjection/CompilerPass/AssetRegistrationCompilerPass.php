@@ -20,7 +20,5 @@ class AssetRegistrationCompilerPass implements CompilerPassInterface
 
         $assetService = $container->getDefinition('assets.packages');
         $assetService->addMethodCall('setDefaultPackage', [$assets['asset']]);
-
-
     }
 }

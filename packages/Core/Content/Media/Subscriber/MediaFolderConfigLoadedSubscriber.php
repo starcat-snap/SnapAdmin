@@ -10,7 +10,6 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**
  * @internal
  */
-
 class MediaFolderConfigLoadedSubscriber implements EventSubscriberInterface
 {
     /**

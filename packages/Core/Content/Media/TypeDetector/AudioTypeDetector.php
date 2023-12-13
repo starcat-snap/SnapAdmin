@@ -6,7 +6,6 @@ use SnapAdmin\Core\Content\Media\File\MediaFile;
 use SnapAdmin\Core\Content\Media\MediaType\AudioType;
 use SnapAdmin\Core\Content\Media\MediaType\MediaType;
 
-
 class AudioTypeDetector implements TypeDetectorInterface
 {
     protected const SUPPORTED_FILE_EXTENSIONS = [

@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\System\Language\Exception;
 use SnapAdmin\Core\Framework\SnapAdminHttpException;
 use Symfony\Component\HttpFoundation\Response;
 
-
 class LanguageForeignKeyDeleteException extends SnapAdminHttpException
 {
     public function __construct(?\Throwable $e = null)

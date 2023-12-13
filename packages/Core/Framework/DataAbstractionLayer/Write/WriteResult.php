@@ -20,8 +20,7 @@ class WriteResult
         protected array $deleted,
         protected array $notFound = [],
         protected array $written = []
-    )
-    {
+    ) {
     }
 
     /**

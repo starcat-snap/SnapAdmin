@@ -18,7 +18,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 #[Route(defaults: ['_routeScope' => ['api']])]
-
 class MediaUploadController extends AbstractController
 {
     /**

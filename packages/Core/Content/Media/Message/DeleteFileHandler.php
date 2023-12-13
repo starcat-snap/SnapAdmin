@@ -12,7 +12,6 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
  * @internal
  */
 #[AsMessageHandler]
-
 final class DeleteFileHandler
 {
     /**

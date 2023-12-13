@@ -10,10 +10,9 @@ use SnapAdmin\Core\Framework\Plugin\PluginEntity;
 class PluginPreActivateEvent extends PluginLifecycleEvent
 {
     public function __construct(
-        PluginEntity                     $plugin,
+        PluginEntity $plugin,
         private readonly ActivateContext $context
-    )
-    {
+    ) {
         parent::__construct($plugin);
     }
 

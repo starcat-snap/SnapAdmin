@@ -12,9 +12,8 @@ class RetryableQuery
 {
     public function __construct(
         private readonly ?Connection $connection,
-        private readonly Statement   $query
-    )
-    {
+        private readonly Statement $query
+    ) {
     }
 
     /**
@@ -22,7 +21,7 @@ class RetryableQuery
      */
     public function execute(array $params = []): int
     {
-        return self::retry($this->connection, fn() => $this->query->executeStatement($params), 0);
+        return self::retry($this->connection, fn () => $this->query->executeStatement($params), 0);
     }
 
     /**

@@ -9,7 +9,6 @@ use SnapAdmin\Core\Content\Media\MediaType\ImageType;
 use SnapAdmin\Core\Content\Media\MediaType\MediaType;
 use SnapAdmin\Core\Content\Media\MediaType\VideoType;
 
-
 class DefaultTypeDetector implements TypeDetectorInterface
 {
     public function detect(MediaFile $mediaFile, ?MediaType $previouslyDetectedType): ?MediaType

@@ -166,7 +166,7 @@ class DecorationPatternRule implements Rule
 
         $doc = $method->getDocComment() ?? '';
 
-        return !\str_contains((string)$doc, 'reason:visibility-change');
+        return !\str_contains((string) $doc, 'reason:visibility-change');
     }
 
     private function isBaseImplementation(InClassNode $node): bool

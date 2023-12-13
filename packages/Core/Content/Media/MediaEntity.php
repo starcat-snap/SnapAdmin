@@ -16,7 +16,6 @@ use SnapAdmin\Core\System\User\UserEntity;
 /**
  * @phpstan-type MediaConfig array{'spatialObject': array{'arReady': bool}}
  */
-
 class MediaEntity extends Entity
 {
     use EntityCustomFieldsTrait;
@@ -99,7 +98,6 @@ class MediaEntity extends Entity
      */
     protected $translations;
 
-
     /**
      * @var UserCollection|null
      */
@@ -129,6 +127,7 @@ class MediaEntity extends Entity
      * @var bool
      */
     protected $private = false;
+
     /**
      * @internal
      *
@@ -137,7 +136,6 @@ class MediaEntity extends Entity
     protected $thumbnailsRo;
 
     protected ?string $path = null;
-
 
     /**
      * @experimental stableVersion:v6.7.0 feature:SPATIAL_BASES
@@ -404,7 +402,6 @@ class MediaEntity extends Entity
 
         return $data;
     }
-
 
     public function isPrivate(): bool
     {

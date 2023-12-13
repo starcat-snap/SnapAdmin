@@ -10,7 +10,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 use SnapAdmin\Core\System\Locale\LocaleDefinition;
 
-
 class LocaleTranslationDefinition extends EntityTranslationDefinition
 {
     final public const ENTITY_NAME = 'locale_translation';

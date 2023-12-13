@@ -9,8 +9,8 @@ class NamespaceHierarchyBuilder
 {
     /**
      * @param TemplateNamespaceHierarchyBuilderInterface[] $namespaceHierarchyBuilders
-     * @internal
      *
+     * @internal
      */
     public function __construct(private readonly iterable $namespaceHierarchyBuilders)
     {

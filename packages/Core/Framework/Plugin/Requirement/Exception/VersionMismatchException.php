@@ -11,8 +11,7 @@ class VersionMismatchException extends RequirementException
         string $requirement,
         string $requiredVersion,
         string $actualVersion
-    )
-    {
+    ) {
         parent::__construct(
             'Required plugin/package "{{ requirement }} {{ requiredVersion }}" does not match installed version {{ version }}.',
             [

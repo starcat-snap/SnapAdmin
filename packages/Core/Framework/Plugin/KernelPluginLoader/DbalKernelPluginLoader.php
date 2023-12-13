@@ -10,11 +10,10 @@ use SnapAdmin\Core\Framework\Log\Package;
 class DbalKernelPluginLoader extends KernelPluginLoader
 {
     public function __construct(
-        ClassLoader                 $classLoader,
-        ?string                     $pluginDir,
+        ClassLoader $classLoader,
+        ?string $pluginDir,
         private readonly Connection $connection
-    )
-    {
+    ) {
         parent::__construct($classLoader, $pluginDir);
     }
 
@@ -37,9 +36,9 @@ SQL;
 
         $plugins = $this->connection->executeQuery($sql)->fetchAllAssociative();
         foreach ($plugins as $i => $plugin) {
-            $plugins[$i]['active'] = (bool)$plugin['active'];
-            $plugins[$i]['managedByComposer'] = (bool)$plugin['managedByComposer'];
-            $plugins[$i]['autoload'] = json_decode((string)$plugin['autoload'], true, 512, \JSON_THROW_ON_ERROR);
+            $plugins[$i]['active'] = (bool) $plugin['active'];
+            $plugins[$i]['managedByComposer'] = (bool) $plugin['managedByComposer'];
+            $plugins[$i]['autoload'] = json_decode((string) $plugin['autoload'], true, 512, \JSON_THROW_ON_ERROR);
         }
 
         $this->pluginInfos = $plugins;

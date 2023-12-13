@@ -9,7 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route(defaults: ['_routeScope' => ['api']])]
@@ -21,14 +20,13 @@ class IndexingController extends AbstractController
      */
     public function __construct(
         private readonly EntityIndexerRegistry $registry
-    )
-    {
+    ) {
     }
 
     #[Route(path: '/api/_action/indexing', name: 'api.action.indexing', methods: ['POST'])]
     public function indexing(Request $request): JsonResponse
     {
-        $indexingSkips = array_filter(explode(',', (string)$request->headers->get(PlatformRequest::HEADER_INDEXING_SKIP, '')));
+        $indexingSkips = array_filter(explode(',', (string) $request->headers->get(PlatformRequest::HEADER_INDEXING_SKIP, '')));
 
         $this->registry->sendIndexingMessage([], $indexingSkips);
 
@@ -38,7 +36,7 @@ class IndexingController extends AbstractController
     #[Route(path: '/api/_action/indexing/{indexer}', name: 'api.action.indexing.iterate', methods: ['POST'])]
     public function iterate(string $indexer, Request $request): JsonResponse
     {
-        $indexingSkips = array_filter(explode(',', (string)$request->headers->get(PlatformRequest::HEADER_INDEXING_SKIP, '')));
+        $indexingSkips = array_filter(explode(',', (string) $request->headers->get(PlatformRequest::HEADER_INDEXING_SKIP, '')));
 
         if (!$request->request->has('offset')) {
             throw new BadRequestHttpException('Parameter `offset` missing');

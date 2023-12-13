@@ -41,6 +41,7 @@ class Configuration implements ConfigurationInterface
 
         return $treeBuilder;
     }
+
     private function createHtmlSanitizerSection(): ArrayNodeDefinition
     {
         $treeBuilder = new TreeBuilder('html_sanitizer');
@@ -117,6 +118,7 @@ class Configuration implements ConfigurationInterface
 
         return $rootNode;
     }
+
     private function createCdnSection(): ArrayNodeDefinition
     {
         $rootNode = (new TreeBuilder('cdn'))->getRootNode();
@@ -128,6 +130,7 @@ class Configuration implements ConfigurationInterface
 
         return $rootNode;
     }
+
     private function createCacheSection(): ArrayNodeDefinition
     {
         $rootNode = (new TreeBuilder('cache'))->getRootNode();
@@ -165,8 +168,10 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
             ->end();
+
         return $rootNode;
     }
+
     private function createFilesystemSection(): ArrayNodeDefinition
     {
         $rootNode = (new TreeBuilder('filesystem'))->getRootNode();
@@ -221,7 +226,6 @@ class Configuration implements ConfigurationInterface
 
         return $rootNode;
     }
-
 
     private function createApiSection(): ArrayNodeDefinition
     {
@@ -345,7 +349,7 @@ class Configuration implements ConfigurationInterface
             ->booleanNode('enable_url_upload_feature')->end()
             ->booleanNode('enable_url_validation')->end()
             ->scalarNode('url_upload_max_size')->defaultValue(0)
-            ->validate()->always()->then(fn($value) => abs(MemorySizeCalculator::convertToBytes((string)$value)))->end()
+            ->validate()->always()->then(fn ($value) => abs(MemorySizeCalculator::convertToBytes((string) $value)))->end()
             ->end();
 
         return $rootNode;

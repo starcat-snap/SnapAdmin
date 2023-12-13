@@ -23,10 +23,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 class SystemDumpDatabaseCommand extends Command
 {
     public function __construct(
-        private readonly string     $defaultDirectory,
+        private readonly string $defaultDirectory,
         private readonly Connection $connection
-    )
-    {
+    ) {
         parent::__construct();
     }
 
@@ -52,7 +51,7 @@ class SystemDumpDatabaseCommand extends Command
             escapeshellarg($params['user'] ?? ''),
             $portString,
             escapeshellarg($params['host'] ?? ''),
-            escapeshellarg((string)($params['port'] ?? '')),
+            escapeshellarg((string) ($params['port'] ?? '')),
             $this->getIgnoreTableStmt($input, $dbName),
             escapeshellarg($dbName),
             escapeshellarg($path)
@@ -80,7 +79,7 @@ class SystemDumpDatabaseCommand extends Command
         $ignorableTables = \array_filter($option);
 
         return \implode(' ', \array_map(
-            static fn(string $table): string => '--ignore-table ' . \escapeshellarg($dbName . '.' . $table),
+            static fn (string $table): string => '--ignore-table ' . \escapeshellarg($dbName . '.' . $table),
             $ignorableTables
         ));
     }

@@ -34,11 +34,11 @@ class ExtensionCriteria extends Struct
         $criteria = new ExtensionCriteria();
 
         if (isset($parameter['limit'])) {
-            $criteria->setLimit((int)$parameter['limit']);
+            $criteria->setLimit((int) $parameter['limit']);
         }
 
         if (isset($parameter['page'])) {
-            $criteria->setOffset(((int)$parameter['page'] - 1) * $criteria->getLimit());
+            $criteria->setOffset(((int) $parameter['page'] - 1) * $criteria->getLimit());
         }
 
         if (isset($parameter['term'])) {

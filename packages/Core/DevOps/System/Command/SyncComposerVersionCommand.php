@@ -36,7 +36,7 @@ class SyncComposerVersionCommand extends Command
     {
         $isDryMode = $input->getOption('dry-run');
 
-        $rootComposerJson = json_decode((string)file_get_contents($this->projectDir . '/composer.json'), true, 512, \JSON_THROW_ON_ERROR);
+        $rootComposerJson = json_decode((string) file_get_contents($this->projectDir . '/composer.json'), true, 512, \JSON_THROW_ON_ERROR);
 
         $bundleJsons = glob($this->projectDir . '/packages/*/composer.json', \GLOB_NOSORT);
         \assert(\is_array($bundleJsons));
@@ -44,7 +44,7 @@ class SyncComposerVersionCommand extends Command
         $changed = false;
 
         foreach ($bundleJsons as $bundleJsonPath) {
-            $bundleJson = json_decode((string)file_get_contents($bundleJsonPath), true, 512, \JSON_THROW_ON_ERROR);
+            $bundleJson = json_decode((string) file_get_contents($bundleJsonPath), true, 512, \JSON_THROW_ON_ERROR);
 
             foreach (['require', 'require-dev'] as $field) {
                 foreach ($rootComposerJson[$field] ?? [] as $package => $version) {

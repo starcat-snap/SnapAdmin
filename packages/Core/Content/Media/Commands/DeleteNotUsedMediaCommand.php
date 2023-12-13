@@ -21,7 +21,6 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
     name: 'media:delete-unused',
     description: 'Deletes all media files which are not used in any entity',
 )]
-
 class DeleteNotUsedMediaCommand extends Command
 {
     /**

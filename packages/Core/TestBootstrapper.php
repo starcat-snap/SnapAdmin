@@ -342,7 +342,7 @@ class TestBootstrapper
                     '--create-database' => true,
                     '--force' => true,
                     '--drop-database' => true,
-                    '--basic-setup' => true
+                    '--basic-setup' => true,
                 ],
                 $installCommand->getDefinition()
             ),

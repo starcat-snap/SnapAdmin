@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Content\Media;
 
-
 use SnapAdmin\Core\Content\Media\Aggregate\MediaFolder\MediaFolderDefinition;
 use SnapAdmin\Core\Content\Media\Aggregate\MediaThumbnail\MediaThumbnailDefinition;
 use SnapAdmin\Core\Content\Media\Aggregate\MediaTranslation\MediaTranslationDefinition;
@@ -32,7 +31,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TranslationsAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 use SnapAdmin\Core\System\User\UserDefinition;
-
 
 class MediaDefinition extends EntityDefinition
 {

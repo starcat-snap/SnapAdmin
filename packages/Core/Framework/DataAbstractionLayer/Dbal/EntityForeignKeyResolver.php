@@ -38,10 +38,9 @@ class EntityForeignKeyResolver
      * @internal
      */
     public function __construct(
-        private readonly Connection                  $connection,
+        private readonly Connection $connection,
         private readonly EntityDefinitionQueryHelper $queryHelper
-    )
-    {
+    ) {
     }
 
     /**
@@ -62,17 +61,16 @@ class EntityForeignKeyResolver
      *
      * @param array<string>|array<array<string, string>> $ids
      *
-     * @return array<string, list<string>>
      * @throws \RuntimeException
      *
+     * @return array<string, list<string>>
      */
     public function getAffectedDeleteRestrictions(
         EntityDefinition $definition,
-        array            $ids,
-        Context          $context,
-        bool             $restrictDeleteOnlyFirstLevel = false
-    ): array
-    {
+        array $ids,
+        Context $context,
+        bool $restrictDeleteOnlyFirstLevel = false
+    ): array {
         return $this->fetch($definition, $ids, RestrictDelete::class, $context, $restrictDeleteOnlyFirstLevel);
     }
 
@@ -94,9 +92,9 @@ class EntityForeignKeyResolver
      *
      * @param array<string>|array<array<string, string>> $ids
      *
-     * @return array<string, list<string>>
      * @throws \RuntimeException
      *
+     * @return array<string, list<string>>
      */
     public function getAffectedDeletes(EntityDefinition $definition, array $ids, Context $context): array
     {
@@ -115,9 +113,9 @@ class EntityForeignKeyResolver
      *
      * @param array<string>|array<array<string, string>> $ids
      *
-     * @return array<string, list<string>>
      * @throws \RuntimeException
      *
+     * @return array<string, list<string>>
      */
     public function getAffectedSetNulls(EntityDefinition $definition, array $ids, Context $context): array
     {
@@ -142,9 +140,9 @@ class EntityForeignKeyResolver
      *
      * @param array<string>|array<array<string, string>> $ids
      *
-     * @return array<string, list<string>>
      * @throws \RuntimeException
      *
+     * @return array<string, list<string>>
      */
     public function getAllReverseInherited(EntityDefinition $definition, array $ids, Context $context): array
     {
@@ -155,9 +153,9 @@ class EntityForeignKeyResolver
      * @param class-string<Flag> $class
      * @param array<string>|array<array<string, string>> $ids
      *
-     * @return array<string, list<string>>
      * @throws InvalidUuidException
      *
+     * @return array<string, list<string>>
      */
     private function fetch(EntityDefinition $definition, array $ids, string $class, Context $context, bool $restrictDeleteOnlyFirstLevel = false): array
     {
@@ -174,7 +172,7 @@ class EntityForeignKeyResolver
             return [];
         }
 
-        $cascades = $definition->getFields()->filter(static fn(Field $field): bool => $field->is($class));
+        $cascades = $definition->getFields()->filter(static fn (Field $field): bool => $field->is($class));
 
         if ($cascades->count() === 0) {
             return [];
@@ -201,14 +199,13 @@ class EntityForeignKeyResolver
      * @return array<string, list<string>>
      */
     private function fetchAssociation(
-        array            $ids,
+        array $ids,
         EntityDefinition $root,
         AssociationField $association,
-        string           $class,
-        Context          $context,
-        bool             $restrictDeleteOnlyFirstLevel = false
-    ): array
-    {
+        string $class,
+        Context $context,
+        bool $restrictDeleteOnlyFirstLevel = false
+    ): array {
         if (empty($ids)) {
             return [];
         }

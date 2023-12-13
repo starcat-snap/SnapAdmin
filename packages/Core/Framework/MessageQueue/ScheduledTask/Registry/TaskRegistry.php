@@ -21,15 +21,14 @@ class TaskRegistry
     /**
      * @param iterable<int, ScheduledTask> $tasks
      * @param EntityRepository<ScheduledTaskCollection> $scheduledTaskRepository
-     * @internal
      *
+     * @internal
      */
     public function __construct(
-        private readonly iterable              $tasks,
-        private readonly EntityRepository      $scheduledTaskRepository,
+        private readonly iterable $tasks,
+        private readonly EntityRepository $scheduledTaskRepository,
         private readonly ParameterBagInterface $parameterBag
-    )
-    {
+    ) {
     }
 
     public function getAllTasks(Context $context): ScheduledTaskCollection
@@ -108,11 +107,10 @@ class TaskRegistry
 
     private function getAlreadyRegisteredTask(
         ScheduledTaskCollection $alreadyScheduledTasks,
-        ScheduledTask           $task
-    ): ?ScheduledTaskEntity
-    {
+        ScheduledTask $task
+    ): ?ScheduledTaskEntity {
         return $alreadyScheduledTasks
-            ->filter(fn(ScheduledTaskEntity $registeredTask) => $registeredTask->getScheduledTaskClass() === $task::class)
+            ->filter(fn (ScheduledTaskEntity $registeredTask) => $registeredTask->getScheduledTaskClass() === $task::class)
             ->first();
     }
 

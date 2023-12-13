@@ -18,23 +18,22 @@ class FieldResolverContext extends Struct
 {
     public function __construct(
         /** Contains the property path of the current field, e.g. `product.manufacturer` */
-        protected string                 $path,
+        protected string $path,
         /** Contains the alias of the base table where the sql join has to be build on, e.g. `product.manufacturer_1` */
-        protected string                 $alias,
+        protected string $alias,
         /** Contains the field which has to be resolved, e.g. ManyToManyAssociationField|OneToManyAssociationField|... */
-        protected Field                  $field,
+        protected Field $field,
         /** Contains the entity definition where the field comes from */
-        protected EntityDefinition       $definition,
+        protected EntityDefinition $definition,
         /** Contains the entity definition of the root table */
-        protected EntityDefinition       $rootDefinition,
+        protected EntityDefinition $rootDefinition,
         /** Contains the query builder which is used to build the sql query */
-        protected QueryBuilder           $query,
-        protected Context                $context,
+        protected QueryBuilder $query,
+        protected Context $context,
         /** Contains the criteria element which points to the provided field. In some cases this part is a JoinGroup with different DAL filters
          * to pre-restrict the join condition in mysql for to-many-association filters */
         protected ?CriteriaPartInterface $criteriaPart
-    )
-    {
+    ) {
     }
 
     public function getPath(): string

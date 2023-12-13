@@ -20,11 +20,10 @@ final class CleanupVersionTaskHandler extends ScheduledTaskHandler
      * @internal
      */
     public function __construct(
-        EntityRepository            $repository,
+        EntityRepository $repository,
         private readonly Connection $connection,
-        private readonly int        $days
-    )
-    {
+        private readonly int $days
+    ) {
         parent::__construct($repository);
     }
 

@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\Store\Services;
 
-use SnapAdmin\Core\Framework\Api\Acl\Role\AclRoleDefinition;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin\PluginCollection;
@@ -30,13 +29,11 @@ class ExtensionLoader
 {
     private const DEFAULT_LOCALE = 'zh_CN';
 
-
     public function __construct(
-        private readonly ConfigurationService       $configurationService,
-        private readonly LocaleProvider             $localeProvider,
+        private readonly ConfigurationService $configurationService,
+        private readonly LocaleProvider $localeProvider,
         private readonly LanguageLocaleCodeProvider $languageLocaleProvider
-    )
-    {
+    ) {
     }
 
     /**
@@ -108,7 +105,7 @@ class ExtensionLoader
         $codes = array_values($this->languageLocaleProvider->getLocalesForLanguageIds($languageIds));
         sort($codes);
 
-        return array_map(static fn(string $locale): string => str_replace('-', '_', $locale), $codes);
+        return array_map(static fn (string $locale): string => str_replace('-', '_', $locale), $codes);
     }
 
     private function loadFromPlugin(Context $context, PluginEntity $plugin): ExtensionStruct
@@ -143,7 +140,6 @@ class ExtensionLoader
     {
         return $this->translateExtensionLanguages($this->replaceCollections($data), $locale);
     }
-
 
     /**
      * @param array<string, mixed> $data

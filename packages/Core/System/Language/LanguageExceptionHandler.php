@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\System\Language;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\ExceptionHandlerInterface;
 use SnapAdmin\Core\System\Language\Exception\LanguageForeignKeyDeleteException;
 
-
 class LanguageExceptionHandler implements ExceptionHandlerInterface
 {
     public function getPriority(): int

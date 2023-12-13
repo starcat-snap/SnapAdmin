@@ -63,7 +63,6 @@ class FeatureFlagExtensionTest extends TestCase
         static::assertFalse($_SERVER['V6_5_0_0']);
     }
 
-
     public function testFeatureConfigAndEnvIsRestored(): void
     {
         $beforeFeatureFlagConfig = Feature::getRegisteredFeatures();

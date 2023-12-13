@@ -10,11 +10,10 @@ class IntField extends Field implements StorageAware
 {
     public function __construct(
         private readonly string $storageName,
-        string                  $propertyName,
-        private readonly ?int   $minValue = null,
-        private readonly ?int   $maxValue = null
-    )
-    {
+        string $propertyName,
+        private readonly ?int $minValue = null,
+        private readonly ?int $maxValue = null
+    ) {
         parent::__construct($propertyName);
     }
 

@@ -22,9 +22,8 @@ class FrwRequestOptionsProvider extends AbstractStoreRequestOptionsProvider
 
     public function __construct(
         private readonly AbstractStoreRequestOptionsProvider $optionsProvider,
-        private readonly EntityRepository                    $userConfigRepository,
-    )
-    {
+        private readonly EntityRepository $userConfigRepository,
+    ) {
     }
 
     public function getAuthenticationHeader(Context $context): array

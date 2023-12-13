@@ -68,7 +68,7 @@ class OpenSSLVerifier
             return $this->keyResource;
         }
 
-        $publicKey = trim((string)file_get_contents($this->publicKeyPath));
+        $publicKey = trim((string) file_get_contents($this->publicKeyPath));
 
         $key = openssl_pkey_get_public($publicKey);
         if ($key === false) {

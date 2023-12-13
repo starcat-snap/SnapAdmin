@@ -21,19 +21,17 @@ class ProfilerController
      */
     public function __construct(
         private readonly Environment $twig,
-        private readonly Profiler    $profiler,
-        private readonly Connection  $connection
-    )
-    {
+        private readonly Profiler $profiler,
+        private readonly Connection $connection
+    ) {
     }
 
     public function explainAction(
         string $profilerToken,
         string $panelName,
         string $connectionName,
-        int    $queryIndex
-    ): Response
-    {
+        int $queryIndex
+    ): Response {
         $this->profiler->disable();
 
         $profile = $this->profiler->loadProfile($profilerToken);

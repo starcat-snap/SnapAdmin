@@ -31,15 +31,14 @@ class EntityIndexerRegistry
 
     /**
      * @param iterable<EntityIndexer> $indexer
-     * @internal
      *
+     * @internal
      */
     public function __construct(
-        private readonly iterable                 $indexer,
-        private readonly MessageBusInterface      $messageBus,
+        private readonly iterable $indexer,
+        private readonly MessageBusInterface $messageBus,
         private readonly EventDispatcherInterface $dispatcher
-    )
-    {
+    ) {
     }
 
     /**

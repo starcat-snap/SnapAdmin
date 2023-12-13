@@ -33,22 +33,20 @@ class PasswordFieldSerializer extends AbstractFieldSerializer
      * @internal
      */
     public function __construct(
-        ValidatorInterface         $validator,
+        ValidatorInterface $validator,
         DefinitionInstanceRegistry $definitionRegistry,
-        SystemConfigService        $configService
-    )
-    {
+        SystemConfigService $configService
+    ) {
         parent::__construct($validator, $definitionRegistry);
         $this->configService = $configService;
     }
 
     public function encode(
-        Field             $field,
-        EntityExistence   $existence,
-        KeyValuePair      $data,
+        Field $field,
+        EntityExistence $existence,
+        KeyValuePair $data,
         WriteParameterBag $parameters
-    ): \Generator
-    {
+    ): \Generator {
         if (!$field instanceof PasswordField) {
             throw DataAbstractionLayerException::invalidSerializerField(PasswordField::class, $field);
         }
@@ -61,7 +59,7 @@ class PasswordFieldSerializer extends AbstractFieldSerializer
             // if no password algorithm is detected, it might be plain text which needs to be encoded.
             // otherwise, passthrough the possibly encoded string
             if (!$info['algo']) {
-                $value = password_hash((string)$value, $field->getAlgorithm(), $field->getHashOptions());
+                $value = password_hash((string) $value, $field->getAlgorithm(), $field->getHashOptions());
             }
         }
 

@@ -27,7 +27,7 @@ class EntityLoadedEventFactory
     {
         $mapping = $this->recursion($entities, []);
 
-        $generator = fn(EntityDefinition $definition, array $entities) => new EntityLoadedEvent($definition, $entities, $context);
+        $generator = fn (EntityDefinition $definition, array $entities) => new EntityLoadedEvent($definition, $entities, $context);
 
         return $this->buildEvents($mapping, $generator, $context);
     }
@@ -39,11 +39,10 @@ class EntityLoadedEventFactory
     {
         $mapping = $this->recursion($entities, []);
 
-        $generator = fn(EntityDefinition $definition, array $entities) => new PartialEntityLoadedEvent($definition, $entities, $context);
+        $generator = fn (EntityDefinition $definition, array $entities) => new PartialEntityLoadedEvent($definition, $entities, $context);
 
         return $this->buildEvents($mapping, $generator, $context);
     }
-
 
     /**
      * @param array<string, list<Entity>> $mapping

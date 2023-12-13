@@ -1,4 +1,5 @@
 <?php declare(strict_types=1);
+
 namespace SnapAdmin\Core\System\Test;
 
 use Doctrine\DBAL\Connection;

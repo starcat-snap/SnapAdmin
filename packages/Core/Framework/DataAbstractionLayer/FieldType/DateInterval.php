@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\DataAbstractionLayer\FieldType;
 
-
 class DateInterval extends \DateInterval
 {
     public const FORMAT = 'P%yY%mM%dDT%hH%iM%sS';

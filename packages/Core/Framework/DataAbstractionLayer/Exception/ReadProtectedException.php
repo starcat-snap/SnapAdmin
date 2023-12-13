@@ -12,8 +12,7 @@ class ReadProtectedException extends SnapAdminHttpException
     public function __construct(
         string $field,
         string $scope
-    )
-    {
+    ) {
         parent::__construct(
             'The field/association "{{ field }}" is read protected for your scope "{{ scope }}"',
             [

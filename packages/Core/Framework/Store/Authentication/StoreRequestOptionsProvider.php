@@ -28,12 +28,11 @@ class StoreRequestOptionsProvider extends AbstractStoreRequestOptionsProvider
     private const SNAP_SHOP_SECRET_HEADER = 'X-SnapAdmin-Shop-Secret';
 
     public function __construct(
-        private readonly EntityRepository    $userRepository,
+        private readonly EntityRepository $userRepository,
         private readonly SystemConfigService $systemConfigService,
-        private readonly InstanceService     $instanceService,
-        private readonly LocaleProvider      $localeProvider,
-    )
-    {
+        private readonly InstanceService $instanceService,
+        private readonly LocaleProvider $localeProvider,
+    ) {
     }
 
     /**
@@ -72,7 +71,7 @@ class StoreRequestOptionsProvider extends AbstractStoreRequestOptionsProvider
     {
         $contextSource = $this->ensureAdminApiSource($context);
         $userId = $contextSource->getUserId();
-        if ($userId == null) {
+        if ($userId === null) {
             throw new InvalidContextSourceUserException($contextSource::class);
         }
 

@@ -34,7 +34,6 @@ class SnippetSetEntity extends Entity
      */
     protected $snippets;
 
-
     public function getName(): string
     {
         return $this->name;

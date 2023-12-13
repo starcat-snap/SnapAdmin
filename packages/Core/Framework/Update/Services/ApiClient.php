@@ -24,11 +24,10 @@ class ApiClient
      */
     public function __construct(
         private readonly HttpClientInterface $client,
-        private readonly bool                $snapUpdateEnabled,
-        private readonly string              $snapVersion,
-        private readonly string              $projectDir
-    )
-    {
+        private readonly bool $snapUpdateEnabled,
+        private readonly string $snapVersion,
+        private readonly string $projectDir
+    ) {
     }
 
     public function checkForUpdates(): Version
@@ -113,8 +112,8 @@ class ApiClient
 
         $latestVersion = $mappedVersions[$currentMajor];
 
-        $first = (int)substr($this->snapVersion, 0, 1);
-        $second = (int)substr($this->snapVersion, 2, 1);
+        $first = (int) substr($this->snapVersion, 0, 1);
+        $second = (int) substr($this->snapVersion, 2, 1);
         ++$second;
 
         if (isset($mappedVersions[$first . '.' . $second])) {

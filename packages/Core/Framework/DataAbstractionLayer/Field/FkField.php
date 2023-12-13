@@ -41,8 +41,7 @@ class FkField extends Field implements StorageAware
         string $propertyName,
         string $referenceClass,
         string $referenceField = 'id'
-    )
-    {
+    ) {
         $this->referenceClass = $referenceClass;
         $this->storageName = $storageName;
         $this->referenceField = $referenceField;

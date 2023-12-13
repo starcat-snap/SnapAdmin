@@ -7,7 +7,6 @@ use SnapAdmin\Core\Content\Media\MediaException;
 use SnapAdmin\Core\Content\Media\MediaType\ImageType;
 use SnapAdmin\Core\Content\Media\MediaType\MediaType;
 
-
 class ImageTypeDetector implements TypeDetectorInterface
 {
     protected const SUPPORTED_FILE_EXTENSIONS = [

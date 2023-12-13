@@ -41,7 +41,7 @@ class PluginZipDetector
             return false;
         }
 
-        $pluginName = explode('/', (string)$entry['name'])[0];
+        $pluginName = explode('/', (string) $entry['name'])[0];
         $composerFile = $pluginName . '/composer.json';
         $manifestFile = $pluginName . '/manifest.xml';
 
@@ -58,7 +58,7 @@ class PluginZipDetector
             return false;
         }
 
-        $pluginName = explode('/', (string)$entry['name'])[0];
+        $pluginName = explode('/', (string) $entry['name'])[0];
         $manifestFile = $pluginName . '/manifest.xml';
 
         $statManifestFile = $archive->statName($manifestFile);

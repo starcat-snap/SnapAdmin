@@ -13,10 +13,9 @@ class EnvironmentHelperTransformerData
      */
     public function __construct(
         private readonly string $key,
-        private                 $value,
-        private                 $default
-    )
-    {
+        private $value,
+        private $default
+    ) {
     }
 
     public function getKey(): string

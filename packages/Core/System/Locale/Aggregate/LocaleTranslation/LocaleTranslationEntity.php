@@ -6,7 +6,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\TranslationEntity;
 use SnapAdmin\Core\System\Locale\LocaleEntity;
 
-
 class LocaleTranslationEntity extends TranslationEntity
 {
     use EntityCustomFieldsTrait;

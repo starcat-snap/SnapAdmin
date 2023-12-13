@@ -18,10 +18,9 @@ class CacheTracer extends AbstractCacheTracer
      */
     public function __construct(
         private readonly SystemConfigService $config,
-        private readonly AbstractTranslator  $translator,
-        private readonly CacheTagCollection  $collection
-    )
-    {
+        private readonly AbstractTranslator $translator,
+        private readonly CacheTagCollection $collection
+    ) {
     }
 
     public function getDecorated(): AbstractCacheTracer
@@ -31,7 +30,7 @@ class CacheTracer extends AbstractCacheTracer
 
     public function trace(string $key, \Closure $param)
     {
-        return $this->collection->trace($key, fn() => $this->translator->trace($key, fn() => $this->config->trace($key, $param)));
+        return $this->collection->trace($key, fn () => $this->translator->trace($key, fn () => $this->config->trace($key, $param)));
     }
 
     public function get(string $key): array

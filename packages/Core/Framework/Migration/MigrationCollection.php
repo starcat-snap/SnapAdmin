@@ -20,12 +20,11 @@ class MigrationCollection
      * @internal
      */
     public function __construct(
-        private readonly MigrationSource  $migrationSource,
+        private readonly MigrationSource $migrationSource,
         private readonly MigrationRuntime $migrationRuntime,
-        private readonly Connection       $connection,
+        private readonly Connection $connection,
         private readonly ?LoggerInterface $logger = null
-    )
-    {
+    ) {
     }
 
     public function getName(): string
@@ -141,9 +140,9 @@ class MigrationCollection
     }
 
     /**
-     * @return array<class-string<MigrationStep>, MigrationStep>
      * @throws InvalidMigrationClassException
      *
+     * @return array<class-string<MigrationStep>, MigrationStep>
      */
     private function loadMigrationSteps(): array
     {

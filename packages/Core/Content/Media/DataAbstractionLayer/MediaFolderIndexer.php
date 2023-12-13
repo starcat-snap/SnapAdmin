@@ -18,7 +18,6 @@ use SnapAdmin\Core\Framework\Plugin\Exception\DecorationPatternException;
 use SnapAdmin\Core\Framework\Uuid\Uuid;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
-
 class MediaFolderIndexer extends EntityIndexer
 {
     final public const CHILD_COUNT_UPDATER = 'media_folder.child-count';

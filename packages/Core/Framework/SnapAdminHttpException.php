@@ -21,11 +21,10 @@ abstract class SnapAdminHttpException extends HttpException implements SnapAdmin
      * @param array<string, mixed> $parameters
      */
     public function __construct(
-        string      $message,
-        array       $parameters = [],
+        string $message,
+        array $parameters = [],
         ?\Throwable $e = null
-    )
-    {
+    ) {
         $this->parameters = $parameters;
         $message = $this->parse($message, $parameters);
 
@@ -64,9 +63,9 @@ abstract class SnapAdminHttpException extends HttpException implements SnapAdmin
     protected function getCommonErrorData(bool $withTrace = false): array
     {
         $error = [
-            'status' => (string)$this->getStatusCode(),
+            'status' => (string) $this->getStatusCode(),
             'code' => $this->getErrorCode(),
-            'title' => (string)(Response::$statusTexts[$this->getStatusCode()] ?? 'unknown status'),
+            'title' => (string) (Response::$statusTexts[$this->getStatusCode()] ?? 'unknown status'),
             'detail' => $this->getMessage(),
             'meta' => [
                 'parameters' => $this->getParameters(),
@@ -96,6 +95,6 @@ abstract class SnapAdminHttpException extends HttpException implements SnapAdmin
             $regex[sprintf('/\{\{(\s+)?(%s)(\s+)?\}\}/', $formattedKey)] = $value;
         }
 
-        return (string)preg_replace(array_keys($regex), array_values($regex), $message);
+        return (string) preg_replace(array_keys($regex), array_values($regex), $message);
     }
 }

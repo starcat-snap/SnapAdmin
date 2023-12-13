@@ -12,7 +12,6 @@ use SnapAdmin\Core\Kernel;
  */
 class KernelLifecycleManagerTest extends TestCase
 {
-
     public function testARebootIsPossible(): void
     {
         $oldKernel = KernelLifecycleManager::getKernel();

@@ -2,8 +2,8 @@
 
 namespace SnapAdmin\Core\System\CustomEntity\Xml;
 
-use SnapAdmin\Core\Framework\Struct\XmlElement;
 use SnapAdmin\Core\Framework\Log\Package;
+use SnapAdmin\Core\Framework\Struct\XmlElement;
 
 /**
  * @internal only for use by the app-system, will be considered internal from v6.4.0 onward

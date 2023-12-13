@@ -19,7 +19,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationFie
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 
-
 class MediaFolderConfigurationDefinition extends EntityDefinition
 {
     final public const ENTITY_NAME = 'media_folder_configuration';

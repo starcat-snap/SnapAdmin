@@ -35,10 +35,10 @@ class ChangelogGenerator extends ChangelogProcessor
 
     private function replaceSpecialChars(string $name): string
     {
-        $name = (string)preg_replace('/[^a-z_\-0-9]/i', '-', $name);
-        $name = (string)preg_replace('/[-]{2,}/', '-', $name);
-        $name = (string)preg_replace('/[-_]+$/', '', $name);
-        $name = (string)preg_replace('/^[-_]+/', '', $name);
+        $name = (string) preg_replace('/[^a-z_\-0-9]/i', '-', $name);
+        $name = (string) preg_replace('/[-]{2,}/', '-', $name);
+        $name = (string) preg_replace('/[-_]+$/', '', $name);
+        $name = (string) preg_replace('/^[-_]+/', '', $name);
 
         return strtolower($name);
     }

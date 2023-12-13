@@ -39,13 +39,12 @@ class Context extends Struct
      * @param array<string> $ruleIds
      */
     public function __construct(
-        protected ContextSource      $source,
-        protected array              $ruleIds = [],
-        array                        $languageIdChain = [Defaults::LANGUAGE_SYSTEM],
-        protected string             $versionId = Defaults::LIVE_VERSION,
-        protected bool               $considerInheritance = false
-    )
-    {
+        protected ContextSource $source,
+        protected array $ruleIds = [],
+        array $languageIdChain = [Defaults::LANGUAGE_SYSTEM],
+        protected string $versionId = Defaults::LIVE_VERSION,
+        protected bool $considerInheritance = false
+    ) {
         if ($source instanceof SystemSource) {
             $this->scope = self::SYSTEM_SCOPE;
         }
@@ -83,7 +82,6 @@ class Context extends Struct
     {
         return $this->languageIdChain[0];
     }
-
 
     /**
      * @return array<string>
@@ -163,7 +161,6 @@ class Context extends Struct
 
         return true;
     }
-
 
     /**
      * @template TReturn of mixed

@@ -18,9 +18,8 @@ class CachedEntitySchemaGenerator implements ApiDefinitionGeneratorInterface
 
     public function __construct(
         private readonly EntitySchemaGenerator $innerService,
-        private readonly CacheInterface        $cache
-    )
-    {
+        private readonly CacheInterface $cache
+    ) {
     }
 
     public function supports(string $format, string $api): bool
@@ -41,6 +40,6 @@ class CachedEntitySchemaGenerator implements ApiDefinitionGeneratorInterface
      */
     public function getSchema(array $definitions): array
     {
-        return $this->cache->get(self::CACHE_KEY, fn() => $this->innerService->getSchema($definitions));
+        return $this->cache->get(self::CACHE_KEY, fn () => $this->innerService->getSchema($definitions));
     }
 }

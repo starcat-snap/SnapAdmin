@@ -41,12 +41,12 @@ class Uuid
 
         $unpackedTime = unpack('n*', substr($bytes, 6, 2));
         \assert(\is_array($unpackedTime));
-        $timeHi = (int)$unpackedTime[1];
+        $timeHi = (int) $unpackedTime[1];
         $timeHiAndVersion = pack('n*', BinaryUtils::applyVersion($timeHi, 7));
 
         $unpackedClockSeq = unpack('n*', substr($bytes, 8, 2));
         \assert(\is_array($unpackedClockSeq));
-        $clockSeqHi = (int)$unpackedClockSeq[1];
+        $clockSeqHi = (int) $unpackedClockSeq[1];
         $clockSeqHiAndReserved = pack('n*', BinaryUtils::applyVariant($clockSeqHi));
 
         $bytes = substr_replace($bytes, $timeHiAndVersion, 6, 2);
@@ -57,10 +57,10 @@ class Uuid
     }
 
     /**
-     * @return non-empty-string
      * @throws InvalidUuidLengthException
-     *
      * @throws InvalidUuidException
+     *
+     * @return non-empty-string
      */
     public static function fromBytesToHex(string $bytes): string
     {
@@ -109,9 +109,9 @@ class Uuid
     }
 
     /**
-     * @return non-empty-string
      * @throws InvalidUuidException
      *
+     * @return non-empty-string
      */
     public static function fromHexToBytes(string $uuid): string
     {

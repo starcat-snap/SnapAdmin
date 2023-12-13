@@ -18,17 +18,16 @@ class CacheInvalidator
 {
     /**
      * @param CacheItemPoolInterface[] $adapters
-     * @internal
      *
+     * @internal
      */
     public function __construct(
-        private readonly int                        $delay,
-        private readonly array                      $adapters,
+        private readonly int $delay,
+        private readonly array $adapters,
         private readonly AbstractInvalidatorStorage $cache,
-        private readonly EventDispatcherInterface   $dispatcher,
-        private readonly LoggerInterface            $logger
-    )
-    {
+        private readonly EventDispatcherInterface $dispatcher,
+        private readonly LoggerInterface $logger
+    ) {
     }
 
     /**

@@ -98,7 +98,7 @@ class DumpClassSchemaCommand extends Command
 
         /** @var ClassMethod $findNode */
         foreach ($findNodes as $findNode) {
-            if ((string)$findNode->name === 'getExpectedClass') {
+            if ((string) $findNode->name === 'getExpectedClass') {
                 $nodeStmts = $findNode->stmts;
                 if ($nodeStmts === null) {
                     continue;
@@ -109,7 +109,7 @@ class DumpClassSchemaCommand extends Command
                 /** @var ClassConstFetch $classConst */
                 $classConst = $returnStatement->expr;
 
-                return (string)$classConst->class;
+                return (string) $classConst->class;
             }
         }
 
@@ -150,11 +150,11 @@ class DumpClassSchemaCommand extends Command
 
         /** @var Property $item */
         foreach ($properties as $item) {
-            $name = (string)$item->props[0]->name;
+            $name = (string) $item->props[0]->name;
 
             /** @var ClassMethod $method */
             foreach ($methods as $method) {
-                $methodName = (string)$method->name;
+                $methodName = (string) $method->name;
 
                 if (!\in_array($methodName, ['get' . ucfirst($name), 'is' . ucfirst($name)], true)) {
                     continue;

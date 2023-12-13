@@ -32,7 +32,6 @@ class AclRoleEntity extends Entity
      */
     protected $users;
 
-
     protected ?\DateTimeInterface $deletedAt = null;
 
     public function getName(): string

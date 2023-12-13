@@ -33,11 +33,10 @@ class ValidationResult extends Struct
      */
     public function __construct(
         string $name,
-        bool   $result,
+        bool $result,
         string $message,
-        array  $vars = []
-    )
-    {
+        array $vars = []
+    ) {
         $this->name = $name;
         $this->result = $result;
         $this->message = $message;

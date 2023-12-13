@@ -12,7 +12,6 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Package('system-settings')]
 class AccessKeyController extends AbstractController
 {
-
     #[Route(path: '/api/_action/access-key/user', name: 'api.action.access-key.user', methods: ['GET'])]
     public function generateUserKey(): JsonResponse
     {

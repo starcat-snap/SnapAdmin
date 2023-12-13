@@ -11,7 +11,6 @@ use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityRepository;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 
-
 class FileLoader
 {
     private readonly FileNameValidator $fileNameValidator;

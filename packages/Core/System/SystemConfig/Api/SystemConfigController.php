@@ -23,17 +23,16 @@ class SystemConfigController extends AbstractController
      * @internal
      */
     public function __construct(
-        private readonly ConfigurationService  $configurationService,
-        private readonly SystemConfigService   $systemConfig,
+        private readonly ConfigurationService $configurationService,
+        private readonly SystemConfigService $systemConfig,
         private readonly SystemConfigValidator $systemConfigValidator
-    )
-    {
+    ) {
     }
 
     #[Route(path: '/api/_action/system-config/check', name: 'api.action.core.system-config.check', defaults: ['_acl' => ['system_config:read']], methods: ['GET'])]
     public function checkConfiguration(Request $request, Context $context): JsonResponse
     {
-        $domain = (string)$request->query->get('domain');
+        $domain = (string) $request->query->get('domain');
 
         if ($domain === '') {
             return new JsonResponse(false);
@@ -45,7 +44,7 @@ class SystemConfigController extends AbstractController
     #[Route(path: '/api/_action/system-config/schema', name: 'api.action.core.system-config', methods: ['GET'])]
     public function getConfiguration(Request $request, Context $context): JsonResponse
     {
-        $domain = (string)$request->query->get('domain');
+        $domain = (string) $request->query->get('domain');
 
         if ($domain === '') {
             throw RoutingException::missingRequestParameter('domain');
@@ -57,7 +56,7 @@ class SystemConfigController extends AbstractController
     #[Route(path: '/api/_action/system-config', name: 'api.action.core.system-config.value', defaults: ['_acl' => ['system_config:read']], methods: ['GET'])]
     public function getConfigurationValues(Request $request): JsonResponse
     {
-        $domain = (string)$request->query->get('domain');
+        $domain = (string) $request->query->get('domain');
         if ($domain === '') {
             throw RoutingException::missingRequestParameter('domain');
         }

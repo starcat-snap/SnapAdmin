@@ -52,12 +52,11 @@ class TranslatedFieldSerializer implements FieldSerializerInterface
     }
 
     public function encode(
-        Field             $field,
-        EntityExistence   $existence,
-        KeyValuePair      $data,
+        Field $field,
+        EntityExistence $existence,
+        KeyValuePair $data,
         WriteParameterBag $parameters
-    ): \Generator
-    {
+    ): \Generator {
         yield from [];
     }
 
@@ -67,6 +66,6 @@ class TranslatedFieldSerializer implements FieldSerializerInterface
             return $value;
         }
 
-        return (string)$value;
+        return (string) $value;
     }
 }

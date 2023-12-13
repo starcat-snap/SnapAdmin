@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\Content\Media\MediaType;
 
 use SnapAdmin\Core\Framework\Struct\Struct;
 
-
 abstract class MediaType extends Struct
 {
     /**

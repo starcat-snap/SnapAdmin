@@ -29,8 +29,7 @@ class TranslationsAssociationFieldSerializer implements FieldSerializerInterface
      */
     public function __construct(
         private readonly WriteCommandExtractor $writeExtractor
-    )
-    {
+    ) {
     }
 
     public function normalize(Field $field, array $data, WriteParameterBag $parameters): array
@@ -116,7 +115,7 @@ class TranslationsAssociationFieldSerializer implements FieldSerializerInterface
                 } elseif (isset($subResources['language']['id'])) {
                     $languageId = $subResources['language']['id'];
                 } else {
-                    throw new MissingTranslationLanguageException($path, (int)$keyValue);
+                    throw new MissingTranslationLanguageException($path, (int) $keyValue);
                 }
             } elseif ($languagePropName) {
                 // the key is the language id, also write it into $subResources
@@ -148,12 +147,11 @@ class TranslationsAssociationFieldSerializer implements FieldSerializerInterface
      * @throws MissingTranslationLanguageException
      */
     public function encode(
-        Field             $field,
-        EntityExistence   $existence,
-        KeyValuePair      $data,
+        Field $field,
+        EntityExistence $existence,
+        KeyValuePair $data,
         WriteParameterBag $parameters
-    ): \Generator
-    {
+    ): \Generator {
         if (!$field instanceof TranslationsAssociationField) {
             throw DataAbstractionLayerException::invalidSerializerField(TranslationsAssociationField::class, $field);
         }
@@ -186,11 +184,10 @@ class TranslationsAssociationFieldSerializer implements FieldSerializerInterface
      */
     private function map(
         TranslationsAssociationField $field,
-        KeyValuePair                 $data,
-        WriteParameterBag            $parameters,
-        EntityExistence              $existence
-    ): \Generator
-    {
+        KeyValuePair $data,
+        WriteParameterBag $parameters,
+        EntityExistence $existence
+    ): \Generator {
         $key = $data->getKey();
         $value = $data->getValue();
         $path = $parameters->getPath() . '/' . $key;

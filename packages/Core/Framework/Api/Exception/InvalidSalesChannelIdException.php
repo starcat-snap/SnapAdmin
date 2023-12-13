@@ -7,7 +7,7 @@ use SnapAdmin\Core\Framework\SnapAdminHttpException;
 use Symfony\Component\HttpFoundation\Response;
 
 #[Package('core')]
-class InvalidChannelIdException extends SnapAdminHttpException
+class InvalidSalesChannelIdException extends SnapAdminHttpException
 {
     public function __construct(string $channelId)
     {

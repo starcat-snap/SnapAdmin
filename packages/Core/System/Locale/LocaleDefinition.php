@@ -19,7 +19,6 @@ use SnapAdmin\Core\System\Language\LanguageDefinition;
 use SnapAdmin\Core\System\Locale\Aggregate\LocaleTranslation\LocaleTranslationDefinition;
 use SnapAdmin\Core\System\User\UserDefinition;
 
-
 class LocaleDefinition extends EntityDefinition
 {
     final public const ENTITY_NAME = 'locale';

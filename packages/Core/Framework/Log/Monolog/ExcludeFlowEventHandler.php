@@ -12,14 +12,13 @@ class ExcludeFlowEventHandler extends AbstractHandler
 {
     /**
      * @param array<int, string> $excludeEvents
-     * @internal
      *
+     * @internal
      */
     public function __construct(
         private readonly HandlerInterface $handler,
-        private readonly array            $excludeEvents = []
-    )
-    {
+        private readonly array $excludeEvents = []
+    ) {
         parent::__construct();
     }
 
