@@ -11,7 +11,7 @@
     "dev:inspect": "mode=development node --inspect ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "build": "mode=production webpack",
     "create-test": "node src/scripts/create-spec-file/index.mjs",
-    "unit": "VUE3=1 jest --config jest.config.js --ci",
+    "unit": "jest --config jest.config.js --ci",
     "unit-setup": "npm run generate-component-import-resolver-map",
     "unit-watch": "jest --config jest.config.js --watch",
     "convert-entity-schema": "ts-node --transpileOnly ./scripts/entitySchemaConverter/convert-schema.ts",
@@ -29,6 +29,8 @@
     "lint:scss": "stylelint **/*.scss --cache",
     "lint:scss-fix": "npm run lint:scss -- --fix",
     "lint:deprecations": "eslint --rule '\"sw-new-core-rules/private-feature-declarations\": \"error\"' $(git status -s | awk '/(js|ts|vue|html\\.twig)$/ {print $2}')",
+    "codemod:twig-feature-flag-removal": "ts-node --transpileOnly ./scripts/codemods/twig-feature-flag-removal/index.ts",
+    "codemod:js-vue3-feature-flag-removal": "ts-node --transpileOnly ./scripts/codemods/js-vue3-feature-flag-removal/index.ts",
     "security-check": "./node_modules/.bin/nsp check",
     "generate-api-docs": "./node_modules/.bin/jsdoc src -r -c jsdoc.config.js",
     "lighthouse": "node lighthouse-tests.js"
