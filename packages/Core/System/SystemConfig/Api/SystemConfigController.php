@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\System\SystemConfig\Api;
 
 use SnapAdmin\Core\Framework\Context;
-use SnapAdmin\Core\Framework\Feature;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Routing\RoutingException;
 use SnapAdmin\Core\System\SystemConfig\Service\ConfigurationService;
@@ -92,21 +91,9 @@ class SystemConfigController extends AbstractController
         return new JsonResponse(null, Response::HTTP_NO_CONTENT);
     }
 
-    /**
-     * @deprecated tag:v6.6.0 $context param will be required
-     */
     #[Route(path: '/api/_action/system-config/batch', name: 'api.action.core.save.system-config.batch', defaults: ['_acl' => ['system_config:update', 'system_config:create', 'system_config:delete']], methods: ['POST'])]
-    public function batchSaveConfiguration(Request $request, ?Context $context = null): JsonResponse
+    public function batchSaveConfiguration(Request $request, Context $context): JsonResponse
     {
-        if (!$context) {
-            Feature::triggerDeprecationOrThrow(
-                'v6.6.0.0',
-                'Second parameter `$context` will be required in method `batchSaveConfiguration()` in `SystemConfigController` in v6.6.0.0'
-            );
-
-            $context = Context::createDefaultContext();
-        }
-
         $this->systemConfigValidator->validate($request->request->all(), $context);
 
         /**

@@ -30,8 +30,8 @@ class CustomEntityEnrichmentService
 
     private function enrichAdminUi(CustomEntityXmlSchema $customEntityXmlSchema, AdminUiXmlSchema $adminUiXmlSchema): CustomEntityXmlSchema
     {
-        $adminUiEntitiesConfig = $adminUiXmlSchema->getAdminUi()?->getEntities();
-        if ($adminUiEntitiesConfig === null) {
+        $adminUiEntitiesConfig = $adminUiXmlSchema->getAdminUi()->getEntities();
+        if ($adminUiEntitiesConfig == null) {
             return $customEntityXmlSchema;
         }
 

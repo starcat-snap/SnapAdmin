@@ -1,5 +1,6 @@
 rules:
-    - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\Tests\PHPUnitDataProviderStaticRule
+    - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\Tests\PHPUnitClassAttributesOverAnnotationsRule
+    - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\Tests\PHPUnitMethodAttributesOverAnnotationsRule
     - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\RuleAreasFlagNotAllowedRule
     - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\NoEnvironmentHelperInsideCompilerPassRule
     - SnapAdmin\Core\DevOps\StaticAnalyze\PHPStan\Rules\NoSuperGlobalsInsideCompilerPassRule
