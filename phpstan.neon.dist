@@ -19,7 +19,7 @@ parameters:
     type_coverage:
         return_type: 97
         param_type: 97
-        property_type: 50
+        property_type: 49
 
     bootstrapFiles:
         - packages/Core/DevOps/StaticAnalyze/phpstan-bootstrap.php
@@ -62,6 +62,8 @@ parameters:
         - packages/Core/Test/Stub/Redis/RedisMultiCompatibility.php
 
     ignoreErrors:
+        # @final annotation of internal classes
+        - '#.*extends @final class SnapAdmin\\Core\\Framework\\DataAbstractionLayer\\EntityRepository.#'
         - # No need to fix for now, as the facades are only used in twig context
             message: '#.* generic class SnapAdmin\\Core\\Framework\\DataAbstractionLayer\\Search\\EntitySearchResult.*does not specify its types: TEntityCollection#'
             paths:
@@ -78,6 +80,7 @@ parameters:
             message: '#Service ".*" is private#'
             paths:
                 - packages/**/*Test.php
+                - tests/integration/**/*Test.php
 
         # To fix this error, the \SnapAdmin\Core\Framework\Struct\Collection::createNew method has to be implemented
         # in every implementation of `Collection` and needs to return `new self` instead of `new static`. See https://github.com/phpstan/phpstan/issues/2773

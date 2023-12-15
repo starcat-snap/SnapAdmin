@@ -2,6 +2,8 @@
 
 namespace SnapAdmin\Core\Framework\Test;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use PHPUnit\Framework\TestCase;
 use SnapAdmin\Core\Framework\Log\Package;
 
@@ -180,9 +182,7 @@ class AnnotationTagTesterTest extends TestCase
         $this->annotationTagTester->validateDeprecatedAnnotations($deprecatedContent);
     }
 
-    /**
-     * @doesNotPerformAssertions - the test should check that no exception is thrown in this case
-     */
+    #[DoesNotPerformAssertions]
     public function testTagVersionHigherThenLiveVersion(): void
     {
         $deprecatedContent = '@deprecated tag:v6.5.0';
@@ -206,9 +206,7 @@ class AnnotationTagTesterTest extends TestCase
         $this->annotationTagTester->validateDeprecationElements('<deprecatedd>tag:v6.5</deprecatedd>');
     }
 
-    /**
-     * @dataProvider incorrectExperimentalAnnotationsFormatProvider
-     */
+    #[DataProvider('incorrectExperimentalAnnotationsFormatProvider')]
     public function testExperimentalWithIncorrectPropertiesDeclarationWillThrowException(string $content): void
     {
         static::expectException(\InvalidArgumentException::class);
@@ -287,9 +285,7 @@ class AnnotationTagTesterTest extends TestCase
         $this->annotationTagTester->validateExperimentalAnnotations($deprecatedContent);
     }
 
-    /**
-     * @dataProvider incorrectFeaturePropertyValueProvider
-     */
+    #[DataProvider('incorrectFeaturePropertyValueProvider')]
     public function testExperimentalWithIncorrectFeatureValueWillThrowException(string $content): void
     {
         static::expectException(\InvalidArgumentException::class);
@@ -305,9 +301,7 @@ class AnnotationTagTesterTest extends TestCase
         yield 'Empty feature value' => ['@experimental stableVersion:v6.5.0 feature:'];
     }
 
-    /**
-     * @doesNotPerformAssertions - the test should check that no exception is thrown in this case
-     */
+    #[DoesNotPerformAssertions]
     public function testExperimentalStableVersionHigherThanLiveVersion(): void
     {
         $deprecatedContent = '@experimental stableVersion:v6.5.0 feature:TEST_FEATURE';

@@ -2,14 +2,14 @@
 
 namespace SnapAdmin\Core\Framework\Test\TestCaseBase;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use SnapAdmin\Core\Kernel;
 
 /**
  * @internal
- *
- * @group skip-paratest
  */
+#[Group('skip-paratest')]
 class KernelLifecycleManagerTest extends TestCase
 {
     public function testARebootIsPossible(): void

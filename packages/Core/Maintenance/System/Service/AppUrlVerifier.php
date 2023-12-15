@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Maintenance\System\Service;
 
-use Doctrine\DBAL\Connection;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
@@ -19,7 +18,6 @@ class AppUrlVerifier
 {
     public function __construct(
         private readonly Client $guzzle,
-        private readonly Connection $connection,
         private readonly string $appEnv,
         private readonly bool $appUrlCheckDisabled
     ) {
@@ -59,12 +57,5 @@ class AppUrlVerifier
         }
 
         return false;
-    }
-
-    public function hasAppsThatNeedAppUrl(): bool
-    {
-        $foundApp = $this->connection->fetchOne('SELECT 1 FROM app WHERE app_secret IS NOT NULL');
-
-        return $foundApp === '1';
     }
 }

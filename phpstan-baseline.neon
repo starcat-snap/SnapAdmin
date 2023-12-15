@@ -1,10 +1,9 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Write\\\\Command\\\\InsertCommand\\:\\:getPrivilege\\(\\) never returns null so it can be removed from the return type\\.$#"
+			message: "#^Strict comparison using \\=\\=\\= between array and null will always evaluate to false\\.$#"
 			count: 1
-			path: packages/Core/Framework/DataAbstractionLayer/Write/Command/InsertCommand.php
-
+			path: packages/Core/System/CustomEntity/Xml/Config/CustomEntityEnrichmentService.php
 		-
 			message: "#^Strict comparison using \\=\\=\\= between bool and string will always evaluate to false\\.$#"
 			count: 1

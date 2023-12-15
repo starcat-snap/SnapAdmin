@@ -2,16 +2,15 @@
 
 namespace SnapAdmin\Core\Framework\Test\TestCaseBase;
 
+use PHPUnit\Framework\Attributes\After;
+use PHPUnit\Framework\Attributes\Before;
 use SnapAdmin\Core\Framework\Adapter\Translation\Translator;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 trait TranslationTestBehaviour
 {
-    /**
-     * @before
-     *
-     * @after
-     */
+    #[Before]
+    #[After]
     public function resetInjectedTranslatorSettings(): void
     {
         /** @var Translator $translator */

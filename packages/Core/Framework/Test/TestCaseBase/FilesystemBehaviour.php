@@ -3,6 +3,8 @@
 namespace SnapAdmin\Core\Framework\Test\TestCaseBase;
 
 use League\Flysystem\Filesystem;
+use PHPUnit\Framework\Attributes\After;
+use PHPUnit\Framework\Attributes\Before;
 use SnapAdmin\Core\Framework\Test\Filesystem\Adapter\MemoryAdapterFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -29,11 +31,8 @@ trait FilesystemBehaviour
         return $this->getFilesystem('snap.filesystem.private');
     }
 
-    /**
-     * @after
-     *
-     * @before
-     */
+    #[Before]
+    #[After]
     public function removeWrittenFilesAfterFilesystemTests(): void
     {
         MemoryAdapterFactory::clearInstancesMemory();

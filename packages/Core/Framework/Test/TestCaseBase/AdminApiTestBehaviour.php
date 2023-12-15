@@ -5,6 +5,7 @@ namespace SnapAdmin\Core\Framework\Test\TestCaseBase;
 use Doctrine\DBAL\ArrayParameterType;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+use PHPUnit\Framework\Attributes\After;
 use PHPUnit\Framework\TestCase;
 use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\Framework\Api\Context\AdminApiSource;
@@ -34,9 +35,7 @@ trait AdminApiTestBehaviour
 
     private ?TestBrowser $integrationBrowser = null;
 
-    /**
-     * @after
-     */
+    #[after]
     public function resetAdminApiTestCaseTrait(): void
     {
         if (!$this->kernelBrowser) {

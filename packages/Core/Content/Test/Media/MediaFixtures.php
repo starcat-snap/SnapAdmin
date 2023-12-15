@@ -2,6 +2,7 @@
 
 namespace SnapAdmin\Core\Content\Test\Media;
 
+use PHPUnit\Framework\Attributes\Before;
 use SnapAdmin\Core\Content\Media\MediaEntity;
 use SnapAdmin\Core\Content\Media\MediaType\BinaryType;
 use SnapAdmin\Core\Content\Media\MediaType\DocumentType;
@@ -18,9 +19,7 @@ trait MediaFixtures
      */
     public $mediaFixtures;
 
-    /**
-     * @before
-     */
+    #[Before]
     public function initializeMediaFixtures(): void
     {
         $thumbnailSize150Id = Uuid::randomHex();
