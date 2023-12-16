@@ -10,7 +10,9 @@
     </parameters>
 
     <services>
-
+        <service id="SnapAdmin\Administration\Snippet\SnippetFinder">
+            <argument type="service" id="kernel" />
+        </service>
         <service id="SnapAdmin\Administration\Controller\AdministrationController"
                  public="true">
             <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Twig\TemplateFinder"/>
