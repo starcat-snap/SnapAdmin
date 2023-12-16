@@ -25,7 +25,7 @@ jobs:
           node-version: 20
 
       - name: Retrieve the cached "node_modules" directory (if present)
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: node-cache
         with:
           path: packages/Administration/Resources/app/administration/node_modules
@@ -36,13 +36,13 @@ jobs:
         run: npm --prefix packages/Administration/Resources/app/administration ci --no-audit --prefer-offline
 
       - name: Cache ESLint
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/Administration/Resources/app/administration/node_modules/.eslintcache
           key: admin-eslint-${{ runner.os }}
 
       - name: Cache Stylelint
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/Administration/Resources/app/administration/node_modules/.stylelintcache
           key: admin-stylelint-${{ runner.os }}
