@@ -1,6 +1,10 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Method SnapAdmin\\\\Administration\\\\Test\\\\Notification\\\\Repository\\\\NotificationRepositoryTest\\:\\:notificationProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Administration/Test/Notification/Repository/NotificationRepositoryTest.php
+		-
 			message: "#^Strict comparison using \\=\\=\\= between array and null will always evaluate to false\\.$#"
 			count: 1
 			path: packages/Core/System/CustomEntity/Xml/Config/CustomEntityEnrichmentService.php

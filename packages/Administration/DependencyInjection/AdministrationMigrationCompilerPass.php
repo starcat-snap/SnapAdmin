@@ -14,11 +14,7 @@ class AdministrationMigrationCompilerPass implements CompilerPassInterface
     {
         $migrationPath = \dirname(__DIR__) . '/Migration';
 
-        // configure migration directories
-        $migrationSourceV4 = $container->getDefinition(MigrationSource::class . '.core.V6_4');
-        $migrationSourceV4->addMethodCall('addDirectory', [$migrationPath . '/V6_4', 'SnapAdmin\Administration\Migration\V6_4']);
-
-        $majors = ['V6_5', 'V6_6'];
+        $majors = ['V6_6'];
         foreach ($majors as $major) {
             $migrationPathV5 = $migrationPath . '/' . $major;
 
