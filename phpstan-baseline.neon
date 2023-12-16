@@ -1,5 +1,6 @@
 parameters:
 	ignoreErrors:
+
 		-
 			message: "#^Method SnapAdmin\\\\Administration\\\\Test\\\\Notification\\\\Repository\\\\NotificationRepositoryTest\\:\\:notificationProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
