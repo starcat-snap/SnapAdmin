@@ -34,6 +34,7 @@ class Migration1536232810User extends MigrationStep
               `avatar_id`       BINARY(16)                              NULL,
               `admin` tinyint(1) DEFAULT NULL,
               `locale_id` binary(16) NOT NULL,
+              `time_zone` varchar(255) NOT NULL DEFAULT "Asia/Shanghai",
               `store_token` varchar(255) DEFAULT NULL,
               `last_updated_password_at` datetime(3) DEFAULT NULL,
               `custom_fields` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`custom_fields`)),

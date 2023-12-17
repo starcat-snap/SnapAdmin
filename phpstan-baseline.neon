@@ -1,6 +1,14 @@
 parameters:
 	ignoreErrors:
+		-
+			message: "#^Parameter \\#1 \\$json of function json_decode expects string, string\\|false given\\.$#"
+			count: 4
+			path: packages/Core/Framework/Test/Api/Controller/AclControllerTest.php
 
+		-
+			message: "#^Parameter \\#3 \\$message of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertEquals\\(\\) expects string, string\\|false given\\.$#"
+			count: 2
+			path: packages/Core/Framework/Test/Api/Controller/AclControllerTest.php
 		-
 			message: "#^Method SnapAdmin\\\\Administration\\\\Test\\\\Notification\\\\Repository\\\\NotificationRepositoryTest\\:\\:notificationProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1

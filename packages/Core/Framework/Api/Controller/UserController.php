@@ -75,7 +75,7 @@ class UserController extends AbstractController
             throw new ExpectedUserHttpException();
         }
 
-        $allowedChanges = ['firstName', 'lastName', 'username', 'localeId', 'email', 'avatarMedia', 'avatarId', 'password'];
+        $allowedChanges = ['name', 'username', 'localeId', 'email', 'avatarMedia', 'avatarId', 'password'];
 
         if (!empty(array_diff(array_keys($request->request->all()), $allowedChanges))) {
             throw ApiException::missingPrivileges(['user:update']);

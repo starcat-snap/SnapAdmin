@@ -53,11 +53,6 @@ class UserDefinition extends EntityDefinition
         return UserEntity::class;
     }
 
-    public function since(): ?string
-    {
-        return '6.0.0.0';
-    }
-
     public function getDefaults(): array
     {
         return [
@@ -88,6 +83,7 @@ class UserDefinition extends EntityDefinition
             new CustomFields(),
             new ManyToOneAssociationField('locale', 'locale_id', LocaleDefinition::class, 'id', false),
             new FkField('avatar_id', 'avatarId', MediaDefinition::class),
+            new ManyToOneAssociationField('avatarMedia', 'avatar_id', MediaDefinition::class),
             (new OneToManyAssociationField('accessKeys', UserAccessKeyDefinition::class, 'user_id', 'id'))->addFlags(new CascadeDelete()),
             (new OneToManyAssociationField('configs', UserConfigDefinition::class, 'user_id', 'id'))->addFlags(new CascadeDelete()),
             new ManyToManyAssociationField('aclRoles', AclRoleDefinition::class, AclUserRoleDefinition::class, 'user_id', 'acl_role_id'),

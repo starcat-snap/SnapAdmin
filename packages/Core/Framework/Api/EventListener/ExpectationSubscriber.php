@@ -23,11 +23,9 @@ use Symfony\Component\HttpKernel\KernelEvents;
 class ExpectationSubscriber implements EventSubscriberInterface
 {
     private const SNAP_CORE_PACKAGES = [
-        'snap/platform',
+        'snapadmin/platform',
         'snapadmin/core',
-        'snap/administration',
-        'snap/elasticsearch',
-        'snap/frontend',
+        'snapadmin/administration',
     ];
 
     /**

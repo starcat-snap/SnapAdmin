@@ -11,5 +11,5 @@ use SnapAdmin\Core\Framework\Log\Package;
 #[Package('core')]
 class TestDefaults
 {
-    final public const HASHED_PASSWORD = '$2y$10$iSfQ0ccQy9xTgJ/helAR1euuJCukaqTxyOecq4sd1OiXxItdGeM9K';
+    final public const HASHED_PASSWORD = '$2y$10$ynRKQc5B4nGW.5eNYedEfev2ubgyQM6.Nga09T2gK1P9jWPNheDKa';
 }

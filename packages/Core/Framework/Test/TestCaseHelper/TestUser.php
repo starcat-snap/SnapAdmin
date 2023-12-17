@@ -22,7 +22,7 @@ class TestUser
 
     public static function getAdmin(): TestUser
     {
-        return new TestUser('snap', 'admin', Uuid::randomHex());
+        return new TestUser('SnapAdmin', 'admin', Uuid::randomHex());
     }
 
     /**
@@ -70,7 +70,7 @@ class TestUser
             );
         }
 
-        return new TestUser('snap', $username, Uuid::fromBytesToHex($userId));
+        return new TestUser('SnapAdmin', $username, Uuid::fromBytesToHex($userId));
     }
 
     public function authorizeBrowser(KernelBrowser $browser): void

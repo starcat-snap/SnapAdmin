@@ -53,6 +53,11 @@ class UserEntity extends Entity
     protected $title;
 
     /**
+     * @var string|null
+     */
+    protected $phone;
+
+    /**
      * @var string
      */
     protected $email;
@@ -300,5 +305,15 @@ class UserEntity extends Entity
     public function setTimeZone(string $timeZone): void
     {
         $this->timeZone = $timeZone;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): void
+    {
+        $this->phone = $phone;
     }
 }

@@ -42,7 +42,7 @@ class ClientRepositoryTest extends TestCase
     public function testValidateClient(string $grantType, $clientIdentifier, string $clientSecret, bool $expectedResult): void
     {
         $this->connection->method('fetchAssociative')->willReturnCallback(function () use ($clientIdentifier, $clientSecret) {
-            if ($clientIdentifier === 'SWUAADMIN' && $clientSecret === 'shopware') {
+            if ($clientIdentifier === 'SWUAADMIN' && $clientSecret === 'SnapAdmin') {
                 return [
                     'secret_access_key' => password_hash($clientSecret, \PASSWORD_BCRYPT),
                 ];
@@ -87,11 +87,11 @@ class ClientRepositoryTest extends TestCase
      */
     public static function validateClientDataProvider(): iterable
     {
-        yield 'password grant type' => ['password', 'administration', 'shopware', true];
-        yield 'refresh_token grant type' => ['refresh_token', 'administration', 'shopware', true];
-        yield 'client_credentials grant type with invalid clientIdentifier' => ['client_credentials', true, 'shopware', false];
-        yield 'client_credentials grant type with incorrect clientIdentifier' => ['client_credentials', 'SWUAJOHNDOE', 'shopware', false];
-        yield 'client_credentials grant type with correct clientIdentifier' => ['client_credentials', 'SWUAADMIN', 'shopware', true];
+        yield 'password grant type' => ['password', 'administration', 'SnapAdmin', true];
+        yield 'refresh_token grant type' => ['refresh_token', 'administration', 'SnapAdmin', true];
+        yield 'client_credentials grant type with invalid clientIdentifier' => ['client_credentials', true, 'SnapAdmin', false];
+        yield 'client_credentials grant type with incorrect clientIdentifier' => ['client_credentials', 'SWUAJOHNDOE', 'SnapAdmin', false];
+        yield 'client_credentials grant type with correct clientIdentifier' => ['client_credentials', 'SWUAADMIN', 'SnapAdmin', true];
     }
 
     /**

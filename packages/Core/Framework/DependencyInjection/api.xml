@@ -4,6 +4,23 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
+
+        <service id="SnapAdmin\Core\Framework\Api\Response\Type\Api\JsonApiType">
+            <argument type="service" id="SnapAdmin\Core\Framework\Api\Serializer\JsonApiEncoder"/>
+        </service>
+        <service id="SnapAdmin\Core\Framework\Api\Response\Type\Api\JsonType">
+            <argument type="service" id="SnapAdmin\Core\Framework\Api\Serializer\JsonEntityEncoder"/>
+        </service>
+        <service id="SnapAdmin\Core\Framework\Api\Response\ResponseFactoryInterfaceValueResolver">
+            <tag name="controller.argument_value_resolver" priority="50"/>
+            <argument type="service" id="SnapAdmin\Core\Framework\Api\Response\ResponseFactoryRegistry"/>
+        </service>
+        <!-- Response types -->
+        <service id="SnapAdmin\Core\Framework\Api\Response\ResponseFactoryRegistry">
+            <argument type="service" id="SnapAdmin\Core\Framework\Api\Response\Type\Api\JsonApiType"/>
+            <!-- deactivated, the current sales channel api design does not match the json api requirements -->
+            <argument type="service" id="SnapAdmin\Core\Framework\Api\Response\Type\Api\JsonType"/>
+        </service>
         <service id="SnapAdmin\Core\Framework\Routing\RequestTransformerInterface"
                  class="SnapAdmin\Core\Framework\Routing\RequestTransformer"
                  public="true"/>
