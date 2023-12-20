@@ -9,7 +9,7 @@
 export default function createContext(context = {}) {
     // set initial context
     SnapAdmin.State.commit('context/setAppEnvironment', process.env.NODE_ENV);
-    SnapAdmin.State.commit('context/setAppFallbackLocale', 'en-GB');
+    SnapAdmin.State.commit('context/setAppFallbackLocale', 'zh-CN');
 
     // assign unknown context information
     Object.entries(context).forEach(([key, value]) => {

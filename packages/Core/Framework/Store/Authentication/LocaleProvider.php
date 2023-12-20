@@ -24,14 +24,14 @@ class LocaleProvider
     public function getLocaleFromContext(Context $context): string
     {
         if (!$context->getSource() instanceof AdminApiSource) {
-            return 'en-GB';
+            return 'zh-CN';
         }
 
         /** @var AdminApiSource $source */
         $source = $context->getSource();
 
         if ($source->getUserId() === null) {
-            return 'en-GB';
+            return 'zh-CN';
         }
 
         $criteria = new Criteria([$source->getUserId()]);

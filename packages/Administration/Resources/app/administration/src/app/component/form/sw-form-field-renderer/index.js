@@ -42,13 +42,13 @@ const { types } = SnapAdmin.Utils;
  *     :config="{
  *         componentName: 'sw-multi-select',
  *         label: {
- *             'en-GB': 'Multi Select'
+ *             'zh-CN': 'Multi Select'
  *         },
  *         multi: true,
  *         options: [
- *             { value: 'option1', label: { 'en-GB': 'One' } },
+ *             { value: 'option1', label: { 'zh-CN': 'One' } },
  *             { value: 'option2', label: 'Two' },
- *             { value: 'option3', label: { 'en-GB': 'Three', 'de-DE': 'Drei' } }
+ *             { value: 'option3', label: { 'zh-CN': 'Three', 'de-DE': 'Drei' } }
  *         ]
  *     }">
  * </sw-form-field-renderer>
@@ -60,9 +60,9 @@ const { types } = SnapAdmin.Utils;
  *     :config="{
  *         label: 'Single Select',
  *         options: [
- *             { value: 'option1', label: { 'en-GB': 'One' } },
+ *             { value: 'option1', label: { 'zh-CN': 'One' } },
  *             { value: 'option2', label: 'Two' },
- *             { value: 'option3', label: { 'en-GB': 'Three', 'de-DE': 'Drei' } }
+ *             { value: 'option3', label: { 'zh-CN': 'Three', 'de-DE': 'Drei' } }
  *         ]
  *     }">
  * </sw-form-field-renderer>

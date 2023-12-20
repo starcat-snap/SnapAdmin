@@ -35,7 +35,7 @@ const localeRegistry = new Map<string, Snippets>();
  *
  * @type {String}
  */
-const defaultLocale = 'en-GB';
+const defaultLocale = 'zh-CN';
 
 /**
  * Defines the key of the localStorage item

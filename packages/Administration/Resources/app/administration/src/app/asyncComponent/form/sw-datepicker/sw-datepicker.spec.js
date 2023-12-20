@@ -75,12 +75,12 @@ describe('src/app/component/form/sw-datepicker', () => {
         wrapper = await createWrapper();
         await flushPromises();
 
-        expect(wrapper.vm.$data.flatpickrInstance.config.locale).toBe('de');
+        expect(wrapper.vm.$data.flatpickrInstance.config.locale).toBe('zh');
 
-        SnapAdmin.State.get('session').currentLocale = 'en-GB';
+        SnapAdmin.State.get('session').currentLocale = 'zh-CN';
         await flushPromises();
 
-        expect(wrapper.vm.$data.flatpickrInstance.config.locale).toBe('en');
+        expect(wrapper.vm.$data.flatpickrInstance.config.locale).toBe('zh');
     });
 
     it('should show the label from the property', async () => {

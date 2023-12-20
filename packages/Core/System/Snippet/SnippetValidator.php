@@ -84,7 +84,7 @@ class SnippetValidator implements SnippetValidatorInterface
 
         // Snippet file name not known, return 'en-GB' per default
         if (!$return) {
-            return 'en-GB';
+            return 'zh-CN';
         }
 
         return $matches[1];

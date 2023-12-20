@@ -79,8 +79,8 @@ describe('src/app/component/structure/sw-admin-menu', () => {
     let wrapper;
 
     beforeAll(() => {
-        SnapAdmin.State.get('session').currentLocale = 'en-GB';
-        SnapAdmin.Context.app.fallbackLocale = 'en-GB';
+        SnapAdmin.State.get('session').currentLocale = 'zh-CN';
+        SnapAdmin.Context.app.fallbackLocale = 'zh-CN';
 
         if (SnapAdmin.State.get('settingsItems')) {
             SnapAdmin.State.unregisterModule('settingsItems');

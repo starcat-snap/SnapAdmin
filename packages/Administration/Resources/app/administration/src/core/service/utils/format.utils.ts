@@ -114,7 +114,7 @@ export function dateWithUserTimezone(dateObj: Date = new Date()): Date {
     const userTimeZone = (SnapAdmin.State.get('session').currentUser?.timeZone) ?? 'UTC';
 
     // Language and options are set in order to re-create the date object
-    const localizedDate = dateObj.toLocaleDateString('en-GB', {
+    const localizedDate = dateObj.toLocaleDateString('zh-CN', {
         timeZone: userTimeZone,
         year: 'numeric',
         month: 'short',

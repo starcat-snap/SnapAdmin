@@ -2,6 +2,6 @@ framework:
   default_locale: '%locale%'
   translator:
     fallbacks:
-      - 'en_GB'
-      - 'en'
+      - 'zh_CN'
+      - 'zh'
     default_path: "%kernel.snap_core_dir%/Framework/Resources/snippet"

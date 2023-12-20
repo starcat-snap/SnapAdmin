@@ -29,7 +29,7 @@ class Migration1536232810User extends MigrationStep
               `name` varchar(255)  NULL,
               `phone` varchar(255)  NULL,
               `title` varchar(255) DEFAULT NULL,
-              `email` varchar(255) NOT NULL,
+              `email` varchar(255)  NULL,
               `active` tinyint(1) NOT NULL DEFAULT 0,
               `avatar_id`       BINARY(16)                              NULL,
               `admin` tinyint(1) DEFAULT NULL,

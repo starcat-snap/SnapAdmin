@@ -102,7 +102,7 @@ describe('src/app/service/menu.service', () => {
         });
 
         it('respects the current locale for apps', async () => {
-            SnapAdmin.Context.app.fallbackLocale = 'en-GB';
+            SnapAdmin.Context.app.fallbackLocale = 'zh-CN';
             SnapAdmin.State.get('session').currentLocale = 'de-DE';
 
             const navigation = menuService.getNavigationFromApps(testApps);
@@ -136,7 +136,7 @@ describe('src/app/service/menu.service', () => {
         });
 
         it('uses fallback locale for apps if current locale is not translated', async () => {
-            SnapAdmin.Context.app.fallbackLocale = 'en-GB';
+            SnapAdmin.Context.app.fallbackLocale = 'zh-CN';
             SnapAdmin.State.get('session').currentLocale = 'ru-RU';
 
             const navigation = menuService.getNavigationFromApps(testApps);

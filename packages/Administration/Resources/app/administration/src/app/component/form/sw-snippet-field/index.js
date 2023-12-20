@@ -117,7 +117,7 @@ Component.register('sw-snippet-field', {
                 return;
             }
 
-            translation = this.getTranslationByLocale('en-GB');
+            translation = this.getTranslationByLocale('zh-CN');
             if (translation) {
                 this.textValue = translation.value;
             }

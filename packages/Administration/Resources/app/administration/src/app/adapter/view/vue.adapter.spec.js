@@ -67,7 +67,7 @@ describe('ASYNC app/adapter/view/vue.adapter.js', () => {
             });
         }
 
-        SnapAdmin.State.get('system').locales = ['en-GB', 'de-DE'];
+        SnapAdmin.State.get('system').locales = ['zh-CN'];
 
         // create vue adapter
         vueAdapter = new VueAdapter(application);
@@ -113,7 +113,7 @@ describe('ASYNC app/adapter/view/vue.adapter.js', () => {
         vueAdapter.initLocales({
             subscribe: () => {},
             dispatch: () => {},
-            state: { session: { currentLocale: 'en-GB' } },
+            state: { session: { currentLocale: 'zh-CN' } },
         });
 
         expect(vueAdapter.setLocaleFromUser).toHaveBeenCalled();
@@ -518,8 +518,8 @@ describe('ASYNC app/adapter/view/vue.adapter.js', () => {
             application.addInitializer('router', initializeRouter);
 
             const locale = SnapAdmin.Application.getContainer('factory').locale;
-            if (!locale.getLocaleByName('en-GB')) {
-                locale.register('en-GB', {
+            if (!locale.getLocaleByName('zh-CN')) {
+                locale.register('zh-CN', {
                     global: {
                         'sw-admin-menu': {
                             textSnapAdminAdmin: 'Text SnapAdmin Admin',

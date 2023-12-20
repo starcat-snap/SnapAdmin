@@ -13,9 +13,13 @@
         <service id="SnapAdmin\Administration\Snippet\SnippetFinder">
             <argument type="service" id="kernel" />
         </service>
+        <service id="SnapAdmin\Administration\Snippet\SnippetFinder">
+            <argument type="service" id="kernel" />
+        </service>
         <service id="SnapAdmin\Administration\Controller\AdministrationController"
                  public="true">
             <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Twig\TemplateFinder"/>
+            <argument type="service" id="SnapAdmin\Administration\Snippet\SnippetFinder"/>
             <argument>%kernel.supported_api_versions%</argument>
             <argument type="service" id="SnapAdmin\Administration\Framework\Routing\KnownIps\KnownIpsCollector"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Util\HtmlSanitizer"/>

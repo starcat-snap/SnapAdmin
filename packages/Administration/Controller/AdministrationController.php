@@ -3,6 +3,7 @@
 namespace SnapAdmin\Administration\Controller;
 
 use SnapAdmin\Administration\Framework\Routing\KnownIps\KnownIpsCollectorInterface;
+use SnapAdmin\Administration\Snippet\SnippetFinderInterface;
 use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\DevOps\Environment\EnvironmentHelper;
 use SnapAdmin\Core\Framework\Adapter\Twig\TemplateFinder;
@@ -31,6 +32,7 @@ class AdministrationController extends AbstractController
      */
     public function __construct(
         private readonly TemplateFinder $finder,
+        private readonly SnippetFinderInterface $snippetFinder,
         private readonly array $supportedApiVersions,
         private readonly KnownIpsCollectorInterface $knownIpsCollector,
         private readonly HtmlSanitizer $htmlSanitizer,
@@ -52,6 +54,19 @@ class AdministrationController extends AbstractController
             'apiVersion' => $this->getLatestApiVersion(),
             'cspNonce' => $request->attributes->get(PlatformRequest::ATTRIBUTE_CSP_NONCE),
         ]);
+    }
+    #[Route(path: '/api/_admin/snippets', name: 'api.admin.snippets', methods: ['GET'])]
+    public function snippets(Request $request): Response
+    {
+        $snippets = [];
+        $locale = $request->query->get('locale', 'zh-CN');
+        $snippets[$locale] = $this->snippetFinder->findSnippets((string) $locale);
+
+        if ($locale !== 'zh-CN') {
+            $snippets['zh-CN'] = $this->snippetFinder->findSnippets('zh-CN');
+        }
+
+        return new JsonResponse($snippets);
     }
 
     #[Route(path: '/api/_admin/known-ips', name: 'api.admin.known-ips', methods: ['GET'])]

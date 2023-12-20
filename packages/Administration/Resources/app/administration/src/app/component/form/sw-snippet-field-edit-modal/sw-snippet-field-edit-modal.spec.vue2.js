@@ -26,7 +26,7 @@ async function createWrapper() {
                 origin: null,
                 resetTo: 'english',
                 translationKey: 'test.snippet',
-                setId: 'en-GB-MOCK-ID',
+                setId: 'zh-CN-MOCK-ID',
             }, {
                 author: 'testUser',
                 id: null,
@@ -38,9 +38,9 @@ async function createWrapper() {
             }],
             snippetSets: createEntityCollection([
                 {
-                    name: 'Base en-GB',
-                    iso: 'en-GB',
-                    id: 'en-GB-MOCK-ID',
+                    name: 'Base zh-CN',
+                    iso: 'zh-CN',
+                    id: 'zh-CN-MOCK-ID',
                 },
                 {
                     name: 'Base de-DE',

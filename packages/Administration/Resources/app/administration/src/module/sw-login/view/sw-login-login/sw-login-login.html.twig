@@ -1,0 +1,83 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_login_login %}
+<form
+    class="sw-login-login"
+    @submit.prevent="loginUserWithPassword"
+>
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_login_login_form_headline %}
+    <h2 class="sw-login__content-headline">
+        {{ $tc('sw-login.index.headlineForm') }}
+    </h2>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_login_login_alert %}
+    <sw-alert
+        v-if="showLoginAlert"
+        variant="info"
+        appearance="default"
+        :show-icon="true"
+        :closable="false"
+    >
+        {{ loginAlertMessage }}
+    </sw-alert>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_login_login_user_field %}
+    <sw-text-field
+        v-model:value="username"
+        v-autofocus
+        name="sw-field--username"
+        :label="$tc('sw-login.index.labelUsername')"
+        :placeholder="$tc('sw-login.index.placeholderUsername')"
+        :disabled="showLoginAlert"
+        required
+    />
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_login_login_password_field %}
+    <sw-password-field
+        v-model:value="password"
+        name="sw-field--password"
+        :label="$tc('sw-login.index.labelPassword')"
+        :placeholder="$tc('sw-login.index.placeholderPassword')"
+        :disabled="showLoginAlert"
+        required
+    />
+    {% endblock %}
+
+    <sw-checkbox-field
+        v-model:value="rememberMe"
+        :label="$tc('sw-login.index.labelKeepLoggedIn')"
+    />
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_login_login_submit %}
+    <div class="sw-login__submit">
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_login_login_forgot_password %}
+        <router-link
+            :to="{ name: 'sw.login.index.recovery' }"
+            class="sw-login__forgot-password-action"
+        >
+            {{ $tc('sw-login.index.forgottenPasswordLink') }}
+        </router-link>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_login_login_submit_button %}
+        <sw-button
+            :disabled="password.length <= 0 || username.length <= 0 || showLoginAlert"
+            class="sw-login__login-action"
+            variant="primary"
+        >
+            {{ $tc('sw-login.index.buttonLogin') }}
+        </sw-button>
+        {% endblock %}
+    </div>
+    {% endblock %}
+</form>
+{% endblock %}

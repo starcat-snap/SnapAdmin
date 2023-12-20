@@ -61,7 +61,7 @@ describe('src/app/mixin/sw-inline-snippet.mixin.ts', () => {
 
     it('should return correct value with locale using the getInlineSnippet method without value', () => {
         const result = wrapper.vm.getInlineSnippet({
-            'en-GB': 'English',
+            'zh-CN': 'English',
         });
 
         expect(result).toBe('English');

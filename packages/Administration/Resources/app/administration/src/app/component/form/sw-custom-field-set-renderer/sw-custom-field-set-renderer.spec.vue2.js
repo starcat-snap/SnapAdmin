@@ -152,7 +152,7 @@ async function createWrapper(props) {
                                 id: uuid.get('custom_sports'),
                                 name: 'custom_sports',
                                 position: 1,
-                                config: { label: { 'en-GB': 'Sports' } },
+                                config: { label: { 'zh-CN': 'Sports' } },
                                 customFields: [
                                     {
                                         active: true,
@@ -171,9 +171,9 @@ async function createWrapper(props) {
                                         type: 'float',
                                         config: {
                                             type: 'number',
-                                            label: { 'en-GB': 'qui et vel' },
+                                            label: { 'zh-CN': 'qui et vel' },
                                             numberType: 'float',
-                                            placeholder: { 'en-GB': 'Type a floating point number...' },
+                                            placeholder: { 'zh-CN': 'Type a floating point number...' },
                                             componentName: 'sw-field',
                                             customFieldType: 'number',
                                             customFieldPosition: 1,
@@ -188,7 +188,7 @@ async function createWrapper(props) {
                                 id: uuid.get('custom_clothing'),
                                 name: 'custom_clothing',
                                 position: 1,
-                                config: { label: { 'en-GB': 'Clothing' } },
+                                config: { label: { 'zh-CN': 'Clothing' } },
                                 customFields: [
                                     {
                                         active: true,
@@ -231,8 +231,8 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
             componentLabel: 'I am a single select field',
             componentConfigAddition: {
                 options: [
-                    { label: { 'en-GB': 'First choice' }, value: 'first_choice' },
-                    { label: { 'en-GB': 'Second choice' }, value: 'second_choice' },
+                    { label: { 'zh-CN': 'First choice' }, value: 'first_choice' },
+                    { label: { 'zh-CN': 'Second choice' }, value: 'second_choice' },
                 ],
             },
             domFallbackValue: '',
@@ -267,8 +267,8 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
             componentLabel: 'I am a multi select field',
             componentConfigAddition: {
                 options: [
-                    { label: { 'en-GB': 'First choice' }, value: 'first_choice' },
-                    { label: { 'en-GB': 'Second choice' }, value: 'second_choice' },
+                    { label: { 'zh-CN': 'First choice' }, value: 'first_choice' },
+                    { label: { 'zh-CN': 'Second choice' }, value: 'second_choice' },
                 ],
             },
             domFallbackValue: '',
@@ -680,7 +680,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                 name: 'set1',
                 config: {
                     label: {
-                        'en-GB': 'Set 1 Label',
+                        'zh-CN': 'Set 1 Label',
                     },
                 },
                 customFields: [{
@@ -715,7 +715,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                 name: 'set1',
                 config: {
                     label: {
-                        'en-GB': null,
+                        'zh-CN': null,
                     },
                 },
                 customFields: [{
@@ -931,14 +931,14 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                     id: uuid.get('custom_sports'),
                     name: 'custom_sports',
                     position: 1,
-                    config: { label: { 'en-GB': 'Sports' } },
+                    config: { label: { 'zh-CN': 'Sports' } },
                     customFields: [],
                 },
                 {
                     id: uuid.get('custom_clothing'),
                     name: 'custom_clothing',
                     position: 1,
-                    config: { label: { 'en-GB': 'Clothing' } },
+                    config: { label: { 'zh-CN': 'Clothing' } },
                     customFields: [],
                 },
             ],
@@ -957,7 +957,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                     id: uuid.get('custom_sports'),
                     name: 'custom_sports',
                     position: 1,
-                    config: { label: { 'en-GB': 'Sports' } },
+                    config: { label: { 'zh-CN': 'Sports' } },
                     customFields: [
                         {
                             active: true,
@@ -976,9 +976,9 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                             type: 'float',
                             config: {
                                 type: 'number',
-                                label: { 'en-GB': 'qui et vel' },
+                                label: { 'zh-CN': 'qui et vel' },
                                 numberType: 'float',
-                                placeholder: { 'en-GB': 'Type a floating point number...' },
+                                placeholder: { 'zh-CN': 'Type a floating point number...' },
                                 componentName: 'sw-field',
                                 customFieldType: 'number',
                                 customFieldPosition: 1,
@@ -990,7 +990,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                     id: uuid.get('custom_clothing'),
                     name: 'custom_clothing',
                     position: 1,
-                    config: { label: { 'en-GB': 'Clothing' } },
+                    config: { label: { 'zh-CN': 'Clothing' } },
                     customFields: [
                         {
                             active: true,
@@ -1067,7 +1067,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                     id: uuid.get('custom_sports'),
                     name: 'custom_sports',
                     position: 1,
-                    config: { label: { 'en-GB': 'Sports' } },
+                    config: { label: { 'zh-CN': 'Sports' } },
                     customFields: [
                     ],
                 },
@@ -1075,7 +1075,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                     id: uuid.get('custom_clothing'),
                     name: 'custom_clothing',
                     position: 1,
-                    config: { label: { 'en-GB': 'Clothing' } },
+                    config: { label: { 'zh-CN': 'Clothing' } },
                     customFields: [
                     ],
                 },
@@ -1142,7 +1142,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                 name: 'set1',
                 config: {
                     label: {
-                        'en-GB': 'Set 1 Label',
+                        'zh-CN': 'Set 1 Label',
                     },
                 },
                 customFields: [{
@@ -1199,7 +1199,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                         id: uuid.get('custom_first_tab'),
                         name: 'custom_first_tab',
                         position: 1,
-                        config: { label: { 'en-GB': 'First tab' } },
+                        config: { label: { 'zh-CN': 'First tab' } },
                         customFields: [
                             {
                                 active: true,
@@ -1210,7 +1210,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                                     customFieldType: customFieldConfigType,
                                     type: customFieldConfigType,
                                     componentName: componentName,
-                                    label: { 'en-GB': componentLabel },
+                                    label: { 'zh-CN': componentLabel },
                                     ...componentConfigAddition,
                                 },
                             },
@@ -1258,7 +1258,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                         id: uuid.get('custom_first_tab'),
                         name: 'custom_first_tab',
                         position: 1,
-                        config: { label: { 'en-GB': 'First tab' } },
+                        config: { label: { 'zh-CN': 'First tab' } },
                         customFields: [
                             {
                                 active: true,
@@ -1269,7 +1269,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                                     customFieldType: customFieldConfigType,
                                     type: customFieldConfigType,
                                     componentName: componentName,
-                                    label: { 'en-GB': componentLabel },
+                                    label: { 'zh-CN': componentLabel },
                                     ...componentConfigAddition,
                                 },
                             },
@@ -1318,7 +1318,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                         id: uuid.get('custom_first_tab'),
                         name: 'custom_first_tab',
                         position: 1,
-                        config: { label: { 'en-GB': 'First tab' } },
+                        config: { label: { 'zh-CN': 'First tab' } },
                         customFields: [
                             {
                                 active: true,
@@ -1329,7 +1329,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                                     customFieldType: customFieldConfigType,
                                     type: customFieldConfigType,
                                     componentName: componentName,
-                                    label: { 'en-GB': componentLabel },
+                                    label: { 'zh-CN': componentLabel },
                                     ...componentConfigAddition,
                                 },
                             },
@@ -1376,7 +1376,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                         id: uuid.get('custom_first_tab'),
                         name: 'custom_first_tab',
                         position: 1,
-                        config: { label: { 'en-GB': 'First tab' } },
+                        config: { label: { 'zh-CN': 'First tab' } },
                         customFields: [
                             {
                                 active: true,
@@ -1387,7 +1387,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                                     customFieldType: customFieldConfigType,
                                     type: customFieldConfigType,
                                     componentName: componentName,
-                                    label: { 'en-GB': componentLabel },
+                                    label: { 'zh-CN': componentLabel },
                                     ...componentConfigAddition,
                                 },
                             },
@@ -1448,7 +1448,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                         id: uuid.get('custom_first_tab'),
                         name: 'custom_first_tab',
                         position: 1,
-                        config: { label: { 'en-GB': 'First tab' } },
+                        config: { label: { 'zh-CN': 'First tab' } },
                         customFields: [
                             {
                                 active: true,
@@ -1459,7 +1459,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                                     customFieldType: customFieldConfigType,
                                     type: customFieldConfigType,
                                     componentName: componentName,
-                                    label: { 'en-GB': componentLabel },
+                                    label: { 'zh-CN': componentLabel },
                                     ...componentConfigAddition,
                                 },
                             },
@@ -1523,7 +1523,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                         id: uuid.get('custom_first_tab'),
                         name: 'custom_first_tab',
                         position: 1,
-                        config: { label: { 'en-GB': 'First tab' } },
+                        config: { label: { 'zh-CN': 'First tab' } },
                         customFields: [
                             {
                                 active: true,
@@ -1534,7 +1534,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                                     customFieldType: customFieldConfigType,
                                     type: customFieldConfigType,
                                     componentName: componentName,
-                                    label: { 'en-GB': componentLabel },
+                                    label: { 'zh-CN': componentLabel },
                                     ...componentConfigAddition,
                                 },
                             },
@@ -1597,7 +1597,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                         id: uuid.get('custom_first_tab'),
                         name: 'custom_first_tab',
                         position: 1,
-                        config: { label: { 'en-GB': 'First tab' } },
+                        config: { label: { 'zh-CN': 'First tab' } },
                         customFields: [
                             {
                                 active: true,
@@ -1608,7 +1608,7 @@ describe('src/app/component/form/sw-custom-field-set-renderer', () => {
                                     customFieldType: customFieldConfigType,
                                     type: customFieldConfigType,
                                     componentName: componentName,
-                                    label: { 'en-GB': componentLabel },
+                                    label: { 'zh-CN': componentLabel },
                                     ...componentConfigAddition,
                                 },
                             },

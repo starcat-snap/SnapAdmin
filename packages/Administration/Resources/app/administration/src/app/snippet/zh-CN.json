@@ -1,0 +1,9 @@
+{
+  "global": {
+    "sw-admin-menu": {
+      "textShopwareAdmin": "SnapAdmin Administration",
+      "textProjectName": "Administration",
+      "administrator": "Administrator"
+    }
+  }
+}

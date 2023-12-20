@@ -25,7 +25,7 @@ framework:
   validation:
     enable_annotations: true
     email_validation_mode: html5
-  default_locale: en_GB
+  default_locale: zh_CN
   http_method_override: true
   mailer:
     message_bus: false

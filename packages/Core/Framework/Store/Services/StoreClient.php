@@ -261,7 +261,7 @@ class StoreClient
             $this->endpoints['updater_permission'],
             [
                 'query' => [
-                    'language' => 'en_GB',
+                    'language' => 'zh_CN',
                     'snapVersion' => $this->getSnapAdminVersion(),
                 ],
             ]

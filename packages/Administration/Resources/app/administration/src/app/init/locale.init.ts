@@ -8,8 +8,7 @@ export default async function initializeLocaleService() {
     const localeFactory = factoryContainer.locale;
 
     // Register default snippets
-    localeFactory.register('de-DE', {});
-    localeFactory.register('en-GB', {});
+    localeFactory.register('zh-CN', {});
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const snippetService = SnapAdmin.Service('snippetService');

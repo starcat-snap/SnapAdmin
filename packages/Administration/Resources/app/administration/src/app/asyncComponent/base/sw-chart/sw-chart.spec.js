@@ -40,8 +40,8 @@ const setup = async ({ type, series, options, fillEmptyValues, sort } = {}) => {
 describe('asyncComponent/base/sw-chart', () => {
     beforeEach(async () => {
         SnapAdmin.State.commit('setAdminLocale', {
-            locale: 'en-GB',
-            locales: ['en-GB', 'nl-NL'],
+            locale: 'zh-CN',
+            locales: ['zh-CN', 'nl-NL'],
         });
     });
 
@@ -286,7 +286,7 @@ describe('asyncComponent/base/sw-chart', () => {
     it('should load the correct default locale', async () => {
         SnapAdmin.State.commit('setAdminLocale', {
             locale: 'nl-NL',
-            locales: ['en-GB', 'nl-NL'],
+            locales: ['zh-CN', 'nl-NL'],
         });
 
         const wrapper = await setup();
@@ -299,7 +299,7 @@ describe('asyncComponent/base/sw-chart', () => {
     it('should load the fallback locale when default locale does not exists', async () => {
         SnapAdmin.State.commit('setAdminLocale', {
             locale: 'foo-BAR',
-            locales: ['en-GB', 'nl-NL', 'foo-BAR'],
+            locales: ['zh-CN', 'nl-NL', 'foo-BAR'],
         });
 
         const wrapper = await setup();

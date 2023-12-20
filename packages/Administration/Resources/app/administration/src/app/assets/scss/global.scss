@@ -18,14 +18,6 @@
     font-family: $font-family-default;
 }
 
-@supports (font-variation-settings: normal) {
-    *,
-    body {
-        font-family: $font-family-variables;
-        font-feature-settings: $font-family-default-feature-settings;
-    }
-}
-
 body {
     font-family: $font-family-default;
     font-size: $font-size-s;

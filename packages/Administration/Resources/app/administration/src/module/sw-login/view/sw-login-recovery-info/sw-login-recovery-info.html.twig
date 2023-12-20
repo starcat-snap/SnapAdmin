@@ -1,0 +1,38 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_login_recovery_info %}
+<div class="sw-login-recovery-info">
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_login_recovery_info_headline %}
+    <h2 class="sw-login__form-headline">
+        <router-link
+            class="sw-login__back"
+            :to="{ name: 'sw.login.index.login' }"
+        >
+            <sw-icon
+                class="sw-login__back-arrow"
+                name="regular-long-arrow-left"
+                small
+            />
+        </router-link>
+        {{ $tc('sw-login.recovery.info.headline') }}
+    </h2>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_login_recovery_info_info %}
+    <template v-if="!rateLimitTime">
+        <sw-alert variant="info">
+            {{ $tc('sw-login.recovery.info.info') }}
+        </sw-alert>
+        <sw-alert variant="warning">
+            {{ $tc('sw-login.recovery.info.warning') }}
+        </sw-alert>
+    </template>
+    <template v-else>
+        <sw-alert variant="info">
+            {{ $tc('global.error-codes.FRAMEWORK__RATE_LIMIT_EXCEEDED', 0, { seconds: rateLimitTime }) }}
+        </sw-alert>
+    </template>
+    {% endblock %}
+</div>
+{% endblock %}
