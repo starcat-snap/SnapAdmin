@@ -1,0 +1,31 @@
+/**
+ * @package admin
+ */
+
+// Vue 3 imports
+import {
+    mapState,
+    mapMutations,
+    mapGetters,
+    mapActions,
+} from 'vuex';
+
+import * as mapErrors from 'src/app/service/map-errors.service';
+
+const componentHelper = {
+    mapState,
+    mapMutations,
+    mapGetters,
+    mapActions,
+    ...mapErrors,
+};
+
+// Register each component helper
+Object.entries(componentHelper).forEach(([name, value]) => {
+    SnapAdmin.Component.registerComponentHelper(name, value);
+});
+
+// eslint-disable-next-line sw-deprecation-rules/private-feature-declarations
+export default function initializeComponentHelper() {
+    return SnapAdmin.Component.getComponentHelper();
+}

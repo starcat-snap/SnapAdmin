@@ -1,0 +1,131 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_price_field %}
+<div
+    class="sw-price-field"
+    :class="{
+        'sw-price-field--label': label,
+        'sw-price-field--compact': compact,
+        'sw-price-field--disabled': isDisabled
+    }"
+>
+
+    <div class="price-field-grid">
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_price_field_gross %}
+        {# TODO: check selectors #}
+        <sw-number-field
+            v-model:value="priceForCurrency.gross"
+            class="sw-price-field__gross"
+            :allow-empty="allowEmpty"
+            :placeholder="$tc('sw-product.priceForm.placeholderPriceGross')"
+            :label="labelGross"
+            :help-text="grossHelpText"
+            :validation="validation"
+            :size="compact ? 'small' : 'default'"
+            :min="0"
+            :digits="20"
+            :error="grossError"
+            :disabled="isDisabled"
+            :name="grossFieldName"
+            v-bind="$attrs"
+            @update:value="onPriceGrossChange"
+            @keyup="keymonitor"
+            @input-change="onPriceGrossInputChange"
+        >
+            <template
+                v-if="!disableSuffix"
+                #suffix
+            >
+                {{ currency.symbol }}
+            </template>
+        </sw-number-field>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_price_field_lock_button %}
+        <button
+            class="sw-price-field__lock"
+            :class="{
+                'is--locked': priceForCurrency.linked,
+                'is--disabled': isDisabled
+            }"
+            @click="onLockSwitch"
+        >
+            <sw-icon
+                v-if="priceForCurrency.linked"
+                name="regular-lock"
+                size="16"
+            />
+            <sw-icon
+                v-else
+                name="regular-lock-open"
+                size="16"
+            />
+        </button>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_price_field_net %}
+        {# TODO: check selectors #}
+        <sw-number-field
+            v-model:value="priceForCurrency.net"
+            class="sw-price-field__net"
+            :allow-empty="allowEmpty"
+            :placeholder="$tc('sw-product.priceForm.placeholderPriceNet')"
+            :label="labelNet"
+            :help-text="netHelpText"
+            :validation="validation"
+            :size="compact ? 'small' : 'default'"
+            :min="0"
+            :digits="20"
+            :error="netError"
+            :disabled="isInherited || disabled"
+            :name="netFieldName"
+            v-bind="$attrs"
+            @update:value="onPriceNetChange"
+            @keyup="keymonitor"
+            @input-change="onPriceNetInputChange"
+        >
+            <template
+                v-if="!disableSuffix"
+                #suffix
+            >
+                {{ currency.symbol }}
+            </template>
+        </sw-number-field>
+        {% endblock %}
+    </div>
+
+    <sw-container
+        v-if="allowModal"
+        justify="end"
+        class="sw-price-form__links"
+    >
+        <a
+            class="sw-card__quick-link"
+            role="link"
+            tabindex="0"
+            @click.prevent="showModal = true"
+            @keydown.enter.prevent="showModal = true"
+        >
+            {{ $tc('sw-product.detailBase.linkMaintainCurrencyPrices') }}
+            <sw-icon
+                name="regular-long-arrow-right"
+                small
+            />
+        </a>
+    </sw-container>
+
+    <sw-maintain-currencies-modal
+        v-if="showModal"
+        :prices="price"
+        :default-price="priceForCurrency"
+        :tax-rate="taxRate"
+        :disabled="false"
+        :hide-list-prices="hideListPrices"
+        @modal-close="onCloseModal"
+    />
+
+</div>
+{% endblock %}

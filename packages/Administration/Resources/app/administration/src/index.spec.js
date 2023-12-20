@@ -4,7 +4,7 @@
 
 import 'src/index';
 
-jest.mock('src/core/snap-admin', () => jest.fn());
+jest.mock('src/core/shopware', () => jest.fn());
 jest.mock('src/app/main', () => jest.fn());
 
 describe('src/index', () => {

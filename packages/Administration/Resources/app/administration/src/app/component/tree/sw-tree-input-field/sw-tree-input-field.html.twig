@@ -1,0 +1,48 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_tree_input_field %}
+<div
+    class="sw-tree-item sw-tree-input-field is--no-children"
+    :class="classes"
+>
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_tree_input_fieldelement %}
+    <div class="sw-tree-item__element">
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_tree_input_fieldelement_grip %}
+        <div class="sw-tree-item__icon">
+            <sw-icon
+                v-if="!disabled"
+                name="regular-circle-xxs"
+                size="18"
+            />
+        </div>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_tree_input_fieldelement_content %}
+        <div class="sw-tree-item__content">
+            <slot name="content">
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_tree_input_fieldslot_content %}
+                <sw-confirm-field
+                    :value="currentValue"
+                    :disabled="disabled"
+                    :placeholder="$tc('sw-tree.general.buttonCreate')"
+                    @input="createNewItem"
+                />
+                {% endblock %}
+            </slot>
+            <span
+                v-if="disabled"
+                class="sw-tree-input-field__language-warning"
+            >
+                {{ $tc('sw-tree.general.actions.actionsDisabledInLanguage') }}.
+            </span>
+        </div>
+        {% endblock %}
+    </div>
+    {% endblock %}
+</div>
+{% endblock %}

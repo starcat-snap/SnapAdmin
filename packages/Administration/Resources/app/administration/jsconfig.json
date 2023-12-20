@@ -12,7 +12,7 @@
             "module/*": ["./src/module/*"],
             "scss/*": ["./src/app/assets/scss/*"],
             "assets/*": ["./static/*"],
-            "SnapAdmin": ["./src/core/snap-admin"]
+            "SnapAdmin": ["./src/core/shopware"],
         }
     },
     "include": ["src/**/*", "types/**/*"],

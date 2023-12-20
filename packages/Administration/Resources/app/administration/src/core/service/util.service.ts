@@ -15,19 +15,20 @@ import chunk from 'lodash/chunk';
 import intersectionBy from 'lodash/intersectionBy';
 
 import {
-    cloneDeep,
     deepCopyObject,
-    deepMergeObject,
-    get,
-    getArrayChanges,
-    getObjectDiff,
     hasOwnProperty,
+    getObjectDiff,
+    getArrayChanges,
+    cloneDeep,
     merge,
     mergeWith,
-    pick,
+    deepMergeObject,
+    get,
     set,
+    pick,
 } from './utils/object.utils';
-import { error, warn } from './utils/debug.utils';
+import { warn, error } from './utils/debug.utils';
+import { currency, date, dateWithUserTimezone, fileSize, md5, toISODate } from './utils/format.utils';
 import domUtils from './utils/dom.utils';
 import stringUtils from './utils/string.utils';
 import typesUtils, { isUndefined } from './utils/types.utils';
@@ -55,6 +56,15 @@ export const debug = {
     error: error,
 };
 
+// eslint-disable-next-line sw-deprecation-rules/private-feature-declarations
+export const format = {
+    currency: currency,
+    date: date,
+    dateWithUserTimezone: dateWithUserTimezone,
+    fileSize: fileSize,
+    md5: md5,
+    toISODate: toISODate,
+};
 
 // eslint-disable-next-line sw-deprecation-rules/private-feature-declarations
 export const dom = {
@@ -70,6 +80,7 @@ export const string = {
     upperFirst: stringUtils.upperFirst,
     kebabCase: stringUtils.kebabCase,
     snakeCase: stringUtils.snakeCase,
+    md5: md5,
     isEmptyOrSpaces: stringUtils.isEmptyOrSpaces,
     isUrl: stringUtils.isUrl,
     isValidIp: stringUtils.isValidIp,
@@ -124,6 +135,7 @@ export default {
     get,
     object,
     debug,
+    format,
     dom,
     string,
     types,

@@ -1,0 +1,56 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_date_filter %}
+<sw-range-filter
+    :class="'sw-date-filter' + ((filter.showTimeframe) ? ' --has-timeframe' : '')"
+    :value="dateValue"
+    :title="filter.label"
+    :active="active"
+    :show-reset-button="!!dateValue.from || !!dateValue.to"
+    :is-show-divider="showDivider"
+    :property="filter.property"
+    @filter-update="updateFilter"
+    @filter-reset="resetFilter"
+>
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_date_filter_timeframe %}
+    <sw-single-select
+        v-if="filter.showTimeframe"
+        v-model:value="dateValue.timeframe"
+        class="sw-date-filter__timeframe"
+        placeholder="Select timeframe"
+        :options="timeframeOptions"
+        @update:value="onTimeframeSelect"
+    />
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_date_filter_from_field %}
+    <template #from-field>
+        <sw-datepicker
+            v-model:value="dateValue.from"
+            v-bind="$attrs"
+            class="sw-date-filter__from"
+            :date-type="dateType"
+            :placeholder="filter.fromPlaceholder"
+            :label="fromToFieldLabel('from')"
+            @update:value="resetTimeframe"
+        />
+    </template>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_date_filter_to_field %}
+    <template #to-field>
+        <sw-datepicker
+            v-model:value="dateValue.to"
+            v-bind="$attrs"
+            class="sw-date-filter__to"
+            :date-type="dateType"
+            :placeholder="filter.toPlaceholder"
+            :label="fromToFieldLabel('to')"
+            @update:value="resetTimeframe"
+        />
+    </template>
+    {% endblock %}
+</sw-range-filter>
+{% endblock %}

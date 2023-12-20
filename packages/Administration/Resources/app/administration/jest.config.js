@@ -4,12 +4,18 @@
 
 // For a detailed explanation regarding each configuration property, visit:
 // https://jestjs.io/docs/en/configuration.html
-const {existsSync} = require('fs');
-const {join, resolve} = require('path');
+const { existsSync } = require('fs');
+const { join, resolve } = require('path');
 
 process.env.PROJECT_ROOT = process.env.PROJECT_ROOT || process.env.INIT_CWD || '.';
 process.env.ADMIN_PATH = process.env.ADMIN_PATH || __dirname;
-process.env.TZ = process.env.TZ || 'Asia/Shanghai';
+process.env.TZ = process.env.TZ || 'UTC';
+
+// Check if ADMIN_PATH/test/_helper_/component-imports.js exists
+if (!existsSync(join(process.env.ADMIN_PATH, '/test/_helper_/componentWrapper/component-imports.js'))) {
+    // eslint-disable-next-line max-len
+    throw new Error('Missing required /test/_helper_/componentWrapper/component-imports.js file to run tests. Run `npm run unit-setup` before executing tests, or use `composer run admin:unit`.');
+}
 
 process.env.JEST_CACHE_DIR = process.env.JEST_CACHE_DIR || '<rootDir>.jestcache';
 
@@ -24,15 +30,21 @@ if (isCi) {
     // eslint-disable-next-line no-console
     console.info('Run Jest in local mode');
 }
+
 module.exports = {
     cacheDirectory: process.env.JEST_CACHE_DIR,
+    preset: '@snap-admin/jest-preset-snap-admin',
     globals: {
         adminPath: process.env.ADMIN_PATH,
         projectRoot: process.env.PROJECT_ROOT,
     },
 
     globalTeardown: '<rootDir>test/globalTeardown.js',
-    testRunner: 'jest-jasmine2', coverageDirectory: join(process.env.PROJECT_ROOT, '/build/artifacts/jest'),
+
+    testRunner: 'jest-jasmine2',
+
+    coverageDirectory: join(process.env.PROJECT_ROOT, '/build/artifacts/jest'),
+
     collectCoverageFrom: [
         'src/**/*.js',
         'src/**/*.ts',
@@ -44,9 +56,25 @@ module.exports = {
         'cobertura',
         'html-spa',
     ],
+
+    setupFilesAfterEnv: [
+        resolve(join(__dirname, '/test/_setup/prepare_environment.js')),
+    ],
+
     transform: {
         // stringify svg imports
         '.*\\.(svg)$': '<rootDir>/test/transformer/svgStringifyTransformer.js',
+    },
+
+    transformIgnorePatterns: [
+        '/node_modules/(?!(@tabler/icons/icons|uuidv7|@vue/compat|other)/)',
+    ],
+
+    moduleNameMapper: {
+        '^test(.*)$': '<rootDir>/test$1',
+        '^\@snap-admin\/admin-extension-sdk\/es\/(.*)': '<rootDir>/node_modules/@snap-admin/admin-extension-sdk/umd/$1',
+        '^lodash-es$': 'lodash',
+        vue$: '@vue/compat/dist/vue.cjs.js',
     },
 
     reporters: isCi ? [
@@ -59,18 +87,20 @@ module.exports = {
             },
         ],
         ['jest-junit', {
-            suiteName: 'SnapAdmin Unit Tests',
+            suiteName: 'SnapAdmin 6 Unit Tests',
             outputDirectory: join(process.env.PROJECT_ROOT, '/build/artifacts/jest'),
             outputName: 'administration.junit.xml',
         }],
     ] : [
         'default',
     ],
+
     testMatch: [
-        '<rootDir>/src/**/*.spec.js'
+        '<rootDir>/src/**/*.spec.js',
+        '!<rootDir>/src/**/*.spec.vue2.js',
     ],
 
     testEnvironmentOptions: {
         customExportConditions: ['node', 'node-addons'],
     },
-}
+};

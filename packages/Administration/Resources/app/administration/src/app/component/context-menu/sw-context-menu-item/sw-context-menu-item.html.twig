@@ -1,0 +1,80 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_context_menu_item %}
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_context_menu_item_router_link %}
+<router-link
+    v-if="routerLink"
+    :to="routerLink"
+    class="sw-context-menu-item"
+    :class="contextMenuItemStyles"
+    :disabled="disabled"
+    :event="disabled ? null : 'click'"
+    :target="disabled ? null : target"
+    v-on="contextListeners"
+>
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_context_menu_item_icon %}
+    <slot name="icon">
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_context_menu_item_slot_icon %}
+        <sw-icon
+            v-if="icon"
+            :name="icon"
+            small
+        />
+        {% endblock %}
+    </slot>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_context_menu_item_text %}
+    <span
+        class="sw-context-menu-item__text"
+        :class="{ 'is--disabled': disabled }"
+    >
+        <slot>
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_context_menu_item_slot_default %}{% endblock %}
+        </slot>
+    </span>
+    {% endblock %}
+</router-link>
+{% endblock %}
+
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_context_menu_item_entry %}
+<div
+    v-else
+    class="sw-context-menu-item"
+    :class="contextMenuItemStyles"
+    v-on="contextListeners"
+>
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_context_menu_item_entry_icon %}
+    <slot name="icon">
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_context_menu_item_entry_slot_icon %}
+        <sw-icon
+            v-if="icon"
+            :name="icon"
+            small
+        />
+        {% endblock %}
+    </slot>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_context_menu_item_entry_text %}
+    <span
+        class="sw-context-menu-item__text"
+        :class="{ 'is--disabled': disabled }"
+    >
+        <slot>
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_context_menu_item_entry_slot_default %}{% endblock %}
+        </slot>
+    </span>
+    {% endblock %}
+</div>
+{% endblock %}
+{% endblock %}

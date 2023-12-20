@@ -82,7 +82,7 @@ module.exports = {
                             scss: path.join(__dirname, 'src/app/assets/scss'),
                             assets: path.join(__dirname, 'static'),
                             // Alias for externals
-                            SnapAdmin: path.join(__dirname, 'src/core/snap-admin'),
+                            SnapAdmin: path.join(__dirname, 'src/core/shopware'),
                             '@administration': path.join(__dirname, 'src'),
                         },
                     },

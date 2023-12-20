@@ -1,0 +1,152 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_app_actions %}
+<div
+    class="sw-app-actions"
+    :class="{'sw-app-actions__empty': !areActionsAvailable}"
+>
+    <template v-if="areActionsAvailable">
+        <sw-context-button class="sw-app-actions__action-button">
+            <template #button>
+                <sw-button>
+                    <sw-icon
+                        name="solid-ellipsis-h-s"
+                        size="16"
+                    />
+                </sw-button>
+            </template>
+
+            <sw-app-action-button
+                v-for="action in actions"
+                :key="action.id"
+                :action="action"
+                @run-app-action="runAction"
+            />
+        </sw-context-button>
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_app_action_modal %}
+        <sw-modal
+            v-if="isOpenModal"
+            class="sw-modal-app-action-button"
+            :class="{ 'is-expanded' : isExpanded}"
+            :variant="size"
+            @modal-close="onCloseModal"
+        >
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_app_action_modal_header %}
+            <template #modal-header>
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_app_action_modal_slot_header %}
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_app_action_modal_close %}
+                <div
+                    id="modal-app-action-button"
+                    class="sw-modal__title"
+                >
+                    <img
+                        v-if="action.icon"
+                        class="sw-app-action-button__icon"
+                        :src="`data:image/png;base64, ${action.icon}`"
+                        alt=""
+                    >
+                    <span>{{ action.app }}</span>
+                </div>
+                {% endblock %}
+
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_app_action_modal_close_button %}
+                <button
+                    class="sw-modal__close"
+                    :title="$tc('global.sw-modal.labelClose')"
+                    :aria-label="$tc('global.sw-modal.labelClose')"
+                    @click.prevent="onCloseModal"
+                >
+                    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                    {% block sw_app_action_modal_close_icon %}
+                    <sw-icon
+                        name="regular-times-s"
+                        small
+                    />
+                    {% endblock %}
+                </button>
+                {% endblock %}
+                {% endblock %}
+            </template>
+            {% endblock %}
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_app_action_modal_iframe %}
+            <!-- eslint-disable-next-line vuejs-accessibility/iframe-has-title -->
+            <iframe
+                id="app-action-button-iframe"
+                ref="innerFrame"
+                class="sw-app-action-button-iframe"
+                referrerpolicy="origin-when-cross-origin"
+                :src="iframeUrl"
+            ></iframe>
+            {% endblock %}
+        </sw-modal>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_app_action_modal_confirm %}
+        <sw-modal
+            v-if="isOpenConfirmModal"
+            class="sw-app-action-button-modal-confirm"
+            :title="$tc('sw-app.component.sw-app-actions.closeWindow')"
+            variant="small"
+            @modal-close="onCloseModalConfirm"
+        >
+            <p>{{ $tc('sw-app.component.sw-app-actions.iframeModalConfirmMessage',0, { title: action.app }) }}</p>
+            <p>{{ $tc('sw-app.component.sw-app-actions.iframeModalConfirmMessageDescription') }}</p>
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_app_action_modal_confirm_footer %}
+            <template #modal-footer>
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_app_action_modal_confirm_checkbox %}
+                <sw-checkbox-field
+                    :value="!isShowModalConfirm"
+                    @update:value="onChangeCheckboxShow()"
+                >
+                    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                    {% block sw_app_action_modal_confirm_checkbox_label %}
+                    <template #label>
+                        {{ $tc('sw-app.component.sw-app-actions.dontAskMeAgain') }}
+                    </template>
+                    {% endblock %}
+                </sw-checkbox-field>
+                {% endblock %}
+
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_app_action_modal_confirm_footer_buttons %}
+                <div class="footer-buttons">
+                    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                    {% block sw_app_action_modal_confirm_footer_cancel %}
+                    <sw-button
+                        size="small"
+                        @click="onCloseModalConfirm"
+                    >
+                        {{ $tc('global.default.cancel') }}
+                    </sw-button>
+                    {% endblock %}
+
+                    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                    {% block sw_app_action_modal_confirm_footer_continue %}
+                    <sw-button
+                        variant="primary"
+                        size="small"
+                        @click="onConfirmClose"
+                    >
+                        {{ $tc('global.default.close') }}
+                    </sw-button>
+                    {% endblock %}
+                </div>
+                {% endblock %}
+            </template>
+            {% endblock %}
+        </sw-modal>
+        {% endblock %}
+    </template>
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_confirm_field %}
+<div
+    class="sw-confirm-field"
+    :class="confirmFieldClasses"
+>
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_confirm_field_input_field %}
+    <sw-text-field
+        v-model:value="draft"
+        v-bind="$attrs"
+        :required="required"
+        :disabled="disabled"
+        :error="error"
+        validation="required"
+        @focus="onStartEditing"
+        @blur="onBlurField"
+        @keyup.enter="onSubmitFromKey"
+        @keyup.esc="onCancelFromKey"
+        @update:value="onInput"
+    />
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_confirm_field_button_list %}
+    <span
+        v-show="isEditing"
+        class="sw-confirm-field__button-list"
+    >
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_confirm_field_cancel_button %}
+        <sw-button
+            :disabled="disabled"
+            class="sw-confirm-field__button sw-confirm-field__button--cancel"
+            square
+            size="x-small"
+            tabindex="-1"
+            @click="onCancelSubmit"
+        >
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_field_inline_cancel_submit_button_icon %}
+            <sw-icon
+                small
+                name="regular-times-xs"
+            />
+            {% endblock %}
+        </sw-button>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_confirm_field_confirm_button %}
+        <sw-button
+            class="sw-confirm-field__button sw-confirm-field__button--submit"
+            :disabled="preventEmptySubmit && !draft || disabled"
+            square
+            size="x-small"
+            variant="primary"
+            tabindex="-1"
+            @click="onSubmitValue"
+        >
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_field_inline_submit_button_icon %}
+            <sw-icon
+                small
+                name="regular-checkmark-xxs"
+            />
+            {% endblock %}
+        </sw-button>
+        {% endblock %}
+    </span>
+    {% endblock %}
+</div>
+{% endblock %}

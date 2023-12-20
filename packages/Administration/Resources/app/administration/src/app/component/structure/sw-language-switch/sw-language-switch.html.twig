@@ -1,0 +1,77 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_language_switch %}
+<div class="sw-language-switch">
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_language_switch_modal %}
+    <sw-modal
+        v-if="showUnsavedChangesModal"
+        :title="$tc('sw-language-switch.titleModalUnsavedChanges')"
+        variant="small"
+        @modal-close="onCloseChangesModal"
+    >
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_language_switch_message %}
+        <p>{{ $tc('sw-language-switch.messageModalUnsavedChanges') }}</p>
+        {% endblock %}
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_language_switch_footer %}
+        <template #modal-footer>
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_language_switch_footer_button_close %}
+            <sw-button
+                id="sw-language-switch-close-button"
+                size="small"
+                @click="onCloseChangesModal"
+            >
+                {{ $tc('global.default.cancel') }}
+            </sw-button>
+            {% endblock %}
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_language_switch_footer_button_revert %}
+            <sw-button
+                id="sw-language-switch-revert-changes-button"
+                size="small"
+                @click="onClickRevertUnsavedChanges"
+            >
+                {{ $tc('sw-language-switch.titleModalButtonRevertUnsavedChanges') }}
+            </sw-button>
+            {% endblock %}
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_language_switch_footer_button_save %}
+            <sw-button
+                id="sw-language-switch-save-changes-button"
+                v-tooltip="{
+                    message: $tc('sw-privileges.tooltip.warning'),
+                    disabled: allowEdit,
+                    showOnDisabledElements: true
+                }"
+                variant="primary"
+                :disabled="!allowEdit"
+                size="small"
+                @click="onClickSaveChanges"
+            >
+                {{ $tc('global.default.save') }}
+            </sw-button>
+            {% endblock %}
+        </template>
+        {% endblock %}
+    </sw-modal>
+    {% endblock %}
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_language_switch_select %}
+    <sw-entity-single-select
+        id="language"
+        class="sw-language-switch__select"
+        entity="language"
+        :disabled="disabled"
+        :criteria="languageCriteria"
+        size="medium"
+        required
+        :value="languageId"
+        @update:value="onInput"
+    />
+    {% endblock %}
+</div>
+{% endblock %}

@@ -1,0 +1,77 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_bulk_edit_modal %}
+<sw-modal
+    class="sw-bulk-edit-modal"
+    :title="$tc('global.sw-bulk-edit-modal.bulkEditModalTitle', itemCount, { count: itemCount })"
+    variant="full"
+    @modal-close="$emit('modal-close')"
+    @edit-items="$emit('edit-items')"
+>
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_bulk_edit_modal_grid %}
+    <sw-data-grid
+        ref="bulkEditGrid"
+        :identifier="identifier"
+        :data-source="paginateRecords"
+        :columns="bulkGridEditColumns"
+        :pre-selection="selection"
+        :show-selection="true"
+        :show-actions="false"
+        :skeleton-item-amount="limit"
+        @selection-change="updateBulkEditSelection"
+    >
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_bulk_edit_modal_grid_custom_slot %}
+        <template
+            v-for="(_, slot) in $scopedSlots"
+            #[slot]="props"
+        >
+            <slot
+                :name="slot"
+                v-bind="props"
+            ></slot>
+        </template>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_bulk_edit_modal_list_pagination %}
+        <template #pagination>
+            <sw-pagination
+                v-bind="{ page, limit, steps }"
+                :total="records.length"
+                :auto-hide="false"
+                :total-visible="7"
+                @page-change="paginate"
+            />
+        </template>
+        {% endblock %}
+    </sw-data-grid>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_bulk_edit_modal_grid_footer %}
+    <template #modal-footer>
+        <slot name="sw-bulk-edit-modal-cancel">
+            <sw-button
+                size="small"
+                @click="$emit('modal-close')"
+            >
+                {{ $tc('global.default.cancel') }}
+            </sw-button>
+        </slot>
+
+        <slot name="sw-bulk-edit-modal-confirm">
+            <sw-button
+                variant="primary"
+                size="small"
+                @click="editItems"
+            >
+                {{ $tc('global.sw-bulk-edit-modal.startBulkEdit') }}
+            </sw-button>
+        </slot>
+    </template>
+    {% endblock %}
+</sw-modal>
+{% endblock %}

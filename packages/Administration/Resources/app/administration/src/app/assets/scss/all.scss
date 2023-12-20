@@ -1,3 +1,6 @@
-body {
-    background: red;
-}
+@import "fonts/inter.font";
+@import "variables";
+@import "typography";
+@import "global";
+@import "directives/tooltip";
+@import "directives/dragdrop";

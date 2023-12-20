@@ -317,7 +317,6 @@ class Kernel extends HttpKernel
             $this->cacheId,
             substr((string) $this->snapVersionRevision, 0, 8),
             substr($pluginHash, 0, 8),
-            EnvironmentHelper::getVariable('DATABASE_URL', ''),
         ], \JSON_THROW_ON_ERROR));
     }
 

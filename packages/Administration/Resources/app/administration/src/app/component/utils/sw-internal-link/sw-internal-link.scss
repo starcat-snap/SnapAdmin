@@ -1,0 +1,23 @@
+@import "~scss/variables";
+
+.sw-internal-link {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    text-decoration: underline;
+    color: $color-shopware-brand-500;
+    font-size: $font-size-xs;
+
+    &:hover,
+    &:focus {
+        color: $color-shopware-brand-600;
+    }
+
+    &--inline {
+        display: inline;
+    }
+
+    &--disabled {
+        color: $color-gray-500;
+    }
+}

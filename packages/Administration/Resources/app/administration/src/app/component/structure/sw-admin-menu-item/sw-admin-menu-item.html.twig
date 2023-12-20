@@ -1,0 +1,177 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_admin_menu_item %}
+<!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events vuejs-accessibility/mouse-events-have-key-events, vuejs-accessibility/no-static-element-interactions -->
+<li
+    v-if="showMenuItem"
+    class="sw-admin-menu__navigation-list-item"
+    :class="getElementClasses(entry.id || entryPath)"
+    :style="{ 'border-color': borderColor }"
+    @click.prevent="$emit('menu-item-click', entry, $event.target)"
+    @mouseenter="$emit('menu-item-enter', entry, $event, parentEntries)"
+>
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_admin_menu_item_router_link %}
+    <router-link
+        v-if="entryPath"
+        class="sw-admin-menu__navigation-link"
+        :class="{'router-link-active': subIsActive(entryPath, entry.id)}"
+        :to="getLinkToProp"
+    >
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_admin_menu_item_icon %}
+        <sw-icon
+            v-if="displayIcon"
+            :size="iconSize"
+            class="sw-admin-menu__navigation-link-icon"
+            :name="getIconName(entry.icon)"
+            :style="{ 'color': entry.color }"
+        />
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_admin_menu_item_text %}
+        <span
+            class="sw-admin-menu__navigation-link-label"
+            :class="collapsibleText ? 'collapsible-text' : ''"
+            :title="getEntryLabel"
+        >
+            {{ getEntryLabel }}
+        </span>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_admin_menu_item_arrow_indicato %}
+        <sw-icon
+            v-if="entry.level > 1 && children.length"
+            name="regular-chevron-right"
+            size="8"
+            class="sw-admin-menu__navigation-link-icon-arrow"
+        />
+        {% endblock %}
+
+        <slot name="additional-text"></slot>
+    </router-link>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_admin_menu_item_external_link %}
+    <a
+        v-else-if="entry.link"
+        :href="entry.link"
+        :target="entry.target"
+        :title="$tc(entry.label)"
+        class="sw-admin-menu__navigation-link"
+    >
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_admin_menu_item_external_icon %}
+        <sw-icon
+            v-if="displayIcon"
+            :size="iconSize"
+            class="sw-admin-menu__navigation-link-icon"
+            :name="getIconName(entry.icon)"
+            :style="{ 'color': entry.color }"
+        />
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_admin_menu_item_external_text %}
+        <span
+            class="sw-admin-menu__navigation-link-label"
+            :class="collapsibleText ? 'collapsible-text' : ''"
+            :title="getEntryLabel"
+        >
+            {{ getEntryLabel }}
+        </span>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_admin_menu_item_external_arrow_indicato %}
+        <sw-icon
+            v-if="entry.level > 1 && children.length"
+            name="regular-chevron-right"
+            size="8"
+            class="sw-admin-menu__navigation-link-icon-arrow"
+        />
+        {% endblock %}
+
+        <slot name="additional-text"></slot>
+    </a>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_admin_menu_item_navigation_link %}
+    <span
+        v-else
+        class="sw-admin-menu__navigation-link"
+        :class="{ 'router-link-active': subIsActive(entry.id) }"
+    >
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_admin_menu_item_navigation_icon %}
+        <sw-icon
+            v-if="displayIcon"
+            :size="iconSize"
+            class="sw-admin-menu__navigation-link-icon"
+            :name="getIconName(entry.icon)"
+            :style="{ 'color': entry.color }"
+        />
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_admin_menu_item_navigation_text %}
+        <span
+            class="sw-admin-menu__navigation-link-label"
+            :class="collapsibleText ? 'collapsible-text' : ''"
+            :title="getEntryLabel"
+        >
+            {{ getEntryLabel }}
+        </span>
+        {% endblock %}
+
+        <slot name="additional-text"></slot>
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_admin_menu_item_arrow_indicator %}
+        <sw-icon
+            v-if="entry.level > 1 && children.length"
+            name="regular-chevron-right"
+            size="8"
+            class="sw-admin-menu__navigation-link-icon-arrow"
+        />
+        {% endblock %}
+    </span>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_sidebar_sub_items_list %}
+    <ul
+        v-if="children.length > 0"
+        class="sw-admin-menu__sub-navigation-list"
+    >
+        <!-- eslint-disable sw-deprecation-rules/no-twigjs-blocks,vue/no-duplicate-attributes,vue/no-parsing-error -->
+        <template
+            v-for="entry in children"
+            :key="getCustomKey(entry.id || entryPath + '-separator')"
+        >
+            <li
+                v-if="isFirstPluginInMenuEntries(entry, children)"
+                :style="{ 'border-color': borderColor }"
+                class="sw-admin-menu__separator"
+            >
+                <span class="sw-admin-menu__separator-line"></span>
+            </li>
+
+            <sw-admin-menu-item
+                :entry="entry"
+                :border-color="borderColor"
+                :display-icon="false"
+                @menu-item-enter="onSubMenuItemEnter"
+            />
+        </template>
+    </ul>
+    {% endblock %}
+</li>
+{% endblock %}

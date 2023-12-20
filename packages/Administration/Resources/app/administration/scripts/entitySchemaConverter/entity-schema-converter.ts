@@ -1,6 +1,6 @@
 import path from 'path';
 import {InterfaceDeclarationStructure, OptionalKind, Project} from 'ts-morph';
-import type {EntitySchemaTypes} from './EntitySchemaTypes';
+import type { EntitySchemaTypes } from './EntitySchemaTypes';
 
 export class EntitySchemaConverter {
     convert(entitySchema: EntitySchemaTypes.IEntitySchema, outputPath: string): void {

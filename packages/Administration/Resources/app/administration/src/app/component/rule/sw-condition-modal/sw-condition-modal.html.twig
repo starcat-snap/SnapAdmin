@@ -1,0 +1,47 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_condition_modal %}
+<sw-modal
+    class="sw-condition-modal"
+    variant="large"
+    :title="$tc('sw-settings-rule.conditionModal.modalTitle')"
+    @modal-close="closeModal"
+>
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_condition_modal_tree %}
+    <sw-condition-tree
+        v-bind="{ initialConditions, scopes, allowedTypes, conditionRepository, conditionDataProviderService }"
+        :root-condition="condition"
+        association-field="ruleId"
+        :association-value="condition.ruleId"
+        :child-association-field="childAssociationField"
+        @conditions-changed="onConditionsChanged"
+    />
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_condition_modal_footer %}
+    <template #modal-footer>
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_condition_modal_footer_cancel %}
+        <sw-button
+            size="small"
+            @click="$emit('modal-close')"
+        >
+            {{ $tc('global.default.cancel') }}
+        </sw-button>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_condition_modal_footer_save %}
+        <sw-button
+            variant="primary"
+            size="small"
+            @click="saveAndCloseModal"
+        >
+            {{ $tc('global.default.save') }}
+        </sw-button>
+        {% endblock %}
+    </template>
+    {% endblock %}
+</sw-modal>
+{% endblock %}

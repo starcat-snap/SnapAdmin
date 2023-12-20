@@ -1,0 +1,18 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_progress_bar %}
+<div class="sw-progress-bar">
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_progress_bar_total %}
+    <div class="sw-progress-bar__total">
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_progress_bar_total_value %}
+        <div
+            class="sw-progress-bar__value"
+            :style="{ width: styleWidth }"
+            :class="progressClasses"
+        ></div>
+        {% endblock %}
+    </div>
+    {% endblock %}
+</div>
+{% endblock %}

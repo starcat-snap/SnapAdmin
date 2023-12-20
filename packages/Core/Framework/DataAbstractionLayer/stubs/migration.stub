@@ -3,8 +3,13 @@
 namespace {Namespace};
 
 use Doctrine\DBAL\Connection;
+use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Migration\MigrationStep;
 
+/**
+ * @internal
+ */
+#[Package('{Package}')]
 class {ClassName} extends MigrationStep
 {
     public function getCreationTimestamp(): int

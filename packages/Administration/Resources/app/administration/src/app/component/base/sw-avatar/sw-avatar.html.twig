@@ -1,0 +1,28 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_avatar %}
+<span
+    ref="swAvatar"
+    class="sw-avatar"
+    :class="'sw-avatar__' + variant"
+    :style="[avatarImage, avatarColor, avatarSize, avatarInitialsSize]"
+    role="img"
+>
+    <slot>
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_avatar_slot_imageUrl %}
+        <span
+            v-if="showInitials"
+            class="sw-avatar__initials"
+        >
+            {{ avatarInitials }}
+        </span>
+        {% endblock %}
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_avatar_slot_placeholder %}
+        <span v-if="showPlaceholder">
+            <sw-icon name="regular-user" />
+        </span>
+        {% endblock %}
+    </slot>
+</span>
+{% endblock %}

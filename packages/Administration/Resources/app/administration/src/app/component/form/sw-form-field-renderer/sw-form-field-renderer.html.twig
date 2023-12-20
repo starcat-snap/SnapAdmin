@@ -1,0 +1,39 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_form_field_renderer %}
+<component
+    :is="componentName"
+    v-bind="bind"
+    ref="component"
+    v-model="currentValue"
+    class="sw-form-field-renderer"
+    :error="error"
+    @change="emitChange"
+    @update:value="emitChange"
+    @update:ids="emitChange"
+    @input="emitUpdate"
+>
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_form_field_renderer_scope_slots %}
+    <!-- eslint-disable vue/v-slot-style -->
+    <template
+        v-for="(slot, slotName) in $scopedSlots"
+        #[slotName]="slotData"
+    >
+        <!-- eslint-enable vue/v-slot-style -->
+        <slot
+            :name="slotName"
+            v-bind="slotData"
+        >
+        </slot>
+    </template>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_form_field_renderer_inner %}
+    <slot>
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_form_field_renderer_inner_slot %}{% endblock %}
+    </slot>
+    {% endblock %}
+</component>
+{% endblock %}

@@ -639,6 +639,7 @@
             <argument type="service" id="scheduled_task.repository"/>
             <argument type="service" id="Doctrine\DBAL\Connection"/>
             <argument>%snap.dal.versioning.expire_days%</argument>
+            <tag name="messenger.message_handler"/>
         </service>
     </services>
 </container>

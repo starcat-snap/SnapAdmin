@@ -1,0 +1,9 @@
+.sw-condition-time-range {
+    display: grid;
+    gap: 4px;
+    grid-template-columns: 1fr 1fr;
+
+    .sw-contextual-field .sw-field__addition .sw-icon {
+        line-height: 0;
+    }
+}
