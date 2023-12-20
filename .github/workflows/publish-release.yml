@@ -1,0 +1,88 @@
+name: Publish Release
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+  workflow_dispatch:
+jobs:
+  publish-release:
+    name: "publish-release"
+    runs-on: ubuntu-latest
+    env:
+      DB_CONNECTION: mysql
+      DB_HOST: localhost
+      DB_PORT: 3306
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      DATABASE_URL: mysql://root:root@localhost:3306/58shuwei
+    steps:
+      - name: Set up MySQL
+        run: |
+          sudo systemctl start mysql
+          mysql -e 'CREATE DATABASE testdb;' -uroot -proot
+          mysql -e 'SHOW DATABASES;' -uroot -proot
+      - name: Clone platform
+        uses: actions/checkout@v3
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+      - name: Set output
+        id: vars
+        run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+      - name: Check output
+        env:
+          RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+        run: |
+          echo $RELEASE_VERSION
+          echo ${{ steps.vars.outputs.tag }}
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+      - name: Setup
+        env:
+          TAG: ${{ github.ref }}
+
+        run: |
+          composer run setup
+
+      - name: Split Repository
+        run: |
+          for package in Administration Core; do
+            ./.github/bin/split.sh split_repo "${package}"
+          done
+
+      - name: Add assets to split repositories
+        run: |
+          for package in Administration Core; do
+            ./.github/bin/split.sh copy_assets "${package}"
+          done
+          ./.github/bin/split.sh check_assets
+          ./.github/bin/split.sh include_admin_assets
+      - name: tag split repositories
+        run: |
+          git config --global user.email "lyricsong47@gmail.com"
+          git config --global user.name "gxiaosong"
+          for package in Administration Core; do
+            ./.github/bin/split.sh commit "${package}" "(+ assets)"
+          done
+          for package in Administration Core; do
+            ./.github/bin/split.sh tag "${package}" "${{ steps.vars.outputs.tag }}"
+          done
+      - name: Push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TOKEN: ${{ secrets.TOKEN }}
+          BRANCH_NAME: tmp-${{ github.sha }}
+        run: |
+          for package in Administration Core; do
+            ./.github/bin/split.sh push_tag "${package}" https://$TOKEN@github.com/58shuwei "${{ steps.vars.outputs.tag }}"
+          done
