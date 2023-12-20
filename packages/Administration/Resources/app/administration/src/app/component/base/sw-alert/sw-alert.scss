@@ -99,7 +99,7 @@ $sw-alert-size-close: 40px;
             border-color: $color-gray-300;
 
             .sw-button {
-                color: $color-shopware-brand-500;
+                color: $color-snap-admin-brand-500;
                 border-color: $color-gray-300;
 
                 &:hover {
@@ -180,26 +180,26 @@ $sw-alert-size-close: 40px;
     }
 
     &--info {
-        border-color: $color-shopware-brand-500;
-        background-color: $color-shopware-brand-50;
+        border-color: $color-snap-admin-brand-500;
+        background-color: $color-snap-admin-brand-50;
 
         &.sw-alert--notification {
             background-color: $color-white;
             border-color: $color-gray-300;
-            border-left-color: $color-shopware-brand-500;
+            border-left-color: $color-snap-admin-brand-500;
         }
 
         .sw-alert__icon,
         .sw-alert__close {
-            color: $color-shopware-brand-500;
+            color: $color-snap-admin-brand-500;
         }
 
         .sw-alert__title {
-            color: $color-shopware-brand-500;
+            color: $color-snap-admin-brand-500;
         }
 
         .sw-alert__message {
-            color: $color-shopware-brand-500;
+            color: $color-snap-admin-brand-500;
         }
     }
 

@@ -43,10 +43,10 @@ $sw-tree-item-color-text: $color-darkgray-200;
         user-select: none;
         pointer-events: none;
         background: $color-white;
-        box-shadow: 0 0 5px 1px $color-shopware-brand-500;
+        box-shadow: 0 0 5px 1px $color-snap-admin-brand-500;
 
         .sw-tree-item__child-count {
-            background: $color-shopware-brand-500;
+            background: $color-snap-admin-brand-500;
             color: $color-white;
         }
 
@@ -90,7 +90,7 @@ $sw-tree-item-color-text: $color-darkgray-200;
 
             .sw-tree-item__icon,
             .sw-tree-item__content {
-                color: $color-shopware-brand-500;
+                color: $color-snap-admin-brand-500;
             }
         }
     }
@@ -101,7 +101,7 @@ $sw-tree-item-color-text: $color-darkgray-200;
 
             .sw-tree-item__icon,
             .sw-tree-item__content {
-                color: $color-shopware-brand-500;
+                color: $color-snap-admin-brand-500;
             }
         }
     }
@@ -114,7 +114,7 @@ $sw-tree-item-color-text: $color-darkgray-200;
 
     &.is--focus {
         > .sw-tree-item__element {
-            background-color: lighten($color-shopware-brand-500, 40);
+            background-color: lighten($color-snap-admin-brand-500, 40);
         }
     }
 
@@ -260,7 +260,7 @@ $sw-tree-item-color-text: $color-darkgray-200;
 
         .sw-tree-item__icon,
         .sw-tree-item__content {
-            color: $color-shopware-brand-500;
+            color: $color-snap-admin-brand-500;
         }
     }
 
@@ -279,10 +279,10 @@ $sw-tree-item-color-text: $color-darkgray-200;
         user-select: none;
         pointer-events: none;
         background: $color-white;
-        box-shadow: 0 0 5px 1px $color-shopware-brand-500;
+        box-shadow: 0 0 5px 1px $color-snap-admin-brand-500;
 
         .sw-tree-item__child-count {
-            background: $color-shopware-brand-500;
+            background: $color-snap-admin-brand-500;
             color: $color-white;
         }
 

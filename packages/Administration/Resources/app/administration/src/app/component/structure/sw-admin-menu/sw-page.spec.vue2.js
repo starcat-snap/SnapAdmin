@@ -1,45 +1,142 @@
-import { shallowMount, config } from '@vue/test-utils_v2';
+import 'src/app/component/structure/sw-admin';
+import { mount } from '@vue/test-utils';
+import { BroadcastChannel } from 'worker_threads';
 
-import 'src/app/component/structure/sw-page';
-
-const testColor = 'red';
-
-async function createWrapper() {
-    config.mocks.$route = {
-        meta: {
-            $module: {
-                color: testColor,
+async function createWrapper(isLoggedIn, forwardLogout = () => {}, route = 'sw.wofoo.index') {
+    return mount(await wrapTestComponent('sw-admin', { sync: true }), {
+        global: {
+            stubs: {
+                'sw-notifications': true,
+                'sw-duplicated-media-v2': true,
+                'sw-settings-cache-modal': true,
+                'sw-license-violation': true,
+                'sw-hidden-iframes': true,
+                'sw-modals-renderer': true,
+                'sw-app-wrong-app-url-modal': true,
+                'router-view': true,
+            },
+            mocks: {
+                $router: {
+                    currentRoute: {
+                        value: {
+                            name: route,
+                        },
+                    },
+                },
+            },
+            provide: {
+                cacheApiService: {},
+                extensionStoreActionService: {},
+                licenseViolationService: {},
+                userActivityService: {
+                    updateLastUserActivity: () => {
+                        localStorage.setItem('lastActivity', 'foo');
+                    },
+                },
+                loginService: {
+                    isLoggedIn: () => isLoggedIn,
+                    forwardLogout,
+                },
             },
         },
-    };
-
-    return shallowMount(await SnapAdmin.Component.build('sw-page'), {
-        stubs: {
-            'sw-search-bar': true,
-            'sw-notification-center': true,
-            'router-link': true,
-            'sw-icon': true,
-            'sw-app-actions': true,
-            'sw-help-center': true,
-        },
+        attachTo: document.body,
     });
 }
 
+describe('src/app/component/structure/sw-admin/index.ts', () => {
+    let wrapper;
 
-describe('src/app/component/structure/sw-page', () => {
-    it('should be a Vue.JS component', async () => {
-        const wrapper = await createWrapper();
+    beforeEach(() => {
+        global.BroadcastChannel = BroadcastChannel;
+    });
+
+    afterEach(async () => {
+        if (wrapper) {
+            await wrapper.unmount();
+        }
+
+        await flushPromises();
+
+        localStorage.removeItem('lastActivity');
+    });
+
+    it('should be a Vue.js component', async () => {
+        wrapper = await createWrapper(false);
 
         expect(wrapper.vm).toBeTruthy();
     });
 
-    it('should use the header bottom-color specified with the headerBorderColor prop', async () => {
-        const wrapper = await createWrapper();
+    it('should update user activity on click', async () => {
+        wrapper = await createWrapper(false);
 
-        expect(wrapper.get('.sw-page__head-area').attributes('style')).toBe('border-bottom-color: red; padding-right: 0px;');
+        const lastActivity = localStorage.getItem('lastActivity');
 
-        await wrapper.setProps({ headerBorderColor: 'green' });
+        const app = wrapper.find('#app');
+        await app.trigger('mousemove');
 
-        expect(wrapper.get('.sw-page__head-area').attributes('style')).toBe('border-bottom-color: green; padding-right: 0px;');
+        const newLastActivity = localStorage.getItem('lastActivity');
+
+        expect(lastActivity).not.toBe(newLastActivity);
+        expect(newLastActivity).toBe('foo');
+    });
+
+    it('should handle session_channel message', async () => {
+        const forwardLogout = jest.fn();
+        wrapper = await createWrapper(false, forwardLogout);
+
+        const channel = new BroadcastChannel('session_channel');
+        channel.postMessage({
+            inactive: true,
+        });
+
+        await flushPromises();
+
+        expect(forwardLogout).toHaveBeenCalledTimes(1);
+        expect(forwardLogout).toHaveBeenCalledWith(true, true);
+        channel.close();
+    });
+
+    it('should not handle session_channel message with improper event data', async () => {
+        const forwardLogout = jest.fn();
+        wrapper = await createWrapper(false, forwardLogout);
+
+        const channel = new BroadcastChannel('session_channel');
+        channel.postMessage(null);
+        channel.postMessage({});
+
+        await flushPromises();
+
+        expect(forwardLogout).toHaveBeenCalledTimes(0);
+        channel.close();
+    });
+
+    it('should not handle session_channel message on blocked route', async () => {
+        const forwardLogout = jest.fn();
+        wrapper = await createWrapper(false, forwardLogout, 'sw.login.index.login');
+
+        const channel = new BroadcastChannel('session_channel');
+        channel.postMessage({
+            inactive: true,
+        });
+
+        await flushPromises();
+
+        expect(forwardLogout).toHaveBeenCalledTimes(0);
+        channel.close();
+    });
+
+    it('should not handle session_channel message on active', async () => {
+        const forwardLogout = jest.fn();
+        wrapper = await createWrapper(false, forwardLogout);
+
+        const channel = new BroadcastChannel('session_channel');
+        channel.postMessage({
+            inactive: false,
+        });
+
+        await flushPromises();
+
+        expect(forwardLogout).toHaveBeenCalledTimes(0);
+        channel.close();
     });
 });

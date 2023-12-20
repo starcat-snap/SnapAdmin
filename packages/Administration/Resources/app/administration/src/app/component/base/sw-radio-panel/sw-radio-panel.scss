@@ -10,8 +10,8 @@
     .sw-radio-panel__image {
         width: 80px;
         height: 80px;
-        background-color: $color-shopware-brand-50;
-        color: $color-shopware-brand-100;
+        background-color: $color-snap-admin-brand-50;
+        color: $color-snap-admin-brand-100;
         border-radius: 50%;
         margin: 0 auto 15px;
         display: flex;
@@ -75,14 +75,14 @@
         visibility: hidden;
 
         &:checked + .sw-radio-panel__body {
-            border-color: $color-shopware-brand-500;
+            border-color: $color-snap-admin-brand-500;
 
             .sw-radio-panel__title {
-                color: $color-shopware-brand-500;
+                color: $color-snap-admin-brand-500;
             }
 
             .sw-radio-panel__radio {
-                border: 5px solid $color-shopware-brand-500;
+                border: 5px solid $color-snap-admin-brand-500;
                 background-color: $color-white;
             }
         }
@@ -90,11 +90,11 @@
 
     &:hover {
         .sw-radio-panel__title {
-            color: $color-shopware-brand-500;
+            color: $color-snap-admin-brand-500;
         }
 
         .sw-radio-panel__body {
-            border-color: $color-shopware-brand-500;
+            border-color: $color-snap-admin-brand-500;
         }
     }
 }

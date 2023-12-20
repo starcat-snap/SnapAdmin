@@ -2,7 +2,7 @@
 
 $sw-login-color-background: $color-gray-100;
 $sw-login-container-color-background: $color-white;
-$sw-login-badge-color-background: $color-shopware-brand-500;
+$sw-login-badge-color-background: $color-snap-admin-brand-500;
 $sw-login-back-color: $color-darkgray-200;
 $sw-login-forgot-password-link-color: blue;
 $sw-login-success-animation-duration: 0.3s;
@@ -28,8 +28,8 @@ $sw-login-error-animation-duration: 0.15s;
 
     .sw-login__container {
         background: $color-white;
-        min-height: 590px;
         display: grid;
+        min-width: 480px;
         transition: all $sw-login-success-animation-duration ease-in-out;
         transform: scale(1);
 
@@ -46,7 +46,7 @@ $sw-login-error-animation-duration: 0.15s;
 
     .sw-login__content {
         min-width: 320px;
-        padding: 130px 60px;
+        padding: 70px 60px;
         position: relative;
         opacity: 1;
         transition:
@@ -61,6 +61,7 @@ $sw-login-error-animation-duration: 0.15s;
     .sw-login__content-headline {
         font-size: $font-size-l;
         font-weight: $font-weight-semi-bold;
+        text-align: center;
     }
 
     .sw-button {

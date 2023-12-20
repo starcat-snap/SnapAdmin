@@ -4,8 +4,8 @@
 $sw-search-bar-item-border-radius: $border-radius-default;
 $sw-search-bar-item-color-label: $color-darkgray-200;
 $sw-search-bar-item-color-type: darken($color-gray-100, 25%);
-$sw-search-bar-item-hover-color-background: lighten($color-shopware-brand-500, 40%);
-$sw-search-bar-item-label-hover-color-text: $color-shopware-brand-500;
+$sw-search-bar-item-hover-color-background: lighten($color-snap-admin-brand-500, 40%);
+$sw-search-bar-item-label-hover-color-text: $color-snap-admin-brand-500;
 
 .sw-search-bar-item {
     border-radius: $sw-search-bar-item-border-radius;

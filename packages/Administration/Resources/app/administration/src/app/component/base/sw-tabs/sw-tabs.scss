@@ -35,7 +35,7 @@
         position: absolute;
         bottom: 0;
         height: 2px;
-        background-color: $color-shopware-brand-500;
+        background-color: $color-snap-admin-brand-500;
 
         &.has--error {
             background-color: $color-crimson-500;
@@ -94,7 +94,7 @@
             cursor: pointer;
 
             .sw-icon {
-                color: $color-shopware-brand-500;
+                color: $color-snap-admin-brand-500;
             }
         }
     }

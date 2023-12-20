@@ -1,11 +1,11 @@
 @import "~scss/variables";
 
 $sw-media-upload-v2-border-color: $color-gray-300;
-$sw-media-upload-v2-color-highlighted: $color-shopware-brand-500;
-$sw-media-upload-v2-color-switch-mode: $color-shopware-brand-500;
+$sw-media-upload-v2-color-highlighted: $color-snap-admin-brand-500;
+$sw-media-upload-v2-color-switch-mode: $color-snap-admin-brand-500;
 $sw-media-upload-v2-border-radius: $border-radius-default;
 $sw-media-upload-v2-upload-background-color: $color-gray-100;
-$sw-media-upload-v2-background-color-highlighted: $color-shopware-brand-50;
+$sw-media-upload-v2-background-color-highlighted: $color-snap-admin-brand-50;
 $sw-media-upload-v2-caption-font-size: $font-size-m;
 $sw-media-upload-v2-caption-icon-color: $color-gray-300;
 
@@ -16,7 +16,7 @@ $sw-media-upload-v2-caption-icon-color: $color-gray-300;
 
     .sw-media-upload-v2__label.is--required::after {
         content: "*";
-        color: $color-shopware-brand-500;
+        color: $color-snap-admin-brand-500;
     }
 
     .sw-media-upload-v2__header {

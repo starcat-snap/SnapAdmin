@@ -32,7 +32,7 @@ $sw-category-tree-field-transition-results: all ease-in-out 0.2s;
     }
 
     .sw-category-tree-field__label-more .sw-category-tree-field__label-more-property {
-        color: $color-shopware-brand-500;
+        color: $color-snap-admin-brand-500;
     }
 
     .sw-category-tree-field__label-property {
@@ -124,11 +124,11 @@ $sw-category-tree-field-transition-results: all ease-in-out 0.2s;
         }
 
         li.sw-category-tree-field__search-result:hover {
-            background-color: lighten($color-shopware-brand-500, 40);
+            background-color: lighten($color-snap-admin-brand-500, 40);
         }
 
         li.sw-category-tree-field__search-result.is--focus {
-            background-color: lighten($color-shopware-brand-500, 40);
+            background-color: lighten($color-snap-admin-brand-500, 40);
         }
 
         li .sw-category-tree-field__search-results-checkbox {

@@ -231,7 +231,7 @@
         }
 
         &.is--column-resizing {
-            background-color: $color-shopware-brand-50;
+            background-color: $color-snap-admin-brand-50;
         }
 
         &:hover {
@@ -313,18 +313,18 @@
         }
 
         &:hover .sw-data-grid__cell {
-            background-color: $color-shopware-brand-50;
+            background-color: $color-snap-admin-brand-50;
 
             a {
-                color: $color-shopware-brand-500;
+                color: $color-snap-admin-brand-500;
             }
         }
 
         &.is--inline-edit {
             .sw-data-grid__cell {
-                background-color: $color-shopware-brand-50;
-                border-top: 1px solid $color-shopware-brand-500;
-                border-bottom: 1px solid $color-shopware-brand-500;
+                background-color: $color-snap-admin-brand-50;
+                border-top: 1px solid $color-snap-admin-brand-500;
+                border-bottom: 1px solid $color-snap-admin-brand-500;
             }
 
             .sw-data-grid__cell-content {
@@ -343,7 +343,7 @@
 
         &.is--selected {
             .sw-data-grid__cell {
-                background-color: $color-shopware-brand-50;
+                background-color: $color-snap-admin-brand-50;
             }
         }
     }
@@ -394,7 +394,7 @@
         }
 
         &.link-primary {
-            color: $color-shopware-brand-500;
+            color: $color-snap-admin-brand-500;
         }
     }
 
@@ -509,12 +509,12 @@
             }
 
             &:hover .sw-data-grid__cell {
-                background-color: $color-shopware-brand-50;
+                background-color: $color-snap-admin-brand-50;
             }
 
             &.is--inline-edit .sw-data-grid__cell,
             &.is--selected .sw-data-grid__cell {
-                background-color: $color-shopware-brand-50;
+                background-color: $color-snap-admin-brand-50;
             }
 
             &:last-child {

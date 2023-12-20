@@ -1,7 +1,7 @@
 @import "~scss/variables";
 
 $sw-field-color-text: $color-darkgray-200;
-$sw-field-color-focus: $color-shopware-brand-500;
+$sw-field-color-focus: $color-snap-admin-brand-500;
 $sw-field-color-background: $color-white;
 $sw-field-color-border: $color-gray-300;
 $sw-field-color-error: $color-crimson-500;
@@ -172,11 +172,11 @@ $sw-field-color-inherited: $color-module-purple-900;
 .sw-field--checkbox.sw-field__checkbox--ghost {
     .sw-field__checkbox input[type="checkbox"]:not(:checked) ~ .sw-field__checkbox-state {
         background-color: transparent;
-        border: 1px solid $color-shopware-brand-500;
+        border: 1px solid $color-snap-admin-brand-500;
 
         .sw-icon {
             display: inline-block;
-            color: $color-shopware-brand-500;
+            color: $color-snap-admin-brand-500;
         }
     }
 

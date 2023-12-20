@@ -72,7 +72,7 @@ $sw-field--radio-color-border: $color-gray-300;
             }
 
             &:checked ~ .sw-field__radio-state {
-                border: 5px solid $color-shopware-brand-500;
+                border: 5px solid $color-snap-admin-brand-500;
             }
 
             &:checked:disabled ~ .sw-field__radio-state {
@@ -149,7 +149,7 @@ $sw-field--radio-color-border: $color-gray-300;
             padding: 12px 19px;
 
             &:not(.is--disabled):hover {
-                border-color: $color-shopware-brand-500;
+                border-color: $color-snap-admin-brand-500;
             }
         }
 
@@ -165,8 +165,8 @@ $sw-field--radio-color-border: $color-gray-300;
         }
 
         .sw-field__radio-option.sw-field__radio-option-checked:not(.is--disabled) {
-            background: rgba($color-shopware-brand-500, 0.05);
-            border: 1px solid $color-shopware-brand-500;
+            background: rgba($color-snap-admin-brand-500, 0.05);
+            border: 1px solid $color-snap-admin-brand-500;
         }
     }
 }

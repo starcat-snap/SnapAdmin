@@ -138,7 +138,7 @@
             height: 18px;
             border: 3px solid #fff;
             border-radius: 50%;
-            box-shadow: 0 0 5px $color-shopware-brand-500;
+            box-shadow: 0 0 5px $color-snap-admin-brand-500;
             cursor: grab;
 
             &:active {
@@ -256,7 +256,7 @@
             }
 
             &:focus {
-                border-color: $color-shopware-brand-500;
+                border-color: $color-snap-admin-brand-500;
             }
         }
     }

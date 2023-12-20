@@ -49,8 +49,8 @@ $sw-field-transition: border-color 0.3s ease-out, background 0.3s ease;
 
     &.has--focus {
         .sw-block-field__block {
-            border-color: $color-shopware-brand-500;
-            box-shadow: 0 0 4px lighten($color-shopware-brand-500, 30%);
+            border-color: $color-snap-admin-brand-500;
+            box-shadow: 0 0 4px lighten($color-snap-admin-brand-500, 30%);
         }
     }
 

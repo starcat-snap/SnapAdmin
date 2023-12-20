@@ -64,7 +64,7 @@ $sw-button-transition: all 0.15s ease-out;
     }
 
     &.sw-button--primary {
-        background: $color-shopware-brand-500;
+        background: $color-snap-admin-brand-500;
         color: $color-white;
         line-height: 36px;
         border: 0 none;
@@ -86,16 +86,16 @@ $sw-button-transition: all 0.15s ease-out;
         }
 
         &:hover {
-            background: $color-shopware-brand-700;
+            background: $color-snap-admin-brand-700;
         }
 
         &:active {
-            background: $color-shopware-brand-800;
+            background: $color-snap-admin-brand-800;
         }
 
         &:disabled,
         &.sw-button--disabled {
-            background: $color-shopware-brand-200;
+            background: $color-snap-admin-brand-200;
         }
 
         &.sw-button--square .sw-icon {
@@ -186,33 +186,33 @@ $sw-button-transition: all 0.15s ease-out;
 
     &.sw-button--ghost {
         background-color: transparent;
-        border-color: $color-shopware-brand-500;
-        color: $color-shopware-brand-500;
+        border-color: $color-snap-admin-brand-500;
+        color: $color-snap-admin-brand-500;
 
         .sw-icon {
-            color: $color-shopware-brand-500;
+            color: $color-snap-admin-brand-500;
         }
 
         .sw-loader .sw-loader-element div {
-            border-color: $color-shopware-brand-500 transparent transparent transparent;
+            border-color: $color-snap-admin-brand-500 transparent transparent transparent;
         }
 
         &:hover {
-            background-color: $color-shopware-brand-50;
+            background-color: $color-snap-admin-brand-50;
         }
 
         &:active {
-            background-color: $color-shopware-brand-100;
+            background-color: $color-snap-admin-brand-100;
         }
 
         &:disabled,
         &.sw-button--disabled {
             background-color: transparent;
-            border-color: $color-shopware-brand-200;
-            color: $color-shopware-brand-200;
+            border-color: $color-snap-admin-brand-200;
+            color: $color-snap-admin-brand-200;
 
             .sw-icon {
-                color: $color-shopware-brand-200;
+                color: $color-snap-admin-brand-200;
             }
         }
     }

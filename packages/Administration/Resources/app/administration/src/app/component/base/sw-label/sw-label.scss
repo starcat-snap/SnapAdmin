@@ -30,7 +30,7 @@ $sw-label-pill-border-radius: 50px;
     }
 
     &.sw-label--dismissable:hover {
-        border-color: $color-shopware-brand-500;
+        border-color: $color-snap-admin-brand-500;
 
         .sw-label__caption {
             width: calc(100% - 15px);
@@ -38,7 +38,7 @@ $sw-label-pill-border-radius: 50px;
 
         .sw-label__dismiss {
             display: inline-block;
-            color: $color-shopware-brand-500;
+            color: $color-snap-admin-brand-500;
             background: transparent;
         }
     }
@@ -132,7 +132,7 @@ $sw-label-pill-border-radius: 50px;
     }
 
     &.sw-label--info:not(&--appearance-badged) {
-        @include sw-label-variant($color-shopware-brand-50, $color-shopware-brand-500, $color-shopware-brand-500, $color-shopware-brand-100);
+        @include sw-label-variant($color-snap-admin-brand-50, $color-snap-admin-brand-500, $color-snap-admin-brand-500, $color-snap-admin-brand-100);
     }
 
     &.sw-label--success:not(&--appearance-badged) {
@@ -156,6 +156,6 @@ $sw-label-pill-border-radius: 50px;
     }
 
     &.sw-label--primary:not(&--appearance-badged) {
-        @include sw-label-variant($color-shopware-brand-500, $color-shopware-brand-50, $color-shopware-brand-700, $color-shopware-brand-500);
+        @include sw-label-variant($color-snap-admin-brand-500, $color-snap-admin-brand-50, $color-snap-admin-brand-700, $color-snap-admin-brand-500);
     }
 }

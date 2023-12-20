@@ -5,15 +5,13 @@
       "description": "SnapAdmin login"
     },
     "index": {
-      "headlineMain": "Hello!",
-      "subheadlineMain": "Welcome back.",
-      "headlineForm": "Log in to your SnapAdmin store",
+      "headlineForm": "登录",
       "labelUsername": "用户名",
       "labelPassword": "密码",
-      "labelKeepLoggedIn": "Stay signed in",
-      "placeholderUsername": "Enter your username...",
-      "placeholderPassword": "Enter your password...",
-      "buttonLogin": "Log in",
+      "labelKeepLoggedIn": "保持登录",
+      "placeholderUsername": "您的用户名...",
+      "placeholderPassword": "您的密码...",
+      "buttonLogin": "登录",
       "messageUnsupportedGrantType": "Authorization grant type not supported by authorization server.",
       "messageInvalidRequest": "Invalid request.",
       "messageInvalidClient": "Client authentication failed.",
@@ -23,8 +21,7 @@
       "messageInvalidRefreshToken": "Invalid refresh token.",
       "messageAccessDenied": "Request denied by authorization server.",
       "messageGeneralRequestError": "Something went wrong requesting \"{url}\".",
-      "messageAuthThrottled": "Too many login attempts. Please wait {seconds} seconds before trying to log in again.",
-      "forgottenPasswordLink": "Did you forget your password?"
+      "messageAuthThrottled": "Too many login attempts. Please wait {seconds} seconds before trying to log in again."
     },
     "recovery" : {
       "info": {
