@@ -1,0 +1,8 @@
+{
+  "sw-system": {
+    "general": {
+      "mainMenuItemGeneral": "系统管理",
+      "descriptionTextModule": "The Administration's front page, displaying statistics and system information"
+    }
+  }
+}

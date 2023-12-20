@@ -95,7 +95,6 @@ Component.register('sw-search-bar', {
             searchTypes: null,
             showTypeSelectContainer: false,
             typeSelectResults: [],
-            salesChannelTypes: [],
             moduleFactory: Application.getContainer('factory').module || {},
             showResultsSearchTrends: false,
             resultsSearchTrends: [],
@@ -126,26 +125,6 @@ Component.register('sw-search-bar', {
 
             return placeholder;
         },
-
-        salesChannelRepository() {
-            return this.repositoryFactory.create('sales_channel');
-        },
-
-        salesChannelTypeRepository() {
-            return this.repositoryFactory.create('sales_channel_type');
-        },
-
-        salesChannelCriteria() {
-            const criteria = new Criteria(1, 25);
-            criteria.addAssociation('type');
-
-            return criteria;
-        },
-
-        canCreateSalesChannels() {
-            return this.acl.can('sales_channel.creator');
-        },
-
         moduleRegistry() {
             return this.moduleFactory.getModuleRegistry();
         },
@@ -250,10 +229,6 @@ Component.register('sw-search-bar', {
             this.registerListener();
 
             this.userSearchPreference = await this.searchRankingService.getUserSearchPreference();
-
-            if (this.canCreateSalesChannels) {
-                await this.loadSalesChannelType();
-            }
         },
 
         destroyedComponent() {
@@ -807,17 +782,6 @@ Component.register('sw-search-bar', {
             this.showResultsSearchTrends = false;
         },
 
-        loadSalesChannelType() {
-            return new Promise(resolve => {
-                this.salesChannelTypeRepository
-                    .search(new Criteria(1, 25))
-                    .then((response) => {
-                        this.salesChannelTypes = response;
-                        resolve(response);
-                    });
-            });
-        },
-
         getModuleEntities(searchTerm, limit = 5) {
             const minSearch = 3;
             const regex = new RegExp(`^${searchTerm.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&').toLowerCase()}(.*)`);
@@ -850,8 +814,6 @@ Component.register('sw-search-bar', {
                     ...matches.filter(item => !item.privilege || this.acl.can(item.privilege)),
                 );
             });
-
-            moduleEntities.push(...this.getSalesChannelTypesBySearchTerm(regex));
 
             return moduleEntities.slice(0, limit);
         },
@@ -894,26 +856,6 @@ Component.register('sw-search-bar', {
             }
 
             return entities;
-        },
-
-        getSalesChannelTypesBySearchTerm(regex) {
-            return this.salesChannelTypes.reduce((salesChannelTypes, saleChannelType) => {
-                if (!saleChannelType?.translated.name.toLowerCase().match(regex)) {
-                    return salesChannelTypes;
-                }
-
-                return [
-                    {
-                        name: 'sales-channel',
-                        icon: saleChannelType?.iconName ?? 'regular-server',
-                        color: '#14D7A5',
-                        entity: 'sales_channel',
-                        label: saleChannelType?.translated.name,
-                        route: { name: 'sw.sales.channel.create', params: { typeId: saleChannelType.id } },
-                        action: true,
-                    },
-                ];
-            }, []);
         },
 
         toggleSearchPreferencesModal() {
