@@ -46,9 +46,6 @@ async function createWrapper(options = {}) {
             userService: {
                 getUser: () => Promise.resolve({ data: { password: '' } }),
             },
-            appModulesService: {
-                fetchAppModules: () => Promise.resolve([]),
-            },
             acl: {
                 can: (privilege) => {
                     return privilege !== 'shouldReturnFalse';
@@ -331,7 +328,7 @@ describe('src/app/component/structure/sw-admin-menu', () => {
         });
 
         it('renders app structure elements and their children', async () => {
-            SnapAdmin.State.commit('shopwareApps/setApps', testApps);
+            SnapAdmin.State.commit('snapAdminApps/setApps', testApps);
             await wrapper.vm.$nextTick();
 
             const topLevelEntries = wrapper.findAll('.navigation-list-item__level-1');

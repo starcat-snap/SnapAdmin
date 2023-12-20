@@ -1,4 +1,3 @@
-import type { AppModulesService, AppModuleDefinition } from 'src/core/service/api/app-modules.service';
 import type StoreApiService from 'src/core/service/api/store.api.service';
 
 import type {
@@ -26,7 +25,6 @@ export default class SnapAdminExtensionService {
     private readonly EXTENSION_TYPES: Readonly<EXTENSION_TYPES>;
 
     constructor(
-        private readonly appModulesService: AppModulesService,
         private readonly extensionStoreActionService: ExtensionStoreActionService,
         private readonly storeApiService: StoreApiService,
     ) {
@@ -79,17 +77,17 @@ export default class SnapAdminExtensionService {
     public async activateExtension(extensionId: string, type: ExtensionType): Promise<void> {
         await this.extensionStoreActionService.activateExtension(extensionId, type);
 
-        await this.updateModules();
+        this.updateModules();
     }
 
     public async deactivateExtension(extensionId: string, type: ExtensionType): Promise<void> {
         await this.extensionStoreActionService.deactivateExtension(extensionId, type);
 
-        await this.updateModules();
+        this.updateModules();
     }
 
     public async updateExtensionData(): Promise<void> {
-        SnapAdmin.State.commit('shopwareExtensions/loadMyExtensions');
+        SnapAdmin.State.commit('snapAdminExtensions/loadMyExtensions');
 
         try {
             await this.extensionStoreActionService.refresh();
@@ -97,20 +95,20 @@ export default class SnapAdminExtensionService {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             const myExtensions = await this.extensionStoreActionService.getMyExtensions();
 
-            SnapAdmin.State.commit('shopwareExtensions/myExtensions', myExtensions);
+            SnapAdmin.State.commit('snapAdminExtensions/myExtensions', myExtensions);
 
-            await this.updateModules();
+            this.updateModules();
         } finally {
-            SnapAdmin.State.commit('shopwareExtensions/setLoading', false);
+            SnapAdmin.State.commit('snapAdminExtensions/setLoading', false);
         }
     }
 
     public async checkLogin(): Promise<void> {
         try {
             const { userInfo } = await this.storeApiService.checkLogin();
-            SnapAdmin.State.commit('shopwareExtensions/setUserInfo', userInfo);
+            SnapAdmin.State.commit('snapAdminExtensions/setUserInfo', userInfo);
         } catch {
-            SnapAdmin.State.commit('shopwareExtensions/setUserInfo', null);
+            SnapAdmin.State.commit('snapAdminExtensions/setUserInfo', null);
         }
     }
 
@@ -127,14 +125,8 @@ export default class SnapAdminExtensionService {
         }
     }
 
-    private async updateModules() {
-        const modules = await this.appModulesService.fetchAppModules();
-
-        SnapAdmin.State.commit('shopwareApps/setApps', modules);
-    }
-
-    private appHasMainModule(app: AppModuleDefinition) {
-        return !!app.mainModule?.source;
+    private updateModules() {
+        SnapAdmin.State.commit('snapAdminApps/setApps', null);
     }
 
     private createLinkToModule(appName: string) {

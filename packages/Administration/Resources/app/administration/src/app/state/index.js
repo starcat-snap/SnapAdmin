@@ -10,7 +10,6 @@ import context from './context.store';
 import licenseViolation from './license-violation.store';
 import error from './error.store';
 import settingsItems from './settings-item.store';
-import shopwareApps from './snap-admin-apps.store';
 import extensionEntryRoutes from './extension-entry-routes';
 import marketing from './marketing.store';
 import extensionComponentSections from './extension-component-sections.store';
@@ -33,7 +32,6 @@ export default {
     context,
     error,
     settingsItems,
-    shopwareApps,
     extensionEntryRoutes,
     marketing,
     extensionComponentSections,

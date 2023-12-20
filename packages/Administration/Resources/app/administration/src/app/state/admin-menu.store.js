@@ -40,10 +40,8 @@ export default {
     },
 
     getters: {
-        appModuleNavigation(state, getters, rootState) {
-            const menuService = SnapAdmin.Service('menuService');
-
-            return menuService?.getNavigationFromApps(rootState.shopwareApps.apps);
+        appModuleNavigation() {
+            return [];
         },
     },
 };

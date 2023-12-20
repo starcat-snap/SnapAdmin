@@ -27,7 +27,6 @@ Application.addServiceProvider('extensionStoreActionService', () => {
 
 Application.addServiceProvider('snapAdminExtensionService', () => {
     return new SnapAdminExtensionService(
-        SnapAdmin.Service('appModulesService'),
         SnapAdmin.Service('extensionStoreActionService'),
         SnapAdmin.Service('storeService'),
     );

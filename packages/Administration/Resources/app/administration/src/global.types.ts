@@ -39,10 +39,8 @@ import type { ExtensionSdkModuleState } from './app/state/extension-sdk-module.s
 import type { MainModuleState } from './app/state/main-module.store';
 import type { ActionButtonState } from './app/state/action-button.store';
 import type StoreApiService from './core/service/api/store.api.service';
-import type AppModulesService from './core/service/api/app-modules.service';
 import type { SnapAdminExtensionsState } from './module/sw-extension/store/extensions.store';
 import type AclService from './app/service/acl.service';
-import type { SnapAdminAppsState } from './app/state/snap-admin-apps.store';
 import type EntityValidationService from './app/service/entity-validation.service';
 import type CustomEntityDefinitionService from './app/service/custom-entity-definition.service';
 import type { SdkLocationState } from './app/state/sdk-location.store';
@@ -148,7 +146,6 @@ declare global {
         snippetService: $TSFixMe,
         recentlySearchService: $TSFixMe,
         extensionSdkService: ExtensionSdkService,
-        appModulesService: AppModulesService,
         customSnippetApiService: CustomSnippetApiService,
         userActivityService: UserActivityService,
         filterFactory: FilterFactoryData,
@@ -234,7 +231,6 @@ declare global {
         actionButtons: ActionButtonState,
         snapAdminExtensions: SnapAdminExtensionsState,
         extensionEntryRoutes: $TSFixMe,
-        snapAdminApps: SnapAdminAppsState,
         sdkLocation: SdkLocationState
     }
 
