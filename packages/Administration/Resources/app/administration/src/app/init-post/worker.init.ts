@@ -93,12 +93,6 @@ function enableAdminWorker(
         getWorker().port.postMessage({ type: 'logout' });
     });
 
-    const importExportService = SnapAdmin.Service('importExport');
-
-    importExportService.addOnProgressStartedListener(() => {
-        getWorker().port.postMessage({ ...getMessage(), ...{ type: 'consumeReset' } });
-    });
-
     enabled = true;
 }
 

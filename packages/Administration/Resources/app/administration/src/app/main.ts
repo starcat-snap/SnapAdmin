@@ -30,7 +30,6 @@ import ShortcutService from 'src/app/service/shortcut.service';
 import LocaleToLanguageService from 'src/app/service/locale-to-language.service';
 import addPluginUpdatesListener from 'src/core/service/plugin-updates-listener.service';
 import addSnapAdminUpdatesListener from 'src/core/service/shopware-updates-listener.service';
-import addCustomerGroupRegistrationListener from 'src/core/service/customer-group-registration-listener.service';
 import LocaleHelperService from 'src/app/service/locale-helper.service';
 import FilterService from 'src/app/service/filter.service';
 import MediaDefaultFolderService from 'src/app/service/media-default-folder.service';
@@ -40,7 +39,6 @@ import RecentlySearchService from 'src/app/service/recently-search.service';
 import UserActivityService from 'src/app/service/user-activity.service';
 import EntityValidationService from 'src/app/service/entity-validation.service';
 import CustomEntityDefinitionService from 'src/app/service/custom-entity-definition.service';
-import addUsageDataConsentListener from 'src/core/service/usage-data-consent-listener.service';
 import FileValidationService from 'src/app/service/file-validation.service';
 
 /** Import Feature */
@@ -103,8 +101,6 @@ Application
 
         addPluginUpdatesListener(loginService, serviceContainer);
         addSnapAdminUpdatesListener(loginService, serviceContainer);
-        addCustomerGroupRegistrationListener(loginService);
-        addUsageDataConsentListener(loginService, serviceContainer);
 
         return loginService;
     })

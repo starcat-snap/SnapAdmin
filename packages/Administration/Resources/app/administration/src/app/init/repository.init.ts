@@ -28,8 +28,6 @@ export default function initializeRepositoryFactory(container: InitContainer) {
     }).then(({ data }) => {
         const entityDefinitionFactory = factoryContainer.entityDefinition;
         const customEntityDefinitionService = serviceContainer.customEntityDefinitionService;
-        const cmsPageTypeService = serviceContainer.cmsPageTypeService;
-        let hasCmsAwareDefinitions = false;
 
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         Object.entries(data).forEach(([key, value]) => {
@@ -38,17 +36,8 @@ export default function initializeRepositoryFactory(container: InitContainer) {
             if (key.startsWith('custom_entity_') || key.startsWith('ce_')) {
                 // @ts-expect-error - value is defined
                 customEntityDefinitionService.addDefinition(value);
-                // @ts-expect-error - value is defined
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                hasCmsAwareDefinitions = hasCmsAwareDefinitions || !!value?.flags?.['cms-aware'];
             }
         });
-
-        if (hasCmsAwareDefinitions) {
-            customEntityTypes.forEach((customEntityType) => {
-                cmsPageTypeService.register(customEntityType);
-            });
-        }
 
         const hydrator = new EntityHydrator();
         const changesetGenerator = new ChangesetGenerator();

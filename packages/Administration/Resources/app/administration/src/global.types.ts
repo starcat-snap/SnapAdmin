@@ -46,7 +46,6 @@ import type { SnapAdminAppsState } from './app/state/snap-admin-apps.store';
 import type EntityValidationService from './app/service/entity-validation.service';
 import type CustomEntityDefinitionService from './app/service/custom-entity-definition.service';
 import type { SdkLocationState } from './app/state/sdk-location.store';
-import type StoreContextService from './core/service/api/store-context.api.service';
 import type ExtensionHelperService from './app/service/extension-helper.service';
 import type AsyncComponentFactory from './core/factory/async-component.factory';
 import type FilterFactory from './core/factory/filter.factory';
@@ -58,8 +57,6 @@ import type NotificationMixin from './app/mixin/notification.mixin';
 import type ValidationMixin from './app/mixin/validation.mixin';
 import type UserSettingsMixin from './app/mixin/user-settings.mixin';
 import type SwInlineSnippetMixin from './app/mixin/sw-inline-snippet.mixin';
-import type SalutationMixin from './app/mixin/salutation.mixin';
-import type RuleContainerMixin from './app/mixin/rule-container.mixin';
 import type RemoveApiErrorMixin from './app/mixin/remove-api-error.mixin';
 import type PositionMixin from './app/mixin/position.mixin';
 import type PlaceholderMixin from './app/mixin/placeholder.mixin';
@@ -141,14 +138,12 @@ declare global {
         filterService: $TSFixMe,
         mediaDefaultFolderService: $TSFixMe,
         appAclService: $TSFixMe,
-        appCmsService: $TSFixMe,
         entityHydrator: $TSFixMe,
         entityFactory: $TSFixMe,
         userService: UserApiService,
         searchRankingService: $TSFixMe,
         searchPreferencesService: $TSFixMe,
         storeService: StoreApiService,
-        contextStoreService: StoreContextService,
         repositoryFactory: RepositoryFactory,
         snippetService: $TSFixMe,
         recentlySearchService: $TSFixMe,
@@ -167,8 +162,6 @@ declare global {
         validation: typeof ValidationMixin,
         'user-settings': typeof UserSettingsMixin,
         'sw-inline-snippet': typeof SwInlineSnippetMixin,
-        salutation: typeof SalutationMixin,
-        ruleContainer: typeof RuleContainerMixin,
         'remove-api-error': typeof RemoveApiErrorMixin,
         position: typeof PositionMixin,
         placeholder: typeof PlaceholderMixin,
