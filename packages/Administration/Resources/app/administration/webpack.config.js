@@ -210,7 +210,7 @@ const baseConfig = ({ pluginPath, pluginFilepath }) => ({
     },
 
     externals: {
-        Shopware: 'Shopware',
+        SnapAdmin: 'SnapAdmin',
     },
 
     ...(() => {
@@ -665,7 +665,7 @@ const coreConfig = {
             chunkFilename: isDev ? 'bundles/administration/static/css/[chunkhash].css' : 'static/css/[chunkhash].css',
         }),
         new WebpackBar({
-            name: 'Shopware 6 Admin',
+            name: 'SnapAdmin',
             color: '#118cff',
         }),
 
@@ -914,11 +914,11 @@ const coreUrlImageLoader = mergedCoreConfig.module.rules.find(r => {
     return r.loader === 'url-loader' && r.test.test('.png');
 });
 coreUrlImageLoader.exclude.push(path.join(__dirname, 'src/app/assets/icons/svg'));
-coreUrlImageLoader.exclude.push(/@tabler\/icons\/icons/);
+coreUrlImageLoader.exclude.push(/@snap-admin\/meteor-icon-kit\/icons/);
 
 const coreSvgInlineLoader = mergedCoreConfig.module.rules.find(r => r.loader === 'svg-inline-loader');
 coreSvgInlineLoader.include.push(path.join(__dirname, 'src/app/assets/icons/svg'));
-coreSvgInlineLoader.include.push(/@tabler\/icons\/icons/);
+coreSvgInlineLoader.include.push(/@snap-admin\/meteor-icon-kit\/icons/);
 
 /**
  * Export all single configs in a array. Webpack uses then the webpack-multi-compiler for isolated
