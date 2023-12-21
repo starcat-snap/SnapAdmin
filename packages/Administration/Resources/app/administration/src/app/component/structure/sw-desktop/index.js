@@ -17,6 +17,7 @@ Component.register('sw-desktop', {
     data() {
         return {
             noNavigation: false,
+            noTopbar: false,
             urlDiff: null,
         };
     },
