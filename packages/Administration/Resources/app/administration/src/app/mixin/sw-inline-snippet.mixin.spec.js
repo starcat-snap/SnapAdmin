@@ -1,15 +1,15 @@
 import 'src/app/mixin/sw-inline-snippet.mixin';
-import { shallowMount } from '@vue/test-utils_v2';
+import { mount } from '@vue/test-utils';
 
 async function createWrapper() {
-    return shallowMount({
+    return mount({
         template: `
             <div class="sw-mock">
               <slot></slot>
             </div>
         `,
         mixins: [
-            SnapAdmin.Mixin.getByName('sw-inline-snippet'),
+            Shopware.Mixin.getByName('sw-inline-snippet'),
         ],
         data() {
             return {
@@ -17,10 +17,6 @@ async function createWrapper() {
             };
         },
     }, {
-        stubs: {},
-        mocks: {},
-        propsData: {},
-        provide: {},
         attachTo: document.body,
     });
 }
@@ -29,7 +25,7 @@ describe('src/app/mixin/sw-inline-snippet.mixin.ts', () => {
     let wrapper;
 
     beforeEach(async () => {
-        SnapAdmin.Context.app.fallbackLocale = 'de-DE';
+        Shopware.Context.app.fallbackLocale = 'de-DE';
         wrapper = await createWrapper();
 
         await flushPromises();
@@ -37,7 +33,7 @@ describe('src/app/mixin/sw-inline-snippet.mixin.ts', () => {
 
     afterEach(async () => {
         if (wrapper) {
-            await wrapper.destroy();
+            await wrapper.unmount();
         }
 
         await flushPromises();
@@ -61,7 +57,7 @@ describe('src/app/mixin/sw-inline-snippet.mixin.ts', () => {
 
     it('should return correct value with locale using the getInlineSnippet method without value', () => {
         const result = wrapper.vm.getInlineSnippet({
-            'zh-CN': 'English',
+            'en-GB': 'English',
         });
 
         expect(result).toBe('English');

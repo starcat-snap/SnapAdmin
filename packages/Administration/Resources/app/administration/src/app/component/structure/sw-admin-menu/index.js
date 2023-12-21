@@ -403,7 +403,6 @@ The admin menu only supports up to three levels of nesting.`,
         onMenuItemClick(entry, eventTarget) {
             const target = eventTarget.closest('.sw-admin-menu__navigation-list-item');
             const level = entry.level;
-
             // Clear previous delay of the menu
             if (this.subMenuTimer) {
                 window.clearTimeout(this.subMenuTimer);

@@ -18,10 +18,10 @@
                         {% block sw_desktop_content_header_left %}
                             <div class="sw-desktop__content_header_left">
                                 {% block sw_desktop_content_header_left_menu_toggle_sidebar_icon %}
-{#                                    <sw-icon#}
-{#                                        name="baseline-density-small"#}
+                                    {#                                    <sw-icon #}
+                                    {#                                        name="baseline-density-small" #}
 
-{#                                    />#}
+                                    {#                                    /> #}
                                 {% endblock %}
                             </div>
                         {% endblock %}
@@ -29,7 +29,13 @@
                             <div class="sw-desktop__content_header_center"></div>
                         {% endblock %}
                         {% block sw_desktop_content_header_right %}
-                            <div class="sw-desktop__content_header_right"></div>
+                            <div class="sw-desktop__content_header_right">
+
+                                {% block sw_desktop_content_header_right_notification_center %}
+                                    <sw-notification-center/>
+                                {% endblock %}
+
+                            </div>
                         {% endblock %}
                     </div>
                 {% endblock %}
