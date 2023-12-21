@@ -24,7 +24,7 @@ describe('src/app/init/notification.init.ts', () => {
                 },
                 {
                     label: 'Cancel',
-                    route: 'https://www.shopware.com',
+                    route: 'https://www.snapadmin.net',
                     disabled: false,
                 },
             ],

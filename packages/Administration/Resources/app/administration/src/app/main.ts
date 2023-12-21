@@ -29,7 +29,7 @@ import LicenseViolationsService from 'src/app/service/license-violations.service
 import ShortcutService from 'src/app/service/shortcut.service';
 import LocaleToLanguageService from 'src/app/service/locale-to-language.service';
 import addPluginUpdatesListener from 'src/core/service/plugin-updates-listener.service';
-import addSnapAdminUpdatesListener from 'src/core/service/shopware-updates-listener.service';
+import addSnapAdminUpdatesListener from 'src/core/service/snap-admin-updates-listener.service';
 import LocaleHelperService from 'src/app/service/locale-helper.service';
 import FilterService from 'src/app/service/filter.service';
 import MediaDefaultFolderService from 'src/app/service/media-default-folder.service';

@@ -22,9 +22,9 @@ describe('src/app/filter/asset.filter.ts', () => {
     });
 
     it('should use the assetsPath from the Context API', () => {
-        SnapAdmin.Context.api.assetsPath = 'https://www.shopware.com/';
+        SnapAdmin.Context.api.assetsPath = 'https://www.snapadmin.net/';
         const result = assetFilter('/test.jpg');
 
-        expect(result).toBe('https://www.shopware.com/test.jpg');
+        expect(result).toBe('https://www.snapadmin.net/test.jpg');
     });
 });

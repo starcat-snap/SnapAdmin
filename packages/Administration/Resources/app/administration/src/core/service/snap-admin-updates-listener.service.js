@@ -3,12 +3,12 @@ const { Application } = SnapAdmin;
 /**
  * @package admin
  *
- * @module core/service/shopware-updates-listener
+ * @module core/service/snap-admin-updates-listener
  */
 
 /**
  *
- * @memberOf module:core/service/shopware-updates-listener
+ * @memberOf module:core/service/snap-admin-updates-listener
  * @method addSnapAdminUpdatesListener
  * @param loginService
  * @param serviceContainer

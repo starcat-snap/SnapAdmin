@@ -52,7 +52,7 @@ class AuthControllerTest extends TestCase
         $authPayload = [
             'grant_type' => 'password',
             'client_id' => 'administration',
-            'username' => 'shopware',
+            'username' => 'snapadmin',
             'password' => 'not_a_real_password',
         ];
 

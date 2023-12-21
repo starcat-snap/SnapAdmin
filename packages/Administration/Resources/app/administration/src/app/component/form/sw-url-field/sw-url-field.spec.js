@@ -183,9 +183,9 @@ describe('components/form/sw-url-field', () => {
     });
 
     it('properly detects SSL', async () => {
-        const SSL_URL = 'https://shopware.com';
-        const NON_SSL_URL = 'http://shopware.com';
-        const URL_WITHOUT_PROTOCOL = 'shopware.com';
+        const SSL_URL = 'https://snapadmin.net';
+        const NON_SSL_URL = 'http://snapadmin.net';
+        const URL_WITHOUT_PROTOCOL = 'snapadmin.net';
 
         const wrapper = await createWrapper();
 
@@ -195,10 +195,10 @@ describe('components/form/sw-url-field', () => {
     });
 
     it('removes any protocol', async () => {
-        const HTTP_URL = 'http://shopware.com';
-        const HTTPS_URL = 'https://shopware.com';
-        const FILE_URL = 'file://shopware.com';
-        const EXPECTED_URL = 'shopware.com';
+        const HTTP_URL = 'http://snapadmin.net';
+        const HTTPS_URL = 'https://snapadmin.net';
+        const FILE_URL = 'file://snapadmin.net';
+        const EXPECTED_URL = 'snapadmin.net';
 
         const wrapper = await createWrapper();
         await flushPromises();

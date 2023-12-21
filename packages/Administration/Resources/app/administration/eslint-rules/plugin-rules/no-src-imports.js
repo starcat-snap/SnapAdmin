@@ -15,7 +15,7 @@ module.exports = {
                         loc: node.source.loc.start,
                         message: `\
 You can't use imports directly from the SnapAdmin Core via "${node.source.value}". \
-Use the global SnapAdmin object directly instead (https://developer.shopware.com/docs/guides/plugins/plugins/administration/the-shopware-object)`,
+Use the global SnapAdmin object directly instead (https://developer.snapadmin.net/docs/guides/plugins/plugins/administration/the-shopware-object)`,
                     });
                 }
             },

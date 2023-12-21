@@ -68,7 +68,7 @@ SnapAdmin.Component.register('sw-iframe-renderer', {
                     'sw-version',
                     'sw-context-language',
                     'sw-user-language',
-                    'shopware-shop-signature',
+                    'snap-admin-shop-signature',
                 ].includes(key);
             }));
 

@@ -2,7 +2,7 @@
   "name": "administration",
   "version": "1.0.0",
   "description": "SnapAdmin administration",
-  "main": "./src/core/shopware.js",
+  "main": "./src/core/snap-admin.ts",
   "types": "./types/index.d.ts",
   "scripts": {
     "preinstall": "node src/scripts/validate-package-json/index.mjs",

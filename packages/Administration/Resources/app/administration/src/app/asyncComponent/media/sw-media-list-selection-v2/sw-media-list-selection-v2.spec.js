@@ -6,18 +6,18 @@ import { mount } from '@vue/test-utils';
 const entityMediaItems = [
     {
         id: '1',
-        url: 'http://shopware.com/image1.jpg',
+        url: 'http://snapadmin.net/image1.jpg',
         position: 3,
 
     },
     {
         id: '2',
-        url: 'http://shopware.com/image2.jpg',
+        url: 'http://snapadmin.net/image2.jpg',
         position: 1,
     },
     {
         id: '3',
-        url: 'http://shopware.com/image3.jpg',
+        url: 'http://snapadmin.net/image3.jpg',
         position: 2,
     },
 ];

@@ -97,10 +97,10 @@ const cssUrlMatcher = (url) => {
  *   {
  *      name: 'SwagExtensionStore',
  *      technicalName: 'swag-extension-store',
- *      basePath: '/Users/max.muster/Sites/shopware/custom/plugins/SwagExtensionStore/src',
- *      path: '/Users/max.muster/Sites/shopware/custom/plugins/SwagExtensionStore/src/Resources/app/administration/src',
- *      filePath: '/Users/max.muster/Sites/shopware/custom/plugins/SwagExtensionStore/src/Resources/app/administration/src/main.js',
- *      webpackConfig: '/Users/max.muster/Sites/shopware/custom/plugins/SwagExtensionStore/src/Resources/app/administration/build/webpack.config.js'
+ *      basePath: '/Users/max.muster/Sites/SnapAdmin/plugins/SwagExtensionStore/src',
+ *      path: '/Users/max.muster/Sites/SnapAdmin/plugins/SwagExtensionStore/src/Resources/app/administration/src',
+ *      filePath: '/Users/max.muster/Sites/SnapAdmin/plugins/SwagExtensionStore/src/Resources/app/administration/src/main.js',
+ *      webpackConfig: '/Users/max.muster/Sites/SnapAdmin/plugins/SwagExtensionStore/src/Resources/app/administration/build/webpack.config.js'
  *   },
  *    ...
  * ]

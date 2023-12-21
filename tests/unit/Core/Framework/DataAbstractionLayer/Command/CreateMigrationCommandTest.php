@@ -45,9 +45,9 @@ class CreateMigrationCommandTest extends TestCase
         $migrationFileRenderer = $this->createMock(MigrationFileRenderer::class);
 
         $coreDir = '/path/to/core';
-        $shopwareVersion = '6.5.0';
+        $snapAdminVersion = '6.5.0';
 
-        $command = new CreateMigrationCommand($registry, $queryGenerator, $kernel, $filesystem, $migrationFileRenderer, $coreDir, $shopwareVersion, $now);
+        $command = new CreateMigrationCommand($registry, $queryGenerator, $kernel, $filesystem, $migrationFileRenderer, $coreDir, $snapAdminVersion, $now);
 
         $commandTester = new CommandTester($command);
 

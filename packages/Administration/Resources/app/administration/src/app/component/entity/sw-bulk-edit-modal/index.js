@@ -78,7 +78,7 @@ Component.register('sw-bulk-edit-modal', {
             this.$emit('modal-close');
 
             if (this.itemCount > 0) {
-                SnapAdmin.State.commit('shopwareApps/setSelectedIds', Object.keys(this.bulkEditSelection));
+                SnapAdmin.State.commit('snapAdminApps/setSelectedIds', Object.keys(this.bulkEditSelection));
                 this.$emit('edit-items');
             }
         },

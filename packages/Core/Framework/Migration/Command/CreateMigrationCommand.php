@@ -25,7 +25,7 @@ class CreateMigrationCommand extends Command
     public function __construct(
         private readonly KernelPluginCollection $kernelPluginCollection,
         private readonly string $coreDir,
-        private readonly string $shopwareVersion
+        private readonly string $snapAdminVersion
     ) {
         parent::__construct();
     }
@@ -107,7 +107,7 @@ class CreateMigrationCommand extends Command
             $namespace = $pluginBundle->getMigrationNamespace();
             $output->writeln(sprintf('Creating plugin-migration with namespace %s in path %s...', $namespace, $directory));
         } else {
-            [$_, $major] = explode('.', $this->shopwareVersion);
+            [$_, $major] = explode('.', $this->snapAdminVersion);
             // We create a core-migration in case no plugin was given
             $directory = $this->coreDir . '/Migration/V6_' . $major;
             $namespace = 'SnapAdmin\\Core\\Migration\\V6_' . $major;

@@ -12,12 +12,12 @@ const { Filter } = SnapAdmin;
  * <sw-image-slider
  *     :images="[
  *         {
- *             src: 'https://www.shopware.com/media/unknown/29/03/ce/shopware_logo_white_on_blue.svg',
+ *             src: 'https://www.snapadmin.net/media/unknown/29/03/ce/shopware_logo_white_on_blue.svg',
  *             description: 'This Image is awesome!'
  *         },
- *         'https://www.shopware.com/media/image/5e/98/6d/small-differentiator-illustration-01.png',
+ *         'https://www.snapadmin.net/media/image/5e/98/6d/small-differentiator-illustration-01.png',
  *         {
- *             src: 'https://www.shopware.com/media/image/72/44/fd/image-material.jpg',
+ *             src: 'https://www.snapadmin.net/media/image/72/44/fd/image-material.jpg',
  *         }
  *     ]"
  *     :canvas-width="600"
