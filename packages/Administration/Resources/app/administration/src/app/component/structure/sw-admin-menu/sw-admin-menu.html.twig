@@ -19,6 +19,11 @@
             role="img"
         ></div>
         {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_admin_menu_header_version %}
+        <sw-version class="collapsible-text" />
+        {% endblock %}
     </div>
     {% endblock %}
 
@@ -60,6 +65,156 @@
                 {% endblock %}
             </nav>
             {% endblock %}
+        </div>
+        {% endblock %}
+    </div>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_admin_menu_footer %}
+    <div class="sw-admin-menu__footer">
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_admin_menu_toggle_sidebar %}
+        <button
+            class="sw-admin-menu__toggle"
+            @click="onToggleSidebar"
+        >
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_admin_menu_toggle_sidebar_icon %}
+            <sw-icon
+                :name="sidebarCollapseIcon"
+                small
+            />
+            {% endblock %}
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_admin_menu_toggle_sidebar_text %}
+            <span class="collapsible-text">{{ $tc('global.sw-admin-menu.linkMinimizeMenu') }}</span>
+            {% endblock %}
+
+        </button>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_admin_menu_user_actions_toggle %}
+        <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events vuejs-accessibility/mouse-events-have-key-events, vuejs-accessibility/no-static-element-interactions -->
+        <div
+            class="sw-admin-menu__user-actions-toggle"
+            :class="{'is--active': isUserActionsActive}"
+            @click="onToggleUserActions"
+            @mouseenter="openUserActions"
+        >
+
+            <sw-loader
+                v-if="isUserLoading"
+                size="32px"
+            />
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_admin_menu_user_actions_avatar %}
+            <sw-avatar
+                class="sw-admin-menu__avatar"
+                :image-url="avatarUrl"
+                :source-context="currentUser"
+                :userName="userName"
+            />
+            {% endblock %}
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_admin_menu_user_actions_custom_fields %}
+            <div class="sw-admin-menu__user-custom-fields collapsible-text">
+                <div class="sw-admin-menu__user-name">
+                    {{ userName }}
+                </div>
+                <div class="sw-admin-menu__user-type">
+                    {{ userTitle }}
+                </div>
+
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_admin_menu_user_actions_toggle_icon %}
+                <sw-icon
+                    :name="userActionsToggleIcon"
+                    class="sw-admin-menu__user-actions-indicator"
+                />
+                {% endblock %}
+            </div>
+            {% endblock %}
+        </div>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_admin_menu_user_actions %}
+        <!-- eslint-disable-next-line vuejs-accessibility/mouse-events-have-key-events, vuejs-accessibility/no-static-element-interactions -->
+        <div
+            class="sw-admin-menu__user-actions"
+            :class="{'is--active': isUserActionsActive}"
+            @mouseleave="closeUserActions"
+        >
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_admin_menu_user_actions_label %}
+            <div
+                v-if="!isExpanded"
+                class="sw-admin-menu__user-actions-label"
+            >
+                {{ userName }}
+            </div>
+            {% endblock %}
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_admin_menu_user_actions_list %}
+            <ul class="sw-admin-menu__navigation-list">
+
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_admin_menu_user_actions_items %}
+
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_admin_menu_user_actions_items_keyboard_shortcuts_overview %}
+                <li class="sw-admin-menu__navigation-list-item">
+                    <sw-shortcut-overview ref="swShortcutOverview" />
+                    <a
+                        v-tooltip="{
+                            message: $tc('sw-shortcut-overview.iconTooltip', 0, { key: 'Shift + ?' }),
+                            appearance: 'light',
+                            position: 'right'
+                        }"
+                        href="#"
+                        class="sw-admin-menu__navigation-link"
+                        @click.prevent="openKeyboardShortcutOverview"
+                    >
+                        <sw-icon
+                            class="sw-admin-menu__navigation-link-icon"
+                            name="regular-keyboard"
+                            small
+                        />
+                        {{ $tc('sw-shortcut-overview.title') }}
+                    </a>
+                </li>
+                {% endblock %}
+
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_admin_menu_user_actions_items_logout_user %}
+                <li class="sw-admin-menu__navigation-list-item">
+                    <a
+                        href="#"
+                        class="sw-admin-menu__navigation-link sw-admin-menu__logout-action"
+                        @click.prevent="onLogoutUser"
+                    >
+                        <sw-icon
+                            class="sw-admin-menu__navigation-link-icon"
+                            name="regular-sign-out"
+                            small
+                        />
+                        {{ $tc('global.sw-admin-menu.linkLogout') }}
+                    </a>
+                </li>
+                {% endblock %}
+                {% endblock %}
+            </ul>
+            {% endblock %}
+
         </div>
         {% endblock %}
     </div>

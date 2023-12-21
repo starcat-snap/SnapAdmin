@@ -1,5 +1,5 @@
 /* eslint-disable max-len, sw-deprecation-rules/private-feature-declarations */
-
+import './acl';
 /**
  * @package services-settings
  *
@@ -16,7 +16,7 @@ SnapAdmin.Module.register('sw-system', {
     routes: {
         index: {
             components: {
-                default: 'sw-dashboard-index',
+                default: 'sw-dashboard-index2',
             },
             path: 'index',
         },

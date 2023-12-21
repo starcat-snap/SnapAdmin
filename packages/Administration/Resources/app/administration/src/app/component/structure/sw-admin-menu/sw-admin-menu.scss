@@ -2,7 +2,7 @@
 @import "~scss/mixins";
 
 $sw-admin-menu-color-text-secondary: darken($color-gray-300, 20%);
-$sw-admin-menu-width-expanded: 240px;
+$sw-admin-menu-width-expanded: 300px;
 $sw-admin-menu-width-collapsed: 80px;
 $sw-admin-menu-width-flyout: 260px;
 $sw-admin-menu-z-index-flyout: $z-index-flyout;
@@ -11,16 +11,16 @@ $sw-admin-menu-transition: 0.4s cubic-bezier(0.5, 0.32, 0.01, 1);
 $sw-admin-menu-off-canvas-transition: 0.4s cubic-bezier(0.3, 0, 0.15, 1);
 $sw-admin-menu-sub-menu-transition: 0.35s cubic-bezier(0.5, 0.32, 0.01, 1);
 $sw-admin-menu-flyout-transition: 0.2s cubic-bezier(0.5, 0.32, 0.01, 1);
-$sw-admin-menu-color-active: rgb(17, 24, 39);
-$sw-admin-menu-color-hover:rgb(17, 24, 39);
+$sw-admin-menu-color-active: #172b4f;
+$sw-admin-menu-color-hover: #293f65;
 $sw-admin-menu-shop-status-ok: $color-emerald-500;
 $sw-admin-menu-background: rgb(17, 24, 39);
-$sw-admin-menu-background-hover: rgb(17, 24, 39);
-$sw-admin-menu-divider: rgb(17, 24, 39);
-$sw-admin-menu-background-active-first-level: rgb(17, 24, 39);
-$sw-admin-menu-background-active-hover: rgb(17, 24, 39);
-$sw-admin-menu-background-active-second-level: rgb(17, 24, 39);
-$sw-admin-menu-color-text-primary: #fff6;;
+$sw-admin-menu-background-hover: rgba(255, 255, 255, 0.1);
+$sw-admin-menu-divider: #344865;
+$sw-admin-menu-background-active-first-level: $sw-admin-menu-background-hover;
+$sw-admin-menu-background-active-hover: $sw-admin-menu-background-hover;
+$sw-admin-menu-background-active-second-level: $sw-admin-menu-background-hover;
+$sw-admin-menu-color-text-primary: #bcc9dc;
 $sw-admin-menu-active-text: $color-white;
 
 .sw-admin-menu {
@@ -30,6 +30,7 @@ $sw-admin-menu-active-text: $color-white;
     height: 100%;
     display: flex;
     flex-direction: column;
+
     @media screen and (max-width: 500px) {
         width: $sw-admin-menu-width-expanded;
         position: absolute;
@@ -48,7 +49,7 @@ $sw-admin-menu-active-text: $color-white;
     .sw-admin-menu__navigation-link-icon-arrow {
         position: absolute;
         right: 16px;
-        top: 16px;
+        top: 21px;
         margin: 0;
         padding: 0 !important;
     }
@@ -101,10 +102,11 @@ $sw-admin-menu-active-text: $color-white;
     }
 
     .sw-admin-menu__header {
-        padding: 15px 23px;
+        padding: 25px 23px;
         display: flex;
         position: relative;
-        height: 65px;
+        height: 85px;
+        margin-bottom: 10px;
     }
 
     .sw-version__status {
@@ -114,18 +116,17 @@ $sw-admin-menu-active-text: $color-white;
     }
 
     .sw-admin-menu__header-logo {
+        width: 34px;
         height: 34px;
-        flex: 1 0 34px;
-        margin: 0 16px 0 16px;
-        background: url("../img/logo.png") no-repeat;
+        flex: 0 0 34px;
+        margin: 0 16px 0 0;
+        background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzQiIGhlaWdodD0iMzQiIHZpZXdCb3g9IjAgMCAzNCAzNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjM0IiBoZWlnaHQ9IjM0IiByeD0iNSIgZmlsbD0idXJsKCNwYWludDBfcmFkaWFsXzE0XzgyKSIvPgo8bWFzayBpZD0ibWFzazBfMTRfODIiIHN0eWxlPSJtYXNrLXR5cGU6YWxwaGEiIG1hc2tVbml0cz0idXNlclNwYWNlT25Vc2UiIHg9IjEwIiB5PSI5IiB3aWR0aD0iMTQiIGhlaWdodD0iMTYiPgo8cGF0aCBkPSJNMTUuNzExMiA5Ljg2NTYyQzE2LjUwOTMgOS40MDQ4MiAxNy40OTI3IDkuNDA0ODIgMTguMjkwOCA5Ljg2NTYyTDIyLjUxMjIgMTIuMzAyOEMyMy4zMTAzIDEyLjc2MzYgMjMuODAyIDEzLjYxNTIgMjMuODAyIDE0LjUzNjhWMTkuNDExM0MyMy44MDIgMjAuMzMyOSAyMy4zMTAzIDIxLjE4NDUgMjIuNTEyMiAyMS42NDUzTDE4LjI5MDggMjQuMDgyNUMxNy40OTI3IDI0LjU0MzMgMTYuNTA5MyAyNC41NDMzIDE1LjcxMTIgMjQuMDgyNUwxMS40ODk4IDIxLjY0NTNDMTAuNjkxNyAyMS4xODQ1IDEwLjIgMjAuMzMyOSAxMC4yIDE5LjQxMTNWMTQuNTM2OEMxMC4yIDEzLjYxNTIgMTAuNjkxNyAxMi43NjM2IDExLjQ4OTggMTIuMzAyOEwxNS43MTEyIDkuODY1NjJaIiBmaWxsPSIjQzRDNEM0Ii8+CjwvbWFzaz4KPGcgbWFzaz0idXJsKCNtYXNrMF8xNF84MikiPgo8cmVjdCB3aWR0aD0iOC42MDgxNSIgaGVpZ2h0PSI4LjYwODE1IiB0cmFuc2Zvcm09Im1hdHJpeCgwLjg2NjAyNSAwLjUgLTAuODY2MDI1IDAuNSAxNy4wMDExIDcuNTc2MjMpIiBmaWxsPSJ3aGl0ZSIvPgo8cmVjdCB3aWR0aD0iNy45MjA2OCIgaGVpZ2h0PSI3LjkyMDY4IiB0cmFuc2Zvcm09Im1hdHJpeCgwLjg2NjAyNSAwLjUgLTIuMjAzMDVlLTA4IDEgMTAuMTQxNCAxMy4zNTkzKSIgZmlsbD0id2hpdGUiLz4KPHJlY3Qgd2lkdGg9IjcuOTIwNjgiIGhlaWdodD0iNy45MjA2OCIgdHJhbnNmb3JtPSJtYXRyaXgoMC44NjYwMjUgLTAuNSAyLjIwMzA1ZS0wOCAxIDE3Ljg1IDE2LjU5NykiIGZpbGw9IndoaXRlIi8+CjwvZz4KPGRlZnM+CjxyYWRpYWxHcmFkaWVudCBpZD0icGFpbnQwX3JhZGlhbF8xNF84MiIgY3g9IjAiIGN5PSIwIiByPSIxIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgtMC4xNTA5MDQgLTAuMTUwOTMzKSBzY2FsZSg0OC41OTk4KSI+CjxzdG9wIHN0b3AtY29sb3I9IiM4RDdDRUYiLz4KPHN0b3Agb2Zmc2V0PSIwLjAzNTY3OTciIHN0b3AtY29sb3I9IiM4NDcyRUYiLz4KPHN0b3Agb2Zmc2V0PSIwLjA5MDc4NjEiIHN0b3AtY29sb3I9IiM3RTZCRUYiLz4KPHN0b3Agb2Zmc2V0PSIwLjI0NCIgc3RvcC1jb2xvcj0iIzdDNjlFRiIvPgo8c3RvcCBvZmZzZXQ9IjAuMzk2MSIgc3RvcC1jb2xvcj0iIzdBNjNFNSIvPgo8c3RvcCBvZmZzZXQ9IjAuNTEwMzE3IiBzdG9wLWNvbG9yPSIjNzg1Q0Q5Ii8+CjxzdG9wIG9mZnNldD0iMC41MTA0MTciIHN0b3AtY29sb3I9IiM3ODVDRDkiLz4KPHN0b3Agb2Zmc2V0PSIwLjY1NjkiIHN0b3AtY29sb3I9IiM3NTUzQzkiLz4KPHN0b3Agb2Zmc2V0PSIwLjk5MyIgc3RvcC1jb2xvcj0iIzZDM0E5RCIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM2QzM5OUMiLz4KPC9yYWRpYWxHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4K") no-repeat;
     }
 
     .sw-admin-menu__body-container {
         flex: 1 1 0;
         order: 2;
         overflow: hidden;
-        padding-top: 30px;
-        box-shadow: 0 0 9px 2px #0000004d;
     }
 
     .sw-admin-menu__body {
@@ -203,7 +204,6 @@ $sw-admin-menu-active-text: $color-white;
 
     .sw-admin-menu__navigation-list {
         transition: width $sw-admin-menu-transition;
-        padding: 0 0 0 15px;
         list-style: none;
     }
 
@@ -211,7 +211,7 @@ $sw-admin-menu-active-text: $color-white;
         color: $sw-admin-menu-color-text-primary;
         display: flex;
         align-items: baseline;
-        padding: 4px;
+        padding: 12px 30px;
         text-decoration: none;
         font-size: $font-size-xs;
         line-height: $line-height-md;
@@ -258,7 +258,6 @@ $sw-admin-menu-active-text: $color-white;
     }
 
     .sw-admin-menu__navigation-list-item {
-        margin: 6px 0;
         .sw-admin-menu__navigation-list-item {
             display: none;
         }
@@ -274,7 +273,6 @@ $sw-admin-menu-active-text: $color-white;
     .sw-admin-menu__toggle {
         color: $sw-admin-menu-color-text-primary;
         display: block;
-        background: none;
         padding: 20px 32px;
         text-decoration: none;
         font-size: $font-size-xs;
@@ -283,6 +281,7 @@ $sw-admin-menu-active-text: $color-white;
         cursor: pointer;
         white-space: nowrap;
         text-align: left;
+        background: none;
         border: 0 none;
         outline: none;
 
@@ -311,7 +310,7 @@ $sw-admin-menu-active-text: $color-white;
     }
 
     .sw-admin-menu__user-actions-toggle {
-        background: var(--sw-menu-expand-background);
+        background: $sw-admin-menu-background-active-first-level;
         padding: 25px 20px;
         display: flex;
         cursor: pointer;
@@ -350,8 +349,8 @@ $sw-admin-menu-active-text: $color-white;
         color: $sw-admin-menu-color-text-primary;
 
         &.sw-icon {
-            width: 24px;
-            height: 24px;
+            width: 16px;
+            height: 16px;
             padding-top: 4px;
             padding-right: 3px;
             padding-bottom: 6px;
@@ -382,7 +381,7 @@ $sw-admin-menu-active-text: $color-white;
         display: none;
 
         .sw-admin-menu__navigation-list-item {
-            //background: $sw-admin-menu-background-active-first-level;
+            background: $sw-admin-menu-background-active-first-level;
         }
 
         .sw-admin-menu__navigation-link {

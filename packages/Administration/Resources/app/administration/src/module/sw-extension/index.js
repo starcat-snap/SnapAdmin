@@ -1,3 +1,4 @@
+import './acl';
 /* eslint-disable max-len, sw-deprecation-rules/private-feature-declarations */
 
 SnapAdmin.Component.register('sw-extension-my-extensions-index', () => import('./page/sw-extension-my-extensions-index'));

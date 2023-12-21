@@ -19,6 +19,7 @@ Component.register('sw-admin-menu', {
         'appModulesService',
         'feature',
         'customEntityDefinitionService',
+        'acl',
     ],
 
     mixins: [
