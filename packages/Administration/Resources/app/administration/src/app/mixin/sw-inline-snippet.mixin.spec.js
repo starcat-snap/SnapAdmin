@@ -9,7 +9,7 @@ async function createWrapper() {
             </div>
         `,
         mixins: [
-            Shopware.Mixin.getByName('sw-inline-snippet'),
+            SnapAdmin.Mixin.getByName('sw-inline-snippet'),
         ],
         data() {
             return {
@@ -25,7 +25,7 @@ describe('src/app/mixin/sw-inline-snippet.mixin.ts', () => {
     let wrapper;
 
     beforeEach(async () => {
-        Shopware.Context.app.fallbackLocale = 'de-DE';
+        SnapAdmin.Context.app.fallbackLocale = 'de-DE';
         wrapper = await createWrapper();
 
         await flushPromises();

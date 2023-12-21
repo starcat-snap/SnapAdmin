@@ -64,7 +64,7 @@ const setup = async (propOverride) => {
 
 describe('components/form/sw-price-field', () => {
     beforeEach(() => {
-        Shopware.Application.getContainer = () => {
+        SnapAdmin.Application.getContainer = () => {
             return {
                 apiService: {
                     getByName() {

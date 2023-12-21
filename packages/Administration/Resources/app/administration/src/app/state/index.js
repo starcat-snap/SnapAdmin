@@ -11,7 +11,6 @@ import licenseViolation from './license-violation.store';
 import error from './error.store';
 import settingsItems from './settings-item.store';
 import extensionEntryRoutes from './extension-entry-routes';
-import marketing from './marketing.store';
 import extensionComponentSections from './extension-component-sections.store';
 import extensions from './extensions.store';
 import tabs from './tabs.store';
@@ -33,7 +32,6 @@ export default {
     error,
     settingsItems,
     extensionEntryRoutes,
-    marketing,
     extensionComponentSections,
     extensions,
     tabs,

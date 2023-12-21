@@ -90,10 +90,7 @@ describe('src/app/main.ts', () => {
                 };
             });
         });
-        serviceMocks.RuleConditionService = (await import('src/app/service/rule-condition.service')).default;
 
-        jest.mock('src/app/service/product-stream-condition.service');
-        serviceMocks.ProductStreamConditionService = (await import('src/app/service/product-stream-condition.service')).default;
 
         jest.mock('src/app/service/state-style.service');
         serviceMocks.StateStyleService = (await import('src/app/service/state-style.service')).default;
@@ -125,26 +122,14 @@ describe('src/app/main.ts', () => {
         jest.mock('src/core/service/shopware-updates-listener.service');
         serviceMocks.SnapAdminUpdatesListener = (await import('src/core/service/shopware-updates-listener.service')).default;
 
-        jest.mock('src/core/service/customer-group-registration-listener.service');
-        serviceMocks.CustomerGroupRegistrationListener = (await import('src/core/service/customer-group-registration-listener.service')).default;
-
         jest.mock('src/app/service/locale-helper.service');
         serviceMocks.LocaleHelperService = (await import('src/app/service/locale-helper.service')).default;
 
         jest.mock('src/app/service/filter.service');
         serviceMocks.FilterService = (await import('src/app/service/filter.service')).default;
 
-        jest.mock('src/app/service/app-cms.service');
-        serviceMocks.AppCmsService = (await import('src/app/service/app-cms.service')).default;
-
         jest.mock('src/app/service/media-default-folder.service');
         serviceMocks.MediaDefaultFolderService = (await import('src/app/service/media-default-folder.service')).default;
-
-        jest.mock('src/app/service/app-acl.service');
-        serviceMocks.AppAclService = (await import('src/app/service/app-acl.service')).default;
-
-        jest.mock('src/app/service/discount-campaign.service');
-        serviceMocks.SnapAdminDiscountCampaignService = (await import('src/app/service/discount-campaign.service')).default;
 
         jest.mock('src/app/service/search-ranking.service');
         serviceMocks.SearchRankingService = (await import('src/app/service/search-ranking.service')).default;
@@ -164,16 +149,13 @@ describe('src/app/main.ts', () => {
         jest.mock('src/app/service/custom-entity-definition.service');
         serviceMocks.CustomEntityDefinitionService = (await import('src/app/service/custom-entity-definition.service')).default;
 
-        jest.mock('src/core/service/usage-data-consent-listener.service');
-        serviceMocks.addUsageDataConsentListener = (await import('src/core/service/usage-data-consent-listener.service')).default;
-
         jest.mock('src/app/service/file-validation.service');
         serviceMocks.FileValidationService = (await import('src/app/service/file-validation.service')).default;
 
         // Reset the SnapAdmin object to make sure that the application is not already initialized
         SnapAdmin = undefined;
         // Import the SnapAdmin object
-        SnapAdmin = (await import('src/core/shopware')).default;
+        SnapAdmin = (await import('src/core/snap-admin')).default;
         // Initialize the main application
         await import('src/app/main');
         // Import the VueAdapter to check if it is set in the application

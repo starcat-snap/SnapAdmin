@@ -6,15 +6,6 @@ const RepositoryFactory = SnapAdmin.Classes._private.RepositoryFactory;
 const { EntityHydrator, ChangesetGenerator, EntityFactory } = SnapAdmin.Data;
 const ErrorResolverError = SnapAdmin.Data.ErrorResolver;
 
-const customEntityTypes = [{
-    name: 'custom_entity_detail',
-    icon: 'regular-image-text',
-    // ToDo NEXT-22655 - Re-implement, when custom_entity_list page is available
-    // }, {
-    //     name: 'custom_entity_list',
-    //     icon: 'regular-list',
-}];
-
 // eslint-disable-next-line sw-deprecation-rules/private-feature-declarations
 export default function initializeRepositoryFactory(container: InitContainer) {
     const httpClient = container.httpClient;
