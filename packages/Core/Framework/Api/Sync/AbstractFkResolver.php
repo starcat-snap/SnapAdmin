@@ -2,6 +2,7 @@
 
 namespace SnapAdmin\Core\Framework\Api\Sync;
 
+use SnapAdmin\Core\Framework\DataAbstractionLayer\Exception\EntityNotFoundException;
 use SnapAdmin\Core\Framework\Log\Package;
 
 #[Package('core')]
@@ -14,6 +15,8 @@ abstract class AbstractFkResolver
 
     /**
      * @param array<FkReference> $map
+     *
+     * @throws EntityNotFoundException
      *
      * @return array<FkReference>
      */
