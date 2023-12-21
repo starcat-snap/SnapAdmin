@@ -294,6 +294,7 @@ const baseConfig = ({ pluginPath, pluginFilepath }) => ({
                     name: 'static/img/[name].[ext]',
                 },
             },
+
             {
                 test: /\.svg$/,
                 include: [],
@@ -915,10 +916,12 @@ const coreUrlImageLoader = mergedCoreConfig.module.rules.find(r => {
 });
 coreUrlImageLoader.exclude.push(path.join(__dirname, 'src/app/assets/icons/svg'));
 coreUrlImageLoader.exclude.push(/@snap-admin\/meteor-icon-kit\/icons/);
+coreUrlImageLoader.exclude.push(/@tabler\/icons/);
 
 const coreSvgInlineLoader = mergedCoreConfig.module.rules.find(r => r.loader === 'svg-inline-loader');
 coreSvgInlineLoader.include.push(path.join(__dirname, 'src/app/assets/icons/svg'));
 coreSvgInlineLoader.include.push(/@snap-admin\/meteor-icon-kit\/icons/);
+coreSvgInlineLoader.include.push(/@tabler\/icons/);
 
 /**
  * Export all single configs in a array. Webpack uses then the webpack-multi-compiler for isolated

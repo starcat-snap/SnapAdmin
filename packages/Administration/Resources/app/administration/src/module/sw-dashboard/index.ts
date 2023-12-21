@@ -14,7 +14,7 @@ SnapAdmin.Module.register('sw-dashboard', {
     description: 'sw-dashboard.general.descriptionTextModule',
     version: '1.0.0',
     targetVersion: '1.0.0',
-    icon: 'regular-tachometer',
+    icon: 'home',
     routes: {
         index: {
             components: {
@@ -27,7 +27,7 @@ SnapAdmin.Module.register('sw-dashboard', {
     navigation: [{
         id: 'sw-dashboard',
         label: 'sw-dashboard.general.mainMenuItemGeneral',
-        icon: 'regular-tachometer',
+        icon: 'home',
         path: 'sw.dashboard.index',
         position: 10,
     }],

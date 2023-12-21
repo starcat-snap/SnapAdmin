@@ -12,7 +12,7 @@ SnapAdmin.Module.register('sw-system', {
     description: 'sw-system.general.descriptionTextModule',
     version: '1.0.0',
     targetVersion: '1.0.0',
-    icon: 'regular-desktop',
+    icon: 'settings',
     routes: {
         index: {
             components: {
@@ -25,7 +25,7 @@ SnapAdmin.Module.register('sw-system', {
     navigation: [{
         id: 'sw-system',
         label: 'sw-system.general.mainMenuItemGeneral',
-        icon: 'regular-desktop',
+        icon: 'settings',
         path: 'sw.dashboard.index',
         position: 100,
     }],

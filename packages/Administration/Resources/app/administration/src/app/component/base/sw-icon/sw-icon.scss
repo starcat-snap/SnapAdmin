@@ -14,15 +14,6 @@
         vertical-align: middle;
     }
 
-    &.sw-icon--fill > svg {
-        fill: currentcolor;
-
-        path,
-        use {
-            fill: currentcolor;
-        }
-    }
-
     &.sw-icon--small {
         @include size(16px);
     }

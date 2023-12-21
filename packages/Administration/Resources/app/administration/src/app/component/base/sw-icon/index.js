@@ -127,28 +127,16 @@ Component.register('sw-icon', {
                 if (!newName) {
                     return;
                 }
-
-                const [variant, ...iconName] = newName.split('-');
-                this.loadIconSvgData(variant, iconName.join('-'), newName);
+                this.loadIconSvgData(newName);
             },
             immediate: true,
         },
     },
 
     methods: {
-        /**
-         * Loads the requested icon's SVG data.
-         *
-         * This defaults to loading from the meteor-icon-kit.
-         *
-         * This throws an exception if the import is not found. Catch this in an override to add custom icons;
-         * or override and do custom logic based on the `variant`, `iconName` or `iconFullName`.
-         *
-         *
-         * @return Promise for possible override fallback logic
-         */
-        loadIconSvgData(variant, iconName, iconFullName) {
-            return import(`@snap-admin/meteor-icon-kit/icons/${variant}/${iconName}.svg`).then((iconSvgData) => {
+        loadIconSvgData(iconFullName) {
+            // iconFullName = 'home';
+            return  import(`@tabler/icons/./${iconFullName}.svg`).then((iconSvgData) => {
                 if (iconSvgData.default) {
                     this.iconSvgData = iconSvgData.default;
                 } else {

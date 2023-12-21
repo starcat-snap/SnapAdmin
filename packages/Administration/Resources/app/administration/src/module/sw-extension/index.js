@@ -12,7 +12,7 @@ SnapAdmin.Module.register('sw-extension', {
     type: 'core',
     title: 'sw-extension-store.title',
     description: 'sw-extension-store.descriptionTextModule',
-    icon: 'regular-plug',
+    icon: 'plug',
     version: '1.0.0',
     targetVersion: '1.0.0',
     entity: 'extension',
@@ -27,7 +27,7 @@ SnapAdmin.Module.register('sw-extension', {
         {
             id: 'sw-extension',
             label: 'sw-extension.mainMenu.mainMenuItemExtensionStore',
-            icon: 'regular-plug',
+            icon: 'plug',
             position: 70,
         },
         {
