@@ -33,7 +33,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsAnyFilter;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Parser\SqlQueryParser;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Sorting\FieldSorting;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\Framework\Struct\ArrayEntity;
 use SnapAdmin\Core\Framework\Struct\ArrayStruct;
 use SnapAdmin\Core\Framework\Uuid\Uuid;
 
@@ -679,13 +678,13 @@ class EntityReader implements EntityReaderInterface
 
         /** @var Entity $struct */
         foreach ($collection as $struct) {
-            /** @var ArrayEntity $extension */
+            /** @var ArrayStruct<string, mixed> $extension */
             $extension = $struct->getExtension(self::INTERNAL_MAPPING_STORAGE);
 
+            $fks = $extension->get($association->getPropertyName()) ?? [];
+
             // use assign function to avoid setter name building
-            $structData = $data->getList(
-                $extension->get($association->getPropertyName())
-            );
+            $structData = $data->getList($fks);
 
             // if the association is added as extension (for plugins), we have to add the data as extension
             if ($association->is(Extension::class)) {
@@ -757,10 +756,10 @@ class EntityReader implements EntityReaderInterface
         $referenceColumn = EntityDefinitionQueryHelper::escape($association->getMappingReferenceColumn());
 
         $orderBy = '';
-        $parts = $query->getQueryPart('orderBy'); // @phpstan-ignore-line
+        $parts = $query->getQueryPart('orderBy');
         if (!empty($parts)) {
             $orderBy = ' ORDER BY ' . implode(', ', $parts);
-            $query->resetOrderBy();
+            $query->resetQueryPart('orderBy');
         }
         // order by is handled in group_concat
         $fieldCriteria->resetSorting();
@@ -908,7 +907,7 @@ class EntityReader implements EntityReaderInterface
             ]
         );
 
-        foreach ($query->getQueryPart('orderBy') as $i => $sorting) { // @phpstan-ignore-line
+        foreach ($query->getQueryPart('orderBy') as $i => $sorting) {
             // The first order is the primary key
             if ($i === 0) {
                 continue;

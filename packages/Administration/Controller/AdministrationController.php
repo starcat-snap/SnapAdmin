@@ -55,6 +55,7 @@ class AdministrationController extends AbstractController
             'cspNonce' => $request->attributes->get(PlatformRequest::ATTRIBUTE_CSP_NONCE),
         ]);
     }
+
     #[Route(path: '/api/_admin/snippets', name: 'api.admin.snippets', methods: ['GET'])]
     public function snippets(Request $request): Response
     {

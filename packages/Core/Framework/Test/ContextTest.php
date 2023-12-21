@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework\Test;
 
-use Doctrine\Common\Annotations\AnnotationReader;
 use PHPUnit\Framework\TestCase;
 use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\Framework\Api\Context\SystemSource;

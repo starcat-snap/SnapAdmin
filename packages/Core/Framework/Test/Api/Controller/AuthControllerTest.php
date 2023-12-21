@@ -57,7 +57,7 @@ class AuthControllerTest extends TestCase
         ];
 
         $client = $this->getBrowser();
-        $client->request('POST', '/api/oauth/token', $authPayload);
+        $client->request('POST', '/api/oauth/token', $authPayload, [], [], json_encode($authPayload, \JSON_THROW_ON_ERROR));
 
         static::assertEquals(Response::HTTP_BAD_REQUEST, $client->getResponse()->getStatusCode());
 
@@ -101,7 +101,7 @@ class AuthControllerTest extends TestCase
             'HTTP_Authorization',
             'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjBkZmFhOTJkMWNkYTJiZmUyNGMwOGU4MmNhZmExMDY4N2I2ZWEzZTI0MjE4NjcxMmM0YjI3NTA4Y2NjNWQ0MzI3MWQxODYzODA1NDYwYzQ0In0.eyJhdWQiOiJhZG1pbmlzdHJhdGlvbiIsImp0aSI6IjBkZmFhOTJkMWNkYTJiZmUyNGMwOGU4MmNhZmExMDY4N2I2ZWEzZTI0MjE4NjcxMmM0YjI3NTA4Y2NjNWQ0MzI3MWQxODYzODA1NDYwYzQ0IiwiaWF0IjoxNTI5NDM2MTkyLCJuYmYiOjE1Mjk0MzYxOTIsImV4cCI6MTUyOTQzOTc5Miwic3ViIjoiNzI2MWQyNmMzZTM2NDUxMDk1YWZhN2MwNWY4NzMyYjUiLCJzY29wZXMiOlsid3JpdGUiLCJ3cml0ZSJdfQ.DBYbAWNpwxGL6QngLidboGbr2nmlAwjYcJIqN02sRnZNNFexy9V6uyQQ-8cJ00anwxKhqBovTzHxtXBMhZ47Ix72hxNWLjauKxQlsHAbgIKBDRbJO7QxgOU8gUnSQiXzRzKoX6XBOSHXFSUJ239lF4wai7621aCNFyEvlwf1JZVILsLjVkyIBhvuuwyIPbpEETui19BBaJ0eQZtjXtpzjsWNq1ibUCQvurLACnNxmXIj8xkSNenoX5B4p3R1gbDFuxaNHkGgsrQTwkDtmZxqCb3_0AgFL3XX0mpO5xsIJAI_hLHDPvv5m0lTQgMRrlgNdfE7ecI4GLHMkDmjWoNx_A'
         );
-        $client->request('GET', '/api/_info/me');
+        $client->request('GET', '/api/plugin');
 
         static::assertEquals(Response::HTTP_UNAUTHORIZED, $client->getResponse()->getStatusCode());
         static::assertNotFalse($client->getResponse()->getContent());
@@ -140,7 +140,7 @@ class AuthControllerTest extends TestCase
             'refresh_token' => 'foobar',
         ];
 
-        $client->request('POST', '/api/oauth/token', $refreshPayload);
+        $client->request('POST', '/api/oauth/token', $refreshPayload, [], [], json_encode($refreshPayload, \JSON_THROW_ON_ERROR));
         static::assertNotFalse($client->getResponse()->getContent());
 
         $response = \json_decode($client->getResponse()->getContent(), true, 512, \JSON_THROW_ON_ERROR);
@@ -169,7 +169,7 @@ class AuthControllerTest extends TestCase
             'scopes' => [],
         ];
 
-        $client->request('POST', '/api/oauth/token', $authPayload);
+        $client->request('POST', '/api/oauth/token', $authPayload, [], [], json_encode($authPayload, \JSON_THROW_ON_ERROR));
         static::assertNotFalse($client->getResponse()->getContent());
 
         $oldRefreshToken = \json_decode($client->getResponse()->getContent(), true, 512, \JSON_THROW_ON_ERROR)['refresh_token'];
@@ -181,10 +181,10 @@ class AuthControllerTest extends TestCase
         ];
 
         // old refresh token should be invalidated here, as we issue a new refresh token with it
-        $client->request('POST', '/api/oauth/token', $refreshPayload);
+        $client->request('POST', '/api/oauth/token', $refreshPayload, [], [], json_encode($refreshPayload, \JSON_THROW_ON_ERROR));
 
         // try to request a new token with the old refresh token again
-        $client->request('POST', '/api/oauth/token', $refreshPayload);
+        $client->request('POST', '/api/oauth/token', $refreshPayload, [], [], json_encode($refreshPayload, \JSON_THROW_ON_ERROR));
         static::assertNotFalse($client->getResponse()->getContent());
 
         $response = \json_decode($client->getResponse()->getContent(), true, 512, \JSON_THROW_ON_ERROR);
@@ -233,7 +233,7 @@ class AuthControllerTest extends TestCase
             'password' => 'SnapAdmin',
         ];
 
-        $client->request('POST', '/api/oauth/token', $authPayload);
+        $client->request('POST', '/api/oauth/token', $authPayload, [], [], json_encode($authPayload, \JSON_THROW_ON_ERROR));
         static::assertNotFalse($client->getResponse()->getContent());
 
         $data = \json_decode($client->getResponse()->getContent(), true, 512, \JSON_THROW_ON_ERROR);
@@ -258,7 +258,7 @@ class AuthControllerTest extends TestCase
             'refresh_token' => $data['refresh_token'],
         ];
 
-        $client->request('POST', '/api/oauth/token', $refreshPayload);
+        $client->request('POST', '/api/oauth/token', $refreshPayload, [], [], json_encode($refreshPayload, \JSON_THROW_ON_ERROR));
         static::assertNotFalse($client->getResponse()->getContent());
         $data = \json_decode($client->getResponse()->getContent(), true, 512, \JSON_THROW_ON_ERROR);
         static::assertArrayHasKey(
@@ -308,7 +308,7 @@ class AuthControllerTest extends TestCase
             'scope' => [],
         ];
 
-        $client->request('POST', '/api/oauth/token', $authPayload);
+        $client->request('POST', '/api/oauth/token', $authPayload, [], [], json_encode($authPayload, \JSON_THROW_ON_ERROR));
         static::assertNotFalse($client->getResponse()->getContent());
 
         $data = \json_decode($client->getResponse()->getContent(), true, 512, \JSON_THROW_ON_ERROR);
@@ -333,7 +333,7 @@ class AuthControllerTest extends TestCase
             'scope' => ['admin', 'write', 'admin', 'admin', 'write', 'write', 'admin'],
         ];
 
-        $client->request('POST', '/api/oauth/token', $authPayload);
+        $client->request('POST', '/api/oauth/token', $authPayload, [], [], json_encode($authPayload, \JSON_THROW_ON_ERROR));
         static::assertNotFalse($client->getResponse()->getContent());
 
         $data = \json_decode($client->getResponse()->getContent(), true, 512, \JSON_THROW_ON_ERROR);
@@ -358,7 +358,7 @@ class AuthControllerTest extends TestCase
             'scope' => ['admin', 'write'],
         ];
 
-        $client->request('POST', '/api/oauth/token', $authPayload);
+        $client->request('POST', '/api/oauth/token', $authPayload, [], [], json_encode($authPayload, \JSON_THROW_ON_ERROR));
         static::assertNotFalse($client->getResponse()->getContent());
 
         $data = \json_decode($client->getResponse()->getContent(), true, 512, \JSON_THROW_ON_ERROR);
@@ -370,7 +370,7 @@ class AuthControllerTest extends TestCase
             'scope' => ['admin'], // change the scope to something different
         ];
 
-        $client->request('POST', '/api/oauth/token', $refreshPayload);
+        $client->request('POST', '/api/oauth/token', $refreshPayload, [], [], json_encode($refreshPayload, \JSON_THROW_ON_ERROR));
         static::assertNotFalse($client->getResponse()->getContent());
 
         $data = \json_decode($client->getResponse()->getContent(), true, 512, \JSON_THROW_ON_ERROR);
@@ -395,7 +395,7 @@ class AuthControllerTest extends TestCase
             'scope' => ['admin', 'write', UserVerifiedScope::IDENTIFIER],
         ];
 
-        $client->request('POST', '/api/oauth/token', $authPayload);
+        $client->request('POST', '/api/oauth/token', $authPayload, [], [], json_encode($authPayload, \JSON_THROW_ON_ERROR));
         static::assertNotFalse($client->getResponse()->getContent());
 
         $data = \json_decode($client->getResponse()->getContent(), true, 512, \JSON_THROW_ON_ERROR);
@@ -411,7 +411,7 @@ class AuthControllerTest extends TestCase
             'refresh_token' => $data['refresh_token'],
         ];
 
-        $client->request('POST', '/api/oauth/token', $refreshPayload);
+        $client->request('POST', '/api/oauth/token', $refreshPayload, [], [], json_encode($refreshPayload, \JSON_THROW_ON_ERROR));
         static::assertNotFalse($client->getResponse()->getContent());
 
         $data = \json_decode($client->getResponse()->getContent(), true, 512, \JSON_THROW_ON_ERROR);
@@ -436,7 +436,7 @@ class AuthControllerTest extends TestCase
             'scope' => ['admin', 'write'],
         ];
 
-        $client->request('POST', '/api/oauth/token', $authPayload);
+        $client->request('POST', '/api/oauth/token', $authPayload, [], [], json_encode($authPayload, \JSON_THROW_ON_ERROR));
         static::assertNotFalse($client->getResponse()->getContent());
 
         $data = \json_decode($client->getResponse()->getContent(), true, 512, \JSON_THROW_ON_ERROR);
@@ -450,7 +450,7 @@ class AuthControllerTest extends TestCase
             'refresh_token' => $data['refresh_token'],
         ];
 
-        $client->request('POST', '/api/oauth/token', $refreshPayload);
+        $client->request('POST', '/api/oauth/token', $refreshPayload, [], [], json_encode($refreshPayload, \JSON_THROW_ON_ERROR));
         static::assertNotFalse($client->getResponse()->getContent());
 
         $data = \json_decode($client->getResponse()->getContent(), true, 512, \JSON_THROW_ON_ERROR);
@@ -477,7 +477,7 @@ class AuthControllerTest extends TestCase
             'client_secret' => $secretKey,
         ];
 
-        $client->request('POST', '/api/oauth/token', $authPayload);
+        $client->request('POST', '/api/oauth/token', $authPayload, [], [], json_encode($authPayload, \JSON_THROW_ON_ERROR));
 
         static::assertSame(Response::HTTP_UNAUTHORIZED, $client->getResponse()->getStatusCode());
     }
@@ -509,7 +509,7 @@ class AuthControllerTest extends TestCase
             'client_secret' => $secretKey,
         ];
 
-        $client->request('POST', '/api/oauth/token', $authPayload);
+        $client->request('POST', '/api/oauth/token', $authPayload, [], [], json_encode($authPayload, \JSON_THROW_ON_ERROR));
         $response = $client->getResponse();
         $content = $response->getContent();
         static::assertNotFalse($content);
@@ -536,7 +536,7 @@ class AuthControllerTest extends TestCase
             'grant_type' => 'foo',
         ];
 
-        $client->request('POST', '/api/oauth/token', $authPayload);
+        $client->request('POST', '/api/oauth/token', $authPayload, [], [], json_encode($authPayload, \JSON_THROW_ON_ERROR));
 
         static::assertSame(Response::HTTP_BAD_REQUEST, $client->getResponse()->getStatusCode());
     }
@@ -555,7 +555,7 @@ class AuthControllerTest extends TestCase
             'password' => $admin->getPassword(),
         ];
 
-        $browser->request('POST', '/api/oauth/token', $authPayload);
+        $browser->request('POST', '/api/oauth/token', $authPayload, [], [], json_encode($authPayload, \JSON_THROW_ON_ERROR));
         static::assertNotFalse($browser->getResponse()->getContent());
 
         static::assertEquals(Response::HTTP_OK, $browser->getResponse()->getStatusCode());

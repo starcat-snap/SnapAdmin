@@ -2,7 +2,6 @@
     "name": "snapadmin/platform",
     "description": "The Snap admin core",
     "type": "library",
-    "minimum-stability": "dev",
     "keywords": [
         "framework",
         "admin"
@@ -16,6 +15,18 @@
             "dev-master": "6.6.x-dev",
             "dev-trunk": "6.6.x-dev"
         }
+    },
+    "replace": {
+        "snapadmin/core": "self.version",
+        "snapadmin/administration": "self.version",
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php72": "*",
+        "symfony/polyfill-php73": "*",
+        "symfony/polyfill-php74": "*",
+        "symfony/polyfill-php80": "*",
+        "symfony/polyfill-php81": "*",
+        "symfony/polyfill-php82": "*"
     },
     "config": {
         "sort-packages": true,
@@ -49,7 +60,7 @@
         "ext-pcntl": "*",
         "composer-runtime-api": "^2.0",
         "cocur/slugify": "^4.3.0",
-        "composer/composer": "^2.4.4",
+        "composer/composer": "^2.6.6",
         "composer/semver": "^3.2",
         "doctrine/dbal": "^3.7",
         "doctrine/inflector": "^2.0",
@@ -80,12 +91,12 @@
         "setasign/fpdi": "^2.3.7",
         "shyim/opensearch-php-dsl": "^1.0.5",
         "squirrelphp/twig-php-syntax": "^1.7.0",
-       "symfony/asset": "~7.0.0",
+        "symfony/asset": "~7.0.0",
         "symfony/cache": "~7.0.0",
         "symfony/cache-contracts": "~3.3.0",
         "symfony/clock": "~7.0.0",
         "symfony/config": "~7.0.0",
-        "symfony/console": "~7.0.0",
+        "symfony/console": "~6.4.0 | ~7.0.0",
         "symfony/debug-bundle": "~7.0.0",
         "symfony/dependency-injection": "~7.0.0",
         "symfony/deprecation-contracts": "~3.3.0",
@@ -105,7 +116,7 @@
         "symfony/messenger": "~7.0.0",
         "symfony/mime": "~7.0.0",
         "symfony/monolog-bridge": "~7.0.0",
-        "symfony/monolog-bundle": "dev-master",
+        "symfony/monolog-bundle": "~3.10.0",
         "symfony/options-resolver": "~7.0.0",
         "symfony/process": "~7.0.0",
         "symfony/property-access": "~7.0.0",
@@ -125,7 +136,7 @@
         "symfony/twig-bridge": "~7.0.0",
         "symfony/twig-bundle": "~7.0.0",
         "symfony/validator": "~7.0.0",
-        "symfony/var-exporter": "~7.0.0",
+        "symfony/var-exporter": "~7.0.1",
         "symfony/yaml": "~7.0.0",
         "tecnickcom/tcpdf": "^6.6.1",
         "twig/intl-extra": "^3.4",
@@ -134,7 +145,7 @@
         "zircote/swagger-php": "^4.5.1"
     },
     "require-dev": {
-         "ext-tokenizer": "*",
+        "ext-tokenizer": "*",
         "ext-xmlwriter": "*",
         "bamarni/composer-bin-plugin": "^1.8.2",
         "brianium/paratest": "^7.3",
@@ -178,7 +189,8 @@
     ],
     "conflict": {
         "monolog/monolog": "^1.0",
-        "enqueue/enqueue": "<0.10.16"
+        "enqueue/enqueue": "<0.10.16",
+        "symfony/serializer": "<=v7.0.0-BETA2"
     },
     "scripts-descriptions": {
         "admin:create:test": " ",

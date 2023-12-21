@@ -13,6 +13,7 @@ use SnapAdmin\Core\Framework\RateLimiter\RateLimiter;
 use SnapAdmin\Core\Framework\Routing\RoutingException;
 use SnapAdmin\Core\Framework\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,7 +42,12 @@ class NotificationController extends AbstractController
         $status = $request->request->get('status');
         $message = $request->request->get('message');
         $adminOnly = (bool) $request->request->get('adminOnly', false);
-        $requiredPrivileges = $request->request->all('requiredPrivileges');
+
+        try {
+            $requiredPrivileges = $request->request->all('requiredPrivileges');
+        } catch (BadRequestException) {
+            throw RoutingException::invalidRequestParameter('requiredPrivileges');
+        }
 
         $source = $context->getSource();
         if (!$source instanceof AdminApiSource) {
@@ -54,10 +60,6 @@ class NotificationController extends AbstractController
 
         if (empty($message)) {
             throw RoutingException::missingRequestParameter('message');
-        }
-
-        if ($requiredPrivileges === []) {
-            throw RoutingException::invalidRequestParameter('requiredPrivileges');
         }
 
         $createdByUserId = $source->getUserId();
