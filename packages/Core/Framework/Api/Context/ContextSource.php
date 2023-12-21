@@ -3,7 +3,7 @@
 namespace SnapAdmin\Core\Framework\Api\Context;
 
 use SnapAdmin\Core\Framework\Log\Package;
-use Symfony\Component\Serializer\Annotation\DiscriminatorMap;
+use Symfony\Component\Serializer\Attribute\DiscriminatorMap;
 
 #[DiscriminatorMap(typeProperty: 'type', mapping: ['system' => SystemSource::class, 'admin-api' => AdminApiSource::class])]
 #[Package('core')]

@@ -1,0 +1,12 @@
+{
+  "sw-user": {
+    "general": {
+      "mainMenuItemGeneral": "系统用户",
+      "descriptionTextModule": "管理系统用户.",
+      "mainMenuItemList": "用户"
+    },
+    "list": {
+      "textUsers": "用户"
+    }
+  }
+}

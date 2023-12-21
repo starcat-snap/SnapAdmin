@@ -9,7 +9,9 @@ use Symfony\Component\Messenger\Bridge\Doctrine\Transport\DoctrineTransport;
 use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;
 use Symfony\Component\Messenger\Transport\TransportFactoryInterface;
 use Symfony\Component\Messenger\Transport\TransportInterface;
-
+/**
+ * @implements TransportFactoryInterface<DoctrineTransport>
+ */
 #[Package('core')]
 class DoctrineTransportFactory implements TransportFactoryInterface
 {

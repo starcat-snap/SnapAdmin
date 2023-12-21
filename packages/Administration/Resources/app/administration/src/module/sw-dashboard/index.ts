@@ -1,3 +1,6 @@
+import './component/structure/sw-admin-menu-extension';
+
+
 /* eslint-disable max-len, sw-deprecation-rules/private-feature-declarations */
 SnapAdmin.Component.register('sw-dashboard-index', () => import('./page/sw-dashboard-index'));
 
