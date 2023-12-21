@@ -33,7 +33,7 @@ describe('src/app/service/state-style.service.ts', () => {
 
         expect(typeof placeholder).toBe('object');
         expect(placeholder.hasOwnProperty('icon')).toBe(true);
-        expect(placeholder.icon).toBe('regular-chevron-down-xxs');
+        expect(placeholder.icon).toBe('chevron-down');
         expect(placeholder.hasOwnProperty('iconStyle')).toBe(true);
         expect(placeholder.iconStyle).toBe('sw-order-state__bg-neutral-icon');
         expect(placeholder.hasOwnProperty('iconBackgroundStyle')).toBe(true);
@@ -102,7 +102,7 @@ describe('src/app/service/state-style.service.ts', () => {
         };
 
         const iconMapping = {
-            neutral: 'regular-chevron-down-xxs',
+            neutral: 'chevron-down',
             progress: 'regular-circle-xxs',
             done: 'regular-checkmark-xxs',
             warning: 'regular-exclamation-s',

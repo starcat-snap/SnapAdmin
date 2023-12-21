@@ -1,3 +1,5 @@
+@import "~scss/variables";
+
 .sw-desktop {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -10,9 +12,41 @@
         grid-template-columns: 1fr;
     }
 
-    &__content_topbar{
+    &__content_header {
         height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 20px;
+        padding-right: 15px;
+        border-bottom: 1px solid #e1e6f1;
+        background-color: $color-white;
+        box-shadow: -7.829px 11.607px 20px #908fa017;
+        &_left {
+            display: flex;
+            align-items: center;
+        }
+
+        &_center {
+            flex: 1;
+            margin: 0 0 0 0.8rem;
+            position: relative;
+            &_menu_toggle_sidebar_icon{
+
+            }
+        }
+
+        &_right {
+            display: flex;
+            align-items: center;
+        }
+
     }
+
+    &__content_view {
+        padding: 20px;
+    }
+
 
     @media screen and (max-width: 500px) {
         display: block;

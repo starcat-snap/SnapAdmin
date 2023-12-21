@@ -11,16 +11,16 @@ $sw-admin-menu-transition: 0.4s cubic-bezier(0.5, 0.32, 0.01, 1);
 $sw-admin-menu-off-canvas-transition: 0.4s cubic-bezier(0.3, 0, 0.15, 1);
 $sw-admin-menu-sub-menu-transition: 0.35s cubic-bezier(0.5, 0.32, 0.01, 1);
 $sw-admin-menu-flyout-transition: 0.2s cubic-bezier(0.5, 0.32, 0.01, 1);
-$sw-admin-menu-color-active: #323c52;
-$sw-admin-menu-color-hover: #293f65;
+$sw-admin-menu-color-active: rgb(17, 24, 39);
+$sw-admin-menu-color-hover:rgb(17, 24, 39);
 $sw-admin-menu-shop-status-ok: $color-emerald-500;
-$sw-admin-menu-background: #1C232C;
-$sw-admin-menu-background-hover: #2a3345;
-$sw-admin-menu-divider: #344865;
-$sw-admin-menu-background-active-first-level: #1f2932;
-$sw-admin-menu-background-active-hover: #303a4f;
-$sw-admin-menu-background-active-second-level: #303a4f;
-$sw-admin-menu-color-text-primary: #bcc9dc;
+$sw-admin-menu-background: rgb(17, 24, 39);
+$sw-admin-menu-background-hover: rgb(17, 24, 39);
+$sw-admin-menu-divider: rgb(17, 24, 39);
+$sw-admin-menu-background-active-first-level: rgb(17, 24, 39);
+$sw-admin-menu-background-active-hover: rgb(17, 24, 39);
+$sw-admin-menu-background-active-second-level: rgb(17, 24, 39);
+$sw-admin-menu-color-text-primary: #fff6;;
 $sw-admin-menu-active-text: $color-white;
 
 .sw-admin-menu {
@@ -30,7 +30,6 @@ $sw-admin-menu-active-text: $color-white;
     height: 100%;
     display: flex;
     flex-direction: column;
-
     @media screen and (max-width: 500px) {
         width: $sw-admin-menu-width-expanded;
         position: absolute;
@@ -49,7 +48,7 @@ $sw-admin-menu-active-text: $color-white;
     .sw-admin-menu__navigation-link-icon-arrow {
         position: absolute;
         right: 16px;
-        top: 21px;
+        top: 16px;
         margin: 0;
         padding: 0 !important;
     }
@@ -102,10 +101,10 @@ $sw-admin-menu-active-text: $color-white;
     }
 
     .sw-admin-menu__header {
-        padding: 10px 23px;
+        padding: 15px 23px;
         display: flex;
         position: relative;
-        height: 50px;
+        height: 65px;
     }
 
     .sw-version__status {
@@ -350,8 +349,8 @@ $sw-admin-menu-active-text: $color-white;
         color: $sw-admin-menu-color-text-primary;
 
         &.sw-icon {
-            width: 16px;
-            height: 16px;
+            width: 24px;
+            height: 24px;
             padding-top: 4px;
             padding-right: 3px;
             padding-bottom: 6px;

@@ -42,7 +42,7 @@ export type stateStyleService = {
 export default class StateStyleService {
     $store: store = {
         placeholder: {
-            icon: 'regular-chevron-down-xxs',
+            icon: 'chevron-down',
             iconStyle: 'sw-order-state__bg-neutral-icon',
             iconBackgroundStyle: 'sw-order-state__bg-neutral-icon-bg',
             selectBackgroundStyle: 'sw-order-state__bg-neutral-select',
@@ -52,7 +52,7 @@ export default class StateStyleService {
     };
 
     $icons = {
-        neutral: 'regular-chevron-down-xxs',
+        neutral: 'chevron-down',
         progress: 'regular-circle-xxs',
         warning: 'regular-exclamation-s',
         done: 'regular-checkmark-xxs',
