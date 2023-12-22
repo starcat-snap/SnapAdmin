@@ -148,7 +148,7 @@ Component.register('sw-checkbox-field', {
         },
 
         iconName() {
-            return this.isPartlyChecked ? 'regular-minus-xxs' : 'regular-checkmark-xxs';
+            return this.isPartlyChecked ? 'minus' : 'check';
         },
     },
 
