@@ -6,6 +6,7 @@ use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\DataAbstractionLayerException;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Exception\InvalidFilterQueryException;
+use SnapAdmin\Core\Framework\DataAbstractionLayer\Exception\InvalidRangeFilterParamException;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Exception\SearchRequestException;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\AndFilter;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\ContainsFilter;
@@ -86,7 +87,7 @@ class QueryStringParser
             case 'multi':
                 $operator = MultiFilter::CONNECTION_AND;
 
-                if (isset($query['operator']) && mb_strtoupper((string) $query['operator']) === MultiFilter::CONNECTION_OR) {
+                if (isset($query['operator']) && mb_strtoupper((string)$query['operator']) === MultiFilter::CONNECTION_OR) {
                     $operator = MultiFilter::CONNECTION_OR;
                 }
 
@@ -125,7 +126,16 @@ class QueryStringParser
                 return new SuffixFilter(self::buildFieldName($definition, $query['field']), $query['value']);
 
             case 'range':
-                return new RangeFilter(self::buildFieldName($definition, $query['field']), $query['parameters']);
+                $parameters = $query['parameters'] ?? [];
+                if ($parameters === []) {
+                    throw DataAbstractionLayerException::invalidFilterQuery('Parameter "parameters" for range filter is missing.', $path . '/parameters');
+                }
+
+                try {
+                    return new RangeFilter(self::buildFieldName($definition, $query['field']), $parameters);
+                } catch (InvalidRangeFilterParamException $e) {
+                    throw DataAbstractionLayerException::invalidFilterQuery($e->getMessage(), $path . '/parameters');
+                }
             case 'until':
             case 'since':
                 return self::getFilterByRelativeTime(self::buildFieldName($definition, $query['field']), $query, $path);
@@ -199,12 +209,12 @@ class QueryStringParser
             ],
             $query instanceof NotFilter => [
                 'type' => 'not',
-                'queries' => array_map(static fn (Filter $nested) => self::toArray($nested), $query->getQueries()),
+                'queries' => array_map(static fn(Filter $nested) => self::toArray($nested), $query->getQueries()),
                 'operator' => $query->getOperator(),
             ],
             $query instanceof MultiFilter => [
                 'type' => 'multi',
-                'queries' => array_map(static fn (Filter $nested) => self::toArray($nested), $query->getQueries()),
+                'queries' => array_map(static fn(Filter $nested) => self::toArray($nested), $query->getQueries()),
                 'operator' => $query->getOperator(),
             ],
             $query instanceof ContainsFilter => [
