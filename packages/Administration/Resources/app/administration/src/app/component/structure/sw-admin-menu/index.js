@@ -379,10 +379,6 @@ The admin menu only supports up to three levels of nesting.`,
             });
         },
 
-        openKeyboardShortcutOverview() {
-            this.$refs.swShortcutOverview.onOpenShortcutOverviewModal();
-        },
-
         addScrollbarOffset() {
             const offset = dom.getScrollbarWidth(this.$refs.swAdminMenuBody);
 

@@ -32,9 +32,12 @@
                             <div class="sw-desktop__content_header_right">
 
                                 {% block sw_desktop_content_header_right_notification_center %}
-                                    <sw-notification-center/>
+                                    <div class="action-link"><sw-notification-center/></div>
                                 {% endblock %}
 
+                                {% block sw_desktop_content_header_right_help %}
+                                    <div class="action-link"><sw-help-center-v2 /></div>
+                                {% endblock %}
                             </div>
                         {% endblock %}
                     </div>

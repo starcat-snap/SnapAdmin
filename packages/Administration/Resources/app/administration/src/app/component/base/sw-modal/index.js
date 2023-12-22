@@ -92,6 +92,7 @@ Component.register('sw-modal', {
         modalClasses() {
             return {
                 [`sw-modal--${this.variant}`]: (this.variant && !this.size),
+                'sw-modal--has-sidebar': this.showHelpSidebar,
             };
         },
 
@@ -171,6 +172,9 @@ Component.register('sw-modal', {
             if (event.key === 'Escape' || event.keyCode === 27) {
                 this.closeModal();
             }
+        },
+        showHelpSidebar() {
+            return SnapAdmin.State.get('adminHelpCenter').showHelpSidebar;
         },
     },
 });

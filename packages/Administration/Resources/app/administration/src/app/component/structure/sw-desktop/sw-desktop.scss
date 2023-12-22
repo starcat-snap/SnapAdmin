@@ -22,6 +22,7 @@
         border-bottom: 1px solid #e1e6f1;
         background-color: $color-white;
         box-shadow: -7.829px 11.607px 20px #908fa017;
+
         &_left {
             display: flex;
             align-items: center;
@@ -31,7 +32,8 @@
             flex: 1;
             margin: 0 0 0 0.8rem;
             position: relative;
-            &_menu_toggle_sidebar_icon{
+
+            &_menu_toggle_sidebar_icon {
 
             }
         }
@@ -39,6 +41,19 @@
         &_right {
             display: flex;
             align-items: center;
+            gap: 10px;
+
+            .action-link {
+                height: 34px;
+                width: 34px;
+                padding: 5px;
+                color: #4a4d51;
+                cursor: pointer;
+                border-radius: 50%;
+                &:hover {
+                    background: $color-gray-100;
+                }
+            }
         }
 
     }

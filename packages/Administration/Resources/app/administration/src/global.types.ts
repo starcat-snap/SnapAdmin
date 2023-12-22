@@ -64,6 +64,7 @@ import type SwFormFieldMixin from './app/mixin/form-field.mixin';
 import type DiscardDetailPageChangesMixin from './app/mixin/discard-detail-page-changes.mixin';
 import type PrivilegesService from './app/service/privileges.service';
 import type { FileValidationService } from './app/service/file-validation.service';
+import type { AdminHelpCenterState } from './app/state/admin-help-center.store';
 
 // trick to make it an "external module" to support global type extension
 
@@ -231,7 +232,8 @@ declare global {
         actionButtons: ActionButtonState,
         snapAdminExtensions: SnapAdminExtensionsState,
         extensionEntryRoutes: $TSFixMe,
-        sdkLocation: SdkLocationState
+        sdkLocation: SdkLocationState,
+        adminHelpCenter: AdminHelpCenterState,
     }
 
     /**

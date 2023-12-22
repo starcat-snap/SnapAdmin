@@ -18,7 +18,7 @@ describe('src/app/init-pre/state.init.ts', () => {
     });
 
     it('should initialized all state modules', () => {
-        expect(SnapAdmin.State.list()).toHaveLength(22);
+        expect(SnapAdmin.State.list()).toHaveLength(23);
 
         expect(SnapAdmin.State.get('notification')).toBeDefined();
         expect(SnapAdmin.State.get('session')).toBeDefined();
