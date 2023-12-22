@@ -3,7 +3,7 @@
  */
 
 const webpack = require('webpack');
-const { merge } = require('webpack-merge');
+const {merge} = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
@@ -13,12 +13,12 @@ const TerserPlugin = require('terser-webpack-plugin');
 const WebpackCopyAfterBuildPlugin = require('@snap-admin/webpack-copy-after-build');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const path = require('path');
 const fs = require('fs');
 const chalk = require('chalk');
 const WebpackBar = require('webpackbar');
-const { default: InjectPlugin, ENTRY_ORDER } = require('webpack-inject-plugin');
+const {default: InjectPlugin, ENTRY_ORDER} = require('webpack-inject-plugin');
 
 
 if (process.env.IPV4FIRST) {
@@ -182,7 +182,7 @@ const assetsPluginInstance = new AssetsPlugin({
     prettyPrint: true,
     keepInMemory: true,
     processOutput: function filterAssetsOutput(output) {
-        const filteredOutput = { ...output };
+        const filteredOutput = {...output};
 
         ['', 'app', 'runtime'].forEach((key) => {
             delete filteredOutput[key];
@@ -207,7 +207,7 @@ console.log();
  * This is the base webpack configuration which will be used from the core and the plugins.
  * It contains the necessary configuration expect the entries and the output.
  */
-const baseConfig = ({ pluginPath, pluginFilepath }) => ({
+const baseConfig = ({pluginPath, pluginFilepath}) => ({
     mode: isDev ? 'development' : 'production',
     bail: !isDev,
     stats: 'minimal',
@@ -224,9 +224,9 @@ const baseConfig = ({ pluginPath, pluginFilepath }) => ({
                 return {
                     minimizer: [
                         new TerserPlugin({
+                            minify: TerserPlugin.swcMinify,
                             terserOptions: {
-                                warnings: false,
-                                output: 6,
+                                compress: true,
                                 sourceMap: useSourceMap,
                             },
                             parallel: true,
@@ -282,7 +282,7 @@ const baseConfig = ({ pluginPath, pluginFilepath }) => ({
             },
             {
                 test: /\.(js|ts|tsx?|vue)$/,
-                loader: 'babel-loader',
+                loader: 'swc-loader',
                 include: [
                     /**
                      * Only needed for unit tests in plugins. It throws an ESLint error
@@ -293,19 +293,12 @@ const baseConfig = ({ pluginPath, pluginFilepath }) => ({
                     path.resolve(pluginPath, '..', 'test'),
                 ],
                 options: {
-                    compact: true,
-                    cacheDirectory: true,
-                    presets: [
-                        [
-                            '@babel/preset-env', {
-                                modules: false,
-                                targets: {
-                                    browsers: ['last 2 versions', 'edge >= 17'],
-                                },
-                            },
-                        ],
-                        '@babel/preset-typescript'
-                    ],
+                    jsc: {
+                        parser: {
+                            syntax: 'typescript',
+                        },
+                        target: 'es2022',
+                    },
                 },
             },
             {
@@ -729,7 +722,7 @@ const coreConfig = {
                         ],
                     }),
                     // needed to set paths for chunks dynamically (e.g. needed for S3 asset bucket)
-                    new InjectPlugin(injectPluginLoaderGenerator('administration'), { entryOrder: ENTRY_ORDER.First }),
+                    new InjectPlugin(injectPluginLoaderGenerator('administration'), {entryOrder: ENTRY_ORDER.First}),
                 ];
             }
 
@@ -758,7 +751,7 @@ const coreConfig = {
  * The entry file and the output will be defined for each plugin so that the generated files are in the correct folders.
  */
 const configsForPlugins = pluginEntries.map((plugin) => {
-    const createdBaseConfig = baseConfig({ pluginFilepath: plugin.filePath, pluginPath: plugin.path });
+    const createdBaseConfig = baseConfig({pluginFilepath: plugin.filePath, pluginPath: plugin.path});
     const pluginPath = path.resolve(plugin.path, '../../../public/administration');
     const assetPath = path.resolve(plugin.path, '../static');
 
@@ -842,7 +835,7 @@ const configsForPlugins = pluginEntries.map((plugin) => {
                     if (isProd && !hasHtmlFile) {
                         return [
                             // needed to set paths for chunks dynamically (e.g. needed for S3 asset bucket)
-                            new InjectPlugin(injectPluginLoaderGenerator(plugin.technicalFolderName), { entryOrder: ENTRY_ORDER.First }),
+                            new InjectPlugin(injectPluginLoaderGenerator(plugin.technicalFolderName), {entryOrder: ENTRY_ORDER.First}),
 
                             new ESLintPlugin({
                                 context: path.resolve(plugin.path),

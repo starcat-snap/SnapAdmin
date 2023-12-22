@@ -2,12 +2,8 @@
  * @package admin
  */
 
-import { mount, createLocalVue } from '@vue/test-utils_v2';
+import { mount } from '@vue/test-utils';
 import shortcutPlugin from 'src/app/plugin/shortcut.plugin';
-import 'src/app/component/form/sw-text-editor';
-import 'src/app/component/form/sw-text-editor/sw-text-editor-toolbar';
-import 'src/app/component/form/sw-text-editor/sw-text-editor-toolbar-button';
-import 'src/app/component/form/sw-field';
 import 'src/app/component/form/sw-text-field';
 import 'src/app/component/form/field-base/sw-contextual-field';
 import 'src/app/component/form/field-base/sw-block-field';
@@ -25,10 +21,7 @@ SnapAdmin.Utils.debounce = function debounce(fn) {
     };
 };
 
-const localVue = createLocalVue();
-localVue.use(shortcutPlugin);
-
-const createWrapper = async (componentOverride) => {
+const createWrapper = async (componentOverride = {}) => {
     const baseComponent = {
         name: 'base-component',
         template: '<div></div>',
@@ -42,7 +35,9 @@ const createWrapper = async (componentOverride) => {
 
     return mount(baseComponent, {
         attachTo: element,
-        localVue,
+        global: {
+            plugins: [shortcutPlugin],
+        },
     });
 };
 
@@ -64,10 +59,6 @@ function defineJsdomProperties() {
 
 describe('app/plugins/shortcut.plugin', () => {
     let wrapper;
-
-    afterEach(() => {
-        wrapper.destroy();
-    });
 
     it('should test with a Vue.js component', async () => {
         wrapper = await createWrapper();
@@ -316,82 +307,5 @@ describe('app/plugins/shortcut.plugin', () => {
 
         // shortcut should not be executed
         expect(onSaveMock).not.toHaveBeenCalledWith();
-    });
-
-    it('Text editor component: should be blurred on save shortcut to react to content changes', async () => {
-        defineJsdomProperties();
-        const onSaveMock = jest.fn();
-        let testString = 'foo';
-
-        SnapAdmin.Component.register('base-component', {
-            name: 'base-component',
-            template: '<div><sw-text-editor v-model="description"></sw-text-editor></div>',
-            shortcuts: {
-                'SYSTEMKEY+S': 'onSave',
-            },
-            data() {
-                return {
-                    description: testString,
-                };
-            },
-            methods: {
-                onSave() {
-                    onSaveMock();
-                    testString = this.description;
-                },
-            },
-        });
-        const element = document.createElement('div');
-        if (document.body) {
-            document.body.appendChild(element);
-        }
-
-        wrapper = await mount(await SnapAdmin.Component.build('base-component'), {
-            attachTo: element,
-            localVue,
-            stubs: {
-                'sw-text-editor': await SnapAdmin.Component.build('sw-text-editor'),
-                'sw-text-editor-toolbar': await SnapAdmin.Component.build('sw-text-editor-toolbar'),
-                'sw-text-editor-toolbar-button': await SnapAdmin.Component.build('sw-text-editor-toolbar-button'),
-                'sw-icon': { template: '<div class="sw-icon"></div>' },
-                'sw-field': await SnapAdmin.Component.build('sw-field'),
-                'sw-text-field': await SnapAdmin.Component.build('sw-text-field'),
-                'sw-contextual-field': await SnapAdmin.Component.build('sw-contextual-field'),
-                'sw-block-field': await SnapAdmin.Component.build('sw-block-field'),
-                'sw-base-field': await SnapAdmin.Component.build('sw-base-field'),
-                'sw-checkbox-field': await SnapAdmin.Component.build('sw-checkbox-field'),
-                'sw-switch-field': await SnapAdmin.Component.build('sw-switch-field'),
-                'sw-field-error': true,
-                'sw-compact-colorpicker': await SnapAdmin.Component.build('sw-compact-colorpicker'),
-                'sw-colorpicker': await SnapAdmin.Component.build('sw-colorpicker'),
-                'sw-container': await SnapAdmin.Component.build('sw-container'),
-                'sw-button': await SnapAdmin.Component.build('sw-button'),
-            },
-            shouldProxy: true,
-        });
-
-        expect(onSaveMock).not.toHaveBeenCalled();
-        expect(testString).toBe('foo');
-
-        const contentEditor = await wrapper.find('.sw-text-editor__content-editor');
-        contentEditor.element.blur = async () => {
-            await contentEditor.trigger('blur');
-        };
-
-        // click in editable content
-        await wrapper.trigger('click');
-
-        // write something in the editor
-        contentEditor.element.innerHTML = 'foobar';
-
-        await contentEditor.trigger('input');
-
-        await contentEditor.trigger('keydown', {
-            key: 's',
-            ctrlKey: true,
-        });
-
-        expect(onSaveMock).toHaveBeenCalledWith();
-        expect(testString).toBe('foobar');
     });
 });

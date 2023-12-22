@@ -3,20 +3,12 @@
  */
 
 const util = SnapAdmin.Utils;
-const { warn } = SnapAdmin.Utils.debug;
-
-let pluginInstalled = false;
 
 /**
  * @private
  */
 export default {
     install(Vue) {
-        if (pluginInstalled) {
-            warn('Shortcut', 'This plugin is already installed');
-            return false;
-        }
-
         let activeShortcuts = [];
 
         // Register component shortcuts
@@ -136,8 +128,6 @@ export default {
                 }, 200),
             },
         });
-
-        pluginInstalled = true;
 
         return true;
     },

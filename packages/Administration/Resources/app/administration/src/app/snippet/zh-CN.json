@@ -1,11 +1,62 @@
 {
   "global": {
+    "default": {
+      "add": "添加",
+      "apply": "应用",
+      "cancel": "取消",
+      "delete": "删除",
+      "remove": "移除",
+      "edit": "编辑",
+      "copy": "复制",
+      "error": "错误",
+      "warning": "警告",
+      "save": "保存",
+      "yes": "是",
+      "no": "否",
+      "confirm": "确认",
+      "open": "打开",
+      "close": "关闭",
+      "back": "返回"
+    },
     "sw-admin-menu": {
       "linkLogout": "注销",
       "linkMinimizeMenu": "折叠菜单",
       "textShopwareAdmin": "SnapAdmin Administration",
       "textProjectName": "SnapAdmin",
       "administrator": "Administrator"
+    },
+    "notification-center": {
+      "title": "通知",
+      "emptyText": "暂无通知.",
+      "deleteModal": {
+        "title": "删除通知",
+        "textConfirm": "确定要删除所有通知吗?"
+      }
+    },
+    "sw-time-ago": {
+      "justNow": "现在",
+      "minutesAgo": "1分钟前 | {minutesAgo} 分钟前",
+      "aboutNow": "刚刚",
+      "minutesFromNow": "1分钟后 | {minutesFromNow} 分钟后"
+    }
+  },
+  "help-center": {
+    "sidebar": {
+      "title": "帮助",
+      "ariaLabelButtonOpen": "打开帮助",
+      "ariaLabelButtonClose": "关闭帮助",
+      "ariaLabelButtonShortcut": "打开快捷键",
+      "support": {
+        "title": "Support",
+        "documentation": {
+          "text": "Documentation",
+          "href": "https://docs.snapadmin.net/zh"
+        },
+        "createSupportRequest": {
+          "text": "Create support request",
+          "href": "https://account.snapadmin.net/"
+        }
+      }
     }
   }
 }
