@@ -34,12 +34,12 @@ SnapAdmin.Module.register('sw-user', {
     },
 
     navigation: [{
-        id: 'sw-user',
-        label: 'sw-user.general.mainMenuItemGeneral',
-        icon: 'users',
+        id: 'sw-system',
+        label: 'global.sw-admin-menu.navigation.mainMenuItemSystem',
+        icon: 'settings-2',
         position: 40,
     }, {
-        parent: 'sw-user',
+        parent: 'sw-system',
         label: 'sw-user.general.mainMenuItemList',
         icon: 'users',
         path: 'sw.user.index',

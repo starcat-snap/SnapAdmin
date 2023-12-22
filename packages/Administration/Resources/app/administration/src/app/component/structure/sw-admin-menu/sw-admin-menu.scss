@@ -15,11 +15,11 @@ $sw-admin-menu-color-active: #172b4f;
 $sw-admin-menu-color-hover: #293f65;
 $sw-admin-menu-shop-status-ok: $color-emerald-500;
 $sw-admin-menu-background: rgb(17, 24, 39);
-$sw-admin-menu-background-hover: rgba(255, 255, 255, 0.1);
+$sw-admin-menu-background-hover: rgba(255, 255, 255, 0.05);
 $sw-admin-menu-divider: #344865;
-$sw-admin-menu-background-active-first-level: $sw-admin-menu-background-hover;
-$sw-admin-menu-background-active-hover: $sw-admin-menu-background-hover;
-$sw-admin-menu-background-active-second-level: $sw-admin-menu-background-hover;
+$sw-admin-menu-background-active-first-level: rgba(255, 255, 255, 0.1);
+$sw-admin-menu-background-active-hover: rgba(255, 255, 255, 0.05);
+$sw-admin-menu-background-active-second-level: rgba(255, 255, 255, 0.05);
 $sw-admin-menu-color-text-primary: #bcc9dc;
 $sw-admin-menu-active-text: $color-white;
 
@@ -49,7 +49,7 @@ $sw-admin-menu-active-text: $color-white;
     .sw-admin-menu__navigation-link-icon-arrow {
         position: absolute;
         right: 16px;
-        top: 21px;
+        top: 16px;
         margin: 0;
         padding: 0 !important;
     }
@@ -322,7 +322,7 @@ $sw-admin-menu-active-text: $color-white;
 
         &:hover,
         &.is--active {
-            background: $sw-admin-menu-background-active-hover;
+            background: $sw-admin-menu-background-active-first-level;
         }
 
         .sw-admin-menu__navigation-list-item:hover {
@@ -381,7 +381,7 @@ $sw-admin-menu-active-text: $color-white;
         display: none;
 
         .sw-admin-menu__navigation-list-item {
-            background: $sw-admin-menu-background-active-first-level;
+            background: $sw-admin-menu-background;
         }
 
         .sw-admin-menu__navigation-link {

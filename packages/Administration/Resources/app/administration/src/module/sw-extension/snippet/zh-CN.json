@@ -1,7 +1,7 @@
 {
   "sw-extension": {
     "mainMenu": {
-      "mainMenuItemExtensionStore": "扩展插件",
+      "mainMenuItemExtensionStore": "插件",
       "purchased": "我的扩展"
     }
   }

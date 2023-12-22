@@ -1,0 +1,30 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_user_list %}
+<sw-page class="sw-user-list">
+    <template #content>
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_user_list_content %}
+        <div class="sw-user-list__content">
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_customer_list_grid %}
+            <sw-entity-listing
+                v-if="isLoading || (users && entitySearchable)"
+                ref="swUserGrid"
+                class="sw-user-list-grid"
+                identifier="sw-user-list"
+                :items="users"
+                :columns="userColumns"
+                :repository="userRepository"
+                :sort-by="currentSortBy"
+                :sort-direction="sortDirection"
+                :is-loading="isLoading"
+                :disable-data-fetching="true"
+            >
+
+            </sw-entity-listing>
+            {% endblock %}
+        </div>
+        {% endblock %}
+    </template>
+</sw-page>
+{% endblock %}

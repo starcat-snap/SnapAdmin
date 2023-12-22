@@ -5,7 +5,7 @@
     v-if="showMenuItem"
     class="sw-admin-menu__navigation-list-item"
     :class="getElementClasses(entry.id || entryPath)"
-    :style="{ 'border-color': borderColor }"
+    :style="{ 'border-color': '#6259ca' }"
     @click.prevent="$emit('menu-item-click', entry, $event.target)"
     @mouseenter="$emit('menu-item-enter', entry, $event, parentEntries)"
 >
@@ -91,7 +91,7 @@
         {% block sw_admin_menu_item_external_arrow_indicato %}
         <sw-icon
             v-if="entry.level > 1 && children.length"
-            name="regular-chevron-right"
+            name="chevron-right"
             size="8"
             class="sw-admin-menu__navigation-link-icon-arrow"
         />
@@ -136,9 +136,9 @@
         <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
         {% block sw_admin_menu_item_arrow_indicator %}
         <sw-icon
-            v-if="entry.level > 1 && children.length"
-            name="regular-chevron-right"
-            size="8"
+            v-if="children.length"
+            name="chevron-right"
+            size="16"
             class="sw-admin-menu__navigation-link-icon-arrow"
         />
         {% endblock %}

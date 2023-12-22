@@ -23,7 +23,11 @@
       "linkMinimizeMenu": "折叠菜单",
       "textShopwareAdmin": "SnapAdmin Administration",
       "textProjectName": "SnapAdmin",
-      "administrator": "Administrator"
+      "administrator": "Administrator",
+      "navigation": {
+        "mainMenuItemContent": "内容",
+        "mainMenuItemSystem": "系统"
+      }
     },
     "notification-center": {
       "title": "通知",
