@@ -1,30 +1,30 @@
 <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
 {% block sw_user_list %}
 <sw-page class="sw-user-list">
-    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
-    {% block sw_user_list_smart_bar_header %}
-    <template #smart-bar-header>
+    <template #content>
         <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
-    {% block sw_user_list_smart_bar_header_title %}
-        <h2>
+        {% block sw_user_list_content %}
+        <div class="sw-user-list__content">
             <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
-            {% block sw_user_list_smart_bar_header_title_text %}
-            {{ $tc('sw-user.list.textUsers') }}
-            {% endblock %}
-
-            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
-            {% block sw_user_list_smart_bar_header_amount %}
-            <span
-                v-if="!isLoading"
-                class="sw-page__smart-bar-amount"
+            {% block sw_customer_list_grid %}
+            <sw-entity-listing
+                v-if="isLoading || (users && entitySearchable)"
+                ref="swUserGrid"
+                class="sw-user-list-grid"
+                identifier="sw-user-list"
+                :items="users"
+                :columns="userColumns"
+                :repository="userRepository"
+                :sort-by="currentSortBy"
+                :sort-direction="sortDirection"
+                :is-loading="isLoading"
+                :disable-data-fetching="true"
             >
-                ({{ total }})
-            </span>
+
+            </sw-entity-listing>
             {% endblock %}
-        </h2>
-        dddd
-    {% endblock %}
+        </div>
+        {% endblock %}
     </template>
-    {% endblock %}
 </sw-page>
 {% endblock %}
