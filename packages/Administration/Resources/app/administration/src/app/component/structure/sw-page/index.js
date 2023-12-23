@@ -107,12 +107,13 @@ Component.register('sw-page', {
         },
 
         showHeadArea() {
-            return this.showSearchBar || this.showSmartBar;
+            return this.showSearchBar;
         },
 
         pageClasses() {
             return {
                 'has--head-area': this.showHeadArea,
+                'has--smart-bar': this.showSmartBar,
             };
         },
 
@@ -124,7 +125,6 @@ Component.register('sw-page', {
 
         pageContentClasses() {
             return {
-                'has--smart-bar': !!this.showSmartBar,
                 'has--side-content': !!this.hasSideContentSlot,
                 'has--side-bar ': !!this.hasSidebarSlot && !this.hasSideContentSlot,
             };

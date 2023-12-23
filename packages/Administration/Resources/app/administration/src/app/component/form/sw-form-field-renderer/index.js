@@ -102,7 +102,6 @@ Component.register('sw-form-field-renderer', {
 
     data() {
         return {
-            currency: { id: SnapAdmin.Context.app.systemCurrencyId, factor: 1 },
             currentComponentName: '',
             swFieldConfig: {},
             currentValue: this.value,
@@ -148,7 +147,6 @@ Component.register('sw-form-field-renderer', {
                     type: 'price',
                     allowModal: true,
                     hideListPrices: true,
-                    currency: this.currency,
                 };
             }
 
@@ -240,13 +238,6 @@ Component.register('sw-form-field-renderer', {
 
     methods: {
         createdComponent() {
-            this.fetchSystemCurrency();
-
-            if (this.type === 'price' && !Array.isArray(this.currentValue)) {
-                this.currentValue = [
-                    { currencyId: SnapAdmin.Context.app.systemCurrencyId, gross: null, net: null, linked: true },
-                ];
-            }
         },
 
         emitChange(data) {
@@ -315,14 +306,6 @@ Component.register('sw-form-field-renderer', {
             }
 
             return this.repositoryFactory.create(entity);
-        },
-
-        fetchSystemCurrency() {
-            const systemCurrencyId = SnapAdmin.Context.app.systemCurrencyId;
-
-            this.createRepository('currency').get(systemCurrencyId).then(response => {
-                this.currency = response;
-            });
         },
     },
 });

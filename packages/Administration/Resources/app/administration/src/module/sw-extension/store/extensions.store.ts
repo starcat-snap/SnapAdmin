@@ -1,5 +1,6 @@
 import type { Module } from 'vuex';
 import type { UserInfo } from 'src/core/service/api/store.api.service';
+import type { Extension } from '../service/extension-store-action.service';
 
 interface SnapAdminExtensionsState {
     search: {
@@ -10,14 +11,21 @@ interface SnapAdminExtensionsState {
         term: null|string,
         filter: $TSFixMe,
     }
+    extensionListing: Extension[],
     categoriesLanguageId: string|null,
     myExtensions: {
         loading: boolean,
+        data: Extension[]
     }
     userInfo: UserInfo|null,
 }
 
-const snapAdminExtensionsStore: Module<SnapAdminExtensionsState, VuexRootState> = {
+type SearchValue<T, K extends keyof T> = {
+    key: K,
+    value: T[K]
+}
+
+const shopwareExtensionsStore: Module<SnapAdminExtensionsState, VuexRootState> = {
     namespaced: true,
 
     state() {
@@ -37,7 +45,7 @@ const snapAdminExtensionsStore: Module<SnapAdminExtensionsState, VuexRootState> 
                 data: [],
             },
             userInfo: null,
-            snapAdminId: null,
+            shopwareId: null,
             loginStatus: false,
             licensedExtensions: {
                 loading: false,
@@ -49,6 +57,18 @@ const snapAdminExtensionsStore: Module<SnapAdminExtensionsState, VuexRootState> 
     },
 
     mutations: {
+        setSearchValue<K extends keyof SnapAdminExtensionsState['search']>(
+            state: SnapAdminExtensionsState,
+            { key, value }: SearchValue<SnapAdminExtensionsState['search'], K>,
+        ) {
+            state.search.page = 1;
+            state.search[key] = value;
+        },
+
+        setExtensionListing(state, extensions: Extension[]) {
+            state.extensionListing = extensions;
+        },
+
         loadMyExtensions(state) {
             state.myExtensions.loading = true;
         },
@@ -57,6 +77,12 @@ const snapAdminExtensionsStore: Module<SnapAdminExtensionsState, VuexRootState> 
         setLoading(state, value: boolean = true) {
             state.myExtensions.loading = value;
         },
+
+        myExtensions(state, myExtensions: Extension[]) {
+            state.myExtensions.data = myExtensions;
+            state.myExtensions.loading = false;
+        },
+
         categoriesLanguageId(state, languageId: string) {
             state.categoriesLanguageId = languageId;
         },
@@ -73,7 +99,7 @@ const snapAdminExtensionsStore: Module<SnapAdminExtensionsState, VuexRootState> 
  * @package services-settings
  * @private
  */
-export default snapAdminExtensionsStore;
+export default shopwareExtensionsStore;
 
 /**
  * @private

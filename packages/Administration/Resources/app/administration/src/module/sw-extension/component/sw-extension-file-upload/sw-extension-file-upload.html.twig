@@ -1,0 +1,106 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_extension_file_upload %}
+<div class="sw-extension-file-upload">
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_extension_file_upload_content %}
+    <div class="sw-extension-file-upload__content">
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_extension_file_upload_button %}
+        <sw-button
+            class="sw-extension-file-upload__button"
+            :is-loading="isLoading"
+            variant="primary"
+            @click="showConfirmModal"
+        >
+            {{ $tc('sw-extension.my-extensions.fileUpload.buttonFileUpload') }}
+        </sw-button>
+        {% endblock %}
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_extension_file_upload_form %}
+        <form
+            ref="fileForm"
+            class="sw-extension-file-upload__form"
+        >
+            <!-- eslint-disable-next-line vuejs-accessibility/form-control-has-label -->
+            <input
+                id="files"
+                ref="fileInput"
+                class="sw-extension-file-upload__file-input"
+                type="file"
+                @change="onFileInputChange"
+            >
+        </form>
+        {% endblock %}
+    </div>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_extension_file_upload_confirm_modal %}
+    <sw-modal
+        v-if="confirmModalVisible"
+        class="sw-extension-file-upload-confirm-modal"
+        :title="$tc('sw-extension.my-extensions.fileUpload.titleWarningModal')"
+        variant="small"
+        @modal-close="closeConfirmModal"
+    >
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_extension_file_upload_confirm_modal_content %}
+        <template #default>
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_extension_file_upload_confirm_modal_body %}
+            <p>
+                {{ $tc('sw-extension.my-extensions.fileUpload.descriptionWarningModal') }}
+            </p>
+            {% endblock %}
+        </template>
+        <template #modal-footer>
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_extension_file_upload_confirm_modal_footer %}
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_extension_file_upload_confirm_modal_footer_checkbox %}
+            <sw-checkbox-field
+                v-model:value="shouldHideConfirmModal"
+            >
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_extension_file_upload_confirm_modal_footer_checkbox_label %}
+                <template #label>
+                    {{ $tc('sw-extension.my-extensions.fileUpload.textHideWarning') }}
+                </template>
+                {% endblock %}
+            </sw-checkbox-field>
+            {% endblock %}
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_extension_file_upload_confirm_modal_footer_buttons %}
+            <div>
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_extension_file_upload_confirm_modal_footer_cancel %}
+                <sw-button
+                    size="small"
+                    :disabled="isLoading"
+                    @click="closeConfirmModal"
+                >
+                    {{ $tc('global.default.cancel') }}
+                </sw-button>
+                {% endblock %}
+
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_extension_file_upload_confirm_modal_footer_continue %}
+                <sw-button
+                    variant="primary"
+                    size="small"
+                    :is-loading="isLoading"
+                    @click="onClickUpload"
+                >
+                    {{ $tc('global.default.confirm') }}
+                </sw-button>
+                {% endblock %}
+            </div>
+            {% endblock %}
+            {% endblock %}
+        </template>
+        {% endblock %}
+    </sw-modal>
+    {% endblock %}
+</div>
+{% endblock %}

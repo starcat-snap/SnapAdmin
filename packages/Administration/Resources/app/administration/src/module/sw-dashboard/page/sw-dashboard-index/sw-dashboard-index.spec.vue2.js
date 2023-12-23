@@ -3,10 +3,10 @@ import 'src/app/component/utils/sw-external-link';
 import swDashboardIndex from 'src/module/sw-dashboard/page/sw-dashboard-index';
 import dictionary from 'src/module/sw-dashboard/snippet/en-GB.json';
 
-Shopware.Component.register('sw-dashboard-index', swDashboardIndex);
+SnapAdmin.Component.register('sw-dashboard-index', swDashboardIndex);
 
 async function createWrapper(privileges = []) {
-    return shallowMount(await Shopware.Component.build('sw-dashboard-index'), {
+    return shallowMount(await SnapAdmin.Component.build('sw-dashboard-index'), {
         stubs: {
             'sw-page': true,
             'sw-card-view': true,
@@ -44,11 +44,11 @@ describe('module/sw-dashboard/page/sw-dashboard-index', () => {
     let wrapper;
 
     beforeAll(async () => {
-        if (Shopware.State.get('session')) {
-            Shopware.State.unregisterModule('session');
+        if (SnapAdmin.State.get('session')) {
+            SnapAdmin.State.unregisterModule('session');
         }
 
-        Shopware.State.registerModule('session', {
+        SnapAdmin.State.registerModule('session', {
             state: {
                 currentUser: null,
             },
@@ -82,7 +82,7 @@ describe('module/sw-dashboard/page/sw-dashboard-index', () => {
     });
 
     it('should display users firstName', async () => {
-        Shopware.State.commit('setCurrentUser', {
+        SnapAdmin.State.commit('setCurrentUser', {
             firstName: 'userFirstName',
         });
         await wrapper.vm.$nextTick();
@@ -91,7 +91,7 @@ describe('module/sw-dashboard/page/sw-dashboard-index', () => {
     });
 
     it('should display `null` as greetingName, we only greet by firstName', async () => {
-        Shopware.State.commit('setCurrentUser', {
+        SnapAdmin.State.commit('setCurrentUser', {
             username: 'username',
         });
         await wrapper.vm.$nextTick();

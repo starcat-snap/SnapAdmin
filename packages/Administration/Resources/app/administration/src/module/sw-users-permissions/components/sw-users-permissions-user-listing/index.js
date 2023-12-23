@@ -21,7 +21,6 @@ export default {
     mixins: [
         Mixin.getByName('listing'),
         Mixin.getByName('notification'),
-        Mixin.getByName('salutation'),
     ],
 
     data() {

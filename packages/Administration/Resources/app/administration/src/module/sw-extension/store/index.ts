@@ -1,4 +1,4 @@
-import type { SnapAdminClass } from 'src/core/snap-admin';
+import type { SnapAdminClass } from 'src/core/shopware';
 import extensionStore from './extensions.store';
 
 /**
@@ -6,7 +6,7 @@ import extensionStore from './extensions.store';
  * @private
  */
 export default function initState(SnapAdmin: SnapAdminClass): void {
-    SnapAdmin.State.registerModule('snapAdminExtensions', extensionStore);
+    SnapAdmin.State.registerModule('shopwareExtensions', extensionStore);
 
     let languageId = SnapAdmin.State.get('session').languageId;
     SnapAdmin.State._store.subscribe(async ({ type }, state): Promise<void> => {
@@ -22,7 +22,7 @@ export default function initState(SnapAdmin: SnapAdminClass): void {
             }
 
             languageId = state.session.languageId;
-            await SnapAdmin.Service('snapAdminExtensionService').updateExtensionData().then();
+            await SnapAdmin.Service('shopwareExtensionService').updateExtensionData().then();
         }
     });
 }

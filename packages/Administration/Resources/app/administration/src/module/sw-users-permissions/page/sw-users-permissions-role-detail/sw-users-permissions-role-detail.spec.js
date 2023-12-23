@@ -406,8 +406,6 @@ describe('module/sw-users-permissions/page/sw-users-permissions-role-detail', ()
 
         await flushPromises();
 
-        wrapper.vm.detailedPrivileges.push('currency:update');
-
         expect(wrapper.vm.roleRepository.save).not.toHaveBeenCalled();
 
         const contextMock = { access: '1a2b3c' };
@@ -424,7 +422,6 @@ describe('module/sw-users-permissions/page/sw-users-permissions-role-detail', ()
                     'order:create:discount',
                     ...wrapper.vm.privileges.getRequiredPrivileges(),
                     'product:read',
-                    'currency:update',
                 ].sort(),
             },
             contextMock,

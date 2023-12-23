@@ -25,7 +25,6 @@ export default {
 
     mixins: [
         Mixin.getByName('notification'),
-        Mixin.getByName('salutation'),
     ],
 
     shortcuts: {

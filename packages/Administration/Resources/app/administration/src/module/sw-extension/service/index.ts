@@ -2,7 +2,7 @@ import type { SubContainer } from 'src/global.types';
 
 import type { App } from 'vue';
 import ExtensionStoreActionService from './extension-store-action.service';
-import SnapAdminExtensionService from './snap-admin-extension.service';
+import SnapAdminExtensionService from './shopware-extension.service';
 import ExtensionErrorService from './extension-error.service';
 
 const { Application } = SnapAdmin;
@@ -13,7 +13,7 @@ const { Application } = SnapAdmin;
 declare global {
     interface ServiceContainer extends SubContainer<'service'>{
         extensionStoreActionService: ExtensionStoreActionService,
-        snapAdminExtensionService: SnapAdminExtensionService,
+        shopwareExtensionService: SnapAdminExtensionService,
         extensionErrorService: ExtensionErrorService,
     }
 }
@@ -25,9 +25,11 @@ Application.addServiceProvider('extensionStoreActionService', () => {
     );
 });
 
-Application.addServiceProvider('snapAdminExtensionService', () => {
+Application.addServiceProvider('shopwareExtensionService', () => {
     return new SnapAdminExtensionService(
+        SnapAdmin.Service('appModulesService'),
         SnapAdmin.Service('extensionStoreActionService'),
+        SnapAdmin.Service('shopwareDiscountCampaignService'),
         SnapAdmin.Service('storeService'),
     );
 });

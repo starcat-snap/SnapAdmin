@@ -1,0 +1,53 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_extension_removal_modal %}
+<sw-modal
+    class="sw-extension-removal-modal"
+    :title="title"
+    variant="small"
+    @modal-close="emitClose"
+>
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_extension_removal_modal_content %}
+    <template #default>
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_installed_extension_card_removal_content_modal_body %}
+        <p>
+            {{ $tc('sw-extension-store.component.sw-extension-removal-modal.description') }}
+        </p>
+
+        <p class="sw-extension-removal-modal__bold-paragraph">
+            {{ alert }}
+        </p>
+        {% endblock %}
+    </template>
+
+    <template #modal-footer>
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_extension_removal_modal_footer %}
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_extension_removal_modal_footer_cancel %}
+        <sw-button
+            size="small"
+            :disabled="isLoading"
+            @click="emitClose"
+        >
+            {{ $tc('global.default.cancel') }}
+        </sw-button>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_extension_removal_modal_footer_deactivate %}
+        <sw-button
+            variant="danger"
+            size="small"
+            :is-loading="isLoading"
+            @click="emitRemoval"
+        >
+            {{ btnLabel }}
+        </sw-button>
+        {% endblock %}
+        {% endblock %}
+    </template>
+    {% endblock %}
+</sw-modal>
+{% endblock %}
