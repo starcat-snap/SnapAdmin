@@ -100,11 +100,10 @@ $sw-media-base-item-preview-background: $color-white;
 
     .sw-media-base-item__preview-container {
         position: relative;
-        border: 1px solid $sw-media-base-item-color-border;
         border-radius: $sw-media-base-item-border-radius;
         background-color: $sw-media-base-item-preview-background;
         container: previewcontainer / inline-size;
-
+        cursor: pointer;
         &::after {
             content: "";
             display: block;

@@ -1,0 +1,71 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_media_quickinfo_usage %}
+<div class="sw-media-quickinfo-usage">
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_media_quickinfo_usage_loader %}
+    <sw-loader
+        v-if="isLoading"
+        size="30px"
+        class="sw-media-quickinfo-usage__loading-indicator"
+    />
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_media_quickinfo_usage_empty_state %}
+    <sw-alert
+        v-else-if="isNotUsed"
+        class="sw-media-quickinfo-usage__info-not-used"
+        variant="info"
+        :title="$tc('sw-media.sidebar.usage.titleMediaNotUsed')"
+    >
+        {{ $tc('sw-media.sidebar.usage.labelMediaNotUsed') }}
+    </sw-alert>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_media_quickinfo_usage_list %}
+    <ul
+        v-else
+        class="sw-media-quickinfo-usage__list"
+    >
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_media_quickinfo_usage_item %}
+        <router-link
+            v-for="usage in getUsages"
+            :key="usage.link.id"
+            :to="{ name: usage.link.name, params: { id: usage.link.id } }"
+            :target="routerLinkTarget"
+        >
+            <li
+                v-tooltip="{
+                    showDelay: 300,
+                    hideDelay: 5,
+                    message: usage.tooltip
+                }"
+                class="sw-media-quickinfo-usage__item"
+            >
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_media_quickinfo_usage_item_icon %}
+                <div class="sw-media-quickinfo-usage__label">
+                    <sw-icon
+                        :name="usage.icon.name"
+                        :color="usage.icon.color"
+                        small
+                    />
+                </div>
+                {% endblock %}
+
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_media_quickinfo_usage_item_label %}
+                <div class="sw-media-quickinfo-usage__label">
+                    {{ usage.name }}
+                </div>
+                {% endblock %}
+            </li>
+        </router-link>
+        {% endblock %}
+    </ul>
+    {% endblock %}
+</div>
+{% endblock %}
+

@@ -1,0 +1,16 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_settings_user_detail_content_password %}
+<sw-password-field
+    v-model:value="user.password"
+    name="sw-field--user-password"
+    :label="$tc('sw-users-permissions.users.user-detail.labelPassword')"
+    class="sw-settings-user-detail__grid-password"
+    :error="userPasswordError"
+    required
+    :password-toggle-able="true"
+    :copy-able="false"
+/>
+{% endblock %}
+
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_settings_user_detail_grid_change_password %}{% endblock %}

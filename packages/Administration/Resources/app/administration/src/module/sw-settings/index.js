@@ -1,34 +1,47 @@
-const {Module} = SnapAdmin;
+/**
+ * @package services-settings
+ */
+import './mixin/sw-settings-list.mixin';
+import './acl';
 
-/* eslint-disable max-len, sw-deprecation-rules/private-feature-declarations */
+const { Module } = SnapAdmin;
+
+/* eslint-disable sw-deprecation-rules/private-feature-declarations */
+SnapAdmin.Component.register('sw-settings-item', () => import('./component/sw-settings-item'));
+SnapAdmin.Component.register('sw-system-config', () => import('./component/sw-system-config'));
 SnapAdmin.Component.register('sw-settings-index', () => import('./page/sw-settings-index'));
-
+/* eslint-enable sw-deprecation-rules/private-feature-declarations */
 
 // eslint-disable-next-line sw-deprecation-rules/private-feature-declarations
 Module.register('sw-settings', {
     type: 'core',
-    name: 'media',
+    name: 'settings',
     title: 'sw-settings.general.mainMenuItemGeneral',
-    description: 'sw-settings.general.descriptionTextModule',
-    version: '1.0.0',
-    targetVersion: '1.0.0',
     icon: 'settings',
 
     routes: {
         index: {
-            components: {
-                default: 'sw-settings-index',
+            component: 'sw-settings-index',
+            path: 'index',
+            icon: 'settings',
+            redirect: {
+                name: 'sw.settings.index.system',
             },
-            path: 'index/:folderId?',
-            props: {
-                default: (route) => {
-                    return {
-                        routeFolderId: route.params.folderId,
-                    };
+            children: {
+                system: {
+                    path: 'system',
+                    meta: {
+                        component: 'sw-settings-index',
+                        parentPath: 'sw.settings.index',
+                    },
                 },
-            },
-            meta: {
-                privilege: 'media.viewer',
+                plugins: {
+                    path: 'plugins',
+                    meta: {
+                        component: 'sw-settings-index',
+                        parentPath: 'sw.settings.index',
+                    },
+                },
             },
         },
     },
@@ -36,8 +49,9 @@ Module.register('sw-settings', {
     navigation: [{
         id: 'sw-settings',
         label: 'sw-settings.general.mainMenuItemGeneral',
+        color: '#9AA8B5',
         icon: 'settings',
         path: 'sw.settings.index',
-        position: 1000,
+        position: 999,
     }],
 });

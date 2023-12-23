@@ -1,6 +1,6 @@
 import { computed, inject, ref } from 'vue';
-import template from './sw-user-list.html.twig';
-import './sw-user-list.scss';
+import template from './sw-role-list.html.twig';
+import './sw-role-list.scss';
 
 const { Mixin } = SnapAdmin;
 /**

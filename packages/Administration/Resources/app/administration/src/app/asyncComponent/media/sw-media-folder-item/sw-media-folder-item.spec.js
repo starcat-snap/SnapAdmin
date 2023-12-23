@@ -8,7 +8,7 @@ const { Module } = SnapAdmin;
 // mocking modules
 const modulesToCreate = new Map();
 modulesToCreate.set('sw-product', { icon: 'regular-products', entity: 'product' });
-modulesToCreate.set('sw-mail-template', { icon: 'regular-cog', entity: 'mail_template' });
+modulesToCreate.set('sw-mail-template', { icon: 'settings', entity: 'mail_template' });
 modulesToCreate.set('sw-cms', { icon: 'regular-content', entity: 'cms_page' });
 
 Array.from(modulesToCreate.keys()).forEach(moduleName => {

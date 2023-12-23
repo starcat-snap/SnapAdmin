@@ -53,7 +53,7 @@ Component.register('sw-page', {
             type: Boolean,
             // TODO: Boolean props should only be opt in and therefore default to false
             // eslint-disable-next-line vue/no-boolean-default
-            default: false,
+            default: true,
         },
         /**
          * Toggles search bar
@@ -62,7 +62,7 @@ Component.register('sw-page', {
             type: Boolean,
             // TODO: Boolean props should only be opt in and therefore default to false
             // eslint-disable-next-line vue/no-boolean-default
-            default: false,
+            default: true,
         },
         /**
          * Overrides the module color as the bottom-border-color of the page's smart bar

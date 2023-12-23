@@ -57,7 +57,7 @@ Component.register('sw-simple-search-field', {
         icon: {
             type: String,
             required: false,
-            default: 'regular-search-s',
+            default: 'search',
         },
     },
 

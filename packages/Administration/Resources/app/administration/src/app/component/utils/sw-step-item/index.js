@@ -49,7 +49,7 @@ Component.register('sw-step-item', {
             const iconConfig = {
                 disabled: this.disabledIcon,
                 info: 'regular-circle-xs',
-                error: 'regular-times-s',
+                error: 'x',
                 success: 'regular-checkmark-xs',
             };
 

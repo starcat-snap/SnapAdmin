@@ -2,12 +2,11 @@
 
 $sw-page-smart-bar-border-color: $color-gray-300;
 $sw-page-separator-color: $color-gray-300;
-$sw-page-divider-background-color: $color-gray-300;
 $sw-page-smart-bar-background-color: $color-white;
-$sw-page-smart-bar-headline-color: #170c6b;;
+$sw-page-smart-bar-headline-color: $color-darkgray-200;
 $sw-page-side-content-default-width: 440px;
-$sw-page-smart-bar-headline-font-size: $font-size-xl;
-$sw-page-smart-bar-headline-font-weight: $font-weight-medium;
+$sw-page-smart-bar-headline-font-size: $font-size-m;
+$sw-page-smart-bar-headline-font-weight: $font-weight-semi-bold;
 $sw-page-search-bar-z-index: $z-index-sw-page-search-bar;
 
 .sw-page {
@@ -25,8 +24,11 @@ $sw-page-search-bar-z-index: $z-index-sw-page-search-bar;
         position: relative;
         display: grid;
         grid-column-gap: 8px;
-        grid-template-columns: [head-start back-btn-start] 0fr [back-btn-end header-content-start] minmax(0, $content-width) [header-content-end] 1fr [smart-bar-end];
+        grid-template-columns: [head-start back-btn-start] 1fr [back-btn-end header-content-start] minmax(0, 520px) [header-content-end] 1fr [smart-bar-end];
         align-items: center;
+        background: $sw-page-smart-bar-background-color;
+        border-bottom: 1px solid #e1e6f1;
+        box-shadow: -7.829px 11.607px 20px #908fa017;
     }
 
     .sw-page__search-bar {
@@ -49,17 +51,13 @@ $sw-page-search-bar-z-index: $z-index-sw-page-search-bar;
         gap: 16px;
     }
 
-    .sw-page__smart-bar-divider {
-        position: absolute;
-        top: 80px;
-        width: 100%;
-        height: 1px;
-        background-color: $sw-page-divider-background-color;
+    .sw-page__smart-bar {
+        display: flex;
+        padding: 0 15px;
     }
 
     .sw-page__back-btn-container {
-        grid-column: back-btn-start / back-btn-end;
-        grid-row: 2;
+        display: flex;
     }
 
     .smart-bar__back-btn {
@@ -78,9 +76,10 @@ $sw-page-search-bar-z-index: $z-index-sw-page-search-bar;
     }
 
     .smart-bar__content {
+        flex-grow: 1;
         min-height: 70px;
         max-width: $content-width;
-        padding: 15px 0;
+        padding: 15px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -144,7 +143,7 @@ $sw-page-search-bar-z-index: $z-index-sw-page-search-bar;
     .sw-page__content {
         position: relative;
         height: 100%;
-
+        padding: 15px;
         &.has--side-content {
             display: grid;
             grid-template-columns: $sw-page-side-content-default-width 1fr auto;

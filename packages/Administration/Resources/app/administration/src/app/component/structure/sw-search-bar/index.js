@@ -857,7 +857,6 @@ Component.register('sw-search-bar', {
 
             return entities;
         },
-
         toggleSearchPreferencesModal() {
             this.showSearchPreferencesModal = !this.showSearchPreferencesModal;
 
