@@ -55,9 +55,9 @@ Module.register('sw-media', {
     },
 
     navigation: [{
-        id: 'sw-content',
-        label: 'global.sw-admin-menu.navigation.mainMenuItemContent',
-        icon: 'layers-subtract',
+        id: 'sw-system',
+        label: 'global.sw-admin-menu.navigation.mainMenuItemSystem',
+        icon: 'settings-2',
         position: 50,
     }, {
         id: 'sw-media',
@@ -66,7 +66,7 @@ Module.register('sw-media', {
         icon: 'photo',
         path: 'sw.media.index',
         position: 20,
-        parent: 'sw-content',
+        parent: 'sw-system',
         privilege: 'media.viewer',
     }],
 

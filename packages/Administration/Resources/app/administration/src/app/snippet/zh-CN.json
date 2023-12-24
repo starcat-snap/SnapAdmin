@@ -25,7 +25,6 @@
       "textProjectName": "SnapAdmin",
       "administrator": "Administrator",
       "navigation": {
-        "mainMenuItemContent": "内容",
         "mainMenuItemSystem": "系统"
       }
     },
