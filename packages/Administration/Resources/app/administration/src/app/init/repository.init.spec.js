@@ -16,7 +16,7 @@ const customEntityDefinitionBare = {
 };
 const customEntityCmsAwareTypes = [{
     name: 'custom_entity_detail',
-    icon: 'regular-image-text',
+    icon: 'photo-text',
     // ToDo NEXT-22655 - Re-implement, when custom_entity_list page is available
     // }, {
     //     name: 'custom_entity_list',

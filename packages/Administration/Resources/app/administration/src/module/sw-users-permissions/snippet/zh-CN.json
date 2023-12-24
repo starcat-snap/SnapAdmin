@@ -100,11 +100,11 @@
         "labelUsername": "User name",
         "labelPassword": "Password",
         "labelProfilePicture": "Profile picture",
-        "labelLanguage": "User interface language",
-        "labelLanguagePlaceholder": "Choose language...",
-        "labelChangePassword": "Change password",
+        "labelLanguage": "语言",
+        "labelLanguagePlaceholder": "选择语言...",
+        "labelChangePassword": "修改密码",
         "labelAdministrator": "Administrator",
-        "labelTimezone": "Timezone",
+        "labelTimezone": "时区",
         "labelJobTitle": "Job title",
         "labelRoles": "Roles",
         "labelNewPassword": "New password",
@@ -126,13 +126,13 @@
         "labelPermissions": "Permissions",
         "disabledRoleSelectWarning": "Roles are only available for users that don't have administrator rights.",
         "passwordConfirmation": {
-          "titleConfirmPasswordModal": "Confirm password",
-          "labelConfirmPassword": "Password",
-          "placeholderConfirmPassword": "Enter your current password...",
-          "labelButtonCancel": "Cancel",
-          "labelButtonConfirm": "Confirm",
-          "notificationPasswordErrorTitle": "Error",
-          "notificationPasswordErrorMessage": "Please submit your current password correctly."
+          "titleConfirmPasswordModal": "确认密码",
+          "labelConfirmPassword": "密码",
+          "placeholderConfirmPassword": "输入当前密码...",
+          "labelButtonCancel": "取消",
+          "labelButtonConfirm": "确认",
+          "notificationPasswordErrorTitle": "错误",
+          "notificationPasswordErrorMessage": "请正确提交当前密码."
         },
         "modal": {
           "detailModalTitle": "Create integration",
@@ -159,8 +159,8 @@
           "saveSuccess": {
             "message": "User \"{name}\" saved."
           },
-          "invalidEmailErrorMessage": "Please enter a valid email address.",
-          "duplicateEmailErrorMessage": "This email address has been registered already."
+          "invalidEmailErrorMessage": "请输入正确邮箱地址.",
+          "duplicateEmailErrorMessage": "邮箱已经被注册了."
         }
       }
     }

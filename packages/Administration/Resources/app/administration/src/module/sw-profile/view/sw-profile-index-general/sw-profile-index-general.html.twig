@@ -8,27 +8,7 @@
         :title="$tc('sw-profile.index.titleInfoCard')"
         :is-loading="isUserLoading || !languageId"
     >
-        <sw-container v-bind="{ columns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '0 30px' }">
-            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
-            {% block sw_profile_index_general_information_firstname %}
-            <sw-text-field
-                v-model:value="user.firstName"
-                name="sw-field--user-firstName"
-                :label="$tc('sw-profile.index.labelFirstNameField')"
-                :disabled="isDisabled || !acl.can('user.update_profile')"
-            />
-            {% endblock %}
 
-            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
-            {% block sw_profile_index_general_information_lastname %}
-            <sw-text-field
-                v-model:value="user.lastName"
-                name="sw-field--user-lastName"
-                :label="$tc('sw-profile.index.labelLastNameField')"
-                :disabled="isDisabled || !acl.can('user.update_profile')"
-            />
-            {% endblock %}
-        </sw-container>
 
         <sw-container v-bind="{ columns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '0 30px' }">
             <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
@@ -61,7 +41,27 @@
             </sw-select-field>
             {% endblock %}
         </sw-container>
+        <sw-container v-bind="{ columns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '0 30px' }">
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_profile_index_general_information_firstname %}
+            <sw-text-field
+                v-model:value="user.name"
+                name="sw-field--user-name"
+                :label="$tc('sw-profile.index.labelNameField')"
+                :disabled="isDisabled || !acl.can('user.update_profile')"
+            />
+            {% endblock %}
 
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_profile_index_general_information_lastname %}
+            <sw-text-field
+                v-model:value="user.phone"
+                name="sw-field--user-phone"
+                :label="$tc('sw-profile.index.labelPhoneField')"
+                :disabled="isDisabled || !acl.can('user.update_profile')"
+            />
+            {% endblock %}
+        </sw-container>
         <sw-container v-bind="{ columns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '0 30px' }">
             <!-- eslint-disable sw-deprecation-rules/no-twigjs-blocks,vue/no-duplicate-attributes,vue/no-parsing-error -->
             {% block sw_profile_index_general_information_email %}

@@ -139,8 +139,7 @@ Component.register('sw-page', {
 
         headerStyles() {
             return {
-                'border-bottom-color': this.pageColor,
-                'padding-right': this.pageOffset,
+
             };
         },
 

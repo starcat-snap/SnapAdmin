@@ -24,6 +24,8 @@
         overflow-x: hidden;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* 隐藏滚动条 Firefox */
+        -ms-overflow-style: none; /* 隐藏滚动条 IE 10+ */
 
         @media screen and (max-width: 1360px) {
             padding: 15px;
@@ -40,5 +42,9 @@
                 max-width: 100%;
             }
         }
+    }
+
+    .sw-card-view__content::-webkit-scrollbar {
+        display: none; /* 隐藏滚动条 Chrome 和 Safari */
     }
 }

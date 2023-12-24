@@ -3,7 +3,7 @@
 $sw-page-smart-bar-border-color: $color-gray-300;
 $sw-page-separator-color: $color-gray-300;
 $sw-page-smart-bar-background-color: $color-white;
-$sw-page-smart-bar-headline-color: $color-darkgray-200;
+$sw-page-smart-bar-headline-color: $color-gray-700;
 $sw-page-side-content-default-width: 440px;
 $sw-page-smart-bar-headline-font-size: $font-size-m;
 $sw-page-smart-bar-headline-font-weight: $font-weight-semi-bold;
@@ -64,6 +64,7 @@ $sw-page-search-bar-z-index: $z-index-sw-page-search-bar;
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-basis: 10%;
     }
 
     .smart-bar__back-btn {

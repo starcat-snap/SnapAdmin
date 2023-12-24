@@ -38,7 +38,7 @@ $sw-field-transition: border-color 0.3s ease-out, background 0.3s ease;
         }
 
         &:disabled {
-            background: $color-gray-100;
+            background: $color-gray-50;
             border-color: $color-gray-300;
             cursor: default !important;
         }

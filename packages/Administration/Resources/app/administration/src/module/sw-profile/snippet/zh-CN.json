@@ -2,38 +2,38 @@
   "sw-profile": {
     "general": {
       "mainMenuItemGeneral": "个人中心",
-      "description": "管理个人资料.",
+      "description": "管理个人基本信息、修改头像、搜索设置等",
       "headlineProfile": "个人中心"
     },
     "index": {
       "buttonSaveLabel": "保存",
-      "titleInfoCard": "Profile information",
-      "titleImageCard": "Profile image",
-      "titlePasswordCard": "Password",
-      "labelFirstNameField": "First name",
-      "labelLastNameField": "Last name",
-      "labelUsernameField": "Username",
-      "labelEmailField": "Email address",
-      "labelTimezoneField": "Timezone",
-      "labelOldPassword": "Old password",
-      "placeholderOldPassword": "Enter old password...",
-      "labelNewPassword": "New password",
-      "placeholderNewPassword": "Enter new password...",
-      "labelNewPasswordConfirm": "Confirm password",
-      "placeholderNewPasswordConfirm": "Re-enter new password...",
+      "titleInfoCard": "个人资料",
+      "titleImageCard": "头像",
+      "titlePasswordCard": "密码",
+      "labelNameField": "姓名",
+      "labelPhoneField": "电话",
+      "labelUsernameField": "用户名",
+      "labelEmailField": "邮箱地址",
+      "labelTimezoneField": "时区",
+      "labelOldPassword": "旧密码",
+      "placeholderOldPassword": "旧密码...",
+      "labelNewPassword": "新密码",
+      "placeholderNewPassword": "新密码...",
+      "labelNewPasswordConfirm": "确认密码",
+      "placeholderNewPasswordConfirm": "重复新密码...",
       "notificationPasswordErrorMessage": "The submitted passwords do not match.",
       "notificationNewPasswordIsSameAsOldErrorMessage": "The new password is identical with your old one. Please choose a new password.",
-      "notificationInvalidEmailErrorMessage": "Please enter a valid email address.",
+      "notificationInvalidEmailErrorMessage": "请输入正确邮箱地址.",
       "notificationSaveSuccessMessage": "Profile information have been saved.",
       "notificationSaveErrorMessage": "Profile information could not be saved.",
-      "labelUploadAvatar": "Upload avatar",
-      "labelUseAsAvatar": "Use as avatar"
+      "labelUploadAvatar": "上传头像",
+      "labelUseAsAvatar": "用作头像"
     },
     "tabGeneral": {
-      "title": "General"
+      "title": "常规"
     },
     "tabSearchPreferences": {
-      "title": "Search preferences",
+      "title": "搜索选项",
       "alert_elasticsearch": {
         "title": "Elasticsearch is now enabled",
         "text": "You have enabled the elasticsearch for the admin search, these fields are searchable and you can't turn it off, however you can turn off which entities are searchable"
@@ -41,9 +41,9 @@
       "cardSearchableElements": {
         "title": "Searchable elements",
         "description": "Set the searchable content for each module and entry.",
-        "buttonSelect": "Select all",
-        "buttonDeselect": "Deselect all",
-        "buttonReset": "Reset to default"
+        "buttonSelect": "全选",
+        "buttonDeselect": "取消全选",
+        "buttonReset": "恢复默认设置"
       },
       "modules": {
         "order": {
@@ -144,7 +144,7 @@
   "sw-privileges": {
     "additional_permissions": {
       "user": {
-        "update_profile": "Update own profile"
+        "update_profile": "更新个人资料"
       }
     }
   }

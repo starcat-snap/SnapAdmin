@@ -63,7 +63,7 @@ Module.register('sw-media', {
         id: 'sw-media',
         label: 'sw-media.general.mainMenuItemGeneral',
         color: '#ff68b4',
-        icon: 'regular-image',
+        icon: 'photo',
         path: 'sw.media.index',
         position: 20,
         parent: 'sw-content',

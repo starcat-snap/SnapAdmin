@@ -89,15 +89,15 @@
     "sw-media-modal": {
       "titleModal": "Choose media",
       "labelTabItemLibrary": "Media Library",
-      "labelTabItemUpload": "Upload files",
+      "labelTabItemUpload": "批量上传文件",
       "labelButtonCancel": "Cancel",
       "labelButtonSaveSelection": "Add media"
     },
     "sw-media-modal-v2": {
       "titleModal": "Choose media",
       "labelTabItemLibrary": "Media Library",
-      "labelTabItemUpload": "Upload files",
-      "labelButtonCancel": "Cancel",
+      "labelTabItemUpload": "批量上传文件",
+      "labelButtonCancel": "取消",
       "labelButtonSaveSelection": "Add media"
     }
   },

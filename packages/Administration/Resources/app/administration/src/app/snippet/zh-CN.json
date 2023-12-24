@@ -29,6 +29,64 @@
         "mainMenuItemSystem": "系统"
       }
     },
+    "sw-search-bar": {
+      "messageNoResults": "No results found for \"{term}\".",
+      "messageNoTypeResults": "No type found.",
+      "placeholderSearchField": "Find products, customers, orders...",
+      "placeholderTypeSearchField": "Search \"{entity}\"...",
+      "placeholderShortcutInfo": "Hint: Press the \"f\" key to get to the search bar faster.",
+      "placeholderSearchShortcutInfo": "<strong>Tip:</strong> Press <span>f</span> to open the search from anywhere.",
+      "placeholderESSearchShortcutInfo": "<strong>Tip:</strong> You can use Elasticsearch's <a href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html#simple-query-string-syntax\" target=\"_blank\">simple query string</a> to get a more precise result.",
+      "moduleFiltersHeadline": "Module filters",
+      "placeholderFilterShortcutInfo": "Type <span>#products</span> in the search to set the module filter.",
+      "searchTypeAll": "All",
+      "moduleFilter": "Module filter",
+      "messageNoResultsV2": "No exact matches found for \"{term}\".",
+      "messageNoResultsDetailV2": "Try using different keywords or check your search configuration.",
+      "addNew": "add new"
+    },
+    "sw-search-bar-item": {
+      "typeLabelCustomer": "Customer",
+      "typeLabelProduct": "Product",
+      "typeLabelOrder": "Order",
+      "typeLabelMedia": "Media",
+      "typeLabelCategory": "Category",
+      "typeLabelCms": "CMS",
+      "typeLabelModule": "Module",
+      "typeLabelAction": "Action",
+      "addNewEntity": "Add new {entity}",
+      "shortcuts": {
+        "product": "G P | A P",
+        "category": "G C | &nbsp;",
+        "customers": "G U | A U",
+        "property": "G P R | A P R",
+        "manufacturer": "G M | A M",
+        "settings-rule": "G S R | A R",
+        "sales-channel": " | A S",
+        "cms": "G E | A E",
+        "dashboard": "G H | &nbsp;",
+        "product-stream": "G D | &nbsp;",
+        "order": "G O | &nbsp;",
+        "media": "G M E | &nbsp;",
+        "promotion-v2": "G P O | &nbsp;",
+        "settings": "G S | &nbsp;",
+        "newsletter-recipient": "G N | &nbsp;",
+        "settings-snippet": "G S | &nbsp;",
+        "settings-payment": "G S P | &nbsp;",
+        "settings-shipping": "G S S | &nbsp;"
+      }
+    },
+    "sw-search-more-results": {
+      "labelShowResultsInModule": "Show results in module({count})",
+      "labelShowResultsInModuleV2": "Show all matching results in {entityNameLower}..."
+    },
+    "sw-media-url-form": {
+      "title": "从 URL 上传文件",
+      "upload": "上传",
+      "example": "https://www.example.com",
+      "labelFileExtension": "文件扩展",
+      "missingFileExtension": "The URL does not contain a file extension. Please specify the file extension below."
+    },
     "notification-center": {
       "title": "通知",
       "emptyText": "暂无通知.",
@@ -97,15 +155,15 @@
       "labelUploading": "Uploading..."
     },
     "sw-media-upload-v2": {
-      "buttonFileUpload": "Upload file",
-      "buttonFilesUpload": "Upload files",
+      "buttonFileUpload": "上传文件",
+      "buttonFilesUpload": "批量上传文件",
       "buttonUrlUpload": "Upload file from URL",
       "buttonSwitchToFileUpload": "Upload file from your computer",
-      "buttonSwitchToUrlUpload": "Upload file from url",
-      "buttonOpenMedia": "Open media",
+      "buttonSwitchToUrlUpload": "从 url 上传文件",
+      "buttonOpenMedia": "打开媒体库",
       "notification": {
         "success": {
-          "title": "Media upload",
+          "title": "上传媒体",
           "message": "No file has been saved. | File has been saved. | {count} / {total} files have been saved."
         },
         "failure": {
