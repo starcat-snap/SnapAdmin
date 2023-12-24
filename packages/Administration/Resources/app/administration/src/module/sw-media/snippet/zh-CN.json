@@ -17,10 +17,10 @@
         "copyLink": "Copy link",
         "delete": "Delete",
         "dissolve": "Dissolve",
-        "download": "Download",
-        "move": "Move",
-        "replace": "Replace",
-        "settings": "Settings",
+        "download": "下载",
+        "move": "移动",
+        "replace": "替换",
+        "settings": "设置",
         "ar": "Activate AR View"
       },
       "sections": {
@@ -36,8 +36,8 @@
         "descriptionMissingFile": "Unable to find requested file. Upload new file(s) or delete placeholder."
       },
       "metadata": {
-        "name": "Name",
-        "fileType": "File type",
+        "name": "名称",
+        "fileType": "文件类型",
         "altText": "Alt text",
         "title": "Title",
         "mimeType": "MIME-Type",
@@ -62,7 +62,7 @@
       }
     },
     "index": {
-      "buttonCreateFolder": "Add new folder",
+      "buttonCreateFolder": "添加新文件夹",
       "rootFolderName": "媒体"
     },
     "mediaLibrary": {
@@ -71,13 +71,13 @@
       "descriptionEmptyState": "Manage media items here."
     },
     "sorting": {
-      "labelSort": "Sort by:",
+      "labelSort": "排序:",
       "labelSortByNameAsc": "Name, A-Z",
       "labelSortByNameDsc": "Name, Z-A",
-      "labelSortBySizeAsc": "Size, asc.",
-      "labelSortBySizeDsc": "Size, desc.",
-      "labelSortByCreatedAsc": "Creation date, asc.",
-      "labelSortByCreatedDsc": "Creation date, desc."
+      "labelSortBySizeAsc": "大小, 升序.",
+      "labelSortBySizeDsc": "大小, 降序.",
+      "labelSortByCreatedAsc": "创建时间, 升序.",
+      "labelSortByCreatedDsc": "创建时间, 降序."
     },
     "presentation": {
       "labelPresentation": "Presentation:",

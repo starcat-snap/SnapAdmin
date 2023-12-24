@@ -37,11 +37,64 @@
         "textConfirm": "确定要删除所有通知吗?"
       }
     },
+    "sw-field": {
+      "notification": {
+        "notificationCopySuccessMessage": "Text has been copied to clipboard.",
+        "notificationCopyFailureMessage": "Text could not be copied to clipboard."
+      },
+      "titleShowPassword": "显示密码",
+      "titleHidePassword": "隐藏密码",
+      "tooltipRestoreInheritance": "Restore inheritance",
+      "tooltipRemoveInheritance": "Remove inheritance"
+    },
     "sw-time-ago": {
       "justNow": "现在",
       "minutesAgo": "1分钟前 | {minutesAgo} 分钟前",
       "aboutNow": "刚刚",
       "minutesFromNow": "1分钟后 | {minutesFromNow} 分钟后"
+    },
+    "sw-media-folder-item": {
+      "labelContextMenuRename": "Rename",
+      "labelContextMenuMove": "Move",
+      "labelContextMenuShowMedia": "Show media",
+      "labelContextMenuShowSettings": "Settings",
+      "labelContextMenuDissolve": "Dissolve",
+      "notification": {
+        "errorBlankItemName": {
+          "message": "Folder could not be saved: Please enter a name."
+        },
+        "renamingError": {
+          "message": "Error saving folder."
+        },
+        "errorInvalidItemName": {
+          "message": "Folder could not be saved: Please enter a valid name."
+        }
+      }
+    },
+    "sw-media-media-item": {
+      "labelContextMenuCopyLink": "Copy Link",
+      "labelContextMenuReplace": "Replace",
+      "labelContextMenuRename": "Rename",
+      "labelContextMenuDetail": "Details",
+      "labelContextMenuMove": "Move",
+      "notification": {
+        "errorBlankItemName": {
+          "message": "Media item could not be saved: Please enter a name."
+        },
+        "renamingSuccess": {
+          "message": "Media item has been renamed."
+        },
+        "renamingError": {
+          "message": "Error saving file."
+        },
+        "fileNameTooLong": {
+          "message": "Provided file name is too long. The maximum length is {length} characters."
+        },
+        "settingsSuccess": {
+          "message": "Settings have been saved."
+        }
+      },
+      "labelUploading": "Uploading..."
     },
     "sw-media-upload-v2": {
       "buttonFileUpload": "Upload file",

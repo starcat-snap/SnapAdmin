@@ -44,11 +44,11 @@ export default SnapAdmin.Component.wrapComponentConfig({
 
     computed: {
         userInfo(): UserInfo|null {
-            return State.get('shopwareExtensions').userInfo;
+            return State.get('snapAdminExtensions').userInfo;
         },
 
         isLoggedIn(): boolean {
-            return State.get('shopwareExtensions').userInfo !== null;
+            return State.get('snapAdminExtensions').userInfo !== null;
         },
 
         assetFilter() {
@@ -76,7 +76,7 @@ export default SnapAdmin.Component.wrapComponentConfig({
         async createdComponent() {
             try {
                 this.isLoading = true;
-                await this.shopwareExtensionService.checkLogin();
+                await this.snapAdminExtensionService.checkLogin();
             } finally {
                 this.isLoading = false;
             }
@@ -89,7 +89,7 @@ export default SnapAdmin.Component.wrapComponentConfig({
             } catch (errorResponse) {
                 this.commitErrors(errorResponse as AxiosError<{ errors: StoreApiException[] }>);
             } finally {
-                await this.shopwareExtensionService.checkLogin();
+                await this.snapAdminExtensionService.checkLogin();
             }
         },
 
@@ -108,7 +108,7 @@ export default SnapAdmin.Component.wrapComponentConfig({
             } catch (errorResponse) {
                 this.commitErrors(errorResponse as AxiosError<{ errors: StoreApiException[] }>);
             } finally {
-                await this.shopwareExtensionService.checkLogin();
+                await this.snapAdminExtensionService.checkLogin();
                 this.isLoading = false;
             }
         },

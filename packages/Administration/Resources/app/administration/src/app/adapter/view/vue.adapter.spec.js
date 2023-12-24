@@ -522,7 +522,7 @@ describe('ASYNC app/adapter/view/vue.adapter.js', () => {
                 locale.register('zh-CN', {
                     global: {
                         'sw-admin-menu': {
-                            textSnapAdminAdmin: 'Text SnapAdmin Admin',
+                            textSnapAdmin: 'Text SnapAdmin Admin',
                         },
                         my: {
                             mock: {

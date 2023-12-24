@@ -54,7 +54,7 @@ export default SnapAdmin.Component.wrapComponentConfig({
         },
 
         myExtensions(): Extension[] {
-            return SnapAdmin.State.get('shopwareExtensions').myExtensions.data;
+            return SnapAdmin.State.get('snapAdminExtensions').myExtensions.data;
         },
 
         defaultThemeAsset(): string {
@@ -85,7 +85,7 @@ export default SnapAdmin.Component.wrapComponentConfig({
     methods: {
         async createdComponent(): Promise<void> {
             if (!this.myExtensions.length) {
-                await this.shopwareExtensionService.updateExtensionData();
+                await this.snapAdminExtensionService.updateExtensionData();
             }
 
             this.extension = this.myExtensions.find((ext) => {

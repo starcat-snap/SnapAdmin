@@ -501,7 +501,7 @@ export default class VueAdapter extends ViewAdapter {
                 return '';
             }
 
-            const baseTitle = this.$root.$tc('global.sw-admin-menu.textSnapAdminAdmin');
+            const baseTitle = this.$root.$tc('global.sw-admin-menu.textSnapAdmin');
 
             if (!this.$route.meta || !this.$route.meta.$module) {
                 return '';

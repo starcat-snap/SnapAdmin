@@ -14,7 +14,7 @@ Component.register('sw-admin', {
 
     metaInfo() {
         return {
-            title: this.$tc('global.sw-admin-menu.textSnapAdminAdmin'),
+            title: this.$tc('global.sw-admin-menu.textSnapAdmin'),
         };
     },
 

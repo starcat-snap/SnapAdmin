@@ -8,7 +8,6 @@ import './view/sw-login-recovery';
 import './view/sw-login-recovery-info';
 import './view/sw-login-recovery-recovery';
 
-
 import zhCN from './snippet/zh-CN.json';
 
 const { Module } = SnapAdmin;

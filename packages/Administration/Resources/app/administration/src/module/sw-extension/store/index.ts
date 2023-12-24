@@ -1,4 +1,4 @@
-import type { SnapAdminClass } from 'src/core/shopware';
+import type { SnapAdminClass } from 'src/core/snap-admin';
 import extensionStore from './extensions.store';
 
 /**
@@ -22,7 +22,7 @@ export default function initState(SnapAdmin: SnapAdminClass): void {
             }
 
             languageId = state.session.languageId;
-            await SnapAdmin.Service('shopwareExtensionService').updateExtensionData().then();
+            await SnapAdmin.Service('snapAdminExtensionService').updateExtensionData().then();
         }
     });
 }

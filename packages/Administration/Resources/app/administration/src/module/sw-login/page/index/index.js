@@ -37,7 +37,7 @@ Component.register('sw-login', {
     computed: {
         title() {
             const modulName = this.$tc('sw-login.general.mainMenuItemIndex');
-            const adminName = this.$tc('global.sw-admin-menu.textSnapAdminAdmin');
+            const adminName = this.$tc('global.sw-admin-menu.textSnapAdmin');
 
             return `${modulName} | ${adminName}`;
         },

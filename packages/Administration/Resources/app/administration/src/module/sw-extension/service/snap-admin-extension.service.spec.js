@@ -1,9 +1,8 @@
 import createHttpClient from 'src/core/factory/http.factory';
 import createLoginService from 'src/core/service/login.service';
 import StoreApiService from 'src/core/service/api/store.api.service';
-import SnapAdminExtensionService from 'src/module/sw-extension/service/shopware-extension.service';
+import SnapAdminExtensionService from 'src/module/sw-extension/service/snap-admin-extension.service';
 import ExtensionStoreActionService from 'src/module/sw-extension/service/extension-store-action.service';
-import AppModulesService from 'src/core/service/api/app-modules.service';
 import 'src/module/sw-extension/service';
 import initState from 'src/module/sw-extension/store';
 import appModulesFixtures from '../../../app/service/_mocks/testApps.json';
@@ -57,13 +56,7 @@ describe('src/module/sw-extension/service/shopware-extension.service', () => {
             return ['new extensions'];
         });
 
-        const mockedModuleService = new AppModulesService(httpClient, SnapAdmin.Service('loginService'));
-        mockedModuleService.fetchAppModules.mockImplementation(() => {
-            return ['new app modules'];
-        });
-
         const mockedSnapAdminExtensionService = new SnapAdminExtensionService(
-            mockedModuleService,
             mockedExtensionStoreActionService,
             SnapAdmin.Service('shopwareDiscountCampaignService'),
             SnapAdmin.Service('storeService'),
@@ -77,14 +70,6 @@ describe('src/module/sw-extension/service/shopware-extension.service', () => {
                 .toEqual(['new extensions']);
             expect(SnapAdmin.State.get('shopwareExtensions').myExtensions.loading)
                 .toBe(false);
-
-            expectUpdateModulesCalled();
-        }
-
-        function expectUpdateModulesCalled() {
-            expect(mockedModuleService.fetchAppModules).toHaveBeenCalledTimes(1);
-
-            expect(SnapAdmin.State.get('shopwareApps').apps).toEqual(['new app modules']);
         }
 
         beforeEach(() => {
@@ -121,8 +106,6 @@ describe('src/module/sw-extension/service/shopware-extension.service', () => {
 
             expect(mockedExtensionStoreActionService[lifecycleMethod]).toHaveBeenCalledTimes(1);
             expect(mockedExtensionStoreActionService[lifecycleMethod]).toHaveBeenCalledWith('someExtension', 'app');
-
-            expectUpdateModulesCalled();
         });
     });
 

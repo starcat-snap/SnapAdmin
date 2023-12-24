@@ -37,7 +37,6 @@ SnapAdmin.Component.extend('sw-extension-rating-modal', 'sw-extension-review-cre
 SnapAdmin.Component.register('sw-extension-adding-failed', () => import('./component/sw-extension-adding-failed'));
 SnapAdmin.Component.register('sw-extension-adding-success', () => import('./component/sw-extension-adding-success'));
 SnapAdmin.Component.register('sw-extension-app-module-error-page', () => import('./component/sw-extension-app-module-error-page'));
-SnapAdmin.Component.register('sw-extension-app-module-page', () => import('./page/sw-extension-app-module-page'));
 /* eslint-enable max-len, sw-deprecation-rules/private-feature-declarations */
 
 /**

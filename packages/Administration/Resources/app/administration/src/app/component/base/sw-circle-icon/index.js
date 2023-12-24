@@ -16,7 +16,7 @@ const { Component } = SnapAdmin;
  *     <sw-circle-icon size="10" iconName="settings">
  *     <sw-circle-icon size="20" variant="success" iconName="regular-checkmark">
  *     <sw-circle-icon size="30" variant="warning" iconName="regular-exclamation-triangle">
- *     <sw-circle-icon size="40" variant="error" iconName="regular-exclamation-circle">
+ *     <sw-circle-icon size="40" variant="error" iconName="exclamation-circle">
  *     <sw-circle-icon size="50" variant="info" iconName="regular-times-hexagon">
  * </div>
  */
