@@ -2,10 +2,10 @@ import { mount } from '@vue/test-utils';
 import extensionStore from 'src/module/sw-extension/store/extensions.store';
 import SnapAdminExtensionService from 'src/module/sw-extension/service/shopware-extension.service';
 
-SnapAdmin.State.registerModule('shopwareExtensions', extensionStore);
+SnapAdmin.State.registerModule('snapAdminExtensions', extensionStore);
 
 async function createWrapper() {
-    const shopwareExtensionService = new SnapAdminExtensionService();
+    const snapAdminExtensionService = new SnapAdminExtensionService();
 
     return mount(await wrapTestComponent('sw-extension-adding-failed', { sync: true }), {
         global: {
@@ -14,7 +14,7 @@ async function createWrapper() {
                 'sw-button': await wrapTestComponent('sw-button', { sync: true }),
             },
             provide: {
-                shopwareExtensionService,
+                snapAdminExtensionService,
             },
         },
         props: {
@@ -36,7 +36,7 @@ describe('src/module/sw-extension-component/sw-extension-adding-failed', () => {
     });
 
     it('has a primary block button', async () => {
-        SnapAdmin.State.commit('shopwareExtensions/myExtensions', []);
+        SnapAdmin.State.commit('snapAdminExtensions/myExtensions', []);
 
         const wrapper = await createWrapper();
 
@@ -47,7 +47,7 @@ describe('src/module/sw-extension-component/sw-extension-adding-failed', () => {
     });
 
     it('emits close if close button is clicked', async () => {
-        SnapAdmin.State.commit('shopwareExtensions/myExtensions', []);
+        SnapAdmin.State.commit('snapAdminExtensions/myExtensions', []);
 
         const wrapper = await createWrapper();
 
@@ -57,7 +57,7 @@ describe('src/module/sw-extension-component/sw-extension-adding-failed', () => {
     });
 
     it('renders all information if extension is rent', async () => {
-        SnapAdmin.State.commit('shopwareExtensions/myExtensions', [{
+        SnapAdmin.State.commit('snapAdminExtensions/myExtensions', [{
             name: 'test-app',
             storeLicense: {
                 variant: 'rent',
@@ -70,7 +70,7 @@ describe('src/module/sw-extension-component/sw-extension-adding-failed', () => {
     });
 
     it('does not render additional information if the license is not a subscription', async () => {
-        SnapAdmin.State.commit('shopwareExtensions/myExtensions', [{
+        SnapAdmin.State.commit('snapAdminExtensions/myExtensions', [{
             name: 'test-app',
             storeLicense: {
                 variant: 'buy',
@@ -94,7 +94,7 @@ describe('src/module/sw-extension-component/sw-extension-adding-failed', () => {
 
     // eslint-disable-next-line max-len
     it('does not render additional information about licenses and uses general failure text if extension is not licensed', async () => {
-        SnapAdmin.State.commit('shopwareExtensions/myExtensions', []);
+        SnapAdmin.State.commit('snapAdminExtensions/myExtensions', []);
 
         const wrapper = await createWrapper();
 

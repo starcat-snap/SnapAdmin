@@ -26,7 +26,7 @@ export default SnapAdmin.Component.wrapComponentConfig({
     },
 
     inject: [
-        'shopwareExtensionService',
+        'snapAdminExtensionService',
     ],
 
     mixins: [

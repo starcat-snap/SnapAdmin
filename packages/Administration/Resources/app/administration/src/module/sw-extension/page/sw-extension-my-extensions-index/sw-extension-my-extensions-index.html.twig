@@ -36,20 +36,6 @@
         {% endblock %}
 
         <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
-        {% block sw_extension_my_extensions_index_smart_bar_tabs_theme %}
-        <sw-tabs-item :route="{ name: 'sw.extension.my-extensions.listing.theme', query: queryParams }">
-            {{ $tc('sw-extension.my-extensions.tabs.theme') }}
-        </sw-tabs-item>
-        {% endblock %}
-
-        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
-        {% block sw_extension_my_extensions_index_smart_bar_tabs_recommendation %}
-        <sw-tabs-item :route="{ name: 'sw.extension.my-extensions.recommendation' }">
-            {{ $tc('sw-extension.my-extensions.tabs.recommendation') }}
-        </sw-tabs-item>
-        {% endblock %}
-
-        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
         {% block sw_extension_my_extensions_index_smart_bar_tabs_account %}
         <sw-tabs-item :route="{ name: 'sw.extension.my-extensions.account' }">
             {{ $tc('sw-extension.my-extensions.tabs.shopwareAccount') }}

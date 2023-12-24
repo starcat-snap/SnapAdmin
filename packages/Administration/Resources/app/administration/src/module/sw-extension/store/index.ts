@@ -6,7 +6,7 @@ import extensionStore from './extensions.store';
  * @private
  */
 export default function initState(SnapAdmin: SnapAdminClass): void {
-    SnapAdmin.State.registerModule('shopwareExtensions', extensionStore);
+    SnapAdmin.State.registerModule('snapAdminExtensions', extensionStore);
 
     let languageId = SnapAdmin.State.get('session').languageId;
     SnapAdmin.State._store.subscribe(async ({ type }, state): Promise<void> => {

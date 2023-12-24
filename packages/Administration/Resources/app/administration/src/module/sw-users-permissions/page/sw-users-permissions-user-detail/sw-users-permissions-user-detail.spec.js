@@ -55,7 +55,7 @@ async function createWrapper(privileges = []) {
                                             username: 'admin',
                                             firstName: '',
                                             lastName: 'admin',
-                                            email: 'info@shopware.com',
+                                            email: 'info@snapadmin.net',
                                             accessKeys: {
                                                 entity: 'product',
                                             },
@@ -199,7 +199,7 @@ describe('modules/sw-users-permissions/page/sw-users-permissions-user-detail', (
 
         expect(fieldFirstName.props('value')).toBe('');
         expect(fieldLastName.props('value')).toBe('admin');
-        expect(fieldEmail.props('value')).toBe('info@shopware.com');
+        expect(fieldEmail.props('value')).toBe('info@snapadmin.net');
         expect(fieldUsername.props('value')).toBe('admin');
         expect(fieldProfilePicture.props('value')).toBeUndefined();
         expect(fieldPassword.props('value')).toBeUndefined();

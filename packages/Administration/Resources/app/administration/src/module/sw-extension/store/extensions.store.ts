@@ -25,7 +25,7 @@ type SearchValue<T, K extends keyof T> = {
     value: T[K]
 }
 
-const shopwareExtensionsStore: Module<SnapAdminExtensionsState, VuexRootState> = {
+const snapAdminExtensionsStore: Module<SnapAdminExtensionsState, VuexRootState> = {
     namespaced: true,
 
     state() {
@@ -99,7 +99,7 @@ const shopwareExtensionsStore: Module<SnapAdminExtensionsState, VuexRootState> =
  * @package services-settings
  * @private
  */
-export default shopwareExtensionsStore;
+export default snapAdminExtensionsStore;
 
 /**
  * @private

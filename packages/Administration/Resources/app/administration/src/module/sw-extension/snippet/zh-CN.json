@@ -2,8 +2,7 @@
   "sw-extension": {
     "store": {
       "tabs": {
-        "apps": "Apps",
-        "themes": "Themes"
+        "apps": "插件"
       },
       "listing": {
         "anyOption": "Any",
@@ -15,41 +14,39 @@
         "initialSearchType": "Extensions",
         "placeholderSearchBar": "Find extensions...",
         "controls": {
-          "labelActiveStateSwitch": "Hide inactive extensions",
+          "labelActiveStateSwitch": "隐藏未激活插件",
           "filterOptions": {
             "last-updated": "Last updated",
             "name-asc": "Name A - Z.",
             "name-desc": "Name Z - A."
           }
         },
-        "version": "Version",
-        "update": "Update"
+        "version": "版本",
+        "update": "更新"
       },
       "account": {
-        "headline": "SnapAdmin Account",
+        "headline": "官方账户",
         "isLoggedIn": "SnapAdmin Account succesfully connected. Go to the \"App\" or \"Themes\" tab and check if your purchased extensions are listed. If not, check head over to your Showare Account and make sure the correct domain for extensions has been set.",
-        "login": "Login",
-        "logout": "Logout",
-        "loginMessage": "Login with you SnapAdmin Account to access extensions you bought on store.shopware.com",
-        "register": "Sign up now and become part of the SnapAdmin community!",
-        "registerNow": "Sign up now",
-        "registerUrl": "https://account.shopware.com/register?lang=en",
-        "mailLabel": "Email address",
-        "mailPlaceholder": "Enter your email address...",
-        "passwordLabel": "Password",
-        "passwordPlaceholder": "Enter your password...",
-        "recoveryUrl": "https://account.shopware.com/recovery?lang=en",
-        "passwordForgot": "Did you forget your password?",
+        "login": "登录",
+        "logout": "注销",
+        "loginMessage": "登录您的SnapAdmin帐户访问您在 store.snapadmin.net 上购买的插件",
+        "register": "现在注册，成为 SnapAdmin 社区的一员!",
+        "registerNow": "马上注册",
+        "registerUrl": "https://account.snapadmin.net/register?lang=en",
+        "mailLabel": "手机号",
+        "mailPlaceholder": "手机号...",
+        "passwordLabel": "密码",
+        "passwordPlaceholder": "密码...",
+        "recoveryUrl": "https://account.snapadmin.net/recovery?lang=en",
+        "passwordForgot": "忘记密码?",
         "loginNotificationMessage": "You are logged in to the SnapAdmin Account."
       },
       "tabs": {
-        "app": "Apps",
-        "theme": "Themes",
-        "recommendation": "Recommendations",
-        "shopwareAccount": "SnapAdmin Account"
+        "app": "插件",
+        "shopwareAccount": "官方账户"
       },
       "fileUpload": {
-        "buttonFileUpload": "Upload extension",
+        "buttonFileUpload": "上传插件",
         "messageUploadSuccess": "Extension uploaded.",
         "titleWarningModal": "Warning",
         "descriptionWarningModal": "Extensions from outside the SnapAdmin Store have not been reviewed by us and could potentially pose a risk to your store. We recommend using extensions from the SnapAdmin Store whenever possible.",
@@ -208,7 +205,7 @@
           "textProblem": "A problem occurred while installing your extension. We will inform the manufacturer.",
           "notificationLicense": "Please note that the subscription to this extension remains active.",
           "textSupport": "If you have any questions about the licence, please contact SnapAdmin Financial Services. Available via email at {0} or via phone at {1}.",
-          "supportEmail": "financial.services{'@'}shopware.com",
+          "supportEmail": "financial.services{'@'}snapadmin.net",
           "supportPhone": "+49 (0)2555 / 9288510"
         }
       },
@@ -313,15 +310,15 @@
       "sw-extension-my-extensions-listing": {
         "apps": {
           "noActivePlugins": "No active apps found.",
-          "titleEmptyState": "No apps installed yet",
-          "textEmptyState": "If you install apps, they will be listed here."
+          "titleEmptyState": "未安装插件",
+          "textEmptyState": "如果你安装了应用程序，它们会在这里列出."
         },
         "themes": {
           "noActivePlugins": "No active themes found.",
           "titleEmptyState": "No themes installed yet",
           "textEmptyState": "If you install themes, they will be listed here."
         },
-        "btnOpenStore": "Open store"
+        "btnOpenStore": "打开商城"
       },
       "sw-extension-removal-modal": {
         "titleCancel": "\"{extensionName}\" cancel and remove",
@@ -558,22 +555,6 @@
       "entities": {
         "rule": "Rule",
         "rule_condition": "Rule condition"
-      }
-    },
-    "sales_channel": {
-      "title": "Sales Channels",
-      "entities": {
-        "sales_channel": "Sales Channel",
-        "sales_channel_analytics": "Analytics",
-        "sales_channel_country": "Country",
-        "sales_channel_currency": "Currency",
-        "sales_channel_domain": "Domain",
-        "sales_channel_language": "Language",
-        "sales_channel_payment_method": "Payment method",
-        "sales_channel_shipping_method": "Shipping method",
-        "sales_channel_translation": "Sales Channel translation",
-        "sales_channel_type": "Sales Channel type",
-        "sales_channel_type_translation": "Sales Channel type translation"
       }
     },
     "settings": {

@@ -24,7 +24,6 @@
                 {% endblock %}
             </slot>
         </div>
-        {% endblock %}
         <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
         {% block sw_page_top_bar_actions %}
         <div
@@ -39,14 +38,19 @@
             <sw-help-center-v2 />
         </div>
         {% endblock %}
+        {% endblock %}
 
-    </div>
-    {% endblock %}
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_page_smart_bar %}
+        <template v-if="showSmartBar">
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_page_smart_bar_divider %}
+            <div
+                v-if="showSmartBar && showSearchBar"
+                class="sw-page__smart-bar-divider"
+            ></div>
+            {% endblock %}
 
-    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
-    {% block sw_page_smart_bar %}
-    <template v-if="showSmartBar">
-        <div class="sw-page__smart-bar">
             <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
             {% block sw_page_smart_bar_back_btn %}
             <div
@@ -63,7 +67,7 @@
                         :style="{ 'color': pageColor }"
                     >
                         <sw-icon
-                            name="regular-chevron-left"
+                            name="chevron-left"
                             small
                         />
                         <sw-icon
@@ -93,12 +97,6 @@
                             {{ $t(module.title) }}
                         </h2>
                         {% endblock %}
-{#                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->#}
-{#                        {% block sw_page_slot_smart_bar_header_desc %}#}
-{#                        <h2 v-if="module && module.title">#}
-{#                            {{ $t(module.title) }}#}
-{#                        </h2>#}
-{#                        {% endblock %}#}
                     </slot>
                 </div>
                 {% endblock %}
@@ -114,6 +112,11 @@
                 {% endblock %}
 
                 <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_page_smart_bar_content_app_actions %}
+                <sw-app-actions />
+                {% endblock %}
+
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
                 {% block sw_page_smart_bar_content_actions %}
                 <div class="smart-bar__actions">
                     <slot name="smart-bar-actions">
@@ -124,8 +127,9 @@
                 {% endblock %}
             </div>
             {% endblock %}
-        </div>
-    </template>
+        </template>
+        {% endblock %}
+    </div>
     {% endblock %}
 
     <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->

@@ -49,7 +49,7 @@ export default {
             this.isLoading = true;
 
             try {
-                await this.shopwareExtensionService.installAndActivateExtension(
+                await this.snapAdminExtensionService.installAndActivateExtension(
                     this.extension.name,
                     this.extension.type,
                 );
@@ -66,7 +66,7 @@ export default {
             this.isLoading = true;
 
             try {
-                await this.shopwareExtensionService.installExtension(
+                await this.snapAdminExtensionService.installExtension(
                     this.extension.name,
                     this.extension.type,
                 );
@@ -83,7 +83,7 @@ export default {
             try {
                 this.isLoading = true;
 
-                await this.shopwareExtensionService.activateExtension(
+                await this.snapAdminExtensionService.activateExtension(
                     this.extension.name,
                     this.extension.type,
                 );
@@ -102,7 +102,7 @@ export default {
             try {
                 this.isLoading = true;
 
-                await this.shopwareExtensionService.deactivateExtension(
+                await this.snapAdminExtensionService.deactivateExtension(
                     this.extension.name,
                     this.extension.type,
                 );
@@ -123,7 +123,7 @@ export default {
                 this.showRemovalModal = false;
                 this.isLoading = true;
 
-                await this.shopwareExtensionService.removeExtension(
+                await this.snapAdminExtensionService.removeExtension(
                     this.extension.name,
                     this.extension.type,
                 );

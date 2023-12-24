@@ -25,7 +25,7 @@ async function createWrapper() {
                 },
             },
             provide: {
-                shopwareExtensionService: {
+                snapAdminExtensionService: {
                     checkLogin: () => {
                         return Promise.resolve({
                             userInfo,
@@ -35,7 +35,7 @@ async function createWrapper() {
                 systemConfigApiService: {
                     getValues: () => {
                         return Promise.resolve({
-                            'core.store.apiUri': 'https://api.shopware.com',
+                            'core.store.apiUri': 'https://api.snapadmin.net',
                             'core.store.licenseHost': 'sw6.test.shopware.in',
                             'core.store.shopSecret': 'very.s3cret',
                         });
@@ -50,12 +50,12 @@ async function createWrapper() {
                             return Promise.reject();
                         }
 
-                        SnapAdmin.State.get('shopwareExtensions').userInfo = userInfo;
+                        SnapAdmin.State.get('snapAdminExtensions').userInfo = userInfo;
 
                         return Promise.resolve();
                     },
                     logout: () => {
-                        SnapAdmin.State.get('shopwareExtensions').userInfo = null;
+                        SnapAdmin.State.get('snapAdminExtensions').userInfo = null;
 
                         return Promise.resolve();
                     },
@@ -70,11 +70,11 @@ async function createWrapper() {
  */
 describe('src/module/sw-extension/page/sw-extension-my-extensions-account', () => {
     beforeAll(async () => {
-        SnapAdmin.State.registerModule('shopwareExtensions', extensionStore);
+        SnapAdmin.State.registerModule('snapAdminExtensions', extensionStore);
     });
 
     beforeEach(async () => {
-        SnapAdmin.State.get('shopwareExtensions').userInfo = null;
+        SnapAdmin.State.get('snapAdminExtensions').userInfo = null;
     });
 
     it('should show the login fields when not logged in', async () => {
@@ -120,7 +120,7 @@ describe('src/module/sw-extension/page/sw-extension-my-extensions-account', () =
     });
 
     it('should show the logged in view when logged in', async () => {
-        SnapAdmin.State.get('shopwareExtensions').userInfo = userInfo;
+        SnapAdmin.State.get('snapAdminExtensions').userInfo = userInfo;
 
         // create component with logged in view
         const wrapper = await createWrapper();
@@ -134,7 +134,7 @@ describe('src/module/sw-extension/page/sw-extension-my-extensions-account', () =
     });
 
     it('should logout when user clicks logout button', async () => {
-        SnapAdmin.State.get('shopwareExtensions').userInfo = userInfo;
+        SnapAdmin.State.get('snapAdminExtensions').userInfo = userInfo;
 
         // create component with logged in view
         const wrapper = await createWrapper();

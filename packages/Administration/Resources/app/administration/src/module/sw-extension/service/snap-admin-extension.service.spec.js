@@ -28,10 +28,10 @@ SnapAdmin.Service().register('shopwareDiscountCampaignService', () => {
  * @package services-settings
  */
 describe('src/module/sw-extension/service/shopware-extension.service', () => {
-    let shopwareExtensionService;
+    let snapAdminExtensionService;
 
     beforeAll(() => {
-        shopwareExtensionService = SnapAdmin.Service('shopwareExtensionService');
+        snapAdminExtensionService = SnapAdmin.Service('snapAdminExtensionService');
 
         initState(SnapAdmin);
 
@@ -66,14 +66,14 @@ describe('src/module/sw-extension/service/shopware-extension.service', () => {
             expect(mockedExtensionStoreActionService.refresh).toHaveBeenCalledTimes(1);
             expect(mockedExtensionStoreActionService.getMyExtensions).toHaveBeenCalledTimes(1);
 
-            expect(SnapAdmin.State.get('shopwareExtensions').myExtensions.data)
+            expect(SnapAdmin.State.get('snapAdminExtensions').myExtensions.data)
                 .toEqual(['new extensions']);
-            expect(SnapAdmin.State.get('shopwareExtensions').myExtensions.loading)
+            expect(SnapAdmin.State.get('snapAdminExtensions').myExtensions.loading)
                 .toBe(false);
         }
 
         beforeEach(() => {
-            SnapAdmin.State.commit('shopwareExtensions/myExtensions', []);
+            SnapAdmin.State.commit('snapAdminExtensions/myExtensions', []);
             SnapAdmin.State.commit('shopwareApps/setApps', []);
         });
 
@@ -113,18 +113,18 @@ describe('src/module/sw-extension/service/shopware-extension.service', () => {
         const checkLoginSpy = jest.spyOn(SnapAdmin.Service('storeService'), 'checkLogin');
 
         beforeEach(() => {
-            SnapAdmin.State.commit('shopwareExtensions/setUserInfo', true);
+            SnapAdmin.State.commit('snapAdminExtensions/setUserInfo', true);
         });
 
         it.each([
-            [{ userInfo: { email: 'user@shopware.com' } }],
+            [{ userInfo: { email: 'user@snapadmin.net' } }],
             [{ userInfo: null }],
         ])('sets login status depending on checkLogin response', async (loginResponse) => {
             checkLoginSpy.mockImplementationOnce(() => loginResponse);
 
-            await shopwareExtensionService.checkLogin();
+            await snapAdminExtensionService.checkLogin();
 
-            expect(SnapAdmin.State.get('shopwareExtensions').userInfo).toStrictEqual(loginResponse.userInfo);
+            expect(SnapAdmin.State.get('snapAdminExtensions').userInfo).toStrictEqual(loginResponse.userInfo);
         });
 
         it('sets login status to false if checkLogin request fails', async () => {
@@ -132,10 +132,10 @@ describe('src/module/sw-extension/service/shopware-extension.service', () => {
                 throw new Error('something went wrong');
             });
 
-            await shopwareExtensionService.checkLogin();
+            await snapAdminExtensionService.checkLogin();
 
-            expect(SnapAdmin.State.get('shopwareExtensions').loginStatus).toBe(false);
-            expect(SnapAdmin.State.get('shopwareExtensions').userInfo).toBeNull();
+            expect(SnapAdmin.State.get('snapAdminExtensions').loginStatus).toBe(false);
+            expect(SnapAdmin.State.get('snapAdminExtensions').userInfo).toBeNull();
         });
     });
 
@@ -148,7 +148,7 @@ describe('src/module/sw-extension/service/shopware-extension.service', () => {
                 },
             };
 
-            expect(shopwareExtensionService.isVariantDiscounted(variant)).toBe(true);
+            expect(snapAdminExtensionService.isVariantDiscounted(variant)).toBe(true);
         });
 
         it('returns false if price is discounted but campaign is not active', async () => {
@@ -163,19 +163,19 @@ describe('src/module/sw-extension/service/shopware-extension.service', () => {
                 .isDiscountCampaignActive
                 .mockImplementationOnce(() => false);
 
-            expect(shopwareExtensionService.isVariantDiscounted(variant)).toBe(false);
+            expect(snapAdminExtensionService.isVariantDiscounted(variant)).toBe(false);
         });
 
         it('returns false if variant is falsy', async () => {
-            expect(shopwareExtensionService.isVariantDiscounted(null)).toBe(false);
+            expect(snapAdminExtensionService.isVariantDiscounted(null)).toBe(false);
         });
 
         it('returns false if variant has no discountCampaign', async () => {
-            expect(shopwareExtensionService.isVariantDiscounted({})).toBe(false);
+            expect(snapAdminExtensionService.isVariantDiscounted({})).toBe(false);
         });
 
         it('returns false if discounted price is net price', async () => {
-            expect(shopwareExtensionService.isVariantDiscounted({
+            expect(snapAdminExtensionService.isVariantDiscounted({
                 netPrice: 100,
                 discountCampaign: {
                     discountedPrice: 100,
@@ -194,14 +194,14 @@ describe('src/module/sw-extension/service/shopware-extension.service', () => {
                 { netPrice: 100, discountCampaign: { netPrice: 10 }, type: 'rent' },
             ];
 
-            shopwareExtensionService.orderVariantsByRecommendation(variants)
+            snapAdminExtensionService.orderVariantsByRecommendation(variants)
                 .forEach((current, currentIndex, orderedVariants) => {
-                    const isCurrentDiscounted = shopwareExtensionService.isVariantDiscounted(current);
-                    const currentRecommendation = shopwareExtensionService.mapVariantToRecommendation(current);
+                    const isCurrentDiscounted = snapAdminExtensionService.isVariantDiscounted(current);
+                    const currentRecommendation = snapAdminExtensionService.mapVariantToRecommendation(current);
 
                     orderedVariants.forEach((comparator, comparatorIndex) => {
-                        const isComparatorDiscounted = shopwareExtensionService.isVariantDiscounted(comparator);
-                        const comparatorRecommendation = shopwareExtensionService.mapVariantToRecommendation(comparator);
+                        const isComparatorDiscounted = snapAdminExtensionService.isVariantDiscounted(comparator);
+                        const comparatorRecommendation = snapAdminExtensionService.mapVariantToRecommendation(comparator);
 
                         if (isCurrentDiscounted !== !isComparatorDiscounted) {
                             // discounted index is always smaller than undiscounted
@@ -233,7 +233,7 @@ describe('src/module/sw-extension/service/shopware-extension.service', () => {
 
     describe('getPriceFromVariant', () => {
         it('returns discounted price if variant is discounted', async () => {
-            expect(shopwareExtensionService.getPriceFromVariant({
+            expect(snapAdminExtensionService.getPriceFromVariant({
                 netPrice: 100,
                 discountCampaign: {
                     discountedPrice: 80,
@@ -245,7 +245,7 @@ describe('src/module/sw-extension/service/shopware-extension.service', () => {
             SnapAdmin.Service('shopwareDiscountCampaignService').isDiscountCampaignActive
                 .mockImplementationOnce(() => false);
 
-            expect(shopwareExtensionService.getPriceFromVariant({
+            expect(snapAdminExtensionService.getPriceFromVariant({
                 netPrice: 100,
                 discountCampaign: {
                     discountedPrice: 80,
@@ -261,7 +261,7 @@ describe('src/module/sw-extension/service/shopware-extension.service', () => {
             ['buy', 2],
             ['test', 3],
         ])('maps variant %s to position %d', (type, expectedRecommendation) => {
-            expect(shopwareExtensionService.mapVariantToRecommendation({ type })).toBe(expectedRecommendation);
+            expect(snapAdminExtensionService.mapVariantToRecommendation({ type })).toBe(expectedRecommendation);
         });
     });
 
@@ -279,9 +279,9 @@ describe('src/module/sw-extension/service/shopware-extension.service', () => {
                 },
             });
 
-            const openLink = await shopwareExtensionService.getOpenLink({
+            const openLink = await snapAdminExtensionService.getOpenLink({
                 isTheme: true,
-                type: shopwareExtensionService.EXTENSION_TYPES.APP,
+                type: snapAdminExtensionService.EXTENSION_TYPES.APP,
                 name: 'SwagExampleApp',
             });
 
@@ -297,9 +297,9 @@ describe('src/module/sw-extension/service/shopware-extension.service', () => {
                 appModulesFixtures,
             );
 
-            expect(await shopwareExtensionService.getOpenLink({
+            expect(await snapAdminExtensionService.getOpenLink({
                 isTheme: false,
-                type: shopwareExtensionService.EXTENSION_TYPES.APP,
+                type: snapAdminExtensionService.EXTENSION_TYPES.APP,
                 name: 'testAppA',
             })).toEqual({
                 name: 'sw.extension.module',
@@ -315,9 +315,9 @@ describe('src/module/sw-extension/service/shopware-extension.service', () => {
                 appModulesFixtures,
             );
 
-            expect(await shopwareExtensionService.getOpenLink({
+            expect(await snapAdminExtensionService.getOpenLink({
                 isTheme: false,
-                type: shopwareExtensionService.EXTENSION_TYPES.APP,
+                type: snapAdminExtensionService.EXTENSION_TYPES.APP,
                 name: 'testAppB',
             })).toBeNull();
         });
@@ -328,25 +328,25 @@ describe('src/module/sw-extension/service/shopware-extension.service', () => {
                 appModulesFixtures,
             );
 
-            expect(await shopwareExtensionService.getOpenLink({
+            expect(await snapAdminExtensionService.getOpenLink({
                 isTheme: false,
-                type: shopwareExtensionService.EXTENSION_TYPES.APP,
+                type: snapAdminExtensionService.EXTENSION_TYPES.APP,
                 name: 'ThisAppDoesNotExist',
             })).toBeNull();
         });
 
         it('returns no open link for plugins not registered', async () => {
-            expect(await shopwareExtensionService.getOpenLink({
+            expect(await snapAdminExtensionService.getOpenLink({
                 isTheme: false,
-                type: shopwareExtensionService.EXTENSION_TYPES.PLUGIN,
+                type: snapAdminExtensionService.EXTENSION_TYPES.PLUGIN,
                 name: 'SwagNoModule',
             })).toBeNull();
         });
 
         it('returns route for plugins registered', async () => {
-            expect(await shopwareExtensionService.getOpenLink({
+            expect(await snapAdminExtensionService.getOpenLink({
                 isTheme: false,
-                type: shopwareExtensionService.EXTENSION_TYPES.PLUGIN,
+                type: snapAdminExtensionService.EXTENSION_TYPES.PLUGIN,
                 name: 'ExamplePlugin',
                 active: true,
             })).toEqual({

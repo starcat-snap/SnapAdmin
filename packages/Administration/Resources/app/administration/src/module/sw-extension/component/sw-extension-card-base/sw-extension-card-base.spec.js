@@ -4,7 +4,7 @@ async function createWrapper(propsData = {}, provide = {}) {
     return mount(await wrapTestComponent('sw-extension-card-base', { sync: true }), {
         global: {
             provide: {
-                shopwareExtensionService: {
+                snapAdminExtensionService: {
                     getOpenLink: () => null,
                 },
                 extensionStoreActionService: {},
@@ -92,7 +92,7 @@ describe('src/module/sw-extension/component/sw-extension-card-base', () => {
                 active: false,
             },
         }, {
-            shopwareExtensionService: {
+            snapAdminExtensionService: {
                 canBeOpened: () => false,
                 getOpenLink: () => null,
             },
@@ -111,7 +111,7 @@ describe('src/module/sw-extension/component/sw-extension-card-base', () => {
                 active: true,
             },
         }, {
-            shopwareExtensionService: {
+            snapAdminExtensionService: {
                 getOpenLink: () => {
                     return Promise.resolve({
                         name: 'jest',
@@ -135,7 +135,7 @@ describe('src/module/sw-extension/component/sw-extension-card-base', () => {
                 active: false,
             },
         }, {
-            shopwareExtensionService: {
+            snapAdminExtensionService: {
                 canBeOpened: () => true,
                 getOpenLink: () => null,
             },
@@ -153,7 +153,7 @@ describe('src/module/sw-extension/component/sw-extension-card-base', () => {
                 permissions: [],
             },
         }, {
-            shopwareExtensionService: {
+            snapAdminExtensionService: {
                 getOpenLink: () => null,
                 updateExtension: async () => {
                     const error = new Error();

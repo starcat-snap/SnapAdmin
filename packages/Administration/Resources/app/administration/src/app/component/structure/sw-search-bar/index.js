@@ -125,6 +125,7 @@ Component.register('sw-search-bar', {
 
             return placeholder;
         },
+
         moduleRegistry() {
             return this.moduleFactory.getModuleRegistry();
         },
@@ -814,7 +815,6 @@ Component.register('sw-search-bar', {
                     ...matches.filter(item => !item.privilege || this.acl.can(item.privilege)),
                 );
             });
-
             return moduleEntities.slice(0, limit);
         },
 
@@ -857,6 +857,7 @@ Component.register('sw-search-bar', {
 
             return entities;
         },
+
         toggleSearchPreferencesModal() {
             this.showSearchPreferencesModal = !this.showSearchPreferencesModal;
 

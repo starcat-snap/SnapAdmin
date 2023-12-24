@@ -4,7 +4,7 @@
 $sw-media-sidebar-z-index: $z-index-sidebar;
 $sw-media-sidebar-font-size-headline: $font-size-m;
 $sw-media-sidebar-color-headline: $color-darkgray-200;
-$sw-media-sidebar-border-color-headline: $color-gray-300;
+$sw-media-sidebar-border-color-headline: $color-gray-100;
 $sw-media-sidebar-color-quick-action: $color-snap-admin-brand-500;
 $sw-media-sidebar-color-quick-action-danger: $color-crimson-500;
 $sw-media-sidebar-background: $color-white;
@@ -14,9 +14,8 @@ $sw-media-sidebar-background: $color-white;
     height: 100%;
     width: 400px;
     grid-template-rows: auto 1fr;
-    border-radius: 11px;
     background: $sw-media-sidebar-background;
-    box-shadow: 0 10px 30px 0 rgba( 98, 89, 202 , .05);
+    border-left: 1px solid $color-gray-50;
     @media screen and (max-width: 768px) {
         width: 300px;
     }
@@ -28,7 +27,7 @@ $sw-media-sidebar-background: $color-white;
     .sw-media-sidebar__headline {
         @include truncate;
 
-        padding: 25px;
+        padding: 10px;
         margin: 0;
         font-size: $sw-media-sidebar-font-size-headline;
         font-weight: normal;

@@ -16,7 +16,7 @@ export default SnapAdmin.Component.wrapComponentConfig({
 
     inject: [
         'systemConfigApiService',
-        'shopwareExtensionService',
+        'snapAdminExtensionService',
         'storeService',
     ],
 
@@ -114,7 +114,7 @@ export default SnapAdmin.Component.wrapComponentConfig({
         },
 
         showErrorNotification({ type, payload }: { type: string, payload: MappedError[]}) {
-            if (type !== 'shopwareExtensions/pluginErrorsMapped') {
+            if (type !== 'snapAdminExtensions/pluginErrorsMapped') {
                 return;
             }
 
@@ -148,7 +148,7 @@ export default SnapAdmin.Component.wrapComponentConfig({
         commitErrors(errorResponse: AxiosError<{ errors: StoreApiException[] }>): never {
             if (errorResponse.response) {
                 const mappedErrors = extensionErrorHandler.mapErrors(errorResponse.response.data.errors);
-                SnapAdmin.State.commit('shopwareExtensions/pluginErrorsMapped', mappedErrors);
+                SnapAdmin.State.commit('snapAdminExtensions/pluginErrorsMapped', mappedErrors);
             }
 
             throw errorResponse;

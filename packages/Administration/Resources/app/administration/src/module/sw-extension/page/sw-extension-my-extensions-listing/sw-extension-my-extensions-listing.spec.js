@@ -56,7 +56,7 @@ async function createWrapper() {
                         return {};
                     },
                 },
-                shopwareExtensionService: shopwareService,
+                snapAdminExtensionService: shopwareService,
             },
         },
         attachTo: document.body,
@@ -68,11 +68,11 @@ async function createWrapper() {
  */
 describe('src/module/sw-extension/page/sw-extension-my-extensions-listing', () => {
     beforeAll(() => {
-        if (SnapAdmin.State.get('shopwareExtensions')) {
-            SnapAdmin.State.unregisterModule('shopwareExtensions');
+        if (SnapAdmin.State.get('snapAdminExtensions')) {
+            SnapAdmin.State.unregisterModule('snapAdminExtensions');
         }
 
-        SnapAdmin.State.registerModule('shopwareExtensions', {
+        SnapAdmin.State.registerModule('snapAdminExtensions', {
             namespaced: true,
             state: {
                 myExtensions: {
@@ -113,7 +113,7 @@ describe('src/module/sw-extension/page/sw-extension-my-extensions-listing', () =
     });
 
     beforeEach(async () => {
-        SnapAdmin.State.commit('shopwareExtensions/setExtensions', [
+        SnapAdmin.State.commit('snapAdminExtensions/setExtensions', [
             {
                 name: 'Test',
                 installedAt: null,
@@ -178,7 +178,7 @@ describe('src/module/sw-extension/page/sw-extension-my-extensions-listing', () =
 
         await wrapper.vm.$router.push(routes[1]);
 
-        SnapAdmin.State.commit('shopwareExtensions/setExtensions', [{
+        SnapAdmin.State.commit('snapAdminExtensions/setExtensions', [{
             name: 'Test',
             installedAt: 'some date',
             isTheme: true,
@@ -214,7 +214,7 @@ describe('src/module/sw-extension/page/sw-extension-my-extensions-listing', () =
             return { name: `extension card number ${i}`, installedAt: `foo-${i}`, updatedAt: null };
         });
 
-        SnapAdmin.State.commit('shopwareExtensions/setExtensions', extensions);
+        SnapAdmin.State.commit('snapAdminExtensions/setExtensions', extensions);
 
         await wrapper.vm.$nextTick();
 
@@ -244,7 +244,7 @@ describe('src/module/sw-extension/page/sw-extension-my-extensions-listing', () =
             return { name: `extension card number ${i}`, installedAt: `foo-${i}`, updatedAt: null };
         });
 
-        SnapAdmin.State.commit('shopwareExtensions/setExtensions', extensions);
+        SnapAdmin.State.commit('snapAdminExtensions/setExtensions', extensions);
 
         await wrapper.vm.$nextTick();
 
@@ -284,7 +284,7 @@ describe('src/module/sw-extension/page/sw-extension-my-extensions-listing', () =
             };
         });
 
-        SnapAdmin.State.commit('shopwareExtensions/setExtensions', [...activeExtensions, ...inactiveExtensions]);
+        SnapAdmin.State.commit('snapAdminExtensions/setExtensions', [...activeExtensions, ...inactiveExtensions]);
 
         await wrapper.vm.$nextTick();
 
@@ -306,7 +306,7 @@ describe('src/module/sw-extension/page/sw-extension-my-extensions-listing', () =
             return { name, label: name, installedAt: `foo-${i}`, active: true, updatedAt: null };
         });
 
-        SnapAdmin.State.commit('shopwareExtensions/setExtensions', extensions);
+        SnapAdmin.State.commit('snapAdminExtensions/setExtensions', extensions);
 
         await wrapper.vm.$nextTick();
 
@@ -332,7 +332,7 @@ describe('src/module/sw-extension/page/sw-extension-my-extensions-listing', () =
             return { name, label: name, installedAt: `foo-${i}`, active: true, updatedAt: null };
         });
 
-        SnapAdmin.State.commit('shopwareExtensions/setExtensions', extensions);
+        SnapAdmin.State.commit('snapAdminExtensions/setExtensions', extensions);
 
         await wrapper.vm.$nextTick();
 
@@ -370,7 +370,7 @@ describe('src/module/sw-extension/page/sw-extension-my-extensions-listing', () =
             };
         });
 
-        SnapAdmin.State.commit('shopwareExtensions/setExtensions', extensions);
+        SnapAdmin.State.commit('snapAdminExtensions/setExtensions', extensions);
 
         await wrapper.vm.$nextTick();
 

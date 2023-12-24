@@ -99,7 +99,7 @@ describe('module/sw-users-permissions/components/sw-users-permissions-user-listi
                 username: 'admin',
                 firstName: '',
                 lastName: 'admin',
-                email: 'info@shopware.com',
+                email: 'info@snapadmin.net',
             }],
         });
 
@@ -115,7 +115,7 @@ describe('module/sw-users-permissions/components/sw-users-permissions-user-listi
             username: 'admin',
             firstName: '',
             lastName: 'admin',
-            email: 'info@shopware.com',
+            email: 'info@snapadmin.net',
         }]);
     });
 

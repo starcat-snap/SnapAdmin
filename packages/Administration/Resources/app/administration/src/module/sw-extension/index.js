@@ -103,23 +103,6 @@ SnapAdmin.Module.register('sw-extension', {
                                 privilege: 'system.plugin_maintain',
                             },
                         },
-                        theme: {
-                            path: 'theme',
-                            component: 'sw-extension-my-extensions-listing',
-                            propsData: {
-                                isTheme: true,
-                            },
-                            meta: {
-                                privilege: 'system.plugin_maintain',
-                            },
-                        },
-                    },
-                },
-                recommendation: {
-                    path: 'recommendation',
-                    component: 'sw-extension-my-extensions-recommendation',
-                    meta: {
-                        privilege: 'system.plugin_maintain',
                     },
                 },
                 account: {

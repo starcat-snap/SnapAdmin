@@ -74,7 +74,7 @@ export default {
             formData.append('file', files[0]);
 
             return this.extensionStoreActionService.upload(formData).then(() => {
-                SnapAdmin.Service('shopwareExtensionService').updateExtensionData().then(() => {
+                SnapAdmin.Service('snapAdminExtensionService').updateExtensionData().then(() => {
                     return this.createNotificationSuccess({
                         message: this.$tc('sw-extension.my-extensions.fileUpload.messageUploadSuccess'),
                     });

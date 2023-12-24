@@ -29,6 +29,24 @@
         "mainMenuItemSystem": "系统"
       }
     },
+    "sw-simple-search-field": {
+      "defaultPlaceholder": "搜索..."
+    },
+    "sw-data-grid": {
+      "tooltipListSettings": "设置",
+      "labelSettingsCompactMode": "紧凑模式",
+      "labelSettingsPreviewImages": "显示图片预览",
+      "labelColumnHide": "隐藏列",
+      "labelSelectionCount": "选中:",
+      "labelDeSelectAll": "取消全选",
+      "maximumSelectionExceed": "Maximum amount of items selected"
+    },
+    "sw-pagination": {
+      "labelItemsPerPage": "每页:"
+    },
+    "sw-modal": {
+      "labelClose": "关闭"
+    },
     "sw-search-bar": {
       "messageNoResults": "No results found for \"{term}\".",
       "messageNoTypeResults": "No type found.",
@@ -185,6 +203,14 @@
       },
       "caption": "Drag files here to upload"
     }
+  },
+  "sw-empty-state": {
+    "messageNoResultTitle": "Nothing found",
+    "messageNoResultSublineSimple": "Edit your filters or search terms to find results.",
+    "messageNoResultSubline": "Edit your filters or your search terms to find results. Please also check the configuration of your search.",
+    "messageNoResultSublineBefore": "Edit your filters or your search terms to find results. Please also check",
+    "messageNoResultSublineLink": "the configuration",
+    "messageNoResultSublineAfter": "of your search."
   },
   "help-center": {
     "sidebar": {

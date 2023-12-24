@@ -12,7 +12,7 @@ export default {
     template,
 
     inject: [
-        'shopwareExtensionService',
+        'snapAdminExtensionService',
     ],
 
     props: {
@@ -41,7 +41,7 @@ export default {
     },
 
     computed: {
-        ...mapState('shopwareExtensions', ['myExtensions']),
+        ...mapState('snapAdminExtensions', ['myExtensions']),
 
         extension() {
             return this.myExtensions.data.find((extension) => {
@@ -50,7 +50,7 @@ export default {
         },
 
         isRent() {
-            return this.extension?.storeLicense?.variant === this.shopwareExtensionService.EXTENSION_VARIANT_TYPES.RENT;
+            return this.extension?.storeLicense?.variant === this.snapAdminExtensionService.EXTENSION_VARIANT_TYPES.RENT;
         },
 
         headline() {

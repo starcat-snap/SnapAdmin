@@ -61,7 +61,7 @@ function createFile(size = 44320, name = 'test-plugin.zip', type = 'application/
  */
 describe('src/module/sw-extension/component/sw-extension-file-upload', () => {
     beforeAll(() => {
-        SnapAdmin.Service().register('shopwareExtensionService', () => {
+        SnapAdmin.Service().register('snapAdminExtensionService', () => {
             return {
                 updateExtensionData: updateExtensionDataSpy,
             };

@@ -50,7 +50,7 @@ export default {
         },
 
         installedVersion() {
-            const installedExtension = SnapAdmin.State.get('shopwareExtensions').myExtensions.data.find(
+            const installedExtension = SnapAdmin.State.get('snapAdminExtensions').myExtensions.data.find(
                 (extension) => extension.name === this.extension.name,
             );
 

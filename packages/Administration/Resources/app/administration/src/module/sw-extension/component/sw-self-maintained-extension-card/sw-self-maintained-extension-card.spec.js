@@ -19,7 +19,7 @@ async function createWrapper() {
                         return {};
                     },
                 },
-                shopwareExtensionService: new SnapAdminService({}, {}, {}, {}),
+                snapAdminExtensionService: new SnapAdminService({}, {}, {}, {}),
                 cacheApiService: {
                     clear() {
                         return Promise.resolve();
@@ -79,13 +79,13 @@ describe('src/module/sw-extension/component/sw-self-maintained-extension-card', 
             },
         });
 
-        wrapper.vm.shopwareExtensionService.activateExtension = jest.fn(() => Promise.resolve());
+        wrapper.vm.snapAdminExtensionService.activateExtension = jest.fn(() => Promise.resolve());
 
         wrapper.vm.clearCacheAndReloadPage = jest.fn(() => Promise.resolve());
 
         await wrapper.vm.activateExtension();
 
-        expect(wrapper.vm.shopwareExtensionService.activateExtension).toHaveBeenCalled();
+        expect(wrapper.vm.snapAdminExtensionService.activateExtension).toHaveBeenCalled();
         expect(wrapper.vm.clearCacheAndReloadPage).toHaveBeenCalled();
         expect(wrapper.vm.extension.active).toBe(true);
         expect(wrapper.vm.isLoading).toBe(false);
@@ -95,13 +95,13 @@ describe('src/module/sw-extension/component/sw-self-maintained-extension-card', 
     it('deactivateExtension should install and reload the page', async () => {
         const wrapper = await createWrapper();
 
-        wrapper.vm.shopwareExtensionService.deactivateExtension = jest.fn(() => Promise.resolve());
+        wrapper.vm.snapAdminExtensionService.deactivateExtension = jest.fn(() => Promise.resolve());
 
         wrapper.vm.clearCacheAndReloadPage = jest.fn(() => Promise.resolve());
 
         await wrapper.vm.deactivateExtension();
 
-        expect(wrapper.vm.shopwareExtensionService.deactivateExtension).toHaveBeenCalled();
+        expect(wrapper.vm.snapAdminExtensionService.deactivateExtension).toHaveBeenCalled();
         expect(wrapper.vm.isLoading).toBe(false);
     });
 

@@ -12,7 +12,7 @@ export default {
 
     inheritAttrs: false,
 
-    inject: ['shopwareExtensionService', 'extensionStoreActionService', 'cacheApiService'],
+    inject: ['snapAdminExtensionService', 'extensionStoreActionService', 'cacheApiService'],
 
     mixins: ['sw-extension-error'],
 
@@ -194,7 +194,7 @@ export default {
 
     methods: {
         async createdComponent() {
-            this.openLink = await this.shopwareExtensionService.getOpenLink(this.extension);
+            this.openLink = await this.snapAdminExtensionService.getOpenLink(this.extension);
         },
 
         emitUpdateList() {
@@ -230,7 +230,7 @@ export default {
             this.isLoading = true;
 
             try {
-                await this.shopwareExtensionService.uninstallExtension(
+                await this.snapAdminExtensionService.uninstallExtension(
                     this.extension.name,
                     this.extension.type,
                     removeData,
@@ -252,7 +252,7 @@ export default {
                 }
 
                 if (this.extension.installedAt) {
-                    await this.shopwareExtensionService.updateExtension(
+                    await this.snapAdminExtensionService.updateExtension(
                         this.extension.name,
                         this.extension.type,
                         allowNewPermissions,
@@ -343,7 +343,7 @@ export default {
                 this.showRemovalModal = false;
                 this.isLoading = true;
 
-                await this.shopwareExtensionService.removeExtension(
+                await this.snapAdminExtensionService.removeExtension(
                     this.extension.name,
                     this.extension.type,
                 );

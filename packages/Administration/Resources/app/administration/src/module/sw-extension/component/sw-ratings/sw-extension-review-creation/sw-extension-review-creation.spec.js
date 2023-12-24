@@ -5,11 +5,11 @@ import { mount } from '@vue/test-utils';
  */
 describe('src/module/sw-extension/component/sw-ratings/sw-extension-review-creation', () => {
     beforeAll(() => {
-        if (SnapAdmin.State.get('shopwareExtensions')) {
-            SnapAdmin.State.unregisterModule('shopwareExtensions');
+        if (SnapAdmin.State.get('snapAdminExtensions')) {
+            SnapAdmin.State.unregisterModule('snapAdminExtensions');
         }
 
-        SnapAdmin.State.registerModule('shopwareExtensions', {
+        SnapAdmin.State.registerModule('snapAdminExtensions', {
             namespaced: true,
             state: {
                 myExtensions: {

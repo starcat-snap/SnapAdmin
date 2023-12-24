@@ -114,7 +114,7 @@ export default {
             }
 
             if (!this.license
-                || this.license.variant !== this.shopwareExtensionService.EXTENSION_VARIANT_TYPES.RENT) {
+                || this.license.variant !== this.snapAdminExtensionService.EXTENSION_VARIANT_TYPES.RENT) {
                 await this.deactivateExtension();
                 return;
             }
@@ -131,7 +131,7 @@ export default {
             try {
                 this.isLoading = true;
 
-                await this.shopwareExtensionService.activateExtension(
+                await this.snapAdminExtensionService.activateExtension(
                     this.extension.name,
                     this.extension.type,
                 );
@@ -149,7 +149,7 @@ export default {
             try {
                 this.isLoading = true;
 
-                await this.shopwareExtensionService.deactivateExtension(
+                await this.snapAdminExtensionService.deactivateExtension(
                     this.extension.name,
                     this.extension.type,
                 );
@@ -182,7 +182,7 @@ export default {
                     );
                 }
 
-                await this.shopwareExtensionService.installExtension(
+                await this.snapAdminExtensionService.installExtension(
                     this.extension.name,
                     this.extension.type,
                 );
@@ -215,11 +215,11 @@ export default {
                     );
                 }
 
-                await this.shopwareExtensionService.installExtension(
+                await this.snapAdminExtensionService.installExtension(
                     this.extension.name,
                     this.extension.type,
                 );
-                await this.shopwareExtensionService.activateExtension(
+                await this.snapAdminExtensionService.activateExtension(
                     this.extension.name,
                     this.extension.type,
                 );
@@ -250,10 +250,10 @@ export default {
                 // Do not try to cancel the license if the extension was already canceled
                 // by e.g. the shopware account and the extension already has an expiration date
                 if (!this.extension.storeLicense.expirationDate) {
-                    await this.shopwareExtensionService.cancelLicense(this.extension.storeLicense.id);
+                    await this.snapAdminExtensionService.cancelLicense(this.extension.storeLicense.id);
                 }
 
-                await this.shopwareExtensionService.removeExtension(
+                await this.snapAdminExtensionService.removeExtension(
                     this.extension.name,
                     this.extension.type,
                 );

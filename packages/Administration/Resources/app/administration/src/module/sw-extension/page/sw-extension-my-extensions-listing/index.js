@@ -10,7 +10,7 @@ const { mapState } = SnapAdmin.Component.getComponentHelper();
 export default {
     template,
 
-    inject: ['shopwareExtensionService'],
+    inject: ['snapAdminExtensionService'],
 
     data() {
         return {
@@ -25,13 +25,13 @@ export default {
         }),
 
         isLoading() {
-            const state = SnapAdmin.State.get('shopwareExtensions');
+            const state = SnapAdmin.State.get('snapAdminExtensions');
 
             return state.myExtensions.loading;
         },
 
         myExtensions() {
-            return SnapAdmin.State.get('shopwareExtensions').myExtensions.data;
+            return SnapAdmin.State.get('snapAdminExtensions').myExtensions.data;
         },
 
         extensionList() {
@@ -142,7 +142,7 @@ export default {
         },
 
         updateList() {
-            this.shopwareExtensionService.updateExtensionData();
+            this.snapAdminExtensionService.updateExtensionData();
         },
 
         openStore() {

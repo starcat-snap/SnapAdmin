@@ -6,23 +6,23 @@
     "permissions": {},
     "roles": {
       "general": {
-        "labelCreateNewRole": "Create role",
-        "cardLabel": "Roles"
+        "labelCreateNewRole": "创建角色",
+        "cardLabel": "角色"
       },
       "role-grid": {
-        "labelName": "Name",
-        "labelDescription": "Description",
-        "messageEmptyTitle": "No roles yet",
-        "messageEmptySubline": "Create roles to start managing user rights.",
-        "contextMenuEdit": "Edit",
-        "contextMenuDelete": "Delete",
-        "titleModalDelete": "Delete role",
-        "textModalDelete": "Do you really want to delete the role \"{name}\"?",
-        "labelButtonCancel": "Cancel",
-        "labelButtonDelete": "Delete",
+        "labelName": "名称",
+        "labelDescription": "描述",
+        "messageEmptyTitle": "暂无数据",
+        "messageEmptySubline": "开始创建角色管理用户.",
+        "contextMenuEdit": "编辑",
+        "contextMenuDelete": "删除",
+        "titleModalDelete": "删除角色",
+        "textModalDelete": "确定要删除角色 \"{name}\"?",
+        "labelButtonCancel": "取消",
+        "labelButtonDelete": "删除",
         "notification": {
           "deleteSuccess":  {
-            "message": "Role \"{name}\" deleted."
+            "message": "角色 \"{name}\" 已删除."
           },
           "deleteError": {
             "message": "The role \"{name}\" could not be deleted."
@@ -30,21 +30,21 @@
         }
       },
       "detail": {
-        "role": "Role",
-        "basicInformation": "Basic information",
-        "labelName": "Name",
-        "labelDescription": "Description",
-        "permissions": "Permissions"
+        "role": "角色",
+        "basicInformation": "基本信息",
+        "labelName": "名称",
+        "labelDescription": "描述",
+        "permissions": "权限"
       },
       "grid": {
-        "title": "Permissions",
+        "title": "权限",
         "disabledCheckboxMessage": "To disable this option, you must first disable other active options."
       },
       "additional-permissions": {
-        "title": "Additional permissions"
+        "title": "附加权限"
       },
       "detailed-additional-permissions": {
-        "title": "Additional permissions"
+        "title": "附加权限"
       },
       "view": {
         "detailed": {
@@ -52,34 +52,34 @@
         }
       },
       "tabs": {
-        "general": "General",
+        "general": "常规",
         "detailed": "Detailed privileges"
       }
     },
     "users": {
       "general": {
-        "mainMenuItemGeneral": "Users & permissions",
-        "placeholderSearchBar": "Find users...",
-        "labelUserList": "Users & permissions",
-        "labelCreateNewUser": "Create new user",
-        "cardLabel": "Users"
+        "mainMenuItemGeneral": "用户 & 权限",
+        "placeholderSearchBar": "查找用户...",
+        "labelUserList": "用户 & 权限",
+        "labelCreateNewUser": "创建新用户",
+        "cardLabel": "用户"
       },
       "user-grid": {
-        "labelUsername": "User name",
+        "labelUsername": "用户名称",
         "labelFirstName": "First name",
         "labelLastName": "Last name",
-        "labelRoles": "Roles",
-        "labelEmail": "Email address",
-        "contextMenuEdit": "Edit",
-        "contextMenuDelete": "Delete",
-        "contextMenuDuplicate": "Duplicate",
-        "titleModalDelete": "Delete user",
-        "textModalDelete": "Do you really want to delete the user \"{name}\"?",
-        "labelButtonCancel": "Cancel",
-        "labelButtonDelete": "Delete",
+        "labelRoles": "角色",
+        "labelEmail": "邮箱地址",
+        "contextMenuEdit": "编辑",
+        "contextMenuDelete": "删除",
+        "contextMenuDuplicate": "副本",
+        "titleModalDelete": "删除用户",
+        "textModalDelete": "确定要删除用户 \"{name}\"?",
+        "labelButtonCancel": "取消",
+        "labelButtonDelete": "删除",
         "notification": {
           "deleteSuccess": {
-            "message": "User \"{name}\" deleted."
+            "message": "用户 \"{name}\" 已删除."
           },
           "deleteError": {
             "message": "The user \"{name}\" could not be deleted."
@@ -90,7 +90,7 @@
         }
       },
       "user-detail": {
-        "labelCard": "Basic information",
+        "labelCard": "基本信息",
         "labelIntegrationsCard": "Integrations",
         "labelFirstName": "First name",
         "labelLastName": "Last name",
@@ -106,18 +106,18 @@
         "labelAdministrator": "Administrator",
         "labelTimezone": "时区",
         "labelJobTitle": "Job title",
-        "labelRoles": "Roles",
-        "labelNewPassword": "New password",
-        "labelNewUser": "New user",
-        "placeholderNewPassword": "Enter new password...",
-        "placeholderNewPasswordConfirm": "Confirm new password...",
-        "labelButtonCancel": "Cancel",
-        "labelButtonChangePassword": "Change",
-        "labelButtonSave": "Save",
-        "writeAccess": "Write",
-        "readAccess": "Read",
-        "contextMenuEdit": "Edit",
-        "contextMenuDelete": "Delete",
+        "labelRoles": "角色",
+        "labelNewPassword": "新密码",
+        "labelNewUser": "新用户",
+        "placeholderNewPassword": "新密码...",
+        "placeholderNewPasswordConfirm": "确认新密码...",
+        "labelButtonCancel": "取消",
+        "labelButtonChangePassword": "修改",
+        "labelButtonSave": "保存",
+        "writeAccess": "写",
+        "readAccess": "读",
+        "contextMenuEdit": "编辑",
+        "contextMenuDelete": "删除",
         "textChangePassword": "Pressing the \"change\" button will immediately save the new password!",
         "addAccessKey": "Create access key",
         "noAccessKeysTitle": "No access keys available",

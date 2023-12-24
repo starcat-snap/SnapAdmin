@@ -95,7 +95,7 @@ Component.register('sw-page', {
                 return this.module.color;
             }
 
-            return '#d8dde6';
+            return '#6259ca';
         },
 
         hasSideContentSlot() {
@@ -107,13 +107,12 @@ Component.register('sw-page', {
         },
 
         showHeadArea() {
-            return this.showSearchBar;
+            return this.showSearchBar || this.showSmartBar;
         },
 
         pageClasses() {
             return {
                 'has--head-area': this.showHeadArea,
-                'has--smart-bar': this.showSmartBar,
             };
         },
 
@@ -125,6 +124,7 @@ Component.register('sw-page', {
 
         pageContentClasses() {
             return {
+                'has--smart-bar': !!this.showSmartBar,
                 'has--side-content': !!this.hasSideContentSlot,
                 'has--side-bar ': !!this.hasSidebarSlot && !this.hasSideContentSlot,
             };
@@ -139,7 +139,8 @@ Component.register('sw-page', {
 
         headerStyles() {
             return {
-
+                'border-bottom-color': this.pageColor,
+                'padding-right': this.pageOffset,
             };
         },
 

@@ -1,7 +1,7 @@
 /* stylelint-disable max-nesting-depth */
 @import "~scss/variables";
 
-$sw-search-bar-border-color: $color-gray-300;
+$sw-search-bar-border-color: $color-gray-100;
 $sw-search-bar-background-color: $color-white;
 $sw-search-bar-results-background-color: $color-white;
 $sw-search-bar-border-radius: $border-radius-default;
@@ -17,7 +17,7 @@ $sw-search-bar-types-item-border-radius: $border-radius-default;
 
 .sw-search-bar {
     width: 100%;
-    height: 66px;
+    height: 80px;
     background: $sw-search-bar-background-color;
     z-index: $sw-search-bar-z-index;
     align-content: center;
@@ -65,11 +65,11 @@ $sw-search-bar-types-item-border-radius: $border-radius-default;
         border: 1px solid $sw-search-bar-border-color;
         border-radius: $sw-search-bar-border-radius;
         background-color: $color-white;
-        padding: 4px 10px;
+        padding: 9px 10px;
         position: relative;
         display: flex;
         flex-wrap: nowrap;
-        height: 40px;
+        height: 50px;
 
         &.is--active {
             border-color: $color-snap-admin-brand-500;
@@ -84,7 +84,7 @@ $sw-search-bar-types-item-border-radius: $border-radius-default;
             right: 0;
             color: $color-darkgray-200;
             text-align: center;
-            line-height: 38px;
+            line-height: 45px;
             background: 0 none;
             border: 0 none;
             outline: none;
@@ -125,7 +125,7 @@ $sw-search-bar-types-item-border-radius: $border-radius-default;
 
     &__type {
         &--v2 {
-            background-color: darken($color-gray-100, 20%);
+            background-color: $color-gray-200;
             color: $color-white;
             display: flex;
             align-items: center;

@@ -90,7 +90,7 @@ describe('src/component/grid/sw-pagination', () => {
         const [leftArrow, rightArrow] = wrapper.findAll('div.icon');
 
         expect(leftArrow.exists()).toBe(true);
-        expect(leftArrow.attributes('name')).toBe('regular-chevron-left-xs');
+        expect(leftArrow.attributes('name')).toBe('chevron-left-xs');
 
         expect(rightArrow.exists()).toBe(true);
         expect(rightArrow.attributes('name')).toBe('regular-chevron-right-xs');

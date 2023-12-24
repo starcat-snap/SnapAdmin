@@ -20,9 +20,9 @@
 
 body {
     font-family: $font-family-default;
-    font-size: $font-size-s;
+    font-size: $font-size-xs;
     color: $color-menu-start;
-    background: #eaedf7;
+    background: $color-white;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
