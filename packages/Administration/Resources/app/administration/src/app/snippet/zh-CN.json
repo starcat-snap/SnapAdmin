@@ -34,10 +34,11 @@
     "entities": {
       "all": "全部",
       "media": "媒体",
-      "media_default_folder": "默认文件夹 | 默认文件夹",
+      "extension": "插件",
+      "media_default_folder": "默认文件夹",
       "media_folder": "文件夹",
-      "media_thumbnail": "Thumbnail | Thumbnails",
-      "media_thumbnail_size": "Thumbnail size | Thumbnail sizes",
+      "media_thumbnail": "缩略图",
+      "media_thumbnail_size": "缩略图大小",
       "module": "模块",
       "frequently_used": "经常使用",
       "recently_searched": "最近搜索"
@@ -58,24 +59,22 @@
       "labelClose": "关闭"
     },
     "sw-search-bar": {
-      "messageNoResults": "No results found for \"{term}\".",
-      "messageNoTypeResults": "No type found.",
+      "messageNoResults": "未找到结果 \"{term}\".",
+      "messageNoTypeResults": "未找到类型.",
       "placeholderSearchField": "搜索内容...",
-      "placeholderTypeSearchField": "Search \"{entity}\"...",
-      "placeholderShortcutInfo": "Hint: Press the \"f\" key to get to the search bar faster.",
-      "placeholderSearchShortcutInfo": "<strong>Tip:</strong> Press <span>f</span> to open the search from anywhere.",
-      "placeholderESSearchShortcutInfo": "<strong>Tip:</strong> You can use Elasticsearch's <a href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html#simple-query-string-syntax\" target=\"_blank\">simple query string</a> to get a more precise result.",
-      "moduleFiltersHeadline": "Module filters",
-      "placeholderFilterShortcutInfo": "Type <span>#products</span> in the search to set the module filter.",
-      "searchTypeAll": "All",
-      "moduleFilter": "Module filter",
-      "messageNoResultsV2": "No exact matches found for \"{term}\".",
-      "messageNoResultsDetailV2": "Try using different keywords or check your search configuration.",
-      "addNew": "add new"
+      "placeholderTypeSearchField": "搜索 \"{entity}\"...",
+      "placeholderShortcutInfo": "提示: 按 \"f\" 键盘可以快速进入搜索拦.",
+      "placeholderSearchShortcutInfo": "<strong>提示:</strong> 按 <span>f</span> 可以从任何地方打开搜索.",
+      "moduleFiltersHeadline": "过滤模块",
+      "searchTypeAll": "全部",
+      "moduleFilter": "过滤模块",
+      "messageNoResultsV2": "没有找到完全匹配 \"{term}\".",
+      "messageNoResultsDetailV2": "尝试使用不同的关键字或检查您的搜索配置.",
+      "addNew": "添加"
     },
     "sw-media-modal-folder-dissolve": {
-      "dissolveMessage": "Are you sure you want to dissolve \"{folderName}\" ? | Are you sure you want to dissolve {count} folders?",
-      "buttonDissolve": "Dissolve",
+      "dissolveMessage": "确定要分解 \"{folderName}\" ? | Are you sure you want to dissolve {count} folders?",
+      "buttonDissolve": "分解",
       "notification": {
         "successSingle": {
           "message": "Folder \"{folderName}\" has been dissolved."
@@ -118,34 +117,14 @@
       "labelMaximumSize": "最大"
     },
     "sw-search-bar-item": {
-      "typeLabelCustomer": "Customer",
-      "typeLabelProduct": "Product",
-      "typeLabelOrder": "Order",
-      "typeLabelMedia": "Media",
-      "typeLabelCategory": "Category",
-      "typeLabelCms": "CMS",
-      "typeLabelModule": "Module",
-      "typeLabelAction": "Action",
-      "addNewEntity": "Add new {entity}",
+      "typeLabelMedia": "媒体",
+      "typeLabelModule": "模块",
+      "typeLabelAction": "操作",
+      "addNewEntity": "添加 {entity}",
       "shortcuts": {
-        "product": "G P | A P",
-        "category": "G C | &nbsp;",
-        "customers": "G U | A U",
-        "property": "G P R | A P R",
-        "manufacturer": "G M | A M",
-        "settings-rule": "G S R | A R",
-        "sales-channel": " | A S",
-        "cms": "G E | A E",
         "dashboard": "G H | &nbsp;",
-        "product-stream": "G D | &nbsp;",
-        "order": "G O | &nbsp;",
         "media": "G M E | &nbsp;",
-        "promotion-v2": "G P O | &nbsp;",
-        "settings": "G S | &nbsp;",
-        "newsletter-recipient": "G N | &nbsp;",
-        "settings-snippet": "G S | &nbsp;",
-        "settings-payment": "G S P | &nbsp;",
-        "settings-shipping": "G S S | &nbsp;"
+        "settings": "G S | &nbsp;"
       }
     },
     "sw-search-more-results": {

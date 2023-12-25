@@ -16,9 +16,7 @@
         "controls": {
           "labelActiveStateSwitch": "隐藏未激活插件",
           "filterOptions": {
-            "last-updated": "最近更新",
-            "name-asc": "Name A - Z.",
-            "name-desc": "Name Z - A."
+            "last-updated": "最近更新"
           }
         },
         "version": "版本",

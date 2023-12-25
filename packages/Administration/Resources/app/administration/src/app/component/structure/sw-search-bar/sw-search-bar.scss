@@ -168,6 +168,7 @@ $sw-search-bar-types-item-border-radius: $border-radius-default;
     .sw-search-bar__input {
         color: $color-darkgray-200;
         flex-grow: 1;
+        font-weight: $font-weight-medium;
         font-size: $font-size-xs;
         padding: 0 40px 0 15px;
         border: 0;

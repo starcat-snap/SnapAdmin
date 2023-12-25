@@ -17,14 +17,6 @@ export default {
                     value: 'updated-at',
                     name: this.$tc('sw-extension.my-extensions.listing.controls.filterOptions.last-updated'),
                 },
-                {
-                    value: 'name-asc',
-                    name: this.$tc('sw-extension.my-extensions.listing.controls.filterOptions.name-asc'),
-                },
-                {
-                    value: 'name-desc',
-                    name: this.$tc('sw-extension.my-extensions.listing.controls.filterOptions.name-desc'),
-                },
             ],
         };
     },
