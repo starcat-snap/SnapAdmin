@@ -28,9 +28,9 @@
     }
 
     &.is--not-installed {
-        background-color: $color-gray-50;
-        box-shadow: none;
-        border: 1px solid $color-gray-300;
+        background-color: $color-gray-200;
+        //box-shadow: none;
+        //border: 1px solid $color-gray-300;
     }
 
     .sw-loader {
