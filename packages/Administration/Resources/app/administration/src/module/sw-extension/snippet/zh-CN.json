@@ -16,7 +16,7 @@
         "controls": {
           "labelActiveStateSwitch": "隐藏未激活插件",
           "filterOptions": {
-            "last-updated": "Last updated",
+            "last-updated": "最近更新",
             "name-asc": "Name A - Z.",
             "name-desc": "Name Z - A."
           }
@@ -47,10 +47,10 @@
       },
       "fileUpload": {
         "buttonFileUpload": "上传插件",
-        "messageUploadSuccess": "Extension uploaded.",
-        "titleWarningModal": "Warning",
-        "descriptionWarningModal": "Extensions from outside the SnapAdmin Store have not been reviewed by us and could potentially pose a risk to your store. We recommend using extensions from the SnapAdmin Store whenever possible.",
-        "textHideWarning": "Do not show again"
+        "messageUploadSuccess": "插件已上传.",
+        "titleWarningModal": "警告",
+        "descriptionWarningModal": "来自 SnapAdmin 商店之外的扩展尚未经过我们的审核，可能会对您的系统构成潜在风险。我们建议尽可能使用 SnapAdmin 商店里的扩展.",
+        "textHideWarning": "不再显示"
       }
     },
     "errors": {
@@ -141,7 +141,7 @@
       "labelButtonAddTheme": "Add theme",
       "labelButtonOpenExtension": "Open extension",
       "labelButtonOpenTheme": "Open theme",
-      "labelButtonInstallExtension": "Install extension",
+      "labelButtonInstallExtension": "安装插件",
       "labelButtonInstallTheme": "Install theme",
       "labelBy": "by",
       "numberOfRatings": "{count} review | {count} reviews",
@@ -248,20 +248,20 @@
         "subscriptionLabel": "Subscription:",
         "inactiveLabel": "(inactive)",
         "purchasedLabel": "Purchased:",
-        "installedLabel": "Installed:",
-        "openExtensionLabel": "Open",
-        "installExtensionLabel": "Install",
+        "installedLabel": "安装时间:",
+        "openExtensionLabel": "打开",
+        "installExtensionLabel": "安装",
         "labelAcceptAndInstall": "Accept and install",
         "allowDisableTooltip": "This app uses its own data structures, that affect your system. Therefore, the app cannot be deactivated.",
         "contextMenu": {
           "getHelpLabel": "Get help",
           "seeDetailsLabel": "See details",
-          "config": "Configure",
+          "config": "配置",
           "privacyAndSafetyLabel": "Data privacy & safety",
-          "removeLabel": "Remove",
-          "cancelAndRemoveLabel": "Cancel and remove",
-          "uninstallLabel": "Uninstall",
-          "updateLabel": "Update to {version}",
+          "removeLabel": "移除",
+          "cancelAndRemoveLabel": "取消并移除",
+          "uninstallLabel": "卸载",
+          "updateLabel": "更新至 {version}",
           "rateLabel": "Rate extension",
           "policyExtensions": "Privacy policy extensions",
           "permissions": "See permissions",
