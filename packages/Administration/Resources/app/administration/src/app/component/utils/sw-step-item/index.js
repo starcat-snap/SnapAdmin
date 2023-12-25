@@ -23,7 +23,7 @@ Component.register('sw-step-item', {
     props: {
         disabledIcon: {
             type: String,
-            default: 'regular-circle-xs',
+            default: 'circle-xs',
             required: false,
         },
     },
@@ -48,7 +48,7 @@ Component.register('sw-step-item', {
         icon() {
             const iconConfig = {
                 disabled: this.disabledIcon,
-                info: 'regular-circle-xs',
+                info: 'circle-xs',
                 error: 'x',
                 success: 'regular-checkmark-xs',
             };

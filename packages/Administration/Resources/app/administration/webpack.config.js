@@ -932,12 +932,10 @@ const coreUrlImageLoader = mergedCoreConfig.module.rules.find(r => {
     return r.loader === 'url-loader' && r.test.test('.png');
 });
 coreUrlImageLoader.exclude.push(path.join(__dirname, 'src/app/assets/icons/svg'));
-coreUrlImageLoader.exclude.push(/@snap-admin\/meteor-icon-kit\/icons/);
 coreUrlImageLoader.exclude.push(/@tabler\/icons/);
 
 const coreSvgInlineLoader = mergedCoreConfig.module.rules.find(r => r.loader === 'svg-inline-loader');
 coreSvgInlineLoader.include.push(path.join(__dirname, 'src/app/assets/icons/svg'));
-coreSvgInlineLoader.include.push(/@snap-admin\/meteor-icon-kit\/icons/);
 coreSvgInlineLoader.include.push(/@tabler\/icons/);
 
 /**

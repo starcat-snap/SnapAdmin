@@ -31,6 +31,17 @@
     "sw-simple-search-field": {
       "defaultPlaceholder": "搜索..."
     },
+    "entities": {
+      "all": "全部",
+      "media": "媒体",
+      "media_default_folder": "默认文件夹 | 默认文件夹",
+      "media_folder": "文件夹",
+      "media_thumbnail": "Thumbnail | Thumbnails",
+      "media_thumbnail_size": "Thumbnail size | Thumbnail sizes",
+      "module": "模块",
+      "frequently_used": "经常使用",
+      "recently_searched": "最近搜索"
+    },
     "sw-data-grid": {
       "tooltipListSettings": "设置",
       "labelSettingsCompactMode": "紧凑模式",
@@ -49,7 +60,7 @@
     "sw-search-bar": {
       "messageNoResults": "No results found for \"{term}\".",
       "messageNoTypeResults": "No type found.",
-      "placeholderSearchField": "Find products, customers, orders...",
+      "placeholderSearchField": "搜索内容...",
       "placeholderTypeSearchField": "Search \"{entity}\"...",
       "placeholderShortcutInfo": "Hint: Press the \"f\" key to get to the search bar faster.",
       "placeholderSearchShortcutInfo": "<strong>Tip:</strong> Press <span>f</span> to open the search from anywhere.",

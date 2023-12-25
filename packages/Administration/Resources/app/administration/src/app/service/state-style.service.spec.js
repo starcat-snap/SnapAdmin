@@ -103,7 +103,7 @@ describe('src/app/service/state-style.service.ts', () => {
 
         const iconMapping = {
             neutral: 'chevron-down',
-            progress: 'regular-circle-xxs',
+            progress: 'circle-xxs',
             done: 'regular-checkmark-xxs',
             warning: 'regular-exclamation-s',
             danger: 'regular-times-xs',

@@ -53,7 +53,7 @@ export default class StateStyleService {
 
     $icons = {
         neutral: 'chevron-down',
-        progress: 'regular-circle-xxs',
+        progress: 'circle-xxs',
         warning: 'regular-exclamation-s',
         done: 'regular-checkmark-xxs',
         danger: 'regular-times-xs',

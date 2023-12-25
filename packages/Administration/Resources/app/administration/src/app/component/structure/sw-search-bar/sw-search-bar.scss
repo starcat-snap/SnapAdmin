@@ -1,7 +1,7 @@
 /* stylelint-disable max-nesting-depth */
 @import "~scss/variables";
 
-$sw-search-bar-border-color: $color-gray-100;
+$sw-search-bar-border-color: $color-gray-300;
 $sw-search-bar-background-color: $color-white;
 $sw-search-bar-results-background-color: $color-white;
 $sw-search-bar-border-radius: $border-radius-default;
@@ -125,7 +125,7 @@ $sw-search-bar-types-item-border-radius: $border-radius-default;
 
     &__type {
         &--v2 {
-            background-color: $color-gray-200;
+            background-color: $color-gray-500;
             color: $color-white;
             display: flex;
             align-items: center;
@@ -136,8 +136,8 @@ $sw-search-bar-types-item-border-radius: $border-radius-default;
             font-size: $font-size-xs;
 
             .sw-icon {
-                width: 16px;
-                height: 16px;
+                width: 24px;
+                height: 24px;
                 margin-left: 10px;
                 padding-top: 6px;
                 padding-right: 3px;

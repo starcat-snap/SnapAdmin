@@ -249,7 +249,6 @@ Component.register('sw-search-bar', {
             if (!type && this.currentSearchType) {
                 type = this.currentSearchType;
             }
-
             if (type.startsWith('custom_entity_') || type.startsWith('ce_')) {
                 const snippetKey = `${type}.moduleTitle`;
                 return this.$te(snippetKey) ? this.$tc(snippetKey) : type;
@@ -745,7 +744,7 @@ Component.register('sw-search-bar', {
         getEntityIconName(entityName) {
             const module = this.moduleFactory.getModuleByEntityName(entityName);
 
-            return module?.manifest?.icon ?? 'regular-books';
+            return module?.manifest?.icon ?? 'books';
         },
 
         getEntityIconColor(entityName) {
@@ -765,7 +764,7 @@ Component.register('sw-search-bar', {
         getEntityIcon(entityName) {
             const module = this.moduleFactory.getModuleByEntityName(entityName);
 
-            return module?.manifest?.icon ?? 'regular-books';
+            return module?.manifest?.icon ?? 'books';
         },
 
         isResultEmpty() {

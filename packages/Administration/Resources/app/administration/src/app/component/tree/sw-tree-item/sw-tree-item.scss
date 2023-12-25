@@ -229,7 +229,7 @@ $sw-tree-item-color-text: $color-darkgray-200;
         display: flex;
         align-items: center;
 
-        .icon--regular-circle-xxs {
+        .icon--circle-xxs {
             margin-left: 3px;
 
             @include size(8px);

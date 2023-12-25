@@ -3,7 +3,7 @@ import { mount } from '@vue/test-utils';
 async function createWrapper() {
     return mount(await wrapTestComponent('sw-icon', { sync: true }), {
         props: {
-            name: 'regular-circle-download',
+            name: 'circle-download',
         },
     });
 }
@@ -23,7 +23,7 @@ describe('src/app/component/base/sw-icon/index.js', () => {
 
     it('should render the correct icon (circle-download)', async () => {
         expect(wrapper.find('.sw-icon').exists()).toBeTruthy();
-        expect(wrapper.find('svg#meteor-icon-kit__regular-circle-download').exists()).toBeTruthy();
+        expect(wrapper.find('svg#meteor-icon-kit__circle-download').exists()).toBeTruthy();
     });
 
     it('should render the correct icon (regular-fingerprint)', async () => {

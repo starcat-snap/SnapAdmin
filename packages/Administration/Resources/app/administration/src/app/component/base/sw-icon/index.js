@@ -6,20 +6,7 @@ import template from './sw-icon.html.twig';
 import './sw-icon.scss';
 
 // Prefetch specific icons to avoid loading them asynchronously to improve performance
-import '@snap-admin/meteor-icon-kit/icons/regular/tachometer.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/products.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/shopping-bag.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/users.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/content.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/megaphone.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/plug.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/cog.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/bell.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/question-circle.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/search-s.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/chevron-down-xs.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/chevron-up-xs.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/chevron-circle-left.svg';
+
 
 const { Component } = SnapAdmin;
 
@@ -32,13 +19,13 @@ const { Component } = SnapAdmin;
  * @example-type static
  * @component-example
  * <div>
- *     <sw-icon name="regular-circle-download" color="#1abc9c"></sw-icon>
+ *     <sw-icon name="circle-download" color="#1abc9c"></sw-icon>
  *     <sw-icon name="regular-storefront" color="#3498db"></sw-icon>
  *     <sw-icon name="regular-eye-slash" color="#9b59b6"></sw-icon>
  *     <sw-icon name="regular-fingerprint" color="#f39c12"></sw-icon>
  *     <sw-icon name="regular-tools-alt" color="#d35400"></sw-icon>
  *     <sw-icon name="regular-user" color="#c0392b"></sw-icon>
- *     <sw-icon name="regular-circle" color="#fc427b"></sw-icon>
+ *     <sw-icon name="circle" color="#fc427b"></sw-icon>
  *     <sw-icon name="regular-bell" color="#f1c40f"></sw-icon>
  * </div>
  */

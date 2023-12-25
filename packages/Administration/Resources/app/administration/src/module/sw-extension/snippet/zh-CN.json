@@ -11,8 +11,8 @@
     },
     "my-extensions": {
       "listing": {
-        "initialSearchType": "Extensions",
-        "placeholderSearchBar": "Find extensions...",
+        "initialSearchType": "插件",
+        "placeholderSearchBar": "查找插件...",
         "controls": {
           "labelActiveStateSwitch": "隐藏未激活插件",
           "filterOptions": {

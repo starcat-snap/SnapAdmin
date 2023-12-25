@@ -41,7 +41,6 @@
     "@lhci/cli": "0.11.0",
     "@snap-admin/admin-extension-sdk": "3.0.19",
     "@snap-admin/eslint-config-base": "2.0.0",
-    "@snap-admin/meteor-icon-kit": "5.2.0",
     "@snap-admin/webpack-copy-after-build": "1.0.1",
     "@snap-admin/webpack-kill-process-on-failed-build": "1.0.0",
     "@snap-admin/webpack-plugin-injector": "1.0.6",
