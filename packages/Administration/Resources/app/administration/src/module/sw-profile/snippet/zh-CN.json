@@ -39,8 +39,8 @@
         "text": "You have enabled the elasticsearch for the admin search, these fields are searchable and you can't turn it off, however you can turn off which entities are searchable"
       },
       "cardSearchableElements": {
-        "title": "Searchable elements",
-        "description": "Set the searchable content for each module and entry.",
+        "title": "可搜索的元素",
+        "description": "为每个模块和实体设置可搜索的内容.",
         "buttonSelect": "全选",
         "buttonDeselect": "取消全选",
         "buttonReset": "恢复默认设置"

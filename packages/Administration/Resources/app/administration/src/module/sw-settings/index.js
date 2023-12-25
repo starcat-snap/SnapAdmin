@@ -4,7 +4,7 @@
 import './mixin/sw-settings-list.mixin';
 import './acl';
 
-const {Module} = SnapAdmin;
+const { Module } = SnapAdmin;
 
 /* eslint-disable sw-deprecation-rules/private-feature-declarations */
 SnapAdmin.Component.register('sw-settings-item', () => import('./component/sw-settings-item'));

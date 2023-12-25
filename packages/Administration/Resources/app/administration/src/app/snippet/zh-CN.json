@@ -235,6 +235,12 @@
         }
       },
       "caption": "Drag files here to upload"
+    },
+    "sw-search-preferences-modal": {
+      "title": "搜索偏好设置",
+      "description": "只有选定的元素才会出现在搜索结果中。有关详细设置 <span id='sw-search-preferences-modal-link'>打开搜索设置 &#8594;</span>",
+      "columnActive": "激活",
+      "columnModuleName": "模块名"
     }
   },
   "sw-empty-state": {
