@@ -181,19 +181,7 @@
                         </sw-select-field>
                         {% endblock %}
 
-                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
-                        {% block sw_settings_user_detail_grid_content_timezone %}
-                        <sw-single-select
-                            v-model:value="user.timeZone"
-                            name="sw-field--user-timeZone"
-                            class="sw-settings-user-detail__grid-timezone"
-                            :options="timezoneOptions"
-                            required
-                            :label="$tc('sw-users-permissions.users.user-detail.labelTimezone')"
-                            :is-loading="timezoneOptions.length <= 0"
-                            :disabled="!acl.can('user.update_profile')"
-                        />
-                        {% endblock %}
+
 
                         <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
                         {% block sw_settings_user_detail_grid_content_acl_is_admin %}
@@ -203,17 +191,6 @@
                             class="sw-settings-user-detail__grid-is-admin"
                             :label="$tc('sw-users-permissions.users.user-detail.labelAdministrator')"
                             :disabled="isCurrentUser || !acl.can('users_and_permissions.editor')"
-                        />
-                        {% endblock %}
-
-                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
-                        {% block sw_settings_user_detail_grid_content_job_title %}
-                        <sw-text-field
-                            v-model:value="user.title"
-                            name="sw-field--user-title"
-                            class="sw-settings-user-detail__grid-jobTitle"
-                            :disabled="!acl.can('users_and_permissions.editor')"
-                            :label="$tc('sw-users-permissions.users.user-detail.labelJobTitle')"
                         />
                         {% endblock %}
 

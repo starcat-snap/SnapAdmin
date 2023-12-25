@@ -15,8 +15,8 @@
       "labelNoMediaSelected": "No media selected",
       "actions": {
         "copyLink": "Copy link",
-        "delete": "Delete",
-        "dissolve": "Dissolve",
+        "delete": "删除",
+        "dissolve": "分解",
         "download": "下载",
         "move": "移动",
         "replace": "替换",
@@ -24,28 +24,28 @@
         "ar": "Activate AR View"
       },
       "sections": {
-        "actions": "Actions",
-        "configuration": "Configuration",
-        "preview": "Preview",
-        "metadata": "Meta data",
+        "actions": "操作",
+        "configuration": "配置",
+        "preview": "预览",
+        "metadata": "元数据",
         "usage": "Used in",
-        "selectedFiles": "Selected files"
+        "selectedFiles": "已选文件"
       },
       "infoMissingFile": {
-        "titleMissingFile": "File not found",
+        "titleMissingFile": "未找到文件",
         "descriptionMissingFile": "Unable to find requested file. Upload new file(s) or delete placeholder."
       },
       "metadata": {
         "name": "名称",
         "fileType": "文件类型",
         "altText": "Alt text",
-        "title": "Title",
-        "mimeType": "MIME-Type",
-        "fileSize": "Size",
-        "createdAt": "Uploaded at",
-        "width": "Width",
-        "height": "Height",
-        "totalSize": "A total of"
+        "title": "标题",
+        "mimeType": "MIME 类型",
+        "fileSize": "大小",
+        "createdAt": "上传时间",
+        "width": "宽",
+        "height": "长",
+        "totalSize": "总数为"
       },
       "usage": {
         "tooltipFoundInProducts": "Found in products",
@@ -80,7 +80,7 @@
       "labelSortByCreatedDsc": "创建时间, 降序."
     },
     "presentation": {
-      "labelPresentation": "Presentation:",
+      "labelPresentation": "显示方式:",
       "labelPresentationSmall": "Small preview",
       "labelPresentationMedium": "Regular preview",
       "labelPresentationLarge": "Large preview",

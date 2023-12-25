@@ -24,6 +24,24 @@ class Migration1536233560BasicData extends MigrationStep
         $this->createLanguage($connection);
         $this->createDefaultSnippetSets($connection);
         $this->createDefaultMediaFolders($connection);
+        $this->createSystemConfigOptions($connection);
+
+    }
+
+    private function createSystemConfigOptions(Connection $connection): void
+    {
+        $connection->insert('system_config', [
+            'id' => Uuid::randomBytes(),
+            'configuration_key' => 'core.store.apiUri',
+            'configuration_value' => '{"_value": "https://api.snapadmin.net"}',
+            'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
+        ]);
+        $connection->insert('system_config', [
+            'id' => Uuid::randomBytes(),
+            'configuration_key' => 'core.userPermission.passwordMinLength',
+            'configuration_value' => '{"_value": 8}',
+            'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
+        ]);
     }
 
     public function updateDestructive(Connection $connection): void
@@ -87,7 +105,7 @@ class Migration1536233560BasicData extends MigrationStep
     private function getMediaFolderName(string $entity): string
     {
         $capitalizedEntityParts = array_map(
-            static fn ($part) => ucfirst((string) $part),
+            static fn($part) => ucfirst((string)$part),
             explode('_', $entity)
         );
 

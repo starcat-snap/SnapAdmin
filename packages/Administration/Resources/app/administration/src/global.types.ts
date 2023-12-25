@@ -136,7 +136,6 @@ declare global {
         localeHelper: $TSFixMe,
         filterService: $TSFixMe,
         mediaDefaultFolderService: $TSFixMe,
-        appAclService: $TSFixMe,
         entityHydrator: $TSFixMe,
         entityFactory: $TSFixMe,
         userService: UserApiService,

@@ -56,7 +56,7 @@ export default class StateStyleService {
         progress: 'circle-xxs',
         warning: 'regular-exclamation-s',
         done: 'regular-checkmark-xxs',
-        danger: 'regular-times-xs',
+        danger: 'x',
     };
 
     $colors = {

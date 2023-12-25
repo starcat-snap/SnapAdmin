@@ -65,8 +65,8 @@ export default {
 
     computed: {
         ...mapPropertyErrors('user', [
-            'firstName',
-            'lastName',
+            'name',
+            'phone',
             'email',
             'username',
             'localeId',
@@ -78,7 +78,7 @@ export default {
         },
 
         fullName() {
-            return this.salutation(this.user, this.$tc('sw-users-permissions.users.user-detail.labelNewUser'));
+            return this.user?.username;
         },
 
         userRepository() {
@@ -99,7 +99,6 @@ export default {
             const criteria = new Criteria(1, 25);
 
             // Roles created by apps should not be assignable in the admin
-            criteria.addFilter(Criteria.equals('app.id', null));
             criteria.addFilter(Criteria.equals('deletedAt', null));
 
             return criteria;

@@ -73,6 +73,50 @@
       "messageNoResultsDetailV2": "Try using different keywords or check your search configuration.",
       "addNew": "add new"
     },
+    "sw-media-modal-folder-dissolve": {
+      "dissolveMessage": "Are you sure you want to dissolve \"{folderName}\" ? | Are you sure you want to dissolve {count} folders?",
+      "buttonDissolve": "Dissolve",
+      "notification": {
+        "successSingle": {
+          "message": "Folder \"{folderName}\" has been dissolved."
+        },
+        "errorSingle": {
+          "message": "Error dissolving \"{folderName}\"."
+        },
+        "successOverall": {
+          "message": "Folders have been dissolved."
+        },
+        "errorOverall": {
+          "message": "Error dissolving folders."
+        }
+      }
+    },
+    "sw-media-modal-folder-settings": {
+      "labelSettings": "设置",
+      "labelSystem": "System folder",
+      "labelThumbnails": "Thumbnails",
+      "labelFolderName": "Name",
+      "labelInheritSettings": "Inherit settings from parent folder",
+      "labelGenerateThumbnails": "Generate thumbnails for this folder",
+      "labelThumbnailQuality": "Thumbnail quality",
+      "labelThumbnailSize": "Thumbnail size",
+      "labelEditList": "Edit list",
+      "labelStopEdit": "Stop editing",
+      "labelKeepProportions": "Keep aspect ratio",
+      "notification": {
+        "success": {
+          "message": "Settings have been saved."
+        },
+        "error": {
+          "message": "Error while saving settings."
+        }
+      },
+      "labelDefaultFolder": "Default media location for",
+      "placeholderDefaultFolder": "Select entity..."
+    },
+    "sw-media-add-thumbnail-form": {
+      "labelMaximumSize": "最大"
+    },
     "sw-search-bar-item": {
       "typeLabelCustomer": "Customer",
       "typeLabelProduct": "Product",
@@ -215,12 +259,11 @@
     }
   },
   "sw-empty-state": {
-    "messageNoResultTitle": "Nothing found",
-    "messageNoResultSublineSimple": "Edit your filters or search terms to find results.",
-    "messageNoResultSubline": "Edit your filters or your search terms to find results. Please also check the configuration of your search.",
-    "messageNoResultSublineBefore": "Edit your filters or your search terms to find results. Please also check",
-    "messageNoResultSublineLink": "the configuration",
-    "messageNoResultSublineAfter": "of your search."
+    "messageNoResultTitle": "什么都没有找到",
+    "messageNoResultSublineSimple": "编辑过滤器或搜索条件来查找结果.",
+    "messageNoResultSubline": "编辑过滤器或搜索词来找到结果。也请检查搜索配置.",
+    "messageNoResultSublineBefore": "编辑过滤器或搜索词来找到结果。也请查看",
+    "messageNoResultSublineLink": "配置"
   },
   "help-center": {
     "sidebar": {

@@ -44,7 +44,7 @@ export default {
         },
 
         defaultThemeAsset() {
-            return this.assetFilter('administration/static/img/theme/default_theme_preview.jpg');
+            return this.assetFilter('administration/static/img/default_plugin_preview.png');
         },
 
         extensionCardClasses() {

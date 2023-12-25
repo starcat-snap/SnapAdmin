@@ -50,7 +50,6 @@ export default {
         roleCriteria() {
             const criteria = new Criteria(this.page, this.limit);
             // Roles created by apps should not be visible and editable in the admin
-            criteria.addFilter(Criteria.equals('app.id', null));
             criteria.addFilter(Criteria.equals('deletedAt', null));
 
             if (this.term) {

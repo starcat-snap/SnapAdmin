@@ -237,7 +237,7 @@ $sw-tree-item-color-text: $color-darkgray-200;
     }
 
     &__content {
-        .icon--regular-times-xs,
+        .icon--x,
         .icon--regular-checkmark-xxs {
             @include size(8px);
         }

@@ -67,7 +67,7 @@ $sw-login-error-animation-duration: 0.15s;
         position: relative;
         opacity: 1;
         transition: opacity $sw-login-success-animation-duration ease-in-out,
-        padding $sw-login-media-query-animation-duration ease-in-out;
+                    padding $sw-login-media-query-animation-duration ease-in-out;
 
         @media screen and (max-width: 600px) {
             padding: 30px;
@@ -77,14 +77,9 @@ $sw-login-error-animation-duration: 0.15s;
     .sw-login__content-headline {
         font-size: $font-size-l;
         font-weight: $font-weight-semi-bold;
-    }
-
-    .sw-login__content-headline {
-        font-size: $font-size-l;
-        font-weight: $font-weight-semi-bold;
-        color: $color-gray-500;
         text-align: center;
     }
+
 
     .sw-button {
         @media screen and (max-width: 600px) {

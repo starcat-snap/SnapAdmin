@@ -91,7 +91,7 @@
       },
       "user-detail": {
         "labelCard": "基本信息",
-        "labelIntegrationsCard": "Integrations",
+        "labelIntegrationsCard": "集成",
         "labelFirstName": "First name",
         "labelLastName": "Last name",
         "labelEmail": "Email address",

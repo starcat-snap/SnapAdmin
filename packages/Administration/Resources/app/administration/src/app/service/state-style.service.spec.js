@@ -106,7 +106,7 @@ describe('src/app/service/state-style.service.ts', () => {
             progress: 'circle-xxs',
             done: 'regular-checkmark-xxs',
             warning: 'regular-exclamation-s',
-            danger: 'regular-times-xs',
+            danger: 'x',
         };
 
         const variantMapping = {

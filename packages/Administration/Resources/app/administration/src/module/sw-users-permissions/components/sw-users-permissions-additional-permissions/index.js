@@ -34,14 +34,6 @@ export default {
                 privilege => privilege.category === 'additional_permissions' && privilege.key !== 'app',
             );
         },
-
-        appPermissions() {
-            const privileges = this.privileges.getPrivilegesMappings();
-
-            return privileges.filter(
-                privilege => privilege.category === 'additional_permissions' && privilege.key === 'app',
-            );
-        },
     },
 
     methods: {
@@ -59,24 +51,6 @@ export default {
             } else {
                 this.role.privileges = this.role.privileges.filter(p => p !== privilegeKey);
             }
-        },
-
-        changeAllAppPermissionsForKey(permissionKey, isSelected) {
-            this.appPermissions.forEach(permission => {
-                Object.keys(permission.roles).forEach(role => {
-                    const identifier = `app.${role}`;
-
-                    if (isSelected) {
-                        if (this.role.privileges.includes(identifier)) {
-                            return;
-                        }
-
-                        this.role.privileges.push(identifier);
-                    } else {
-                        this.role.privileges = this.role.privileges.filter(p => p !== identifier);
-                    }
-                });
-            });
         },
     },
 };
