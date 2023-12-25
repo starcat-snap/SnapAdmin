@@ -1,8 +1,7 @@
 import './page/index';
 
 import type { RouteLocationNamedRaw } from 'vue-router';
-import deDE from './snippet/de-DE.json';
-import enGB from './snippet/en-GB.json';
+import zhCN from './snippet/zh-CN.json';
 
 const { Module } = SnapAdmin;
 
@@ -21,8 +20,8 @@ Module.register('sw-inactivity-login', {
     color: '#F19D12',
 
     snippets: {
-        'de-DE': deDE,
-        'en-GB': enGB,
+
+        'zh-CN': zhCN,
     },
 
     routes: {
