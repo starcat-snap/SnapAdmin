@@ -147,7 +147,7 @@ export default SnapAdmin.Mixin.register('listing', defineComponent({
         },
 
         selection() {
-            SnapAdmin.State.commit('shopwareApps/setSelectedIds', Object.keys(this.selection));
+            SnapAdmin.State.commit('snapAdminApps/setSelectedIds', Object.keys(this.selection));
         },
 
         term(newValue) {

@@ -5,7 +5,7 @@
     v-if="showMenuItem"
     class="sw-admin-menu__navigation-list-item"
     :class="getElementClasses(entry.id || entryPath)"
-    :style="{ 'border-color': '#6259ca' }"
+    :style="{ 'border-color': borderColor }"
     @click.prevent="$emit('menu-item-click', entry, $event.target)"
     @mouseenter="$emit('menu-item-enter', entry, $event, parentEntries)"
 >

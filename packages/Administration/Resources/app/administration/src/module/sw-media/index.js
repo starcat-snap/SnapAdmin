@@ -6,7 +6,7 @@ import './mixin/media-sidebar-modal.mixin';
 import './acl';
 import defaultSearchConfiguration from './default-search-configuration';
 
-const {Module} = SnapAdmin;
+const { Module } = SnapAdmin;
 
 /* eslint-disable max-len, sw-deprecation-rules/private-feature-declarations */
 SnapAdmin.Component.register('sw-media-index', () => import('./page/sw-media-index'));
@@ -33,6 +33,7 @@ Module.register('sw-media', {
     description: 'sw-media.general.descriptionTextModule',
     version: '1.0.0',
     targetVersion: '1.0.0',
+    color: '#6259ca',
     entity: 'media',
 
     routes: {
@@ -59,6 +60,8 @@ Module.register('sw-media', {
         label: 'global.sw-admin-menu.navigation.mainMenuItemSystem',
         icon: 'settings-2',
         position: 50,
+        color: '#6259ca',
+
     }, {
         id: 'sw-media',
         label: 'sw-media.general.mainMenuItemGeneral',

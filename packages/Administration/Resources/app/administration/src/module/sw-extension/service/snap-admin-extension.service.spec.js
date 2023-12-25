@@ -74,7 +74,7 @@ describe('src/module/sw-extension/service/shopware-extension.service', () => {
 
         beforeEach(() => {
             SnapAdmin.State.commit('snapAdminExtensions/myExtensions', []);
-            SnapAdmin.State.commit('shopwareApps/setApps', []);
+            SnapAdmin.State.commit('snapAdminApps/setApps', []);
         });
 
         it.each([
@@ -293,7 +293,7 @@ describe('src/module/sw-extension/service/shopware-extension.service', () => {
 
         it('returns valid open link for app with main module', async () => {
             SnapAdmin.State.commit(
-                'shopwareApps/setApps',
+                'snapAdminApps/setApps',
                 appModulesFixtures,
             );
 
@@ -311,7 +311,7 @@ describe('src/module/sw-extension/service/shopware-extension.service', () => {
 
         it('returns no open link for app without main module', async () => {
             SnapAdmin.State.commit(
-                'shopwareApps/setApps',
+                'snapAdminApps/setApps',
                 appModulesFixtures,
             );
 
@@ -324,7 +324,7 @@ describe('src/module/sw-extension/service/shopware-extension.service', () => {
 
         it('returns no open link if app can not be found', async () => {
             SnapAdmin.State.commit(
-                'shopwareApps/setApps',
+                'snapAdminApps/setApps',
                 appModulesFixtures,
             );
 

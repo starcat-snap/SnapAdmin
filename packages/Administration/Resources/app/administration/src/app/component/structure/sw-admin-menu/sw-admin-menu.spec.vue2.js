@@ -106,7 +106,7 @@ describe('src/app/component/structure/sw-admin-menu', () => {
             SnapAdmin.Module.register(adminModule.name, adminModule);
         });
 
-        SnapAdmin.State.commit('shopwareApps/setApps', []);
+        SnapAdmin.State.commit('snapAdminApps/setApps', []);
 
         wrapper = await createWrapper();
     });
@@ -312,7 +312,7 @@ describe('src/app/component/structure/sw-admin-menu', () => {
 
     describe('app menu entries', () => {
         it('renders apps under there parent navigation entry', async () => {
-            SnapAdmin.State.commit('shopwareApps/setApps', testApps);
+            SnapAdmin.State.commit('snapAdminApps/setApps', testApps);
             await wrapper.vm.$nextTick();
 
             const topLevelEntries = wrapper.findAll('.navigation-list-item__level-1');

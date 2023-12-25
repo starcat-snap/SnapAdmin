@@ -175,7 +175,7 @@ export default class SnapAdminExtensionService {
     }
 
     private updateModules() {
-        SnapAdmin.State.commit('shopwareApps/setApps', []);
+        // SnapAdmin.State.commit('snapAdminApps/setApps', []);
     }
 
     private orderByType(variants: ExtensionVariant[]) {

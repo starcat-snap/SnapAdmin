@@ -51,6 +51,7 @@ SnapAdmin.Module.register('sw-extension', {
     version: '1.0.0',
     targetVersion: '1.0.0',
     entity: 'extension',
+    color: '#6259ca',
     display: !SnapAdmin.Context.app.disableExtensions,
 
     searchMatcher: (regex, labelType, manifest) => {
@@ -162,6 +163,7 @@ SnapAdmin.Module.register('sw-extension', {
             id: 'sw-extension',
             label: 'sw-extension.mainMenu.mainMenuItemExtensionStore',
             icon: 'plug',
+            color: '#6259ca',
             position: 70,
         },
         {

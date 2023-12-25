@@ -28,7 +28,7 @@ describe('src/app/init-pre/state.init.ts', () => {
         expect(SnapAdmin.State.get('context')).toBeDefined();
         expect(SnapAdmin.State.get('error')).toBeDefined();
         expect(SnapAdmin.State.get('settingsItems')).toBeDefined();
-        expect(SnapAdmin.State.get('shopwareApps')).toBeDefined();
+        expect(SnapAdmin.State.get('snapAdminApps')).toBeDefined();
         expect(SnapAdmin.State.get('extensionEntryRoutes')).toBeDefined();
         expect(SnapAdmin.State.get('marketing')).toBeDefined();
         expect(SnapAdmin.State.get('extensionComponentSections')).toBeDefined();
