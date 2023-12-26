@@ -21,7 +21,7 @@ class UserProvisioner
     }
 
     /**
-     * @param array{phone?: string, name?: string, email?: string, localeId?: string, admin?: bool} $additionalData
+     * @param array{phone?: string, name?: string, email?: string, localeId?: string, admin?: bool,nickName?:string} $additionalData
      */
     public function provision(string $username, ?string $password = null, array $additionalData = []): string
     {
@@ -46,6 +46,7 @@ class UserProvisioner
             'password' => password_hash($password, \PASSWORD_BCRYPT),
             'locale_id' => $additionalData['localeId'] ?? $this->getLocaleOfSystemLanguage(),
             'active' => true,
+            'nick_name'=>$additionalData['nickName'] ?? $username ,
             'admin' => $additionalData['admin'] ?? true,
             'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
         ];

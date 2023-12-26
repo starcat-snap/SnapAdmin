@@ -27,6 +27,7 @@ class Migration1536232810User extends MigrationStep
               `username` varchar(255) NOT NULL,
               `password` varchar(255) NOT NULL,
               `name` varchar(255)  NULL,
+              `nick_name` varchar(255) NOT NULL,
               `phone` varchar(255)  NULL,
               `title` varchar(255) DEFAULT NULL,
               `email` varchar(255)  NULL,

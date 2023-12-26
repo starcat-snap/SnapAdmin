@@ -57,6 +57,8 @@ class UserEntity extends Entity
      */
     protected $phone;
 
+    protected $nickName;
+
     /**
      * @var string
      */
@@ -316,4 +318,22 @@ class UserEntity extends Entity
     {
         $this->phone = $phone;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getNickName()
+    {
+        return $this->nickName;
+    }
+
+    /**
+     * @param mixed $nickName
+     */
+    public function setNickName($nickName): void
+    {
+        $this->nickName = $nickName;
+    }
+
+    
 }
