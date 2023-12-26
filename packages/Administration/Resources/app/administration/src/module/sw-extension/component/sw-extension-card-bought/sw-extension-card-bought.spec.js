@@ -466,7 +466,7 @@ describe('src/module/sw-extension/component/sw-extension-card-bought', () => {
                 expired: true,
             },
             expectedTextSnippet: 'sw-extension-store.component.sw-extension-card-bought.rentExpiredAt',
-            expectedIcon: 'solid-exclamation-circle',
+            expectedIcon: 'alert-circle-filled',
         }, {
             testCaseName: 'should display when a test phase will expire',
             storeLicense: {
@@ -483,7 +483,7 @@ describe('src/module/sw-extension/component/sw-extension-card-bought', () => {
                 expired: true,
             },
             expectedTextSnippet: 'sw-extension-store.component.sw-extension-card-bought.testPhaseExpiredAt',
-            expectedIcon: 'solid-exclamation-circle',
+            expectedIcon: 'alert-circle-filled',
         }])('$testCaseName', async ({ storeLicense, expectedTextSnippet, expectedIcon }) => {
             const wrapper = await createWrapper({
                 id: 555,

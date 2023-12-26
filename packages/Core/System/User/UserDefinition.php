@@ -80,7 +80,7 @@ class UserDefinition extends EntityDefinition
             (new StringField('phone', 'phone'))->addFlags(new SearchRanking(SearchRanking::HIGH_SEARCH_RANKING)),
             (new StringField('nick_name', 'nickName'))->addFlags(new SearchRanking(SearchRanking::HIGH_SEARCH_RANKING)),
             (new StringField('title', 'title'))->addFlags(new SearchRanking(SearchRanking::MIDDLE_SEARCH_RANKING)),
-            (new StringField('email', 'email'))->addFlags(new Required(), new SearchRanking(SearchRanking::HIGH_SEARCH_RANKING)),
+            (new StringField('email', 'email'))->addFlags(new SearchRanking(SearchRanking::HIGH_SEARCH_RANKING)),
             new BoolField('active', 'active'),
             new BoolField('admin', 'admin'),
             new DateTimeField('last_updated_password_at', 'lastUpdatedPasswordAt'),

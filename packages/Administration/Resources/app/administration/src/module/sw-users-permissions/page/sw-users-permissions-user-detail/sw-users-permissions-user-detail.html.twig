@@ -119,7 +119,6 @@
                             :error-message="isEmailUsed ? $tc('sw-users-permissions.users.user-detail.errorEmailUsed') : ''"
                             :error="userEmailError"
                             :disabled="!acl.can('users_and_permissions.editor')"
-                            required
                             :label="$tc('sw-users-permissions.users.user-detail.labelEmail')"
                             @change="checkEmail()"
                         />

@@ -616,7 +616,7 @@
   "sw-privileges": {
     "additional_permissions": {
       "system": {
-        "extension_store": "SnapAdmin Store"
+        "extension_store": "插件商城"
       }
     }
   }

@@ -209,6 +209,39 @@
       "deleteModal": {
         "title": "删除通知",
         "textConfirm": "确定要删除所有通知吗?"
+      },
+      "worker-listener": {
+        "thumbnailGeneration": {
+          "title": "Generating thumbnails",
+          "message": "No thumbnails remaining. | One thumbnail remaining... | {n} thumbnails remaining...",
+          "messageSuccess": "Thumbnails have been generated."
+        },
+        "media": {
+          "title": "Indexing media",
+          "message": "Media indexed. | One medium remaining ... | {n} media remaining...",
+          "messageSuccess": "Media have been indexed."
+        },
+
+        "rule": {
+          "title": "Indexing rules",
+          "message": "Rule indexed. | One rule remaining... | {n} rules remaining...",
+          "messageSuccess": "Rules have been indexed."
+        },
+
+        "flow": {
+          "title": "提示/成功",
+          "message": "Indexing flows.",
+          "messageSuccess": "Flows have been indexed."
+        }
+      },
+      "plugin-updates-listener": {
+        "updatesAvailableTitle": "插件更新",
+        "updatesAvailableMessage": "现在下载最新版本的插件."
+      },
+      "snap-admin-updates-listener": {
+        "updatesAvailableTitle": "SnapAdmin 新版本 {version} 已发布",
+        "updatesAvailableMessage": "启动自动更新程序开始更新",
+        "updateNow": "更新"
       }
     },
     "sw-field": {

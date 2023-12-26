@@ -36,17 +36,17 @@ export default function addSnapAdminUpdatesListener(loginService, serviceContain
         const cancelLabel =
             getApplicationRootReference().$tc('global.default.cancel');
         const updateLabel =
-            getApplicationRootReference().$tc('global.notification-center.shopware-updates-listener.updateNow');
+            getApplicationRootReference().$tc('global.notification-center.snap-admin-updates-listener.updateNow');
 
         const notification = {
             title: getApplicationRootReference().$t(
-                'global.notification-center.shopware-updates-listener.updatesAvailableTitle',
+                'global.notification-center.snap-admin-updates-listener.updatesAvailableTitle',
                 {
                     version: response.version,
                 },
             ),
             message: getApplicationRootReference().$t(
-                'global.notification-center.shopware-updates-listener.updatesAvailableMessage',
+                'global.notification-center.snap-admin-updates-listener.updatesAvailableMessage',
                 {
                     version: response.version,
                 },

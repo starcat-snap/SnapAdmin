@@ -24,7 +24,7 @@ async function createWrapper(additionalOptions = {}) {
                 'sw-icon': await wrapTestComponent('sw-icon'),
                 'icons-regular-lock': true,
                 'icons-regular-lock-open': true,
-                'icons-solid-exclamation-circle': true,
+                'icons-alert-circle-filled': true,
             },
             provide: {
                 validationService: {},

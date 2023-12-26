@@ -50,7 +50,7 @@ describe('component/base/sw-tabs-item', () => {
 
         const errorIcon = wrapper.find('.sw-tabs-item__error-badge');
         expect(errorIcon.isVisible()).toBe(true);
-        expect(errorIcon.attributes('data-testid')).toBe('sw-icon__solid-exclamation-circle');
+        expect(errorIcon.attributes('data-testid')).toBe('sw-icon__alert-circle-filled');
         expect(errorIcon.attributes('data-tooltip-message')).toBe('Custom error message');
     });
 

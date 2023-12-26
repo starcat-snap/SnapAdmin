@@ -19,7 +19,7 @@
   "sw-privileges": {
     "additional_permissions": {
       "system": {
-        "system_config": "Basic configuration"
+        "system_config": "基础配置"
       }
     }
   }

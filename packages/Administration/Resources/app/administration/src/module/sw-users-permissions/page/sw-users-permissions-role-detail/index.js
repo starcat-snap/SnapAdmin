@@ -116,7 +116,22 @@ export default {
         },
 
         getRole() {
-            this.isLoading = false;
+            this.isLoading = true;
+            this.roleRepository.get(this.roleId)
+                .then((role) => {
+                    this.role = role;
+
+                    const filteredPrivileges = this.privileges.filterPrivilegesRoles(this.role.privileges);
+                    const allGeneralPrivileges = this.privileges.getPrivilegesForAdminPrivilegeKeys(filteredPrivileges);
+
+                    this.detailedPrivileges = this.role.privileges.filter(privilege => {
+                        return !allGeneralPrivileges.includes(privilege);
+                    });
+                    this.role.privileges = filteredPrivileges;
+                })
+                .finally(() => {
+                    this.isLoading = false;
+                });
         },
 
         onSave() {

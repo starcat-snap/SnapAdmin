@@ -119,8 +119,8 @@ describe('src/app/main.ts', () => {
         jest.mock('src/core/service/plugin-updates-listener.service');
         serviceMocks.PluginUpdatesListener = (await import('src/core/service/plugin-updates-listener.service')).default;
 
-        jest.mock('src/core/service/shopware-updates-listener.service');
-        serviceMocks.SnapAdminUpdatesListener = (await import('src/core/service/shopware-updates-listener.service')).default;
+        jest.mock('src/core/service/snap-admin-updates-listener.service');
+        serviceMocks.SnapAdminUpdatesListener = (await import('src/core/service/snap-admin-updates-listener.service')).default;
 
         jest.mock('src/app/service/locale-helper.service');
         serviceMocks.LocaleHelperService = (await import('src/app/service/locale-helper.service')).default;

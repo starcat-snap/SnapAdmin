@@ -122,7 +122,7 @@ export default {
         },
 
         async onConfirmDelete(user) {
-            const username = `${user.firstName} ${user.lastName} `;
+            const username = `${user.username}`;
             const titleDeleteSuccess = this.$tc('global.default.success');
             const messageDeleteSuccess = this.$tc(
                 'sw-users-permissions.users.user-grid.notification.deleteSuccess.message',

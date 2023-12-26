@@ -14,7 +14,7 @@ class NoConfigurationException extends SnapAdminHttpException
         ?string $salesChannelId = null
     ) {
         parent::__construct(
-            'No number range configuration found for entity "{{ entity }}" with sales channel "{{ salesChannelId }}".',
+            'No number range configuration found for entity "{{ entity }}".',
             ['entity' => $entityName, 'salesChannelId' => $salesChannelId]
         );
     }

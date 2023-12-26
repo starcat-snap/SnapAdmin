@@ -20,6 +20,7 @@ export default {
         'userValidationService',
         'integrationService',
         'repositoryFactory',
+        'numberRangeService',
         'acl',
     ],
 
@@ -338,47 +339,56 @@ export default {
             if (this.currentUser.id === this.user.id) {
                 promises = [SnapAdmin.Service('localeHelper').setLocaleWithId(this.user.localeId)];
             }
-
+            let numberRangePromise = Promise.resolve();
+            if (!this.user.userNumber) {
+                numberRangePromise = this.numberRangeService
+                    .reserve('user').then((response) => {
+                        this.user.userNumber = response.number;
+                        return Promise.resolve();
+                    });
+            }
             return Promise.all(promises).then(
                 this.checkEmail()
                     .then(() => {
-                        if (!this.isEmailUsed) {
-                            this.isLoading = true;
-                            const titleSaveError = this.$tc('global.default.error');
-                            const messageSaveError = this.$tc(
-                                'sw-users-permissions.users.user-detail.notification.saveError.message',
-                                0,
-                                { name: this.fullName },
-                            );
+                        numberRangePromise.then(() => {
+                            if (!this.isEmailUsed) {
+                                this.isLoading = true;
+                                const titleSaveError = this.$tc('global.default.error');
+                                const messageSaveError = this.$tc(
+                                    'sw-users-permissions.users.user-detail.notification.saveError.message',
+                                    0,
+                                    { name: this.fullName },
+                                );
 
-                            return this.userRepository.save(this.user, context).then(() => {
-                                return this.updateCurrentUser();
-                            }).then(() => {
-                                this.createdComponent();
+                                return this.userRepository.save(this.user, context).then(() => {
+                                    return this.updateCurrentUser();
+                                }).then(() => {
+                                    this.createdComponent();
 
-                                this.confirmPasswordModal = false;
-                                this.isSaveSuccessful = true;
-                            }).catch((exception) => {
-                                this.createNotificationError({
-                                    title: titleSaveError,
-                                    message: messageSaveError,
-                                });
-                                warn(this._name, exception.message, exception.response);
-                                this.isLoading = false;
-                                throw exception;
-                            })
-                                .finally(() => {
+                                    this.confirmPasswordModal = false;
+                                    this.isSaveSuccessful = true;
+                                }).catch((exception) => {
+                                    this.createNotificationError({
+                                        title: titleSaveError,
+                                        message: messageSaveError,
+                                    });
+                                    warn(this._name, exception.message, exception.response);
                                     this.isLoading = false;
-                                });
-                        }
+                                    throw exception;
+                                })
+                                    .finally(() => {
+                                        this.isLoading = false;
+                                    });
+                            }
 
-                        this.createNotificationError({
-                            message: this.$tc(
-                                'sw-users-permissions.users.user-detail.notification.duplicateEmailErrorMessage',
-                            ),
+                            this.createNotificationError({
+                                message: this.$tc(
+                                    'sw-users-permissions.users.user-detail.notification.duplicateEmailErrorMessage',
+                                ),
+                            });
+
+                            return Promise.resolve();
                         });
-
-                        return Promise.resolve();
                     })
                     .catch(() => Promise.reject())
                     .finally(() => {

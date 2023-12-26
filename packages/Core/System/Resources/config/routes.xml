@@ -9,4 +9,6 @@
     <import resource="../../CustomField/**/*Controller.php" type="attribute"/>
     <import resource="../../SystemConfig/**/*Controller.php" type="attribute"/>
     <import resource="../../Flow/**/*Controller.php" type="attribute" />
+    <import resource="../../NumberRange/**/*Controller.php" type="attribute" />
+
 </routes>

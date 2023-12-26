@@ -23,10 +23,10 @@ class NumberRangeController extends AbstractController
     }
 
     #[Cache(mustRevalidate: true)]
-    #[Route(path: '/api/_action/number-range/reserve/{type}/{saleschannel?}', name: 'api.action.number-range.reserve', methods: ['GET'])]
-    public function reserve(string $type, ?string $saleschannel, Context $context, Request $request): JsonResponse
+    #[Route(path: '/api/_action/number-range/reserve/{type}', name: 'api.action.number-range.reserve', methods: ['GET'])]
+    public function reserve(string $type, Context $context, Request $request): JsonResponse
     {
-        $generatedNumber = $this->valueGenerator->getValue($type, $context, $saleschannel, $request->query->getBoolean('preview'));
+        $generatedNumber = $this->valueGenerator->getValue($type, $context, $request->query->getBoolean('preview'));
 
         return new JsonResponse([
             'number' => $generatedNumber,

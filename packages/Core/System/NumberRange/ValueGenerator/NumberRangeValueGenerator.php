@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\System\NumberRange\ValueGenerator;
 use Doctrine\DBAL\Connection;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\Framework\Uuid\Uuid;
 use SnapAdmin\Core\System\NumberRange\Exception\NoConfigurationException;
 use SnapAdmin\Core\System\NumberRange\NumberRangeEvents;
 use SnapAdmin\Core\System\NumberRange\ValueGenerator\Pattern\ValueGeneratorPatternRegistry;

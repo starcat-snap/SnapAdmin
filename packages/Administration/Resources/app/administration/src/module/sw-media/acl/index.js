@@ -4,7 +4,7 @@
 SnapAdmin.Service('privileges')
     .addPrivilegeMappingEntry({
         category: 'permissions',
-        parent: 'content',
+        parent: 'system',
         key: 'media',
         roles: {
             viewer: {
@@ -14,23 +14,6 @@ SnapAdmin.Service('privileges')
                     'media_default_folder:read',
                     'media_thumbnail_size:read',
                     'media_folder_configuration:read',
-                    'tag:read',
-                    'product_media:read',
-                    'product:read',
-                    'category:read',
-                    'product_manufacturer:read',
-                    'mail_template_media:read',
-                    'mail_template:read',
-                    'document_base_config:read',
-                    'user:read',
-                    'payment_method:read',
-                    'shipping_method:read',
-                    'custom_field_set:read',
-                    'custom_field:read',
-                    'custom_field_set_relation:read',
-                    'cms_page:read',
-                    'cms_section:read',
-                    'cms_block:read',
                 ],
                 dependencies: [],
             },

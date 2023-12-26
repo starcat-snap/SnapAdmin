@@ -80,11 +80,11 @@ Component.register('sw-alert', {
             }
 
             const iconConfig: { [type: string]: string } = {
-                info: 'regular-info-circle',
+                info: 'info-circle',
                 warning: 'regular-exclamation-triangle',
                 error: 'exclamation-circle',
                 success: 'regular-check-circle',
-                neutral: 'regular-info-circle',
+                neutral: 'info-circle',
             };
 
             return iconConfig[this.variant] || 'regular-bell';

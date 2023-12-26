@@ -48,12 +48,12 @@
       },
       "view": {
         "detailed": {
-          "alertText": "Configure privileges in detail. All deactivated checkboxes are permissions that have already been assigned in the \"General\" tab and are not not configurable. This configuration is only necessary if e.g. extensions are used that add new datasets but do not have privileges, these can be configured here."
+          "alertText": "如果在“常规”选项卡中已经分配了某些权限并且已经禁用了相应的复选框，那么这些复选框不可配置。只有在使用添加了新数据集但未设置权限的扩展时，才需要进行此配置。换句话说，这个配置只在需要配置没有权限的新数据集的扩展时才会用到."
         }
       },
       "tabs": {
         "general": "常规",
-        "detailed": "Detailed privileges"
+        "detailed": "详细的特权"
       }
     },
     "users": {
@@ -74,7 +74,6 @@
         "contextMenuDelete": "删除",
         "contextMenuDuplicate": "副本",
         "titleModalDelete": "删除用户",
-        "textModalDelete": "确定要删除用户 \"{name}\"?",
         "labelButtonCancel": "取消",
         "labelButtonDelete": "删除",
         "notification": {
@@ -179,16 +178,13 @@
     },
     "permissions": {
       "parents": {
-        "catalogues": "Catalogues",
-        "content": "Content",
+        "system": "系统",
         "customers": "Customers",
-        "marketing": "Marketing",
-        "other": "Other",
-        "orders": "Orders",
-        "settings": "Settings"
+        "other": "其他",
+        "settings": "设置"
       },
       "users_and_permissions": {
-        "label": "Users & permissions"
+        "label": "用户 & 权限"
       },
       "routes": {
         "label": "Routes"
@@ -208,7 +204,7 @@
         "label": "Orders"
       },
       "routes": {
-        "label": "Routes",
+        "label": "路由",
         "api_action_access-key_integration": "Create API keys",
         "api_acl_privileges_get": "Read all ACL privileges",
         "api_acl_privileges_route_get": "Read ACL route privileges",
