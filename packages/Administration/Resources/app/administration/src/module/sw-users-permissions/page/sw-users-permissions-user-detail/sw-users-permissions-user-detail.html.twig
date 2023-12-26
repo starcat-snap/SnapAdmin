@@ -1,6 +1,8 @@
 <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
 {% block sw_settings_user_detail %}
-<sw-page class="sw-settings-user-detail"     :show-search-bar="true"
+<sw-page class="sw-settings-user-detail"
+         :show-search-bar="true"
+         showSmartBar="true"
 >
     <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
     {% block sw_settings_user_detail_header %}
@@ -67,29 +69,44 @@
                         v-if="user"
                         class="sw-settings-user-detail__grid"
                     >
-                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
-                        {% block sw_settings_user_detail_content_first_name %}
+                                  <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                        {% block sw_settings_user_detail_content_username %}
                         <sw-text-field
-                            v-model:value="user.firstName"
-                            name="sw-field--user-firstName"
-                            class="sw-settings-user-detail__grid-firstName"
+                            v-model:value="user.username"
+                            name="sw-field--user-username"
+                            class="sw-settings-user-detail__grid-username"
+                            :error-message="isUsernameUsed ? $tc('sw-users-permissions.users.user-detail.errorUsernameUsed') : ''"
+                            :error="userUsernameError"
                             :disabled="!acl.can('users_and_permissions.editor')"
-                            :error="userFirstNameError"
                             required
-                            :label="$tc('sw-users-permissions.users.user-detail.labelFirstName')"
+                            :label="$tc('sw-users-permissions.users.user-detail.labelUsername')"
+                            @change="checkUsername"
                         />
                         {% endblock %}
 
                         <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
-                        {% block sw_settings_user_detail_content_last_name %}
+                        {% block sw_settings_user_detail_content_nick_name %}
                         <sw-text-field
-                            v-model:value="user.lastName"
-                            name="sw-field--user-lastName"
-                            class="sw-settings-user-detail__grid-lastName"
+                            v-model:value="user.nickName"
+                            name="sw-field--user-nickName"
+                            class="sw-settings-user-detail__grid-nickName"
                             :disabled="!acl.can('users_and_permissions.editor')"
-                            :error="userLastNameError"
+                            :error="userNickNameError"
                             required
-                            :label="$tc('sw-users-permissions.users.user-detail.labelLastName')"
+                            :label="$tc('sw-users-permissions.users.user-detail.labelNickName')"
+                        />
+                        {% endblock %}
+
+                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                        {% block sw_settings_user_detail_content_number %}
+                        <sw-text-field
+                            v-model:value="user.userNumber"
+                            name="sw-field--user-userNumber"
+                            class="sw-settings-user-detail__grid-userNumber"
+                            :disabled="true"
+                            :error="userUserNumberError"
+                            required
+                            :label="$tc('sw-users-permissions.users.user-detail.labelUserNumber')"
                         />
                         {% endblock %}
 
@@ -105,21 +122,6 @@
                             required
                             :label="$tc('sw-users-permissions.users.user-detail.labelEmail')"
                             @change="checkEmail()"
-                        />
-                        {% endblock %}
-
-                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
-                        {% block sw_settings_user_detail_content_username %}
-                        <sw-text-field
-                            v-model:value="user.username"
-                            name="sw-field--user-username"
-                            class="sw-settings-user-detail__grid-username"
-                            :error-message="isUsernameUsed ? $tc('sw-users-permissions.users.user-detail.errorUsernameUsed') : ''"
-                            :error="userUsernameError"
-                            :disabled="!acl.can('users_and_permissions.editor')"
-                            required
-                            :label="$tc('sw-users-permissions.users.user-detail.labelUsername')"
-                            @change="checkUsername"
                         />
                         {% endblock %}
 

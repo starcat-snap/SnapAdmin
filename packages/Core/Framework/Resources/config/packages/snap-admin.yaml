@@ -9,6 +9,9 @@ snap:
         enabled: true
         cache_dir: '%kernel.cache_dir%'
         cache_enabled: true
+    number_range:
+        increment_storage: "SQL"
+        redis_url: false
     cdn:
         url: ''
         strategy: "%env(string:default:default_cdn_strategy:SNAP_CDN_STRATEGY_DEFAULT)%"

@@ -4,6 +4,7 @@
 $sw-media-index-font-size-navigation: $font-size-m;
 $sw-media-index-color-breadcrumb-icon: $color-snap-admin-brand-500;
 $sw-media-index-color-navigation-parent: $color-gray-300;
+$sw-media-index-page-background-color: $color-white;
 
 .sw-media-index {
     .sw-media-index__navigation {
@@ -29,6 +30,7 @@ $sw-media-index-color-navigation-parent: $color-gray-300;
     }
 
     .sw-media-index__page-content {
+        background: $sw-media-index-page-background-color;
         display: grid;
         height: 100%;
         grid-template-columns: 1fr auto;

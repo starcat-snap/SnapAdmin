@@ -9,6 +9,7 @@ use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityProtection\EntityProtectionCollection;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityProtection\WriteProtection;
+use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\AutoIncrementField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BoolField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\CustomFields;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\DateTimeField;
@@ -29,6 +30,7 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TimeZoneField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\Locale\LocaleDefinition;
+use SnapAdmin\Core\System\NumberRange\DataAbstractionLayer\NumberRangeField;
 use SnapAdmin\Core\System\User\Aggregate\UserAccessKey\UserAccessKeyDefinition;
 use SnapAdmin\Core\System\User\Aggregate\UserConfig\UserConfigDefinition;
 use SnapAdmin\Core\System\User\Aggregate\UserRecovery\UserRecoveryDefinition;
@@ -69,7 +71,9 @@ class UserDefinition extends EntityDefinition
     {
         return new FieldCollection([
             (new IdField('id', 'id'))->addFlags(new PrimaryKey(), new Required()),
+            new AutoIncrementField(),
             (new FkField('locale_id', 'localeId', LocaleDefinition::class))->addFlags(new Required()),
+            (new NumberRangeField('user_number', 'userNumber', 255))->addFlags(new ApiAware(), new Required(), new SearchRanking(SearchRanking::HIGH_SEARCH_RANKING)),
             (new StringField('username', 'username'))->addFlags(new Required(), new SearchRanking(SearchRanking::HIGH_SEARCH_RANKING)),
             (new PasswordField('password', 'password', \PASSWORD_DEFAULT, [], PasswordField::FOR_ADMIN))->removeFlag(ApiAware::class)->addFlags(new Required()),
             (new StringField('name', 'name'))->addFlags(new SearchRanking(SearchRanking::HIGH_SEARCH_RANKING)),

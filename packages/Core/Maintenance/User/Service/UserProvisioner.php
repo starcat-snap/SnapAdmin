@@ -4,11 +4,13 @@ namespace SnapAdmin\Core\Maintenance\User\Service;
 
 use Doctrine\DBAL\Connection;
 use SnapAdmin\Core\Defaults;
+use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\PasswordField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\PasswordFieldSerializer;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Util\Random;
 use SnapAdmin\Core\Framework\Uuid\Uuid;
+use SnapAdmin\Core\System\NumberRange\ValueGenerator\NumberRangeValueGeneratorInterface;
 
 #[Package('core')]
 class UserProvisioner
@@ -16,7 +18,10 @@ class UserProvisioner
     /**
      * @internal
      */
-    public function __construct(private readonly Connection $connection)
+    public function __construct(
+        private readonly Connection $connection,
+        private readonly NumberRangeValueGeneratorInterface $numberRangeValueGenerator
+    )
     {
     }
 
@@ -48,6 +53,7 @@ class UserProvisioner
             'active' => true,
             'nick_name'=>$additionalData['nickName'] ?? $username ,
             'admin' => $additionalData['admin'] ?? true,
+            'user_number'=>$this->numberRangeValueGenerator->getValue('user', Context::createDefaultContext()),
             'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
         ];
 

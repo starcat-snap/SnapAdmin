@@ -2,8 +2,8 @@
   "sw-media": {
     "general": {
       "mainMenuItemGeneral": "媒体",
-      "descriptionTextModule": "Manage media here.",
-      "placeholderSearchBar": "Search current folder...",
+      "descriptionTextModule": "",
+      "placeholderSearchBar": "搜索当前目录...",
       "notification": {
         "urlCopied": {
           "message": "URL has been copied to clipboard."
@@ -11,10 +11,10 @@
       }
     },
     "sidebar": {
-      "labelHeadlineMultiple": "{count} files selected",
-      "labelNoMediaSelected": "No media selected",
+      "labelHeadlineMultiple": "{count} 个文件被选择",
+      "labelNoMediaSelected": "未选择任何媒体",
       "actions": {
-        "copyLink": "Copy link",
+        "copyLink": "复制链接",
         "delete": "删除",
         "dissolve": "分解",
         "download": "下载",
@@ -66,14 +66,12 @@
       "rootFolderName": "媒体"
     },
     "mediaLibrary": {
-      "labelButtonLoadMore": "Load more",
-      "titleEmptyState": "No media items yet",
-      "descriptionEmptyState": "Manage media items here."
+      "labelButtonLoadMore": "加载更多",
+      "titleEmptyState": "暂无数据",
+      "descriptionEmptyState": ""
     },
     "sorting": {
       "labelSort": "排序:",
-      "labelSortByNameAsc": "Name, A-Z",
-      "labelSortByNameDsc": "Name, Z-A",
       "labelSortBySizeAsc": "大小, 升序.",
       "labelSortBySizeDsc": "大小, 降序.",
       "labelSortByCreatedAsc": "创建时间, 升序.",
@@ -81,24 +79,24 @@
     },
     "presentation": {
       "labelPresentation": "显示方式:",
-      "labelPresentationSmall": "Small preview",
-      "labelPresentationMedium": "Regular preview",
-      "labelPresentationLarge": "Large preview",
-      "labelPresentationList": "List"
+      "labelPresentationSmall": "小预览",
+      "labelPresentationMedium": "常规预览",
+      "labelPresentationLarge": "大预览",
+      "labelPresentationList": "列表"
     },
     "sw-media-modal": {
-      "titleModal": "Choose media",
-      "labelTabItemLibrary": "Media Library",
-      "labelTabItemUpload": "批量上传文件",
-      "labelButtonCancel": "Cancel",
-      "labelButtonSaveSelection": "Add media"
-    },
-    "sw-media-modal-v2": {
-      "titleModal": "Choose media",
-      "labelTabItemLibrary": "Media Library",
+      "titleModal": "选择",
+      "labelTabItemLibrary": "媒体库",
       "labelTabItemUpload": "批量上传文件",
       "labelButtonCancel": "取消",
-      "labelButtonSaveSelection": "Add media"
+      "labelButtonSaveSelection": "添加"
+    },
+    "sw-media-modal-v2": {
+      "titleModal": "选择",
+      "labelTabItemLibrary": "媒体库",
+      "labelTabItemUpload": "批量上传文件",
+      "labelButtonCancel": "取消",
+      "labelButtonSaveSelection": "添加"
     }
   },
   "sw-privileges": {

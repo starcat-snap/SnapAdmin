@@ -35,6 +35,8 @@ class UserEntity extends Entity
      */
     protected $username;
 
+    protected $userNumber;
+
     /**
      * @internal
      *
@@ -335,5 +337,21 @@ class UserEntity extends Entity
         $this->nickName = $nickName;
     }
 
-    
+    /**
+     * @return mixed
+     */
+    public function getUserNumber()
+    {
+        return $this->userNumber;
+    }
+
+    /**
+     * @param mixed $userNumber
+     */
+    public function setUserNumber($userNumber): void
+    {
+        $this->userNumber = $userNumber;
+    }
+
+
 }

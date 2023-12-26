@@ -25,6 +25,71 @@ class Migration1536233560BasicData extends MigrationStep
         $this->createDefaultSnippetSets($connection);
         $this->createDefaultMediaFolders($connection);
         $this->createSystemConfigOptions($connection);
+        $this->createNumberRanges($connection);
+    }
+
+    private function createNumberRanges(Connection $connection): void
+    {
+        $definitionNumberRangeTypes = [
+            'user' => [
+                'id' => Uuid::randomHex(),
+                'global' => 0,
+                'nameZh' => '用户',
+            ],
+        ];
+        $definitionNumberRanges = [
+            'user' => [
+                'id' => Uuid::randomHex(),
+                'name' => '用户',
+                'global' => 1,
+                'typeId' => $definitionNumberRangeTypes['user']['id'],
+                'pattern' => '{n}',
+                'start' => 10000,
+            ],
+        ];
+        $languageZh = Uuid::fromHexToBytes(Defaults::LANGUAGE_SYSTEM);
+        foreach ($definitionNumberRangeTypes as $typeName => $numberRangeType) {
+            $connection->insert(
+                'number_range_type',
+                [
+                    'id' => Uuid::fromHexToBytes($numberRangeType['id']),
+                    'global' => $numberRangeType['global'],
+                    'technical_name' => $typeName,
+                    'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
+                ]
+            );
+            $connection->insert(
+                'number_range_type_translation',
+                [
+                    'number_range_type_id' => Uuid::fromHexToBytes($numberRangeType['id']),
+                    'type_name' => $numberRangeType['nameZh'],
+                    'language_id' => $languageZh,
+                    'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
+                ]
+            );
+        }
+        foreach ($definitionNumberRanges as $numberRange) {
+            $connection->insert(
+                'number_range',
+                [
+                    'id' => Uuid::fromHexToBytes($numberRange['id']),
+                    'global' => $numberRange['global'],
+                    'type_id' => Uuid::fromHexToBytes($numberRange['typeId']),
+                    'pattern' => $numberRange['pattern'],
+                    'start' => $numberRange['start'],
+                    'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
+                ]
+            );
+            $connection->insert(
+                'number_range_translation',
+                [
+                    'number_range_id' => Uuid::fromHexToBytes($numberRange['id']),
+                    'name' => $numberRange['name'],
+                    'language_id' => $languageZh,
+                    'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
+                ]
+            );
+        }
     }
 
     public function updateDestructive(Connection $connection): void
@@ -104,7 +169,7 @@ class Migration1536233560BasicData extends MigrationStep
     private function getMediaFolderName(string $entity): string
     {
         $capitalizedEntityParts = array_map(
-            static fn ($part) => ucfirst((string) $part),
+            static fn($part) => ucfirst((string)$part),
             explode('_', $entity)
         );
 

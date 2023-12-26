@@ -326,14 +326,6 @@
     {% endblock %}
 
     <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
-    {% block sw_media_quickinfo_tags %}
-    <sw-media-tag
-        :disabled="!acl.can('media.editor')"
-        :media="item"
-    />
-    {% endblock %}
-
-    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
     {% block sw_media_quickinfo_usage %}
     <sw-media-collapse
         v-if="editable && item.hasFile"

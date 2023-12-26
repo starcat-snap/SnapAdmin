@@ -41,7 +41,7 @@ const { warn } = SnapAdmin.Utils.debug;
  *     :type="'line'"
  *     :series="[
  *         {
- *           name: 'Saleschannel A',
+ *           name: ' A',
  *           data:[
  *               {x:1559426400000, y:7},
  *               {x:1559512800000, y:6},
@@ -50,7 +50,7 @@ const { warn } = SnapAdmin.Utils.debug;
  *               {x:1559685600000, y:2}
  *         ]},
  *         {
- *           name: 'Saleschannel B',
+ *           name: ' B',
  *           data:[
  *               {x:1559426400000, y:4},
  *               {x:1559512800000, y:2},

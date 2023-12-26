@@ -21,7 +21,7 @@ const { Component } = SnapAdmin;
  *   <sw-step-item>
  *      Read
  *   </sw-step-item>
- *   <sw-step-item disabledIcon="regular-checkmark-xs">
+ *   <sw-step-item disabledIcon="check">
  *      Finish
  *   </sw-step-item>
  * </sw-step-display>

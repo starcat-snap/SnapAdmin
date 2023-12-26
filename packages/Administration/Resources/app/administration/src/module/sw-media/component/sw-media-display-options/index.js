@@ -46,8 +46,6 @@ export default {
             return [
                 { value: 'createdAt:asc', name: this.$tc('sw-media.sorting.labelSortByCreatedAsc') },
                 { value: 'createdAt:desc', name: this.$tc('sw-media.sorting.labelSortByCreatedDsc') },
-                { value: 'fileName:asc', name: this.$tc('sw-media.sorting.labelSortByNameAsc') },
-                { value: 'fileName:desc', name: this.$tc('sw-media.sorting.labelSortByNameDsc') },
                 { value: 'fileSize:asc', name: this.$tc('sw-media.sorting.labelSortBySizeAsc') },
                 { value: 'fileSize:desc', name: this.$tc('sw-media.sorting.labelSortBySizeDsc') },
             ];

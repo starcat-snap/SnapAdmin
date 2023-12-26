@@ -242,17 +242,6 @@ function registerThumbnailMiddleware(factory: typeof WorkerNotificationFactory) 
         },
     });
 
-    factory.register('SalesChannelIndexingMessage', {
-        name: 'SnapAdmin\\Core\\System\\SalesChannel\\DataAbstractionLayer\\SalesChannelIndexingMessage',
-        fn: function middleware(next, { entry, $root, notification }) {
-            messageQueueNotification('salesChannel', ids, next, entry, $root, notification, {
-                title: 'global.notification-center.worker-listener.salesChannel.title',
-                message: 'global.notification-center.worker-listener.salesChannel.message',
-                success: 'global.notification-center.worker-listener.salesChannel.messageSuccess',
-            }, 50);
-        },
-    });
-
     factory.register('RuleIndexingMessage', {
         name: 'SnapAdmin\\Core\\Content\\Rule\\DataAbstractionLayer\\RuleIndexingMessage',
         fn: function middleware(next, { entry, $root, notification }) {

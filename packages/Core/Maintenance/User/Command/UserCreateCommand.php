@@ -23,7 +23,9 @@ use Symfony\Component\Console\Question\Question;
 #[Package('core')]
 class UserCreateCommand extends Command
 {
-    public function __construct(private readonly UserProvisioner $userProvisioner)
+    public function __construct(
+        private readonly UserProvisioner $userProvisioner,
+    )
     {
         parent::__construct();
     }

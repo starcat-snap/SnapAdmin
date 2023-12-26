@@ -24,10 +24,12 @@ class Migration1536232810User extends MigrationStep
         $connection->executeStatement('
             CREATE TABLE `user` (
               `id` binary(16) NOT NULL,
+              `auto_increment` BIGINT unsigned NOT NULL AUTO_INCREMENT,
               `username` varchar(255) NOT NULL,
               `password` varchar(255) NOT NULL,
               `name` varchar(255)  NULL,
               `nick_name` varchar(255) NOT NULL,
+               `user_number` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
               `phone` varchar(255)  NULL,
               `title` varchar(255) DEFAULT NULL,
               `email` varchar(255)  NULL,
@@ -42,6 +44,7 @@ class Migration1536232810User extends MigrationStep
               `created_at` datetime(3) NOT NULL,
               `updated_at` datetime(3) DEFAULT NULL,
               PRIMARY KEY (`id`),
+              UNIQUE `uniq.auto_increment` (`auto_increment`),
               UNIQUE KEY `uniq.user.email` (`email`),
               UNIQUE KEY `uniq.user.username` (`username`),
               KEY `fk.user.locale_id` (`locale_id`),

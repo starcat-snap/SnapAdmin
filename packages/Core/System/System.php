@@ -5,7 +5,9 @@ namespace SnapAdmin\Core\System;
 use SnapAdmin\Core\Framework\Bundle;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\CustomEntity\CustomEntityRegistrar;
+use SnapAdmin\Core\System\DependencyInjection\CompilerPass\RedisNumberRangeIncrementerCompilerPass;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
@@ -37,6 +39,9 @@ class System extends Bundle
         $loader->load('flow.xml');
         $loader->load('rule.xml');
         $loader->load('state_machine.xml');
+        $loader->load('number_range.xml');
+                $container->addCompilerPass(new RedisNumberRangeIncrementerCompilerPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 0);
+
     }
 
     public function boot(): void

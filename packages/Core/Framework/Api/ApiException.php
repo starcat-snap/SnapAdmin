@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Framework\Api;
 
 use SnapAdmin\Core\Framework\Api\Exception\ExpectationFailedException;
-use SnapAdmin\Core\Framework\Api\Exception\InvalidSalesChannelIdException;
 use SnapAdmin\Core\Framework\Api\Exception\InvalidSyncOperationException;
 use SnapAdmin\Core\Framework\Api\Exception\InvalidVersionNameException;
 use SnapAdmin\Core\Framework\Api\Exception\LiveVersionDeleteException;
@@ -185,11 +184,6 @@ class ApiException extends HttpException
         return new InvalidSyncOperationException($message);
     }
 
-    public static function invalidSalesChannelId(string $salesChannelId): SnapAdminHttpException
-    {
-        return new InvalidSalesChannelIdException($salesChannelId);
-    }
-
     public static function invalidVersionName(): SnapAdminHttpException
     {
         return new InvalidVersionNameException();
@@ -244,15 +238,6 @@ class ApiException extends HttpException
             Response::HTTP_BAD_REQUEST,
             self::API_APP_ID_PARAMETER_IS_MISSING,
             'Parameter "id" is missing.',
-        );
-    }
-
-    public static function salesChannelIdParameterIsMissing(): self
-    {
-        return new self(
-            Response::HTTP_BAD_REQUEST,
-            self::API_SALES_CHANNEL_ID_PARAMETER_IS_MISSING,
-            'Parameter "salesChannelId" is missing.',
         );
     }
 

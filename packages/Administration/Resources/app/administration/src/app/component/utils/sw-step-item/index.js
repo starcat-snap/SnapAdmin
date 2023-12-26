@@ -8,7 +8,7 @@ const { Component } = SnapAdmin;
  * @status ready
  * @example-type dynamic
  * @component-example
- * <sw-step-item disabledIcon="regular-checkmark-xs">
+ * <sw-step-item disabledIcon="check">
  *     Finish
  * </sw-step-item>
  */
@@ -50,7 +50,7 @@ Component.register('sw-step-item', {
                 disabled: this.disabledIcon,
                 info: 'circle-xs',
                 error: 'x',
-                success: 'regular-checkmark-xs',
+                success: 'check',
             };
 
             return iconConfig[this.variant];

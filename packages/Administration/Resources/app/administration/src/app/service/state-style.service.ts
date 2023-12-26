@@ -55,7 +55,7 @@ export default class StateStyleService {
         neutral: 'chevron-down',
         progress: 'circle-xxs',
         warning: 'regular-exclamation-s',
-        done: 'regular-checkmark-xxs',
+        done: 'check',
         danger: 'x',
     };
 

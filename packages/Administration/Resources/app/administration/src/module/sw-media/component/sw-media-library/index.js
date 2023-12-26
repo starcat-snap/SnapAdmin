@@ -96,8 +96,8 @@ export default {
             subFolders: [],
             currentFolder: null,
             parentFolder: null,
-            presentation: 'medium-preview',
-            sorting: { sortBy: 'fileName', sortDirection: 'asc' },
+            presentation: 'small-preview',
+            sorting: { sortBy: 'createdAt', sortDirection: 'asc' },
             folderSorting: { sortBy: 'name', sortDirection: 'asc' },
         };
     },
@@ -163,18 +163,7 @@ export default {
 
             // ToDo NEXT-22186 - will be replaced by a new overview
             [
-                'tags',
-                'productMedia.product',
-                'categories',
-                'productManufacturers.products',
-                'mailTemplateMedia.mailTemplate',
-                'documentBaseConfigs',
                 'avatarUsers',
-                'paymentMethods',
-                'shippingMethods',
-                'cmsBlocks.section.page',
-                'cmsSections.page',
-                'cmsPages',
             ].forEach(association => {
                 const associationParts = association.split('.');
 

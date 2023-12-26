@@ -22,6 +22,7 @@ class Configuration implements ConfigurationInterface
             ->append($this->createProfilerSection())
             ->append($this->createFilesystemSection())
             ->append($this->createApiSection())
+            ->append($this->createNumberRangeSection())
             ->append($this->createStoreSection())
             ->append($this->createAdminWorkerSection())
             ->append($this->createAutoUpdateSection())
@@ -41,7 +42,19 @@ class Configuration implements ConfigurationInterface
 
         return $treeBuilder;
     }
+    private function createNumberRangeSection(): ArrayNodeDefinition
+    {
+        $treeBuilder = new TreeBuilder('number_range');
 
+        $rootNode = $treeBuilder->getRootNode();
+        $rootNode
+            ->children()
+            ->scalarNode('increment_storage')->end()
+            ->scalarNode('redis_url')->end()
+            ->end();
+
+        return $rootNode;
+    }
     private function createHtmlSanitizerSection(): ArrayNodeDefinition
     {
         $treeBuilder = new TreeBuilder('html_sanitizer');

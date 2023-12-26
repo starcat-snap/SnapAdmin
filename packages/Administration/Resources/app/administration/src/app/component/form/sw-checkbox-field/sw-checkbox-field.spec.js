@@ -102,7 +102,7 @@ describe('app/component/form/sw-checkbox-field', () => {
             await wrapper.findAll('.sw-field__label label').at(index).trigger('click');
             expect(wrapper.vm[checkboxId]).toBeTruthy();
 
-            expect(wrapper.find('.sw-field__checkbox-state sw-icon-stub').attributes('name')).toBe('regular-checkmark-xxs');
+            expect(wrapper.find('.sw-field__checkbox-state sw-icon-stub').attributes('name')).toBe('check');
         });
 
 
@@ -114,7 +114,7 @@ describe('app/component/form/sw-checkbox-field', () => {
             await wrapper.find(`input[name="sw-field--${checkboxId}"]`).setChecked();
             expect(wrapper.vm[checkboxId]).toBeTruthy();
 
-            expect(wrapper.find('.sw-field__checkbox-state sw-icon-stub').attributes('name')).toBe('regular-checkmark-xxs');
+            expect(wrapper.find('.sw-field__checkbox-state sw-icon-stub').attributes('name')).toBe('check');
         });
     });
 
@@ -204,7 +204,7 @@ describe('app/component/form/sw-checkbox-field', () => {
 
         expect(icon.attributes('name')).toBe('regular-minus-xxs');
         await firstCheckbox.find('input').setChecked();
-        expect(icon.attributes('name')).toBe('regular-checkmark-xxs');
+        expect(icon.attributes('name')).toBe('check');
     });
 
     it('should add partlyChecked class to checkbox if partlyChecked state is active and checkbox is not checked', async () => {

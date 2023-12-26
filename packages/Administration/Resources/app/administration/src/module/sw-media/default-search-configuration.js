@@ -14,12 +14,6 @@ const defaultSearchConfiguration = {
         _searchable: true,
         _score: searchRankingPoint.HIGH_SEARCH_RANKING,
     },
-    tags: {
-        name: {
-            _searchable: true,
-            _score: searchRankingPoint.HIGH_SEARCH_RANKING,
-        },
-    },
     mediaFolder: {
         name: {
             _searchable: true,

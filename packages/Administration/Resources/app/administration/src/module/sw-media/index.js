@@ -18,7 +18,6 @@ SnapAdmin.Component.extend('sw-media-collapse', 'sw-collapse', () => import('./c
 SnapAdmin.Component.register('sw-media-folder-info', () => import('./component/sidebar/sw-media-folder-info'));
 SnapAdmin.Component.register('sw-media-quickinfo', () => import('./component/sidebar/sw-media-quickinfo'));
 SnapAdmin.Component.register('sw-media-quickinfo-multiple', () => import('./component/sidebar/sw-media-quickinfo-multiple'));
-SnapAdmin.Component.register('sw-media-tag', () => import('./component/sidebar/sw-media-tag'));
 SnapAdmin.Component.register('sw-media-display-options', () => import('./component/sw-media-display-options'));
 SnapAdmin.Component.register('sw-media-breadcrumbs', () => import('./component/sw-media-breadcrumbs'));
 SnapAdmin.Component.register('sw-media-library', () => import('./component/sw-media-library'));

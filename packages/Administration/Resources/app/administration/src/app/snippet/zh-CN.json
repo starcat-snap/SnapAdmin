@@ -16,7 +16,9 @@
       "confirm": "确认",
       "open": "打开",
       "close": "关闭",
-      "back": "返回"
+      "back": "返回",
+      "success": "成功",
+      "info": "提示"
     },
     "sw-admin-menu": {
       "linkLogout": "注销",
@@ -30,6 +32,12 @@
     },
     "sw-simple-search-field": {
       "defaultPlaceholder": "搜索..."
+    },
+    "sw-entity-multi-select": {
+      "messageNoResults": "未找到 \"{term}\"."
+    },
+    "sw-entity-many-to-many-select": {
+      "messageNoResults": "未找到 \"{term}\"."
     },
     "entities": {
       "all": "全部",
@@ -72,6 +80,42 @@
       "messageNoResultsDetailV2": "尝试使用不同的关键字或检查您的搜索配置.",
       "addNew": "添加"
     },
+    "sw-media-modal-delete": {
+      "titleModal": {
+        "media": "删除文件",
+        "folder": "删除目录",
+        "mediaAndFolder": "删除目录和文件"
+      },
+      "deleteMessage": {
+        "media": "确定要删除 \"{name}\"? | 确定要删除 {count} 个文件?",
+        "folder": "确定要删除目录 \"{name}\"?<br>所有子文件夹和包含的媒体项也将被删除. | 确定要删除 {count} 个目录?<br>所有子文件夹和包含的媒体项也将被删除.",
+        "mediaAndFolder": "确定要删除 {mediaCount} 个文件 and {folderCount} 个目录?<br>所有子文件夹和包含的媒体项也将被删除."
+      },
+      "mediaQuickInfoMessage": "当前文件正在被使用",
+      "mediaInUsagesMessage": "以下文件仍在使用中",
+      "notification": {
+        "errorSingle": {
+          "message": {
+            "media": "删除文件 \"{name}\" 失败.",
+            "folder": "删除目录 \"{name}\" 失败."
+          }
+        },
+        "successOverall": {
+          "message": {
+            "media": "没有删除任何文件. | 文件已删除. | {count} / {total} 个文件已删除.",
+            "folder": "没有删除任何目录. | 目录已删除. | {count} / {total} 个目录被删除.",
+            "mediaAndFolder": "没有删除任何文件或目录. | 文件或目录已删除. | {count} / {total} 个文件或目录被删除."
+          }
+        },
+        "errorOverall": {
+          "message": {
+            "media": "删除文件异常.",
+            "folder": "删除目录异常.",
+            "mediaAndFolder": "删除文件和目录异常."
+          }
+        }
+      }
+    },
     "sw-media-modal-folder-dissolve": {
       "dissolveMessage": "确定要分解 \"{folderName}\" ? | Are you sure you want to dissolve {count} folders?",
       "buttonDissolve": "分解",
@@ -90,28 +134,49 @@
         }
       }
     },
+    "sw-media-modal-move": {
+      "titleModal": "移动 \"{mediaName}\" | 移动 {count} 个",
+      "buttonMove": "移动",
+      "notification": {
+        "successSingle": {
+          "message": "目录 \"{mediaName}\" 被移动."
+        },
+        "errorSingle": {
+          "message": "无法移动 \"{mediaName}\"."
+        },
+        "successOverall": {
+          "message": "移动成功."
+        },
+        "errorOverall": {
+          "message": "无法移动."
+        },
+        "errorFetchNavigation": {
+          "message": "无法获取文件夹导航."
+        }
+      }
+    },
     "sw-media-modal-folder-settings": {
       "labelSettings": "设置",
-      "labelSystem": "System folder",
-      "labelThumbnails": "Thumbnails",
-      "labelFolderName": "Name",
-      "labelInheritSettings": "Inherit settings from parent folder",
-      "labelGenerateThumbnails": "Generate thumbnails for this folder",
-      "labelThumbnailQuality": "Thumbnail quality",
-      "labelThumbnailSize": "Thumbnail size",
-      "labelEditList": "Edit list",
-      "labelStopEdit": "Stop editing",
-      "labelKeepProportions": "Keep aspect ratio",
+      "labelSystem": "系统目录",
+      "labelThumbnails": "缩略图",
+      "labelFolderName": "名称",
+      "labelInheritSettings": "从父文件夹继承设置",
+      "labelGenerateThumbnails": "从父文件夹继承设置",
+      "labelThumbnailQuality": "缩略图质量",
+      "labelThumbnailSize": "缩略图大小",
+      "labelEditList": "编辑列表",
+      "labelStopEdit": "停止编辑",
+      "labelKeepProportions": "默认保持原图的宽高比",
       "notification": {
         "success": {
-          "message": "Settings have been saved."
+          "message": "已保存设置."
         },
         "error": {
-          "message": "Error while saving settings."
+          "message": "保存设置时出错."
         }
       },
-      "labelDefaultFolder": "Default media location for",
-      "placeholderDefaultFolder": "Select entity..."
+      "labelDefaultFolder": "默认媒体位置",
+      "placeholderDefaultFolder": "选择..."
     },
     "sw-media-add-thumbnail-form": {
       "labelMaximumSize": "最大"
@@ -148,13 +213,13 @@
     },
     "sw-field": {
       "notification": {
-        "notificationCopySuccessMessage": "Text has been copied to clipboard.",
-        "notificationCopyFailureMessage": "Text could not be copied to clipboard."
+        "notificationCopySuccessMessage": "文本已复制到剪贴板.",
+        "notificationCopyFailureMessage": "无法将文本复制到剪贴板."
       },
       "titleShowPassword": "显示密码",
       "titleHidePassword": "隐藏密码",
-      "tooltipRestoreInheritance": "Restore inheritance",
-      "tooltipRemoveInheritance": "Remove inheritance"
+      "tooltipRestoreInheritance": "恢复继承",
+      "tooltipRemoveInheritance": "删除继承"
     },
     "sw-time-ago": {
       "justNow": "现在",
@@ -163,78 +228,104 @@
       "minutesFromNow": "1分钟后 | {minutesFromNow} 分钟后"
     },
     "sw-media-folder-item": {
-      "labelContextMenuRename": "Rename",
-      "labelContextMenuMove": "Move",
-      "labelContextMenuShowMedia": "Show media",
-      "labelContextMenuShowSettings": "Settings",
-      "labelContextMenuDissolve": "Dissolve",
+      "labelContextMenuRename": "重命名",
+      "labelContextMenuMove": "移动",
+      "labelContextMenuShowMedia": "显示",
+      "labelContextMenuShowSettings": "设置",
+      "labelContextMenuDissolve": "分解",
       "notification": {
         "errorBlankItemName": {
-          "message": "Folder could not be saved: Please enter a name."
+          "message": "无法保存文件夹:请输入名称."
         },
         "renamingError": {
-          "message": "Error saving folder."
+          "message": "保存目录失败."
         },
         "errorInvalidItemName": {
-          "message": "Folder could not be saved: Please enter a valid name."
+          "message": "无法保存文件夹:请输入有效名称."
         }
       }
     },
     "sw-media-media-item": {
-      "labelContextMenuCopyLink": "Copy Link",
-      "labelContextMenuReplace": "Replace",
-      "labelContextMenuRename": "Rename",
-      "labelContextMenuDetail": "Details",
-      "labelContextMenuMove": "Move",
+      "labelContextMenuCopyLink": "复制链接",
+      "labelContextMenuReplace": "替换",
+      "labelContextMenuRename": "重命名",
+      "labelContextMenuDetail": "详情",
+      "labelContextMenuMove": "移动",
       "notification": {
         "errorBlankItemName": {
-          "message": "Media item could not be saved: Please enter a name."
+          "message": "无法保存媒体项目:请输入名称."
         },
         "renamingSuccess": {
-          "message": "Media item has been renamed."
+          "message": "已重命名媒体项."
         },
         "renamingError": {
-          "message": "Error saving file."
+          "message": "保存文件失败."
         },
         "fileNameTooLong": {
-          "message": "Provided file name is too long. The maximum length is {length} characters."
+          "message": "提供的文件名太长。最大长度为 {length} 个字符."
         },
         "settingsSuccess": {
-          "message": "Settings have been saved."
+          "message": "已保存设置."
         }
       },
-      "labelUploading": "Uploading..."
+      "labelUploading": "上传中..."
     },
     "sw-media-upload-v2": {
       "buttonFileUpload": "上传文件",
       "buttonFilesUpload": "批量上传文件",
-      "buttonUrlUpload": "Upload file from URL",
-      "buttonSwitchToFileUpload": "Upload file from your computer",
+      "buttonUrlUpload": "从 URL 上传文件",
+      "buttonSwitchToFileUpload": "从本地上传文件",
       "buttonSwitchToUrlUpload": "从 url 上传文件",
       "buttonOpenMedia": "打开媒体库",
       "notification": {
         "success": {
           "title": "上传媒体",
-          "message": "No file has been saved. | File has been saved. | {count} / {total} files have been saved."
+          "message": "未保存任何文件. | 文件已保存. | {count} / {total} 个文件已保存."
         },
         "failure": {
-          "message": "Error while uploading file."
+          "message": "上传文件失败."
         },
         "illegalFilename": {
-          "title": "Invalid filename",
-          "message": "The filename \"{fileName}\" contains invalid characters."
+          "title": "无效文件名",
+          "message": "文件名 \"{fileName}\" 包含无效字符."
         },
         "invalidFileType": {
-          "message": "The selected file \"{name}\" has an unsupported format. Please use one of the following types: {supportedTypes}."
+          "message": "所选文件 \"{name}\" 格式不支持. 请使用下面文件类型: {supportedTypes}."
         },
         "invalidFileSize": {
-          "message": "The selected file \"{name}\" is too big to upload. File size must not exceed {limit}."
+          "message": "所选文件 \"{name}\" 太大无法上传。 文件大小不能超过 {limit}."
         },
         "invalidUrl": {
-          "message": "The provided URL is invalid."
+          "message": "提供的 URL 无效."
         }
       },
-      "caption": "Drag files here to upload"
+      "caption": "将文件拖到这里上传"
+    },
+    "sw-media-upload": {
+      "buttonFileUpload": "上传文件",
+      "buttonUrlUpload": "从 URL 上传文件",
+      "buttonSwitchToFileUpload": "从本地上传",
+      "buttonSwitchToUrlUpload": "从 URL 上传文件",
+      "buttonOpenMedia": "打开媒体库",
+      "notification": {
+        "success": {
+          "message": "未保存任何文件. | 文件已保存. | {count} / {total} 个文件已保存."
+        },
+        "assigned": {
+          "message": "文件已分配."
+        },
+        "failure": {
+          "message": "上传文件异常."
+        },
+        "illegalFilename": {
+          "message": "文件 \"{fileName}\" 包含无效字符."
+        },
+        "illegalFileUrl": {
+          "title": "无效 URL",
+          "message": "不允许从本地 url 上传."
+        }
+      },
+      "caption": "将文件拖到这里上传"
     },
     "sw-search-preferences-modal": {
       "title": "搜索偏好设置",

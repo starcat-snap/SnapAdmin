@@ -93,17 +93,17 @@ describe('sw-extension-permissions-details-modal', () => {
             .map((td) => td.find('.icon').text());
 
         expect(allIcons).toStrictEqual([
-            'name:regular-checkmark-xs color:#37D046',
+            'name:check color:#37D046',
             'name:x color:#DE294C',
-            'name:regular-checkmark-xs color:#37D046',
+            'name:check color:#37D046',
             'name:x color:#DE294C',
-            'name:regular-checkmark-xs color:#37D046',
+            'name:check color:#37D046',
             'name:x color:#DE294C',
-            'name:regular-checkmark-xs color:#37D046',
+            'name:check color:#37D046',
             'name:x color:#DE294C',
-            'name:regular-checkmark-xs color:#37D046',
+            'name:check color:#37D046',
             'name:x color:#DE294C',
-            'name:regular-checkmark-xs color:#37D046',
+            'name:check color:#37D046',
             'name:x color:#DE294C',
         ]);
     });
@@ -155,22 +155,22 @@ describe('sw-extension-permissions-details-modal', () => {
             .map(td => td.find('.icon').text());
 
         expect(allIcons).toStrictEqual([
-            'name:regular-checkmark-xs color:#37D046',
-            'name:regular-checkmark-xs color:#37D046',
-            'name:regular-checkmark-xs color:#37D046',
-            'name:regular-checkmark-xs color:#37D046',
+            'name:check color:#37D046',
+            'name:check color:#37D046',
+            'name:check color:#37D046',
+            'name:check color:#37D046',
             'name:x color:#DE294C',
             'name:x color:#DE294C',
-            'name:regular-checkmark-xs color:#37D046',
+            'name:check color:#37D046',
             'name:x color:#DE294C',
             'name:x color:#DE294C',
             'name:x color:#DE294C',
-            'name:regular-checkmark-xs color:#37D046',
+            'name:check color:#37D046',
             'name:x color:#DE294C',
-            'name:regular-checkmark-xs color:#37D046',
-            'name:regular-checkmark-xs color:#37D046',
-            'name:regular-checkmark-xs color:#37D046',
-            'name:regular-checkmark-xs color:#37D046',
+            'name:check color:#37D046',
+            'name:check color:#37D046',
+            'name:check color:#37D046',
+            'name:check color:#37D046',
         ]);
     });
 });

@@ -73,11 +73,11 @@ export default {
                 property: 'username',
                 label: this.$tc('sw-users-permissions.users.user-grid.labelUsername'),
             }, {
-                property: 'firstName',
-                label: this.$tc('sw-users-permissions.users.user-grid.labelFirstName'),
+                property: 'nickName',
+                label: this.$tc('sw-users-permissions.users.user-grid.labelNickName'),
             }, {
-                property: 'lastName',
-                label: this.$tc('sw-users-permissions.users.user-grid.labelLastName'),
+                property: 'userNumber',
+                label: this.$tc('sw-users-permissions.users.user-grid.labelUserNumber'),
             }, {
                 property: 'aclRoles',
                 sortable: false,

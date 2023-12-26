@@ -67,9 +67,6 @@
 
         <service id="snap.maintenance.client" class="GuzzleHttp\Client"/>
 
-        <service id="SnapAdmin\Core\Maintenance\System\Service\ShopConfigurator">
-            <argument type="service" id="Doctrine\DBAL\Connection"/>
-        </service>
 
         <service id="SnapAdmin\Core\Maintenance\User\Command\UserCreateCommand">
             <argument type="service" id="SnapAdmin\Core\Maintenance\User\Service\UserProvisioner"/>
@@ -83,6 +80,7 @@
 
         <service id="SnapAdmin\Core\Maintenance\User\Service\UserProvisioner" public="true">
             <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="SnapAdmin\Core\System\NumberRange\ValueGenerator\NumberRangeValueGeneratorInterface" />
         </service>
 
         <service id="SnapAdmin\Core\Maintenance\System\Service\SetupDatabaseAdapter"/>

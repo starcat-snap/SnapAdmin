@@ -65,9 +65,9 @@
         "cardLabel": "用户"
       },
       "user-grid": {
-        "labelUsername": "用户名称",
-        "labelFirstName": "First name",
-        "labelLastName": "Last name",
+        "labelUsername": "用户名",
+        "labelNickName": "昵称",
+        "labelUserNumber": "编号",
         "labelRoles": "角色",
         "labelEmail": "邮箱地址",
         "contextMenuEdit": "编辑",
@@ -92,20 +92,19 @@
       "user-detail": {
         "labelCard": "基本信息",
         "labelIntegrationsCard": "集成",
-        "labelFirstName": "First name",
-        "labelLastName": "Last name",
-        "labelEmail": "Email address",
-        "errorEmailUsed": "This email address is already in use.",
-        "errorUsernameUsed": "This username is already in use.",
-        "labelUsername": "User name",
-        "labelPassword": "Password",
-        "labelProfilePicture": "Profile picture",
+        "labelNickName": "昵称",
+        "labelUserNumber": "编号",
+        "labelEmail": "邮箱",
+        "errorEmailUsed": "邮箱地址已存在.",
+        "errorUsernameUsed": "用户名已存在.",
+        "labelUsername": "用户名",
+        "labelPassword": "密码",
+        "labelProfilePicture": "头像",
         "labelLanguage": "语言",
         "labelLanguagePlaceholder": "选择语言...",
         "labelChangePassword": "修改密码",
-        "labelAdministrator": "Administrator",
+        "labelAdministrator": "管理员",
         "labelTimezone": "时区",
-        "labelJobTitle": "Job title",
         "labelRoles": "角色",
         "labelNewPassword": "新密码",
         "labelNewUser": "新用户",
@@ -118,13 +117,12 @@
         "readAccess": "读",
         "contextMenuEdit": "编辑",
         "contextMenuDelete": "删除",
-        "textChangePassword": "Pressing the \"change\" button will immediately save the new password!",
-        "addAccessKey": "Create access key",
-        "noAccessKeysTitle": "No access keys available",
-        "noAccessKeysSubline": "Create access keys here",
-        "labelAccessKey": "Access key",
-        "labelPermissions": "Permissions",
-        "disabledRoleSelectWarning": "Roles are only available for users that don't have administrator rights.",
+        "addAccessKey": "创建访问密钥",
+        "noAccessKeysTitle": "暂无可用密钥",
+        "noAccessKeysSubline": "",
+        "labelAccessKey": "访问密钥",
+        "labelPermissions": "权限",
+        "disabledRoleSelectWarning": "角色仅对没有管理员权限的用户可用.",
         "passwordConfirmation": {
           "titleConfirmPasswordModal": "确认密码",
           "labelConfirmPassword": "密码",
@@ -135,29 +133,29 @@
           "notificationPasswordErrorMessage": "请正确提交当前密码."
         },
         "modal": {
-          "detailModalTitle": "Create integration",
-          "detailModalTitleEdit": "Edit",
-          "confirmDelete": "Are you sure you want to delete this integration?",
-          "buttonApply": "Save integration",
-          "buttonApplyEdit": "Save changes",
-          "buttonCancel": "Cancel",
-          "buttonDelete": "Delete",
-          "buttonCreateNewApiKeys": "Create new API key",
-          "hintCreateNewApiKeys": "For generating new API access keys, updating all associated scripts and applications is recommended.",
-          "labelFieldLabel": "Name",
+          "detailModalTitle": "创建",
+          "detailModalTitleEdit": "编辑",
+          "confirmDelete": "确定要删除吗?",
+          "buttonApply": "保存",
+          "buttonApplyEdit": "保存",
+          "buttonCancel": "取消",
+          "buttonDelete": "删除",
+          "buttonCreateNewApiKeys": "创建新 API key",
+          "hintCreateNewApiKeys": "为了生成新的 API key，建议更新所有相关的脚本和应用程序.",
+          "labelFieldLabel": "名称",
           "idFieldLabel": "Access key ID",
           "secretFieldLabel": "Secure access key",
-          "secretHelpText": "Please copy your access key now. For safety reasons it will be no longer visible after saving.",
-          "messageSaveSuccess": "Integration saved.",
-          "messageSaveError": "Integration could not be saved.",
-          "messageCreateNewError": "Integration could not be saved."
+          "secretHelpText": "现在请复制您的访问密钥。出于安全考虑，它将在保存后不再可见.",
+          "messageSaveSuccess": "保存成功.",
+          "messageSaveError": "保存失败.",
+          "messageCreateNewError": "保存失败."
         },
         "notification": {
           "saveError": {
-            "message": "The user \"{name}\" could not be saved."
+            "message": "用户 \"{name}\" 保存失败."
           },
           "saveSuccess": {
-            "message": "User \"{name}\" saved."
+            "message": "用 \"{name}\" 保存成功."
           },
           "invalidEmailErrorMessage": "请输入正确邮箱地址.",
           "duplicateEmailErrorMessage": "邮箱已经被注册了."
@@ -167,17 +165,17 @@
   },
   "sw-privileges": {
     "roles": {
-      "all": "All",
-      "viewer": "View",
-      "editor": "Edit",
-      "creator": "Create",
-      "deleter": "Delete"
+      "all": "全部",
+      "viewer": "查看",
+      "editor": "编辑",
+      "creator": "创建",
+      "deleter": "删除"
     },
     "permissionType": {
-      "read": "Read",
-      "update": "Update",
-      "create": "Create",
-      "delete": "Delete"
+      "read": "读",
+      "update": "更新",
+      "create": "创建",
+      "delete": "删除"
     },
     "permissions": {
       "parents": {
@@ -198,10 +196,10 @@
     },
     "additional_permissions": {
       "system": {
-        "label": "Settings"
+        "label": "设置"
       },
       "user": {
-        "label": "User"
+        "label": "用户"
       },
       "marketing": {
         "label": "Marketing"
@@ -225,8 +223,8 @@
         "api_proxy_switch-customer": "Act on behalf of a customer"
       },
       "app": {
-        "label": "Apps",
-        "all": "All",
+        "label": "插件",
+        "all": "全部",
         "disabledCheckboxMessage": "To deactivate this option, you must first deactivate the All option."
       }
     }
