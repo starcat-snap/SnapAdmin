@@ -25,7 +25,10 @@ class Migration1536233560BasicData extends MigrationStep
         $this->createDefaultSnippetSets($connection);
         $this->createDefaultMediaFolders($connection);
         $this->createSystemConfigOptions($connection);
+    }
 
+    public function updateDestructive(Connection $connection): void
+    {
     }
 
     private function createSystemConfigOptions(Connection $connection): void
@@ -42,10 +45,6 @@ class Migration1536233560BasicData extends MigrationStep
             'configuration_value' => '{"_value": 8}',
             'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
         ]);
-    }
-
-    public function updateDestructive(Connection $connection): void
-    {
     }
 
     private function createDefaultMediaFolders(Connection $connection): void
@@ -105,7 +104,7 @@ class Migration1536233560BasicData extends MigrationStep
     private function getMediaFolderName(string $entity): string
     {
         $capitalizedEntityParts = array_map(
-            static fn($part) => ucfirst((string)$part),
+            static fn ($part) => ucfirst((string) $part),
             explode('_', $entity)
         );
 

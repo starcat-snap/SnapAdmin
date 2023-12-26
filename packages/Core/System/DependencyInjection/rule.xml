@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="SnapAdmin\Core\System\Rule\RuleDefinition">
+            <tag name="snap.entity.definition"/>
+        </service>
+        <service id="SnapAdmin\Core\System\Rule\Aggregate\RuleCondition\RuleConditionDefinition">
+            <tag name="snap.entity.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Rule\DataAbstractionLayer\RuleIndexer">
+            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\Common\IteratorFactory"/>
+            <argument type="service" id="rule.repository"/>
+            <argument type="service" id="SnapAdmin\Core\System\Rule\DataAbstractionLayer\RuleAreaUpdater"/>
+            <argument type="service" id="event_dispatcher"/>
+            <tag name="shopware.entity_indexer"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Rule\DataAbstractionLayer\RuleIndexerSubscriber">
+            <tag name="kernel.event_subscriber"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Rule\DataAbstractionLayer\RuleAreaUpdater">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="SnapAdmin\Core\System\Rule\RuleDefinition"/>
+            <argument type="service" id="SnapAdmin\Core\Framework\Rule\Collector\RuleConditionRegistry"/>
+            <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\CacheInvalidator"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+    </services>
+</container>

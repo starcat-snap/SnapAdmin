@@ -83,6 +83,8 @@ class Framework extends Bundle
         $loader->load('update.xml');
         $loader->load('rate-limiter.xml');
         $loader->load('increment.xml');
+        $loader->load('rule.xml');
+        $loader->load('script.xml');
 
         if ($container->getParameter('kernel.environment') === 'test') {
             $loader->load('services_test.xml');

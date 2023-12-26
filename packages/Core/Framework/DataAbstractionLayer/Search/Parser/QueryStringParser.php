@@ -87,7 +87,7 @@ class QueryStringParser
             case 'multi':
                 $operator = MultiFilter::CONNECTION_AND;
 
-                if (isset($query['operator']) && mb_strtoupper((string)$query['operator']) === MultiFilter::CONNECTION_OR) {
+                if (isset($query['operator']) && mb_strtoupper((string) $query['operator']) === MultiFilter::CONNECTION_OR) {
                     $operator = MultiFilter::CONNECTION_OR;
                 }
 
@@ -209,12 +209,12 @@ class QueryStringParser
             ],
             $query instanceof NotFilter => [
                 'type' => 'not',
-                'queries' => array_map(static fn(Filter $nested) => self::toArray($nested), $query->getQueries()),
+                'queries' => array_map(static fn (Filter $nested) => self::toArray($nested), $query->getQueries()),
                 'operator' => $query->getOperator(),
             ],
             $query instanceof MultiFilter => [
                 'type' => 'multi',
-                'queries' => array_map(static fn(Filter $nested) => self::toArray($nested), $query->getQueries()),
+                'queries' => array_map(static fn (Filter $nested) => self::toArray($nested), $query->getQueries()),
                 'operator' => $query->getOperator(),
             ],
             $query instanceof ContainsFilter => [

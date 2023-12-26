@@ -1,0 +1,135 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="SnapAdmin\Core\System\Flow\FlowDefinition">
+            <tag name="snap.entity.definition" />
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\Aggregate\FlowSequence\FlowSequenceDefinition">
+            <tag name="snap.entity.definition" />
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\Dispatching\FlowDispatcher" decorates="event_dispatcher" decoration-priority="1000">
+            <argument type="service" id="SnapAdmin\Core\System\Flow\Dispatching\FlowDispatcher.inner"/>
+            <argument type="service" id="logger"/>
+            <argument type="service" id="SnapAdmin\Core\System\Flow\Dispatching\FlowFactory"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\Dispatching\Action\StopFlowAction">
+            <tag name="flow.action" priority="1" key="action.stop.flow" />
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\Api\FlowActionCollector">
+            <argument type="tagged" tag="flow.action" />
+            <argument type="service" id="event_dispatcher"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\Dispatching\FlowLoader" public="true">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="logger"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\Dispatching\CachedFlowLoader" decorates="SnapAdmin\Core\System\Flow\Dispatching\FlowLoader" decoration-priority="-1000" public="true">
+            <argument type="service" id="SnapAdmin\Core\System\Flow\Dispatching\CachedFlowLoader.inner"/>
+            <argument type="service" id="cache.object"/>
+
+            <tag name="kernel.event_subscriber" />
+            <tag name="kernel.reset" method="reset"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\Indexing\FlowPayloadUpdater">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="SnapAdmin\Core\System\Flow\Dispatching\FlowBuilder"/>
+            <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\CacheInvalidator"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\Indexing\FlowIndexer">
+            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\Common\IteratorFactory"/>
+            <argument type="service" id="flow.repository"/>
+            <argument type="service" id="SnapAdmin\Core\System\Flow\Indexing\FlowPayloadUpdater"/>
+            <argument type="service" id="event_dispatcher"/>
+
+            <tag name="shopware.entity_indexer"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\Indexing\FlowIndexerSubscriber">
+            <argument type="service" id="messenger.bus.snap"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\Dispatching\FlowBuilder"/>
+
+
+        <service id="SnapAdmin\Core\System\Flow\Dispatching\Storer\MailStorer">
+            <tag name="flow.storer"/>
+        </service>
+
+
+        <service id="SnapAdmin\Core\System\Flow\Dispatching\Storer\UserStorer">
+            <argument type="service" id="user_recovery.repository"/>
+            <argument type="service" id="event_dispatcher"/>
+
+            <tag name="flow.storer"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\Dispatching\Storer\MessageStorer">
+            <tag name="flow.storer"/>
+        </service>
+
+
+        <service id="SnapAdmin\Core\System\Flow\Dispatching\FlowFactory" public="true">
+            <argument type="tagged_iterator" tag="flow.storer"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\Rule\OrderTagRule">
+            <tag name="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\Rule\OrderTrackingCodeRule">
+            <tag name="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\Rule\OrderDeliveryStatusRule">
+            <tag name="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\Rule\OrderCreatedByAdminRule">
+            <tag name="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\Rule\OrderTransactionStatusRule">
+            <tag name="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\Rule\OrderStatusRule">
+            <tag name="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\Rule\OrderCustomFieldRule">
+            <tag name="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\Rule\OrderDocumentTypeRule">
+            <tag name="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\Aggregate\FlowTemplate\FlowTemplateDefinition">
+            <tag name="snap.entity.definition" />
+        </service>
+
+        <service id="SnapAdmin\Core\System\Flow\DataAbstractionLayer\FieldSerializer\FlowTemplateConfigFieldSerializer">
+            <argument type="service" id="validator" />
+            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry" />
+            <tag name="shopware.field_serializer"/>
+        </service>
+
+    </services>
+</container>

@@ -220,7 +220,7 @@
         </service>
 
         <service
-                id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldResolver\ManyToOneAssociationFieldResolver">
+            id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldResolver\ManyToOneAssociationFieldResolver">
             <argument type="service"
                       id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityDefinitionQueryHelper"/>
             <argument type="service" id="Doctrine\DBAL\Connection"/>
@@ -229,12 +229,12 @@
         </service>
 
         <service
-                id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldResolver\OneToManyAssociationFieldResolver">
+            id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldResolver\OneToManyAssociationFieldResolver">
             <tag name="snap.field_resolver" priority="-50"/>
         </service>
 
         <service
-                id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldResolver\ManyToManyAssociationFieldResolver">
+            id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldResolver\ManyToManyAssociationFieldResolver">
             <tag name="snap.field_resolver" priority="-50"/>
         </service>
 
@@ -250,19 +250,19 @@
         </service>
 
         <service
-                id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldAccessorBuilder\DefaultFieldAccessorBuilder">
+            id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldAccessorBuilder\DefaultFieldAccessorBuilder">
             <tag name="snap.field_accessor_builder" priority="-200"/>
         </service>
 
         <service
-                id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldAccessorBuilder\ConfigJsonFieldAccessorBuilder">
+            id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldAccessorBuilder\ConfigJsonFieldAccessorBuilder">
             <argument type="service" id="Doctrine\DBAL\Connection"/>
 
             <tag name="snap.field_accessor_builder" priority="-100"/>
         </service>
 
         <service
-                id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldAccessorBuilder\CustomFieldsAccessorBuilder">
+            id="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldAccessorBuilder\CustomFieldsAccessorBuilder">
             <argument type="service" id="SnapAdmin\Core\System\CustomField\CustomFieldService"/>
             <argument type="service" id="Doctrine\DBAL\Connection"/>
 
@@ -274,12 +274,12 @@
         </service>
 
         <service
-                id="SnapAdmin\Core\Framework\DataAbstractionLayer\Version\Aggregate\VersionCommit\VersionCommitDefinition">
+            id="SnapAdmin\Core\Framework\DataAbstractionLayer\Version\Aggregate\VersionCommit\VersionCommitDefinition">
             <tag name="snap.entity.definition"/>
         </service>
 
         <service
-                id="SnapAdmin\Core\Framework\DataAbstractionLayer\Version\Aggregate\VersionCommitData\VersionCommitDataDefinition">
+            id="SnapAdmin\Core\Framework\DataAbstractionLayer\Version\Aggregate\VersionCommitData\VersionCommitDataDefinition">
             <tag name="snap.entity.definition"/>
         </service>
 
@@ -320,7 +320,12 @@
 
             <tag name="snap.field_serializer"/>
         </service>
+        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\StateMachineStateFieldSerializer">
+            <argument type="service" id="validator"/>
+            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
 
+            <tag name="snap.field_serializer"/>
+        </service>
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\BoolFieldSerializer">
             <argument type="service" id="validator"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
@@ -422,7 +427,7 @@
         </service>
 
         <service
-                id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\ManyToManyAssociationFieldSerializer">
+            id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\ManyToManyAssociationFieldSerializer">
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\WriteCommandExtractor"/>
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
 
@@ -485,7 +490,7 @@
         </service>
 
         <service
-                id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\TranslationsAssociationFieldSerializer">
+            id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\TranslationsAssociationFieldSerializer">
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\WriteCommandExtractor"/>
             <argument type="service"
                       id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityWriteGatewayInterface"/>

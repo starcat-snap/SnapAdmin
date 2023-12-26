@@ -31,13 +31,13 @@ class CreateMigrationCommand extends Command
      */
     public function __construct(
         private readonly DefinitionInstanceRegistry $registry,
-        private readonly MigrationQueryGenerator    $queryGenerator,
-        private readonly KernelInterface            $kernel,
-        private readonly Filesystem                 $filesystem,
-        private readonly MigrationFileRenderer      $migrationFileRenderer,
-        private readonly string                     $coreDir,
-        private readonly string                     $snapAdminVersion,
-        private readonly \DateTimeImmutable         $now = new \DateTimeImmutable()
+        private readonly MigrationQueryGenerator $queryGenerator,
+        private readonly KernelInterface $kernel,
+        private readonly Filesystem $filesystem,
+        private readonly MigrationFileRenderer $migrationFileRenderer,
+        private readonly string $coreDir,
+        private readonly string $snapAdminVersion,
+        private readonly \DateTimeImmutable $now = new \DateTimeImmutable()
     ) {
         parent::__construct();
     }
