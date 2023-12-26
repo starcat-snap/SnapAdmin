@@ -244,16 +244,16 @@
       },
       "sw-extension-card-base": {
         "subscriptionLabel": "Subscription:",
-        "inactiveLabel": "(inactive)",
-        "purchasedLabel": "Purchased:",
+        "inactiveLabel": "(未激活)",
+        "purchasedLabel": "已购买:",
         "installedLabel": "安装时间:",
         "openExtensionLabel": "打开",
         "installExtensionLabel": "安装",
         "labelAcceptAndInstall": "Accept and install",
         "allowDisableTooltip": "This app uses its own data structures, that affect your system. Therefore, the app cannot be deactivated.",
         "contextMenu": {
-          "getHelpLabel": "Get help",
-          "seeDetailsLabel": "See details",
+          "getHelpLabel": "帮助",
+          "seeDetailsLabel": "查看详情",
           "config": "配置",
           "privacyAndSafetyLabel": "Data privacy & safety",
           "removeLabel": "移除",
@@ -262,8 +262,8 @@
           "updateLabel": "更新至 {version}",
           "rateLabel": "Rate extension",
           "policyExtensions": "Privacy policy extensions",
-          "permissions": "See permissions",
-          "openExtension": "Open extension"
+          "permissions": "查看权限",
+          "openExtension": "打开插件"
         }
       },
       "sw-extension-card-bought": {
