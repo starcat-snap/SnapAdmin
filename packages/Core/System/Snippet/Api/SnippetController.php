@@ -3,9 +3,9 @@
 namespace SnapAdmin\Core\System\Snippet\Api;
 
 use SnapAdmin\Core\Framework\Context;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Exception\InvalidLimitQueryException;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\Snippet\Files\SnippetFileCollection;
+use SnapAdmin\Core\System\Snippet\SnippetException;
 use SnapAdmin\Core\System\Snippet\SnippetService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -32,7 +32,15 @@ class SnippetController extends AbstractController
         $limit = $request->request->getInt('limit', 25);
 
         if ($limit < 1) {
-            throw new InvalidLimitQueryException($limit);
+            throw SnippetException::invalidLimitQuery($limit);
+        }
+
+        $filters = $request->request->all('filters');
+
+        foreach (array_keys($filters) as $filterName) {
+            if (!\is_string($filterName)) {
+                throw SnippetException::invalidFilterName();
+            }
         }
 
         return new JsonResponse(
