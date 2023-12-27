@@ -6,6 +6,7 @@ use Composer\Console\Input\InputOption;
 use SnapAdmin\Core\Framework\Adapter\Console\SnapAdminStyle;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin\Util\AssetService;
+use SnapAdmin\Core\Installer\Installer;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -24,8 +25,9 @@ class AssetInstallCommand extends Command
      */
     public function __construct(
         private readonly KernelInterface $kernel,
-        private readonly AssetService $assetService,
-    ) {
+        private readonly AssetService    $assetService,
+    )
+    {
         parent::__construct();
     }
 
@@ -42,7 +44,8 @@ class AssetInstallCommand extends Command
             $io->writeln(sprintf('Copying files for bundle: %s', $bundle->getName()));
             $this->assetService->copyAssetsFromBundle($bundle->getName(), $input->getOption('force'));
         }
-
+        $io->writeln('Copying files for bundle: Installer');
+        $this->assetService->copyAssets(new Installer(), $input->getOption('force'));
         $publicDir = $this->kernel->getProjectDir() . '/public/';
 
         if (!file_exists($publicDir . '/.htaccess') && file_exists($publicDir . '/.htaccess.dist')) {

@@ -1,0 +1,4 @@
+framework:
+    default_locale: zh
+    translator:
+        fallbacks: [ 'zh' ]

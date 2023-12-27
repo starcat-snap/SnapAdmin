@@ -54,12 +54,12 @@ describe('src/app/component/meteor/sw-meteor-card', () => {
     it('should render the title as prop', async () => {
         const wrapper = await createWrapper({
             props: {
-                title: 'Welcome to Shopware',
+                title: 'Welcome to SnapAdmin',
             },
         });
 
         const title = wrapper.find('.sw-meteor-card__title');
-        expect(title.text()).toBe('Welcome to Shopware');
+        expect(title.text()).toBe('Welcome to SnapAdmin');
     });
 
     it('should render as hero card', async () => {

@@ -1,0 +1,88 @@
+{% extends '@Installer/installer/base.html.twig' %}
+
+{% block base_content %}
+    <div class="card__title">
+        <h2>{{ "SnapAdmin.installer.configuration_header"|trans }}</h2>
+    </div>
+
+    <form id="shop-configuration" action="{{ url('installer.configuration') }}" method="post">
+        <div class="card__body">
+            {% if error %}
+                <div class="alert alert-error">
+                    <pre>{{ error }}</pre>
+                </div>
+            {% endif %}
+
+            <p>
+                <label for="config_admin_email">{{ "SnapAdmin.installer.configuration_admin_mail"|trans }}</label>
+                <input type="email"
+                       value="{{ parameters.config_admin_email ?? '' }}"
+                       name="config_admin_email"
+                       id="config_admin_email"
+                       required="required"/>
+            </p>
+
+            <div class="form-group form-group--50">
+                <p>
+                    <label for="config_admin_username">{{ "SnapAdmin.installer.configuration_admin_username"|trans }}</label>
+                    <input type="text"
+                           value="{{ parameters.config_admin_username ?? '' }}"
+                           name="config_admin_username"
+                           id="config_admin_username"
+                           required="required"/>
+                </p>
+
+                <p>
+                    <label for="config_admin_password">{{ "SnapAdmin.installer.configuration_admin_password"|trans }}</label>
+                    <input type="password"
+                           value="{{ parameters.config_admin_password ?? '' }}"
+                           name="config_admin_password"
+                           id="config_admin_password"
+                           required="required"/>
+                </p>
+            </div>
+        </div>
+
+
+        <div class="card__footer flex-container">
+            <a href="{{ url('installer.database-import') }}" class="btn btn-default flex-item">{{ "SnapAdmin.installer.back"|trans }}</a>
+            <button type="submit"
+                    class="btn btn-primary flex-item flex-right"
+                    onclick="document.getElementById('shop-configuration').classList.add('is--submitted'); setLastActivity();">
+            {{ "SnapAdmin.installer.forward"|trans }}
+            </button>
+        </div>
+    </form>
+
+
+    <script>
+        toggleDefaultCurrency();
+        function toggleDefaultCurrency() {
+            const toggles = document.getElementsByClassName('currency-toggle');
+            for (let toggle of toggles) {
+                if (toggle.getAttribute('disabled') === null) {
+                    // skip all toggles that were previously not the default
+                    continue;
+                }
+
+                toggle.removeAttribute('disabled');
+                toggle.classList.remove('is--selected');
+                if (!toggle.classList.contains('toggled')) {
+                    // only uncheck if it was not manually toggled
+                    toggle.removeAttribute('checked');
+                }
+            }
+
+            const newDefaultToggle = document.getElementById(
+                document.getElementById('config_shop_currency').value.toLowerCase()
+            );
+            newDefaultToggle.setAttribute('checked', '');
+            newDefaultToggle.setAttribute('disabled', '');
+            newDefaultToggle.classList.add('is--selected');
+        }
+
+        function setLastActivity() {
+            document.cookie = 'lastActivity='+Math.round(Date.now() / 1000)+';path=/admin';
+        }
+    </script>
+{% endblock %}

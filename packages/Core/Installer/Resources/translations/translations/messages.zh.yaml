@@ -1,0 +1,105 @@
+SnapAdmin.installer:
+    header_title: 安装步骤
+    menuitem_language-selection: 开始
+    menuitem_requirements: '系统要求'
+    menuitem_database-configuration: '数据库配置'
+    menuitem_database-import: 安装
+    menuitem_edition: 'SnapAdmin licence'
+    menuitem_configuration: 配置
+    menuitem_finish: 完成
+    menuitem_license: GTC
+    license_incorrect: 'The licence key you have entered does not appear to be valid.'
+    license_does_not_match: 'The licence key you have entered does not match any commercial SnapAdmin version.'
+    license_domain_error: 'The licence key you have entered is not valid for the domain: '
+    version_text: '版本:'
+    back: 返回
+    forward: 下一步
+    start: 开始
+    start_installation: '开始安装'
+    select_language_zh: 中国
+    select_country_chn: China
+    language-selection_welcome_title: 'Welcome to SnapAdmin'
+    language-selection_select_language: '向导语言'
+    language-selection_header: 'SnapAdmin 安装程序'
+    language-selection_info_message: '此处选择的语言仅适用于此安装向导。如果愿意，您可以稍后指定另一种语言.'
+    language-selection_welcome_message: '欢迎加入 SnapAdmin 社区。现在我们将带您一步一步地完成安装过程.'
+    requirements_header: '系统要求'
+    requirements_header_files: '文件和目录'
+    requirements_header_system: 系统
+    requirements_files_info: 'The following files and directories must be present and have write permissions.'
+    requirements_table_files_col_check: 文件/目录
+    requirements_table_files_col_status: 状态
+    requirements_error: '部分系统要求没有得到满足.'
+    requirements_error_title: '您的系统还没有为安装 SnapAdmin 做好准备'
+    requirements_success: '已满足成功安装的所有要求.'
+    requirements_success_title: '您的系统已经为安装 SnapAdmin 做好了准备'
+    requirements_php_info: '为了运行SnapAdmin，您的服务器必须满足以下系统要求.'
+    requirements_php_max_compatible_version: '这个 SnapAdmin 版本支持PHP %s. 不能保证所有内容都适用于较新的PHP版本.'
+    requirements_system_col_check: 要求
+    requirements_system_col_required: 必须
+    requirements_system_col_found: '当前'
+    requirements_system_col_status: 状态
+    requirements_show_all: '(显示)'
+    requirements_hide_all: '(隐藏)'
+    requirements_status_error: 错误
+    requirements_status_warning: 警告
+    requirements_status_ready: 准备就绪
+    license_agreement_header: 'General Terms and Conditions of Business ("GTC")'
+    license_agreement_info: 'These are our General Terms and Conditions of Business. You will have to read and accept the GTC in order to successfully install SnapAdmin 6. The Community Edition is completely free of charge and has been released under the MIT License.'
+    license_agreement_error: 'Please accept our GTC.'
+    license_agreement_checkbox: 'I agree to the General Terms and Conditions of Business (GTC)'
+    database-configuration_header: '配置数据库'
+    database-configuration_field_host: '服务器地址:'
+    database-configuration_advanced_settings: '高级设置'
+    database-configuration_field_port: '端口:'
+    database-configuration_field_user: '用户:'
+    database-configuration_field_password: '密码:'
+    database-configuration_field_database: '数据库名称:'
+    database-configuration_field_new_database: '新数据库:'
+    database-configuration_info: '为了在系统上安装SnapAdmin，您将需要数据库的访问凭据。如果您不确定在这里放什么，请联系您的管理员.'
+    database-configuration-create_new_database: '创建新数据库'
+    database-configuration_non_empty_database: '所选数据库已包含数据。请选择一个空数据库或从头创建一个新数据库.'
+    database-configuration_error_required_fields: '请把所有的空白处填上.'
+    database-configuration_field_ssl_ca_path: 'SSL certificate authority path'
+    database-configuration_field_ssl_cert_path: 'SSL certificate path'
+    database-configuration_field_ssl_cert_key_path: 'SSL certificate key path'
+    database-configuration_field_ssl_dont_verify_cert: '不验证服务器证书'
+    database-import_header: 安装
+    database-import_skip_import: 跳过
+    database-import_progress: '进度: '
+    database-import-hint: '<strong>注意:</strong> 如果在配置的数据库中发现任何SnapAdmin表，它们将通过安装/更新被删除!'
+    database-import_info_text: '使用选定的数据库安装 SnapAdmin 系统。这个过程可能需要几分钟，具体取决于您的整个系统.'
+    database_import_success: '已完成安装 SnapAdmin 系统!'
+    database_import_install_label: '数据库安装:'
+    database_import_install_step_text: Step
+    database_import_install_from_text: of
+    migration_counter_text_migrations: '更新数据库'
+    migration_update_success: '已导入数据库!'
+
+    configuration_header: 配置
+
+    configuration_admin_username: '管理员用户名:'
+    configuration_admin_mail: '管理员邮箱地址:'
+    configuration_admin_firstName: 'Admin first name:'
+    configuration_admin_lastName: 'Admin last name:'
+    configuration_defaults_warning: 'Beware! The settings for your default system language as well as the default currency are permanent and cannot be changed ever again.'
+    configuration_admin_currency_headline: 'Available currencies'
+    configuration_admin_currency_text: 'Add more currencies to your SnapAdmin shop. If you want to add currencies afterwards, you can create them at any time in the Administration.'
+    configuration_email_help_text: 'This email address will be used for outgoing shop emails.'
+    configuration_admin_language_de: German
+    configuration_admin_language_en: English
+    configuration_admin_password: '管理员密码:'
+    finish_header: '安装完成'
+    finish_info: 'You have successfully installed SnapAdmin!'
+    finish_info_heading: Hooray!
+    finish_first_steps: '"First steps" guide'
+    finish_backend: '打开后天管理系统'
+    finish_message: "
+        <p>
+           <strong>Welcome to SnapAdmin,</strong>
+        </p>
+        <p>
+            您已经成功安装了 SnapAdmin 平台，我们很高兴欢迎您加入我们的社区!
+
+        <p>"
+

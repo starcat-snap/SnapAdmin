@@ -23,7 +23,7 @@
     "sw-admin-menu": {
       "linkLogout": "注销",
       "linkMinimizeMenu": "折叠菜单",
-      "textShopwareAdmin": "SnapAdmin Administration",
+      "textSnapAdmin": "SnapAdmin Administration",
       "textProjectName": "SnapAdmin",
       "administrator": "Administrator",
       "navigation": {

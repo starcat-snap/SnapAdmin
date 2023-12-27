@@ -9,11 +9,6 @@
             <tag name="snap.entity.definition"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Script\Debugging\ScriptTraces">
-            <tag name="data_collector"/>
-            <tag name="kernel.reset" method="reset"/>
-        </service>
-
         <service id="SnapAdmin\Core\Framework\Script\Api\ScriptResponseFactoryFacadeHookFactory" public="true">
             <argument type="service" id="router"/>
         </service>

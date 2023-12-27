@@ -1,0 +1,194 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="SnapAdmin.installer.supportedLanguages" type="collection">
+            <parameter key="zh">zh-CN</parameter>
+        </parameter>
+
+        <parameter key="SnapAdmin.installer.supportedCurrencies" type="collection">
+            <parameter>EUR</parameter>
+            <parameter>USD</parameter>
+            <parameter>GBP</parameter>
+            <parameter>PLN</parameter>
+            <parameter>CHF</parameter>
+            <parameter>SEK</parameter>
+            <parameter>DKK</parameter>
+            <parameter>NOK</parameter>
+            <parameter>CZK</parameter>
+        </parameter>
+
+        <parameter key="SnapAdmin.installer.tosUrls" type="collection">
+            <parameter key="de">https://api.SnapAdmin.com/gtc/de_DE.html</parameter>
+            <parameter key="en">https://api.SnapAdmin.com/gtc/en_GB.html</parameter>
+        </parameter>
+    </parameters>
+    <services>
+        <service id="SnapAdmin.asset.asset" class="SnapAdmin\Core\Framework\Adapter\Asset\FallbackUrlPackage">
+            <argument type="collection">
+                <argument></argument>
+            </argument>
+            <argument type="service" id="SnapAdmin.asset.version_strategy"/>
+            <tag name="assets.package" package="asset"/>
+        </service>
+
+        <service id="SnapAdmin.asset.version_strategy" class="Symfony\Component\Asset\VersionStrategy\EmptyVersionStrategy"/>
+
+        <service id="SnapAdmin\Core\Installer\Subscriber\InstallerLocaleListener">
+            <argument>%SnapAdmin.installer.supportedLanguages%</argument>
+
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Composer\Repository\PlatformRepository"/>
+
+        <service id="Composer\Composer">
+            <factory class="SnapAdmin\Core\Framework\Plugin\Composer\Factory" method="createComposer"/>
+            <argument type="string">%kernel.project_dir%</argument>
+        </service>
+
+
+        <service id="SnapAdmin\Core\Installer\Requirements\EnvironmentRequirementsValidator">
+            <argument type="service" id="Composer\Composer"/>
+            <argument type="service" id="Composer\Repository\PlatformRepository"/>
+
+            <tag name="SnapAdmin.installer.requirement"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Installer\Requirements\FilesystemRequirementsValidator">
+            <argument type="string">%kernel.project_dir%</argument>
+
+            <tag name="SnapAdmin.installer.requirement"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Installer\Requirements\ConfigurationRequirementsValidator">
+            <argument type="service" id="SnapAdmin\Core\Installer\Requirements\IniConfigReader"/>
+
+            <tag name="SnapAdmin.installer.requirement"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Installer\Requirements\IniConfigReader"/>
+
+        <service id="SnapAdmin\Core\Maintenance\System\Service\JwtCertificateGenerator"/>
+
+        <service id="SnapAdmin.installer.guzzle" class="GuzzleHttp\Client"/>
+
+        <service id="SnapAdmin\Core\Installer\License\LicenseFetcher">
+            <argument type="service" id="SnapAdmin.installer.guzzle"/>
+            <argument>%SnapAdmin.installer.tosUrls%</argument>
+
+        </service>
+
+        <service id="SnapAdmin\Core\Installer\Controller\SelectLanguagesController" public="true">
+            <argument type="service" id="SnapAdmin\Core\Installer\Finish\Notifier"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="SnapAdmin\Core\Installer\Controller\RequirementsController" public="true">
+            <argument type="tagged_iterator" tag="SnapAdmin.installer.requirement"/>
+            <argument type="service" id="SnapAdmin\Core\Maintenance\System\Service\JwtCertificateGenerator"/>
+            <argument type="string">%kernel.project_dir%</argument>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="SnapAdmin\Core\Installer\Controller\LicenseController" public="true">
+            <argument type="service" id="SnapAdmin\Core\Installer\License\LicenseFetcher"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="SnapAdmin\Core\Installer\Controller\DatabaseConfigurationController" public="true">
+            <argument type="service" id="translator"/>
+            <argument type="service" id="SnapAdmin\Core\Installer\Database\BlueGreenDeploymentService"/>
+            <argument type="service" id="SnapAdmin\Core\Maintenance\System\Service\JwtCertificateGenerator"/>
+            <argument type="service" id="SnapAdmin\Core\Maintenance\System\Service\SetupDatabaseAdapter"/>
+            <argument type="service" id="SnapAdmin\Core\Maintenance\System\Service\DatabaseConnectionFactory"/>
+            <argument type="string">%kernel.project_dir%</argument>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="SnapAdmin\Core\Installer\Controller\DatabaseImportController" public="true">
+            <argument type="service" id="SnapAdmin\Core\Maintenance\System\Service\DatabaseConnectionFactory"/>
+            <argument type="service" id="SnapAdmin\Core\Installer\Database\DatabaseMigrator"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="SnapAdmin\Core\Installer\Controller\SystemConfigurationController" public="true">
+            <argument type="service" id="SnapAdmin\Core\Maintenance\System\Service\DatabaseConnectionFactory"/>
+            <argument type="service" id="SnapAdmin\Core\Installer\Configuration\EnvConfigWriter"/>
+            <argument type="service" id="SnapAdmin\Core\Installer\Configuration\AdminConfigurationService"/>
+            <argument>%SnapAdmin.installer.supportedLanguages%</argument>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="SnapAdmin\Core\Installer\Controller\FinishController" public="true">
+            <argument type="service" id="SnapAdmin\Core\Installer\Finish\SystemLocker"/>
+            <argument type="service" id="SnapAdmin\Core\Installer\Finish\Notifier"/>
+            <argument type="service" id="GuzzleHttp\Client"/>
+            <argument>%env(string:APP_URL)%</argument>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="SnapAdmin\Core\Installer\Database\BlueGreenDeploymentService"/>
+
+        <service id="SnapAdmin\Core\Maintenance\System\Service\SetupDatabaseAdapter"/>
+
+        <service id="SnapAdmin\Core\Maintenance\System\Service\DatabaseConnectionFactory"/>
+
+        <service id="SnapAdmin\Core\Installer\Database\DatabaseMigrator">
+            <argument type="service" id="SnapAdmin\Core\Maintenance\System\Service\SetupDatabaseAdapter"/>
+            <argument type="service" id="SnapAdmin\Core\Installer\Database\MigrationCollectionFactory"/>
+            <argument type="string">%kernel.SnapAdmin_version%</argument>
+        </service>
+
+        <service id="SnapAdmin\Core\Installer\Database\MigrationCollectionFactory">
+            <argument type="string">%kernel.project_dir%</argument>
+        </service>
+
+        <service id="SnapAdmin\Core\Installer\Configuration\EnvConfigWriter">
+            <argument type="string">%kernel.project_dir%</argument>
+            <argument type="service" id="SnapAdmin\Core\Installer\Finish\UniqueIdGenerator"/>
+        </service>
+
+
+        <service id="SnapAdmin\Core\Installer\Configuration\AdminConfigurationService"/>
+
+        <service id="SnapAdmin\Core\Installer\Finish\SystemLocker">
+            <argument type="string">%kernel.project_dir%</argument>
+        </service>
+
+        <service id="SnapAdmin\Core\Installer\Finish\Notifier">
+            <argument type="string">https://api.SnapAdmin.com</argument>
+            <argument type="service" id="SnapAdmin\Core\Installer\Finish\UniqueIdGenerator"/>
+            <argument type="service" id="GuzzleHttp\Client"/>
+            <argument type="string">%kernel.SnapAdmin_version%</argument>
+        </service>
+
+        <service id="SnapAdmin\Core\Installer\Finish\UniqueIdGenerator">
+            <argument type="string">%kernel.project_dir%</argument>
+        </service>
+
+        <service id="GuzzleHttp\Client"/>
+    </services>
+</container>
