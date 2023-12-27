@@ -40,11 +40,12 @@ class Context extends Struct
      */
     public function __construct(
         protected ContextSource $source,
-        protected array $ruleIds = [],
-        array $languageIdChain = [Defaults::LANGUAGE_SYSTEM],
-        protected string $versionId = Defaults::LIVE_VERSION,
-        protected bool $considerInheritance = false
-    ) {
+        protected array         $ruleIds = [],
+        array                   $languageIdChain = [Defaults::LANGUAGE_SYSTEM],
+        protected string        $versionId = Defaults::LIVE_VERSION,
+        protected bool          $considerInheritance = false
+    )
+    {
         if ($source instanceof SystemSource) {
             $this->scope = self::SYSTEM_SCOPE;
         }
@@ -66,6 +67,18 @@ class Context extends Struct
         $source ??= new SystemSource();
 
         return new self($source);
+    }
+
+    /**
+     * @param array<string> $ruleIds
+     */
+    public function setRuleIds(array $ruleIds): void
+    {
+        if ($this->rulesLocked) {
+            throw new ContextRulesLockedException();
+        }
+
+        $this->ruleIds = array_filter(array_values($ruleIds));
     }
 
     public function getSource(): ContextSource
