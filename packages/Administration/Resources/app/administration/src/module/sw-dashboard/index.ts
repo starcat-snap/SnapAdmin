@@ -18,7 +18,6 @@ SnapAdmin.Module.register('sw-dashboard', {
     version: '1.0.0',
     targetVersion: '1.0.0',
     icon: 'home',
-    color: '#6259ca',
 
     routes: {
         index: {
@@ -33,7 +32,6 @@ SnapAdmin.Module.register('sw-dashboard', {
         id: 'sw-dashboard',
         label: 'sw-dashboard.general.mainMenuItemGeneral',
         icon: 'home',
-        color: '#6259ca',
         path: 'sw.dashboard.index',
         position: 10,
     }],

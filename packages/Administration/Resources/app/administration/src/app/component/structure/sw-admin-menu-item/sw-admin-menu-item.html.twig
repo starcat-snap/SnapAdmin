@@ -26,7 +26,7 @@
             :size="iconSize"
             class="sw-admin-menu__navigation-link-icon"
             :name="getIconName(entry.icon)"
-            :style="{ 'color': entry.color }"
+            :style="{ 'color': entry.color ?? '#A092F0' }"
         />
         {% endblock %}
 
@@ -72,7 +72,7 @@
             :size="iconSize"
             class="sw-admin-menu__navigation-link-icon"
             :name="getIconName(entry.icon)"
-            :style="{ 'color': entry.color }"
+            :style="{ 'color': entry.color ?? '#A092F0' }"
         />
         {% endblock %}
 
@@ -116,7 +116,7 @@
             :size="iconSize"
             class="sw-admin-menu__navigation-link-icon"
             :name="getIconName(entry.icon)"
-            :style="{ 'color': entry.color }"
+            :style="{ 'color': entry.color ??'#A092F0' }"
         />
         {% endblock %}
 

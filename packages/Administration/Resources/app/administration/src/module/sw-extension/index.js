@@ -163,7 +163,6 @@ SnapAdmin.Module.register('sw-extension', {
             id: 'sw-extension',
             label: 'sw-extension.mainMenu.mainMenuItemExtensionStore',
             icon: 'plug',
-            color: '#6259ca',
             position: 70,
         },
         {

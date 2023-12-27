@@ -17,7 +17,6 @@ Module.register('sw-settings', {
     type: 'core',
     name: 'settings',
     title: 'sw-settings.general.mainMenuItemGeneral',
-    color: '#6259ca',
     icon: 'settings',
 
     routes: {
@@ -50,7 +49,6 @@ Module.register('sw-settings', {
     navigation: [{
         id: 'sw-settings',
         label: 'sw-settings.general.mainMenuItemGeneral',
-        color: '#6259ca',
         icon: 'settings',
         path: 'sw.settings.index',
         position: 999,

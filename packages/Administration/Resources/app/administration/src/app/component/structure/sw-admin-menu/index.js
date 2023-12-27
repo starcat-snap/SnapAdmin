@@ -54,7 +54,7 @@ Component.register('sw-admin-menu', {
             flyoutEntries: [],
             lastFlyoutEntries: [],
             flyoutStyle: {},
-            flyoutColor: '',
+            flyoutColor: '#A092F0',
             flyoutLabel: '',
             subMenuOpen: false,
             scrollbarOffset: '',

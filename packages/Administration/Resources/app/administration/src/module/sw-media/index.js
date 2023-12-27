@@ -32,7 +32,6 @@ Module.register('sw-media', {
     description: 'sw-media.general.descriptionTextModule',
     version: '1.0.0',
     targetVersion: '1.0.0',
-    color: '#6259ca',
     entity: 'media',
 
     routes: {
@@ -59,12 +58,10 @@ Module.register('sw-media', {
         label: 'global.sw-admin-menu.navigation.mainMenuItemSystem',
         icon: 'settings-2',
         position: 50,
-        color: '#6259ca',
 
     }, {
         id: 'sw-media',
         label: 'sw-media.general.mainMenuItemGeneral',
-        color: '#ff68b4',
         icon: 'photo',
         path: 'sw.media.index',
         position: 20,
