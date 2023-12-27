@@ -8,20 +8,11 @@ use SnapAdmin\Core\Framework\Struct\Struct;
 #[Package('core')]
 class Price extends Struct
 {
-    /**
-     * @var string
-     */
-    protected $currencyId;
 
     /**
      * @var float
      */
-    protected $net;
-
-    /**
-     * @var float
-     */
-    protected $gross;
+    protected $price;
 
     /**
      * @var bool
@@ -44,42 +35,19 @@ class Price extends Struct
     protected $regulationPrice;
 
     public function __construct(
-        string $currencyId,
-        float $net,
-        float $gross,
+        float $price,
         bool $linked,
         ?Price $listPrice = null,
         ?array $percentage = null,
         ?Price $regulationPrice = null
     ) {
-        $this->net = $net;
-        $this->gross = $gross;
+        $this->price = $price;
         $this->linked = $linked;
-        $this->currencyId = $currencyId;
         $this->listPrice = $listPrice;
         $this->percentage = $percentage;
         $this->regulationPrice = $regulationPrice;
     }
 
-    public function getNet(): float
-    {
-        return $this->net;
-    }
-
-    public function setNet(float $net): void
-    {
-        $this->net = $net;
-    }
-
-    public function getGross(): float
-    {
-        return $this->gross;
-    }
-
-    public function setGross(float $gross): void
-    {
-        $this->gross = $gross;
-    }
 
     public function getLinked(): bool
     {
@@ -93,18 +61,17 @@ class Price extends Struct
 
     public function add(self $price): void
     {
-        $this->gross += $price->getGross();
-        $this->net += $price->getNet();
+        $this->price += $price->getPrice();
     }
 
-    public function getCurrencyId(): string
+    public function getPrice(): float
     {
-        return $this->currencyId;
+        return $this->price;
     }
 
-    public function setCurrencyId(string $currencyId): void
+    public function setPrice(float $price): void
     {
-        $this->currencyId = $currencyId;
+        $this->price = $price;
     }
 
     public function setListPrice(?Price $listPrice): void
