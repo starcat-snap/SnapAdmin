@@ -65,7 +65,7 @@ import type DiscardDetailPageChangesMixin from './app/mixin/discard-detail-page-
 import type PrivilegesService from './app/service/privileges.service';
 import type { FileValidationService } from './app/service/file-validation.service';
 import type { AdminHelpCenterState } from './app/state/admin-help-center.store';
-
+import type RuleConditionService from './app/service/rule-condition.service';
 // trick to make it an "external module" to support global type extension
 
 // base methods for subContainer
@@ -130,6 +130,7 @@ declare global {
         stateStyleDataProviderService: StateStyleService,
         searchTypeService: $TSFixMe,
         localeToLanguageService: $TSFixMe,
+        ruleConditionDataProviderService: RuleConditionService,
         entityMappingService: $TSFixMe,
         shortcutService: $TSFixMe,
         licenseViolationService: $TSFixMe,

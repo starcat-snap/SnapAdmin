@@ -8,6 +8,7 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BlobField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BoolField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\CustomFields;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\ApiAware;
+use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\CascadeDelete;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\RestrictDelete;
@@ -23,6 +24,7 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\Flow\Aggregate\FlowSequence\FlowSequenceDefinition;
+use SnapAdmin\Core\System\Rule\Aggregate\RuleCondition\RuleConditionDefinition;
 
 #[Package('services-settings')]
 class RuleDefinition extends EntityDefinition
@@ -62,6 +64,8 @@ class RuleDefinition extends EntityDefinition
             (new CustomFields())->addFlags(new ApiAware()),
             new JsonField('module_types', 'moduleTypes'),
             (new OneToManyAssociationField('flowSequences', FlowSequenceDefinition::class, 'rule_id', 'id'))->addFlags(new RestrictDelete(), new RuleAreas(RuleAreas::FLOW_AREA)),
+            (new OneToManyAssociationField('conditions', RuleConditionDefinition::class, 'rule_id', 'id'))->addFlags(new CascadeDelete()),
+
         ]);
     }
 }

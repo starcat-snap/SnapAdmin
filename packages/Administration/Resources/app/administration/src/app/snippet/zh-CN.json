@@ -39,6 +39,9 @@
     "sw-entity-many-to-many-select": {
       "messageNoResults": "未找到 \"{term}\"."
     },
+    "sw-multi-select": {
+      "messageNoResults": "未找到结果 \"{term}\"."
+    },
     "entities": {
       "all": "全部",
       "media": "媒体",
@@ -221,13 +224,11 @@
           "message": "Media indexed. | One medium remaining ... | {n} media remaining...",
           "messageSuccess": "Media have been indexed."
         },
-
         "rule": {
           "title": "Indexing rules",
           "message": "Rule indexed. | One rule remaining... | {n} rules remaining...",
           "messageSuccess": "Rules have been indexed."
         },
-
         "flow": {
           "title": "提示/成功",
           "message": "Indexing flows.",
@@ -373,6 +374,12 @@
     "messageNoResultSubline": "编辑过滤器或搜索词来找到结果。也请检查搜索配置.",
     "messageNoResultSublineBefore": "编辑过滤器或搜索词来找到结果。也请查看",
     "messageNoResultSublineLink": "配置"
+  },
+  "sw-sidebar-filter-panel": {
+    "resetButton": "重置"
+  },
+  "sw-filter-panel": {
+    "titleSidebarItemFilter": "过滤器"
   },
   "help-center": {
     "sidebar": {

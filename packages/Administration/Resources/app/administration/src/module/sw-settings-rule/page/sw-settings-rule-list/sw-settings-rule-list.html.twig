@@ -1,0 +1,193 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_settings_list %}
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_settings_rule_index %}
+<sw-page
+    class="sw-settings-rule-list"
+    showSmartBar="true"
+    showSearchBar="true"
+>
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_settings_rule_list_search_bar %}
+    <template #search-bar>
+        <sw-search-bar
+            initial-search-type="rule"
+            :placeholder="$tc('sw-settings-rule.general.placeholderSearchBar')"
+            :initial-search="term"
+            @search="onSearch"
+        />
+    </template>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_settings_rule_list_smart_bar_header %}
+    <template #smart-bar-header>
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_settings_rule_list_smart_bar_header_title %}
+        <h2>
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_settings_rule_list_smart_bar_header_title_text %}
+            {{ $tc('sw-settings.index.title') }} <sw-icon
+                name="chevron-right"
+                small
+            /> {{ $tc('sw-settings-rule.list.textHeadline') }}
+            {% endblock %}
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_settings_rule_list_smart_bar_header_title_amount %}
+            <span
+                v-if="!isLoading"
+                class="sw-page__smart-bar-amount"
+            >
+                ({{ total }})
+            </span>
+            {% endblock %}
+        </h2>
+        {% endblock %}
+    </template>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_settings_rule_list_smart_bar_actions %}
+    <template #smart-bar-actions>
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_settings_rule_list_smart_bar_actions_add %}
+        <sw-button
+            v-tooltip="{
+                message: $tc('sw-privileges.tooltip.warning'),
+                disabled: acl.can('rule.creator'),
+                showOnDisabledElements: true
+            }"
+            :router-link="{ name: 'sw.settings.rule.create' }"
+            :disabled="!acl.can('rule.creator')"
+            variant="primary"
+        >
+            {{ $tc('sw-settings-rule.list.buttonAddRule') }}
+        </sw-button>
+        {% endblock %}
+    </template>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_settings_rule_list_content %}
+    <template #content>
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_settings_rule_list_content_card %}
+        <div class="sw-settings-rule-list__content">
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_settings_rule_list_grid %}
+            <sw-entity-listing
+                v-if="isLoading || rules"
+                ref="swRuleGrid"
+                identifier="sw-settings-rule-list"
+                class="sw-rule-list-grid"
+                :items="rules"
+                :columns="getRuleColumns()"
+                :repository="ruleRepository"
+                :is-loading="isLoading"
+                :full-page="true"
+                :show-selection="acl.can('rule.deleter')"
+                :allow-edit="acl.can('rule.editor')"
+                :allow-delete="acl.can('rule.deleter')"
+                detail-route="sw.settings.rule.detail"
+                :disable-data-fetching="true"
+                :sort-by="sortBy"
+                :sort-direction="sortDirection"
+                @column-sort="onSortColumn"
+                @page-change="onPageChange"
+                @inline-edit-save="onInlineEditSave"
+                @items-delete-finish="getList"
+            >
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_settings_rule_list_grid_column_assignments %}
+                <template
+                    v-for="(propertyName, index) in assignmentProperties"
+                    :key="index"
+                    #[`column-${propertyName}`]="{ item }"
+                >
+                    <span
+                        class="sw-data-grid__cell-value"
+                    >
+                        {{ getCounts(propertyName, item.id) }}
+                        {{ $tc(`sw-settings-rule.list.assignments.${propertyName}`, getCounts(propertyName, item.id)) }}
+                    </span>
+                </template>
+                {% endblock %}
+
+                <template #column-invalid="{item}">
+                    <template v-if="item.invalid">
+                        {{ $tc('sw-settings-rule.list.invalid') }}
+                    </template>
+                    <template v-else>
+                        {{ $tc('sw-settings-rule.list.valid') }}
+                    </template>
+                </template>
+
+                <template #column-updatedAt="{item}">
+                    {{ dateFilter(item.updatedAt) }}
+                </template>
+
+                <template #column-createdAt="{item}">
+                    {{ dateFilter(item.createdAt) }}
+                </template>
+
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_settings_rule_list_grid_columns_actions %}
+                <template #more-actions="{ item }">
+                    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                    {% block sw_settings_rule_list_grid_columns_actions_duplicate %}
+                    <sw-context-menu-item
+                        :disabled="!acl.can('rule.creator')"
+                        @click="onDuplicate(item)"
+                    >
+                        {{ $tc('sw-settings-rule.list.contextMenuDuplicate') }}
+                    </sw-context-menu-item>
+                    {% endblock %}
+                </template>
+                {% endblock %}
+            </sw-entity-listing>
+            {% endblock %}
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_settings_rule_list_empty_message %}
+            <sw-empty-state
+                v-else-if="!isLoading && !total"
+                :title="$tc('sw-settings-rule.list.messageEmpty')"
+            />
+            {% endblock %}
+        </div>
+        {% endblock %}
+    </template>
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_settings_rule_list_sidebar %}
+    <template #sidebar>
+        <sw-sidebar>
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_settings_rule_list_sidebar_refresh %}
+            <sw-sidebar-item
+                icon="arrow-back-up"
+                :title="$tc('sw-settings-rule.list.titleSidebarItemRefresh')"
+                @click="onRefresh"
+            />
+            {% endblock %}
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_settings_rule_list_sidebar_filter %}
+            <sw-sidebar-filter-panel
+                entity="rule"
+                :store-key="storeKey"
+                :active-filter-number="activeFilterNumber"
+                :filters="listFilters"
+                :defaults="defaultFilters"
+                @criteria-changed="updateCriteria"
+            />
+        {% endblock %}
+        </sw-sidebar>
+    </template>
+    {% endblock %}
+    {% endblock %}
+</sw-page>
+    {% endblock %}
+{% endblock %}

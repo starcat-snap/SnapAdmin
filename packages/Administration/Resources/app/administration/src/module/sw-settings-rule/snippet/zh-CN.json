@@ -1,0 +1,152 @@
+{
+  "sw-settings-rule": {
+    "general": {
+      "mainMenuItemGeneral": "规则构造器",
+      "placeholderSearchBar": "搜索规则...",
+      "descriptionTextModule": "在这儿管理规则."
+    },
+    "filter": {
+      "conditionFilter": {
+        "label": "条件",
+        "placeholder": "选择条件..."
+      },
+      "groupFilter": {
+        "label": "条件类型",
+        "placeholder": "选择条件类型..."
+      },
+      "assignmentFilter": {
+        "label": "Assignments",
+        "placeholder": "Select assignments...",
+        "values": {
+          "cartPromotions": "Promotion cart rules",
+          "orderPromotions": "Promotion order rules",
+          "personaPromotions": "Promotion customer rules",
+          "promotionSetGroups": "Promotion set group rules",
+          "promotionDiscounts": "Promotion discount product rules",
+          "flowSequences": "Flows",
+          "paymentMethods": "Payment methods",
+          "productPrices": "Product price rules",
+          "shippingMethodPriceCalculations": "Shipping method price matrices",
+          "shippingMethodPrices": "Shipping method price rules",
+          "shippingMethods": "Shipping method availability rules"
+        }
+      }
+    },
+    "list": {
+      "columnTaxProviders": "Tax Provider assignments",
+      "columnWarehouseGroup": "Warehouse group assignments",
+      "textHeadline": "规则构造器",
+      "buttonAddRule": "创建规则",
+      "columnName": "规则",
+      "columnDescription": "描述",
+      "columnDateCreated": "创建时间",
+      "columnDateUpdated": "修改时间",
+      "columnPriority": "优先级",
+      "columnStatus": "状态",
+      "columnTags": "Tags",
+      "columnCartPromotions": "Promotion cart rule assignments",
+      "columnOrderPromotions": "Promotion order rule assignments",
+      "columnPersonaPromotions": "Promotion customer rule assignments",
+      "columnPromotionSetGroups": "Promotion set group rule assignments",
+      "columnPromotionDiscounts": "Promotion discount product rule assignments",
+      "columnFlowSequences": "Flow assignments",
+      "columnPaymentMethods": "Payment method assignments",
+      "columnProductPrices": "Product price assignments",
+      "columnShippingMethodPriceCalculations": "Shipping method price matrix assignments",
+      "columnShippingMethodPrices": "Shipping method price assignments",
+      "columnShippingMethods": "Shipping method assignments",
+      "contextMenuDuplicate": "Duplicate",
+      "titleSidebarItemRefresh": "Refresh",
+      "valid": "有效",
+      "invalid": "无效",
+      "messageEmpty": "无数据",
+      "assignments": {
+        "taxProviders": "Tax Provider | Tax Providers",
+        "warehouseGroup": "Warehouse group | Warehouse groups",
+        "cartPromotions": "promotion cart rule | promotion cart rules",
+        "orderPromotions": "promotion order rule | promotion order rules",
+        "personaPromotions": "promotion customer rule | promotion customer rules",
+        "promotionSetGroups": "promotion set group rule | promotion set group rules",
+        "promotionDiscounts": "promotion discount product rule | promotion discount product rules",
+        "flowSequences": "flow | flows",
+        "paymentMethods": "payment method | payment methods",
+        "productPrices": "product price | product prices",
+        "shippingMethodPriceCalculations": "shipping method price matrix | shipping method price matrices",
+        "shippingMethodPrices": "shipping method price | shipping method prices",
+        "shippingMethods": "shipping method | shipping methods"
+      }
+    },
+    "detail": {
+      "textHeadline": "新规则",
+      "buttonCancel": "取消",
+      "buttonSave": "保存",
+      "titleCard": "常规",
+      "labelName": "名称",
+      "labelDescription": "描述",
+      "labelPriority": "优先级",
+      "labelType": "类型",
+      "placeholderName": "Set a name for this rule...",
+      "placeholderDescription": "Set a description for this rule...",
+      "placeholderPriority": "Set a priority for this rule...",
+      "placeholderTags": "Enter a tag...",
+      "messageSaveSuccess": "The rule \"{name}\" has been saved.",
+      "ruleCard": "条件",
+      "messageSaveError": "An error occurred while saving rule",
+      "tabGeneral": "常规",
+      "tabAssignments": "Assignments",
+      "buttonAddAssignment":  "Add assignment",
+      "associations": {
+        "shippingMethods": "Shipping methods",
+        "promotions": "Promotions",
+        "products": "Product price rules",
+        "shippingMethodPrices": "Shipping method price rules",
+        "paymentMethods": "Payment methods",
+        "promotionCustomerRules": "Promotion customer rules",
+        "promotionOrderRules": "Promotion order rules",
+        "promotionCartRules": "Promotion cart rules",
+        "promotionDiscountRules": "Promotion discount product rules",
+        "promotionGroupRules": "Promotion set group rules",
+        "shippingMethodAvailabilityRule": "Shipping method availability rules",
+        "flows": "Flow Builders",
+        "taxProviders": "Tax Providers"
+      },
+      "typeHasNoAssociations": "No rules assigned",
+      "hasNoAssociations": "This rule is not in use",
+      "associationsLoadingError": "Unable to load rule assignments.",
+      "textModalDelete": "Do you really want to remove this assignment?",
+      "textModalBulkDelete": "Are you sure you want to remove this assignment? | Are you sure you want to remove these {count} assignments?",
+      "titleModalDelete": "Delete assignment",
+      "types": {
+        "shipping": "Shipping",
+        "payment": "Payment",
+        "price": "Price",
+        "flowBuilder": "Flow Builder"
+      },
+      "groups": {
+        "general": "常规",
+        "cart": "Shopping cart",
+        "items": "Items in shopping cart",
+        "customers": "Customers",
+        "promotions": "Marketing & promotions",
+        "flow": "Flow Builder",
+        "orders": "Orders",
+        "misc": "Miscellaneous"
+      },
+      "textUnsavedConditions": "There are unsaved changes in this rule. Save changes in order to add assignments."
+    },
+    "conditionFilter": {
+      "infoText": "Use filters to define which line items have to fulfil this condition."
+    },
+    "conditionModal": {
+      "modalTitle": "过滤器",
+      "messageSaveError": "An error occurred while saving the filter."
+    }
+  },
+  "sw-privileges": {
+    "permissions": {
+      "rule": {
+        "label": "规则构造器"
+      }
+    }
+  }
+}
