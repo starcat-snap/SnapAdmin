@@ -42,6 +42,7 @@ class Configuration implements ConfigurationInterface
 
         return $treeBuilder;
     }
+
     private function createNumberRangeSection(): ArrayNodeDefinition
     {
         $treeBuilder = new TreeBuilder('number_range');
@@ -55,6 +56,7 @@ class Configuration implements ConfigurationInterface
 
         return $rootNode;
     }
+
     private function createHtmlSanitizerSection(): ArrayNodeDefinition
     {
         $treeBuilder = new TreeBuilder('html_sanitizer');

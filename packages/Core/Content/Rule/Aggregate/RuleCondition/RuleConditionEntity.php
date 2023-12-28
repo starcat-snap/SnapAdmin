@@ -2,12 +2,12 @@
 
 namespace SnapAdmin\Core\Content\Rule\Aggregate\RuleCondition;
 
+use SnapAdmin\Core\Content\Flow\RuleEntity;
 use SnapAdmin\Core\Framework\App\Aggregate\AppScriptCondition\AppScriptConditionEntity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\Content\Flow\RuleEntity;
 
 #[Package('services-settings')]
 class RuleConditionEntity extends Entity

@@ -137,6 +137,8 @@ trait AdminApiTestBehaviour
             'name' => $username,
             'phone' => '',
             'username' => $username,
+            'nick_name' => $username,
+            'user_number' => Uuid::randomHex(),
             'password' => TestDefaults::HASHED_PASSWORD,
             'locale_id' => $this->getLocaleOfSystemLanguage($connection),
             'active' => 1,

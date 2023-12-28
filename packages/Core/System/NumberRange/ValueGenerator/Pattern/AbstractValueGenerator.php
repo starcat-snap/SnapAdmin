@@ -4,7 +4,7 @@ namespace SnapAdmin\Core\System\NumberRange\ValueGenerator\Pattern;
 
 use SnapAdmin\Core\Framework\Log\Package;
 
-#[Package('checkout')]
+#[Package('system-settings')]
 abstract class AbstractValueGenerator
 {
     /**

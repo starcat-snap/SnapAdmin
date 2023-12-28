@@ -7,7 +7,7 @@ $sw-field-transition: border-color 0.3s ease-out, background 0.3s ease;
         border: 1px solid $border-color;
         border-radius: $border-radius-default;
         overflow: hidden;
-        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     }
 
     .sw-field--select__options .sw-icon {

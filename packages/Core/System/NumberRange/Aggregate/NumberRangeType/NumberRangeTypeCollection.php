@@ -8,7 +8,7 @@ use SnapAdmin\Core\Framework\Log\Package;
 /**
  * @extends EntityCollection<NumberRangeTypeEntity>
  */
-#[Package('checkout')]
+#[Package('system-settings')]
 class NumberRangeTypeCollection extends EntityCollection
 {
     public function getApiAlias(): string

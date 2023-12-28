@@ -21,12 +21,11 @@ class UserProvisioner
     public function __construct(
         private readonly Connection $connection,
         private readonly NumberRangeValueGeneratorInterface $numberRangeValueGenerator
-    )
-    {
+    ) {
     }
 
     /**
-     * @param array{phone?: string, name?: string, email?: string, localeId?: string, admin?: bool,nickName?:string} $additionalData
+     * @param array{phone?: string, name?: string, email?: string, localeId?: string, admin?: bool, nickName?:string} $additionalData
      */
     public function provision(string $username, ?string $password = null, array $additionalData = []): string
     {
@@ -51,9 +50,9 @@ class UserProvisioner
             'password' => password_hash($password, \PASSWORD_BCRYPT),
             'locale_id' => $additionalData['localeId'] ?? $this->getLocaleOfSystemLanguage(),
             'active' => true,
-            'nick_name'=>$additionalData['nickName'] ?? $username ,
+            'nick_name' => $additionalData['nickName'] ?? $username,
             'admin' => $additionalData['admin'] ?? true,
-            'user_number'=>$this->numberRangeValueGenerator->getValue('user', Context::createDefaultContext()),
+            'user_number' => $this->numberRangeValueGenerator->getValue('user', Context::createDefaultContext()),
             'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
         ];
 

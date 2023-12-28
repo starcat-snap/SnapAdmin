@@ -1,6 +1,5 @@
 @import "~scss/variables";
 
-//$sw-login-color-background: $color-gray-300;
 $sw-login-color-background: #babade;
 $sw-login-container-color-background: $color-white;
 $sw-login-badge-color-background: $color-snap-admin-brand-500;
@@ -67,8 +66,9 @@ $sw-login-error-animation-duration: 0.15s;
         padding: 50px;
         position: relative;
         opacity: 1;
-        transition: opacity $sw-login-success-animation-duration ease-in-out,
-                    padding $sw-login-media-query-animation-duration ease-in-out;
+        transition:
+            opacity $sw-login-success-animation-duration ease-in-out,
+            padding $sw-login-media-query-animation-duration ease-in-out;
 
         @media screen and (max-width: 600px) {
             padding: 30px;
@@ -80,7 +80,6 @@ $sw-login-error-animation-duration: 0.15s;
         font-weight: $font-weight-semi-bold;
         text-align: center;
     }
-
 
     .sw-button {
         @media screen and (max-width: 600px) {
@@ -157,8 +156,9 @@ $sw-login-error-animation-duration: 0.15s;
         background-repeat: no-repeat;
         background-size: 400px 400px;
         opacity: 1;
-        transition: opacity $sw-login-success-animation-duration ease-in-out,
-        padding $sw-login-media-query-animation-duration ease-in-out;
+        transition:
+            opacity $sw-login-success-animation-duration ease-in-out,
+            padding $sw-login-media-query-animation-duration ease-in-out;
 
         @media screen and (max-width: 600px) {
             display: none;

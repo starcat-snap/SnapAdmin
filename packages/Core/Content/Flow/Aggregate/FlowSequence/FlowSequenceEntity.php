@@ -3,12 +3,11 @@
 namespace SnapAdmin\Core\Content\Flow\Aggregate\FlowSequence;
 
 use SnapAdmin\Core\Content\Flow\FlowEntity;
-use SnapAdmin\Core\Framework\App\Aggregate\FlowAction\AppFlowActionEntity;
+use SnapAdmin\Core\Content\Rule\RuleEntity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\Content\Flow\RuleEntity;
 
 #[Package('services-settings')]
 class FlowSequenceEntity extends Entity
@@ -41,8 +40,6 @@ class FlowSequenceEntity extends Entity
     protected bool $trueCase;
 
     protected ?string $appFlowActionId = null;
-
-    protected ?AppFlowActionEntity $appFlowAction = null;
 
     public function getFlowId(): string
     {
@@ -172,15 +169,5 @@ class FlowSequenceEntity extends Entity
     public function setAppFlowActionId(?string $appFlowActionId): void
     {
         $this->appFlowActionId = $appFlowActionId;
-    }
-
-    public function getAppFlowAction(): ?AppFlowActionEntity
-    {
-        return $this->appFlowAction;
-    }
-
-    public function setAppFlowAction(?AppFlowActionEntity $appFlowAction): void
-    {
-        $this->appFlowAction = $appFlowAction;
     }
 }

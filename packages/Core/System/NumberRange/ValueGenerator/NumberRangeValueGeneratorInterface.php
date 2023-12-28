@@ -5,7 +5,7 @@ namespace SnapAdmin\Core\System\NumberRange\ValueGenerator;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Log\Package;
 
-#[Package('checkout')]
+#[Package('system-settings')]
 interface NumberRangeValueGeneratorInterface
 {
     /**

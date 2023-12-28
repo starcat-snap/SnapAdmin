@@ -17,7 +17,7 @@ abstract class InstallerController extends AbstractController
     private const ROUTES = [
         'installer.language-selection' => 'language-selection',
         'installer.requirements' => 'requirements',
-//        'installer.license' => 'license',
+        //        'installer.license' => 'license',
         'installer.database-configuration' => 'database-configuration',
         'installer.database-import' => 'database-import',
         'installer.configuration' => 'configuration',

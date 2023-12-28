@@ -8,7 +8,7 @@ use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin\Exception\DecorationPatternException;
 use SnapAdmin\Core\Framework\Uuid\Uuid;
 
-#[Package('checkout')]
+#[Package('system-settings')]
 class IncrementSqlStorage extends AbstractIncrementStorage
 {
     /**

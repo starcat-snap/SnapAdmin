@@ -40,12 +40,11 @@ class Context extends Struct
      */
     public function __construct(
         protected ContextSource $source,
-        protected array         $ruleIds = [],
-        array                   $languageIdChain = [Defaults::LANGUAGE_SYSTEM],
-        protected string        $versionId = Defaults::LIVE_VERSION,
-        protected bool          $considerInheritance = false
-    )
-    {
+        protected array $ruleIds = [],
+        array $languageIdChain = [Defaults::LANGUAGE_SYSTEM],
+        protected string $versionId = Defaults::LIVE_VERSION,
+        protected bool $considerInheritance = false
+    ) {
         if ($source instanceof SystemSource) {
             $this->scope = self::SYSTEM_SCOPE;
         }

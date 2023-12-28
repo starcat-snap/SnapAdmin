@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\Framework;
 
-
 use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\HttpFoundation\Response;
 

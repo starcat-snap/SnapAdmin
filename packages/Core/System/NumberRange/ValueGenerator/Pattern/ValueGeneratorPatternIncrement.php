@@ -6,7 +6,7 @@ use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin\Exception\DecorationPatternException;
 use SnapAdmin\Core\System\NumberRange\ValueGenerator\Pattern\IncrementStorage\AbstractIncrementStorage;
 
-#[Package('checkout')]
+#[Package('system-settings')]
 class ValueGeneratorPatternIncrement extends AbstractValueGenerator
 {
     /**

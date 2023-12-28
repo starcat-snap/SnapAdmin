@@ -55,7 +55,7 @@ class SystemConfigApiService extends ApiService {
             });
     }
 
-    saveValues(values,additionalParams = {}, additionalHeaders = {}) {
+    saveValues(values, additionalParams = {}, additionalHeaders = {}) {
         return this.httpClient
             .post(
                 '_action/system-config',

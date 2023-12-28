@@ -8,10 +8,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Rule\Rule;
-use SnapAdmin\Core\Content\Rule\PaymentMethodCollection;
-use SnapAdmin\Core\Content\Rule\ProductPriceCollection;
-use SnapAdmin\Core\Content\Rule\RuleConditionCollection;
-use SnapAdmin\Core\Content\Rule\ShippingMethodCollection;
 
 #[Package('services-settings')]
 class RuleEntity extends Entity

@@ -7,7 +7,6 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class UserNameAndNickNameValidator implements EventSubscriberInterface
 {
-
     public static function getSubscribedEvents()
     {
         return [
@@ -15,7 +14,7 @@ class UserNameAndNickNameValidator implements EventSubscriberInterface
         ];
     }
 
-    public function preValidate(PreWriteValidationEvent $event): void{
-
+    public function preValidate(PreWriteValidationEvent $event): void
+    {
     }
 }

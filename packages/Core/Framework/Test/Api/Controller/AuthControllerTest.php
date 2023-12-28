@@ -213,6 +213,8 @@ class AuthControllerTest extends TestCase
             'name' => $username,
             'phone' => '',
             'email' => 'test@example.com',
+            'nick_name' => $username,
+            'user_number' => Uuid::randomHex(),
             'username' => $username,
             'password' => TestDefaults::HASHED_PASSWORD,
             'locale_id' => Uuid::fromHexToBytes($this->getLocaleIdOfSystemLanguage()),

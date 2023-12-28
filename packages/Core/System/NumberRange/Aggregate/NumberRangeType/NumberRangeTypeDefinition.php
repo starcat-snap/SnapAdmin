@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\System\NumberRange\Aggregate\NumberRangeType;
 
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BoolField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\CascadeDelete;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\RestrictDelete;
@@ -19,7 +18,7 @@ use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\NumberRange\Aggregate\NumberRangeTypeTranslation\NumberRangeTypeTranslationDefinition;
 use SnapAdmin\Core\System\NumberRange\NumberRangeDefinition;
 
-#[Package('checkout')]
+#[Package('system-settings')]
 class NumberRangeTypeDefinition extends EntityDefinition
 {
     final public const ENTITY_NAME = 'number_range_type';

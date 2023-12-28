@@ -10,7 +10,7 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\NumberRange\Aggregate\NumberRangeType\NumberRangeTypeDefinition;
 
-#[Package('checkout')]
+#[Package('system-settings')]
 class NumberRangeTypeTranslationDefinition extends EntityTranslationDefinition
 {
     final public const ENTITY_NAME = 'number_range_type_translation';

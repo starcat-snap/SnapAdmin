@@ -1,6 +1,100 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Flow\\\\Dispatching\\\\AbstractFlowLoader\\:\\:load\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Flow/Dispatching/AbstractFlowLoader.php
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Flow\\\\Dispatching\\\\FlowBuilder\\:\\:build\\(\\) has parameter \\$flowSequences with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Flow/Dispatching/FlowBuilder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Flow\\\\Dispatching\\\\FlowBuilder\\:\\:buildHierarchyTree\\(\\) has parameter \\$flowSequences with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Flow/Dispatching/FlowBuilder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Flow\\\\Dispatching\\\\FlowBuilder\\:\\:buildHierarchyTree\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Flow/Dispatching/FlowBuilder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Flow\\\\Dispatching\\\\FlowBuilder\\:\\:createNestedAction\\(\\) has parameter \\$currentSequence with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Flow/Dispatching/FlowBuilder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Flow\\\\Dispatching\\\\FlowBuilder\\:\\:createNestedAction\\(\\) has parameter \\$siblingSequences with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Flow/Dispatching/FlowBuilder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Flow\\\\Dispatching\\\\FlowBuilder\\:\\:createNestedIf\\(\\) has parameter \\$currentSequence with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Flow/Dispatching/FlowBuilder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Flow\\\\Dispatching\\\\FlowBuilder\\:\\:createNestedSequence\\(\\) has parameter \\$sequence with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Flow/Dispatching/FlowBuilder.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Flow\\\\Dispatching\\\\FlowBuilder\\:\\:createNestedSequence\\(\\) has parameter \\$siblings with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Flow/Dispatching/FlowBuilder.php
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Flow\\\\Dispatching\\\\CachedFlowLoader\\:\\:load\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Flow/Dispatching/CachedFlowLoader.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Content\\\\Flow\\\\Dispatching\\\\CachedFlowLoader\\:\\:\\$flows type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Flow/Dispatching/CachedFlowLoader.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Flow\\\\Aggregate\\\\FlowSequence\\\\FlowSequenceEntity\\:\\:getConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Flow/Aggregate/FlowSequence/FlowSequenceEntity.php
+
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\Content\\\\Flow\\\\Aggregate\\\\FlowSequence\\\\FlowSequenceEntity\\:\\:setConfig\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Flow/Aggregate/FlowSequence/FlowSequenceEntity.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\Content\\\\Flow\\\\Aggregate\\\\FlowSequence\\\\FlowSequenceEntity\\:\\:\\$config type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/Content/Flow/Aggregate/FlowSequence/FlowSequenceEntity.php
+		-
+			message: "#^Method SnapAdmin\\\\Core\\\\System\\\\StateMachine\\\\Loader\\\\InitialStateIdLoader\\:\\:load\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/StateMachine/Loader/InitialStateIdLoader.php
+
+		-
+			message: "#^Property SnapAdmin\\\\Core\\\\System\\\\StateMachine\\\\Loader\\\\InitialStateIdLoader\\:\\:\\$ids type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/Core/System/StateMachine/Loader/InitialStateIdLoader.php
+		-
+			message: "#^Argument of an invalid type SnapAdmin\\\\Core\\\\System\\\\StateMachine\\\\Aggregation\\\\StateMachineState\\\\StateMachineStateCollection\\|null supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: packages/Core/System/StateMachine/StateMachineEntity.php
+		-
+			message: "#^Cannot call method getName\\(\\) on SnapAdmin\\\\Core\\\\System\\\\StateMachine\\\\Aggregation\\\\StateMachineState\\\\StateMachineStateEntity\\|null\\.$#"
+			count: 1
+			path: packages/Core/System/StateMachine/Api/StateMachineActionController.php
+
+		-
+			message: "#^Cannot call method getTechnicalName\\(\\) on SnapAdmin\\\\Core\\\\System\\\\StateMachine\\\\Aggregation\\\\StateMachineState\\\\StateMachineStateEntity\\|null\\.$#"
+			count: 3
+			path: packages/Core/System/StateMachine/Api/StateMachineActionController.php
+
+		-
+			message: "#^Parameter \\#2 \\$entity of method SnapAdmin\\\\Core\\\\Framework\\\\Api\\\\Response\\\\ResponseFactoryInterface\\:\\:createDetailResponse\\(\\) expects SnapAdmin\\\\Core\\\\Framework\\\\DataAbstractionLayer\\\\Entity, SnapAdmin\\\\Core\\\\System\\\\StateMachine\\\\Aggregation\\\\StateMachineState\\\\StateMachineStateEntity\\|null given\\.$#"
+			count: 1
+			path: packages/Core/System/StateMachine/Api/StateMachineActionController.php
+		-
 			message: "#^Parameter \\#1 \\$json of function json_decode expects string, string\\|false given\\.$#"
 			count: 4
 			path: packages/Core/Framework/Test/Api/Controller/AclControllerTest.php

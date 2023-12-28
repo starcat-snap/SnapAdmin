@@ -14,7 +14,7 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\NumberRange\NumberRangeDefinition;
 
-#[Package('checkout')]
+#[Package('system-settings')]
 class NumberRangeStateDefinition extends EntityDefinition
 {
     final public const ENTITY_NAME = 'number_range_state';

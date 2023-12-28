@@ -8,7 +8,6 @@ use SnapAdmin\Core\Framework\Struct\Struct;
 #[Package('core')]
 class Price extends Struct
 {
-
     /**
      * @var float
      */
@@ -47,7 +46,6 @@ class Price extends Struct
         $this->percentage = $percentage;
         $this->regulationPrice = $regulationPrice;
     }
-
 
     public function getLinked(): bool
     {

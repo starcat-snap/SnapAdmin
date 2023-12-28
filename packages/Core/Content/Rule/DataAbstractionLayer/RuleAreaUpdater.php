@@ -27,7 +27,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\Validation\PreWriteValid
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Rule\Collector\RuleConditionRegistry;
 use SnapAdmin\Core\Framework\Uuid\Uuid;
-use SnapAdmin\Core\Content\Rule\DataAbstractionLayer\CachedRuleLoader;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**

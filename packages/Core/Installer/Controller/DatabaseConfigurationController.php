@@ -65,7 +65,6 @@ class DatabaseConfigurationController extends InstallerController
                 $this->setupDatabaseAdapter->createDatabase($connection, $connectionInfo->getDatabaseName());
 
                 $connection = $this->connectionFactory->getConnection($connectionInfo);
-
             }
 
             $session->set(DatabaseConnectionInformation::class, $connectionInfo);

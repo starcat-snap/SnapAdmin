@@ -4,7 +4,7 @@ namespace SnapAdmin\Core\System\NumberRange;
 
 use SnapAdmin\Core\Framework\Log\Package;
 
-#[Package('checkout')]
+#[Package('system-settings')]
 class NumberRangeEvents
 {
     final public const NUMBER_RANGE_WRITTEN_EVENT = 'number_range.written';

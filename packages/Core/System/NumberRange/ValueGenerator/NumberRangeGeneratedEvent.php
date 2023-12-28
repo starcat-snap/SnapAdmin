@@ -6,7 +6,7 @@ use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Contracts\EventDispatcher\Event;
 
-#[Package('checkout')]
+#[Package('system-settings')]
 class NumberRangeGeneratedEvent extends Event
 {
     final public const NAME = 'number_range.generated';

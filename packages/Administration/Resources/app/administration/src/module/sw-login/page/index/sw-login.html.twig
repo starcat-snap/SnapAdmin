@@ -1,65 +1,67 @@
 <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
 {% block sw_login %}
+<div
+    class="sw-login"
+    :class="{ 'is--login-success' : isLoginSuccess }"
+>
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_login_container %}
     <div
-        class="sw-login"
-        :class="{ 'is--login-success' : isLoginSuccess }"
+        class="sw-login__container"
+        :class="{ 'is--login-error': isLoginError }"
     >
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_login_image %}
+        <div class="sw-login__image">
+        </div>
+                {% endblock %}
 
         <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
-        {% block sw_login_container %}
-            <div
-                class="sw-login__container"
-                :class="{ 'is--login-error': isLoginError }"
-            >
-                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
-                {% block sw_login_image %}
-                    <div class="sw-login__image">
-                    </div>
-                {% endblock %}
-
-                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
                 {% block sw_login_form %}
-                    <div class="sw-login__content">
-                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        <div class="sw-login__content">
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
                         {% block sw_login_logo %}
-                            <div class="sw-login__logo">
+            <div class="sw-login__logo">
 
-                            </div>
+            </div>
                         {% endblock %}
-                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
                         {% block sw_login_view %}
 
-                            <router-view
-                                v-slot="{Component}"
-                            >
-                                <transition
-                                    name="fade"
-                                    mode="out-in"
-                                >
-                                    <component
-                                        :is="Component"
-                                        :hash="hash"
-                                        @is-loading="setLoading(true)"
-                                        @is-not-loading="setLoading(false)"
-                                        @login-error="loginError"
-                                        @login-success="loginSuccess"
-                                    />
-                                </transition>
-                            </router-view>
+            <router-view
+                v-slot="{Component}"
+            >
+                <transition
+                    name="fade"
+                    mode="out-in"
+                >
+                    <component
+                        :is="Component"
+                        :hash="hash"
+                        @is-loading="setLoading(true)"
+                        @is-not-loading="setLoading(false)"
+                        @login-error="loginError"
+                        @login-success="loginSuccess"
+                    />
+                </transition>
+            </router-view>
                         {% endblock %}
 
-                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
                         {% block sw_login_loader %}
-                            <sw-loader v-if="isLoading"/>
+            <sw-loader v-if="isLoading" />
                         {% endblock %}
-                    </div>
+        </div>
                 {% endblock %}
-            </div>
+    </div>
         {% endblock %}
 
         {% block sw_login_container_footer %}
-            <div class="sw-login__footer">© SnapAdmin AG - All rights reserved.</div>
+    <div class="sw-login__footer">
+        © SnapAdmin AG - All rights reserved.
+    </div>
         {% endblock %}
 
-    </div>
+</div>
 {% endblock %}

@@ -2,17 +2,14 @@
 
 namespace SnapAdmin\Core\Installer\Controller;
 
-use Doctrine\DBAL\Connection;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Installer\Configuration\AdminConfigurationService;
 use SnapAdmin\Core\Installer\Configuration\EnvConfigWriter;
-use SnapAdmin\Core\Installer\Database\BlueGreenDeploymentService;
 use SnapAdmin\Core\Maintenance\System\Service\DatabaseConnectionFactory;
 use SnapAdmin\Core\Maintenance\System\Struct\DatabaseConnectionInformation;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @internal
@@ -27,10 +24,10 @@ class SystemConfigurationController extends InstallerController
      * @param list<string> $supportedCurrencies
      */
     public function __construct(
-        private readonly DatabaseConnectionFactory  $connectionFactory,
-        private readonly EnvConfigWriter            $envConfigWriter,
-        private readonly AdminConfigurationService  $adminConfigurationService,
-        private readonly array                      $supportedLanguages,
+        private readonly DatabaseConnectionFactory $connectionFactory,
+        private readonly EnvConfigWriter $envConfigWriter,
+        private readonly AdminConfigurationService $adminConfigurationService,
+        private readonly array $supportedLanguages,
     ) {
     }
 
@@ -68,7 +65,6 @@ class SystemConfigurationController extends InstallerController
                 $schema = $_SERVER['REQUEST_SCHEME'];
             }
 
-
             try {
                 $this->envConfigWriter->writeConfig($connectionInfo);
 
@@ -84,6 +80,7 @@ class SystemConfigurationController extends InstallerController
                 $error = $e->getMessage();
             }
         }
+
         return $this->renderInstaller(
             '@Installer/installer/admin-configuration.html.twig',
             [

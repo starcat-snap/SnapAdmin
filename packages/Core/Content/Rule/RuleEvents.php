@@ -2,8 +2,8 @@
 
 namespace SnapAdmin\Core\Content\Rule;
 
-use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Content\Flow\Event\RuleIndexerEvent;
+use SnapAdmin\Core\Framework\Log\Package;
 
 #[Package('services-settings')]
 class RuleEvents

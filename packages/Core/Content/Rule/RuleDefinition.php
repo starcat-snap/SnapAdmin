@@ -65,7 +65,6 @@ class RuleDefinition extends EntityDefinition
             new JsonField('module_types', 'moduleTypes'),
             (new OneToManyAssociationField('flowSequences', FlowSequenceDefinition::class, 'rule_id', 'id'))->addFlags(new RestrictDelete(), new RuleAreas(RuleAreas::FLOW_AREA)),
             (new OneToManyAssociationField('conditions', RuleConditionDefinition::class, 'rule_id', 'id'))->addFlags(new CascadeDelete()),
-
         ]);
     }
 }

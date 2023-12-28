@@ -25,8 +25,7 @@ class UserCreateCommand extends Command
 {
     public function __construct(
         private readonly UserProvisioner $userProvisioner,
-    )
-    {
+    ) {
         parent::__construct();
     }
 

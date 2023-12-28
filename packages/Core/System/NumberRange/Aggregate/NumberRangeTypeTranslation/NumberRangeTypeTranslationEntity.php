@@ -7,7 +7,7 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\TranslationEntity;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\NumberRange\Aggregate\NumberRangeType\NumberRangeTypeEntity;
 
-#[Package('checkout')]
+#[Package('system-settings')]
 class NumberRangeTypeTranslationEntity extends TranslationEntity
 {
     use EntityCustomFieldsTrait;

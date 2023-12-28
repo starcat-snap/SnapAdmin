@@ -10,7 +10,7 @@ use SnapAdmin\Core\System\NumberRange\Aggregate\NumberRangeState\NumberRangeStat
 use SnapAdmin\Core\System\NumberRange\Aggregate\NumberRangeTranslation\NumberRangeTranslationCollection;
 use SnapAdmin\Core\System\NumberRange\Aggregate\NumberRangeType\NumberRangeTypeEntity;
 
-#[Package('checkout')]
+#[Package('system-settings')]
 class NumberRangeEntity extends Entity
 {
     use EntityCustomFieldsTrait;
@@ -50,7 +50,6 @@ class NumberRangeEntity extends Entity
      * @var NumberRangeTypeEntity|null
      */
     protected $type;
-
 
     /**
      * @var NumberRangeStateEntity|null

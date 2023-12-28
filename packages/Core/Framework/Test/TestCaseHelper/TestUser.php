@@ -50,6 +50,8 @@ class TestUser
             'phone' => '',
             'email' => "{$email}@example.com",
             'username' => $username,
+            'nick_name' => $username,
+            'user_number' => Uuid::randomHex(),
             'password' => TestDefaults::HASHED_PASSWORD,
             'locale_id' => self::getLocaleOfSystemLanguage($connection),
             'active' => 1,

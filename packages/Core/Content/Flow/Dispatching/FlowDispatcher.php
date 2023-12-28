@@ -10,7 +10,6 @@ use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Event\FlowEventAware;
 use SnapAdmin\Core\Framework\Event\FlowLogEvent;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\Content\Flow\Dispatching\FlowExecutor;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;

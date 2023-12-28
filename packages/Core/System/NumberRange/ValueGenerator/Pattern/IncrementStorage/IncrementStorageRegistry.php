@@ -5,7 +5,7 @@ namespace SnapAdmin\Core\System\NumberRange\ValueGenerator\Pattern\IncrementStor
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\NumberRange\Exception\IncrementStorageNotFoundException;
 
-#[Package('checkout')]
+#[Package('system-settings')]
 class IncrementStorageRegistry
 {
     /**

@@ -283,7 +283,6 @@
         ],
         "eslint:admin": "@npm:admin run lint:all",
         "eslint:admin:fix": "@npm:admin run lint:fix",
-        "eslint:frontend": "@npm:frontend:bin eslint --config .eslintrc.js --ext .js,.vue",
         "framework:schema:dump": "@php bin/console -e prod framework:schema -s 'entity-schema' packages/Administration/Resources/app/administration/test/_mocks_/entity-schema.json",
         "hook:pre-commit": [
             "bin/pre-commit"

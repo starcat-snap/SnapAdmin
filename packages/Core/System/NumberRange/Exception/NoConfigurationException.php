@@ -6,7 +6,7 @@ use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\SnapAdminHttpException;
 use Symfony\Component\HttpFoundation\Response;
 
-#[Package('checkout')]
+#[Package('system-settings')]
 class NoConfigurationException extends SnapAdminHttpException
 {
     public function __construct(

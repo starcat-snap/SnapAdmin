@@ -5,7 +5,7 @@ namespace SnapAdmin\Core\System\NumberRange\Exception;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\SnapAdminHttpException;
 
-#[Package('checkout')]
+#[Package('system-settings')]
 class IncrementStorageNotFoundException extends SnapAdminHttpException
 {
     /**

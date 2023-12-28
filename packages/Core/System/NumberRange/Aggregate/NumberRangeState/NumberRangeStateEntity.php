@@ -7,7 +7,7 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\NumberRange\NumberRangeEntity;
 
-#[Package('checkout')]
+#[Package('system-settings')]
 class NumberRangeStateEntity extends Entity
 {
     use EntityIdTrait;

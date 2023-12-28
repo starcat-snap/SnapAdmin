@@ -10,7 +10,7 @@ use SnapAdmin\Core\System\NumberRange\NumberRangeEvents;
 use SnapAdmin\Core\System\NumberRange\ValueGenerator\Pattern\ValueGeneratorPatternRegistry;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-#[Package('checkout')]
+#[Package('system-settings')]
 class NumberRangeValueGenerator implements NumberRangeValueGeneratorInterface
 {
     /**
@@ -23,7 +23,7 @@ class NumberRangeValueGenerator implements NumberRangeValueGeneratorInterface
     ) {
     }
 
-    public function getValue(string $type, Context $context,bool $preview = false): string
+    public function getValue(string $type, Context $context, bool $preview = false): string
     {
         $config = $this->getConfiguration($type);
 
@@ -81,8 +81,8 @@ class NumberRangeValueGenerator implements NumberRangeValueGeneratorInterface
      */
     private function getConfiguration(string $definition): array
     {
-            /** @var array{id: string, pattern: string, start: ?int}|false $config */
-            $config = $this->connection->fetchAssociative('
+        /** @var array{id: string, pattern: string, start: ?int}|false $config */
+        $config = $this->connection->fetchAssociative('
                 SELECT LOWER(HEX(`number_range`.`id`)) AS `id`, `number_range`.`pattern`, `number_range`.`start`
                 FROM number_range
                 INNER JOIN number_range_type ON number_range_type.id = number_range.type_id

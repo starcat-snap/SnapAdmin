@@ -9,7 +9,7 @@ use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin\Exception\DecorationPatternException;
 use Symfony\Component\Lock\LockFactory;
 
-#[Package('checkout')]
+#[Package('system-settings')]
 class IncrementRedisStorage extends AbstractIncrementStorage
 {
     /**

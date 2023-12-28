@@ -15,11 +15,11 @@ $sw-admin-menu-color-active: #172b4f;
 $sw-admin-menu-color-hover: #293f65;
 $sw-admin-menu-shop-status-ok: $color-emerald-500;
 $sw-admin-menu-background: rgb(17, 24, 39);
-$sw-admin-menu-background-hover: rgba(255, 255, 255, 0.05);
+$sw-admin-menu-background-hover: rgba(255, 255, 255, 5%);
 $sw-admin-menu-divider: #344865;
-$sw-admin-menu-background-active-first-level: rgba(255, 255, 255, 0.1);
-$sw-admin-menu-background-active-hover: rgba(255, 255, 255, 0.05);
-$sw-admin-menu-background-active-second-level: rgba(255, 255, 255, 0.05);
+$sw-admin-menu-background-active-first-level: rgba(255, 255, 255, 10%);
+$sw-admin-menu-background-active-hover: rgba(255, 255, 255, 5%);
+$sw-admin-menu-background-active-second-level: rgba(255, 255, 255, 5%);
 $sw-admin-menu-color-text-primary: #bcc9dc;
 $sw-admin-menu-active-text: $color-white;
 
@@ -55,8 +55,9 @@ $sw-admin-menu-active-text: $color-white;
     }
 
     .collapsible-text {
-        transition: opacity $sw-admin-menu-transition,
-        transform $sw-admin-menu-transition;
+        transition:
+            opacity $sw-admin-menu-transition,
+            transform $sw-admin-menu-transition;
         transform: translateX(-50px);
         opacity: 0;
         display: inline-block;

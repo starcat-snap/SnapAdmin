@@ -28,6 +28,10 @@ class Migration1536233560BasicData extends MigrationStep
         $this->createNumberRanges($connection);
     }
 
+    public function updateDestructive(Connection $connection): void
+    {
+    }
+
     private function createNumberRanges(Connection $connection): void
     {
         $definitionNumberRangeTypes = [
@@ -90,10 +94,6 @@ class Migration1536233560BasicData extends MigrationStep
                 ]
             );
         }
-    }
-
-    public function updateDestructive(Connection $connection): void
-    {
     }
 
     private function createSystemConfigOptions(Connection $connection): void
@@ -169,7 +169,7 @@ class Migration1536233560BasicData extends MigrationStep
     private function getMediaFolderName(string $entity): string
     {
         $capitalizedEntityParts = array_map(
-            static fn($part) => ucfirst((string)$part),
+            static fn ($part) => ucfirst((string) $part),
             explode('_', $entity)
         );
 

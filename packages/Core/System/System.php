@@ -38,8 +38,7 @@ class System extends Bundle
         $loader->load('snippet.xml');
         $loader->load('state_machine.xml');
         $loader->load('number_range.xml');
-                $container->addCompilerPass(new RedisNumberRangeIncrementerCompilerPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 0);
-
+        $container->addCompilerPass(new RedisNumberRangeIncrementerCompilerPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 0);
     }
 
     public function boot(): void

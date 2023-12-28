@@ -5,7 +5,7 @@ namespace SnapAdmin\Core\System\NumberRange\ValueGenerator\Pattern;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin\Exception\DecorationPatternException;
 
-#[Package('checkout')]
+#[Package('system-settings')]
 class ValueGeneratorPatternDate extends AbstractValueGenerator
 {
     final public const STANDARD_FORMAT = 'Y-m-d';

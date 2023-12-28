@@ -8,7 +8,7 @@ use SnapAdmin\Core\Framework\Log\Package;
 /**
  * @extends EntityCollection<NumberRangeTranslationEntity>
  */
-#[Package('checkout')]
+#[Package('system-settings')]
 class NumberRangeTranslationCollection extends EntityCollection
 {
     /**

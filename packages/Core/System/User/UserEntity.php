@@ -35,6 +35,9 @@ class UserEntity extends Entity
      */
     protected $username;
 
+    /**
+     * @var string
+     */
     protected $userNumber;
 
     /**
@@ -59,6 +62,9 @@ class UserEntity extends Entity
      */
     protected $phone;
 
+    /**
+     * @var string
+     */
     protected $nickName;
 
     /**
@@ -352,6 +358,4 @@ class UserEntity extends Entity
     {
         $this->userNumber = $userNumber;
     }
-
-
 }
