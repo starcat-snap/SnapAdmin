@@ -36,8 +36,6 @@ class System extends Bundle
         $loader->load('user.xml');
         $loader->load('configuration.xml');
         $loader->load('snippet.xml');
-        $loader->load('flow.xml');
-        $loader->load('rule.xml');
         $loader->load('state_machine.xml');
         $loader->load('number_range.xml');
                 $container->addCompilerPass(new RedisNumberRangeIncrementerCompilerPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 0);

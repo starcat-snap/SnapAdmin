@@ -5,5 +5,5 @@
         https://symfony.com/schema/routing/routing-1.0.xsd">
 
     <import resource="../../Media/**/*Controller.php" type="attribute" />
-
+    <import resource="../../Flow/**/*Controller.php" type="attribute" />
 </routes>

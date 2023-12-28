@@ -18,5 +18,7 @@ class Content extends Bundle
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/DependencyInjection/'));
         $loader->load('media.xml');
         $loader->load('media_path.xml');
+        $loader->load('flow.xml');
+        $loader->load('rule.xml');
     }
 }
