@@ -2,8 +2,12 @@
 
 namespace SnapAdmin\Core\Content\Media\File;
 
+use League\Flysystem\CorruptedPathDetected;
+use League\Flysystem\WhitespacePathNormalizer;
 use SnapAdmin\Core\Content\Media\MediaException;
+use SnapAdmin\Core\Framework\Log\Package;
 
+#[Package('buyers-experience')]
 class FileNameValidator
 {
     private const RESTRICTED_CHARACTERS = [
@@ -27,6 +31,13 @@ class FileNameValidator
 
     private const MAX_FILE_NAME_LENGTH = 255;
 
+    private readonly WhitespacePathNormalizer $whitespacePathNormalizer;
+
+    public function __construct()
+    {
+        $this->whitespacePathNormalizer = new WhitespacePathNormalizer();
+    }
+
     /**
      * @throws MediaException
      */
@@ -41,6 +52,16 @@ class FileNameValidator
         $this->validateFileNameDoesNotContainForbiddenCharacter($fileName);
         $this->validateFileNameDoesNotContainC0Character($fileName);
         $this->validateFileNameIsLessOrEqualThanMaxLength($fileName);
+        $this->validateFileNameDoesNotContainFunkyWhiteSpace($fileName);
+    }
+
+    private function validateFileNameDoesNotContainFunkyWhiteSpace(string $fileName): void
+    {
+        try {
+            $this->whitespacePathNormalizer->normalizePath($fileName);
+        } catch (CorruptedPathDetected) {
+            throw MediaException::illegalFileName($fileName, 'Filename must not contain funky whitespace');
+        }
     }
 
     private function validateFileNameDoesNotEndOrStartWithDot(string $fileName): void
