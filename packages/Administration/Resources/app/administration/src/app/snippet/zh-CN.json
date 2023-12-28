@@ -369,6 +369,11 @@
       "columnModuleName": "模块名"
     }
   },
+  "sw-meteor": {
+    "navigation": {
+      "backButton": "返回"
+    }
+  },
   "sw-empty-state": {
     "messageNoResultTitle": "什么都没有找到",
     "messageNoResultSublineSimple": "编辑过滤器或搜索条件来查找结果.",
