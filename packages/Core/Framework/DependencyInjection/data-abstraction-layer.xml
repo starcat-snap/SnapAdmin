@@ -192,8 +192,8 @@
         </service>
 
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\WriteCommandExtractor">
-            <argument type="service"
-                      id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityWriteGatewayInterface"/>
+            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityWriteGatewayInterface"/>
+            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
         </service>
 
         <service class="SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\EntityWriteGateway"

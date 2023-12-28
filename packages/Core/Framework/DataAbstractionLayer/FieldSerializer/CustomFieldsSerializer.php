@@ -8,6 +8,7 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\CustomFields;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Field;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\JsonField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\Command\JsonUpdateCommand;
+use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\Command\WriteCommandQueue;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\DataStack\KeyValuePair;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityExistence;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\WriteParameterBag;
@@ -149,7 +150,16 @@ class CustomFieldsSerializer extends JsonFieldSerializer
                 $parameters->getPath()
             );
 
-            $parameters->getCommandQueue()->add($jsonUpdateCommand->getDefinition(), $jsonUpdateCommand);
+            $identifier = WriteCommandQueue::decodeCommandPrimary(
+                $this->definitionRegistry,
+                $jsonUpdateCommand,
+            );
+
+            $parameters->getCommandQueue()->add(
+                $jsonUpdateCommand->getDefinition()->getEntityName(),
+                md5(json_encode($identifier, \JSON_THROW_ON_ERROR)),
+                $jsonUpdateCommand
+            );
         }
     }
 }

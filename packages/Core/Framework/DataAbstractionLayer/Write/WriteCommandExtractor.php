@@ -2,6 +2,7 @@
 
 namespace SnapAdmin\Core\Framework\DataAbstractionLayer\Write;
 
+use SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Exception\CanNotFindParentStorageFieldException;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Exception\InvalidParentAssociationException;
@@ -28,6 +29,7 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\UpdatedByField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\MappingEntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\Command\InsertCommand;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\Command\UpdateCommand;
+use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\Command\WriteCommandQueue;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\DataStack\DataStack;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\DataStack\KeyValuePair;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\FieldException\WriteFieldException;
@@ -49,8 +51,10 @@ class WriteCommandExtractor
     /**
      * @internal
      */
-    public function __construct(private readonly EntityWriteGatewayInterface $entityExistenceGateway)
-    {
+    public function __construct(
+        private readonly EntityWriteGatewayInterface $entityExistenceGateway,
+        private readonly DefinitionInstanceRegistry $registry
+    ) {
     }
 
     /**
@@ -413,12 +417,18 @@ class WriteCommandExtractor
         $queue = $parameterBag->getCommandQueue();
 
         if ($existence->exists()) {
-            $queue->add($definition, new UpdateCommand($definition, $data, $pkData, $existence, $parameterBag->getPath()));
-
-            return;
+            $command = new UpdateCommand($definition, $data, $pkData, $existence, $parameterBag->getPath());
+        } else {
+            $command = new InsertCommand($definition, array_merge($pkData, $data), $pkData, $existence, $parameterBag->getPath());
         }
 
-        $queue->add($definition, new InsertCommand($definition, array_merge($pkData, $data), $pkData, $existence, $parameterBag->getPath()));
+        $identifier = WriteCommandQueue::decodeCommandPrimary($this->registry, $command);
+
+        $queue->add(
+            $definition->getEntityName(),
+            md5(json_encode($identifier, \JSON_THROW_ON_ERROR)),
+            $command
+        );
     }
 
     /**
