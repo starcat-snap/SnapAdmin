@@ -20,6 +20,17 @@
       "success": "成功",
       "info": "提示"
     },
+    "notification": {
+      "notificationSaveErrorMessage": "An error occurred while saving the entity \"{entityName}\".",
+      "notificationSaveErrorMessageRequiredFieldsInvalid": "Please fill in all required fields.",
+      "unspecifiedSaveErrorMessage": "An error occurred.",
+      "notificationSaveSuccessMessage": "The entity \"{entityName}\" has been saved.",
+      "messageDeleteSuccess": "\"{name}\" deleted.",
+      "messageDeleteFailed": "The entity \"{entityName}\" is still in use by the following modules: ",
+      "noTitle": "Title is not defined",
+      "noMessage": "Message is not defined",
+      "notificationLoadingDataErrorMessage": "Error loading data"
+    },
     "sw-admin-menu": {
       "linkLogout": "注销",
       "linkMinimizeMenu": "折叠菜单",
@@ -29,6 +40,9 @@
       "navigation": {
         "mainMenuItemSystem": "系统"
       }
+    },
+    "sw-text-editor": {
+      "labelTextLength": "{count} 个字符 | {count} 个字符"
     },
     "sw-simple-search-field": {
       "defaultPlaceholder": "搜索..."
@@ -403,6 +417,77 @@
           "text": "Create support request",
           "href": "https://account.snapadmin.net/"
         }
+      }
+    }
+  },
+  "sw-text-editor-toolbar": {
+    "link": {
+      "openInNewTab": "在新选项卡中打开链接",
+      "displayAsButton": "将链接显示为按钮",
+      "buttonVariant": "按钮变体",
+      "buttonVariantPrimary": "Primary",
+      "buttonVariantSecondary": "Secondary",
+      "buttonVariantPrimarySmall": "Primary (small)",
+      "buttonVariantSecondarySmall": "Secondary (small)",
+      "linkTo": "Link to",
+      "placeholder": "Enter URL...",
+      "labelUrl": "URL",
+      "labelType": "Link-Type",
+      "labelLink": "Link",
+      "labelEmail": "Email address",
+      "labelPhoneNumber": "Phone number",
+      "placeholderPhoneNumber": "Enter phone number...",
+      "placeholderEmail": "Enter email address..."
+    },
+    "table": {
+      "addHeading": "Add table heading",
+      "cols": "Columns",
+      "rows": "Rows",
+      "editInfo": "Table can still be extended later."
+    },
+    "title": {
+      "format": "Format",
+      "paragraph": "Paragraph",
+      "h1": "Headline 1",
+      "h2": "Headline 2",
+      "h3": "Headline 3",
+      "h4": "Headline 4",
+      "h5": "Headline 5",
+      "h6": "Headline 6",
+      "blockquote": "Blockquote",
+      "text-color": "Text color",
+      "bold": "Bold",
+      "italic": "Italic",
+      "underline": "Underline",
+      "strikethrough": "Strikethrough",
+      "superscript": "Superscript",
+      "subscript": "Subscript",
+      "textAlign": "Text alignment",
+      "alignLeft": "Align left",
+      "alignCenter": "Align center",
+      "alignRight": "Align right",
+      "justify": "Justified",
+      "insert-unordered-list": "Insert unordered list",
+      "insert-ordered-list": "Insert ordered list",
+      "link": "Link",
+      "data-mapping": "Insert variable",
+      "undo": "Undo",
+      "redo": "Redo",
+      "insert-table": "Insert table",
+      "code-switch": "Switch edit modes"
+    }
+  },
+  "sw-tree": {
+    "general": {
+      "placeholderSearch": "Search...",
+      "treeHeadSelected": "{count} selected",
+      "treeHeadline": "Tree structure",
+      "buttonCreate": "Create element",
+      "actions": {
+        "createSub": "New subelement",
+        "createBefore": "New element before",
+        "createAfter": "New element after",
+        "actionsDisabledInLanguage": "Elements can only be created in the default system language"
       }
     }
   }
