@@ -490,5 +490,13 @@
         "actionsDisabledInLanguage": "Elements can only be created in the default system language"
       }
     }
+  },
+  "sw-discard-changes-modal": {
+    "title": "丢弃未保存的更改?",
+    "message": "您有未保存的更改，是否要离开该页并丢弃它们?",
+    "actions": {
+      "discard": "放弃更改",
+      "keepEditing": "继续编辑"
+    }
   }
 }
