@@ -36,7 +36,7 @@ class NumberRangeValueGenerator implements NumberRangeValueGeneratorInterface
 
     public function previewPattern(string $definition, ?string $pattern, int $start): string
     {
-        $config = $this->getConfiguration($definition, null);
+        $config = $this->getConfiguration($definition);
         $config['start'] = $start;
 
         if (!$pattern) {

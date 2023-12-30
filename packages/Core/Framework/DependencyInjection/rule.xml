@@ -23,10 +23,6 @@
             <tag name="snap.rule.definition"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Rule\Container\MatchAllLineItemsRule">
-            <tag name="snap.rule.definition"/>
-        </service>
-
         <service id="SnapAdmin\Core\Framework\Rule\DateRangeRule">
             <tag name="snap.rule.definition"/>
         </service>

@@ -15,7 +15,6 @@ class Script extends Struct
         protected string $name,
         protected string $script,
         protected \DateTimeInterface $lastModified,
-        private readonly ?ScriptAppInformation $scriptAppInformation = null,
         protected array $twigOptions = [],
         protected array $includes = [],
         private readonly bool $active = true

@@ -27,26 +27,6 @@ class ScriptException extends HttpException
         return new ScriptExecutionFailedException($hook, $scriptName, $previous);
     }
 
-    public static function hookMethodOutsideOfSalesChannelContext(string $method): self
-    {
-        return new self(
-            Response::HTTP_INTERNAL_SERVER_ERROR,
-            self::HOOK_METHOD_OUTSIDE_SALES_CHANNEL_CONTEXT,
-            'Method "{{ method }}" can only be called from inside the `SalesChannelContext`.',
-            ['method' => $method]
-        );
-    }
-
-    public static function storefrontBundleMissingForHookMethod(string $method): self
-    {
-        return new self(
-            Response::HTTP_INTERNAL_SERVER_ERROR,
-            self::HOOK_METHOD_STOREFRONT_BUNDLE_MISSING,
-            'Method "{{ method }}" can only be called if the `storefront`-bundle is installed.',
-            ['method' => $method]
-        );
-    }
-
     public static function accessFromScriptExecutionContextNotAllowed(string $class, string $method): self
     {
         return new self(

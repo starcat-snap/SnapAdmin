@@ -89,38 +89,6 @@
             <argument type="tagged_iterator" tag="flow.storer"/>
         </service>
 
-        <service id="SnapAdmin\Core\Content\Flow\Rule\OrderTagRule">
-            <tag name="snap.rule.definition"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Content\Flow\Rule\OrderTrackingCodeRule">
-            <tag name="snap.rule.definition"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Content\Flow\Rule\OrderDeliveryStatusRule">
-            <tag name="snap.rule.definition"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Content\Flow\Rule\OrderCreatedByAdminRule">
-            <tag name="snap.rule.definition"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Content\Flow\Rule\OrderTransactionStatusRule">
-            <tag name="snap.rule.definition"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Content\Flow\Rule\OrderStatusRule">
-            <tag name="snap.rule.definition"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Content\Flow\Rule\OrderCustomFieldRule">
-            <tag name="snap.rule.definition"/>
-        </service>
-
-        <service id="SnapAdmin\Core\Content\Flow\Rule\OrderDocumentTypeRule">
-            <tag name="snap.rule.definition"/>
-        </service>
-
         <service id="SnapAdmin\Core\Content\Flow\Aggregate\FlowTemplate\FlowTemplateDefinition">
             <tag name="snap.entity.definition" />
         </service>

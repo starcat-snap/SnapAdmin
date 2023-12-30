@@ -16,8 +16,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\JsonFieldSeria
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\EntitySearcherInterface;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\MultiFilter;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Version\Aggregate\VersionCommitData\VersionCommitDataDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\Command\WriteCommandQueue;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\DataStack\KeyValuePair;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityWriter;
@@ -32,7 +30,6 @@ use SnapAdmin\Core\Framework\Test\TestCaseBase\CacheTestBehaviour;
 use SnapAdmin\Core\Framework\Test\TestCaseBase\KernelTestBehaviour;
 use SnapAdmin\Core\Framework\Uuid\Uuid;
 use SnapAdmin\Core\Framework\Validation\WriteConstraintViolationException;
-use SnapAdmin\Core\System\User\UserDefinition;
 use SnapAdmin\Core\Test\Stub\DataAbstractionLayer\EmptyEntityExistence;
 
 /**

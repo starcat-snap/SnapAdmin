@@ -81,16 +81,16 @@ class StaticDefinitionInstanceRegistry extends DefinitionInstanceRegistry
             UpdatedAtFieldSerializer::class => new UpdatedAtFieldSerializer($this->validator, $this),
             BlobFieldSerializer::class => new BlobFieldSerializer(),
             ManyToManyAssociationFieldSerializer::class => new ManyToManyAssociationFieldSerializer(
-                new WriteCommandExtractor($this->entityWriteGateway),
+                new WriteCommandExtractor($this->entityWriteGateway, $this),
             ),
             ManyToOneAssociationFieldSerializer::class => new ManyToOneAssociationFieldSerializer(
-                new WriteCommandExtractor($this->entityWriteGateway),
+                new WriteCommandExtractor($this->entityWriteGateway, $this),
             ),
             OneToManyAssociationFieldSerializer::class => new OneToManyAssociationFieldSerializer(
-                new WriteCommandExtractor($this->entityWriteGateway),
+                new WriteCommandExtractor($this->entityWriteGateway, $this),
             ),
             OneToOneAssociationFieldSerializer::class => new OneToOneAssociationFieldSerializer(
-                new WriteCommandExtractor($this->entityWriteGateway),
+                new WriteCommandExtractor($this->entityWriteGateway, $this),
             ),
         ];
     }

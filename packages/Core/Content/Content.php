@@ -20,5 +20,6 @@ class Content extends Bundle
         $loader->load('media_path.xml');
         $loader->load('flow.xml');
         $loader->load('rule.xml');
+        $loader->load('mail_template.xml');
     }
 }

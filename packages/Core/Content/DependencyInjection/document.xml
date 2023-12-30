@@ -1,0 +1,85 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="SnapAdmin\Core\Content\Document\DocumentDefinition">
+            <tag name="snap.entity.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Content\Document\Aggregate\DocumentType\DocumentTypeDefinition">
+            <tag name="snap.entity.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Content\Document\Aggregate\DocumentTypeTranslation\DocumentTypeTranslationDefinition">
+            <tag name="snap.entity.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Content\Document\Aggregate\DocumentBaseConfig\DocumentBaseConfigDefinition">
+            <tag name="snap.entity.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Content\Document\Twig\DocumentTemplateRenderer">
+            <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Twig\TemplateFinder"/>
+            <argument type="service" id="twig"/>
+            <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Translation\Translator"/>
+            <argument type="service" id="event_dispatcher"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Content\Document\DocumentGeneratorController" public="true">
+            <argument type="service" id="SnapAdmin\Core\Content\Document\Service\DocumentGenerator"/>
+            <argument type="service" id="serializer"/>
+            <argument type="service" id="SnapAdmin\Core\Framework\Validation\DataValidator" />
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="pdf.merger" class="setasign\Fpdi\Tcpdf\Fpdi" />
+
+        <service id="SnapAdmin\Core\Content\Document\Service\DocumentConfigLoader">
+            <argument type="service" id="document_base_config.repository"/>
+
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+        <service id="SnapAdmin\Core\Content\Document\Service\ReferenceInvoiceLoader">
+            <argument type="service" id="Doctrine\DBAL\Connection" />
+        </service>
+
+        <service id="SnapAdmin\Core\Content\Document\Renderer\DocumentRendererRegistry">
+            <argument type="tagged" tag="document.renderer"/>
+        </service>
+
+        <service id="SnapAdmin\Core\Content\Document\Service\PdfRenderer">
+            <argument>%snap.dompdf.options%</argument>
+        </service>
+
+        <service id="SnapAdmin\Core\Content\Document\Service\DocumentGenerator">
+            <argument type="service" id="SnapAdmin\Core\Content\Document\Renderer\DocumentRendererRegistry" />
+            <argument type="service" id="SnapAdmin\Core\Content\Document\Service\PdfRenderer" />
+            <argument type="service" id="SnapAdmin\Core\Content\Media\MediaService" />
+            <argument type="service" id="document.repository" />
+            <argument type="service" id="Doctrine\DBAL\Connection" />
+        </service>
+
+        <service id="SnapAdmin\Core\Content\Document\Service\DocumentMerger">
+            <argument type="service" id="document.repository" />
+            <argument type="service" id="SnapAdmin\Core\Content\Media\MediaService" />
+            <argument type="service" id="SnapAdmin\Core\Content\Document\Service\DocumentGenerator" />
+            <argument type="service" id="pdf.merger" />
+        </service>
+
+        <service id="SnapAdmin\Core\Content\Document\Controller\DocumentController" public="true">
+            <argument type="service" id="SnapAdmin\Core\Content\Document\Service\DocumentGenerator"/>
+            <argument type="service" id="SnapAdmin\Core\Content\Document\Service\DocumentMerger"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+    </services>
+</container>

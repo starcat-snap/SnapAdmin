@@ -14,14 +14,13 @@ use Symfony\Component\Routing\Attribute\Route;
 /**
  * @internal
  *
- * @phpstan-type AdminUser array{email: string, username: string, firstName: string, lastName: string, password: string}
+ * @phpstan-type AdminUser array{email: string, username: string, name: string, phone: string, password: string}
  */
 #[Package('core')]
 class SystemConfigurationController extends InstallerController
 {
     /**
      * @param array<string, string> $supportedLanguages
-     * @param list<string> $supportedCurrencies
      */
     public function __construct(
         private readonly DatabaseConnectionFactory $connectionFactory,
