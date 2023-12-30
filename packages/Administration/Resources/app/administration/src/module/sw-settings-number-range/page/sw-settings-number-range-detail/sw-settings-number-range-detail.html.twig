@@ -1,0 +1,240 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_settings_number_range_detail %}
+<sw-page class="sw-settings-number-range-detail"
+    show-search-bar="true"
+    show-smart-bar="true"
+>
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_settings_number_range_detail_header %}
+    <template #smart-bar-header>
+        <h2>{{ placeholder(numberRange, 'name', $tc('sw-settings-number-range.detail.textHeadline')) }}</h2>
+    </template>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_settings_number_range_detail_actions %}
+    <template #smart-bar-actions>
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_settings_number_range_detail_actions_abort %}
+        <sw-button
+            v-tooltip.bottom="tooltipCancel"
+            :disabled="isLoading"
+            @click="onCancel"
+        >
+            {{ $tc('sw-settings-number-range.detail.buttonCancel') }}
+        </sw-button>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_settings_number_range_detail_actions_save %}
+        <sw-button-process
+            v-tooltip.bottom="tooltipSave"
+            class="sw-settings-number-range-detail__save-action"
+            variant="primary"
+            :is-loading="isLoading"
+            :process-success="isSaveSuccessful"
+            :disabled="!acl.can('number_ranges.editor')"
+            @update:process-success="saveFinish"
+            @click.prevent="onSave"
+        >
+            {{ $tc('sw-settings-number-range.detail.buttonSave') }}
+        </sw-button-process>
+        {% endblock %}
+    </template>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_settings_number_range_detail_content %}
+    <template #content>
+        <sw-card-view>
+            <template v-if="isLoading">
+                <sw-skeleton />
+                <sw-skeleton />
+            </template>
+
+            <template v-else>
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_settings_number_range_detail_language_info %}
+                <sw-language-info :entity-description="identifier" />
+                {% endblock %}
+
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_settings_number_range_detail_content_card %}
+                <sw-card
+                    :title="$tc('sw-settings-number-range.detail.configCard')"
+                    position-identifier="sw-settings-number-range-detail-content"
+                >
+                    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                    {% block sw_settings_number_range_detail_content_global_warning %}
+                    <sw-alert
+                        v-if="numberRange && numberRange.type && numberRange.type.global"
+                        class="sw-number_range-quickinfo__alert-global-type"
+                        variant="warning"
+                        :title="$tc('sw-settings-number-range.general.infoGlobalTypeTitle', 0, {typeName: numberRange.type.typeName})"
+                    >
+                        {{ $tc('sw-settings-number-range.general.infoGlobalType', 0, {typeName: numberRange.type.typeName}) }}
+                    </sw-alert>
+                    {% endblock %}
+
+                    <sw-container
+                        columns="repeat(auto-fit, minmax(250px, 1fr))"
+                        gap="0px 30px"
+                    >
+
+                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                        {% block sw_settings_number_range_detail_content_field_name %}
+                        <sw-text-field
+                            v-model:value="numberRange.name"
+                            name="sw-field--numberRange-name"
+                            :label="$tc('sw-settings-number-range.detail.labelName')"
+                            :placeholder="placeholder(numberRange,'name', $tc('sw-settings-number-range.detail.placeholderName'))"
+                            validation="required"
+                            required
+                            :disabled="!acl.can('number_ranges.editor')"
+                            :error="numberRangeNameError"
+                        />
+                        {% endblock %}
+
+                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                        {% block sw_settings_number_range_detail_content_field_description %}
+                        <sw-text-field
+                            v-model:value="numberRange.description"
+                            name="sw-field--numberRange-description"
+                            :label="$tc('sw-settings-number-range.detail.labelDescription')"
+                            :placeholder="placeholder(numberRange,'description', $tc('sw-settings-number-range.detail.placeholderDescription'))"
+                            :disabled="!acl.can('number_ranges.editor')"
+                        />
+                        {% endblock %}
+                    </sw-container>
+
+                    <sw-container
+                        columns="repeat(auto-fit, minmax(200px, 1fr))"
+                        gap="0px 30px"
+                    >
+                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                        {% block sw_settings_number_range_detail_content_field_prefix %}
+                        <sw-text-field
+                            v-model:value="prefix"
+                            name="sw-field--prefix"
+                            :disabled="advanced || !acl.can('number_ranges.editor')"
+                            :label="$tc('sw-settings-number-range.detail.labelPrefix')"
+                            :placeholder="advanced?$tc('sw-settings-number-range.detail.placeholderSimpleModeImpossible'):$tc('sw-settings-number-range.detail.placeholderPrefix')"
+                            @update:value="onChangePattern()"
+                        />
+                        {% endblock %}
+
+                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                        {% block sw_settings_number_range_detail_content_field_start %}
+                        <sw-number-field
+                            v-model:value="numberRange.start"
+                            name="sw-field--numberRange-start"
+                            number-type="int"
+                            :disabled="!acl.can('number_ranges.editor')"
+                            :label="$tc('sw-settings-number-range.detail.labelStart')"
+                            :placeholder="$tc('sw-settings-number-range.detail.placeholderStart')"
+                            required
+                            validation="required"
+                            @update:value="onChangePattern()"
+                        />
+                        {% endblock %}
+
+                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                        {% block sw_settings_number_range_detail_content_field_suffix %}
+                        <sw-text-field
+                            v-model:value="suffix"
+                            name="sw-field--suffix"
+                            :disabled="advanced || !acl.can('number_ranges.editor')"
+                            :label="$tc('sw-settings-number-range.detail.labelSuffix')"
+                            :placeholder="advanced?$tc('sw-settings-number-range.detail.placeholderSimpleModeImpossible'):$tc('sw-settings-number-range.detail.placeholderSuffix')"
+                            @update:value="onChangePattern()"
+                        />
+                        {% endblock %}
+
+                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                        {% block sw_settings_number_range_detail_content_field_pattern %}
+                        <sw-text-field
+                            v-if="advanced"
+                            v-model:value="numberRange.pattern"
+                            name="sw-field--numberRange-pattern"
+                            :label="$tc('sw-settings-number-range.detail.labelPattern')"
+                            :placeholder="$tc('sw-settings-number-range.detail.placeholderPattern')"
+                            :disabled="!acl.can('number_ranges.editor')"
+                            @update:value="onChangePattern()"
+                        />
+                        <div v-if="!advanced"></div>
+                        {% endblock %}
+                    </sw-container>
+
+                    <sw-container
+                        columns="1fr 1fr"
+                        gap="0px 30px"
+                    >
+                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                        {% block sw_settings_number_range_detail_content_field_default %}
+                        <div class="sw-settings-number-range-detail__field_default">
+                            <sw-switch-field
+                                v-model:value="advanced"
+                                name="sw-field--advanced"
+                                bordered
+                                :disabled="!acl.can('number_ranges.editor')"
+                                :label="$tc('sw-settings-number-range.detail.labelAdvanced')"
+                            />
+                            <sw-help-text
+                                :width="380"
+                                :text="$t('sw-settings-number-range.detail.helpTextAdvancedField')"
+                            />
+                        </div>
+                        {% endblock %}
+                    </sw-container>
+
+                    <sw-container
+                        columns="repeat(auto-fit, minmax(250px, 1fr))"
+                        gap="0px 30px"
+                    >
+                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                        {% block sw_settings_number_range_detail_content_field_current_number %}
+                        <sw-text-field
+                            v-if="state"
+                            v-model:value="state"
+                            name="sw-field--state"
+                            :disabled="true"
+                            :label="$tc('sw-settings-number-range.detail.labelCurrentNumber')"
+                            :placeholder="numberRange.start?numberRange.start.toString():''"
+                        />
+                        {% endblock %}
+
+                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                        {% block sw_settings_number_range_detail_content_field_preview %}
+                        <sw-text-field
+                            v-model:value="preview"
+                            name="sw-field--preview"
+                            :disabled="true"
+                            :label="$tc('sw-settings-number-range.detail.labelPreview')"
+                        />
+                        {% endblock %}
+                    </sw-container>
+                </sw-card>
+                {% endblock %}
+
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_settings_number_range_detail_custom_field_sets %}
+                <sw-card
+                    v-if="showCustomFields"
+                    position-identifier="sw-settings-number-range-detail-custom-field-sets"
+                    :title="$tc('sw-settings-custom-field.general.mainMenuItemGeneral')"
+                    :is-loading="isLoading"
+                >
+                    <sw-custom-field-set-renderer
+                        :entity="numberRange"
+                        :disabled="!acl.can('number_ranges.editor')"
+                        :sets="customFieldSets"
+                    />
+                </sw-card>
+                {% endblock %}
+            </template>
+        </sw-card-view>
+    </template>
+    {% endblock %}
+</sw-page>
+{% endblock %}

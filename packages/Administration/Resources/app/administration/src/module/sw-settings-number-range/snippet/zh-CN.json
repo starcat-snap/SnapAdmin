@@ -1,0 +1,66 @@
+{
+  "sw-settings-number-range": {
+    "general": {
+      "mainMenuItemGeneral": "编号范围",
+      "placeholderSearchBar": "搜索编号范围...",
+      "infoGlobalType": "There can be only be one \"{typeName}\" number range. Changes to the number range of type \"{typeName}\" have to be made here and will globally affect all Sales Channels.",
+      "infoGlobalTypeTitle": "Global number range type \"{typeName}\"",
+      "infoGlobal": "You cannot change a global number range's type. But you can create additional number ranges for most types and particular Sales Channels back in the overview.",
+      "infoGlobalTitle": "Global number range \"{name}\"",
+      "infoSalesChannelBound": "To change a number range's type, remove all Sales Channel assignments first."
+    },
+    "list": {
+      "textHeadline": "编号范围",
+      "textDeleteConfirm": "Are you sure you want to delete the number range \"{name}\"?",
+      "columnName": "名称",
+      "columnUsedIn": "类型",
+      "columnAssignment": "分配",
+      "buttonAddNumberRange": "添加编号范围",
+      "contextMenuEdit": "编辑",
+      "contextMenuDelete": "删除",
+      "messageDeleteSuccess": "编号范围 \"{name}\" 已删除.",
+      "buttonCancel": "取消",
+      "buttonDelete": "删除",
+      "global": "全局"
+    },
+    "detail": {
+      "textHeadline": "新编号范围",
+      "configCard": "设置",
+      "assignmentCard": "Assignment",
+      "messageSaveSuccess": "编号范围 \"{name}\" 已保存.",
+      "messageSaveError": "编号范围 \"{name}\" 保存失败.",
+      "labelName": "名称",
+      "labelDescription": "描述",
+      "labelPrefix": "前缀",
+      "labelSuffix": "后缀",
+      "labelPattern": "模式",
+      "labelStart": "开始编号",
+      "labelCurrentNumber": "当前编号",
+      "labelPreview": "下次编号",
+      "labelAdvanced": "高级模式",
+      "labelType": "Type",
+      "labelSalesChannel": "Sales Channel",
+      "placeholderName": "名称...",
+      "placeholderDescription": "描述...",
+      "placeholderPrefix": "前缀...",
+      "placeholderSuffix": "后缀...",
+      "placeholderPattern": "模式... \"prefix_{n}_suffix\"",
+      "placeholderStart": "开始编号...",
+      "placeholderPleaseSelect": "Please select...",
+      "placeholderSimpleModeImpossible": "Advanced mode active",
+      "buttonCancel": "取消",
+      "buttonSave": "保存",
+      "helpTextAdvancedField": "Advanced pattern definition: <br/>{prefix}_{n}_{suffix}<br/>'n' is the defined start number<br/>('_' is an arbitrarily chosen separator)<br/><br/>Use e.g. the PHP parameter 'date': <br/>{date}:<br/>international date format (YYYY-MM-DD)<br/>{date_dmy}:<br/>user defined date format (DD-MM-YY)<br/><br/>",
+      "errorSalesChannelNeededMessage": "No Sales Channel selected. Please assign at least one Sales Channel.",
+      "errorPatternNeededMessage": "No pattern defined. Please define at least a start value.",
+      "infoStartDecrementMessage": "Changes to the start number will only take effect when the start number is higher than the current number."
+    }
+  },
+  "sw-privileges": {
+    "permissions": {
+      "number_ranges": {
+        "label": "编号范围"
+      }
+    }
+  }
+}
