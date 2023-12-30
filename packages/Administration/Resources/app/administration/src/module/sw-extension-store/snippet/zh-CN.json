@@ -5,7 +5,7 @@
             "labelFree": "Free",
             "labelRentSuffix": "/ month*",
             "labelDiscountedPrice": "Free | <s>{price}</s> <strong>{discountedPrice}</strong>/month | <s>{price}</s> <strong>{discountedPrice}</strong>",
-            "title": "Store"
+            "title": "插件商城"
         },
         "tabs": {
             "apps": "插件"
@@ -25,7 +25,7 @@
         },
         "detail": {
             "enterpriseContactLinkText": "Contact us",
-            "enterpriseContactUrl": "https://www.shopware.com/en/enterprise-contact",
+            "enterpriseContactUrl": "https://www.snapadmin.net/en/enterprise-contact",
             "enterpriseFeatureAlertText": "This extension is a component of the Enterprise Edition.",
             "hasTrialPhase": "trial month included",
             "openConfiguration": "Configuration",

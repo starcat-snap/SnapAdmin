@@ -31,7 +31,7 @@ async function createWrapper(extension) {
             systemConfigApiService: {
                 getValues: () => {
                     return Promise.resolve({
-                        'core.store.apiUri': 'https://api.shopware.com',
+                        'core.store.apiUri': 'https://api.snapadmin.net',
                         'core.store.licenseHost': 'sw6.test.shopware.in',
                         'core.store.shopSecret': 'very.s3cret',
                         'core.store.shopwareId': 'max@muster.com'

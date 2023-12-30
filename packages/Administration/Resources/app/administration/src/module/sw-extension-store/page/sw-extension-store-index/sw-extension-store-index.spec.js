@@ -168,7 +168,7 @@ describe('SwagExtensionStore/module/sw-extension-store/page/sw-extension-store-i
                         code: 'FRAMEWORK__STORE_ERROR',
                         detail: 'The given SnapAdmin version is unknown, please contact our customer service',
                         meta: {
-                            documentationLink: 'https://docs.shopware.com'
+                            documentationLink: 'https://docs.snapadmin.net'
                         },
                         status: '500',
                         title: 'SnapAdmin version is unknown'

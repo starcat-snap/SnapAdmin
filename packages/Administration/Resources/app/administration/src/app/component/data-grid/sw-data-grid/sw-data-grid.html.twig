@@ -185,20 +185,20 @@
                                 >
                                     <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
                                     {% block sw_data_grid_sort_indicator_icon_asc %}
-                                    <sw-tabler-icon
+                                    <sw-icon
                                         v-if="currentSortDirection === 'ASC'"
                                         key="ASC"
-                                        name="chevron-up"
+                                        name="regular-chevron-up-xxs"
                                         size="16px"
                                     />
                                     {% endblock %}
 
                                     <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
                                     {% block sw_data_grid_sort_indicator_icon_desc %}
-                                    <sw-tabler-icon
+                                    <sw-icon
                                         v-else
                                         key="DESC"
-                                        name="chevron-down"
+                                        name="regular-chevron-down-xxs"
                                         size="16px"
                                     />
                                     {% endblock %}

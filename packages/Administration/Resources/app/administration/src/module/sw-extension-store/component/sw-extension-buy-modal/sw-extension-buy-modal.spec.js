@@ -56,7 +56,7 @@ SnapAdmin.Application.addServiceProvider('storeService', () => {
         checkLogin: () => Promise.resolve({
             // keep for older shopware versions
             storeTokenExists: true,
-            userInfo: { shopwareId: 1, email: 'user@shopware.com' }
+            userInfo: { shopwareId: 1, email: 'user@snapadmin.net' }
         })
     };
 });
@@ -212,7 +212,7 @@ describe('src/module/sw-extension/component/sw-extension-buy-modal', () => {
     });
 
     it('should show app provider legal text checkbox and modal for on-premise plugins without permissions', async () => {
-        SnapAdmin.State.commit('snapAdminExtensions/setUserInfo', { email: 'j.doe@shopware.com' });
+        SnapAdmin.State.commit('snapAdminExtensions/setUserInfo', { email: 'j.doe@snapadmin.net' });
 
         // Mock request which creates and returns a new cart item
         httpClient.post.mockImplementation((route) => {

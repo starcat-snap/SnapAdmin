@@ -68,16 +68,6 @@ SnapAdmin.Module.register('sw-extension-store', {
                                 privilege: 'system.extension_store',
                             },
                         },
-                        theme: {
-                            path: 'theme',
-                            component: 'sw-extension-store-listing',
-                            propsData: {
-                                isTheme: true,
-                            },
-                            meta: {
-                                privilege: 'system.extension_store',
-                            },
-                        },
                     },
                 },
             },
