@@ -49,7 +49,7 @@ class ApiClient
 
         try {
             /** @var array{title: string, body: string, date: string, version: string, fixedVulnerabilities: VersionFixedVulnerabilities[]} $github */
-            $github = $this->client->request('GET', 'https://releases.snap.com/changelog/' . $this->determineLatestSnapAdminVersion() . '.json')->toArray();
+            $github = $this->client->request('GET', 'https://releases.snapadmin.com/changelog/' . $this->determineLatestSnapAdminVersion() . '.json')->toArray();
         } catch (ClientException $e) {
             if ($e->getCode() === Response::HTTP_NOT_FOUND || $e->getCode() === Response::HTTP_FORBIDDEN) {
                 return new Version();

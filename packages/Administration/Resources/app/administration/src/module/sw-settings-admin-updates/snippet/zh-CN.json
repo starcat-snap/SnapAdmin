@@ -1,0 +1,87 @@
+{
+  "sw-settings-admin-updates": {
+    "general": {
+      "menuTitle": "系统更新",
+      "title": "SnapAdmin 更新至 ({version})",
+      "emptyTitle": "系统更新",
+      "emptyState": "当前已是最新版本.",
+      "checkForUpdates": "检查更新",
+      "currentVersion": "当前版本:"
+    },
+    "cards": {
+      "info": "更新内容",
+      "requirements": "系统要求",
+      "extensions": "插件兼容性",
+      "updating": "更新中..."
+    },
+    "notifications": {
+      "updateStarted": "更新已开始.",
+      "updateStopped": "更新已停止.",
+      "downloadFailed": "下载失败.",
+      "unpackFailed": "解压失败.",
+      "deactivationFailed": "无法停用插件.",
+      "alreadyUpToDate": "当前已是最新版本."
+    },
+    "infos": {
+      "backupCheckboxLabel": "我已经创建了一个备份，现在想执行更新.",
+      "startUpdate": "开始更新",
+      "requirementsNotMet": "未满足系统要求.",
+      "progress": {
+        "download": "下载更新文件...",
+        "deactivate": "停用插件...",
+        "unpack": "提取更新文件..."
+      }
+    },
+    "requirements": {
+      "columns": {
+        "message": "要求",
+        "status": "状态"
+      },
+      "message": {
+        "phpVersion": "最低 PHP 版本: {minVersion}. 当前系统安装 PHP 版本: {currentVersion}.",
+        "mysqlVersion": "最低 MySQL 版本: {minVersion}. 当前系统安装 MySQL 版本 {currentVersion}.",
+        "writeableCheckValid": "以下目录和文件是可写的:<br/>{checkedDirectories}",
+        "writeableCheckFailed": "以下目录和文件是不可写的:<br>{failedDirectories}",
+        "validSnapAdminLicense": "您当前的 SnapAdmin 版本已过期。您可能需要考虑升级到最新版本."
+      },
+      "ready": "准备就绪",
+      "notReady": "未就绪"
+    },
+    "plugins": {
+      "columns": {
+        "name": "插件",
+        "available": "兼容"
+      },
+      "actions": {
+        "openMyExtensions": "去我的插件",
+        "deactivateAll": "停用全部插件.",
+        "deactivateIncompatible": "停用不兼容的插件.",
+        "deactivateNone": "我意识到隐含的危险，仍然希望在不首先停用不兼容扩展的情况下更新 SnapAdmin. 我意识到，在不兼容的更新之后，SnapAdmin 不能保证我的安装的功能.",
+        "recommended": "(推荐)"
+      },
+      "pluginNotInStore": "此扩展在商店中不可用。请联系插件的作者.",
+      "pluginWillBeDeactivatedHint": "(此插件将在更新时停用)"
+    },
+    "updateModal": {
+      "actions": {
+        "cancel": "取消",
+        "install": "安装",
+        "goToUpdate": "立即更新"
+      },
+      "messageIncompatible": "安装的一些插件与最新的 SnapAdmin 版本不兼容. 如果您现在继续更新，可能会出现未知问题并严重损害您的系统. SnapAdmin 能够在更新过程中自动停用不兼容的插件，以确保安装的持续功能.",
+      "messageNotInStore": "有些已安装的插件无法成功测试其兼容性. 请联系插件的作者了解更多信息. 在这种情况下，强烈建议在更新之前创建备份.",
+      "messageOkay": "满足所有条件。不要忘记在更新之前创建备份.",
+      "messageUpdateCheck": "您的当前版本可以更新到 {version}. 确定要更新?",
+      "backupLabel": "是, 我已创建系统备份."
+    }
+  },
+  "sw-privileges": {
+    "additional_permissions": {
+      "system": {
+        "core_update": "运行更新",
+        "plugin_maintain": "管理插件",
+        "plugin_upload": "上传插件"
+      }
+    }
+  }
+}

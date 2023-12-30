@@ -1,0 +1,51 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_admin_updates_requirements %}
+<sw-card
+    position-identifier="sw-admin-updates-requirements"
+    :title="$t('sw-settings-admin-updates.cards.requirements')"
+    :is-loading="isLoading"
+>
+    <template #grid>
+        <sw-data-grid
+
+            :show-actions="false"
+            :show-selection="false"
+            :columns="columns"
+            :data-source="requirements"
+        >
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_admin_updates_requirements_column_result %}
+            <template
+                #column-result="{ item, isInlineEdit }"
+            >
+                <template v-if="item.result">
+                    <sw-color-badge
+                        variant="success"
+                        :rounded="true"
+                    />&nbsp;
+                    {{ $t('sw-settings-admin-updates.requirements.ready') }}
+                </template>
+
+                <template v-else>
+                    <sw-color-badge
+                        variant="error"
+                        :rounded="true"
+                    />&nbsp;
+                    {{ $t('sw-settings-admin-updates.requirements.notReady') }}
+                </template>
+            </template>
+            {% endblock %}
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_admin_updates_requirements_column_message %}
+            <template
+                #column-message="{ item, isInlineEdit }"
+            >
+                <span v-html="$t('sw-settings-admin-updates.requirements.message.' + item.message, item.vars)"></span>
+            </template>
+            {% endblock %}
+        </sw-data-grid>
+    </template>
+</sw-card>
+{% endblock %}

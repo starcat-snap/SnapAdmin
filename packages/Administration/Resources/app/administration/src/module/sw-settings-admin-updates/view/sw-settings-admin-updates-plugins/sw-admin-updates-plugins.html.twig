@@ -1,0 +1,54 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_admin_updates_plugins %}
+<sw-card
+    position-identifier="sw-admin-updates-plugins"
+    :title="$t('sw-settings-admin-updates.cards.extensions')"
+    :is-loading="isLoading"
+>
+    <template #grid>
+        <sw-data-grid
+            :show-selection="false"
+            :data-source="plugins"
+            :columns="columns"
+        >
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_admin_updates_plugins_column_icon %}
+            <template
+                #column-icon="{ item, isInlineEdit }"
+            >
+                <sw-color-badge
+                    v-if="item.statusVariant"
+                    :variant="item.statusVariant"
+                    :rounded="true"
+                />
+                <sw-color-badge
+                    v-else
+                    :color="item.statusColor"
+                    :rounded="true"
+                />&nbsp;
+
+                <template v-if="item.statusMessage === 'notCompatible'">
+                    {{ item.statusMessage }} {{ $t('sw-settings-admin-updates.plugins.pluginWillBeDeactivatedHint') }}
+                </template>
+                <template v-else-if="item.statusMessage">
+                    {{ item.statusMessage }}
+                </template>
+                <template v-else>
+                    {{ $t('sw-settings-admin-updates.plugins.pluginNotInStore') }}
+                </template>
+            </template>
+            {% endblock %}
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_admin_updates_plugins_column_action %}
+            <template #actions="{item}">
+                <sw-context-menu-item @click="openMyExtensions()">
+                    {{ $t('sw-settings-admin-updates.plugins.actions.openMyExtensions') }}
+                </sw-context-menu-item>
+            </template>
+            {% endblock %}
+        </sw-data-grid>
+    </template>
+</sw-card>
+{% endblock %}
