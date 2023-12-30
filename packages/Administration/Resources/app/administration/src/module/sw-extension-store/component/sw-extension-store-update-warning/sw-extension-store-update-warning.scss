@@ -1,0 +1,7 @@
+@import "~scss/variables";
+
+.sw-extension-store-update-warning {
+    &__strong-text {
+        font-weight: $font-weight-semi-bold;
+    }
+}

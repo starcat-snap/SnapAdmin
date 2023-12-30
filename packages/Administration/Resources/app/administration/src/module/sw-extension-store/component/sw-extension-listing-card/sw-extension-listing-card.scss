@@ -1,0 +1,124 @@
+@import "~scss/variables";
+@import "~scss/mixins";
+
+.sw-extension-listing-card {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: $border-radius-lg;
+    transition: box-shadow .15s ease;
+
+    @include drop-shadow-default;
+
+    &:hover {
+        box-shadow: 0 3px 4px rgba(0, 0, 0, 8%), 0 2px 1px rgba(0, 0, 0, 6%), 0 1px 6px rgba(0, 0, 0, 10%);
+
+        .sw-extension-listing-card__info-name {
+            color: $color-snap-admin-brand-500;
+        }
+    }
+
+    .sw-extension-listing-card__preview {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        position: relative;
+        border-bottom: 1px solid rgba(0, 0, 0, 8%);
+    }
+
+    &__extension-type-label {
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+    }
+
+    .sw-extension-listing-card__info-grid {
+        background: #fff;
+        padding: 16px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto 1fr auto;
+        grid-row-gap: 4px;
+        grid-template-areas:
+            "name name"
+            "description description"
+            "rating price"
+            "label-display label-display";
+
+        .sw-extension-listing-card__info-name {
+            grid-area: name;
+            font-size: $font-size-xs;
+            font-weight: $font-weight-semi-bold;
+            line-height: $line-height-xs;
+            margin-bottom: 2px;
+            transition: color .15s ease;
+
+            @include truncate;
+        }
+
+        .sw-extension-listing-card__info-description {
+            $line-height-description: $line-height-xs;
+
+            grid-area: description;
+            font-size: $font-size-xxs;
+            line-height: $line-height-description;
+            color: $color-gray-500;
+            height: calc($line-height-description * 2);
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 4px;
+
+            &::after {
+                content: '';
+                display: block;
+                height: $line-height-description;
+                background: linear-gradient(90deg, rgba($color-white, 0), $color-white);
+                width: 40%;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+            }
+        }
+
+        .sw-extension-listing-card__info-rating {
+            grid-area: rating;
+            display: flex;
+            align-items: center;
+            font-size: $font-size-xxs;
+
+            & > * {
+                margin-right: 1ex;
+            }
+
+            .sw-extension-rating-stars__star {
+                cursor: pointer;
+            }
+
+            &-count {
+                color: $color-gray-500;
+                margin-top: 2px;
+            }
+        }
+
+        .sw-extension-listing-card__info-price {
+            grid-area: price;
+            justify-self: end;
+            font-size: $font-size-xxs;
+            font-weight: $font-weight-semi-bold;
+            text-align: right;
+
+            .sw-extension-listing-card__info-price-discounted {
+                color: $color-crimson-400;
+
+                s {
+                    margin-left: 4px;
+                }
+            }
+        }
+
+        .sw-extension-listing-card__label-display {
+            grid-area: label-display;
+            margin-top: 4px;
+        }
+    }
+}

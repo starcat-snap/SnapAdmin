@@ -1,0 +1,65 @@
+{
+    "sw-extension-store": {
+        "general": {
+            "labelPrice": "Free | {price}/month | {price}",
+            "labelFree": "Free",
+            "labelRentSuffix": "/ month*",
+            "labelDiscountedPrice": "Free | <s>{price}</s> <strong>{discountedPrice}</strong>/month | <s>{price}</s> <strong>{discountedPrice}</strong>",
+            "title": "Store"
+        },
+        "tabs": {
+            "apps": "插件"
+        },
+        "listing":  {
+            "placeholderSearchBar": "查找插件..."
+        },
+        "updateWarning": {
+            "headline": "We've updated the SnapAdmin Store.<br>Take a moment to update to the latest version.",
+            "description": "Discover numerous great extensions that'll help you grow your business.",
+            "requestDescription": "You'll need to upgrade to the latest version to get new and updated extensions or themes for your shop.",
+            "update": "Update"
+        },
+        "offline": {
+            "headline": "The SnapAdmin Store is not available",
+            "description": "Check your internet connection or try again later."
+        },
+        "detail": {
+            "enterpriseContactLinkText": "Contact us",
+            "enterpriseContactUrl": "https://www.shopware.com/en/enterprise-contact",
+            "enterpriseFeatureAlertText": "This extension is a component of the Enterprise Edition.",
+            "hasTrialPhase": "trial month included",
+            "openConfiguration": "Configuration",
+            "themeIsAlreadyInstalled": "Theme is already installed",
+            "extensionIsAlreadyInstalled": "Extension is already installed"
+        },
+        "typeLabels": {
+            "self-hosted": "Self hosted",
+            "cloud": "Cloud"
+        },
+        "buy-modal": {
+            "paymentSelectionPlaceholder": "Select a payment method...",
+            "checkboxes": {
+                "permissionsAndAppProvider": {
+                    "introText": "I am aware that this app needs further",
+                    "buttonPermissions": "permissions",
+                    "middleText": "and accept the",
+                    "buttonAppProvider": "app provider",
+                    "endText": "as new sub-processor of SnapAdmin",
+                    "appProviderStartText": "I accept the"
+                }
+            },
+            "legalTextModal": {
+                "title": "Sub-processor of SnapAdmin"
+            },
+            "rent": {
+                "priceDisplay": "{priceDisplay}/month",
+                "freeTrial": "30-day free trial.",
+                "disclaimer": "Additional charges may apply."
+            },
+            "warnings": {
+                "paymentMeansRequiredText": "In order to purchase this app you'll have to",
+                "paymentMeansRequiredLinkText": "add a payment method"
+            }
+        }
+    }
+}

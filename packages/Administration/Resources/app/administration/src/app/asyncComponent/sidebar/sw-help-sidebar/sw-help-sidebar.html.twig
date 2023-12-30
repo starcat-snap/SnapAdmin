@@ -82,26 +82,26 @@
             </div>
 
             <div class="sw-help-sidebar__footer">
-                <div class="sw-help-sidebar__shortcut">
-                    <sw-button
-                        v-tooltip="{
-                            message: $tc('sw-shortcut-overview.iconTooltip', 0, { key: 'Shift + ?' }),
-                            appearance: 'light',
-                            position: 'top',
-                            zIndex: 1600,
-                        }"
-                        class="sw-help-sidebar__shortcut-button"
-                        :aria-label="$tc('help-center.sidebar.ariaLabelButtonShortcut')"
-                        @click="openShortcutModal"
-                    >
-                        <sw-icon
-                            name="solid-keyboard"
-                            color="#1f262e"
-                            size="16px"
-                        />
-                        {{ $tc('sw-shortcut-overview.title') }}
-                    </sw-button>
-                </div>
+{#                <div class="sw-help-sidebar__shortcut">#}
+{#                    <sw-button#}
+{#                        v-tooltip="{#}
+{#                            message: $tc('sw-shortcut-overview.iconTooltip', 0, { key: 'Shift + ?' }),#}
+{#                            appearance: 'light',#}
+{#                            position: 'top',#}
+{#                            zIndex: 1600,#}
+{#                        }"#}
+{#                        class="sw-help-sidebar__shortcut-button"#}
+{#                        :aria-label="$tc('help-center.sidebar.ariaLabelButtonShortcut')"#}
+{#                        @click="openShortcutModal"#}
+{#                    >#}
+{#                        <sw-icon#}
+{#                            name="solid-keyboard"#}
+{#                            color="#1f262e"#}
+{#                            size="16px"#}
+{#                        />#}
+{#                        {{ $tc('sw-shortcut-overview.title') }}#}
+{#                    </sw-button>#}
+{#                </div>#}
             </div>
         </div>
     </div>
