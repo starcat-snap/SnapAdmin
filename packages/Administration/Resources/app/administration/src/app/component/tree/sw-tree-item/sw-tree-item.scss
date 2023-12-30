@@ -156,11 +156,11 @@ $sw-tree-item-color-text: $color-darkgray-200;
             background: none;
         }
 
-        .icon--chevron-down {
+        .icon--regular-chevron-down-xxs {
             padding: 7px;
         }
 
-        .icon--chevron-right {
+        .icon--regular-chevron-right-xxs {
             padding-top: 6px;
             padding-right: 7px;
             padding-bottom: 8px;
@@ -229,7 +229,7 @@ $sw-tree-item-color-text: $color-darkgray-200;
         display: flex;
         align-items: center;
 
-        .icon--circle-xxs {
+        .icon--regular-circle-xxs {
             margin-left: 3px;
 
             @include size(8px);
@@ -237,8 +237,8 @@ $sw-tree-item-color-text: $color-darkgray-200;
     }
 
     &__content {
-        .icon--x,
-        .icon--check {
+        .icon--regular-times-xs,
+        .icon--regular-checkmark-xxs {
             @include size(8px);
         }
     }
