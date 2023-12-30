@@ -391,6 +391,7 @@ $sw-admin-menu-active-text: $color-white;
 
         &.is--active {
             display: block;
+            background: $sw-admin-menu-background;
         }
     }
 

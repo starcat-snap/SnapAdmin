@@ -933,10 +933,12 @@ const coreUrlImageLoader = mergedCoreConfig.module.rules.find(r => {
 });
 coreUrlImageLoader.exclude.push(path.join(__dirname, 'src/app/assets/icons/svg'));
 coreUrlImageLoader.exclude.push(/@tabler\/icons/);
+coreUrlImageLoader.exclude.push(/@snap-admin\/meteor-icon-kit\/icons/);
 
 const coreSvgInlineLoader = mergedCoreConfig.module.rules.find(r => r.loader === 'svg-inline-loader');
 coreSvgInlineLoader.include.push(path.join(__dirname, 'src/app/assets/icons/svg'));
 coreSvgInlineLoader.include.push(/@tabler\/icons/);
+coreSvgInlineLoader.include.push(/@snap-admin\/meteor-icon-kit\/icons/);
 
 /**
  * Export all single configs in a array. Webpack uses then the webpack-multi-compiler for isolated

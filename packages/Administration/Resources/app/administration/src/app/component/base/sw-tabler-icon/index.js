@@ -2,24 +2,11 @@
  * This file is not linted by ESLint because it cannot be parsed by ESLint because of the dynamic import
  * with dynamic import value.
  */
-import template from './sw-icon.html.twig';
-import './sw-icon.scss';
+import template from './sw-tabler-icon.html.twig';
+import './sw-tabler-icon.scss';
 
 // Prefetch specific icons to avoid loading them asynchronously to improve performance
-import '@snap-admin/meteor-icon-kit/icons/regular/tachometer.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/products.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/shopping-bag.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/users.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/content.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/megaphone.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/plug.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/cog.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/bell.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/question-circle.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/search-s.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/chevron-down-xs.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/chevron-up-xs.svg';
-import '@snap-admin/meteor-icon-kit/icons/regular/chevron-circle-left.svg';
+
 
 const { Component } = SnapAdmin;
 
@@ -32,17 +19,17 @@ const { Component } = SnapAdmin;
  * @example-type static
  * @component-example
  * <div>
- *     <sw-icon name="regular-circle-download" color="#1abc9c"></sw-icon>
+ *     <sw-icon name="circle-download" color="#1abc9c"></sw-icon>
  *     <sw-icon name="regular-storefront" color="#3498db"></sw-icon>
  *     <sw-icon name="regular-eye-slash" color="#9b59b6"></sw-icon>
  *     <sw-icon name="regular-fingerprint" color="#f39c12"></sw-icon>
  *     <sw-icon name="regular-tools-alt" color="#d35400"></sw-icon>
  *     <sw-icon name="regular-user" color="#c0392b"></sw-icon>
- *     <sw-icon name="regular-circle" color="#fc427b"></sw-icon>
+ *     <sw-icon name="circle" color="#fc427b"></sw-icon>
  *     <sw-icon name="regular-bell" color="#f1c40f"></sw-icon>
  * </div>
  */
-Component.register('sw-icon', {
+Component.register('sw-tabler-icon', {
     template,
 
     inject: [
@@ -117,39 +104,25 @@ Component.register('sw-icon', {
         },
     },
 
-    beforeMount() {
-        this.iconSvgData = `<svg id="meteor-icon-kit__${this.name}"></svg>`
-    },
-
     watch: {
         name: {
             handler(newName) {
                 if (!newName) {
                     return;
                 }
-
-                const [variant, ...iconName] = newName.split('-');
-                this.loadIconSvgData(variant, iconName.join('-'), newName);
+                this.loadIconSvgData(newName);
             },
             immediate: true,
         },
     },
 
+    beforeMount() {
+        this.iconSvgData = `<svg id="tabler-icon-kit__${this.name}"></svg>`;
+    },
+
     methods: {
-        /**
-         * Loads the requested icon's SVG data.
-         *
-         * This defaults to loading from the meteor-icon-kit.
-         *
-         * This throws an exception if the import is not found. Catch this in an override to add custom icons;
-         * or override and do custom logic based on the `variant`, `iconName` or `iconFullName`.
-         *
-         * Loosely based on an idea from https://shopwarecommunity.slack.com/archives/C04P3QBG8S2/p1683098652206189
-         *
-         * @return Promise for possible override fallback logic
-         */
-        loadIconSvgData(variant, iconName, iconFullName) {
-            return import(`@snap-admin/meteor-icon-kit/icons/${variant}/${iconName}.svg`).then((iconSvgData) => {
+        loadIconSvgData(iconFullName) {
+            return import(`@tabler/icons/./${iconFullName}.svg`).then((iconSvgData) => {
                 if (iconSvgData.default) {
                     this.iconSvgData = iconSvgData.default;
                 } else {

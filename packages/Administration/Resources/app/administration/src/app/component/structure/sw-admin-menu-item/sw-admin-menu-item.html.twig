@@ -21,7 +21,7 @@
 
         <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
         {% block sw_admin_menu_item_icon %}
-        <sw-icon
+        <sw-tabler-icon
             v-if="displayIcon"
             :size="iconSize"
             class="sw-admin-menu__navigation-link-icon"
@@ -43,7 +43,7 @@
 
         <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
         {% block sw_admin_menu_item_arrow_indicato %}
-        <sw-icon
+        <sw-tabler-icon
             v-if="entry.level > 1 && children.length"
             name="chevron-right"
             size="8"
@@ -67,7 +67,7 @@
 
         <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
         {% block sw_admin_menu_item_external_icon %}
-        <sw-icon
+        <sw-tabler-icon
             v-if="displayIcon"
             :size="iconSize"
             class="sw-admin-menu__navigation-link-icon"
@@ -89,7 +89,7 @@
 
         <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
         {% block sw_admin_menu_item_external_arrow_indicato %}
-        <sw-icon
+        <sw-tabler-icon
             v-if="entry.level > 1 && children.length"
             name="chevron-right"
             size="8"
@@ -111,7 +111,7 @@
 
         <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
         {% block sw_admin_menu_item_navigation_icon %}
-        <sw-icon
+        <sw-tabler-icon
             v-if="displayIcon"
             :size="iconSize"
             class="sw-admin-menu__navigation-link-icon"
@@ -135,7 +135,7 @@
 
         <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
         {% block sw_admin_menu_item_arrow_indicator %}
-        <sw-icon
+        <sw-tabler-icon
             v-if="children.length"
             name="chevron-right"
             size="16"

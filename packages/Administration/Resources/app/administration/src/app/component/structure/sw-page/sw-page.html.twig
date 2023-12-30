@@ -66,11 +66,11 @@
                         :to="{ name: parentRoute }"
                         :style="{ 'color': pageColor }"
                     >
-                        <sw-icon
+                        <sw-tabler-icon
                             name="chevron-left"
                             small
                         />
-                        <sw-icon
+                        <sw-tabler-icon
                             v-if="module && module.icon"
                             :name="module.icon"
                             small
@@ -109,11 +109,6 @@
                         {% block sw_page_slot_language_switch%}{% endblock %}
                     </slot>
                 </div>
-                {% endblock %}
-
-                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
-                {% block sw_page_smart_bar_content_app_actions %}
-                <sw-app-actions />
                 {% endblock %}
 
                 <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->

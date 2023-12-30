@@ -1,7 +1,7 @@
 @import "~scss/variables";
 @import "~scss/mixins";
 
-.sw-icon {
+.sw-tabler-icon {
     @include size(24px);
 
     display: inline-block;
@@ -12,15 +12,6 @@
         width: 100%;
         height: 100%;
         vertical-align: middle;
-    }
-
-    &.sw-icon--fill > svg {
-        fill: currentcolor;
-
-        path,
-        use {
-            fill: currentcolor;
-        }
     }
 
     &.sw-icon--small {

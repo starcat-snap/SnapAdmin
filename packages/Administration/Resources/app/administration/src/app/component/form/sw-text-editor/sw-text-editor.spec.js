@@ -508,7 +508,7 @@ describe('src/app/component/form/sw-text-editor', () => {
             <p id="paragraphWithoutLink">No Link</p>
 
             <p id="paragraphWithLink">
-                <a id="linkText" href="http://shopware.com" target="_self">SnapAdmin</a>
+                <a id="linkText" href="http://snapadmin.net" target="_self">SnapAdmin</a>
             </p>
         `);
 
@@ -529,7 +529,7 @@ describe('src/app/component/form/sw-text-editor', () => {
         // input field should contain the correct url value
         const linkInput = linkMenu.find('#sw-field--linkTarget');
         expect(linkInput.exists()).toBe(true);
-        expect(linkInput.element.value).toBe('http://shopware.com');
+        expect(linkInput.element.value).toBe('http://snapadmin.net');
 
         // switch field should contain correct newTab value
         const newTabSwitch = wrapper.find('.sw-text-editor-toolbar-button__link-menu-new-tab input');
@@ -544,7 +544,7 @@ describe('src/app/component/form/sw-text-editor', () => {
             <p id="paragraphWithoutLink">No Link</p>
 
             <p id="paragraphWithLink">
-                <a id="linkText" href="http://shopware.com" target="_blank">SnapAdmin</a>
+                <a id="linkText" href="http://snapadmin.net" target="_blank">SnapAdmin</a>
             </p>
         `);
 
@@ -565,7 +565,7 @@ describe('src/app/component/form/sw-text-editor', () => {
         // input field should contain the correct url value
         const linkInput = linkMenu.find('#sw-field--linkTarget');
         expect(linkInput.exists()).toBe(true);
-        expect(linkInput.element.value).toBe('http://shopware.com');
+        expect(linkInput.element.value).toBe('http://snapadmin.net');
 
         // switch field should contain correct newTab value
         const newTabSwitch = wrapper.find('.sw-text-editor-toolbar-button__link-menu-new-tab input');
@@ -580,7 +580,7 @@ describe('src/app/component/form/sw-text-editor', () => {
             <p id="paragraphWithoutLink">No link</p>
 
             <p id="paragraphWithLink">
-                <a id="linkText" href="http://shopware.com" target="_blank">SnapAdmin</a>
+                <a id="linkText" href="http://snapadmin.net" target="_blank">SnapAdmin</a>
             </p>
         `);
 
@@ -616,7 +616,7 @@ describe('src/app/component/form/sw-text-editor', () => {
             <p id="paragraphWithoutLink">No link</p>
 
             <p id="paragraphWithLink">
-                <a id="linkText" href="http://shopware.com" target="_blank">SnapAdmin</a>
+                <a id="linkText" href="http://snapadmin.net" target="_blank">SnapAdmin</a>
             </p>
         `);
 
@@ -637,7 +637,7 @@ describe('src/app/component/form/sw-text-editor', () => {
         // input field should contain the correct url value
         let linkInput = linkMenu.find('#sw-field--linkTarget');
         expect(linkInput.exists()).toBe(true);
-        expect(linkInput.element.value).toBe('http://shopware.com');
+        expect(linkInput.element.value).toBe('http://snapadmin.net');
 
         // switch field should contain correct newTab value
         let newTabSwitch = wrapper.find('.sw-text-editor-toolbar-button__link-menu-new-tab input');
@@ -672,7 +672,7 @@ describe('src/app/component/form/sw-text-editor', () => {
         await flushPromises();
 
         await addTextToEditor(wrapper, `
-            <a id="linkOne" href="http://shopware.com" target="_self">SnapAdmin</a>
+            <a id="linkOne" href="http://snapadmin.net" target="_self">SnapAdmin</a>
             <a id="linkTwo" href="http://google.com" target="_blank">Google</a>
         `);
 
@@ -693,7 +693,7 @@ describe('src/app/component/form/sw-text-editor', () => {
         // input field should contain the correct url value
         let linkInput = linkMenu.find('#sw-field--linkTarget');
         expect(linkInput.exists()).toBe(true);
-        expect(linkInput.element.value).toBe('http://shopware.com');
+        expect(linkInput.element.value).toBe('http://snapadmin.net');
 
         // switch field should contain correct newTab value
         let newTabSwitch = wrapper.find('.sw-text-editor-toolbar-button__link-menu-new-tab input');
@@ -728,7 +728,7 @@ describe('src/app/component/form/sw-text-editor', () => {
         wrapper = await createWrapper();
         await flushPromises();
 
-        await addTextToEditor(wrapper, '<a href="http://shopware.com" target="_blank"><bold><u>Shop<strike id="anchor">ware</strike></u></bold></a>');
+        await addTextToEditor(wrapper, '<a href="http://snapadmin.net" target="_blank"><bold><u>Shop<strike id="anchor">ware</strike></u></bold></a>');
 
         // select "ware"
         const linkOne = document.getElementById('anchor');
@@ -756,7 +756,7 @@ describe('src/app/component/form/sw-text-editor', () => {
         wrapper = await createWrapper();
         await flushPromises();
 
-        await addTextToEditor(wrapper, '<a href="http://shopware.com" target="_blank"><bold><u id="content">SnapAdmin</u></bold></a>');
+        await addTextToEditor(wrapper, '<a href="http://snapadmin.net" target="_blank"><bold><u id="content">SnapAdmin</u></bold></a>');
 
         // select anything to trigger the toolbar
         const content = document.getElementById('content');

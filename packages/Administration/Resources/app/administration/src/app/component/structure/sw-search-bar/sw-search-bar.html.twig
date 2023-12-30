@@ -31,7 +31,7 @@
                     v-if="isOffCanvasShown"
                     name="regular-times"
                 />
-                <sw-icon
+                <sw-tabler-icon
                     v-else
                     name="menu-2"
                 />
@@ -73,7 +73,7 @@
                 @keydown.enter="onOpenModuleFiltersDropDown"
             >
                 {{ getLabelSearchType() }}
-                <sw-icon
+                <sw-tabler-icon
                     name="chevron-down"
                 />
             </span>
@@ -104,14 +104,14 @@
                 class="sw-search-bar__field-icon sw-search-bar__field-close"
                 @click="hideSearchBar"
             >
-                <sw-icon
+                <sw-tabler-icon
                     name="x"
                     small
                 />
             </button>
 
             <span class="sw-search-bar__field-icon sw-search-bar__field-search-icon">
-                <sw-icon
+                <sw-tabler-icon
                     name="search"
                     small
                 />
@@ -253,7 +253,7 @@
                     v-html="$tc('global.sw-search-bar.placeholderSearchShortcutInfo')"
                 ></p>
 
-                <sw-icon
+                <sw-tabler-icon
                     small
                     name="settings"
                     class="sw-search-bar__footer-action-setting"
@@ -334,7 +334,7 @@
                     v-html="$tc('global.sw-search-bar.placeholderSearchShortcutInfo')"
                 ></p>
 
-                <sw-icon
+                <sw-tabler-icon
                     small
                     name="settings"
                     class="sw-search-bar__footer-action-setting"
@@ -459,7 +459,7 @@
                     v-html="$tc('global.sw-search-bar.placeholderSearchShortcutInfo')"
                 ></p>
 
-                <sw-icon
+                <sw-tabler-icon
                     :style="{ 'color': '#7d8c9b' }"
                     name="settings"
                     small

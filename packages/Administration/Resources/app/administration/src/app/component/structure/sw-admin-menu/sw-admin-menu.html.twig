@@ -83,7 +83,7 @@
 
             <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
             {% block sw_admin_menu_toggle_sidebar_icon %}
-            <sw-icon
+            <sw-tabler-icon
                 :name="sidebarCollapseIcon"
                 small
             />
@@ -134,7 +134,7 @@
 
                 <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
                 {% block sw_admin_menu_user_actions_toggle_icon %}
-                <sw-icon
+                <sw-tabler-icon
                     :name="userActionsToggleIcon"
                     class="sw-admin-menu__user-actions-indicator"
                 />
@@ -178,7 +178,7 @@
                         class="sw-admin-menu__navigation-link sw-admin-menu__logout-action"
                         @click.prevent="onLogoutUser"
                     >
-                        <sw-icon
+                        <sw-tabler-icon
                             class="sw-admin-menu__navigation-link-icon"
                             name="logout-2"
                             small

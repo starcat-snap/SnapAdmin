@@ -61,7 +61,7 @@ Component.register('sw-context-button', {
         icon: {
             type: String,
             required: false,
-            default: 'dots',
+            default: 'solid-ellipsis-h-s',
         },
 
         disabled: {

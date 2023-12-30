@@ -23,7 +23,7 @@
 
         <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
         {% block sw_media_base_item_selection_indicator_icon %}
-        <sw-icon
+        <sw-tabler-icon
             v-if="listSelected"
             small
             size="10px"
@@ -54,7 +54,7 @@
                 appearance="pill"
                 size="medium"
             >
-                <sw-icon
+                <sw-tabler-icon
                     class="sw-product-image__spatial-icon"
                     :name="getSpatialIconName"
                     size="14px"
@@ -131,7 +131,7 @@
 
         <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
         {% block sw_media_base_item_list_selection_indicator_icon %}
-        <sw-icon
+        <sw-tabler-icon
             v-if="listSelected"
             small
             name="check"
@@ -143,7 +143,7 @@
 
     <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
     {% block sw_media_base_item_loading_indicator %}
-    <sw-icon
+    <sw-tabler-icon
         v-if="isLoading"
         class="sw-media-base-item__loader"
         name="michelin-star"

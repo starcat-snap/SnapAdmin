@@ -172,63 +172,63 @@ Component.register('sw-text-editor', {
                     {
                         type: 'bold',
                         title: SnapAdmin.Snippet.tc('sw-text-editor-toolbar.title.bold'),
-                        icon: 'bold',
+                        icon: 'regular-bold-xs',
                         tag: 'b',
                     },
                     {
                         type: 'italic',
                         title: SnapAdmin.Snippet.tc('sw-text-editor-toolbar.title.italic'),
-                        icon: 'italic',
+                        icon: 'regular-italic-xs',
                         tag: 'i',
                     },
                     {
                         type: 'underline',
                         title: SnapAdmin.Snippet.tc('sw-text-editor-toolbar.title.underline'),
-                        icon: 'underline',
+                        icon: 'regular-underline-xs',
                         tag: 'u',
                     },
                     {
                         type: 'strikethrough',
                         title: SnapAdmin.Snippet.tc('sw-text-editor-toolbar.title.strikethrough'),
-                        icon: 'strikethrough',
+                        icon: 'regular-strikethrough-xs',
                         tag: 'strike',
                     },
                     {
                         type: 'superscript',
                         title: SnapAdmin.Snippet.tc('sw-text-editor-toolbar.title.superscript'),
-                        icon: 'superscript',
+                        icon: 'regular-superscript-xs',
                         tag: 'sup',
                     },
                     {
                         type: 'subscript',
                         title: SnapAdmin.Snippet.tc('sw-text-editor-toolbar.title.subscript'),
-                        icon: 'subscript',
+                        icon: 'regular-subscript-xs',
                         tag: 'sub',
                     },
                     {
                         type: 'justify',
                         title: SnapAdmin.Snippet.tc('sw-text-editor-toolbar.title.textAlign'),
-                        icon: 'align-left',
+                        icon: 'regular-align-left-xs',
                         children: [
                             {
                                 type: 'justifyLeft',
                                 title: SnapAdmin.Snippet.tc('sw-text-editor-toolbar.title.alignLeft'),
-                                icon: 'align-left',
+                                icon: 'regular-align-left',
                             },
                             {
                                 type: 'justifyCenter',
                                 title: SnapAdmin.Snippet.tc('sw-text-editor-toolbar.title.alignCenter'),
-                                icon: 'align-center',
+                                icon: 'regular-align-center',
                             },
                             {
                                 type: 'justifyRight',
                                 title: SnapAdmin.Snippet.tc('sw-text-editor-toolbar.title.alignRight'),
-                                icon: 'align-right',
+                                icon: 'regular-align-right',
                             },
                             {
                                 type: 'justifyFull',
                                 title: SnapAdmin.Snippet.tc('sw-text-editor-toolbar.title.justify'),
-                                icon: 'align-justify',
+                                icon: 'regular-align-justify',
                             },
                         ],
                     },
@@ -247,7 +247,7 @@ Component.register('sw-text-editor', {
                     {
                         type: 'link',
                         title: SnapAdmin.Snippet.tc('sw-text-editor-toolbar.title.link'),
-                        icon: 'link',
+                        icon: 'regular-link-xs',
                         expanded: false,
                         newTab: false,
                         displayAsButton: false,
@@ -257,7 +257,7 @@ Component.register('sw-text-editor', {
                     {
                         type: 'undo',
                         title: SnapAdmin.Snippet.tc('sw-text-editor-toolbar.title.undo'),
-                        icon: 'arrow-back-up',
+                        icon: 'regular-undo-xs',
                         position: 'middle',
                     },
                     {
@@ -404,7 +404,7 @@ Component.register('sw-text-editor', {
                     this.buttonConfig.push({
                         type: 'codeSwitch',
                         title: this.$tc('sw-text-editor-toolbar.title.code-switch'),
-                        icon: 'code',
+                        icon: 'regular-code-xs',
                         expanded: this.isCodeEdit,
                         handler: this.toggleCodeEditor,
                         position: 'right',
@@ -418,7 +418,7 @@ Component.register('sw-text-editor', {
                     const dataMappingButton = {
                         type: 'data-mapping',
                         title: this.$tc('sw-text-editor-toolbar.title.data-mapping'),
-                        icon: 'variable',
+                        icon: 'regular-variables-xs',
                         position: 'left',
                         dropdownPosition: 'left',
                         tooltipShowDelay: 500,
