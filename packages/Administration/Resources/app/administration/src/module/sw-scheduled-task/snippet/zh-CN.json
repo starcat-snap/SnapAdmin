@@ -1,0 +1,9 @@
+{
+  "sw-scheduled-task": {
+    "general": {
+      "mainMenuItemGeneral": "定时任务",
+      "descriptionTextModule": "",
+      "placeholderSearchBar": "搜索定时任务..."
+    }
+  }
+}

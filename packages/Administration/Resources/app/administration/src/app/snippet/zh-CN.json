@@ -1,5 +1,21 @@
 {
   "global": {
+    "error-codes": {
+      "FRAMEWORK__MISSING_PRIVILEGE_ERROR": "缺少权限.",
+      "FRAMEWORK__DELETE_RESTRICTED": "删除失败.",
+      "c1051bb4-d103-4f74-8988-acbcafc7fdc3": "该字段不能为空.",
+      "PARENT_MUST_NOT_BE_EMPTY": "该字段不能为空.",
+      "INVALID_MEDIA_URL": "请输入一个有效的URL来上传文件.",
+      "CONTENT__MISSING_RULE_TYPE_EXCEPTION": "您必须为此规则选择一种类型.",
+      "SHOPWARE_INVALID_IP": "请输入有效的IP地址.",
+      "INVALID_URL": "请输入有效的url.",
+      "INVALID_MAIL": "请输入有效的电子邮件地址.",
+      "FRAMEWORK__RATE_LIMIT_EXCEEDED": "请求太多. 请等待 {seconds} 秒后再次尝试.",
+      "DUPLICATED_URL": "此URL已被使用。请选择其他URL.",
+      "DUPLICATED_NAME": "此名称已在使用中.",
+      "CONTENT__MEDIA_EMPTY_FILE": "必须提供有效的文件名.",
+      "CONTENT__INVALID_CUSTOM_ENTITY_FIELD_TYPE": "无法呈现字段类型。请联系您的管理员."
+    },
     "default": {
       "add": "添加",
       "apply": "应用",
@@ -58,7 +74,7 @@
     },
     "entities": {
       "all": "全部",
-      "media": "媒体",
+      "media": "附件",
       "extension": "插件",
       "media_default_folder": "默认文件夹",
       "media_folder": "文件夹",
@@ -106,8 +122,8 @@
       },
       "deleteMessage": {
         "media": "确定要删除 \"{name}\"? | 确定要删除 {count} 个文件?",
-        "folder": "确定要删除目录 \"{name}\"?<br>所有子文件夹和包含的媒体项也将被删除. | 确定要删除 {count} 个目录?<br>所有子文件夹和包含的媒体项也将被删除.",
-        "mediaAndFolder": "确定要删除 {mediaCount} 个文件 and {folderCount} 个目录?<br>所有子文件夹和包含的媒体项也将被删除."
+        "folder": "确定要删除目录 \"{name}\"?<br>所有子文件夹和包含的附件项也将被删除. | 确定要删除 {count} 个目录?<br>所有子文件夹和包含的附件项也将被删除.",
+        "mediaAndFolder": "确定要删除 {mediaCount} 个文件 and {folderCount} 个目录?<br>所有子文件夹和包含的附件项也将被删除."
       },
       "mediaQuickInfoMessage": "当前文件正在被使用",
       "mediaInUsagesMessage": "以下文件仍在使用中",
@@ -193,14 +209,14 @@
           "message": "保存设置时出错."
         }
       },
-      "labelDefaultFolder": "默认媒体位置",
+      "labelDefaultFolder": "默认附件位置",
       "placeholderDefaultFolder": "选择..."
     },
     "sw-media-add-thumbnail-form": {
       "labelMaximumSize": "最大"
     },
     "sw-search-bar-item": {
-      "typeLabelMedia": "媒体",
+      "typeLabelMedia": "附件",
       "typeLabelModule": "模块",
       "typeLabelAction": "操作",
       "addNewEntity": "添加 {entity}",
@@ -302,10 +318,10 @@
       "labelContextMenuMove": "移动",
       "notification": {
         "errorBlankItemName": {
-          "message": "无法保存媒体项目:请输入名称."
+          "message": "无法保存附件项目:请输入名称."
         },
         "renamingSuccess": {
-          "message": "已重命名媒体项."
+          "message": "已重命名附件项."
         },
         "renamingError": {
           "message": "保存文件失败."
@@ -325,10 +341,10 @@
       "buttonUrlUpload": "从 URL 上传文件",
       "buttonSwitchToFileUpload": "从本地上传文件",
       "buttonSwitchToUrlUpload": "从 url 上传文件",
-      "buttonOpenMedia": "打开媒体库",
+      "buttonOpenMedia": "打开附件",
       "notification": {
         "success": {
-          "title": "上传媒体",
+          "title": "上传附件",
           "message": "未保存任何文件. | 文件已保存. | {count} / {total} 个文件已保存."
         },
         "failure": {
@@ -355,7 +371,7 @@
       "buttonUrlUpload": "从 URL 上传文件",
       "buttonSwitchToFileUpload": "从本地上传",
       "buttonSwitchToUrlUpload": "从 URL 上传文件",
-      "buttonOpenMedia": "打开媒体库",
+      "buttonOpenMedia": "打开附件",
       "notification": {
         "success": {
           "message": "未保存任何文件. | 文件已保存. | {count} / {total} 个文件已保存."

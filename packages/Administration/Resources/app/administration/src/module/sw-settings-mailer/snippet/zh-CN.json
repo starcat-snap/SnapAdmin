@@ -1,0 +1,48 @@
+{
+  "sw-settings-mailer": {
+    "general": {
+      "mainMenuItemGeneral": "邮件服务器",
+      "textHeadline": "邮件服务器",
+      "buttonSave": "保存"
+    },
+    "mailer-configuration": {
+      "card-title": "邮件服务器设置",
+      "agent": "电子邮件代理",
+      "local-agent": "本地电子邮件代理",
+      "local-helptext": "此选项使用系统的默认邮件发送器(Sendmail)。确保Sendmail在您自己的主机环境中工作并可用.",
+      "smtp-server": "SMTP 服务器",
+      "env-file": "使用环境配置"
+    },
+    "sendmail": {
+      "sync": "同步发送邮件",
+      "async": "异步发送邮件"
+    },
+    "card-smtp": {
+      "host": "主机",
+      "host-placeholder": "主机...",
+      "port": "端口",
+      "port-placeholder": "端口号...",
+      "username": "用户名",
+      "username-placeholder": "用户名...",
+      "password": "密码",
+      "password-placeholder": "密码...",
+      "encryption": "加密方式",
+      "encryption-placeholder": "加密方式...",
+      "sender-address": "发件人地址",
+      "sender-address-placeholder": "填写可以访问的电子邮件地址...",
+      "delivery-address": "接收人地址",
+      "delivery-address-placeholder": "填写一个电子邮件地址用于测试...",
+      "delivery-address-helptext": "所有发送的电子邮件将被发送到目标收件人地址，也到这个地址。仅作测试用途.",
+      "disable-delivery": "禁用发送邮件",
+      "error": {
+        "notificationMessage": "输入的SMTP配置似乎无效."
+      }
+    },
+    "encryption": {
+      "no-encryption": "未加密",
+      "ssl": "SSL",
+      "tls": "TLS"
+    }
+  }
+}
+

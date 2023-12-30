@@ -1,7 +1,7 @@
 {
   "sw-media": {
     "general": {
-      "mainMenuItemGeneral": "媒体",
+      "mainMenuItemGeneral": "附件",
       "descriptionTextModule": "",
       "placeholderSearchBar": "搜索当前目录...",
       "notification": {
@@ -12,7 +12,7 @@
     },
     "sidebar": {
       "labelHeadlineMultiple": "{count} 个文件被选择",
-      "labelNoMediaSelected": "未选择任何媒体",
+      "labelNoMediaSelected": "未选择任何附件",
       "actions": {
         "copyLink": "复制链接",
         "delete": "删除",
@@ -63,7 +63,7 @@
     },
     "index": {
       "buttonCreateFolder": "添加新文件夹",
-      "rootFolderName": "媒体"
+      "rootFolderName": "附件"
     },
     "mediaLibrary": {
       "labelButtonLoadMore": "加载更多",
@@ -86,14 +86,14 @@
     },
     "sw-media-modal": {
       "titleModal": "选择",
-      "labelTabItemLibrary": "媒体库",
+      "labelTabItemLibrary": "附件",
       "labelTabItemUpload": "批量上传文件",
       "labelButtonCancel": "取消",
       "labelButtonSaveSelection": "添加"
     },
     "sw-media-modal-v2": {
       "titleModal": "选择",
-      "labelTabItemLibrary": "媒体库",
+      "labelTabItemLibrary": "附件",
       "labelTabItemUpload": "批量上传文件",
       "labelButtonCancel": "取消",
       "labelButtonSaveSelection": "添加"
@@ -102,7 +102,7 @@
   "sw-privileges": {
     "permissions": {
       "media": {
-        "label": "媒体库"
+        "label": "附件"
       }
     }
   }

@@ -1,0 +1,106 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_flow_affiliate_and_campaign_code_modal %}
+<sw-modal
+    class="sw-flow-affiliate-and-campaign-code-modal"
+    :title="$tc('sw-flow.modals.affiliateAndCampaignCode.title')"
+    :closable="false"
+    @modal-close="onClose"
+>
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_flow_affiliate_and_campaign_code_modal_content %}
+    <div class="sw-flow-affiliate-and-campaign-code-modal__content">
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_flow_affiliate_and_campaign_code_modal_entity %}
+        <sw-single-select
+            v-model:value="entity"
+            name="sw-field--entity"
+            class="sw-flow-affiliate-and-campaign-code-modal__entity"
+            required
+            show-clearable-button
+            :label="$tc('sw-flow.modals.affiliateAndCampaignCode.labelEntity')"
+            :placeholder="$tc('sw-flow.modals.affiliateAndCampaignCode.placeholderEntity')"
+            :error="entityError"
+            :options="entityOptions"
+        />
+        {% endblock %}
+
+        <sw-container
+            columns="3fr 1fr"
+            gap="16px"
+        >
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_flow_affiliate_and_campaign_code_modal_affiliate_code %}
+            <sw-text-field
+                v-model:value="affiliateCode.value"
+                name="sw-field--affiliateCode-value"
+                class="sw-flow-affiliate-and-campaign-code-modal__affiliate-code"
+                :label="$tc('sw-flow.modals.affiliateAndCampaignCode.labelAffiliateCode')"
+                :placeholder="$tc('sw-flow.modals.affiliateAndCampaignCode.placeholderAffiliateCode')"
+            />
+            {% endblock %}
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_flow_affiliate_and_campaign_code_modal_affiliate_code_overwrite %}
+            <sw-switch-field
+                v-model:value="affiliateCode.upsert"
+                name="sw-field--affiliateCode-upsert"
+                class="sw-flow-affiliate-and-campaign-code-modal__affiliate-code-overwrite"
+                :label="$tc('sw-flow.modals.affiliateAndCampaignCode.overwrite')"
+            />
+            {% endblock %}
+        </sw-container>
+
+        <sw-container
+            columns="3fr 1fr"
+            gap="16px"
+        >
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_flow_affiliate_and_campaign_code_modal_campaign_code %}
+            <sw-text-field
+                v-model:value="campaignCode.value"
+                name="sw-field--campaignCode-value"
+                class="sw-flow-affiliate-and-campaign-code-modal__campaign-code"
+                :label="$tc('sw-flow.modals.affiliateAndCampaignCode.labelCampaignCode')"
+                :placeholder="$tc('sw-flow.modals.affiliateAndCampaignCode.placeholderCampaignCode')"
+            />
+            {% endblock %}
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_flow_affiliate_and_campaign_code_modal_campaign_code_overwrite %}
+            <sw-switch-field
+                v-model:value="campaignCode.upsert"
+                name="sw-field--campaignCode-upsert"
+                class="sw-flow-affiliate-and-campaign-code-modal__campaign-code-overwrite"
+                :label="$tc('sw-flow.modals.affiliateAndCampaignCode.overwrite')"
+            />
+            {% endblock %}
+        </sw-container>
+    </div>
+    {% endblock %}
+
+    <template #modal-footer>
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_flow_affiliate_and_campaign_code_modal_footer_cancel_button %}
+        <sw-button
+            class="sw-flow-affiliate-and-campaign-code-modal__cancel-button"
+            size="small"
+            @click="onClose"
+        >
+            {{ $tc('global.default.cancel') }}
+        </sw-button>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_flow_affiliate_and_campaign_code_modal_footer_save_button %}
+        <sw-button
+            class="sw-flow-affiliate-and-campaign-code-modal__save-button"
+            variant="primary"
+            size="small"
+            @click="onSave"
+        >
+            {{ sequence.id ? $tc('sw-flow.modals.buttonSaveAction') : $tc('sw-flow.modals.buttonAddAction') }}
+        </sw-button>
+        {% endblock %}
+    </template>
+</sw-modal>
+{% endblock %}
