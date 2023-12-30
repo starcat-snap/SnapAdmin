@@ -1,0 +1,57 @@
+{
+  "sw-settings-cache": {
+    "general": {
+      "mainMenuItemGeneral": "缓存 & 索引"
+    },
+    "toolbar": {
+      "environment": "环境",
+      "environmentDev": "开发环境",
+      "environmentProd": "生产环境",
+      "httpCache": "HTTP cache",
+      "httpCacheOff": "关",
+      "httpCacheOn": "开",
+      "cacheAdapter": "缓存适配器"
+    },
+    "section": {
+      "clearCachesHeadline": "清除缓存",
+      "clearCachesText": "所有已使用的适配器的缓存会立即同步清除.",
+      "clearCachesButton": "清除缓存",
+      "indexesHeadline": "索引",
+      "indexesText": "所有索引都会异步地进行更新。通过监控通知来跟踪进度.",
+      "indexesButton": "更新索引",
+      "indexingModeLabel": "Method",
+      "indexingModeOptionSkipLabel": "更新全部，但跳过已选择的部分",
+      "indexingModeOptionOnlyLabel": "只更新选择的部分",
+      "indexesSkipSelectLabel": "Indexers and/or updaters to skip",
+      "indexesOnlySelectLabel": "Indexers and/or updaters",
+      "indexesSkipSelectPlaceholder": "Select indexers and/or updaters to skip",
+      "indexesOnlySelectPlaceholder": "Select indexers and/or updaters"
+    },
+    "notifications": {
+      "clearCache": {
+        "started": "清除缓存.",
+        "success": "所有缓存已被清除.",
+        "error": "不能清除缓存."
+      },
+      "index": {
+        "started": "构建索引.",
+        "success": "所有索引构建完成."
+      }
+    },
+    "modal": {
+      "title": "清除缓存",
+      "message": "确定要清除所有缓存吗?",
+      "actions": {
+        "cancel": "取消",
+        "clear": "清除"
+      }
+    }
+  },
+  "sw-privileges": {
+    "additional_permissions": {
+      "system": {
+        "clear_cache": "清除缓存"
+      }
+    }
+  }
+}
