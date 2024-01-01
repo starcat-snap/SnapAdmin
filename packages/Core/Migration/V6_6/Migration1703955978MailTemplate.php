@@ -81,7 +81,7 @@ class Migration1703955978MailTemplate extends MigrationStep
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
         ');
 
-         $query = <<<'SQL'
+        $query = <<<'SQL'
             CREATE TABLE mail_template_media (
               id BINARY(16) NOT NULL,
               mail_template_id BINARY(16) NOT NULL,

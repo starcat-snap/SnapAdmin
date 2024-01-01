@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Migration\V6_6;
 
 use Doctrine\DBAL\Connection;
-use SnapAdmin\Core\Content\MailTemplate\MailTemplateTypes;
 use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Doctrine\MultiInsertQueryQueue;
 use SnapAdmin\Core\Framework\Migration\MigrationStep;
@@ -11,7 +10,6 @@ use SnapAdmin\Core\Framework\Uuid\Uuid;
 
 class Migration1703957048BasicData extends MigrationStep
 {
-
     /**
      * @var array<string, array{id: string, name: string, nameDe: string, availableEntities: array<string, string|null>}>|null
      */
@@ -34,7 +32,6 @@ class Migration1703957048BasicData extends MigrationStep
         $this->createSystemConfigOptions($connection);
         $this->createNumberRanges($connection);
     }
-
 
     public function updateDestructive(Connection $connection): void
     {
@@ -177,7 +174,7 @@ class Migration1703957048BasicData extends MigrationStep
     private function getMediaFolderName(string $entity): string
     {
         $capitalizedEntityParts = array_map(
-            static fn($part) => ucfirst((string)$part),
+            static fn ($part) => ucfirst((string) $part),
             explode('_', $entity)
         );
 

@@ -30,7 +30,6 @@ class DocumentEntity extends Entity
      */
     protected $fileType;
 
-
     /**
      * @var array<string, mixed>
      */

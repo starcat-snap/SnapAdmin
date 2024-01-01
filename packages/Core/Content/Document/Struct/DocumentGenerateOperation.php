@@ -25,6 +25,7 @@ final class DocumentGenerateOperation extends Struct
         protected bool $preview = false
     ) {
     }
+
     public function getFileType(): string
     {
         return $this->fileType;

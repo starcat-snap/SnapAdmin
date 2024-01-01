@@ -282,7 +282,6 @@ class DocumentGenerator
         $documentId = $document->getId();
 
         $operation = new DocumentGenerateOperation(
-
             FileTypes::PDF,
             $document->getConfig(),
             $document->getReferencedDocumentId()

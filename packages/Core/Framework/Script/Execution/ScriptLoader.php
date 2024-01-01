@@ -24,12 +24,11 @@ class ScriptLoader implements EventSubscriberInterface
     private readonly string $cacheDir;
 
     public function __construct(
-        private readonly Connection               $connection,
+        private readonly Connection $connection,
         private readonly TagAwareAdapterInterface $cache,
-        string                                    $cacheDir,
-        private readonly bool                     $debug
-    )
-    {
+        string $cacheDir,
+        private readonly bool $debug
+    ) {
         $this->cacheDir = $cacheDir . '/scripts';
     }
 
@@ -91,7 +90,6 @@ class ScriptLoader implements EventSubscriberInterface
 
         $executableScripts = [];
         foreach ($scripts as $script) {
-
             $includes = [];
 
             $dates = [...[$script['lastModified']], ...array_column($includes, 'lastModified')];
@@ -121,7 +119,7 @@ class ScriptLoader implements EventSubscriberInterface
                 $lastModified,
                 $options,
                 $includes,
-                (bool)$script['active']
+                (bool) $script['active']
             );
         }
 

@@ -4,7 +4,6 @@ namespace SnapAdmin\Core\Content\Mail\Service;
 
 use Monolog\Level;
 use Psr\Log\LoggerInterface;
-use SnapAdmin\Core\Content\MailTemplate\Exception\SalesChannelNotFoundException;
 use SnapAdmin\Core\Content\MailTemplate\Service\Event\MailBeforeSentEvent;
 use SnapAdmin\Core\Content\MailTemplate\Service\Event\MailBeforeValidateEvent;
 use SnapAdmin\Core\Content\MailTemplate\Service\Event\MailErrorEvent;
@@ -14,8 +13,6 @@ use SnapAdmin\Core\Framework\Adapter\Twig\StringTemplateRenderer;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityRepository;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Criteria;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Validation\EntityExists;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin\Exception\DecorationPatternException;
 use SnapAdmin\Core\Framework\Validation\DataValidationDefinition;
@@ -30,20 +27,19 @@ class MailService extends AbstractMailService
 {
     /**
      * @param EntityRepository<MediaCollection> $mediaRepository
-     * @internal
      *
+     * @internal
      */
     public function __construct(
-        private readonly DataValidator            $dataValidator,
-        private readonly StringTemplateRenderer   $templateRenderer,
-        private readonly AbstractMailFactory      $mailFactory,
-        private readonly AbstractMailSender       $mailSender,
-        private readonly EntityRepository         $mediaRepository,
-        private readonly SystemConfigService      $systemConfigService,
+        private readonly DataValidator $dataValidator,
+        private readonly StringTemplateRenderer $templateRenderer,
+        private readonly AbstractMailFactory $mailFactory,
+        private readonly AbstractMailSender $mailSender,
+        private readonly EntityRepository $mediaRepository,
+        private readonly SystemConfigService $systemConfigService,
         private readonly EventDispatcherInterface $eventDispatcher,
-        private readonly LoggerInterface          $logger
-    )
-    {
+        private readonly LoggerInterface $logger
+    ) {
     }
 
     public function getDecorated(): AbstractMailService
@@ -120,7 +116,7 @@ class MailService extends AbstractMailService
                 'Could not render Mail-Template with error message: ' . $e->getMessage(),
                 array_merge([
                     'template' => $template,
-                    'exception' => (string)$e,
+                    'exception' => (string) $e,
                 ], $templateData)
             );
 
@@ -185,7 +181,7 @@ class MailService extends AbstractMailService
     {
         $senderEmail = $data['senderEmail'] ?? null;
 
-        if ($senderEmail !== null && trim((string)$senderEmail) !== '') {
+        if ($senderEmail !== null && trim((string) $senderEmail) !== '') {
             return $senderEmail;
         }
 

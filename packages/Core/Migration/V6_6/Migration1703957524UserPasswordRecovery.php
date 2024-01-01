@@ -27,6 +27,11 @@ class Migration1703957524UserPasswordRecovery extends MigrationStep
         $this->createMailTemplate($connection, $mailTemplateTypeId);
     }
 
+    public function updateDestructive(Connection $connection): void
+    {
+        // implement update destructive
+    }
+
     private function getLanguageIdByLocale(Connection $connection, string $locale): ?string
     {
         $sql = <<<'SQL'
@@ -58,7 +63,6 @@ SQL;
             'available_entities' => json_encode(['userRecovery' => 'user_recovery']),
             'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
         ]);
-
 
         $connection->insert('mail_template_type_translation', [
             'mail_template_type_id' => Uuid::fromHexToBytes($mailTemplateTypeId),
@@ -125,10 +129,5 @@ MAIL;
         此链接在接下来的2小时内有效。之后，您必须请求一个新的确认链接.
         如果您不想重置密码，请忽略此邮件，不会有任何改变。
 MAIL;
-    }
-
-    public function updateDestructive(Connection $connection): void
-    {
-        // implement update destructive
     }
 }

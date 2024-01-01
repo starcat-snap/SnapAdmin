@@ -36,6 +36,7 @@ class MailStorer extends FlowStorer
             } catch (MailEventConfigurationException) {
             }
         }
+
         return $stored;
     }
 

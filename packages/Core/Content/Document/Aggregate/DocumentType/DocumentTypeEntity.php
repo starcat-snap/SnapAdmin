@@ -25,7 +25,6 @@ class DocumentTypeEntity extends Entity
      */
     protected $technicalName;
 
-
     /**
      * @var DocumentCollection|null
      */
@@ -35,7 +34,6 @@ class DocumentTypeEntity extends Entity
      * @var DocumentBaseConfigCollection|null
      */
     protected $documentBaseConfigs;
-
 
     public function getName(): string
     {
