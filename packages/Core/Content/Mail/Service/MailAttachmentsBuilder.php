@@ -4,7 +4,7 @@ namespace SnapAdmin\Core\Content\Mail\Service;
 
 use Doctrine\DBAL\ArrayParameterType;
 use Doctrine\DBAL\Connection;
-use SnapAdmin\Core\Checkout\Document\Service\DocumentGenerator;
+use SnapAdmin\Core\Content\Document\Service\DocumentGenerator;
 use SnapAdmin\Core\Content\MailTemplate\MailTemplateEntity;
 use SnapAdmin\Core\Content\MailTemplate\Subscriber\MailSendSubscriberConfig;
 use SnapAdmin\Core\Content\Media\MediaCollection;
