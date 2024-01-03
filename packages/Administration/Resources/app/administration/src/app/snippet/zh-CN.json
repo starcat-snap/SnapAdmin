@@ -32,9 +32,13 @@
       "confirm": "确认",
       "open": "打开",
       "close": "关闭",
-      "back": "返回",
       "success": "成功",
-      "info": "提示"
+      "info": "提示",
+      "from": "开始",
+      "to": "结束",
+      "bulkEdit": "批量编辑",
+      "back": "返回",
+      "discard": "丢弃"
     },
     "notification": {
       "notificationSaveErrorMessage": "An error occurred while saving the entity \"{entityName}\".",
