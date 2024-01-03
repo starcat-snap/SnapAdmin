@@ -4,8 +4,8 @@
 
 /* @private */
 import type Criteria from '@snap-admin/admin-extension-sdk/es/data/Criteria';
-import { defineComponent } from 'vue';
-import type { LocationQuery, RouteLocationNamedRaw } from 'vue-router';
+import {defineComponent} from 'vue';
+import type {LocationQuery, RouteLocationNamedRaw} from 'vue-router';
 
 /* @private */
 export {};
@@ -23,17 +23,17 @@ export default SnapAdmin.Mixin.register('listing', defineComponent({
         page: number,
         limit: number,
         total: number,
-        sortBy: string|null,
+        sortBy: string | null,
         sortDirection: string,
         naturalSorting: boolean,
         selection: Record<string, any>,
-        term: string|undefined,
+        term: string | undefined,
         disableRouteParams: boolean,
-        searchConfigEntity: string|null,
+        searchConfigEntity: string | null,
         entitySearchable: boolean,
         freshSearchTerm: boolean,
         previousRouteName: string,
-        } {
+    } {
         return {
             page: 1,
             limit: 25,
@@ -102,16 +102,7 @@ export default SnapAdmin.Mixin.register('listing', defineComponent({
         if (SnapAdmin.Utils.types.isEmpty(actualQueryParameters)) {
             this.resetListing();
         } else {
-            // When we get the parameters on the route, true and false will be a string so we should convert to boolean
-            Object.keys(actualQueryParameters).forEach((key) => {
-                if (actualQueryParameters[key] === 'true') {
-                    // @ts-expect-error
-                    actualQueryParameters[key] = true;
-                } else if (actualQueryParameters[key] === 'false') {
-                    // @ts-expect-error
-                    actualQueryParameters[key] = false;
-                }
-            });
+            this.parseBooleanQueryParams(actualQueryParameters);
 
             // otherwise update local data and fetch from server
             this.updateData(actualQueryParameters);
@@ -131,6 +122,7 @@ export default SnapAdmin.Mixin.register('listing', defineComponent({
             if (SnapAdmin.Utils.types.isEmpty(query)) {
                 this.resetListing();
             }
+            this.parseBooleanQueryParams(query);
 
             // Update data information from the url
             this.updateData(query);
@@ -275,7 +267,7 @@ export default SnapAdmin.Mixin.register('listing', defineComponent({
             });
         },
 
-        onSearch(value: string|undefined) {
+        onSearch(value: string | undefined) {
             this.term = value;
 
             if (this.disableRouteParams) {
@@ -296,7 +288,7 @@ export default SnapAdmin.Mixin.register('listing', defineComponent({
             this.page = 1;
         },
 
-        onSort({ sortBy, sortDirection }: {
+        onSort({sortBy, sortDirection}: {
             sortBy: string,
             sortDirection: string,
         }) {
@@ -376,6 +368,21 @@ export default SnapAdmin.Mixin.register('listing', defineComponent({
                 term,
                 originalCriteria,
             );
+        },
+        /**
+         * Parses all string representations of boolean values to actual boolean values.
+         * Only works on root level of the query object.
+         */
+        parseBooleanQueryParams(query: LocationQuery) {
+            Object.keys(query).forEach((key) => {
+                if (String(query[key]).toLowerCase() === 'true') {
+                    // @ts-expect-error
+                    query[key] = true;
+                } else if (String(query[key]).toLowerCase() === 'false') {
+                    // @ts-expect-error
+                    query[key] = false;
+                }
+            });
         },
     },
 }));

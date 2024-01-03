@@ -57,7 +57,15 @@
     &__button-close {
         @include reset-button;
     }
+    &__navigation .sw-card {
+        margin-bottom: 30px;
+        border-radius: 0;
+        box-shadow: none;
+    }
 
+    &__navigation .sw-card__content {
+        padding: 0;
+    }
     &__support-title {
         margin: 0 0 10px;
         color: $color-darkgray-700;
