@@ -4,8 +4,8 @@
 
 /* @private */
 import type Criteria from '@snap-admin/admin-extension-sdk/es/data/Criteria';
-import {defineComponent} from 'vue';
-import type {LocationQuery, RouteLocationNamedRaw} from 'vue-router';
+import { defineComponent } from 'vue';
+import type { LocationQuery, RouteLocationNamedRaw } from 'vue-router';
 
 /* @private */
 export {};
@@ -33,7 +33,7 @@ export default SnapAdmin.Mixin.register('listing', defineComponent({
         entitySearchable: boolean,
         freshSearchTerm: boolean,
         previousRouteName: string,
-    } {
+        } {
         return {
             page: 1,
             limit: 25,
@@ -288,7 +288,7 @@ export default SnapAdmin.Mixin.register('listing', defineComponent({
             this.page = 1;
         },
 
-        onSort({sortBy, sortDirection}: {
+        onSort({ sortBy, sortDirection }: {
             sortBy: string,
             sortDirection: string,
         }) {

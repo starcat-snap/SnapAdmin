@@ -13,7 +13,7 @@ Thumbs.db
 # PhpStorm-Project
 /.idea/
 /.fleet/
-/*.http
+*.http
 /.run/
 
 # Composer

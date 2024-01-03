@@ -15,7 +15,7 @@ jobs:
       DB_PORT: 3306
       DB_USERNAME: root
       DB_PASSWORD: root
-      DATABASE_URL: mysql://root:root@localhost:3306/58shuwei
+      DATABASE_URL: mysql://root:root@localhost:3306/snap-admin
     steps:
       - name: Set up MySQL
         run: |
@@ -84,5 +84,5 @@ jobs:
           BRANCH_NAME: tmp-${{ github.sha }}
         run: |
           for package in Administration Core; do
-            ./.github/bin/split.sh push_tag "${package}" https://$TOKEN@github.com/58shuwei "${{ steps.vars.outputs.tag }}"
+            ./.github/bin/split.sh push_tag "${package}" https://$TOKEN@github.com/starcat-snap/SnapAdmin "${{ steps.vars.outputs.tag }}"
           done
