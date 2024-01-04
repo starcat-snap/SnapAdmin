@@ -2,6 +2,7 @@
 
 namespace SnapAdmin\Core\Content\Media;
 
+use Doctrine\DBAL\Connection;
 use SnapAdmin\Core\Content\Media\Event\UnusedMediaSearchEvent;
 use SnapAdmin\Core\Content\Media\Event\UnusedMediaSearchStartEvent;
 use SnapAdmin\Core\Defaults;
@@ -32,20 +33,22 @@ class UnusedMediaPurger
     ];
 
     /**
+     * @param EntityRepository<MediaCollection> $mediaRepo
      * @internal
      *
-     * @param EntityRepository<MediaCollection> $mediaRepo
      */
     public function __construct(
-        private readonly EntityRepository $mediaRepo,
+        private readonly EntityRepository         $mediaRepo,
+        private readonly Connection               $connection,
         private readonly EventDispatcherInterface $eventDispatcher,
-    ) {
+    )
+    {
     }
 
     /**
+     * @return \Generator<array<MediaEntity>>
      * @internal This method is used only by the media:delete-unused command and is subject to change
      *
-     * @return \Generator<array<MediaEntity>>
      */
     public function getNotUsedMedia(?int $limit = 50, ?int $offset = null, ?int $gracePeriodDays = null, ?string $folderEntity = null): \Generator
     {
@@ -85,14 +88,14 @@ class UnusedMediaPurger
     }
 
     public function deleteNotUsedMedia(
-        ?int $limit = 50,
-        ?int $offset = null,
-        ?int $gracePeriodDays = null,
+        ?int    $limit = 50,
+        ?int    $offset = null,
+        ?int    $gracePeriodDays = null,
         ?string $folderEntity = null,
-    ): int {
+    ): int
+    {
         $limit ??= 50;
         $gracePeriodDays ??= 0;
-        $deletedTotal = 0;
 
         $context = Context::createDefaultContext();
 
@@ -101,25 +104,21 @@ class UnusedMediaPurger
 
         $this->eventDispatcher->dispatch(new UnusedMediaSearchStartEvent($totalMedia, $totalCandidates));
 
-        $generator = $this->getUnusedMediaIds($limit, $offset, $folderEntity);
-
-        while ($generator->valid()) {
-            $idBatch = $generator->current();
+        $idsToDelete = [];
+        foreach ($this->getUnusedMediaIds($limit, $offset, $folderEntity) as $idBatch) {
             $idBatch = $this->filterOutNewMedia($idBatch, $gracePeriodDays);
 
-            $this->mediaRepo->delete(
-                array_map(static fn ($id) => ['id' => $id], $idBatch),
-                Context::createDefaultContext()
-            );
-
-            $deletedFromBatch = \count($idBatch);
-
-            $deletedTotal += $deletedFromBatch;
-
-            $generator->send($deletedFromBatch);
+            $idsToDelete = [...$idsToDelete, ...$idBatch];
         }
 
-        return $deletedTotal;
+        if (!empty($idsToDelete)) {
+            $this->mediaRepo->delete(
+                array_map(static fn($id) => ['id' => $id], $idsToDelete),
+                $context
+            );
+        }
+
+        return \count($idsToDelete);
     }
 
     /**
@@ -187,19 +186,13 @@ class UnusedMediaPurger
             return yield $this->dispatchEvent($ids);
         }
 
-        // in order to iterate all records whilst deleting them, we must adjust the offset for each batch
-        // using the amount of deleted records in the previous batch
-        // eg: we start from offset 0. we search for 50, and delete 3 of them. Now we start from offset 47.
         while (!empty($ids = $this->mediaRepo->searchIds($criteria, $context)->getIds())) {
             /** @var array<string> $ids */
             $unusedIds = $this->dispatchEvent($ids);
 
-            $deleted = 0;
-            if (!empty($unusedIds)) {
-                $deleted = yield $unusedIds;
-            }
+            yield $unusedIds;
 
-            $criteria->setOffset(($criteria->getOffset() + $limit) - $deleted);
+            $criteria->setOffset($criteria->getOffset() + $limit);
         }
     }
 
@@ -269,11 +262,50 @@ class UnusedMediaPurger
         }
 
         if ($folderEntity) {
+            $rootMediaFolderId = $this->connection->fetchOne(
+                <<<'SQL'
+                SELECT HEX(media_folder.id) FROM media_default_folder
+                INNER JOIN media_folder ON (media_default_folder.id = media_folder.default_folder_id)
+                WHERE entity = :entity
+                SQL,
+                ['entity' => $folderEntity]
+            );
+
+            if (!$rootMediaFolderId) {
+                throw MediaException::defaultMediaFolderWithEntityNotFound($folderEntity);
+            }
+
+            /** @var array<string, array{id: string, parent_id: string}> $folders */
+            $folders = $this->connection->fetchAllAssociativeIndexed(
+                'SELECT HEX(id), HEX(id) as id, HEX(parent_id) as parent_id, name FROM media_folder WHERE id != :id',
+                ['id' => $rootMediaFolderId],
+            );
+
+            $ids = [$rootMediaFolderId, ...$this->getChildFolderIds($rootMediaFolderId, $folders)];
+
             $criteria->addFilter(
-                new EqualsAnyFilter('media.mediaFolder.defaultFolder.entity', [strtolower($folderEntity)])
+                new EqualsAnyFilter('media.mediaFolder.id', $ids)
             );
         }
 
         return $criteria;
+    }
+
+    /**
+     * @param array<string, array{id: string, parent_id: string}> $folders
+     *
+     * @return array<string>
+     */
+    private function getChildFolderIds(string $parentId, array $folders): array
+    {
+        $ids = [];
+
+        foreach ($folders as $folder) {
+            if ($folder['parent_id'] === $parentId) {
+                $ids = [...$ids, $folder['id'], ...$this->getChildFolderIds($folder['id'], $folders)];
+            }
+        }
+
+        return $ids;
     }
 }
