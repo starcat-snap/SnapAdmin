@@ -31,9 +31,9 @@ class DatabaseConnectionFactory
 
     private static function checkVersion(Connection $connection): void
     {
-        // https://developer.snap.com/docs/guides/installation/overview#system-requirements
-        $mysqlRequiredVersion = '5.7.21';
-        $mariaDBRequiredVersion = '10.3.22';
+        // https://developer.snapadmin.net/docs/guides/installation/overview#system-requirements
+        $mysqlRequiredVersion = '8.0';
+        $mariaDBRequiredVersion = '10.11';
 
         $version = $connection->fetchOne('SELECT VERSION()');
         \assert(\is_string($version));
