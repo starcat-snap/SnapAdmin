@@ -10,6 +10,7 @@ use SnapAdmin\Core\Framework\Api\Sync\SyncOperation;
 use SnapAdmin\Core\Framework\Api\Sync\SyncResult;
 use SnapAdmin\Core\Framework\Api\Sync\SyncServiceInterface;
 use SnapAdmin\Core\Framework\Context;
+use SnapAdmin\Core\Framework\DataAbstractionLayer\DataAbstractionLayerException;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\PlatformRequest;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,8 +32,9 @@ class SyncController extends AbstractController
      */
     public function __construct(
         private readonly SyncServiceInterface $syncService,
-        private readonly DecoderInterface $serializer
-    ) {
+        private readonly DecoderInterface     $serializer
+    )
+    {
     }
 
     /**
@@ -43,7 +45,7 @@ class SyncController extends AbstractController
     public function sync(Request $request, Context $context): JsonResponse
     {
         /** @var list<string> $indexingSkips */
-        $indexingSkips = array_filter(explode(',', (string) $request->headers->get(PlatformRequest::HEADER_INDEXING_SKIP, '')));
+        $indexingSkips = array_filter(explode(',', (string)$request->headers->get(PlatformRequest::HEADER_INDEXING_SKIP, '')));
 
         $behavior = new SyncBehavior(
             $request->headers->get(PlatformRequest::HEADER_INDEXING_BEHAVIOR),
@@ -57,7 +59,7 @@ class SyncController extends AbstractController
             if (isset($operation['key'])) {
                 $key = $operation['key'];
             }
-            $key = (string) $key;
+            $key = (string)$key;
             $operations[] = new SyncOperation(
                 $key,
                 $operation['entity'],
@@ -67,11 +69,19 @@ class SyncController extends AbstractController
             );
 
             if (empty($operation['entity'])) {
-                throw ApiException::invalidSyncOperationException(sprintf('Missing "entity" argument for operation with key "%s". It needs to be a non-empty string.', (string) $key));
+                throw ApiException::invalidSyncOperationException(sprintf('Missing "entity" argument for operation with key "%s". It needs to be a non-empty string.', (string)$key));
             }
         }
 
-        $result = $context->scope(Context::CRUD_API_SCOPE, fn (Context $context): SyncResult => $this->syncService->sync($operations, $context, $behavior));
+        try {
+            $result = $context->scope(Context::CRUD_API_SCOPE, fn(Context $context): SyncResult => $this->syncService->sync($operations, $context, $behavior));
+        } catch (DataAbstractionLayerException $exception) {
+            if ($exception->getErrorCode() === DataAbstractionLayerException::INVALID_WRITE_INPUT) {
+                throw ApiException::badRequest('Invalid payload. Should contain a list of associative arrays');
+            }
+
+            throw $exception;
+        }
 
         return $this->createResponse($result, Response::HTTP_OK);
     }

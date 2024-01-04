@@ -77,7 +77,7 @@ class EntityWriter implements EntityWriterInterface
 
             $definition = $this->registry->getByEntityName($operation->getEntity());
 
-            $this->validateWriteInput($operation->getPayload());
+            WriteInputValidator::validate($operation->getPayload());
 
             if ($operation->getAction() === SyncOperation::ACTION_DELETE) {
                 $deletes[] = $this->factory->resolveDelete($definition, $operation->getPayload());
@@ -142,17 +142,17 @@ class EntityWriter implements EntityWriterInterface
     /**
      * @throws RestrictDeleteViolationException
      */
-    public function delete(EntityDefinition $definition, array $ids, WriteContext $writeContext): WriteResult
+    public function delete(EntityDefinition $definition, array $rawData, WriteContext $writeContext): WriteResult
     {
-        $this->validateWriteInput($ids);
+        WriteInputValidator::validate($rawData);
 
         $parents = [];
         if (!$writeContext->hasState('merge-scope')) {
-            $parents = $this->factory->resolveDelete($definition, $ids);
+            $parents = $this->factory->resolveDelete($definition, $rawData);
         }
 
         $commandQueue = new WriteCommandQueue();
-        $notFound = $this->extractDeleteCommands($definition, $ids, $writeContext, $commandQueue);
+        $notFound = $this->extractDeleteCommands($definition, $rawData, $writeContext, $commandQueue);
 
         $writeContext->setLanguages($this->languageLoader->loadLanguages());
         $this->gateway->execute($commandQueue->getCommandsInOrder($this->registry), $writeContext);
@@ -171,7 +171,7 @@ class EntityWriter implements EntityWriterInterface
      */
     private function write(EntityDefinition $definition, array $rawData, WriteContext $writeContext, ?string $ensure = null): array
     {
-        $this->validateWriteInput($rawData);
+        WriteInputValidator::validate($rawData);
 
         if (!$rawData) {
             return [];
@@ -214,20 +214,6 @@ class EntityWriter implements EntityWriterInterface
     }
 
     /**
-     * @param array<mixed> $data
-     *
-     * @throws \InvalidArgumentException
-     */
-    private function validateWriteInput(array $data): void
-    {
-        $valid = array_is_list($data) || $data === [];
-
-        if (!$valid) {
-            throw new \InvalidArgumentException('Expected input to be non associative array.');
-        }
-    }
-
-    /**
      * @throws InvalidSyncOperationException
      */
     private function validateSyncOperationInput(SyncOperation $operation): void
@@ -262,14 +248,9 @@ class EntityWriter implements EntityWriterInterface
 
                 $command = new UpdateCommand($affectedDefinition, [], $primary, $existence, '');
 
-                $identifier = WriteCommandQueue::decodeCommandPrimary(
-                    $this->registry,
-                    $command
-                );
-
                 $queue->add(
                     $affectedDefinition->getEntityName(),
-                    md5(json_encode($identifier, \JSON_THROW_ON_ERROR)),
+                    WriteCommandQueue::hashedPrimary($this->registry, $command),
                     $command
                 );
             }
@@ -300,14 +281,14 @@ class EntityWriter implements EntityWriterInterface
 
                 $command = new CascadeDeleteCommand($affectedDefinition, $primary, $existence);
 
-                $identifier = WriteCommandQueue::decodeCommandPrimary(
+                $identifier = WriteCommandQueue::hashedPrimary(
                     $this->registry,
                     $command
                 );
 
                 $queue->add(
                     $affectedDefinition->getEntityName(),
-                    md5(json_encode($identifier, \JSON_THROW_ON_ERROR)),
+                    $identifier,
                     $command
                 );
             }
@@ -354,11 +335,11 @@ class EntityWriter implements EntityWriterInterface
 
                 $command = new SetNullOnDeleteCommand($affectedDefinition, $payload, $primary, $existence, '', $isEnforced);
 
-                $identifier = WriteCommandQueue::decodeCommandPrimary($this->registry, $command);
+                $identifier = WriteCommandQueue::hashedPrimary($this->registry, $command);
 
                 $queue->add(
                     $affectedDefinition->getEntityName(),
-                    md5(json_encode($identifier, \JSON_THROW_ON_ERROR)),
+                    $identifier,
                     $command
                 );
             }
@@ -455,11 +436,11 @@ class EntityWriter implements EntityWriterInterface
             if ($existence->exists()) {
                 $command = new DeleteCommand($definition, $mappedBytes, $existence);
 
-                $identifier = WriteCommandQueue::decodeCommandPrimary($this->registry, $command);
+                $identifier = WriteCommandQueue::hashedPrimary($this->registry, $command);
 
                 $commandQueue->add(
                     $definition->getEntityName(),
-                    md5(json_encode($identifier, \JSON_THROW_ON_ERROR)),
+                    $identifier,
                     $command
                 );
 
