@@ -130,7 +130,7 @@ class SystemConfigService implements ResetInterface
     /**
      * @return array<mixed>
      *
-     * @internal should not be used in frontend or store api. The cache layer caches all accessed config keys and use them as cache tag.
+     * @internal
      *
      * gets all available shop configs and returns them as an array
      */
@@ -144,7 +144,7 @@ class SystemConfigService implements ResetInterface
      *
      * @return array<mixed>
      *
-     * @internal should not be used in frontend or store api. The cache layer caches all accessed config keys and use them as cache tag.
+     * @internal
      */
     public function getDomain(string $domain, bool $inherit = false): array
     {

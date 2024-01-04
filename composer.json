@@ -202,7 +202,6 @@
         "build:js": "Builds Administration & Frontend",
         "build:js:admin": "Builds the Administration",
         "build:js:component-library": "Builds the component library",
-        "build:js:frontend": "Builds the Frontend's JavaScript",
         "check:license": "Check thrid-party dependency licenses",
         "ecs": "Checks all files regarding the Easy Coding Standard",
         "ecs-fix": "Checks all files regarding the Easy Coding Standard and fixes them if possible",
@@ -211,7 +210,6 @@
         "eslint:admin:fix": "Codestyle checks Administration JS/TS files and fixes them if possible",
         "eslint:e2e": "Codestyle checks all E2E JS/TS files",
         "eslint:e2e:fix": "Codestyle checks all E2E JS/TS files and fixes them if possible",
-        "eslint:frontend": "Codestyle checks all Frontend JS/TS files",
         "framework:schema:dump": " ",
         "init:testdb": "Initializes the test database",
         "lint": "Shorthand for the composer commands 'stylelint', 'eslint', 'ecs', 'lint:changlog' and 'lint:snippets'",
@@ -236,7 +234,6 @@
         "static-analyze": " ",
         "stylelint": " ",
         "stylelint:admin": " ",
-        "stylelint:frontend": " ",
         "watch:admin": "Enables hot module reloading for the Admin",
         "make:coverage": "Generate test coverage files for current branch"
     },
@@ -279,7 +276,6 @@
         "ecs-fix": "ecs check --fix packages tests",
         "eslint": [
             "@eslint:admin",
-            "@eslint:frontend",
             "@eslint:e2e"
         ],
         "eslint:admin": "@npm:admin run lint:all",
@@ -303,7 +299,6 @@
         "init:e2e": "@npm:e2e clean-install --no-audit --prefer-offline",
         "init:js": [
             "@npm:admin clean-install --no-audit --prefer-offline",
-            "@npm:frontend clean-install --no-audit --prefer-offline",
             "export PROJECT_ROOT=\"$PWD\"; \"$PROJECT_ROOT\"/bin/install-extension-npm"
         ],
         "init:testdb": [
@@ -372,8 +367,7 @@
             "@phpstan packages/"
         ],
         "stylelint": [
-            "@stylelint:admin packages/**/*.scss",
-            "@stylelint:frontend packages/**/*.scss"
+            "@stylelint:admin packages/**/*.scss"
         ],
         "stylelint:admin": "@npm:admin run lint:scss",
         "watch:admin": [

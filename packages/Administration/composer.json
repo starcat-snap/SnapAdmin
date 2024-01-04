@@ -1,6 +1,6 @@
 {
     "name": "snapadmin/administration",
-    "description": "Administration frontend for the SnapAdmin Core",
+    "description": "Administration for the SnapAdmin Core",
     "type": "library",
     "autoload": {
         "psr-4": {
