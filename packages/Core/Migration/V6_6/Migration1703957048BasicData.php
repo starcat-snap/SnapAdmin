@@ -33,6 +33,14 @@ class Migration1703957048BasicData extends MigrationStep
         $this->createDefaultMediaFolders($connection);
         $this->createSystemConfigOptions($connection);
         $this->createNumberRanges($connection);
+        $this->createTax($connection);
+    }
+
+    private function createTax(Connection $connection): void
+    {
+        $tax0 = Uuid::randomBytes();
+
+        $connection->insert('tax', ['id' => $tax0, 'tax_rate' => 0, 'name' => '0%', 'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT)]);
     }
 
     private function createCurrency(Connection $connection): void
