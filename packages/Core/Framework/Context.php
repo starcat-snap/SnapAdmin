@@ -46,6 +46,7 @@ class Context extends Struct
         array                        $languageIdChain = [Defaults::LANGUAGE_SYSTEM],
         protected string             $versionId = Defaults::LIVE_VERSION,
         protected bool               $considerInheritance = false,
+        protected string             $currencyId = Defaults::CURRENCY,
         protected float              $currencyFactor = 1.0,
         protected string             $taxState = TaxDefinition::TAX_STATE_FREE,
         protected CashRoundingConfig $rounding = new CashRoundingConfig(2, 0.01, true)
@@ -254,4 +255,16 @@ class Context extends Struct
     {
         $this->rulesLocked = true;
     }
+
+    public function getCurrencyId(): string
+    {
+        return $this->currencyId;
+    }
+
+    public function setCurrencyId(string $currencyId): void
+    {
+        $this->currencyId = $currencyId;
+    }
+
+
 }
