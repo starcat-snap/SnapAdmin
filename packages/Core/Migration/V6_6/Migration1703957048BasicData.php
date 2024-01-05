@@ -40,7 +40,7 @@ class Migration1703957048BasicData extends MigrationStep
     {
         $tax0 = Uuid::randomBytes();
 
-        $connection->insert('tax', ['id' => $tax0, 'tax_rate' => 0, 'name' => '0%', 'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT)]);
+        $connection->insert('tax', ['id' => $tax0, 'tax_rate' => 0, 'name' => '免税', 'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT)]);
     }
 
     private function createCurrency(Connection $connection): void
