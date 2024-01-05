@@ -34,21 +34,20 @@ class UnusedMediaPurger
 
     /**
      * @param EntityRepository<MediaCollection> $mediaRepo
-     * @internal
      *
+     * @internal
      */
     public function __construct(
-        private readonly EntityRepository         $mediaRepo,
-        private readonly Connection               $connection,
+        private readonly EntityRepository $mediaRepo,
+        private readonly Connection $connection,
         private readonly EventDispatcherInterface $eventDispatcher,
-    )
-    {
+    ) {
     }
 
     /**
      * @return \Generator<array<MediaEntity>>
-     * @internal This method is used only by the media:delete-unused command and is subject to change
      *
+     * @internal This method is used only by the media:delete-unused command and is subject to change
      */
     public function getNotUsedMedia(?int $limit = 50, ?int $offset = null, ?int $gracePeriodDays = null, ?string $folderEntity = null): \Generator
     {
@@ -88,12 +87,11 @@ class UnusedMediaPurger
     }
 
     public function deleteNotUsedMedia(
-        ?int    $limit = 50,
-        ?int    $offset = null,
-        ?int    $gracePeriodDays = null,
+        ?int $limit = 50,
+        ?int $offset = null,
+        ?int $gracePeriodDays = null,
         ?string $folderEntity = null,
-    ): int
-    {
+    ): int {
         $limit ??= 50;
         $gracePeriodDays ??= 0;
 
@@ -113,7 +111,7 @@ class UnusedMediaPurger
 
         if (!empty($idsToDelete)) {
             $this->mediaRepo->delete(
-                array_map(static fn($id) => ['id' => $id], $idsToDelete),
+                array_map(static fn ($id) => ['id' => $id], $idsToDelete),
                 $context
             );
         }

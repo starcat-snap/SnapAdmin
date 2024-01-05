@@ -11,7 +11,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 use SnapAdmin\Core\System\Country\Aggregate\CountryStateCityDistrict\CountryStateCityDistrictDefinition;
 
 class CountryStateCityDistrictTranslationDefinition extends EntityTranslationDefinition
-
 {
     final public const ENTITY_NAME = 'country_state_city_district_translation';
 

@@ -3,7 +3,6 @@
 namespace SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer;
 
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Field;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\JsonFieldSerializer;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\TaxFreeConfig;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\DataStack\KeyValuePair;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Write\EntityExistence;

@@ -9,5 +9,5 @@ use SnapAdmin\Core\Framework\Log\Package;
 #[Package('system')]
 class CountryStateCityDistrictTranslationEntity extends TranslationEntity
 {
-     use EntityCustomFieldsTrait;
+    use EntityCustomFieldsTrait;
 }

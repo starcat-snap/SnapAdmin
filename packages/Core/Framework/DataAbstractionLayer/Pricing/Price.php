@@ -45,7 +45,6 @@ class Price extends Struct
     protected $regulationPrice;
 
     public function __construct(
-
         float $net,
         float $gross,
         bool $linked,

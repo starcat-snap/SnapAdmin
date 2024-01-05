@@ -29,12 +29,10 @@ class TaxEntity extends Entity
      */
     protected $position;
 
-
     /**
      * @var TaxRuleCollection|null
      */
     protected $rules;
-
 
     public function getTaxRate(): float
     {
@@ -65,7 +63,6 @@ class TaxEntity extends Entity
     {
         $this->position = $position;
     }
-
 
     public function getRules(): ?TaxRuleCollection
     {

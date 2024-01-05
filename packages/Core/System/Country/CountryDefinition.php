@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\System\Country;
 
-
 use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BoolField;
@@ -14,7 +13,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\RestrictDelete;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\SearchRanking;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\IdField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\IntField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TaxFreeConfigField;

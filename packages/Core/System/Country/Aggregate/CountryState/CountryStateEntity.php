@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\System\Country\Aggregate\CountryState;
 
-
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
@@ -50,7 +49,6 @@ class CountryStateEntity extends Entity
      * @var CountryStateCityTranslationCollection|null
      */
     protected $translations;
-
 
     public function getCountryId(): string
     {

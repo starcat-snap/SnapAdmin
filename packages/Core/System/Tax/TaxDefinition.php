@@ -8,7 +8,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\ApiAware;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\RestrictDelete;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\ReverseInherited;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\SearchRanking;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\Since;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\FloatField;

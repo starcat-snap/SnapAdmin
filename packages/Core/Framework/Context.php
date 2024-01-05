@@ -41,17 +41,16 @@ class Context extends Struct
      * @param array<string> $ruleIds
      */
     public function __construct(
-        protected ContextSource      $source,
-        protected array              $ruleIds = [],
-        array                        $languageIdChain = [Defaults::LANGUAGE_SYSTEM],
-        protected string             $versionId = Defaults::LIVE_VERSION,
-        protected bool               $considerInheritance = false,
-        protected string             $currencyId = Defaults::CURRENCY,
-        protected float              $currencyFactor = 1.0,
-        protected string             $taxState = TaxDefinition::TAX_STATE_FREE,
+        protected ContextSource $source,
+        protected array $ruleIds = [],
+        array $languageIdChain = [Defaults::LANGUAGE_SYSTEM],
+        protected string $versionId = Defaults::LIVE_VERSION,
+        protected bool $considerInheritance = false,
+        protected string $currencyId = Defaults::CURRENCY,
+        protected float $currencyFactor = 1.0,
+        protected string $taxState = TaxDefinition::TAX_STATE_FREE,
         protected CashRoundingConfig $rounding = new CashRoundingConfig(2, 0.01, true)
-    )
-    {
+    ) {
         if ($source instanceof SystemSource) {
             $this->scope = self::SYSTEM_SCOPE;
         }
@@ -94,7 +93,6 @@ class Context extends Struct
     {
         $this->rounding = $rounding;
     }
-
 
     /**
      * @internal
@@ -265,6 +263,4 @@ class Context extends Struct
     {
         $this->currencyId = $currencyId;
     }
-
-
 }

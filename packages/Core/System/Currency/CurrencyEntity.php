@@ -10,7 +10,6 @@ use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\Currency\Aggregate\CurrencyCountryRounding\CurrencyCountryRoundingCollection;
 use SnapAdmin\Core\System\Currency\Aggregate\CurrencyTranslation\CurrencyTranslationCollection;
 
-
 #[Package('system')]
 class CurrencyEntity extends Entity
 {
@@ -146,7 +145,6 @@ class CurrencyEntity extends Entity
     {
         $this->translations = $translations;
     }
-
 
     public function getIsSystemDefault(): ?bool
     {

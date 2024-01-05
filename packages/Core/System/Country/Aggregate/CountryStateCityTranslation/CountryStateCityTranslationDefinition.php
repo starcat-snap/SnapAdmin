@@ -9,7 +9,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\Country\Aggregate\CountryState\CountryStateDefinition;
 use SnapAdmin\Core\System\Country\Aggregate\CountryStateCity\CountryStateCityDefinition;
 
 #[Package('system')]

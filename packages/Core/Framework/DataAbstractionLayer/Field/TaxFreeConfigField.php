@@ -3,11 +3,7 @@
 namespace SnapAdmin\Core\Framework\DataAbstractionLayer\Field;
 
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Dbal\FieldAccessorBuilder\JsonFieldAccessorBuilder;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BoolField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\FloatField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\JsonField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\TaxFreeConfigFieldSerializer;
 use SnapAdmin\Core\Framework\Log\Package;
 

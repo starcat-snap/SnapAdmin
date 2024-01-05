@@ -8,12 +8,9 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\IdField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
-use SnapAdmin\Core\System\Country\Aggregate\CountryState\CountryStateEntity;
-use SnapAdmin\Core\System\Country\Aggregate\CountryStateCityDistrict\CountryStateCityDistrictCollection;
 
 class CountryStateCityDistrictDefinition extends EntityDefinition
 {
-
     final public const ENTITY_NAME = 'country_state_city_district';
 
     public function getEntityName(): string

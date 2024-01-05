@@ -87,7 +87,6 @@ class CountryEntity extends Entity
      */
     protected $translations;
 
-
     /**
      * @var TaxRuleCollection|null
      */
@@ -232,6 +231,7 @@ class CountryEntity extends Entity
     {
         $this->translations = $translations;
     }
+
     public function getTaxRules(): ?TaxRuleCollection
     {
         return $this->taxRules;

@@ -36,6 +36,10 @@ class Migration1703957048BasicData extends MigrationStep
         $this->createTax($connection);
     }
 
+    public function updateDestructive(Connection $connection): void
+    {
+    }
+
     private function createTax(Connection $connection): void
     {
         $tax0 = Uuid::randomBytes();
@@ -49,13 +53,13 @@ class Migration1703957048BasicData extends MigrationStep
 
         $languageZH = Uuid::fromHexToBytes(Defaults::LANGUAGE_SYSTEM);
 
-        $connection->insert('currency', ['id' => $CNY, 'iso_code' => 'CNY', 'factor' => 1, 'symbol' => '¥', 'position' => 1, 'decimal_precision' => 2, 'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT)]);
+        $connection->insert('currency', ['id' => $CNY, 'iso_code' => 'CNY', 'factor' => 1, 'symbol' => '¥', 'position' => 1,  'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT)]);
         $connection->insert('currency_translation', ['currency_id' => $CNY, 'language_id' => $languageZH, 'short_name' => 'CNY', 'name' => '人民币', 'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT)]);
     }
 
     private function createCountry(Connection $connection): void
     {
-        $languageZH = static fn(string $countryId, string $name) => [
+        $languageZH = static fn (string $countryId, string $name) => [
             'language_id' => Uuid::fromHexToBytes(Defaults::LANGUAGE_SYSTEM),
             'name' => $name,
             'country_id' => $countryId,
@@ -105,8 +109,8 @@ class Migration1703957048BasicData extends MigrationStep
                 'CN-XJ' => '新疆维吾尔自治区',
                 'CN-TW' => '台湾省',
                 'CN-HK' => '香港特别行政区',
-                'CN-MO' => '澳门特别行政区'
-            ]
+                'CN-MO' => '澳门特别行政区',
+            ],
         ];
         foreach ($data[$countryCode] as $isoCode => $name) {
             $storageDate = (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT);
@@ -125,10 +129,6 @@ class Migration1703957048BasicData extends MigrationStep
                 'created_at' => $storageDate,
             ]);
         }
-    }
-
-    public function updateDestructive(Connection $connection): void
-    {
     }
 
     private function createNumberRanges(Connection $connection): void
@@ -268,7 +268,7 @@ class Migration1703957048BasicData extends MigrationStep
     private function getMediaFolderName(string $entity): string
     {
         $capitalizedEntityParts = array_map(
-            static fn($part) => ucfirst((string)$part),
+            static fn ($part) => ucfirst((string) $part),
             explode('_', $entity)
         );
 

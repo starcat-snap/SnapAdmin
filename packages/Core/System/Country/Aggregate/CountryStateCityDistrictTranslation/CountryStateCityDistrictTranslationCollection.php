@@ -6,5 +6,4 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCollection;
 
 class CountryStateCityDistrictTranslationCollection extends EntityCollection
 {
-
 }
