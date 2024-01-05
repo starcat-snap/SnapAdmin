@@ -26,6 +26,7 @@ class Migration1536232660Tax extends MigrationStep
               `id`              BINARY(16)                              NOT NULL,
               `tax_rate`        DECIMAL(10, 2)                          NOT NULL,
               `name`            VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+              `position` int(11) NOT NULL DEFAULT 0,
               `custom_fields`   JSON                                    NULL,
               `created_at`      DATETIME(3)                             NOT NULL,
               `updated_at`      DATETIME(3)                             NULL,
