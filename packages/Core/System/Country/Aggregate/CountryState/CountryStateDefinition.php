@@ -19,7 +19,7 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TranslationsAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 use SnapAdmin\Core\Framework\Log\Package;
-use SnapAdmin\Core\System\Country\Aggregate\CountryStateTranslation\CountryStateCityTranslationDefinition;
+use SnapAdmin\Core\System\Country\Aggregate\CountryStateTranslation\CountryStateTranslationDefinition;
 use SnapAdmin\Core\System\Country\CountryDefinition;
 
 #[Package('system')]
@@ -63,7 +63,7 @@ class CountryStateDefinition extends EntityDefinition
             (new BoolField('active', 'active'))->addFlags(new ApiAware()),
             (new TranslatedField('customFields'))->addFlags(new ApiAware()),
             new ManyToOneAssociationField('country', 'country_id', CountryDefinition::class, 'id', false),
-            (new TranslationsAssociationField(CountryStateCityTranslationDefinition::class, 'country_state_id'))->addFlags(new Required()),
+            (new TranslationsAssociationField(CountryStateTranslationDefinition::class, 'country_state_id'))->addFlags(new Required()),
         ]);
     }
 }

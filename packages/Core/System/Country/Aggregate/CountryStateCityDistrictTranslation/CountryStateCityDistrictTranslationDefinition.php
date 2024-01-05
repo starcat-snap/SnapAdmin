@@ -8,6 +8,7 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\ApiAware;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
+use SnapAdmin\Core\System\Country\Aggregate\CountryStateCityDistrict\CountryStateCityDistrictDefinition;
 
 class CountryStateCityDistrictTranslationDefinition extends EntityTranslationDefinition
 
@@ -27,6 +28,11 @@ class CountryStateCityDistrictTranslationDefinition extends EntityTranslationDef
     public function getEntityClass(): string
     {
         return CountryStateCityDistrictTranslationEntity::class;
+    }
+
+    protected function getParentDefinitionClass(): string
+    {
+        return CountryStateCityDistrictDefinition::class;
     }
 
     protected function defineFields(): FieldCollection

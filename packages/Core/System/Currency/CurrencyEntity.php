@@ -2,9 +2,6 @@
 
 namespace SnapAdmin\Core\System\Currency;
 
-use SnapAdmin\Core\Checkout\Order\OrderCollection;
-use SnapAdmin\Core\Checkout\Promotion\Aggregate\PromotionDiscountPrice\PromotionDiscountPriceCollection;
-use SnapAdmin\Core\Content\ProductExport\ProductExportCollection;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
@@ -12,8 +9,7 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Pricing\CashRoundingConfig;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\Currency\Aggregate\CurrencyCountryRounding\CurrencyCountryRoundingCollection;
 use SnapAdmin\Core\System\Currency\Aggregate\CurrencyTranslation\CurrencyTranslationCollection;
-use SnapAdmin\Core\System\SalesChannel\Aggregate\SalesChannelDomain\SalesChannelDomainCollection;
-use SnapAdmin\Core\System\SalesChannel\SalesChannelCollection;
+
 
 #[Package('system')]
 class CurrencyEntity extends Entity
@@ -57,39 +53,9 @@ class CurrencyEntity extends Entity
     protected $translations;
 
     /**
-     * @var OrderCollection|null
-     */
-    protected $orders;
-
-    /**
-     * @var SalesChannelCollection|null
-     */
-    protected $salesChannels;
-
-    /**
-     * @var SalesChannelCollection|null
-     */
-    protected $salesChannelDefaultAssignments;
-
-    /**
-     * @var SalesChannelDomainCollection|null
-     */
-    protected $salesChannelDomains;
-
-    /**
-     * @var PromotionDiscountPriceCollection
-     */
-    protected $promotionDiscountPrices;
-
-    /**
      * @var bool|null
      */
     protected $isSystemDefault;
-
-    /**
-     * @var ProductExportCollection|null
-     */
-    protected $productExports;
 
     /**
      * @var CurrencyCountryRoundingCollection|null
@@ -181,45 +147,6 @@ class CurrencyEntity extends Entity
         $this->translations = $translations;
     }
 
-    public function getOrders(): ?OrderCollection
-    {
-        return $this->orders;
-    }
-
-    public function setOrders(OrderCollection $orders): void
-    {
-        $this->orders = $orders;
-    }
-
-    public function getSalesChannels(): ?SalesChannelCollection
-    {
-        return $this->salesChannels;
-    }
-
-    public function setSalesChannels(SalesChannelCollection $salesChannels): void
-    {
-        $this->salesChannels = $salesChannels;
-    }
-
-    public function getSalesChannelDefaultAssignments(): ?SalesChannelCollection
-    {
-        return $this->salesChannelDefaultAssignments;
-    }
-
-    public function setSalesChannelDefaultAssignments(SalesChannelCollection $salesChannelDefaultAssignments): void
-    {
-        $this->salesChannelDefaultAssignments = $salesChannelDefaultAssignments;
-    }
-
-    public function getSalesChannelDomains(): ?SalesChannelDomainCollection
-    {
-        return $this->salesChannelDomains;
-    }
-
-    public function setSalesChannelDomains(SalesChannelDomainCollection $salesChannelDomains): void
-    {
-        $this->salesChannelDomains = $salesChannelDomains;
-    }
 
     public function getIsSystemDefault(): ?bool
     {
@@ -229,26 +156,6 @@ class CurrencyEntity extends Entity
     public function setIsSystemDefault(bool $isSystemDefault): void
     {
         $this->isSystemDefault = $isSystemDefault;
-    }
-
-    public function getPromotionDiscountPrices(): ?PromotionDiscountPriceCollection
-    {
-        return $this->promotionDiscountPrices;
-    }
-
-    public function setPromotionDiscountPrices(PromotionDiscountPriceCollection $promotionDiscountPrices): void
-    {
-        $this->promotionDiscountPrices = $promotionDiscountPrices;
-    }
-
-    public function getProductExports(): ?ProductExportCollection
-    {
-        return $this->productExports;
-    }
-
-    public function setProductExports(ProductExportCollection $productExports): void
-    {
-        $this->productExports = $productExports;
     }
 
     public function getCountryRoundings(): ?CurrencyCountryRoundingCollection

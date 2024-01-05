@@ -47,9 +47,6 @@ import Feature from 'src/core/feature';
 /** Import decorators */
 import 'src/app/decorator';
 
-import '@fontsource/noto-sans'; // Defaults to weight 400
-import '@fontsource/noto-sans/400.css'; // Specify weight
-import '@fontsource/noto-sans/400-italic.css'; // Specify weight and style
 import RuleConditionService from 'src/app/service/rule-condition.service';
 /** Import global styles */
 import 'src/app/assets/scss/all.scss';
