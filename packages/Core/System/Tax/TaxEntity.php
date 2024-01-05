@@ -2,8 +2,6 @@
 
 namespace SnapAdmin\Core\System\Tax;
 
-use SnapAdmin\Core\Checkout\Shipping\ShippingMethodCollection;
-use SnapAdmin\Core\Content\Product\ProductCollection;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
@@ -31,20 +29,12 @@ class TaxEntity extends Entity
      */
     protected $position;
 
-    /**
-     * @var ProductCollection|null
-     */
-    protected $products;
 
     /**
      * @var TaxRuleCollection|null
      */
     protected $rules;
 
-    /**
-     * @var ShippingMethodCollection|null
-     */
-    protected $shippingMethods;
 
     public function getTaxRate(): float
     {
@@ -76,15 +66,6 @@ class TaxEntity extends Entity
         $this->position = $position;
     }
 
-    public function getProducts(): ?ProductCollection
-    {
-        return $this->products;
-    }
-
-    public function setProducts(ProductCollection $products): void
-    {
-        $this->products = $products;
-    }
 
     public function getRules(): ?TaxRuleCollection
     {
@@ -94,15 +75,5 @@ class TaxEntity extends Entity
     public function setRules(TaxRuleCollection $rules): void
     {
         $this->rules = $rules;
-    }
-
-    public function getShippingMethods(): ?ShippingMethodCollection
-    {
-        return $this->shippingMethods;
-    }
-
-    public function setShippingMethods(ShippingMethodCollection $shippingMethods): void
-    {
-        $this->shippingMethods = $shippingMethods;
     }
 }

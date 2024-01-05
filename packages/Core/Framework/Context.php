@@ -6,9 +6,11 @@ use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\Framework\Api\Context\AdminApiSource;
 use SnapAdmin\Core\Framework\Api\Context\ContextSource;
 use SnapAdmin\Core\Framework\Api\Context\SystemSource;
+use SnapAdmin\Core\Framework\DataAbstractionLayer\Pricing\CashRoundingConfig;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Struct\StateAwareTrait;
 use SnapAdmin\Core\Framework\Struct\Struct;
+use SnapAdmin\Core\System\Tax\TaxDefinition;
 use Symfony\Component\Serializer\Annotation\Ignore;
 
 #[Package('core')]
@@ -39,12 +41,16 @@ class Context extends Struct
      * @param array<string> $ruleIds
      */
     public function __construct(
-        protected ContextSource $source,
-        protected array $ruleIds = [],
-        array $languageIdChain = [Defaults::LANGUAGE_SYSTEM],
-        protected string $versionId = Defaults::LIVE_VERSION,
-        protected bool $considerInheritance = false
-    ) {
+        protected ContextSource      $source,
+        protected array              $ruleIds = [],
+        array                        $languageIdChain = [Defaults::LANGUAGE_SYSTEM],
+        protected string             $versionId = Defaults::LIVE_VERSION,
+        protected bool               $considerInheritance = false,
+        protected float              $currencyFactor = 1.0,
+        protected string             $taxState = TaxDefinition::TAX_STATE_FREE,
+        protected CashRoundingConfig $rounding = new CashRoundingConfig(2, 0.01, true)
+    )
+    {
         if ($source instanceof SystemSource) {
             $this->scope = self::SYSTEM_SCOPE;
         }
@@ -57,6 +63,37 @@ class Context extends Struct
         $chain = array_keys(array_flip(array_filter($languageIdChain)));
         $this->languageIdChain = $chain;
     }
+
+    public function getCurrencyFactor(): float
+    {
+        return $this->currencyFactor;
+    }
+
+    public function setCurrencyFactor(float $currencyFactor): void
+    {
+        $this->currencyFactor = $currencyFactor;
+    }
+
+    public function getTaxState(): string
+    {
+        return $this->taxState;
+    }
+
+    public function setTaxState(string $taxState): void
+    {
+        $this->taxState = $taxState;
+    }
+
+    public function getRounding(): CashRoundingConfig
+    {
+        return $this->rounding;
+    }
+
+    public function setRounding(CashRoundingConfig $rounding): void
+    {
+        $this->rounding = $rounding;
+    }
+
 
     /**
      * @internal
