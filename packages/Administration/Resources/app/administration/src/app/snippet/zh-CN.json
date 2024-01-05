@@ -61,6 +61,13 @@
         "mainMenuItemSystem": "系统"
       }
     },
+    "sw-single-select": {
+      "messageNoResults": "没有找到结果 \"{term}\".",
+      "valuePlaceholder": "选择...",
+      "labelEntity": "element",
+      "labelEntityAdd": "Create new {entity} \"{term}\"",
+      "labelEntityAddedSuccess": "The {entity} with the name \"{term}\" was created successfully."
+    },
     "sw-text-editor": {
       "labelTextLength": "{count} 个字符 | {count} 个字符"
     },
