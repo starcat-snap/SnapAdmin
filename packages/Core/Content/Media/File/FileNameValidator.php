@@ -7,7 +7,7 @@ use League\Flysystem\WhitespacePathNormalizer;
 use SnapAdmin\Core\Content\Media\MediaException;
 use SnapAdmin\Core\Framework\Log\Package;
 
-#[Package('buyers-experience')]
+#[Package('system')]
 class FileNameValidator
 {
     private const RESTRICTED_CHARACTERS = [

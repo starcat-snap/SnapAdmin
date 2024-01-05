@@ -38,6 +38,10 @@ class System extends Bundle
         $loader->load('snippet.xml');
         $loader->load('state_machine.xml');
         $loader->load('number_range.xml');
+        $loader->load('currency.xml');
+        $loader->load('country.xml');
+        $loader->load('tax.xml');
+        $loader->load('tax_provider.xml');
         $container->addCompilerPass(new RedisNumberRangeIncrementerCompilerPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 0);
     }
 

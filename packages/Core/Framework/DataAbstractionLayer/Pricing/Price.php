@@ -9,9 +9,19 @@ use SnapAdmin\Core\Framework\Struct\Struct;
 class Price extends Struct
 {
     /**
+     * @var string
+     */
+    protected $currencyId;
+
+    /**
      * @var float
      */
-    protected $price;
+    protected $net;
+
+    /**
+     * @var float
+     */
+    protected $gross;
 
     /**
      * @var bool
@@ -34,17 +44,42 @@ class Price extends Struct
     protected $regulationPrice;
 
     public function __construct(
-        float $price,
+
+        float $net,
+        float $gross,
         bool $linked,
+        ?string $currencyId,
         ?Price $listPrice = null,
         ?array $percentage = null,
         ?Price $regulationPrice = null
     ) {
-        $this->price = $price;
+        $this->net = $net;
+        $this->gross = $gross;
         $this->linked = $linked;
+        $this->currencyId = $currencyId;
         $this->listPrice = $listPrice;
         $this->percentage = $percentage;
         $this->regulationPrice = $regulationPrice;
+    }
+
+    public function getNet(): float
+    {
+        return $this->net;
+    }
+
+    public function setNet(float $net): void
+    {
+        $this->net = $net;
+    }
+
+    public function getGross(): float
+    {
+        return $this->gross;
+    }
+
+    public function setGross(float $gross): void
+    {
+        $this->gross = $gross;
     }
 
     public function getLinked(): bool
@@ -59,17 +94,18 @@ class Price extends Struct
 
     public function add(self $price): void
     {
-        $this->price += $price->getPrice();
+        $this->gross += $price->getGross();
+        $this->net += $price->getNet();
     }
 
-    public function getPrice(): float
+    public function getCurrencyId(): string
     {
-        return $this->price;
+        return $this->currencyId;
     }
 
-    public function setPrice(float $price): void
+    public function setCurrencyId(string $currencyId): void
     {
-        $this->price = $price;
+        $this->currencyId = $currencyId;
     }
 
     public function setListPrice(?Price $listPrice): void

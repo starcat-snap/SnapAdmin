@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="SnapAdmin\Core\System\Country\CountryDefinition">
+            <tag name="snap.entity.definition"/>
+        </service>
+        <service id="SnapAdmin\Core\System\Country\Aggregate\CountryState\CountryStateDefinition">
+            <tag name="snap.entity.definition"/>
+        </service>
+        <service id="SnapAdmin\Core\System\Country\Aggregate\CountryStateTranslation\CountryStateTranslationDefinition">
+            <tag name="snap.entity.definition"/>
+        </service>
+        <service id="SnapAdmin\Core\System\Country\Aggregate\CountryTranslation\CountryTranslationDefinition">
+            <tag name="snap.entity.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Country\Aggregate\CountryStateCity\CountryStateCityDefinition">
+            <tag name="snap.entity.definition"/>
+        </service>
+        <service
+            id="SnapAdmin\Core\System\Country\Aggregate\CountryStateCityTranslation\CountryStateCityTranslationDefinition">
+            <tag name="snap.entity.definition"/>
+        </service>
+        <service
+            id="SnapAdmin\Core\System\Country\Aggregate\CountryStateCityDistrict\CountryStateCityDistrictDefinition">
+            <tag name="snap.entity.definition"/>
+        </service>
+        <service
+            id="SnapAdmin\Core\System\Country\Aggregate\CountryStateCityDistrictTranslation\CountryStateCityDistrictTranslationDefinition">
+            <tag name="snap.entity.definition"/>
+        </service>
+    </services>
+</container>

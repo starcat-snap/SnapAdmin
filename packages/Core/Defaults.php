@@ -20,6 +20,8 @@ class Defaults
 
     public const STORAGE_DATE_TIME_FORMAT = 'Y-m-d H:i:s';
 
+    public const CURRENCY = 'b7d2554b0ce847cd82f3ac9bd1c0dfca';
+
     /**
      * Do not use STORAGE_DATE_FORMAT for createdAt fields, use STORAGE_DATE_TIME_FORMAT instead
      */

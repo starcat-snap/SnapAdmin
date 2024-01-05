@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="SnapAdmin\Core\System\Currency\CurrencyDefinition">
+            <tag name="snap.entity.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Currency\Aggregate\CurrencyCountryRounding\CurrencyCountryRoundingDefinition">
+            <tag name="snap.entity.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Currency\Aggregate\CurrencyTranslation\CurrencyTranslationDefinition">
+            <tag name="snap.entity.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Currency\CurrencyLoadSubscriber">
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Currency\CurrencyValidator">
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Currency\Rule\CurrencyRule">
+            <tag name="snap.rule.definition"/>
+        </service>
+
+        <service id="SnapAdmin\Core\System\Currency\CurrencyFormatter" public="true">
+            <argument type="service" id="SnapAdmin\Core\System\Locale\LanguageLocaleCodeProvider"/>
+
+            <tag name="kernel.reset" method="reset"/>
+        </service>
+
+
+    </services>
+</container>

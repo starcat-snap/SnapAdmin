@@ -1,11 +1,11 @@
 {
     "name": "{{ composerName }}",
-    "description": "Skeleton plugin",
+    "description": "{{ composerName }}",
     "type": "snap-platform-plugin",
     "version": "1.0.0",
     "license": "proprietary",
     "require": {
-        "snapadmin/core": "6.6.*"
+        "snapadmin/core": "~6.6.0"
     },
     "extra": {
         "snap-plugin-class": "{{ namespace }}\\{{ className }}",

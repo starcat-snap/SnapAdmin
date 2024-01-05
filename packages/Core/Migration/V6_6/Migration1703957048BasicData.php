@@ -27,10 +27,96 @@ class Migration1703957048BasicData extends MigrationStep
             return;
         }
         $this->createLanguage($connection);
+        $this->createCountry($connection);
+        $this->createCurrency($connection);
         $this->createDefaultSnippetSets($connection);
         $this->createDefaultMediaFolders($connection);
         $this->createSystemConfigOptions($connection);
         $this->createNumberRanges($connection);
+    }
+
+    private function createCurrency(Connection $connection): void
+    {
+        $CNY = Uuid::fromHexToBytes(Defaults::CURRENCY);
+
+        $languageZH = Uuid::fromHexToBytes(Defaults::LANGUAGE_SYSTEM);
+
+        $connection->insert('currency', ['id' => $CNY, 'iso_code' => 'CNY', 'factor' => 1, 'symbol' => '¥', 'position' => 1, 'decimal_precision' => 2, 'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT)]);
+        $connection->insert('currency_translation', ['currency_id' => $CNY, 'language_id' => $languageZH, 'short_name' => 'CNY', 'name' => '人民币', 'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT)]);
+    }
+
+    private function createCountry(Connection $connection): void
+    {
+        $languageZH = static fn(string $countryId, string $name) => [
+            'language_id' => Uuid::fromHexToBytes(Defaults::LANGUAGE_SYSTEM),
+            'name' => $name,
+            'country_id' => $countryId,
+            'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
+        ];
+        $cnId = Uuid::randomBytes();
+        $connection->insert('country', ['id' => $cnId, 'iso' => 'CN', 'position' => 1, 'iso3' => 'CHN', 'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT)]);
+        $connection->insert('country_translation', $languageZH($cnId, '中国'));
+
+        $this->createCountryStates($connection, $cnId, 'CN');
+    }
+
+    private function createCountryStates(Connection $connection, string $countryId, string $countryCode): void
+    {
+        $data = [
+            'CN' => [
+                'CN-BJ' => '北京市',
+                'CN-TJ' => '天津市',
+                'CN-HE' => '河北省',
+                'CN-SX' => '山西省',
+                'CN-NM' => '内蒙古自治区',
+                'CN-LN' => '辽宁省',
+                'CN-JL' => '吉林省',
+                'CN-HL' => '黑龙江省',
+                'CN-SH' => '上海市',
+                'CN-JS' => '江苏省',
+                'CN-ZJ' => '浙江省',
+                'CN-AH' => '安徽省',
+                'CN-FJ' => '福建省',
+                'CN-JX' => '江西省',
+                'CN-SD' => '山东省',
+                'CN-HA' => '河南省',
+                'CN-HB' => '湖北省',
+                'CN-HN' => '湖南省',
+                'CN-GD' => '广东省',
+                'CN-GX' => '广西壮族自治区',
+                'CN-HI' => '海南省',
+                'CN-CQ' => '重庆市',
+                'CN-SC' => '四川省',
+                'CN-GZ' => '贵州省',
+                'CN-YN' => '云南省',
+                'CN-XZ' => '西藏自治区',
+                'CN-SN' => '陕西省',
+                'CN-GS' => '甘肃省',
+                'CN-QH' => '青海省',
+                'CN-NX' => '宁夏回族自治区',
+                'CN-XJ' => '新疆维吾尔自治区',
+                'CN-TW' => '台湾省',
+                'CN-HK' => '香港特别行政区',
+                'CN-MO' => '澳门特别行政区'
+            ]
+        ];
+        foreach ($data[$countryCode] as $isoCode => $name) {
+            $storageDate = (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT);
+            $id = Uuid::randomBytes();
+            $countryStateData = [
+                'id' => $id,
+                'country_id' => $countryId,
+                'short_code' => $isoCode,
+                'created_at' => $storageDate,
+            ];
+            $connection->insert('country_state', $countryStateData);
+            $connection->insert('country_state_translation', [
+                'language_id' => Uuid::fromHexToBytes(Defaults::LANGUAGE_SYSTEM),
+                'country_state_id' => $id,
+                'name' => $name,
+                'created_at' => $storageDate,
+            ]);
+        }
     }
 
     public function updateDestructive(Connection $connection): void
@@ -174,7 +260,7 @@ class Migration1703957048BasicData extends MigrationStep
     private function getMediaFolderName(string $entity): string
     {
         $capitalizedEntityParts = array_map(
-            static fn ($part) => ucfirst((string) $part),
+            static fn($part) => ucfirst((string)$part),
             explode('_', $entity)
         );
 
