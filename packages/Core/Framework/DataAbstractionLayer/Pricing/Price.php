@@ -2,6 +2,7 @@
 
 namespace SnapAdmin\Core\Framework\DataAbstractionLayer\Pricing;
 
+use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Struct\Struct;
 
@@ -48,7 +49,7 @@ class Price extends Struct
         float $net,
         float $gross,
         bool $linked,
-        ?string $currencyId,
+        string $currencyId = Defaults::CURRENCY,
         ?Price $listPrice = null,
         ?array $percentage = null,
         ?Price $regulationPrice = null
