@@ -19,21 +19,5 @@
         <service id="SnapAdmin\Core\System\Tax\Aggregate\TaxRuleTypeTranslation\TaxRuleTypeTranslationDefinition">
             <tag name="snap.entity.definition"/>
         </service>
-
-        <service id="SnapAdmin\Core\System\Tax\TaxRuleType\EntireCountryRuleTypeFilter">
-            <tag name="tax.rule_type_filter"/>
-        </service>
-
-        <service id="SnapAdmin\Core\System\Tax\TaxRuleType\IndividualStatesRuleTypeFilter">
-            <tag name="tax.rule_type_filter"/>
-        </service>
-
-        <service id="SnapAdmin\Core\System\Tax\TaxRuleType\ZipCodeRangeRuleTypeFilter">
-            <tag name="tax.rule_type_filter"/>
-        </service>
-
-        <service id="SnapAdmin\Core\System\Tax\TaxRuleType\ZipCodeRuleTypeFilter">
-            <tag name="tax.rule_type_filter"/>
-        </service>
     </services>
 </container>
