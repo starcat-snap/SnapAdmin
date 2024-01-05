@@ -3,7 +3,7 @@
 
 $sw-media-index-font-size-navigation: $font-size-m;
 $sw-media-index-color-breadcrumb-icon: $color-snap-admin-brand-500;
-$sw-media-index-color-navigation-parent: $color-gray-300;
+$sw-media-index-color-navigation-parent: $color-gray-500;
 $sw-media-index-page-background-color: $color-white;
 
 .sw-media-index {
@@ -24,8 +24,6 @@ $sw-media-index-page-background-color: $color-white;
 
     .sw-media-index__navigation-label {
         @include truncate;
-
-        color: $sw-media-index-color-navigation-parent;
         text-decoration: none;
     }
 
