@@ -143,7 +143,7 @@ export function md5(value: string): string {
  * Formats a number of bytes to a string with a unit
  */
 // eslint-disable-next-line sw-deprecation-rules/private-feature-declarations
-export function fileSize(bytes: number, locale = 'de-DE'): string {
+export function fileSize(bytes: number, locale = 'zh-CN'): string {
     const denominator = 1024;
     const units = ['B', 'KB', 'MB', 'GB'];
 
