@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\System\Country;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Entity;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityIdTrait;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\TaxFreeConfig;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\Country\Aggregate\CountryState\CountryStateCollection;
 use SnapAdmin\Core\System\Country\Aggregate\CountryTranslation\CountryTranslationCollection;
@@ -37,11 +36,6 @@ class CountryEntity extends Entity
     protected $active;
 
     /**
-     * @var bool
-     */
-    protected $shippingAvailable;
-
-    /**
      * @var string|null
      */
     protected $iso3;
@@ -56,24 +50,6 @@ class CountryEntity extends Entity
      */
     protected $forceStateInRegistration;
 
-    /**
-     * @var bool
-     */
-    protected $checkVatIdPattern;
-
-    /**
-     * @var string|null
-     */
-    protected $vatIdPattern;
-
-    /**
-     * @var bool|null
-     */
-    protected $vatIdRequired;
-
-    protected TaxFreeConfig $customerTax;
-
-    protected TaxFreeConfig $companyTax;
 
     /**
      * @var CountryStateCollection|null
@@ -141,16 +117,6 @@ class CountryEntity extends Entity
         $this->active = $active;
     }
 
-    public function getShippingAvailable(): bool
-    {
-        return $this->shippingAvailable;
-    }
-
-    public function setShippingAvailable(bool $shippingAvailable): void
-    {
-        $this->shippingAvailable = $shippingAvailable;
-    }
-
     public function getIso3(): ?string
     {
         return $this->iso3;
@@ -181,25 +147,6 @@ class CountryEntity extends Entity
         $this->forceStateInRegistration = $forceStateInRegistration;
     }
 
-    public function getCheckVatIdPattern(): bool
-    {
-        return $this->checkVatIdPattern;
-    }
-
-    public function setCheckVatIdPattern(bool $checkVatIdPattern): void
-    {
-        $this->checkVatIdPattern = $checkVatIdPattern;
-    }
-
-    public function getVatIdPattern(): ?string
-    {
-        return $this->vatIdPattern;
-    }
-
-    public function setVatIdPattern(?string $vatIdPattern): void
-    {
-        $this->vatIdPattern = $vatIdPattern;
-    }
 
     public function getStates(): ?CountryStateCollection
     {
@@ -219,56 +166,6 @@ class CountryEntity extends Entity
     public function setTranslations(CountryTranslationCollection $translations): void
     {
         $this->translations = $translations;
-    }
-
-    public function getTaxRules(): ?TaxRuleCollection
-    {
-        return $this->taxRules;
-    }
-
-    public function setTaxRules(TaxRuleCollection $taxRules): void
-    {
-        $this->taxRules = $taxRules;
-    }
-
-    public function getCurrencyCountryRoundings(): ?CurrencyCountryRoundingCollection
-    {
-        return $this->currencyCountryRoundings;
-    }
-
-    public function setCurrencyCountryRoundings(CurrencyCountryRoundingCollection $currencyCountryRoundings): void
-    {
-        $this->currencyCountryRoundings = $currencyCountryRoundings;
-    }
-
-    public function getVatIdRequired(): bool
-    {
-        return (bool) $this->vatIdRequired;
-    }
-
-    public function setVatIdRequired(bool $vatIdRequired): void
-    {
-        $this->vatIdRequired = $vatIdRequired;
-    }
-
-    public function getCustomerTax(): TaxFreeConfig
-    {
-        return $this->customerTax;
-    }
-
-    public function setCustomerTax(TaxFreeConfig $customerTax): void
-    {
-        $this->customerTax = $customerTax;
-    }
-
-    public function getCompanyTax(): TaxFreeConfig
-    {
-        return $this->companyTax;
-    }
-
-    public function setCompanyTax(TaxFreeConfig $companyTax): void
-    {
-        $this->companyTax = $companyTax;
     }
 
     public function getPostalCodeRequired(): bool
