@@ -6,11 +6,9 @@ use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\Framework\Api\Context\AdminApiSource;
 use SnapAdmin\Core\Framework\Api\Context\ContextSource;
 use SnapAdmin\Core\Framework\Api\Context\SystemSource;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Pricing\CashRoundingConfig;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Struct\StateAwareTrait;
 use SnapAdmin\Core\Framework\Struct\Struct;
-use SnapAdmin\Core\System\Tax\TaxDefinition;
 use Symfony\Component\Serializer\Annotation\Ignore;
 
 #[Package('core')]
@@ -46,10 +44,6 @@ class Context extends Struct
         array $languageIdChain = [Defaults::LANGUAGE_SYSTEM],
         protected string $versionId = Defaults::LIVE_VERSION,
         protected bool $considerInheritance = false,
-        protected string $currencyId = Defaults::CURRENCY,
-        protected float $currencyFactor = 1.0,
-        protected string $taxState = TaxDefinition::TAX_STATE_FREE,
-        protected CashRoundingConfig $rounding = new CashRoundingConfig(2, 0.01, true)
     ) {
         if ($source instanceof SystemSource) {
             $this->scope = self::SYSTEM_SCOPE;

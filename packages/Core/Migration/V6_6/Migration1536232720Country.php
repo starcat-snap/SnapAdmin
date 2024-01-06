@@ -26,7 +26,6 @@ class Migration1536232720Country extends MigrationStep
               `id`                              BINARY(16)                              NOT NULL,
               `iso`                             VARCHAR(255) COLLATE utf8mb4_unicode_ci NULL,
               `position`                        INT(11)                                 NOT NULL DEFAULT 1,
-              `tax_free`                        TINYINT(1)                              NOT NULL DEFAULT 0,
               `active`                          TINYINT(1)                              NOT NULL DEFAULT 1,
               `iso3`                            VARCHAR(45) COLLATE utf8mb4_unicode_ci  NULL,
               `display_state_in_registration`   TINYINT(1)                              NOT NULL DEFAULT 0,

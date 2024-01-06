@@ -15,15 +15,12 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\IdField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\IntField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\StringField;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TaxFreeConfigField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\TranslationsAssociationField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\FieldCollection;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\Country\Aggregate\CountryState\CountryStateDefinition;
 use SnapAdmin\Core\System\Country\Aggregate\CountryTranslation\CountryTranslationDefinition;
-use SnapAdmin\Core\System\Currency\Aggregate\CurrencyCountryRounding\CurrencyCountryRoundingDefinition;
-use SnapAdmin\Core\System\Tax\Aggregate\TaxRule\TaxRuleDefinition;
 
 #[Package('system')]
 class CountryDefinition extends EntityDefinition
@@ -61,7 +58,6 @@ class CountryDefinition extends EntityDefinition
     {
         $defaultTax = [
             'enabled' => false,
-            'currencyId' => Defaults::CURRENCY,
             'amount' => 0,
         ];
 
@@ -70,8 +66,6 @@ class CountryDefinition extends EntityDefinition
             'postalCodeRequired' => false,
             'checkPostalCodePattern' => false,
             'checkAdvancedPostalCodePattern' => false,
-            'customerTax' => $defaultTax,
-            'companyTax' => $defaultTax,
         ];
     }
 
@@ -89,16 +83,10 @@ class CountryDefinition extends EntityDefinition
             (new StringField('iso', 'iso'))->addFlags(new ApiAware(), new SearchRanking(SearchRanking::MIDDLE_SEARCH_RANKING)),
             (new IntField('position', 'position'))->addFlags(new ApiAware()),
             (new BoolField('active', 'active'))->addFlags(new ApiAware()),
-            (new BoolField('shipping_available', 'shippingAvailable'))->addFlags(new ApiAware()),
             (new StringField('iso3', 'iso3'))->addFlags(new ApiAware(), new SearchRanking(SearchRanking::MIDDLE_SEARCH_RANKING)),
             (new BoolField('display_state_in_registration', 'displayStateInRegistration'))->addFlags(new ApiAware()),
             (new BoolField('force_state_in_registration', 'forceStateInRegistration'))->addFlags(new ApiAware()),
-            (new BoolField('check_vat_id_pattern', 'checkVatIdPattern'))->addFlags(new ApiAware()),
-            (new BoolField('vat_id_required', 'vatIdRequired'))->addFlags(new ApiAware()),
-            (new StringField('vat_id_pattern', 'vatIdPattern'))->addFlags(new ApiAware()),
             (new TranslatedField('customFields'))->addFlags(new ApiAware()),
-            (new TaxFreeConfigField('customer_tax', 'customerTax'))->addFlags(new ApiAware()),
-            (new TaxFreeConfigField('company_tax', 'companyTax'))->addFlags(new ApiAware()),
             (new BoolField('postal_code_required', 'postalCodeRequired'))->addFlags(new ApiAware()),
             (new BoolField('check_postal_code_pattern', 'checkPostalCodePattern'))->addFlags(new ApiAware()),
             (new BoolField('check_advanced_postal_code_pattern', 'checkAdvancedPostalCodePattern'))->addFlags(new ApiAware()),
@@ -111,11 +99,6 @@ class CountryDefinition extends EntityDefinition
 
             (new TranslationsAssociationField(CountryTranslationDefinition::class, 'country_id'))
                 ->addFlags(new ApiAware(), new Required()),
-            (new OneToManyAssociationField('taxRules', TaxRuleDefinition::class, 'country_id', 'id'))
-                ->addFlags(new RestrictDelete()),
-
-            (new OneToManyAssociationField('currencyCountryRoundings', CurrencyCountryRoundingDefinition::class, 'country_id'))
-                ->addFlags(new CascadeDelete()),
         ]);
     }
 }

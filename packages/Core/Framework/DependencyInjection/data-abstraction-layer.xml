@@ -16,12 +16,7 @@
     <services>
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\SchemaGenerator"/>
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\EntityGenerator"/>
-        <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\FieldSerializer\TaxFreeConfigFieldSerializer">
-            <argument type="service" id="validator"/>
-            <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
 
-            <tag name="shopware.field_serializer"/>
-        </service>
         <service id="SnapAdmin\Core\Framework\DataAbstractionLayer\Indexing\TreeUpdater">
             <argument type="service" id="SnapAdmin\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
             <argument type="service" id="Doctrine\DBAL\Connection"/>

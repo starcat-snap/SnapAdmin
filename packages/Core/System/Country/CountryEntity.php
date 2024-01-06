@@ -9,8 +9,6 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\TaxFreeConfig;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\System\Country\Aggregate\CountryState\CountryStateCollection;
 use SnapAdmin\Core\System\Country\Aggregate\CountryTranslation\CountryTranslationCollection;
-use SnapAdmin\Core\System\Currency\Aggregate\CurrencyCountryRounding\CurrencyCountryRoundingCollection;
-use SnapAdmin\Core\System\Tax\Aggregate\TaxRule\TaxRuleCollection;
 
 #[Package('system')]
 class CountryEntity extends Entity
@@ -87,15 +85,6 @@ class CountryEntity extends Entity
      */
     protected $translations;
 
-    /**
-     * @var TaxRuleCollection|null
-     */
-    protected $taxRules;
-
-    /**
-     * @var CurrencyCountryRoundingCollection|null
-     */
-    protected $currencyCountryRoundings;
 
     protected bool $postalCodeRequired;
 
