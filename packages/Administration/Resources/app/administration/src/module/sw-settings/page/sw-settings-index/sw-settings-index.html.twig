@@ -20,20 +20,6 @@
             >
                 <template #default="{ active }">
                     <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
-                    {% block sw_settings_content_tab_shop %}
-                    <sw-tabs-item
-                        v-if="settingsGroups['shop']"
-                        class="sw-settings__tab-shop"
-                        :route="{ name: 'sw.settings.index.shop'}"
-                        name="shop"
-                        :active-tab="active"
-                        :title="$tc('sw-settings.index.tabShop')"
-                    >
-                        {{ $tc('sw-settings.index.tabShop') }}
-                    </sw-tabs-item>
-                    {% endblock %}
-
-                    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
                     {% block sw_settings_content_tab_system %}
                     <sw-tabs-item
                         v-if="settingsGroups['system']"
