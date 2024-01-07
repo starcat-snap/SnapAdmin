@@ -3,7 +3,6 @@
  */
 export default function initializeSettingItems(): void {
     SnapAdmin.ExtensionAPI.handle('settingsItemAdd', async (settingsItemConfig, additionalInformation) => {
-        const allowedTabs = ['shop', 'system', 'plugins'];
         const extension = Object.values(SnapAdmin.State.get('extensions'))
             .find(ext => ext.baseUrl.startsWith(additionalInformation._event_.origin));
 
@@ -17,9 +16,7 @@ export default function initializeSettingItems(): void {
             settingsItemConfig.tab = 'plugins';
         }
 
-        if (allowedTabs.includes(settingsItemConfig.tab)) {
-            group = settingsItemConfig.tab;
-        }
+        group = settingsItemConfig.tab;
 
         await SnapAdmin.State.dispatch('extensionSdkModules/addModule', {
             heading: settingsItemConfig.label,

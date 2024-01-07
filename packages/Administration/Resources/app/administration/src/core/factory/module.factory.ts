@@ -64,7 +64,7 @@ interface Navigation {
 }
 
 interface SettingsItem {
-    group: 'shop' | 'system' | 'plugins',
+    group: string,
     to: string,
     icon?: string,
     iconComponent?: unknown,

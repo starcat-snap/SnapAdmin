@@ -8,12 +8,6 @@
       "tabShop": "Shop",
       "tabSystem": "系统",
       "tabPlugins": "插件"
-    },
-    "system-config": {
-      "labelSalesChannelSelect": "Sales Channel",
-      "inherited": "Inherited",
-      "compileNotice": "This configuration holds fields that can be used in a theme. Please compile the theme for these changes to be visible.",
-      "scssHelpText": "SCSS variable name: "
     }
   },
   "sw-privileges": {
