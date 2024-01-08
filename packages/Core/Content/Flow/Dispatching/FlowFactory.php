@@ -37,13 +37,9 @@ class FlowFactory
         $systemContext = new Context(
             new SystemSource(),
             $context->getRuleIds(),
-            $context->getCurrencyId(),
             $context->getLanguageIdChain(),
             $context->getVersionId(),
-            $context->getCurrencyFactor(),
             $context->considerInheritance(),
-            $context->getTaxState(),
-            $context->getRounding(),
         );
         $systemContext->setExtensions($context->getExtensions());
 

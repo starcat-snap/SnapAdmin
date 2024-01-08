@@ -38,7 +38,8 @@
       "to": "结束",
       "bulkEdit": "批量编辑",
       "back": "返回",
-      "discard": "丢弃"
+      "discard": "丢弃",
+      "duplicate": "副本"
     },
     "notification": {
       "notificationSaveErrorMessage": "An error occurred while saving the entity \"{entityName}\".",
@@ -526,5 +527,13 @@
       "discard": "放弃更改",
       "keepEditing": "继续编辑"
     }
+  },
+  "sw-base-filter": {
+    "resetButton": "重置"
+  },
+  "sw-boolean-filter": {
+    "placeholder": "全部",
+    "active": "激活",
+    "inactive": "未激活"
   }
 }
