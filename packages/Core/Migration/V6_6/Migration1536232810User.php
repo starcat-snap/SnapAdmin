@@ -29,7 +29,7 @@ class Migration1536232810User extends MigrationStep
               `password` varchar(255) NOT NULL,
               `name` varchar(255)  NULL,
               `nick_name` varchar(255) NOT NULL,
-               `user_number` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+              `user_number` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
               `phone` varchar(255)  NULL,
               `title` varchar(255) DEFAULT NULL,
               `email` varchar(255)  NULL,

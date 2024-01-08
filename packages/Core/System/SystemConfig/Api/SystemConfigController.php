@@ -22,17 +22,16 @@ class SystemConfigController extends AbstractController
      * @internal
      */
     public function __construct(
-        private readonly ConfigurationService  $configurationService,
-        private readonly SystemConfigService   $systemConfig,
+        private readonly ConfigurationService $configurationService,
+        private readonly SystemConfigService $systemConfig,
         private readonly SystemConfigValidator $systemConfigValidator
-    )
-    {
+    ) {
     }
 
     #[Route(path: '/api/_action/system-config/check', name: 'api.action.core.system-config.check', defaults: ['_acl' => ['system_config:read']], methods: ['GET'])]
     public function checkConfiguration(Request $request, Context $context): JsonResponse
     {
-        $domain = (string)$request->query->get('domain');
+        $domain = (string) $request->query->get('domain');
 
         if ($domain === '') {
             return new JsonResponse(false);
@@ -44,7 +43,7 @@ class SystemConfigController extends AbstractController
     #[Route(path: '/api/_action/system-config/schema', name: 'api.action.core.system-config', methods: ['GET'])]
     public function getConfiguration(Request $request, Context $context): JsonResponse
     {
-        $domain = (string)$request->query->get('domain');
+        $domain = (string) $request->query->get('domain');
 
         if ($domain === '') {
             throw RoutingException::missingRequestParameter('domain');
@@ -56,22 +55,19 @@ class SystemConfigController extends AbstractController
     #[Route(path: '/api/_action/system-config', name: 'api.action.core.system-config.value', defaults: ['_acl' => ['system_config:read']], methods: ['GET'])]
     public function getConfigurationValues(Request $request): JsonResponse
     {
-        $domain = (string)$request->query->get('domain');
+        $domain = (string) $request->query->get('domain');
         if ($domain === '') {
             throw RoutingException::missingRequestParameter('domain');
         }
 
         $scopeId = $request->query->get('scopeId');
-        $scope = $request->query->get('scope');
         if (!\is_string($scopeId)) {
             $scopeId = null;
         }
-        if (!\is_string($scope)) {
-            $scope = null;
-        }
+
         $inherit = $request->query->getBoolean('inherit');
 
-        $values = $this->systemConfig->getDomain($domain, $scopeId, $scope, $inherit);
+        $values = $this->systemConfig->getDomain($domain, $scopeId, $inherit);
         if (empty($values)) {
             $json = '{}';
         } else {
@@ -85,15 +81,12 @@ class SystemConfigController extends AbstractController
     public function saveConfiguration(Request $request): JsonResponse
     {
         $scopeId = $request->query->get('scopeId');
-        $scope = $request->query->get('scope');
         if (!\is_string($scopeId)) {
             $scopeId = null;
         }
-        if (!\is_string($scope)) {
-            $scope = null;
-        }
+
         $kvs = $request->request->all();
-        $this->systemConfig->setMultiple($kvs, $scopeId, $scope);
+        $this->systemConfig->setMultiple($kvs, $scopeId);
 
         return new JsonResponse(null, Response::HTTP_NO_CONTENT);
     }
@@ -104,19 +97,15 @@ class SystemConfigController extends AbstractController
         $this->systemConfigValidator->validate($request->request->all(), $context);
 
         /**
-         * @var string $scope
-         * @var array<string, mixed> $kv
+         * @var string $scopeId
+         * @var array<string, mixed> $kvs
          */
-        foreach ($request->request->all() as $scope => $kv) {
-            if ($scope === 'null') {
-                $scope = null;
+        foreach ($request->request->all() as $scopeId => $kvs) {
+            if ($scopeId === 'null') {
+                $scopeId = null;
             }
-            foreach ($kv as $scopeId => $kvs) {
-                if ($scopeId === 'null') {
-                    $scopeId = null;
-                }
-                $this->systemConfig->setMultiple($kvs,$scopeId, $scope);
-            }
+
+            $this->systemConfig->setMultiple($kvs, $scopeId);
         }
 
         return new JsonResponse(null, Response::HTTP_NO_CONTENT);

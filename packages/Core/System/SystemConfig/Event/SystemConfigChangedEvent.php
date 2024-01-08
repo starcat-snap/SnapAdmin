@@ -9,17 +9,15 @@ use Symfony\Contracts\EventDispatcher\Event;
 class SystemConfigChangedEvent extends Event
 {
     /**
-     * @param array|bool|float|int|string|null $value
-     *
      * @internal
+     *
+     * @param array|bool|float|int|string|null $value
      */
     public function __construct(
-        private readonly string  $key,
-        private                  $value,
-        private readonly ?string $scope,
+        private readonly string $key,
+        private $value,
         private readonly ?string $scopeId
-    )
-    {
+    ) {
     }
 
     public function getKey(): string
@@ -35,17 +33,8 @@ class SystemConfigChangedEvent extends Event
         return $this->value;
     }
 
-    public function getScope(): ?string
-    {
-        return $this->scope;
-    }
-
-
-
     public function getScopeId(): ?string
     {
         return $this->scopeId;
     }
-
-
 }

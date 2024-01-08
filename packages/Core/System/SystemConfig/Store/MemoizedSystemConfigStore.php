@@ -29,20 +29,20 @@ final class MemoizedSystemConfigStore implements EventSubscriberInterface, Reset
 
     public function onValueChanged(SystemConfigChangedEvent $event): void
     {
-        $this->removeConfig($event->getScopeId(), $event->getScope());
+        $this->removeConfig($event->getScopeId());
     }
 
-    public function setConfig(?string $scopeId, ?string $scope, array $config): void
+    public function setConfig(?string $scopeId, array $config): void
     {
-        $this->configs[$this->getKey($scopeId,$scope)] = $config;
+        $this->configs[$this->getKey($scopeId)] = $config;
     }
 
-    public function getConfig(?string $scopeId, ?string $scope): ?array
+    public function getConfig(?string $scopeId): ?array
     {
-        return $this->configs[$this->getKey($scopeId,$scope)] ?? null;
+        return $this->configs[$this->getKey($scopeId)] ?? null;
     }
 
-    public function removeConfig(?string $scopeId, ?string $scope): void
+    public function removeConfig(?string $scopeId): void
     {
         if ($scopeId === null) {
             $this->reset();
@@ -50,7 +50,7 @@ final class MemoizedSystemConfigStore implements EventSubscriberInterface, Reset
             return;
         }
 
-        unset($this->configs[$this->getKey($scopeId, $scope)]);
+        unset($this->configs[$this->getKey($scopeId)]);
     }
 
     public function reset(): void
@@ -58,8 +58,8 @@ final class MemoizedSystemConfigStore implements EventSubscriberInterface, Reset
         $this->configs = [];
     }
 
-    private function getKey(?string $scopeId, ?string $scope): string
+    private function getKey(?string $scopeId): string
     {
-        return $scopeId && $scope ? $scope . '-' . $scopeId : '_global_';
+        return $scopeId ?? '_global_';
     }
 }

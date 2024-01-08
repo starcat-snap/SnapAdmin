@@ -31,7 +31,7 @@ class ConfigSet extends Command
         $this
             ->addArgument('key', InputArgument::REQUIRED)
             ->addArgument('value', InputArgument::REQUIRED)
-            ->addOption('channelId', 's', InputOption::VALUE_OPTIONAL)
+            ->addOption('scopeId', 's', InputOption::VALUE_OPTIONAL)
             ->addOption('json', 'j', InputOption::VALUE_NONE, 'If provided, the input value will be interpreted as JSON. Use this option to provide values as boolean, integer or float.');
     }
 
@@ -39,7 +39,8 @@ class ConfigSet extends Command
     {
         $this->systemConfigService->set(
             $input->getArgument('key'),
-            $this->handleDecode($input)
+            $this->handleDecode($input),
+            $input->getOption('scopeId')
         );
 
         return (int) Command::SUCCESS;

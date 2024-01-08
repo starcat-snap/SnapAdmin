@@ -41,17 +41,11 @@ export default {
             type: String,
             default: null,
         },
-        scope: {
-            required: false,
-            type: String,
-            default: null,
-        },
         scopeSwitchable: {
             type: Boolean,
             required: false,
             default: false,
         },
-        // Shows the value of salesChannel=null as placeholder when the salesChannelSwitchable prop is true
         inherit: {
             type: Boolean,
             required: false,
@@ -64,18 +58,17 @@ export default {
     data() {
         return {
             currentScopeId: this.scopeId,
-            currentScope: this.scope,
             isLoading: false,
             config: {},
             actualConfigData: {},
-            scopeModel: null,
+            salesChannelModel: null,
             hasCssFields: false,
         };
     },
 
     computed: {
         isNotDefaultScope() {
-            return this.currentScopeId !== null && this.currentScope !== null;
+            return this.currentScopeId !== null;
         },
 
         typesWithMapInheritanceSupport() {
@@ -107,13 +100,12 @@ export default {
     },
 
     created() {
-        this.actualConfigData[this.currentScope] = {};
         this.createdComponent();
     },
 
     methods: {
         getFieldError(fieldName) {
-            return mapSystemConfigErrors(ErrorResolverSystemConfig.ENTITY_NAME, this.salesChannelId, fieldName);
+            return mapSystemConfigErrors(ErrorResolverSystemConfig.ENTITY_NAME, this.scopeId, fieldName);
         },
 
         async createdComponent() {
@@ -145,24 +137,22 @@ export default {
 
         readAll() {
             this.isLoading = true;
-            // Return when data for this scope was already loaded
-            if (this.actualConfigData.hasOwnProperty(this.currentScope).hasOwnProperty(this.currentScopeId)) {
+            // Return when data for this salesChannel was already loaded
+            if (this.actualConfigData.hasOwnProperty(this.currentScopeId)) {
                 this.isLoading = false;
                 return Promise.resolve();
             }
 
-            return this.loadCurrentScopeConfig();
+            return this.loadCurrentSalesChannelConfig();
         },
 
-        async loadCurrentScopeConfig() {
+        async loadCurrentSalesChannelConfig() {
             this.isLoading = true;
 
             try {
-                // eslint-disable-next-line max-len
-                const values = await this.systemConfigApiService.getValues(this.domain, this.currentScopeId, this.currentScope);
+                const values = await this.systemConfigApiService.getValues(this.domain, this.currentScopeId);
 
-                this.$set(this.actualConfigData, this.currentScope, {});
-                this.$set(this.actualConfigData[this.currentScope], this.currentScopeId, values);
+                this.$set(this.actualConfigData, this.currentScopeId, values);
             } finally {
                 this.isLoading = false;
             }
@@ -248,7 +238,7 @@ export default {
         },
 
         getInheritedValue(element) {
-            const value = this.actualConfigData[this.currentScope][this.currentScopeId][element.name];
+            const value = this.actualConfigData.null[element.name];
 
             if (value) {
                 return value;
@@ -296,7 +286,7 @@ export default {
         },
 
         emitConfig() {
-            this.$emit('config-changed', this.actualConfigData[this.currentScope][this.currentScopeId]);
+            this.$emit('config-changed', this.actualConfigData[this.currentScopeId]);
         },
 
         kebabCase(value) {

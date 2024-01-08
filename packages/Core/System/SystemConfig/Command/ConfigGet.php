@@ -44,8 +44,9 @@ class ConfigGet extends Command
     {
         $this
             ->addArgument('key', InputArgument::REQUIRED)
-            ->addOption('channelId', 's', InputOption::VALUE_OPTIONAL)
-            ->addOption('format', 'f', InputOption::VALUE_REQUIRED, 'Supported formats: ' . implode(', ', self::ALLOWED_FORMATS), self::FORMAT_LEGACY);
+            ->addOption('scopeId', 's', InputOption::VALUE_OPTIONAL)
+            ->addOption('format', 'f', InputOption::VALUE_REQUIRED, 'Supported formats: ' . implode(', ', self::ALLOWED_FORMATS), self::FORMAT_LEGACY)
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -57,7 +58,8 @@ class ConfigGet extends Command
 
         $configKey = $input->getArgument('key');
         $value = $this->systemConfigService->get(
-            $configKey
+            $configKey,
+            $input->getOption('scopeId')
         );
 
         if ($format === self::FORMAT_LEGACY) {

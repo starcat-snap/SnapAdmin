@@ -22,18 +22,17 @@ class Migration1536233270SystemConfig extends MigrationStep
     public function update(Connection $connection): void
     {
         $query = <<<'SQL'
-            CREATE TABLE IF NOT EXISTS `system_config` (
-                `id` BINARY(16) NOT NULL,
-                `configuration_key` VARCHAR(255) NOT NULL,
-                `configuration_value` JSON NOT NULL,
-                `scope_id` binary(16) DEFAULT NULL,
-                `scope` varchar(16) DEFAULT NULL,
-                `created_at` DATETIME(3) NOT NULL,
-                `updated_at` DATETIME(3) NULL,
-                PRIMARY KEY (`id`),
-                UNIQUE KEY `uniq.system_config.configuration_key__scope_id` (`configuration_key`,`scope`,`scope_id`),
-                CONSTRAINT `json.system_config.configuration_value` CHECK (JSON_VALID(`configuration_value`)),
-                CONSTRAINT `uniq.system_config.configuration_key` UNIQUE (`configuration_key`)
+            CREATE TABLE `system_config` (
+              `id` binary(16) NOT NULL,
+              `configuration_key` varchar(255) NOT NULL,
+              `configuration_value` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`configuration_value`)),
+              `scope_id` binary(16) DEFAULT NULL,
+              `created_at` datetime(3) NOT NULL,
+              `updated_at` datetime(3) DEFAULT NULL,
+              PRIMARY KEY (`id`),
+              UNIQUE KEY `uniq.system_config.configuration_key__scope_id` (`configuration_key`,`scope_id`),
+              KEY `fk.system_config.scope_id` (`scope_id`),
+              CONSTRAINT `json.system_config.configuration_value` CHECK (json_valid(`configuration_value`))
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 SQL;
 

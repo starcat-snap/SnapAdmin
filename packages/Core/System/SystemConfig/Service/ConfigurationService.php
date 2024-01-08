@@ -2,6 +2,7 @@
 
 namespace SnapAdmin\Core\System\SystemConfig\Service;
 
+
 use SnapAdmin\Core\Framework\Bundle;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Feature;
@@ -16,9 +17,9 @@ use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 class ConfigurationService
 {
     /**
-     * @param BundleInterface[] $bundles
-     *
      * @internal
+     *
+     * @param BundleInterface[] $bundles
      */
     public function __construct(
         private readonly iterable $bundles,
@@ -28,9 +29,9 @@ class ConfigurationService
     }
 
     /**
+     * @throws ConfigurationNotFoundException
      * @throws \InvalidArgumentException
      * @throws BundleConfigNotFoundException
-     * @throws ConfigurationNotFoundException
      *
      * @return array<mixed>
      */
@@ -85,7 +86,7 @@ class ConfigurationService
     /**
      * @return array<mixed>
      */
-    public function getResolvedConfiguration(string $domain, Context $context, ?string $channelId = null): array
+    public function getResolvedConfiguration(string $domain, Context $context, ?string $scopeId = null): array
     {
         $config = [];
         if ($this->checkConfiguration($domain, $context)) {
@@ -93,7 +94,7 @@ class ConfigurationService
                 $config,
                 $this->enrichValues(
                     $this->getConfiguration($domain, $context),
-                    $channelId
+                    $scopeId
                 )
             );
         }
@@ -133,7 +134,7 @@ class ConfigurationService
      *
      * @return array<mixed>
      */
-    private function enrichValues(array $config, ?string $channelId): array
+    private function enrichValues(array $config, ?string $scopeId): array
     {
         foreach ($config as &$card) {
             if (!\is_array($card['elements'] ?? false)) {
@@ -142,7 +143,8 @@ class ConfigurationService
 
             foreach ($card['elements'] as &$element) {
                 $element['value'] = $this->systemConfigService->get(
-                    $element['name']
+                    $element['name'],
+                    $scopeId
                 ) ?? $element['config']['defaultValue'] ?? '';
             }
         }

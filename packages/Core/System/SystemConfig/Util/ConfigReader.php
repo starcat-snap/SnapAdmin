@@ -10,7 +10,7 @@ use SnapAdmin\Core\System\SystemConfig\Exception\BundleConfigNotFoundException;
 #[Package('system-settings')]
 class ConfigReader extends XmlReader
 {
-    private const FALLBACK_LOCALE = 'zh-CN';
+    private const FALLBACK_LOCALE = 'en-GB';
 
     /**
      * @var string

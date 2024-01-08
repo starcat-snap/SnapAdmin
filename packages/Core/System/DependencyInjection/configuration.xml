@@ -9,11 +9,11 @@
             <argument type="service" id="SnapAdmin\Core\System\SystemConfig\Service\ConfigurationService"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Validation\DataValidator"></argument>
 
-            <tag name="snap.system_config.validation"/>
+            <tag name="snap.system_config.validation" />
         </service>
 
         <service id="SnapAdmin\Core\System\SystemConfig\SystemConfigDefinition">
-            <tag name="snap.entity.definition"/>
+            <tag name="shopware.entity.definition"/>
         </service>
 
         <service id="kernel.bundles" class="Iterator">
@@ -21,7 +21,7 @@
         </service>
 
         <service id="SnapAdmin\Core\System\SystemConfig\Service\ConfigurationService">
-            <argument type="service" id="kernel.bundles"/>
+            <argument type="service" id="kernel.bundles" />
             <argument type="service" id="SnapAdmin\Core\System\SystemConfig\Util\ConfigReader"/>
             <argument type="service" id="SnapAdmin\Core\System\SystemConfig\SystemConfigService"/>
         </service>
@@ -31,7 +31,7 @@
         <service id="SnapAdmin\Core\System\SystemConfig\Api\SystemConfigController" public="true">
             <argument type="service" id="SnapAdmin\Core\System\SystemConfig\Service\ConfigurationService"/>
             <argument type="service" id="SnapAdmin\Core\System\SystemConfig\SystemConfigService"/>
-            <argument type="service" id="SnapAdmin\Core\System\SystemConfig\Validation\SystemConfigValidator"/>
+            <argument type="service" id="SnapAdmin\Core\System\SystemConfig\Validation\SystemConfigValidator" />
 
             <call method="setContainer">
                 <argument type="service" id="service_container"/>
@@ -40,11 +40,10 @@
 
         <service id="SnapAdmin\Core\System\SystemConfig\SystemConfigService" public="true" lazy="true">
             <argument type="service" id="Doctrine\DBAL\Connection"/>
-            <argument type="service" id="SnapAdmin\Core\System\SystemConfig\Util\ConfigReader"/>
-            <argument type="service" id="SnapAdmin\Core\System\SystemConfig\SystemConfigLoader"/>
+            <argument type="service" id="SnapAdmin\Core\System\SystemConfig\Util\ConfigReader" />
+            <argument type="service" id="SnapAdmin\Core\System\SystemConfig\SystemConfigLoader" />
             <argument type="service" id="event_dispatcher"/>
             <argument>%snap.cache.tagging.each_config%</argument>
-            <tag name="kernel.reset" method="reset"/>
         </service>
 
         <service id="SnapAdmin\Core\System\SystemConfig\Store\MemoizedSystemConfigStore">
@@ -57,17 +56,16 @@
             <argument type="service" id="Symfony\Component\HttpKernel\KernelInterface"/>
         </service>
 
-        <service id="SnapAdmin\Core\System\SystemConfig\CachedSystemConfigLoader"
-                 decorates="SnapAdmin\Core\System\SystemConfig\SystemConfigLoader" decoration-priority="-1000">
+        <service id="SnapAdmin\Core\System\SystemConfig\CachedSystemConfigLoader" decorates="SnapAdmin\Core\System\SystemConfig\SystemConfigLoader" decoration-priority="-1000">
             <argument type="service" id="SnapAdmin\Core\System\SystemConfig\CachedSystemConfigLoader.inner"/>
             <argument type="service" id="cache.object"/>
         </service>
 
-        <service id="SnapAdmin\Core\System\SystemConfig\MemoizedSystemConfigLoader"
-                 decorates="SnapAdmin\Core\System\SystemConfig\SystemConfigLoader" decoration-priority="-2000">
+        <service id="SnapAdmin\Core\System\SystemConfig\MemoizedSystemConfigLoader" decorates="SnapAdmin\Core\System\SystemConfig\SystemConfigLoader" decoration-priority="-2000">
             <argument type="service" id="SnapAdmin\Core\System\SystemConfig\MemoizedSystemConfigLoader.inner"/>
             <argument type="service" id="SnapAdmin\Core\System\SystemConfig\Store\MemoizedSystemConfigStore"/>
         </service>
+
 
         <service id="SnapAdmin\Core\System\SystemConfig\Command\ConfigGet">
             <argument type="service" id="SnapAdmin\Core\System\SystemConfig\SystemConfigService"/>

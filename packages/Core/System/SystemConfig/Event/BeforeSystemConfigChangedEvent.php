@@ -12,12 +12,10 @@ class BeforeSystemConfigChangedEvent extends Event
      * @param array|bool|float|int|string|null $value
      */
     public function __construct(
-        private readonly string  $key,
-        private                  $value,
-        private readonly ?string $scopeId,
-        private readonly ?string $scope
-    )
-    {
+        private readonly string $key,
+        private $value,
+        private readonly ?string $scopeId
+    ) {
     }
 
     public function getKey(): string
@@ -45,11 +43,4 @@ class BeforeSystemConfigChangedEvent extends Event
     {
         return $this->scopeId;
     }
-
-    public function getScope(): ?string
-    {
-        return $this->scope;
-    }
-
-
 }

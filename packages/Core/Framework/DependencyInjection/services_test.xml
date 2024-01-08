@@ -66,6 +66,8 @@
 
         <service id="SnapAdmin\Core\Framework\Test\TestSessionStorageFactory"
                  decorates="session.storage.factory.mock_file"/>
+
+
     </services>
 
 </container>
