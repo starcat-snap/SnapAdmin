@@ -36,18 +36,47 @@ export default {
             required: true,
             type: String,
         },
+        scopeId: {
+            required: false,
+            type: String,
+            default: null,
+        },
+        scope: {
+            required: false,
+            type: String,
+            default: null,
+        },
+        scopeSwitchable: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
+        // Shows the value of salesChannel=null as placeholder when the salesChannelSwitchable prop is true
+        inherit: {
+            type: Boolean,
+            required: false,
+            // TODO: Boolean props should only be opt in and therefore default to false
+            // eslint-disable-next-line vue/no-boolean-default
+            default: true,
+        },
     },
 
     data() {
         return {
+            currentScopeId: this.scopeId,
+            currentScope: this.scope,
             isLoading: false,
             config: {},
             actualConfigData: {},
+            scopeModel: null,
             hasCssFields: false,
         };
     },
 
     computed: {
+        isNotDefaultScope() {
+            return this.currentScopeId !== null && this.currentScope !== null;
+        },
 
         typesWithMapInheritanceSupport() {
             return [
@@ -78,12 +107,13 @@ export default {
     },
 
     created() {
+        this.actualConfigData[this.currentScope] = {};
         this.createdComponent();
     },
 
     methods: {
         getFieldError(fieldName) {
-            return mapSystemConfigErrors(ErrorResolverSystemConfig.ENTITY_NAME, null, fieldName);
+            return mapSystemConfigErrors(ErrorResolverSystemConfig.ENTITY_NAME, this.salesChannelId, fieldName);
         },
 
         async createdComponent() {
@@ -115,21 +145,24 @@ export default {
 
         readAll() {
             this.isLoading = true;
-            if (this.actualConfigData.hasOwnProperty(null)) {
+            // Return when data for this scope was already loaded
+            if (this.actualConfigData.hasOwnProperty(this.currentScope).hasOwnProperty(this.currentScopeId)) {
                 this.isLoading = false;
                 return Promise.resolve();
             }
 
-            return this.loadSystemConfig();
+            return this.loadCurrentScopeConfig();
         },
 
-        async loadSystemConfig() {
+        async loadCurrentScopeConfig() {
             this.isLoading = true;
 
             try {
-                const values = await this.systemConfigApiService.getValues(this.domain);
+                // eslint-disable-next-line max-len
+                const values = await this.systemConfigApiService.getValues(this.domain, this.currentScopeId, this.currentScope);
 
-                this.$set(this.actualConfigData, null, values);
+                this.$set(this.actualConfigData, this.currentScope, {});
+                this.$set(this.actualConfigData[this.currentScope], this.currentScopeId, values);
             } finally {
                 this.isLoading = false;
             }
@@ -159,6 +192,11 @@ export default {
                 message: message,
                 autoClose: false,
             });
+        },
+
+        onScopeChanged(scopeId) {
+            this.currentScopeId = scopeId;
+            this.readAll();
         },
 
         hasMapInheritanceSupport(element) {
@@ -210,7 +248,7 @@ export default {
         },
 
         getInheritedValue(element) {
-            const value = this.actualConfigData.null[element.name];
+            const value = this.actualConfigData[this.currentScope][this.currentScopeId][element.name];
 
             if (value) {
                 return value;
@@ -258,7 +296,7 @@ export default {
         },
 
         emitConfig() {
-            this.$emit('config-changed', this.actualConfigData[null]);
+            this.$emit('config-changed', this.actualConfigData[this.currentScope][this.currentScopeId]);
         },
 
         kebabCase(value) {

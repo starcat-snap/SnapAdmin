@@ -1,7 +1,16 @@
 <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
 {% block sw_system_config %}
 <div class="sw-system-config">
-
+    <div
+        v-if="scopeSwitchable && config.length > 1"
+        class="sw-system-config__global-sales-channel-switch"
+    >
+        <sw-system-config-switch
+            :label="$tc('sw-settings.system-config.labelScopeSelect')"
+            :scope="currentScope"
+            @change-scope-id="onScopeChanged"
+        />
+    </div>
     <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
     {% block sw_system_config_content_card %}
     <sw-card
@@ -15,9 +24,18 @@
     >
         <slot
             name="beforeElements"
-            v-bind="{ card, config: actualConfigData[null] }"
+            v-bind="{ card, config: actualConfigData[currentScope][currentScopeId] }"
         ></slot>
-
+        <template
+            v-if="scopeSwitchable && config.length === 1"
+            #toolbar
+        >
+            <sw-system-config-switch
+                :label="$tc('sw-settings.system-config.labelScopeSelect')"
+                :scope="currentScope"
+                @change-scope-id="onScopeChanged"
+            />
+        </template>
         <template v-if="hasCssFields">
             <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
             {% block sw_system_config_content_compile_notice %}
@@ -31,14 +49,14 @@
             <template v-for="element in card.elements">
                 <slot
                     name="card-element"
-                    v-bind="{ element: getElementBind(element), config: actualConfigData[null], card }"
+                    v-bind="{ element: getElementBind(element), config: actualConfigData[currentScope][currentScopeId], card }"
                 >
                     <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
                     {% block sw_system_config_content_card_field %}
                     <sw-inherit-wrapper
-                        v-model:value="actualConfigData[null][element.name]"
+                        v-model:value="actualConfigData[currentScope][currentScopeId][element.name]"
                         v-bind="getInheritWrapperBind(element)"
-                        :has-parent="false"
+                        :has-parent="isNotDefaultScope"
                         :inherited-value="getInheritedValue(element)"
                         :class="'sw-system-config--field-' + kebabCase(getElementBind(element).name)"
                     >
@@ -61,7 +79,7 @@
         </template>
         <slot
             name="afterElements"
-            v-bind="{ card, config: actualConfigData[null], index, inheritance: actualConfigData.null }"
+            v-bind="{ card, config: actualConfigData[currentScope][currentScopeId], index, isNotDefaultScope, inheritance: actualConfigData[currentScope][this.currentScopeId] }"
         >
         </slot>
     </sw-card>

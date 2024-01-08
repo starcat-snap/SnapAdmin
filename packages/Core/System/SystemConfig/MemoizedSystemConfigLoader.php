@@ -22,16 +22,16 @@ class MemoizedSystemConfigLoader extends AbstractSystemConfigLoader
         return $this->decorated;
     }
 
-    public function load(): array
+    public function load(?string $scopeId, ?string $scope): array
     {
-        $config = $this->memoizedSystemConfigStore->getConfig();
+        $config = $this->memoizedSystemConfigStore->getConfig($scopeId,$scope);
 
         if ($config !== null) {
             return $config;
         }
 
-        $config = $this->getDecorated()->load();
-        $this->memoizedSystemConfigStore->setConfig($config);
+        $config = $this->getDecorated()->load($scopeId,$scope);
+        $this->memoizedSystemConfigStore->setConfig($scopeId,$scope, $config);
 
         return $config;
     }

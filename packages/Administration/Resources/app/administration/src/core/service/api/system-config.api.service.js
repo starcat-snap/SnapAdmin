@@ -41,10 +41,10 @@ class SystemConfigApiService extends ApiService {
             });
     }
 
-    getValues(domain, additionalParams = {}, additionalHeaders = {}) {
+    getValues(domain, scopeId = null, scope = null, additionalParams = {}, additionalHeaders = {}) {
         return this.httpClient
             .get('_action/system-config', {
-                params: { domain, ...additionalParams },
+                params: { domain, scopeId, scope, ...additionalParams },
                 headers: this.getBasicHeaders(additionalHeaders),
             }).then((response) => {
                 return ApiService.handleResponse(response);
@@ -55,13 +55,13 @@ class SystemConfigApiService extends ApiService {
             });
     }
 
-    saveValues(values, additionalParams = {}, additionalHeaders = {}) {
+    saveValues(values, scopeId = null, scope = null, additionalParams = {}, additionalHeaders = {}) {
         return this.httpClient
             .post(
                 '_action/system-config',
                 values,
                 {
-                    params: { ...additionalParams },
+                    params: { scopeId, scope, ...additionalParams },
                     headers: this.getBasicHeaders(additionalHeaders),
                 },
             )

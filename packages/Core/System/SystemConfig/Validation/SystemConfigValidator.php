@@ -23,8 +23,9 @@ class SystemConfigValidator
      */
     public function __construct(
         private readonly ConfigurationService $configurationService,
-        private readonly DataValidator $validator
-    ) {
+        private readonly DataValidator        $validator
+    )
+    {
     }
 
     /**
@@ -39,29 +40,32 @@ class SystemConfigValidator
         /**
          * @var array<string, mixed> $inputValues
          */
-        foreach ($inputData as $saleChannelId => $inputValues) {
-            /** @var string[] $allKeys */
-            $allKeys = array_keys($inputValues);
+        foreach ($inputData as $scope => $inputValues) {
 
-            $domains = array_map(fn (string $key) => implode('.', explode('.', $key, -1)), $allKeys);
-            $domains = array_unique($domains);
+            foreach ($inputValues as $scopeId => $kvs) {
+                /** @var string[] $allKeys */
+                $allKeys = array_keys($kvs);
 
-            $subDefinition = new DataValidationDefinition('systemConfig.update.' . $saleChannelId);
+                $domains = array_map(fn(string $key) => implode('.', explode('.', $key, -1)), $allKeys);
+                $domains = array_unique($domains);
 
-            foreach ($domains as $domain) {
-                $formConfig = $this->getSystemConfigByDomain($domain, $context);
-                $constraints = $this->prepareValidationConstraints($formConfig, $allKeys);
+                $subDefinition = new DataValidationDefinition('systemConfig.update.' . $scope . $scopeId);
 
-                foreach ($constraints as $elementName => $elementConstraints) {
-                    $subDefinition->add($elementName, ...$elementConstraints);
+                foreach ($domains as $domain) {
+                    $formConfig = $this->getSystemConfigByDomain($domain, $context);
+                    $constraints = $this->prepareValidationConstraints($formConfig, $allKeys);
+
+                    foreach ($constraints as $elementName => $elementConstraints) {
+                        $subDefinition->add($elementName, ...$elementConstraints);
+                    }
                 }
-            }
 
-            if (empty($subDefinition->getProperties())) {
-                continue;
-            }
+                if (empty($subDefinition->getProperties())) {
+                    continue;
+                }
 
-            $definition->addSub($saleChannelId, $subDefinition);
+                $definition->addSub($scopeId, $subDefinition);
+            }
         }
 
         $this->validator->validate($inputData, $definition);
@@ -104,12 +108,12 @@ class SystemConfigValidator
     {
         /** @var array<string, callable(mixed): Constraint> $constraints */
         $constraints = [
-            'minLength' => fn (mixed $ruleValue) => new Assert\Length(['min' => $ruleValue]),
-            'maxLength' => fn (mixed $ruleValue) => new Assert\Length(['max' => $ruleValue]),
-            'min' => fn (mixed $ruleValue) => new Assert\Range(['min' => $ruleValue]),
-            'max' => fn (mixed $ruleValue) => new Assert\Range(['max' => $ruleValue]),
-            'dataType' => fn (mixed $ruleValue) => new Assert\Type($ruleValue),
-            'required' => fn (mixed $ruleValue) => new Assert\NotBlank(),
+            'minLength' => fn(mixed $ruleValue) => new Assert\Length(['min' => $ruleValue]),
+            'maxLength' => fn(mixed $ruleValue) => new Assert\Length(['max' => $ruleValue]),
+            'min' => fn(mixed $ruleValue) => new Assert\Range(['min' => $ruleValue]),
+            'max' => fn(mixed $ruleValue) => new Assert\Range(['max' => $ruleValue]),
+            'dataType' => fn(mixed $ruleValue) => new Assert\Type($ruleValue),
+            'required' => fn(mixed $ruleValue) => new Assert\NotBlank(),
         ];
 
         $constraintsResult = [];

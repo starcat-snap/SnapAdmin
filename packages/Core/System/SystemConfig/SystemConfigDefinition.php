@@ -32,6 +32,7 @@ class SystemConfigDefinition extends EntityDefinition
         return SystemConfigCollection::class;
     }
 
+
     public function since(): ?string
     {
         return '6.0.0.0';
@@ -42,6 +43,8 @@ class SystemConfigDefinition extends EntityDefinition
         return new FieldCollection([
             (new IdField('id', 'id'))->addFlags(new ApiAware(), new PrimaryKey(), new Required()),
             (new StringField('configuration_key', 'configurationKey'))->addFlags(new ApiAware(), new Required()),
+            (new IdField('scope_id', 'scopeId'))->addFlags(new ApiAware()),
+            (new StringField('scope', 'scope'))->addFlags(new ApiAware(), new Required()),
             (new ConfigJsonField('configuration_value', 'configurationValue'))->addFlags(new ApiAware(), new Required()),
         ]);
     }

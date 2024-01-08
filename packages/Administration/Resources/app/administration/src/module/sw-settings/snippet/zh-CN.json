@@ -8,6 +8,14 @@
       "tabShop": "Shop",
       "tabSystem": "系统",
       "tabPlugins": "插件"
+    },
+    "system-config": {
+      "switch": {
+        "labelDefaultOption": "全部",
+        "placeholderSelect": "选择"
+      },
+      "labelScopeSelect": "域",
+      "inherited": "继承"
     }
   },
   "sw-privileges": {

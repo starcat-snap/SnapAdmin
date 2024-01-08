@@ -14,9 +14,12 @@ class SystemConfigChangedEvent extends Event
      * @internal
      */
     public function __construct(
-        private readonly string $key,
-        private $value,
-    ) {
+        private readonly string  $key,
+        private                  $value,
+        private readonly ?string $scope,
+        private readonly ?string $scopeId
+    )
+    {
     }
 
     public function getKey(): string
@@ -31,4 +34,18 @@ class SystemConfigChangedEvent extends Event
     {
         return $this->value;
     }
+
+    public function getScope(): ?string
+    {
+        return $this->scope;
+    }
+
+
+
+    public function getScopeId(): ?string
+    {
+        return $this->scopeId;
+    }
+
+
 }

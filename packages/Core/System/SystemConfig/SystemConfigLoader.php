@@ -7,6 +7,7 @@ use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\ConfigJsonField;
 use SnapAdmin\Core\Framework\Log\Package;
 use SnapAdmin\Core\Framework\Plugin;
 use SnapAdmin\Core\Framework\Plugin\Exception\DecorationPatternException;
+use SnapAdmin\Core\Framework\Uuid\Uuid;
 use SnapAdmin\Core\Kernel;
 
 #[Package('system-settings')]
@@ -17,8 +18,9 @@ class SystemConfigLoader extends AbstractSystemConfigLoader
      */
     public function __construct(
         protected Connection $connection,
-        protected Kernel $kernel
-    ) {
+        protected Kernel     $kernel
+    )
+    {
     }
 
     public function getDecorated(): AbstractSystemConfigLoader
@@ -26,12 +28,26 @@ class SystemConfigLoader extends AbstractSystemConfigLoader
         throw new DecorationPatternException(self::class);
     }
 
-    public function load(): array
+    public function load(?string $scopeId, ?string $scope): array
     {
         $query = $this->connection->createQueryBuilder();
 
         $query->from('system_config');
         $query->select(['configuration_key', 'configuration_value']);
+
+
+        if ($scopeId === null) {
+            $query->andWhere('scope_id IS NULL');
+        } elseif ($scope === null) {
+            $query->andWhere('scope IS NULL');
+        } else {
+            $query->andWhere(' (scope_id = :scopeId or scope_id is NULL) and (system_config.scope IS NULL or system_config.scope = :scope)');
+            $query->setParameter('scopeId', Uuid::fromHexToBytes($scopeId));
+            $query->setParameter('scope', $scope);
+        }
+
+        $query->addOrderBy('scope_id', 'ASC');
+
         $result = $query->executeQuery();
 
         return $this->buildSystemConfigArray($result->fetchAllKeyValue());
@@ -42,10 +58,10 @@ class SystemConfigLoader extends AbstractSystemConfigLoader
         $configValues = [];
 
         foreach ($systemConfigs as $key => $value) {
-            $keys = \explode('.', (string) $key);
+            $keys = \explode('.', (string)$key);
 
             if ($value !== null) {
-                $value = \json_decode((string) $value, true, 512, \JSON_THROW_ON_ERROR);
+                $value = \json_decode((string)$value, true, 512, \JSON_THROW_ON_ERROR);
 
                 if ($value === false || !isset($value[ConfigJsonField::STORAGE_KEY])) {
                     $value = null;
@@ -68,7 +84,7 @@ class SystemConfigLoader extends AbstractSystemConfigLoader
         $key = \array_shift($keys);
 
         if (empty($keys)) {
-            // Configs can be overwritten with channel_id
+            // Configs can be overwritten with sales_channel_id
             $inheritedValuePresent = \array_key_exists($key, $configValues);
             $valueConsideredEmpty = !\is_bool($value) && empty($value);
 
@@ -90,7 +106,7 @@ class SystemConfigLoader extends AbstractSystemConfigLoader
 
     private function filterNotActivatedPlugins(array $configValues): array
     {
-        $notActivatedPlugins = $this->kernel->getPluginLoader()->getPluginInstances()->filter(fn (Plugin $plugin) => !$plugin->isActive())->all();
+        $notActivatedPlugins = $this->kernel->getPluginLoader()->getPluginInstances()->filter(fn(Plugin $plugin) => !$plugin->isActive())->all();
 
         foreach ($notActivatedPlugins as $plugin) {
             if (isset($configValues[$plugin->getName()])) {

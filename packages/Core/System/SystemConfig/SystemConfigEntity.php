@@ -17,6 +17,16 @@ class SystemConfigEntity extends Entity
     protected $configurationKey;
 
     /**
+     * @var string | null
+     */
+    protected $scopeId;
+
+    /**
+     * @var string
+     */
+    protected $scope;
+
+    /**
      * @var array|bool|float|int|string|null
      */
     protected $configurationValue;
@@ -46,4 +56,26 @@ class SystemConfigEntity extends Entity
     {
         $this->configurationValue = $configurationValue;
     }
+
+    public function getScopeId(): string
+    {
+        return $this->scopeId;
+    }
+
+    public function setScopeId(string $scopeId): void
+    {
+        $this->scopeId = $scopeId;
+    }
+
+    public function getScope(): string
+    {
+        return $this->scope;
+    }
+
+    public function setScope(string $scope): void
+    {
+        $this->scope = $scope;
+    }
+
+
 }

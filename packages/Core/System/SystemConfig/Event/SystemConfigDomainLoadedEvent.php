@@ -12,6 +12,8 @@ class SystemConfigDomainLoadedEvent extends Event
         private readonly string $domain,
         private array $config,
         private readonly bool $inherit,
+        private readonly ?string $scopeId,
+        private readonly ?string $scope
     ) {
     }
 
@@ -34,4 +36,16 @@ class SystemConfigDomainLoadedEvent extends Event
     {
         return $this->inherit;
     }
+
+    public function getScopeId(): ?string
+    {
+        return $this->scopeId;
+    }
+
+    public function getScope(): ?string
+    {
+        return $this->scope;
+    }
+
+
 }

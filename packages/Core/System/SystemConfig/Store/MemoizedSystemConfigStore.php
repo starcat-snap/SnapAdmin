@@ -29,22 +29,28 @@ final class MemoizedSystemConfigStore implements EventSubscriberInterface, Reset
 
     public function onValueChanged(SystemConfigChangedEvent $event): void
     {
-        $this->removeConfig();
+        $this->removeConfig($event->getScopeId(), $event->getScope());
     }
 
-    public function setConfig(array $config): void
+    public function setConfig(?string $scopeId, ?string $scope, array $config): void
     {
-        $this->configs[$this->getKey()] = $config;
+        $this->configs[$this->getKey($scopeId,$scope)] = $config;
     }
 
-    public function getConfig(): ?array
+    public function getConfig(?string $scopeId, ?string $scope): ?array
     {
-        return $this->configs[$this->getKey()] ?? null;
+        return $this->configs[$this->getKey($scopeId,$scope)] ?? null;
     }
 
-    public function removeConfig(): void
+    public function removeConfig(?string $scopeId, ?string $scope): void
     {
-        $this->reset();
+        if ($scopeId === null) {
+            $this->reset();
+
+            return;
+        }
+
+        unset($this->configs[$this->getKey($scopeId, $scope)]);
     }
 
     public function reset(): void
@@ -52,8 +58,8 @@ final class MemoizedSystemConfigStore implements EventSubscriberInterface, Reset
         $this->configs = [];
     }
 
-    private function getKey(): string
+    private function getKey(?string $scopeId, ?string $scope): string
     {
-        return '_global_';
+        return $scopeId && $scope ? $scope . '-' . $scopeId : '_global_';
     }
 }

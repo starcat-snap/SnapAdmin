@@ -38,15 +38,21 @@ class SystemConfigService implements ResetInterface
     private array $traces = [];
 
     /**
+     * @var array<string, string>|null
+     */
+    private ?array $appMapping = null;
+
+    /**
      * @internal
      */
     public function __construct(
-        private readonly Connection $connection,
-        private readonly ConfigReader $configReader,
+        private readonly Connection                 $connection,
+        private readonly ConfigReader               $configReader,
         private readonly AbstractSystemConfigLoader $loader,
-        private readonly EventDispatcherInterface $eventDispatcher,
-        private readonly bool $fineGrainedCache
-    ) {
+        private readonly EventDispatcherInterface   $eventDispatcher,
+        private readonly bool                       $fineGrainedCache
+    )
+    {
     }
 
     public static function buildName(string $key): string
@@ -57,7 +63,7 @@ class SystemConfigService implements ResetInterface
     /**
      * @return array<mixed>|bool|float|int|string|null
      */
-    public function get(string $key)
+    public function get(string $key, ?string $scopeId = null, ?string $scope = null)
     {
         if ($this->fineGrainedCache) {
             foreach (array_keys($this->keys) as $trace) {
@@ -69,7 +75,7 @@ class SystemConfigService implements ResetInterface
             }
         }
 
-        $config = $this->loader->load();
+        $config = $this->loader->load($scopeId, $scope);
 
         $parts = explode('.', $key);
 
@@ -92,61 +98,61 @@ class SystemConfigService implements ResetInterface
         return $pointer;
     }
 
-    public function getString(string $key): string
+    public function getString(string $key, ?string $scopeId = null, ?string $scope = null): string
     {
-        $value = $this->get($key);
+        $value = $this->get($key, $scopeId, $scope);
         if (!\is_array($value)) {
-            return (string) $value;
+            return (string)$value;
         }
 
         throw new InvalidSettingValueException($key, 'string', \gettype($value));
     }
 
-    public function getInt(string $key): int
+    public function getInt(string $key, ?string $scopeId = null, ?string $scope = null): int
     {
-        $value = $this->get($key);
+        $value = $this->get($key, $scopeId, $scope);
         if (!\is_array($value)) {
-            return (int) $value;
+            return (int)$value;
         }
 
         throw new InvalidSettingValueException($key, 'int', \gettype($value));
     }
 
-    public function getFloat(string $key): float
+    public function getFloat(string $key, ?string $scopeId = null, ?string $scope = null): float
     {
-        $value = $this->get($key);
+        $value = $this->get($key, $scopeId, $scope);
         if (!\is_array($value)) {
-            return (float) $value;
+            return (float)$value;
         }
 
         throw new InvalidSettingValueException($key, 'float', \gettype($value));
     }
 
-    public function getBool(string $key): bool
+    public function getBool(string $key, ?string $scopeId = null, ?string $scope = null): bool
     {
-        return (bool) $this->get($key);
+        return (bool)$this->get($key, $scopeId, $scope);
     }
 
     /**
      * @return array<mixed>
-     *
-     * @internal
+     * @internal should not be used in storefront or store api. The cache layer caches all accessed config keys and use them as cache tag.
      *
      * gets all available shop configs and returns them as an array
+     *
      */
-    public function all(): array
+    public function all(?string $scopeId = null, ?string $scope = null): array
     {
-        return $this->loader->load();
+        return $this->loader->load($scopeId, $scope);
     }
 
     /**
+     * @return array<mixed>
      * @throws InvalidDomainException
      *
-     * @return array<mixed>
+     * @internal should not be used in storefront or store api. The cache layer caches all accessed config keys and use them as cache tag.
      *
-     * @internal
      */
-    public function getDomain(string $domain, bool $inherit = false): array
+    public function getDomain(string $domain, ?string $scopeId = null, ?string $scope = null, bool $inherit = false): array
     {
         $domain = trim($domain);
         if ($domain === '') {
@@ -157,11 +163,26 @@ class SystemConfigService implements ResetInterface
             ->select(['configuration_key', 'configuration_value'])
             ->from('system_config');
 
+        if ($inherit) {
+            $queryBuilder->where('(scope_id IS NULL or scope_id = :scopeId) and (scope = :scope or scope IS NULL)');
+        } elseif ($scope === null && $scopeId === null) {
+            $queryBuilder->where('scope IS NULL and scope_id IS NULL');
+        } elseif ($scope != null && $scopeId === null) {
+            $queryBuilder->where('scope = :scope');
+        } else {
+            $queryBuilder->where('scope_id = :scopeId and scope= :scope');
+        }
+
         $domain = rtrim($domain, '.') . '.';
         $escapedDomain = str_replace('%', '\\%', $domain);
 
+        $scopeId = $scopeId ? Uuid::fromHexToBytes($scopeId) : null;
+
         $queryBuilder->andWhere('configuration_key LIKE :prefix')
-            ->setParameter('prefix', $escapedDomain . '%');
+            ->addOrderBy('scope_id', 'ASC')
+            ->setParameter('prefix', $escapedDomain . '%')
+            ->setParameter('scopeId', $scopeId)
+            ->setParameter('scope', $scope);
 
         $configs = $queryBuilder->executeQuery()->fetchAllNumeric();
 
@@ -173,7 +194,7 @@ class SystemConfigService implements ResetInterface
 
         foreach ($configs as [$key, $value]) {
             if ($value !== null) {
-                $value = \json_decode((string) $value, true, 512, \JSON_THROW_ON_ERROR);
+                $value = \json_decode((string)$value, true, 512, \JSON_THROW_ON_ERROR);
 
                 if ($value === false || !isset($value[ConfigJsonField::STORAGE_KEY])) {
                     $value = null;
@@ -192,45 +213,50 @@ class SystemConfigService implements ResetInterface
             $merged[$key] = $value;
         }
 
-        $event = new SystemConfigDomainLoadedEvent($domain, $merged, $inherit);
+        $event = new SystemConfigDomainLoadedEvent($domain, $merged, $inherit, $scopeId, $scope);
         $this->eventDispatcher->dispatch($event);
 
         return $event->getConfig();
     }
 
     /**
-     * @param array|bool|float|int|string|null $value
+     * @param array<mixed>|bool|float|int|string|null $value
      */
-    public function set(string $key, $value): void
+    public function set(string $key, $value, ?string $scopeId = null, ?string $scope = null): void
     {
-        $this->setMultiple([$key => $value]);
+        $this->setMultiple([$key => $value], $scopeId, $scope);
     }
 
     /**
-     * @param array<string, array|bool|float|int|string|null> $values
+     * @param array<string, array<mixed>|bool|float|int|string|null> $values
      */
-    public function setMultiple(array $values): void
+    public function setMultiple(array $values, ?string $scopeId = null, ?string $scope = null): void
     {
+        $where = $scope ? 'scope = :scope' : 'scope IS NULL';
+
+        $where = $where . ' and ' . ($scopeId ? 'scope_id=:scopeId' : 'scope_id IS NULL');
+
         $existingIds = $this->connection
             ->fetchAllKeyValue(
-                'SELECT configuration_key, id FROM system_config WHERE configuration_key IN (:configurationKeys)',
+                'SELECT configuration_key, id FROM system_config WHERE ' . $where . ' and configuration_key IN (:configurationKeys)',
                 [
+                    'scopeId' => $scopeId ? Uuid::fromHexToBytes($scopeId) : null,
+                    'scope' => $scope ?? null,
                     'configurationKeys' => array_keys($values),
                 ],
                 [
                     'configurationKeys' => ArrayParameterType::STRING,
                 ]
             );
-
         $toBeDeleted = [];
         $insertQueue = new MultiInsertQueryQueue($this->connection, 100, false, true);
         $events = [];
 
         foreach ($values as $key => $value) {
             $key = trim($key);
-            $this->validate($key);
+            $this->validate($key, $scopeId, $scope);
 
-            $event = new BeforeSystemConfigChangedEvent($key, $value);
+            $event = new BeforeSystemConfigChangedEvent($key, $value, $scopeId, $scope);
             $this->eventDispatcher->dispatch($event);
 
             // Use modified value provided by potential event subscribers.
@@ -240,7 +266,7 @@ class SystemConfigService implements ResetInterface
             if ($value === null) {
                 $toBeDeleted[] = $key;
 
-                $events[] = new SystemConfigChangedEvent($key, $value);
+                $events[] = new SystemConfigChangedEvent($key, $value, $scopeId, $scope);
 
                 continue;
             }
@@ -257,7 +283,7 @@ class SystemConfigService implements ResetInterface
                     ]
                 );
 
-                $events[] = new SystemConfigChangedEvent($key, $value);
+                $events[] = new SystemConfigChangedEvent($key, $value, $scopeId, $scope);
 
                 continue;
             }
@@ -268,13 +294,14 @@ class SystemConfigService implements ResetInterface
                     'id' => Uuid::randomBytes(),
                     'configuration_key' => $key,
                     'configuration_value' => Json::encode(['_value' => $value]),
+                    'scope_id' => $scopeId ? Uuid::fromHexToBytes($scopeId) : null,
+                    'scope' => $scope ?? null,
                     'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
                 ],
             );
 
-            $events[] = new SystemConfigChangedEvent($key, $value);
+            $events[] = new SystemConfigChangedEvent($key, $value, $scopeId, $scope);
         }
-
         // Delete all null values
         if (!empty($toBeDeleted)) {
             $qb = $this->connection
@@ -282,11 +309,23 @@ class SystemConfigService implements ResetInterface
                 ->where('configuration_key IN (:keys)')
                 ->setParameter('keys', $toBeDeleted, ArrayParameterType::STRING);
 
+            if ($scope && !$scopeId) {
+                $qb->andWhere('scope = :scope and scope_id  IS NULL')
+                    ->setParameter('scope', $scope);
+            } elseif ($scope && $scopeId) {
+                $qb->andWhere('scope = :scope and scope_id=:scopeId')
+                    ->setParameter('scope', $scope)
+                    ->setParameter('scopeId', Uuid::fromHexToBytes($scopeId));
+            } else {
+                $qb->andWhere('scope_id IS NULL and scope IS NULL');
+            }
+
             $qb->delete('system_config')
                 ->executeStatement();
         }
 
         $insertQueue->execute();
+
 
         // Dispatch events that the given values have been changed
         foreach ($events as $event) {
@@ -294,9 +333,9 @@ class SystemConfigService implements ResetInterface
         }
     }
 
-    public function delete(string $key): void
+    public function delete(string $key, ?string $scopeId = null, ?string $scope): void
     {
-        $this->setMultiple([$key => null]);
+        $this->setMultiple([$key => null], $scopeId, $scope);
     }
 
     /**
@@ -401,17 +440,21 @@ class SystemConfigService implements ResetInterface
 
     public function reset(): void
     {
+        $this->appMapping = null;
     }
 
     /**
      * @throws InvalidKeyException
      * @throws InvalidUuidException
      */
-    private function validate(string $key): void
+    private function validate(string $key, ?string $scopeId, ?string $scope): void
     {
         $key = trim($key);
         if ($key === '') {
             throw new InvalidKeyException('key may not be empty');
+        }
+        if ($scopeId && $scope && !Uuid::isValid($scopeId)) {
+            throw new InvalidUuidException($scopeId);
         }
     }
 }
