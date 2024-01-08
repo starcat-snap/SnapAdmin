@@ -129,7 +129,7 @@ class IndexerQueuer
             SELECT *
             FROM system_config
             WHERE configuration_key = :key
-            AND channel_id IS NULL',
+            AND scope IS NULL AND scope_id IS NULL',
             ['key' => self::INDEXER_KEY]
         );
 
