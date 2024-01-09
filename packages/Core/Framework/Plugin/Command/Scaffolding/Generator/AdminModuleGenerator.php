@@ -77,11 +77,11 @@ class AdminModuleGenerator implements ScaffoldingGenerator
     {
         return [
             Stub::raw(
-                'src/Resources/app/administration/src/snippet/en-GB.json',
+                'src/Resources/app/administration/src/snippet/en-US.json',
                 $this->snippet
             ),
             Stub::raw(
-                'src/Resources/app/administration/src/snippet/de-DE.json',
+                'src/Resources/app/administration/src/snippet/zh-CN.json',
                 $this->snippet
             ),
         ];

@@ -57,7 +57,7 @@ Module.register('sw-media', {
         id: 'sw-system',
         label: 'global.sw-admin-menu.navigation.mainMenuItemSystem',
         icon: 'settings-2',
-        position: 50,
+        position: 990,
 
     }, {
         id: 'sw-media',
