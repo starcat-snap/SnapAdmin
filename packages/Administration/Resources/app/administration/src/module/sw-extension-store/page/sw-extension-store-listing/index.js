@@ -14,7 +14,7 @@ export default {
 
     data() {
         return {
-            isLoading: false
+            isLoading: false,
         };
     },
 
@@ -52,8 +52,8 @@ export default {
         },
 
         currentLocale() {
-            return SnapAdmin.State.get('session').currentLocale === 'de-DE' ? 'de' : 'en';
-        }
+            return SnapAdmin.State.get('session').currentLocale === 'en-US' ? 'en' : 'zh';
+        },
     },
 
     watch: {
@@ -62,13 +62,13 @@ export default {
             immediate: true,
             handler() {
                 this.getList();
-            }
+            },
         },
         languageId(newValue) {
             if (newValue !== '') {
                 this.getList();
             }
-        }
+        },
     },
 
     methods: {
@@ -94,7 +94,7 @@ export default {
 
             const page = await extensionDataService.getExtensionList(
                 SnapAdmin.State.get('snapAdminExtensions').search,
-                { ...SnapAdmin.Context.api, languageId: SnapAdmin.State.get('session').languageId }
+                { ...SnapAdmin.Context.api, languageId: SnapAdmin.State.get('session').languageId },
             );
 
             SnapAdmin.State.commit('snapAdminExtensions/setExtensionListing', page);
@@ -103,6 +103,6 @@ export default {
         setPage({ limit, page }) {
             SnapAdmin.State.commit('snapAdminExtensions/setSearchValue', { key: 'limit', value: limit });
             SnapAdmin.State.commit('snapAdminExtensions/setSearchValue', { key: 'page', value: page });
-        }
-    }
+        },
+    },
 };

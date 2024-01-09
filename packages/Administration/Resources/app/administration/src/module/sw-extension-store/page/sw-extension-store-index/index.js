@@ -13,8 +13,8 @@ export default {
         id: {
             type: String,
             required: false,
-            default: null
-        }
+            default: null,
+        },
     },
 
     data() {
@@ -22,7 +22,7 @@ export default {
             isAvailable: false,
             failReason: '',
             listingError: null,
-            isLoading: false
+            isLoading: false,
         };
     },
 
@@ -43,7 +43,7 @@ export default {
             const isTheme = this.$route.name.includes('theme');
 
             return isTheme ? 'themes' : 'apps';
-        }
+        },
     },
 
     watch: {
@@ -52,8 +52,8 @@ export default {
             handler(newValue) {
                 SnapAdmin.State.commit('snapAdminExtensions/setSearchValue', { key: 'page', value: 1 });
                 this.$set(this.activeFilters, 'group', newValue);
-            }
-        }
+            },
+        },
     },
 
     created() {
@@ -67,23 +67,7 @@ export default {
 
         async checkStoreUpdates() {
             this.isLoading = true;
-
             this.snapAdminExtensionService.updateExtensionData();
-
-            const extensionStore = await this.getExtensionStore();
-
-            if (!extensionStore) {
-                this.isLoading = false;
-                return;
-            }
-
-            if (this.isUpdateable(extensionStore)) {
-                this.isAvailable = false;
-                this.failReason = 'outdated';
-                this.isLoading = false;
-                return;
-            }
-
             this.isAvailable = true;
             this.isLoading = false;
         },
@@ -96,12 +80,6 @@ export default {
             this.failReason = 'listing_error';
         },
 
-        getExtensionStore() {
-            return this.extensionStoreActionService.getMyExtensions().then((extensions) => {
-                return extensions.find(extension => extension.name === 'SwagExtensionStore');
-            });
-        },
-
         isUpdateable(extension) {
             if (!extension || extension.latestVersion === null) {
                 return false;
@@ -112,6 +90,6 @@ export default {
 
         updateSearch(term) {
             SnapAdmin.State.commit('snapAdminExtensions/setSearchValue', { key: 'term', value: term });
-        }
-    }
+        },
+    },
 };

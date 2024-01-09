@@ -11,7 +11,6 @@ SnapAdmin.Component.register('sw-extension-config', () => import('./page/sw-exte
 SnapAdmin.Component.register('sw-extension-my-extensions-listing', () => import('./page/sw-extension-my-extensions-listing'));
 SnapAdmin.Component.register('sw-extension-my-extensions-account', () => import('./page/sw-extension-my-extensions-account'));
 SnapAdmin.Component.register('sw-extension-my-extensions-index', () => import('./page/sw-extension-my-extensions-index'));
-SnapAdmin.Component.register('sw-extension-store-landing-page', () => import('./page/sw-extension-store-landing-page'));
 SnapAdmin.Component.register('sw-extension-my-extensions-recommendation', () => import('./page/sw-extension-my-extensions-recommendation'));
 SnapAdmin.Component.register('sw-extension-file-upload', () => import('./component/sw-extension-file-upload'));
 SnapAdmin.Component.register('sw-extension-permissions-details-modal', () => import('./component/sw-extension-permissions-details-modal'));
@@ -132,15 +131,10 @@ SnapAdmin.Module.register('sw-extension', {
 
         store: {
             path: 'store',
-            component: 'sw-extension-store-landing-page',
+            component: 'sw-extension-store-listing',
             redirect: {
-                name: 'sw.extension.store.landing-page',
+                name: 'sw.extension.store.listing',
             },
-        },
-
-        'store.landing-page': {
-            path: 'store/landing-page',
-            component: 'sw-extension-store-landing-page',
         },
 
         module: {
