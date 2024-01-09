@@ -18,6 +18,14 @@
             <parameter key="login">/swplatform/login</parameter>
             <parameter key="create_rating">/swplatform/extensionstore/extensions/%s/ratings</parameter>
             <parameter key="user_info">/swplatform/userinfo</parameter>
+            <!-- ExtensionStore -->
+            <parameter key="list_extensions">/swplatform/extensionstore/extensions</parameter>
+            <parameter key="extension_detail">/swplatform/extensionstore/extensions/%d</parameter>
+            <parameter key="filter">/swplatform/extensionstore/extensions/filter</parameter>
+            <parameter key="reviews">/swplatform/extensionstore/extensions/%d/reviews</parameter>
+            <parameter key="create_basket">/swplatform/extensionstore/baskets</parameter>
+            <parameter key="order_basket">/swplatform/extensionstore/orders</parameter>
+            <parameter key="payment_means">/swplatform/extensionstore/paymentmeans</parameter>
         </parameter>
     </parameters>
     <services>
@@ -103,6 +111,8 @@
             <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\ExtensionLoader"/>
             <argument type="service" id="plugin.repository"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\ExtensionListingLoader"/>
+            <argument type="service" id="SnapAdmin\Core\Framework\Store\Services\StoreClient"/>
+
         </service>
 
         <service id="SnapAdmin\Core\Framework\Store\Services\ExtensionListingLoader">

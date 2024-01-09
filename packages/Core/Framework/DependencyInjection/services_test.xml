@@ -23,7 +23,6 @@
             <tag name="snap.filesystem.factory"/>
         </service>
 
-
         <service id="messenger.test_receiver_locator" alias="messenger.receiver_locator" public="true"/>
         <service id="messenger.bus.test_snap" class="Symfony\Component\Messenger\TraceableMessageBus"
                  decorates="messenger.bus.snap">
@@ -67,6 +66,7 @@
         <service id="SnapAdmin\Core\Framework\Test\TestSessionStorageFactory"
                  decorates="session.storage.factory.mock_file"/>
 
+        <service id="SnapAdmin\Core\Framework\Test\Api\Acl\fixtures\AclTestController" public="true"/>
 
     </services>
 

@@ -84,7 +84,6 @@ class SystemConfigController extends AbstractController
         if (!\is_string($scopeId)) {
             $scopeId = null;
         }
-
         $kvs = $request->request->all();
         $this->systemConfig->setMultiple($kvs, $scopeId);
 

@@ -25,7 +25,7 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\Service\ResetInterface;
 
 #[Package('system-settings')]
-class SystemConfigService
+class SystemConfigService implements ResetInterface
 {
     /**
      * @var array<string, true>
@@ -36,7 +36,6 @@ class SystemConfigService
      * @var array<string, array<string, true>>
      */
     private array $traces = [];
-
 
     /**
      * @internal
@@ -312,7 +311,6 @@ class SystemConfigService
 
         $insertQueue->execute();
 
-
         // Dispatch events that the given values have been changed
         foreach ($events as $event) {
             $this->eventDispatcher->dispatch($event);
@@ -437,5 +435,10 @@ class SystemConfigService
         if ($scopeId && !Uuid::isValid($scopeId)) {
             throw new InvalidUuidException($scopeId);
         }
+    }
+
+    public function reset()
+    {
+        // TODO: Implement reset() method.
     }
 }

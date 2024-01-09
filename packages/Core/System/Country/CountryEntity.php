@@ -50,7 +50,6 @@ class CountryEntity extends Entity
      */
     protected $forceStateInRegistration;
 
-
     /**
      * @var CountryStateCollection|null
      */
@@ -60,7 +59,6 @@ class CountryEntity extends Entity
      * @var CountryTranslationCollection|null
      */
     protected $translations;
-
 
     protected bool $postalCodeRequired;
 
@@ -146,7 +144,6 @@ class CountryEntity extends Entity
     {
         $this->forceStateInRegistration = $forceStateInRegistration;
     }
-
 
     public function getStates(): ?CountryStateCollection
     {

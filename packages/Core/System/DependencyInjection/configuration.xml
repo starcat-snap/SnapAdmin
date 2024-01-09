@@ -13,7 +13,7 @@
         </service>
 
         <service id="SnapAdmin\Core\System\SystemConfig\SystemConfigDefinition">
-            <tag name="shopware.entity.definition"/>
+            <tag name="snap.entity.definition"/>
         </service>
 
         <service id="kernel.bundles" class="Iterator">
@@ -44,6 +44,7 @@
             <argument type="service" id="SnapAdmin\Core\System\SystemConfig\SystemConfigLoader" />
             <argument type="service" id="event_dispatcher"/>
             <argument>%snap.cache.tagging.each_config%</argument>
+            <tag name="kernel.reset" method="reset"/>
         </service>
 
         <service id="SnapAdmin\Core\System\SystemConfig\Store\MemoizedSystemConfigStore">

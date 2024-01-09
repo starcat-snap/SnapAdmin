@@ -2,14 +2,12 @@
 
 namespace SnapAdmin\Core\System\Country;
 
-use SnapAdmin\Core\Defaults;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\BoolField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\ApiAware;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\CascadeDelete;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
-use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\RestrictDelete;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\Flag\SearchRanking;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\IdField;
 use SnapAdmin\Core\Framework\DataAbstractionLayer\Field\IntField;

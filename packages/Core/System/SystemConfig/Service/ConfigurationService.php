@@ -2,7 +2,6 @@
 
 namespace SnapAdmin\Core\System\SystemConfig\Service;
 
-
 use SnapAdmin\Core\Framework\Bundle;
 use SnapAdmin\Core\Framework\Context;
 use SnapAdmin\Core\Framework\Feature;

@@ -36,10 +36,6 @@ class SystemConfigEntity extends Entity
         $this->scopeId = $scopeId;
     }
 
-
-
-
-
     public function getConfigurationKey(): string
     {
         return $this->configurationKey;
@@ -65,5 +61,4 @@ class SystemConfigEntity extends Entity
     {
         $this->configurationValue = $configurationValue;
     }
-
 }

@@ -38,9 +38,6 @@ class Migration1703957048BasicData extends MigrationStep
     {
     }
 
-
-
-
     private function createCountry(Connection $connection): void
     {
         $languageZH = static fn (string $countryId, string $name) => [

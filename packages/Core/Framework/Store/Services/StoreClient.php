@@ -13,6 +13,7 @@ use SnapAdmin\Core\Framework\Plugin\PluginCollection;
 use SnapAdmin\Core\Framework\Store\Authentication\AbstractStoreRequestOptionsProvider;
 use SnapAdmin\Core\Framework\Store\Exception\StoreApiException;
 use SnapAdmin\Core\Framework\Store\Exception\StoreTokenMissingException;
+use SnapAdmin\Core\Framework\Store\Search\ExtensionCriteria;
 use SnapAdmin\Core\Framework\Store\Struct\AccessTokenStruct;
 use SnapAdmin\Core\Framework\Store\Struct\ExtensionCollection;
 use SnapAdmin\Core\Framework\Store\Struct\ExtensionStruct;
@@ -30,6 +31,20 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @internal
  */
+
+/**
+ * @phpstan-type SbpEndpoints array<string, string>
+ * @phpstan-type RequestQueryParameters array<string, string>
+ * @phpstan-type ResponseHeaders array<string, list<string>>
+ * @phpstan-type ExtensionInfo array<string, mixed>
+ * @phpstan-type ExtensionDetail array<string, mixed>
+ * @phpstan-type ExtensionListingFilterOption array{name: string, value: string, label: string, position: int, parent: string}
+ * @phpstan-type ExtensionListingFilter array{type: string, name: string, position: int, options: list<ExtensionListingFilterOption>}
+ * @phpstan-type ExtensionListingSortingOption array{orderBy: string, orderSequence: 'asc'|'desc', label: string, position: int}
+ * @phpstan-type ExtensionListingSorting array{default: ExtensionListingSortingOption, options: list<ExtensionListingSortingOption>}
+ * @phpstan-type ExtensionReview array<string, mixed>
+ * @phpstan-type PaymentMethod array{id: positive-int, type: 'paypal'|'creditCard'|'directDebit', label: string, default: bool}
+ */
 #[Package('services-settings')]
 class StoreClient
 {
@@ -37,14 +52,15 @@ class StoreClient
 
     public function __construct(
         /** @var array<string, string> */
-        protected readonly array $endpoints,
-        private readonly StoreService $storeService,
-        private readonly SystemConfigService $configService,
+        protected readonly array                             $endpoints,
+        private readonly StoreService                        $storeService,
+        private readonly SystemConfigService                 $configService,
         private readonly AbstractStoreRequestOptionsProvider $optionsProvider,
-        private readonly ExtensionLoader $extensionLoader,
-        protected readonly ClientInterface $client,
-        private readonly InstanceService $instanceService,
-    ) {
+        private readonly ExtensionLoader                     $extensionLoader,
+        protected readonly ClientInterface                   $client,
+        private readonly InstanceService                     $instanceService,
+    )
+    {
     }
 
     public function loginWithSnapAdminId(string $snapId, string $password, Context $context): void
@@ -120,10 +136,11 @@ class StoreClient
     }
 
     public function checkForViolations(
-        Context $context,
+        Context             $context,
         ExtensionCollection $extensions,
-        string $hostName
-    ): void {
+        string              $hostName
+    ): void
+    {
         $indexedExtensions = [];
 
         foreach ($extensions as $extension) {
@@ -155,9 +172,10 @@ class StoreClient
      */
     public function getLicenseViolations(
         Context $context,
-        array $extensions,
-        string $hostName
-    ): array {
+        array   $extensions,
+        string  $hostName
+    ): array
+    {
         $query = $this->getQueries($context);
         $query['hostName'] = $hostName;
 
@@ -288,13 +306,13 @@ class StoreClient
             ]
         );
 
-        return \json_decode((string) $response->getBody(), true, flags: \JSON_THROW_ON_ERROR)['signature'];
+        return \json_decode((string)$response->getBody(), true, flags: \JSON_THROW_ON_ERROR)['signature'];
     }
 
     public function listMyExtensions(ExtensionCollection $extensions, Context $context): ExtensionCollection
     {
         try {
-            $payload = ['plugins' => array_map(fn (ExtensionStruct $e) => [
+            $payload = ['plugins' => array_map(fn(ExtensionStruct $e) => [
                 'name' => $e->getName(),
                 'version' => $e->getVersion(),
             ], $extensions->getElements())];
@@ -340,7 +358,7 @@ class StoreClient
             );
         } catch (ClientException $e) {
             if ($e->hasResponse()) {
-                $error = \json_decode((string) $e->getResponse()->getBody(), true, flags: \JSON_THROW_ON_ERROR);
+                $error = \json_decode((string)$e->getResponse()->getBody(), true, flags: \JSON_THROW_ON_ERROR);
 
                 // It's okay when its already canceled
                 if (isset($error['type']) && $error['type'] === 'EXTENSION_LICENSE_IS_ALREADY_CANCELLED') {
@@ -489,5 +507,104 @@ class StoreClient
         }
 
         return $updateList;
+    }
+
+
+    /**
+     * @param RequestQueryParameters $parameters
+     *
+     * @return array{filter: list<ExtensionListingFilter>, sorting: ExtensionListingSorting}
+     */
+    public function listListingFilters(array $parameters, Context $context): array
+    {
+        try {
+            $response = $this->client->request(
+                'GET',
+                $this->endpoints['filter'],
+                [
+                    'query' => array_merge($this->optionsProvider->getDefaultQueryParameters($context), $parameters),
+                    'headers' => $this->optionsProvider->getAuthenticationHeader($context),
+                ]
+            );
+        } catch (ClientException $e) {
+            throw new StoreApiException($e);
+        }
+
+        return json_decode((string)$response->getBody(), true);
+    }
+
+    /**
+     * @return ExtensionDetail
+     */
+    public function extensionDetail(int $id, Context $context): array
+    {
+        try {
+            $response = $this->client->request(
+                'GET',
+                sprintf($this->endpoints['extension_detail'], $id),
+                [
+                    'query' => $this->optionsProvider->getDefaultQueryParameters($context),
+                    'headers' => $this->optionsProvider->getAuthenticationHeader($context),
+                ]
+            );
+        } catch (ClientException $e) {
+            throw new StoreApiException($e);
+        }
+
+        return json_decode((string)$response->getBody(), true);
+    }
+
+    /**
+     * @return array{
+     *     reviews: list<ExtensionReview>,
+     *     summary: array{
+     *         ratingAssignment: list<array{rating: int<1, 5>, count: positive-int}>,
+     *         averageRating: float,
+     *         numberOfRatings: positive-int
+     *     }}
+     */
+    public function extensionDetailReviews(int $id, ExtensionCriteria $criteria, Context $context): array
+    {
+        try {
+            $response = $this->client->request(
+                'GET',
+                sprintf($this->endpoints['reviews'], $id),
+                [
+                    'query' => array_merge($this->optionsProvider->getDefaultQueryParameters($context), $criteria->getQueryParameter()),
+                    'headers' => $this->optionsProvider->getAuthenticationHeader($context),
+                ]
+            );
+        } catch (ClientException $e) {
+            throw new StoreApiException($e);
+        }
+
+        return json_decode((string)$response->getBody(), true);
+    }
+
+    /**
+     * @return array{headers: ResponseHeaders, data: list<ExtensionInfo>}
+     */
+    public function listExtensions(ExtensionCriteria $criteria, Context $context): array
+    {
+        try {
+            $response = $this->client->request(
+                'GET',
+                $this->endpoints['list_extensions'],
+                [
+                    'query' => array_merge($this->optionsProvider->getDefaultQueryParameters($context), $criteria->getQueryParameter()),
+                    'headers' => $this->optionsProvider->getAuthenticationHeader($context),
+                ]
+            );
+        } catch (ClientException $e) {
+            throw new StoreApiException($e);
+        }
+
+        /** @var list<ExtensionInfo> $body */
+        $body = json_decode((string)$response->getBody(), true);
+
+        return [
+            'headers' => $response->getHeaders(),
+            'data' => $body,
+        ];
     }
 }

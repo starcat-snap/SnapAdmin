@@ -16,13 +16,6 @@
             <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\CacheTagCollection"/>
         </service>
 
-        <service id="snap.cache.invalidator.storage.cache"
-                 class="SnapAdmin\Core\Framework\Adapter\Cache\InvalidatorStorage\CacheInvalidatorStorage">
-            <argument type="service" id="cache.object"/>
-
-            <tag name="snap.cache.invalidator.storage" storage="cache"/>
-        </service>
-
         <service id="snap.cache.invalidator.storage.redis_adapter" class="Redis">
             <factory service="SnapAdmin\Core\Framework\Adapter\Cache\RedisConnectionFactory" method="create"/>
             <argument>%snap.cache.invalidation.delay_options.dsn%</argument>
@@ -40,7 +33,7 @@
             <argument type="tagged_locator" tag="snap.cache.invalidator.storage" index-by="storage"/>
         </service>
 
-        <service id="SnapAdmin\Core\Framework\Adapter\Cache\InvalidatorStorage\AbstractInvalidatorStorage">
+        <service id="SnapAdmin\Core\Framework\Adapter\Cache\InvalidatorStorage\AbstractInvalidatorStorage" lazy="true">
             <factory service="snap.cache.invalidator.storage.locator" method="get"/>
 
             <argument>%snap.cache.invalidation.delay_options.storage%</argument>
@@ -91,6 +84,14 @@
 
         <service id="SnapAdmin\Core\Framework\Adapter\Cache\CacheInvalidationSubscriber">
             <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\CacheInvalidator"/>
+            <tag name="kernel.event_listener" event="SnapAdmin\Core\Framework\Plugin\Event\PluginPostInstallEvent"
+                 method="invalidateConfig" priority="2001"/>
+            <tag name="kernel.event_listener" event="SnapAdmin\Core\Framework\Plugin\Event\PluginPostActivateEvent"
+                 method="invalidateConfig" priority="2001"/>
+            <tag name="kernel.event_listener" event="SnapAdmin\Core\Framework\Plugin\Event\PluginPostUpdateEvent"
+                 method="invalidateConfig" priority="2001"/>
+            <tag name="kernel.event_listener" event="SnapAdmin\Core\Framework\Plugin\Event\PluginPostDeactivateEvent"
+                 method="invalidateConfig" priority="2001"/>
         </service>
 
         <service id="SnapAdmin\Core\Framework\Adapter\Cache\CacheTagCollection"/>
@@ -99,11 +100,14 @@
             <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\CacheDecorator.inner"/>
             <argument type="service" id="SnapAdmin\Core\Framework\Adapter\Cache\CacheTagCollection"/>
         </service>
+
+
         <service id="snap.cache.reverse_proxy.redis" class="Redis">
             <factory service="SnapAdmin\Core\Framework\Adapter\Cache\RedisConnectionFactory" method="create"/>
             <argument>%storefront.reverse_proxy.redis_url%</argument>
         </service>
 
         <service id="snap.reverse_proxy.http_client" class="GuzzleHttp\Client"/>
+
     </services>
 </container>

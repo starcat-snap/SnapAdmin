@@ -5,7 +5,6 @@ namespace SnapAdmin\Core\Framework\Adapter\Cache;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Log\LoggerInterface;
 use SnapAdmin\Core\Framework\Adapter\Cache\InvalidatorStorage\AbstractInvalidatorStorage;
-use SnapAdmin\Core\Framework\Feature;
 use SnapAdmin\Core\Framework\Log\Package;
 use Symfony\Component\Cache\Adapter\TagAwareAdapterInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
@@ -50,15 +49,8 @@ class CacheInvalidator
         $this->purge($tags);
     }
 
-    /**
-     * @deprecated tag:v6.6.0 - The parameter $time is obsolete and will be removed in v6.6.0.0
-     */
-    public function invalidateExpired(?\DateTime $time = null): void
+    public function invalidateExpired(): void
     {
-        if ($time) {
-            Feature::triggerDeprecationOrThrow('v6.6.0.0', 'The parameter $time in \SnapAdmin\Core\Framework\Adapter\Cache\CacheInvalidator::invalidateExpired is obsolete and will be removed in v6.6.0.0');
-        }
-
         $tags = $this->cache->loadAndDelete();
 
         if (empty($tags)) {
